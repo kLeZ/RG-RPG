@@ -16,26 +16,41 @@
 // You should have received a copy of the GNU General Public License
 // along with this program.  If not, see <http://www.gnu.org/licenses/>.
 // 
-package it.d4nguard.rgrpg;
+package it.d4nguard.rgrpg.commands;
 
-import java.io.File;
-import java.io.FileNotFoundException;
-import java.util.Scanner;
+import java.io.InputStream;
+import java.io.IOException;
+import java.io.BufferedReader;
+import java.io.InputStreamReader;
 
-public class Welcome
+import it.d4nguard.rgrpg.util.PromptFeeder;
+
+public class CommandsInterpreter implements Runnable
 {
-    public static void print()
+    private InputStream in;
+
+    public CommandsInterpreter(InputStream in)
     {
-	System.out.println("Welcome to RG-RPG!");
+	this.in = in;
+    }
+
+    @Override
+    public void run()
+    {
+	boolean exit = false;
+	String cmd = "";
 	try
 	{
-	    Scanner scn = new Scanner(new File("README.md"));
-	    while(scn.hasNext())
+	    BufferedReader reader = new BufferedReader(new InputStreamReader(in));
+	    while (!exit)
 	    {
-		System.out.println(scn.nextLine());
+		System.out.print(new PromptFeeder().get());
+		cmd = reader.readLine();
+		exit = "exit".equalsIgnoreCase(cmd);
+		System.out.println(cmd);
 	    }
 	}
-	catch(FileNotFoundException e)
+	catch (IOException e)
 	{
 	    e.printStackTrace();
 	}

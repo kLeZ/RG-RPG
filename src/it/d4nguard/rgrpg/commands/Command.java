@@ -16,28 +16,10 @@
 // You should have received a copy of the GNU General Public License
 // along with this program.  If not, see <http://www.gnu.org/licenses/>.
 // 
-package it.d4nguard.rgrpg;
+package it.d4nguard.rgrpg.commands;
 
-import java.io.File;
-import java.io.FileNotFoundException;
-import java.util.Scanner;
-
-public class Welcome
+public interface Command
 {
-    public static void print()
-    {
-	System.out.println("Welcome to RG-RPG!");
-	try
-	{
-	    Scanner scn = new Scanner(new File("README.md"));
-	    while(scn.hasNext())
-	    {
-		System.out.println(scn.nextLine());
-	    }
-	}
-	catch(FileNotFoundException e)
-	{
-	    e.printStackTrace();
-	}
-    }
+    void execute(String... args);
+    String getHelp();
 }
