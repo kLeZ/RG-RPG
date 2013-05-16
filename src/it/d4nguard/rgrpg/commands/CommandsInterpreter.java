@@ -47,6 +47,8 @@ public class CommandsInterpreter implements Runnable
 		System.out.print(new PromptFeeder().get());
 		cmd = reader.readLine();
 		exit = "exit".equalsIgnoreCase(cmd);
+		//TODO: Implement Command Pattern
+		Class<? extends Command> command = Class.forName(String.format("it.d4nguard.rgrpg.commands.%sCommand", capitalize(cmd)));
 		System.out.println(cmd);
 	    }
 	}
@@ -54,5 +56,10 @@ public class CommandsInterpreter implements Runnable
 	{
 	    e.printStackTrace();
 	}
+    }
+
+    public String capitalize(String s)
+    {
+	return s.substring(0, 1).toUpperCase().concat(s.substring(1).toLowerCase());
     }
 }

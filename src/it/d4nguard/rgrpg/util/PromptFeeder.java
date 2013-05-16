@@ -20,9 +20,11 @@ package it.d4nguard.rgrpg.util;
 
 import java.io.BufferedReader;
 import java.io.InputStreamReader;
+import java.io.IOException;
 
 public class PromptFeeder
 {
+    public static final String LF = System.getProperty("line.separator");
     public static final String PROMPT_ENV = "RGRPG_PROMPT";
     public static final String PROMPT_DEFAULT = "\\u@\\h:\\w> ";
 
@@ -30,9 +32,29 @@ public class PromptFeeder
 
     public PromptFeeder()
     {
-	this.prompt = System.getEnv(PROMPT_ENV);
-	if (this.prompt == null || this.prompt.isEmpty())
+	String prompt = System.getenv(PROMPT_ENV);
+	if (prompt == null || prompt.isEmpty())
 	    this.prompt = PROMPT_DEFAULT;
+	else this.prompt = prompt;
+    }
+
+    public String getHelp()
+    {
+	StringBuilder sb = new StringBuilder();
+	sb.append("STRINGA DI PROMPT").append(LF);
+	sb.append("=================").append(LF);
+	sb.append(LF);
+	sb.append("La shell di base che completa RG-RPG, rendendolo un gioco interattivo, comprende anche un prompt che aiuta nell'utilizzo. ");
+	sb.append("Questo è personalizzabile in base alle esigenze, esportando la variabile \"").append(PROMPT_ENV).append("\".").append(LF).append(LF);
+	sb.append("Le funzioni utilizzabili sono le seguenti:").append(LF);
+	sb.append("\t\t\\u:\tStampa il nome dell'utente corrente.").append(LF);
+	sb.append("\t\t\\h:\tStampa il nome dell'host, fino al primo punto.").append(LF);
+	sb.append("\t\t\\H:\tStampa il nome dell'host, completo.").append(LF);
+	sb.append("\t\t\\w:\tStampa la directory corrente, sostituendo la home dell'utente corrente con una tilde (~).").append(LF);
+	sb.append("\t\t\\r:\tStampa un Ritorno di Carrello (Carriage Return) letterale.").append(LF);
+	sb.append("\t\t\\n:\tStampa un Aumento di Linea (Line Feed) letterale.").append(LF);
+	sb.append("\t\t\\\\:\tStampa un backslash (\\) letterale.").append(LF).append(LF);
+	return sb.toString();
     }
 
     public String get()
@@ -57,21 +79,32 @@ public class PromptFeeder
 		    break;
 		case 'H':
 		case 'h':
-		    Process p = Runtime.getRuntime().exec("hostname");
-		    p.waitFor();
-		    BufferedReader br = new BufferedReader(new InputStreamReader(p.getInputStream()));
-		    String hostname = br.readLine();
-		    int dot = hostname.indexOf('.');
-		    if (token == 'h' && dot > 0) hostname = hostname.substring(0, dot);
-		    ret.append(hostname);
-		    br.close();
-		    br = null;
-		    p = null;
-		    System.gc();
+		    try
+		    {
+			Process p = Runtime.getRuntime().exec("hostname");
+			p.waitFor();
+			BufferedReader br = new BufferedReader(new InputStreamReader(p.getInputStream()));
+			String hostname = br.readLine();
+			int dot = hostname.indexOf('.');
+			if (token == 'h' && dot > 0) hostname = hostname.substring(0, dot);
+			ret.append(hostname);
+			br.close();
+			br = null;
+			p = null;
+			System.gc();
+		    }
+		    catch(InterruptedException e)
+		    {
+			e.printStackTrace();
+		    }
+		    catch(IOException e)
+		    {
+			e.printStackTrace();
+		    }
 		    break;
 		case 'w':
 		    String currentDir = System.getProperty("user.dir");
-		    currentDir = currentDir.replace
+		    currentDir = currentDir.replace(System.getProperty("user.home"), "~");
 		    ret.append(currentDir);
 		    break;
 		case 'r':
