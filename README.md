@@ -37,8 +37,11 @@ In the KISS philosophy I tried to 'Keep It Simple, Stupid' even the
 install part. So I decided to use a cross platform environment as Java
 and the well-known in Unix systems program Make.
 To install this software you have to run just the following command:
+
 $ make
+
 \# make install
+
 
 Please note that $ means own user's shell, besides # means root shell.
 
