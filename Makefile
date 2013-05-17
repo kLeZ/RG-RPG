@@ -1,22 +1,21 @@
-all: clean build
+all: clean build jar
 
 clean:
-	rm -rf bin/*
+	find . -regextype posix-extended -regex '(.*~|\..*~|.*\.swp|\..*\.swp)' -print -exec rm {} \;
+	find . -name rgrpg-dist.tar.gz -delete
+	mvn clean
 
 build:
-	find src/ -type f -name *.java -print -exec javac -source 1.6 -target 1.6 -d bin/ {} \+
+	mvn compile
 
-run: clean build
-	java -cp bin:lib:$JRECLASSPATH it.d4nguard.rgrpg.Main
+jar: build
+	mvn package
 
-tar:
+run: all
+	java -jar bin/rgrpg-all.jar
 
-pre-dist:
-	cp README.md bin/it/d4nguard/rgrpg/
+install: all
+	mvn install
 
-dist: pre-dist
-
-install: dist
-
-uninstall:
-
+dist: clean
+	find . -exec tar -czf rgrpg-dist.tar.gz {} \+

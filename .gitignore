@@ -1,8 +1,12 @@
-#*#
+\#*#
 *~
 *.bak
-
 *.class
+
+# dirs
+bin/
+bin/*
+bin/**/*
 
 # Package Files #
 *.jar

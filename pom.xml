@@ -1,0 +1,105 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+  <modelVersion>4.0.0</modelVersion>
+  <groupId>it.d4nguard</groupId>
+  <artifactId>rgrpg</artifactId>
+  <version>0.0.1</version>
+  <packaging>jar</packaging>
+  <properties>
+    <jdk.version>1.6</jdk.version>
+  </properties>
+  <build>
+    <directory>bin</directory>
+    <outputDirectory>bin</outputDirectory>
+    <finalName>${project.artifactId}-${project.version}</finalName>
+    <sourceDirectory>src</sourceDirectory>
+    <scriptSourceDirectory>src</scriptSourceDirectory>
+    <testSourceDirectory>src</testSourceDirectory>
+    <resources>
+      <resource>
+        <directory>res</directory>
+      </resource>
+    </resources>
+    <testResources>
+      <testResource>
+        <directory>res</directory>
+      </testResource>
+    </testResources>
+    <plugins>
+      <!-- The Compiler Plugin is used to compile the sources of your project. 
+	   The default compiler is javac and is used to compile Java sources. Also note 
+	   that at present the default source setting and default target setting is 
+	   1.5, independently of the JDK you run Maven with. -->
+      <plugin>
+	<groupId>org.apache.maven.plugins</groupId>
+	<artifactId>maven-compiler-plugin</artifactId>
+	<version>2.3.2</version>
+	<configuration>
+	  <source>${jdk.version}</source>
+	  <target>${jdk.version}</target>
+	</configuration>
+      </plugin>
+      <!-- This plugin provides the capability to build and sign jars. If the 
+	   packaging of your project is set to 'jar', this plugin is executed whenever 
+	   it passes the "package" phase. default: 2.3.2 -->
+      <plugin>
+	<groupId>org.apache.maven.plugins</groupId>
+	<artifactId>maven-jar-plugin</artifactId>
+	<version>2.4</version>
+	<configuration>
+	  <archive>
+	    <manifest>
+	      <addClasspath>true</addClasspath>
+	      <mainClass>it.d4nguard.rgrpg.Main</mainClass>
+	      <classpathPrefix>lib/</classpathPrefix>
+	    </manifest>
+	  </archive>
+	</configuration>
+      </plugin>
+      <plugin>
+        <groupId>org.apache.maven.plugins</groupId>
+        <artifactId>maven-dependency-plugin</artifactId>
+        <version>2.7</version>
+        <executions>
+          <execution>
+            <id>copy-dependencies</id>
+            <phase>package</phase>
+            <goals>
+              <goal>copy-dependencies</goal>
+            </goals>
+            <configuration>
+              <outputDirectory>${project.build.directory}</outputDirectory>
+              <overWriteReleases>false</overWriteReleases>
+              <overWriteSnapshots>false</overWriteSnapshots>
+              <overWriteIfNewer>true</overWriteIfNewer>
+            </configuration>
+          </execution>
+        </executions>
+      </plugin>
+      <plugin>
+        <groupId>org.apache.maven.plugins</groupId>
+        <artifactId>maven-shade-plugin</artifactId>
+	<version>1.4</version>
+	<executions>
+          <execution>
+            <phase>package</phase>
+            <goals>
+              <goal>shade</goal>
+            </goals>
+            <configuration>
+	      <finalName>${project.artifactId}-all</finalName>
+              <shadedArtifactAttached>true</shadedArtifactAttached>
+              <shadedClassifierName>all</shadedClassifierName>
+            </configuration>
+          </execution>
+	</executions>
+      </plugin>
+    </plugins>
+  </build>
+  <dependencies>
+    <dependency>
+      <groupId>org.reflections</groupId>
+      <artifactId>reflections</artifactId>
+      <version>0.9.9-RC1</version>
+    </dependency>
+  </dependencies>
+</project>

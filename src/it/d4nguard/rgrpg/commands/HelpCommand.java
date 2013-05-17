@@ -21,6 +21,7 @@ package it.d4nguard.rgrpg.commands;
 import java.util.Set;
 
 import it.d4nguard.rgrpg.commands.Command;
+
 import org.reflections.Reflections;
 
 public class HelpCommand implements Command
@@ -34,22 +35,23 @@ public class HelpCommand implements Command
     {
 	if (args.length == 0)
 	{
+	    System.out.println();
 	    System.out.println("Listing available commands:");
-	    // TODO: Use Reflections library in order to list all commands in $CLASSPATH
 	    Reflections reflections = new Reflections("it.d4nguard.rgrpg.commands");
 	    Set<Class<? extends Command>> commands = reflections.getSubTypesOf(Command.class);
 	    for (Class<? extends Command> cmd : commands)
 	    {
+		String cmdLn = cmd.getSimpleName().replace("Command", "");
 		try
 		{
-		    System.out.println(String.format("%s: %s",
-						     cmd.getSimpleName().replace("Command", ""),
-						     CommandsInterpreter.resolveCommand(cmd.getName()).getHelp()));
+		    System.out.println(String.format("%s: %s", cmdLn, CommandsInterpreter.resolveCommand(cmdLn).getHelp()));
 		}
 		catch (ClassNotFoundException e)
 		{
+		    System.err.println(String.format("There was an error reading '%s' command: '%s'", cmdLn, e.getMessage()));
 		}
 	    }
+	    System.out.println();
 	}
 	else
 	{
@@ -68,6 +70,6 @@ public class HelpCommand implements Command
     @Override
     public String getHelp()
     {
-	return "";
+	return "Prints the help of the passed command or lists all available commands.";
     }
 }
