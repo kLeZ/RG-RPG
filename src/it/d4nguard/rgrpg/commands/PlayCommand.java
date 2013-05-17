@@ -18,9 +18,9 @@
 // 
 package it.d4nguard.rgrpg.commands;
 
-public class LoginCommand implements Command
+public class PlayCommand implements Command
 {
-    public LoginCommand()
+    public PlayCommand()
     {
     }
 
@@ -32,6 +32,6 @@ public class LoginCommand implements Command
     @Override
     public String getHelp()
     {
-	return "Performs the login to the game.";
+	return "Starts a new game, or continue a new undone one.";
     }
 }

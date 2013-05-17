@@ -7,6 +7,12 @@
   <properties>
     <jdk.version>1.6</jdk.version>
   </properties>
+  <repositories>
+    <repository>
+      <id>source.db4o</id>
+      <url>http://source.db4o.com/maven</url>
+    </repository>
+  </repositories>
   <build>
     <directory>bin</directory>
     <outputDirectory>bin</outputDirectory>
@@ -100,6 +106,11 @@
       <groupId>org.reflections</groupId>
       <artifactId>reflections</artifactId>
       <version>0.9.9-RC1</version>
+    </dependency>
+    <dependency>
+      <groupId>com.db4o</groupId>
+      <artifactId>db4o-full-java5</artifactId>
+      <version>8.1-SNAPSHOT</version>
     </dependency>
   </dependencies>
 </project>
