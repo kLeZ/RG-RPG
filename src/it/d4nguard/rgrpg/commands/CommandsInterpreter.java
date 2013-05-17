@@ -22,8 +22,11 @@ import java.io.InputStream;
 import java.io.IOException;
 import java.io.BufferedReader;
 import java.io.InputStreamReader;
+import java.util.Arrays;
 
+import it.d4nguard.rgrpg.ExitRuntimeException;
 import it.d4nguard.rgrpg.util.PromptFeeder;
+import it.d4nguard.rgrpg.util.StringUtils;
 
 public class CommandsInterpreter implements Runnable
 {
@@ -37,19 +40,37 @@ public class CommandsInterpreter implements Runnable
     @Override
     public void run()
     {
-	boolean exit = false;
-	String cmd = "";
 	try
 	{
+	    boolean exit = false;
 	    BufferedReader reader = new BufferedReader(new InputStreamReader(in));
 	    while (!exit)
 	    {
 		System.out.print(new PromptFeeder().get());
-		cmd = reader.readLine();
-		exit = "exit".equalsIgnoreCase(cmd);
-		//TODO: Implement Command Pattern
-		Class<? extends Command> command = Class.forName(String.format("it.d4nguard.rgrpg.commands.%sCommand", capitalize(cmd)));
-		System.out.println(cmd);
+		String cmdLn = reader.readLine();
+		if (cmdLn != null && !cmdLn.isEmpty())
+		{
+		    String[] args = cmdLn.split("\\s");
+		    // System.out.println(String.format("Command: %s%nArgs: %s%n#Args: %d", cmdLn, Arrays.toString(args), args.length));
+		    cmdLn = args[0];
+		    if (args.length > 1) args = Arrays.<String> copyOfRange(args, 1, args.length);
+		    else args = new String[] { };
+		    try
+		    {
+			// System.out.println(String.format("Command: %s%nArgs: %s", cmdLn, Arrays.toString(args)));
+			CommandsInterpreter.resolveCommand(cmdLn).execute(args);
+		    }
+		    catch (ClassNotFoundException e)
+		    {
+			System.out.println("Warning: Command not found. You may need some help?");
+			System.out.println("Type 'help' to see the full list of commands currently available.");
+		    }
+		    catch (ExitRuntimeException e)
+		    {
+			System.out.println("Exiting...");
+			exit = true;
+		    }
+		}
 	    }
 	}
 	catch (IOException e)
@@ -58,8 +79,27 @@ public class CommandsInterpreter implements Runnable
 	}
     }
 
-    public String capitalize(String s)
+    public static Command resolveCommand(String cmdLn) throws ClassNotFoundException
     {
-	return s.substring(0, 1).toUpperCase().concat(s.substring(1).toLowerCase());
+	Command cmd = null;
+	String className = String.format("it.d4nguard.rgrpg.commands.%sCommand", StringUtils.capitalize(cmdLn));
+	try
+	{
+	    Class<?> clazz = Class.forName(className);
+	    cmd = (Command) clazz.newInstance();
+	}
+	catch (IllegalAccessException e)
+	{
+	    e.printStackTrace();
+	}
+	catch (InstantiationException e)
+	{
+	    e.printStackTrace();
+	}
+	catch (SecurityException e)
+	{
+	    e.printStackTrace();
+	}
+	return cmd;
     }
 }

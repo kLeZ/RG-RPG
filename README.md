@@ -15,17 +15,33 @@ I've learnt during years of work and study. I hope you want to play with it when
 it is completed, and I hope you will file me any issue or improvement you find
 out during this game.
 
+
 INSTALLING
 ==========
 
-To install RG-RPG please make sure you can run the following software: 1. java
-(jre or jdk) >= 1.6 :: It is better to have OpenJDK instead of a proprietary
-one, I develop with O-JDK so it will be 100% compatible with it, I cannot
-guarantee for any other JRE or JDK you want to run.
+To install RG-RPG please make sure you can run the following software:
+
+1. java (jre or jdk) >= 1.6 :: It is better to have OpenJDK instead of
+a proprietary one, I develop with O-JDK so it will be 100% compatible
+with it, I cannot guarantee for any other JRE or JDK you want to run.
 
 2. javac (jdk) >= 1.6 :: Same as above.
 
-3. make >= 3.82 :: It is needed in order to launch 'make && sudo make install'
+3. make >= 3.82 :: It is needed in order to launch 'make && sudo make
+install'
+
+How-To Install RG-RPG
+---------------------
+
+In the KISS philosophy I tried to 'Keep It Simple, Stupid' even the
+install part. So I decided to use a cross platform environment as Java
+and the well-known in Unix systems program Make.
+To install this software you have to run just the following command:
+$ make
+# make install
+
+Please note that $ means own user's shell, besides # means root shell.
+
 
 COPYING
 =======

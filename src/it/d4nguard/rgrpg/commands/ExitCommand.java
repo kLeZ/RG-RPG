@@ -16,32 +16,25 @@
 // You should have received a copy of the GNU General Public License
 // along with this program.  If not, see <http://www.gnu.org/licenses/>.
 // 
-package it.d4nguard.rgrpg;
+package it.d4nguard.rgrpg.commands;
 
-import java.io.File;
-import java.io.FileNotFoundException;
-import java.util.Scanner;
-import it.d4nguard.rgrpg.commands.VersionCommand;
+import it.d4nguard.rgrpg.ExitRuntimeException;
 
-public class Welcome
+public class ExitCommand implements Command
 {
-    public static void print()
+    public ExitCommand()
     {
-	System.out.println("Welcome to RG-RPG!");
-	System.out.println();
-	new VersionCommand().execute();
-	try
-	{
-	    Scanner scn = new Scanner(new File("README.md"));
-	    while(scn.hasNext())
-	    {
-		System.out.println(scn.nextLine());
-	    }
-	    System.out.println();
-	}
-	catch(FileNotFoundException e)
-	{
-	    e.printStackTrace();
-	}
+    }
+
+    @Override
+    public void execute(String... args)
+    {
+	throw new ExitRuntimeException();
+    }
+
+    @Override
+    public String getHelp()
+    {
+	return "Exits from the Commands Interpreter.";
     }
 }

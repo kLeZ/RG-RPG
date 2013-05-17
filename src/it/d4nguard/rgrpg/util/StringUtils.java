@@ -16,32 +16,12 @@
 // You should have received a copy of the GNU General Public License
 // along with this program.  If not, see <http://www.gnu.org/licenses/>.
 // 
-package it.d4nguard.rgrpg;
+package it.d4nguard.rgrpg.util;
 
-import java.io.File;
-import java.io.FileNotFoundException;
-import java.util.Scanner;
-import it.d4nguard.rgrpg.commands.VersionCommand;
-
-public class Welcome
+public class StringUtils
 {
-    public static void print()
+    public static String capitalize(String s)
     {
-	System.out.println("Welcome to RG-RPG!");
-	System.out.println();
-	new VersionCommand().execute();
-	try
-	{
-	    Scanner scn = new Scanner(new File("README.md"));
-	    while(scn.hasNext())
-	    {
-		System.out.println(scn.nextLine());
-	    }
-	    System.out.println();
-	}
-	catch(FileNotFoundException e)
-	{
-	    e.printStackTrace();
-	}
+	return s.substring(0, 1).toUpperCase().concat(s.substring(1).toLowerCase());
     }
 }

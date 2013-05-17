@@ -7,7 +7,7 @@ build:
 	find src/ -type f -name *.java -print -exec javac -source 1.6 -target 1.6 -d bin/ {} \+
 
 run: clean build
-	java -cp bin:$CLASSPATH it.d4nguard.rgrpg.Main
+	java -cp bin:lib:$JRECLASSPATH it.d4nguard.rgrpg.Main
 
 tar:
 
