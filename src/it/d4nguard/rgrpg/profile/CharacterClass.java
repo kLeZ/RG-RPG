@@ -18,7 +18,7 @@
 // 
 package it.d4nguard.rgrpg.profile;
 
-public interface CharacterClass
+public abstract class CharacterClass
 {
     
 }
