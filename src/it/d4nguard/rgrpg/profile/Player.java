@@ -23,113 +23,113 @@ import java.util.HashSet;
 
 public class Player
 {
-    public static final String LF = System.getProperty("line.separator");
+	public static final String LF = System.getProperty("line.separator");
 
-    private String name;
-    private float experience;
-    private int tacticPoints;
-    private int dialecticPoints;
-    private int interpretativePoints;
-    private int masteredParametersPoints;
-    private final Set<Character> characters;
+	private String name;
+	private float experience;
+	private int tacticPoints;
+	private int dialecticPoints;
+	private int interpretativePoints;
+	private int masteredParametersPoints;
+	private final Set<Character> characters;
 
-    public Player()
-    {
-	this.characters = new HashSet<Character>();
-    }
-
-    public String getName()
-    {
-	return this.name;
-    }
-
-    public void setName(String value)
-    {
-	this.name = value;
-    }
-
-    public float getExperience()
-    {
-	return this.experience;
-    }
-
-    public void setExperience(float value)
-    {
-	this.experience = value;
-    }
-
-    public int getTacticPoints()
-    {
-	return this.tacticPoints;
-    }
-
-    public void setTacticPoints(int value)
-    {
-	this.tacticPoints = value;
-    }
-
-    public int getDialecticPoints()
-    {
-	return this.dialecticPoints;
-    }
-
-    public void setDialecticPoints(int value)
-    {
-	this.dialecticPoints = value;
-    }
-
-    public int getInterpretativePoints()
-    {
-	return this.interpretativePoints;
-    }
-
-    public void setInterpretativePoints(int value)
-    {
-	this.interpretativePoints = value;
-    }
-
-    public int getMasteredParametersPoints()
-    {
-	return this.masteredParametersPoints;
-    }
-
-    public void setMasteredParametersPoints(int value)
-    {
-	this.masteredParametersPoints = value;
-    }
-
-    public Set<Character> getCharacters()
-    {
-	return this.characters;
-    }
-
-    @Override
-    public boolean equals(Object o)
-    {
-	if (o == null) return false;
-	if (!(o instanceof User)) return false;
-	return ((User)o).getName().equals(this.name);
-    }
-
-    @Override
-    public String toString()
-    {
-	StringBuilder sb = new StringBuilder();
-	sb.append("PLAYER").append(LF);
-	sb.append("======").append(LF);
-	sb.append("Name: ").append(this.name).append(LF);
-	sb.append("Experience: ").append(this.experience).append(LF);
-	sb.append("Tactic Points: ").append(this.tacticPoints).append(LF);
-	sb.append("Dialectic Points: ").append(this.dialecticPoints).append(LF);
-	sb.append("Interpretative Points: ").append(this.interpretativePoints).append(LF);
-	sb.append("Mastered Parameters Points: ").append(this.masteredParametersPoints).append(LF);
-	sb.append("Characters").append(LF);
-	sb.append("----------").append(LF);
-	for (Character c : this.characters)
+	public Player()
 	{
-	    sb.append(c).append(LF);
+		this.characters = new HashSet<Character>();
 	}
-	sb.append(LF);
-	return sb.toString();
-    }
+
+	public String getName()
+	{
+		return this.name;
+	}
+
+	public void setName(String value)
+	{
+		this.name = value;
+	}
+
+	public float getExperience()
+	{
+		return this.experience;
+	}
+
+	public void setExperience(float value)
+	{
+		this.experience = value;
+	}
+
+	public int getTacticPoints()
+	{
+		return this.tacticPoints;
+	}
+
+	public void setTacticPoints(int value)
+	{
+		this.tacticPoints = value;
+	}
+
+	public int getDialecticPoints()
+	{
+		return this.dialecticPoints;
+	}
+
+	public void setDialecticPoints(int value)
+	{
+		this.dialecticPoints = value;
+	}
+
+	public int getInterpretativePoints()
+	{
+		return this.interpretativePoints;
+	}
+
+	public void setInterpretativePoints(int value)
+	{
+		this.interpretativePoints = value;
+	}
+
+	public int getMasteredParametersPoints()
+	{
+		return this.masteredParametersPoints;
+	}
+
+	public void setMasteredParametersPoints(int value)
+	{
+		this.masteredParametersPoints = value;
+	}
+
+	public Set<Character> getCharacters()
+	{
+		return this.characters;
+	}
+
+	@Override
+	public boolean equals(Object o)
+	{
+		if (o == null) return false;
+		if (!(o instanceof Player)) return false;
+		return ((Player) o).getName().equals(this.name);
+	}
+
+	@Override
+	public String toString()
+	{
+		StringBuilder sb = new StringBuilder();
+		sb.append("PLAYER").append(LF);
+		sb.append("======").append(LF);
+		sb.append("Name: ").append(this.name).append(LF);
+		sb.append("Experience: ").append(this.experience).append(LF);
+		sb.append("Tactic Points: ").append(this.tacticPoints).append(LF);
+		sb.append("Dialectic Points: ").append(this.dialecticPoints).append(LF);
+		sb.append("Interpretative Points: ").append(this.interpretativePoints).append(LF);
+		sb.append("Mastered Parameters Points: ").append(this.masteredParametersPoints).append(LF);
+		sb.append("= CHARACTERS").append(LF);
+		sb.append("----------").append(LF);
+		for (Character c : this.characters)
+		{
+			sb.append(c).append(LF);
+		}
+		sb.append("----------").append(LF);
+		return sb.toString();
+	}
 }

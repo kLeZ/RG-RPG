@@ -18,7 +18,7 @@
 // 
 package it.d4nguard.rgrpg.profile;
 
-public abstract class CharacterClass
+public class Weakness
 {
-    
+
 }

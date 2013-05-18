@@ -20,18 +20,18 @@ package it.d4nguard.rgrpg.commands;
 
 public class LoginCommand implements Command
 {
-    public LoginCommand()
-    {
-    }
+	public LoginCommand()
+	{
+	}
 
-    @Override
-    public void execute(String... args)
-    {
-    }
+	@Override
+	public void execute(String... args)
+	{
+	}
 
-    @Override
-    public String getHelp()
-    {
-	return "Performs the login to the game.";
-    }
+	@Override
+	public String getHelp()
+	{
+		return "Performs the login to the game.";
+	}
 }

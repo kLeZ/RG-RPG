@@ -16,22 +16,33 @@
 // You should have received a copy of the GNU General Public License
 // along with this program.  If not, see <http://www.gnu.org/licenses/>.
 // 
-package it.d4nguard.rgrpg.commands;
+package it.d4nguard.rgrpg.profile;
 
-public class PlayCommand implements Command
+import java.util.HashSet;
+import java.util.Set;
+
+public class Initiative
 {
-	public PlayCommand()
+	private int initiativeBonus;
+	private final Set<Integer> modifiers;
+
+	public Initiative()
 	{
+		modifiers = new HashSet<Integer>();
 	}
 
-	@Override
-	public void execute(String... args)
+	public int getInitiativeBonus()
 	{
+		return initiativeBonus;
 	}
 
-	@Override
-	public String getHelp()
+	public void setInitiativeBonus(int initiativeBonus)
 	{
-		return "Starts a new game, or continue a new undone one.";
+		this.initiativeBonus = initiativeBonus;
+	}
+
+	public Set<Integer> getModifiers()
+	{
+		return modifiers;
 	}
 }

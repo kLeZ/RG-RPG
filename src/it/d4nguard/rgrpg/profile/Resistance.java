@@ -16,22 +16,45 @@
 // You should have received a copy of the GNU General Public License
 // along with this program.  If not, see <http://www.gnu.org/licenses/>.
 // 
-package it.d4nguard.rgrpg.commands;
+package it.d4nguard.rgrpg.profile;
 
-public class PlayCommand implements Command
+public class Resistance
 {
-	public PlayCommand()
+	private ResistanceType type;
+	private int points;
+	private boolean immune;
+
+	public Resistance()
 	{
 	}
 
-	@Override
-	public void execute(String... args)
+	public ResistanceType getType()
 	{
+		return type;
 	}
 
-	@Override
-	public String getHelp()
+	public void setType(ResistanceType type)
 	{
-		return "Starts a new game, or continue a new undone one.";
+		this.type = type;
+	}
+
+	public int getPoints()
+	{
+		return points;
+	}
+
+	public void setPoints(int points)
+	{
+		this.points = points;
+	}
+
+	public boolean isImmune()
+	{
+		return immune;
+	}
+
+	public void setImmune(boolean immune)
+	{
+		this.immune = immune;
 	}
 }

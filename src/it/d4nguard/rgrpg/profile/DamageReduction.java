@@ -16,22 +16,35 @@
 // You should have received a copy of the GNU General Public License
 // along with this program.  If not, see <http://www.gnu.org/licenses/>.
 // 
-package it.d4nguard.rgrpg.commands;
+package it.d4nguard.rgrpg.profile;
 
-public class PlayCommand implements Command
+public class DamageReduction
 {
-	public PlayCommand()
+	private DamageReductionType type;
+	private int points;
+
+	public DamageReduction()
 	{
+		type = DamageReductionType.None;
 	}
 
-	@Override
-	public void execute(String... args)
+	public DamageReductionType getType()
 	{
+		return type;
 	}
 
-	@Override
-	public String getHelp()
+	public void setType(DamageReductionType type)
 	{
-		return "Starts a new game, or continue a new undone one.";
+		this.type = type;
+	}
+
+	public int getPoints()
+	{
+		return points;
+	}
+
+	public void setPoints(int points)
+	{
+		this.points = points;
 	}
 }

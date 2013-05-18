@@ -20,5 +20,5 @@ package it.d4nguard.rgrpg.profile;
 
 public enum Size
 {
-    Fine, Diminutive, Tiny, Small, Medium, Large, Huge, Gargantuan, Colossal, Colossal_plus;
+	Fine, Diminutive, Tiny, Small, Medium, Large, Huge, Gargantuan, Colossal, Colossal_plus;
 }

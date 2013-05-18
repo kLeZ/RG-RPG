@@ -18,25 +18,58 @@
 // 
 package it.d4nguard.rgrpg.profile;
 
-import java.util.Set;
 import java.util.HashSet;
+import java.util.Set;
 
-import org.joda.time.Duration;
-
-public class Character
+public class Health
 {
-	private Player owner;
-	private Duration playedTime;
-	private String name;
-	private GeneralInfo info;
-	private final Set<? extends Class> classes;
-	private Attributes abilityScores;
-	private PersonalTraits personalTraits;
-	private Health health;
-	private Initiative initiative;
+	private int totalHealthPoints;
+	private int currentHealthPoints;
+	private DamageReduction damageReduction;
+	private Set<Resistance> resistances;
 
-	public Character()
+	public Health()
 	{
-		this.classes = new HashSet<Class>();
+		this.resistances = new HashSet<Resistance>();
+	}
+
+	public int getTotalHealthPoints()
+	{
+		return totalHealthPoints;
+	}
+
+	public void setTotalHealthPoints(int totalHealthPoints)
+	{
+		this.totalHealthPoints = totalHealthPoints;
+	}
+
+	public int getCurrentHealthPoints()
+	{
+		return currentHealthPoints;
+	}
+
+	public void setCurrentHealthPoints(int currentHealthPoints)
+	{
+		this.currentHealthPoints = currentHealthPoints;
+	}
+
+	public DamageReduction getDamageReduction()
+	{
+		return damageReduction;
+	}
+
+	public void setDamageReduction(DamageReduction damageReduction)
+	{
+		this.damageReduction = damageReduction;
+	}
+
+	public Set<Resistance> getResistances()
+	{
+		return resistances;
+	}
+
+	public void setResistances(Set<Resistance> resistances)
+	{
+		this.resistances = resistances;
 	}
 }

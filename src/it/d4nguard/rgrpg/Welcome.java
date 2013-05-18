@@ -25,16 +25,16 @@ import it.d4nguard.rgrpg.commands.VersionCommand;
 
 public class Welcome
 {
-    public static void print()
-    {
-	System.out.println("Welcome to RG-RPG!");
-	System.out.println();
-	new VersionCommand().execute();
-	Scanner scn = new Scanner(ClassLoader.getSystemClassLoader().getResourceAsStream("it/d4nguard/rgrpg/Welcome.txt"));
-	while(scn.hasNext())
+	public static void print()
 	{
-	    System.out.println(scn.nextLine());
+		System.out.println("Welcome to RG-RPG!");
+		System.out.println();
+		new VersionCommand().execute();
+		Scanner scn = new Scanner(ClassLoader.getSystemClassLoader().getResourceAsStream("it/d4nguard/rgrpg/Welcome.txt"));
+		while (scn.hasNext())
+		{
+			System.out.println(scn.nextLine());
+		}
+		System.out.println();
 	}
-	System.out.println();
-    }
 }

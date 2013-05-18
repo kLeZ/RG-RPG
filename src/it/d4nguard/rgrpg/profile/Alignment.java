@@ -20,7 +20,5 @@ package it.d4nguard.rgrpg.profile;
 
 public enum Alignment
 {
-    LawfulGood, NeutralGood, ChaoticGood,
-    LawfulNeutral, PureNeutral, ChaoticNeutral,
-    LawfulEvil, NeutralEvil, ChaoticEvil;
+	LawfulGood, NeutralGood, ChaoticGood, LawfulNeutral, PureNeutral, ChaoticNeutral, LawfulEvil, NeutralEvil, ChaoticEvil;
 }

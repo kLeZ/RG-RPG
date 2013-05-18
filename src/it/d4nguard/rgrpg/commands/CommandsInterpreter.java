@@ -30,76 +30,76 @@ import it.d4nguard.rgrpg.util.StringUtils;
 
 public class CommandsInterpreter implements Runnable
 {
-    private InputStream in;
+	private InputStream in;
 
-    public CommandsInterpreter(InputStream in)
-    {
-	this.in = in;
-    }
-
-    @Override
-    public void run()
-    {
-	try
+	public CommandsInterpreter(InputStream in)
 	{
-	    boolean exit = false;
-	    BufferedReader reader = new BufferedReader(new InputStreamReader(in));
-	    while (!exit)
-	    {
-		System.out.print(new PromptFeeder().get());
-		String cmdLn = reader.readLine();
-		if (cmdLn != null && !cmdLn.isEmpty())
+		this.in = in;
+	}
+
+	@Override
+	public void run()
+	{
+		try
 		{
-		    String[] args = cmdLn.split("\\s");
-		    // System.out.println(String.format("Command: %s%nArgs: %s%n#Args: %d", cmdLn, Arrays.toString(args), args.length));
-		    cmdLn = args[0];
-		    if (args.length > 1) args = Arrays.<String> copyOfRange(args, 1, args.length);
-		    else args = new String[] { };
-		    try
-		    {
-			// System.out.println(String.format("Command: %s%nArgs: %s", cmdLn, Arrays.toString(args)));
-			CommandsInterpreter.resolveCommand(cmdLn).execute(args);
-		    }
-		    catch (ClassNotFoundException e)
-		    {
-			System.out.println("Warning: Command not found. You may need some help?");
-			System.out.println("Type 'help' to see the full list of commands currently available.");
-		    }
-		    catch (ExitRuntimeException e)
-		    {
-			System.out.println("Exiting...");
-			exit = true;
-		    }
+			boolean exit = false;
+			BufferedReader reader = new BufferedReader(new InputStreamReader(in));
+			while (!exit)
+			{
+				System.out.print(new PromptFeeder().get());
+				String cmdLn = reader.readLine();
+				if (cmdLn != null && !cmdLn.isEmpty())
+				{
+					String[] args = cmdLn.split("\\s");
+					// System.out.println(String.format("Command: %s%nArgs: %s%n#Args: %d", cmdLn, Arrays.toString(args), args.length));
+					cmdLn = args[0];
+					if (args.length > 1) args = Arrays.<String> copyOfRange(args, 1, args.length);
+					else args = new String[] {};
+					try
+					{
+						// System.out.println(String.format("Command: %s%nArgs: %s", cmdLn, Arrays.toString(args)));
+						CommandsInterpreter.resolveCommand(cmdLn).execute(args);
+					}
+					catch (ClassNotFoundException e)
+					{
+						System.out.println("Warning: Command not found. You may need some help?");
+						System.out.println("Type 'help' to see the full list of commands currently available.");
+					}
+					catch (ExitRuntimeException e)
+					{
+						System.out.println("Exiting...");
+						exit = true;
+					}
+				}
+			}
 		}
-	    }
+		catch (IOException e)
+		{
+			e.printStackTrace();
+		}
 	}
-	catch (IOException e)
-	{
-	    e.printStackTrace();
-	}
-    }
 
-    public static Command resolveCommand(String cmdLn) throws ClassNotFoundException
-    {
-	Command cmd = null;
-	String className = String.format("it.d4nguard.rgrpg.commands.%sCommand", StringUtils.capitalize(cmdLn));
-	try
+	public static Command resolveCommand(String cmdLn) throws ClassNotFoundException
 	{
-	    Class<?> clazz = Class.forName(className);
-	    cmd = (Command) clazz.newInstance();
+		Command cmd = null;
+		String className = String.format("it.d4nguard.rgrpg.commands.%sCommand", StringUtils.capitalize(cmdLn));
+		try
+		{
+			Class<?> clazz = Class.forName(className);
+			cmd = (Command) clazz.newInstance();
+		}
+		catch (IllegalAccessException e)
+		{
+			e.printStackTrace();
+		}
+		catch (InstantiationException e)
+		{
+			e.printStackTrace();
+		}
+		catch (SecurityException e)
+		{
+			e.printStackTrace();
+		}
+		return cmd;
 	}
-	catch (IllegalAccessException e)
-	{
-	    e.printStackTrace();
-	}
-	catch (InstantiationException e)
-	{
-	    e.printStackTrace();
-	}
-	catch (SecurityException e)
-	{
-	    e.printStackTrace();
-	}
-	return cmd;
-    }
 }

@@ -16,22 +16,9 @@
 // You should have received a copy of the GNU General Public License
 // along with this program.  If not, see <http://www.gnu.org/licenses/>.
 // 
-package it.d4nguard.rgrpg.commands;
+package it.d4nguard.rgrpg.profile;
 
-public class PlayCommand implements Command
+public enum ResistanceType
 {
-	public PlayCommand()
-	{
-	}
-
-	@Override
-	public void execute(String... args)
-	{
-	}
-
-	@Override
-	public String getHelp()
-	{
-		return "Starts a new game, or continue a new undone one.";
-	}
+	Light, Darkness, Fire, Wind, Water, Hearth, Poison, Sleep;
 }

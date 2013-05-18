@@ -26,50 +26,50 @@ import org.reflections.Reflections;
 
 public class HelpCommand implements Command
 {
-    public HelpCommand()
-    {
-    }
-
-    @Override
-    public void execute(String... args)
-    {
-	if (args.length == 0)
+	public HelpCommand()
 	{
-	    System.out.println();
-	    System.out.println("Listing available commands:");
-	    Reflections reflections = new Reflections("it.d4nguard.rgrpg.commands");
-	    Set<Class<? extends Command>> commands = reflections.getSubTypesOf(Command.class);
-	    for (Class<? extends Command> cmd : commands)
-	    {
-		String cmdLn = cmd.getSimpleName().replace("Command", "");
-		try
-		{
-		    System.out.println(String.format("%s: %s", cmdLn, CommandsInterpreter.resolveCommand(cmdLn).getHelp()));
-		}
-		catch (ClassNotFoundException e)
-		{
-		    System.err.println(String.format("There was an error reading '%s' command: '%s'", cmdLn, e.getMessage()));
-		}
-	    }
-	    System.out.println();
 	}
-	else
-	{
-	    try
-	    {
-		System.out.println(CommandsInterpreter.resolveCommand(args[0]).getHelp());
-		System.out.println();
-	    }
-	    catch (ClassNotFoundException e)
-	    {
-		System.out.println(String.format("There is no help for specified command '%s'", args[0]));
-	    }
-	}
-    }
 
-    @Override
-    public String getHelp()
-    {
-	return "Prints the help of the passed command or lists all available commands.";
-    }
+	@Override
+	public void execute(String... args)
+	{
+		if (args.length == 0)
+		{
+			System.out.println();
+			System.out.println("Listing available commands:");
+			Reflections reflections = new Reflections("it.d4nguard.rgrpg.commands");
+			Set<Class<? extends Command>> commands = reflections.getSubTypesOf(Command.class);
+			for (Class<? extends Command> cmd : commands)
+			{
+				String cmdLn = cmd.getSimpleName().replace("Command", "");
+				try
+				{
+					System.out.println(String.format("%s: %s", cmdLn, CommandsInterpreter.resolveCommand(cmdLn).getHelp()));
+				}
+				catch (ClassNotFoundException e)
+				{
+					System.err.println(String.format("There was an error reading '%s' command: '%s'", cmdLn, e.getMessage()));
+				}
+			}
+			System.out.println();
+		}
+		else
+		{
+			try
+			{
+				System.out.println(CommandsInterpreter.resolveCommand(args[0]).getHelp());
+				System.out.println();
+			}
+			catch (ClassNotFoundException e)
+			{
+				System.out.println(String.format("There is no help for specified command '%s'", args[0]));
+			}
+		}
+	}
+
+	@Override
+	public String getHelp()
+	{
+		return "Prints the help of the passed command or lists all available commands.";
+	}
 }

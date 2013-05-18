@@ -22,18 +22,18 @@ import it.d4nguard.rgrpg.commands.CommandsInterpreter;
 
 public class Main
 {
-    public static void main(String[] args)
-    {
-	Welcome.print();
-	Thread t = new Thread(new CommandsInterpreter(System.in));
-	try
+	public static void main(String[] args)
 	{
-	    t.start();
-	    t.join();
+		Welcome.print();
+		Thread t = new Thread(new CommandsInterpreter(System.in));
+		try
+		{
+			t.start();
+			t.join();
+		}
+		catch (InterruptedException e)
+		{
+			e.printStackTrace();
+		}
 	}
-	catch (InterruptedException e)
-	{
-	    e.printStackTrace();
-	}
-    }
 }

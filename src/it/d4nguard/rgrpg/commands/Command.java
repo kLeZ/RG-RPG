@@ -20,6 +20,7 @@ package it.d4nguard.rgrpg.commands;
 
 public interface Command
 {
-    void execute(String... args);
-    String getHelp();
+	void execute(String... args);
+
+	String getHelp();
 }

@@ -22,19 +22,19 @@ import it.d4nguard.rgrpg.ExitRuntimeException;
 
 public class ExitCommand implements Command
 {
-    public ExitCommand()
-    {
-    }
+	public ExitCommand()
+	{
+	}
 
-    @Override
-    public void execute(String... args)
-    {
-	throw new ExitRuntimeException();
-    }
+	@Override
+	public void execute(String... args)
+	{
+		throw new ExitRuntimeException();
+	}
 
-    @Override
-    public String getHelp()
-    {
-	return "Exits from the Commands Interpreter.";
-    }
+	@Override
+	public String getHelp()
+	{
+		return "Exits from the Commands Interpreter.";
+	}
 }

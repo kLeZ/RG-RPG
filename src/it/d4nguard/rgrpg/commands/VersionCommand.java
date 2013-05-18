@@ -20,23 +20,23 @@ package it.d4nguard.rgrpg.commands;
 
 public class VersionCommand implements Command
 {
-    public static final int MAJOR = 0;
-    public static final int MINOR = 0;
-    public static final int REVISION = 1;
+	public static final int MAJOR = 0;
+	public static final int MINOR = 0;
+	public static final int REVISION = 1;
 
-    @Override
-    public void execute(String... args)
-    {
-	System.out.println("RG-RPG is a Java-based text, roleplaying-gal game, in which you");
-	System.out.println("have to carry many girls. The RG-RPG acronym is a recursive one and");
-	System.out.println("it means \"RG-RPG is a Gal Role playing game Pointing on Girls.\"");
-	System.out.println("Copyright (C) 2013 by Alessandro Accardo <julius8774@gmail.com>");
-	System.out.println(String.format("RG-RPG version %d.%02d.%03d%s", MAJOR, MINOR, REVISION, System.getProperty("line.separator")));
-    }
+	@Override
+	public void execute(String... args)
+	{
+		System.out.println("RG-RPG is a Java-based text, roleplaying-gal game, in which you");
+		System.out.println("have to carry many girls. The RG-RPG acronym is a recursive one and");
+		System.out.println("it means \"RG-RPG is a Gal Role playing game Pointing on Girls.\"");
+		System.out.println("Copyright (C) 2013 by Alessandro Accardo <julius8774@gmail.com>");
+		System.out.println(String.format("RG-RPG version %d.%02d.%03d%s", MAJOR, MINOR, REVISION, System.getProperty("line.separator")));
+	}
 
-    @Override
-    public String getHelp()
-    {
-	return "Prints some info about the program and its version.";
-    }
+	@Override
+	public String getHelp()
+	{
+		return "Prints some info about the program and its version.";
+	}
 }

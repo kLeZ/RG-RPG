@@ -20,5 +20,5 @@ package it.d4nguard.rgrpg.profile;
 
 public enum Gender
 {
-    Male, Female, Unknown;
+	Male, Female, Unknown;
 }
