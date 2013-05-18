@@ -21,15 +21,19 @@ package it.d4nguard.rgrpg.profile;
 import java.util.Set;
 import java.util.HashSet;
 
-public class User
+public class Player
 {
     public static final String LF = System.getProperty("line.separator");
 
     private String name;
-    private float score;
+    private float experience;
+    private int tacticPoints;
+    private int dialecticPoints;
+    private int interpretativePoints;
+    private int masteredParametersPoints;
     private final Set<Character> characters;
 
-    public User()
+    public Player()
     {
 	this.characters = new HashSet<Character>();
     }
@@ -39,14 +43,59 @@ public class User
 	return this.name;
     }
 
-    public void setName(String name)
+    public void setName(String value)
     {
-	this.name = name;
+	this.name = value;
     }
 
-    public float getScore()
+    public float getExperience()
     {
-	return this.score;
+	return this.experience;
+    }
+
+    public void setExperience(float value)
+    {
+	this.experience = value;
+    }
+
+    public int getTacticPoints()
+    {
+	return this.tacticPoints;
+    }
+
+    public void setTacticPoints(int value)
+    {
+	this.tacticPoints = value;
+    }
+
+    public int getDialecticPoints()
+    {
+	return this.dialecticPoints;
+    }
+
+    public void setDialecticPoints(int value)
+    {
+	this.dialecticPoints = value;
+    }
+
+    public int getInterpretativePoints()
+    {
+	return this.interpretativePoints;
+    }
+
+    public void setInterpretativePoints(int value)
+    {
+	this.interpretativePoints = value;
+    }
+
+    public int getMasteredParametersPoints()
+    {
+	return this.masteredParametersPoints;
+    }
+
+    public void setMasteredParametersPoints(int value)
+    {
+	this.masteredParametersPoints = value;
     }
 
     public Set<Character> getCharacters()
@@ -66,10 +115,14 @@ public class User
     public String toString()
     {
 	StringBuilder sb = new StringBuilder();
-	sb.append("USER").append(LF);
-	sb.append("====").append(LF);
+	sb.append("PLAYER").append(LF);
+	sb.append("======").append(LF);
 	sb.append("Name: ").append(this.name).append(LF);
-	sb.append("Score: ").append(this.score).append(LF);
+	sb.append("Experience: ").append(this.experience).append(LF);
+	sb.append("Tactic Points: ").append(this.tacticPoints).append(LF);
+	sb.append("Dialectic Points: ").append(this.dialecticPoints).append(LF);
+	sb.append("Interpretative Points: ").append(this.interpretativePoints).append(LF);
+	sb.append("Mastered Parameters Points: ").append(this.masteredParametersPoints).append(LF);
 	sb.append("Characters").append(LF);
 	sb.append("----------").append(LF);
 	for (Character c : this.characters)

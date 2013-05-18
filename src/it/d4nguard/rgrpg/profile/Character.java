@@ -24,7 +24,7 @@ import java.util.HashSet;
 
 public class Character
 {
-    private User owner;
+    private Player owner;
     private String name;
     private String description;
     private String race;
