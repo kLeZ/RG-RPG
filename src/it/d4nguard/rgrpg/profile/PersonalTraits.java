@@ -23,21 +23,21 @@ import java.util.Set;
 
 public class PersonalTraits
 {
-	private final Set<Strength> strengths;
-	private final Set<Weakness> weaknesses;
+	private final Set<Trait> strengths;
+	private final Set<Trait> weaknesses;
 
 	public PersonalTraits()
 	{
-		this.strengths = new HashSet<Strength>();
-		this.weaknesses = new HashSet<Weakness>();
+		this.strengths = new HashSet<Trait>();
+		this.weaknesses = new HashSet<Trait>();
 	}
 
-	public Set<Strength> getStrengths()
+	public Set<Trait> getStrengths()
 	{
 		return strengths;
 	}
 
-	public Set<Weakness> getWeaknesses()
+	public Set<Trait> getWeaknesses()
 	{
 		return weaknesses;
 	}

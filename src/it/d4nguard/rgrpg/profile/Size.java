@@ -20,5 +20,39 @@ package it.d4nguard.rgrpg.profile;
 
 public enum Size
 {
-	Fine, Diminutive, Tiny, Small, Medium, Large, Huge, Gargantuan, Colossal, Colossal_plus;
+	Fine(8, -16, 16),
+	Diminutive(4, -12, 12),
+	Tiny(2, -8, 8),
+	Small(1, -4, 4),
+	Medium(0, 0, 0),
+	Large(-1, 4, -4),
+	Huge(-2, 8, -8),
+	Gargantuan(-4, 12, -12),
+	Colossal(-8, 16, -16);
+
+	private int attack;
+	private int grapple;
+	private int hide;
+
+	private Size(int attack, int grapple, int hide)
+	{
+		this.attack = attack;
+		this.grapple = grapple;
+		this.hide = hide;
+	}
+
+	public int getAttack()
+	{
+		return this.attack;
+	}
+
+	public int getGrapple()
+	{
+		return this.grapple;
+	}
+
+	public int getHide()
+	{
+		return hide;
+	}
 }

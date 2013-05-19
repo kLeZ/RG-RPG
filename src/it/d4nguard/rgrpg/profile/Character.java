@@ -30,7 +30,7 @@ public class Character
 	private String name;
 	private GeneralInfo info;
 	private final Set<? extends Class> classes;
-	private Attributes abilityScores;
+	private Attributes attributes;
 	private PersonalTraits personalTraits;
 	private Health health;
 	private Initiative initiative;
@@ -38,5 +38,30 @@ public class Character
 	public Character()
 	{
 		this.classes = new HashSet<Class>();
+	}
+
+	public int getBab(Bab type, int attack)
+	{
+		int bab = 0;
+		for (Class c : classes)
+		{
+			bab += c.getBab(attack);
+		}
+		switch (type)
+		{
+			case Melee:
+				bab += info.getSize().getAttack();
+				bab += attributes.getStrength().getModifier();
+				break;
+			case Ranged:
+				bab += info.getSize().getAttack();
+				bab += attributes.getDexterity().getModifier();
+				break;
+			case Grapple:
+				bab += info.getSize().getGrapple();
+				bab += attributes.getStrength().getModifier();
+				break;
+		}
+		return bab;
 	}
 }

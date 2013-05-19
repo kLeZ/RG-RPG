@@ -27,6 +27,7 @@ public class Player
 
 	private String name;
 	private float experience;
+	private int level;
 	private int tacticPoints;
 	private int dialecticPoints;
 	private int interpretativePoints;
@@ -40,67 +41,77 @@ public class Player
 
 	public String getName()
 	{
-		return this.name;
+		return name;
 	}
 
-	public void setName(String value)
+	public void setName(String name)
 	{
-		this.name = value;
+		this.name = name;
 	}
 
 	public float getExperience()
 	{
-		return this.experience;
+		return experience;
 	}
 
-	public void setExperience(float value)
+	public void setExperience(float experience)
 	{
-		this.experience = value;
+		this.experience = experience;
+	}
+
+	public int getLevel()
+	{
+		return level;
+	}
+
+	public void setLevel(int level)
+	{
+		this.level = level;
 	}
 
 	public int getTacticPoints()
 	{
-		return this.tacticPoints;
+		return tacticPoints;
 	}
 
-	public void setTacticPoints(int value)
+	public void setTacticPoints(int tacticPoints)
 	{
-		this.tacticPoints = value;
+		this.tacticPoints = tacticPoints;
 	}
 
 	public int getDialecticPoints()
 	{
-		return this.dialecticPoints;
+		return dialecticPoints;
 	}
 
-	public void setDialecticPoints(int value)
+	public void setDialecticPoints(int dialecticPoints)
 	{
-		this.dialecticPoints = value;
+		this.dialecticPoints = dialecticPoints;
 	}
 
 	public int getInterpretativePoints()
 	{
-		return this.interpretativePoints;
+		return interpretativePoints;
 	}
 
-	public void setInterpretativePoints(int value)
+	public void setInterpretativePoints(int interpretativePoints)
 	{
-		this.interpretativePoints = value;
+		this.interpretativePoints = interpretativePoints;
 	}
 
 	public int getMasteredParametersPoints()
 	{
-		return this.masteredParametersPoints;
+		return masteredParametersPoints;
 	}
 
-	public void setMasteredParametersPoints(int value)
+	public void setMasteredParametersPoints(int masteredParametersPoints)
 	{
-		this.masteredParametersPoints = value;
+		this.masteredParametersPoints = masteredParametersPoints;
 	}
 
 	public Set<Character> getCharacters()
 	{
-		return this.characters;
+		return characters;
 	}
 
 	@Override
@@ -118,18 +129,19 @@ public class Player
 		sb.append("PLAYER").append(LF);
 		sb.append("======").append(LF);
 		sb.append("Name: ").append(this.name).append(LF);
+		sb.append("Level: ").append(this.level).append(LF);
 		sb.append("Experience: ").append(this.experience).append(LF);
 		sb.append("Tactic Points: ").append(this.tacticPoints).append(LF);
 		sb.append("Dialectic Points: ").append(this.dialecticPoints).append(LF);
 		sb.append("Interpretative Points: ").append(this.interpretativePoints).append(LF);
 		sb.append("Mastered Parameters Points: ").append(this.masteredParametersPoints).append(LF);
 		sb.append("= CHARACTERS").append(LF);
-		sb.append("----------").append(LF);
+		sb.append("------------").append(LF);
 		for (Character c : this.characters)
 		{
 			sb.append(c).append(LF);
 		}
-		sb.append("----------").append(LF);
+		sb.append("------------").append(LF);
 		return sb.toString();
 	}
 }

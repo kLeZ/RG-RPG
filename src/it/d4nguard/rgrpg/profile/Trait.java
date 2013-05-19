@@ -16,9 +16,47 @@
 // You should have received a copy of the GNU General Public License
 // along with this program.  If not, see <http://www.gnu.org/licenses/>.
 // 
-package it.d4nguard.rgrpg;
+package it.d4nguard.rgrpg.profile;
 
-public class ExitRuntimeException extends RuntimeException
+import java.lang.reflect.Field;
+
+public class Trait
 {
-	private static final long serialVersionUID = 1L;
+	private String name;
+	private Field appliesTo;
+	private int modifier;
+
+	public Trait()
+	{
+	}
+
+	public String getName()
+	{
+		return name;
+	}
+
+	public void setName(String name)
+	{
+		this.name = name;
+	}
+
+	public Field getAppliesTo()
+	{
+		return appliesTo;
+	}
+
+	public void setAppliesTo(Field appliesTo)
+	{
+		this.appliesTo = appliesTo;
+	}
+
+	public int getModifier()
+	{
+		return modifier;
+	}
+
+	public void setModifier(int modifier)
+	{
+		this.modifier = modifier;
+	}
 }

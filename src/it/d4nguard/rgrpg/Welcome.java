@@ -18,8 +18,6 @@
 // 
 package it.d4nguard.rgrpg;
 
-import java.io.File;
-import java.io.FileNotFoundException;
 import java.util.Scanner;
 import it.d4nguard.rgrpg.commands.VersionCommand;
 
@@ -35,6 +33,7 @@ public class Welcome
 		{
 			System.out.println(scn.nextLine());
 		}
+		scn.close();
 		System.out.println();
 	}
 }

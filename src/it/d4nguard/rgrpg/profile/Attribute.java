@@ -18,7 +18,54 @@
 // 
 package it.d4nguard.rgrpg.profile;
 
-public class Weakness
+public class Attribute
 {
+	private int value;
+	private int modifier;
+	private int tempValue;
+	private int tempModifier;
 
+	public Attribute()
+	{
+	}
+
+	public int getValue()
+	{
+		return value;
+	}
+
+	public void setValue(int value)
+	{
+		this.value = value;
+	}
+
+	public int getModifier()
+	{
+		return modifier;
+	}
+
+	public void setModifier(int modifier)
+	{
+		this.modifier = modifier;
+	}
+
+	public int getTempValue()
+	{
+		return tempValue;
+	}
+
+	public void setTempValue(int tempValue)
+	{
+		this.tempValue = tempValue;
+	}
+
+	public int getTempModifier()
+	{
+		return tempModifier;
+	}
+
+	public void setTempModifier(int tempModifier)
+	{
+		this.tempModifier = tempModifier;
+	}
 }

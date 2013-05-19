@@ -18,7 +18,7 @@
 // 
 package it.d4nguard.rgrpg.profile;
 
-public class Strength
+public enum Bab
 {
-
+	Melee, Ranged, Grapple;
 }

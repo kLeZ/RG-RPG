@@ -20,117 +20,117 @@ package it.d4nguard.rgrpg.profile;
 
 public class Attributes
 {
-	private int strength;
-	private int dexterity;
-	private int stamina;
-	private int intelligence;
-	private int wisdom;
-	private int perception;
-	private int charisma;
-	private int appearance;
-	private int dialectic;
-	private int fortune;
+	private Attribute strength;
+	private Attribute dexterity;
+	private Attribute stamina;
+	private Attribute Attributeelligence;
+	private Attribute wisdom;
+	private Attribute perception;
+	private Attribute charisma;
+	private Attribute appearance;
+	private Attribute dialectic;
+	private Attribute fortune;
 
 	public Attributes()
 	{
 	}
 
-	public int getStrength()
+	public Attribute getStrength()
 	{
 		return strength;
 	}
 
-	public void setStrength(int strength)
+	public void setStrength(Attribute strength)
 	{
 		this.strength = strength;
 	}
 
-	public int getDexterity()
+	public Attribute getDexterity()
 	{
 		return dexterity;
 	}
 
-	public void setDexterity(int dexterity)
+	public void setDexterity(Attribute dexterity)
 	{
 		this.dexterity = dexterity;
 	}
 
-	public int getStamina()
+	public Attribute getStamina()
 	{
 		return stamina;
 	}
 
-	public void setStamina(int stamina)
+	public void setStamina(Attribute stamina)
 	{
 		this.stamina = stamina;
 	}
 
-	public int getIntelligence()
+	public Attribute getAttributeelligence()
 	{
-		return intelligence;
+		return Attributeelligence;
 	}
 
-	public void setIntelligence(int intelligence)
+	public void setAttributeelligence(Attribute attributeelligence)
 	{
-		this.intelligence = intelligence;
+		Attributeelligence = attributeelligence;
 	}
 
-	public int getWisdom()
+	public Attribute getWisdom()
 	{
 		return wisdom;
 	}
 
-	public void setWisdom(int wisdom)
+	public void setWisdom(Attribute wisdom)
 	{
 		this.wisdom = wisdom;
 	}
 
-	public int getPerception()
+	public Attribute getPerception()
 	{
 		return perception;
 	}
 
-	public void setPerception(int perception)
+	public void setPerception(Attribute perception)
 	{
 		this.perception = perception;
 	}
 
-	public int getCharisma()
+	public Attribute getCharisma()
 	{
 		return charisma;
 	}
 
-	public void setCharisma(int charisma)
+	public void setCharisma(Attribute charisma)
 	{
 		this.charisma = charisma;
 	}
 
-	public int getAppearance()
+	public Attribute getAppearance()
 	{
 		return appearance;
 	}
 
-	public void setAppearance(int appearance)
+	public void setAppearance(Attribute appearance)
 	{
 		this.appearance = appearance;
 	}
 
-	public int getDialectic()
+	public Attribute getDialectic()
 	{
 		return dialectic;
 	}
 
-	public void setDialectic(int dialectic)
+	public void setDialectic(Attribute dialectic)
 	{
 		this.dialectic = dialectic;
 	}
 
-	public int getFortune()
+	public Attribute getFortune()
 	{
 		return fortune;
 	}
 
-	public void setFortune(int fortune)
+	public void setFortune(Attribute fortune)
 	{
 		this.fortune = fortune;
 	}
