@@ -18,7 +18,9 @@
 // 
 package it.d4nguard.rgrpg.d20;
 
+import it.d4nguard.rgrpg.profile.Coin;
+
 public interface Item
 {
-
+	public Coin getCost();
 }

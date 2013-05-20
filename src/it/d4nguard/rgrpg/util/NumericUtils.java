@@ -24,6 +24,11 @@ import java.util.Collections;
 
 public class NumericUtils
 {
+	public static int sum(int a, int b)
+	{
+		return sum(new int[] { a, b });
+	}
+
 	public static int sum(final Collection<Integer> ints)
 	{
 		return sum(0, ints);

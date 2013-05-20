@@ -16,56 +16,54 @@
 // You should have received a copy of the GNU General Public License
 // along with this program.  If not, see <http://www.gnu.org/licenses/>.
 // 
-package it.d4nguard.rgrpg.d20;
+package it.d4nguard.rgrpg.profile;
 
-import it.d4nguard.rgrpg.util.Dice;
-
-import java.util.HashSet;
-import java.util.Set;
-
-public abstract class Class
+public class Coin
 {
-	private final Set<Integer> hitDiceResultPool;
+	private final CoinType type;
+	private double amount;
 
-	public Class()
+	public Coin(CoinType type)
 	{
-		this.hitDiceResultPool = new HashSet<Integer>();
+		this(type, 0);
 	}
 
-	public Set<Integer> getHitDiceResultPool()
+	public Coin(CoinType type, double amount)
 	{
-		return hitDiceResultPool;
+		this.type = type;
+		this.amount = amount;
 	}
 
-	public int getSavingThrow(SavingThrowType type)
+	public double getAmount()
 	{
-		int sThrow = 0;
-		switch (type)
+		return amount;
+	}
+
+	public void setAmount(double amount)
+	{
+		this.amount = amount;
+	}
+
+	public CoinType getType()
+	{
+		return type;
+	}
+
+	public static double convert(Coin coin, CoinType type)
+	{
+		double ret = 0;
+		switch (coin.getType())
 		{
-			case Fortitude:
-				sThrow += getFortitude();
+			case PlatinumPiece:
 				break;
-			case Reflexes:
-				sThrow += getReflexes();
+			case GoldPiece:
+				ret = coin.getAmount() * type.getUnity();
 				break;
-			case WillPower:
-				sThrow += getWillPower();
+			case SilverPiece:
+				break;
+			case CopperPiece:
 				break;
 		}
-		return sThrow;
+		return ret;
 	}
-
-	public abstract int getBab(int attack);
-
-	public abstract int getLevel();
-
-	public abstract int getFortitude();
-
-	public abstract int getReflexes();
-
-	public abstract int getWillPower();
-
-	public abstract Dice getHitDice();
-
-	public abstract Set<Language> getSpokenLanguages();
 }

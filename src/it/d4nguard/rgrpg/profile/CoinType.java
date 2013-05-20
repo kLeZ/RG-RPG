@@ -16,56 +16,24 @@
 // You should have received a copy of the GNU General Public License
 // along with this program.  If not, see <http://www.gnu.org/licenses/>.
 // 
-package it.d4nguard.rgrpg.d20;
+package it.d4nguard.rgrpg.profile;
 
-import it.d4nguard.rgrpg.util.Dice;
-
-import java.util.HashSet;
-import java.util.Set;
-
-public abstract class Class
+public enum CoinType
 {
-	private final Set<Integer> hitDiceResultPool;
+	PlatinumPiece(10),
+	GoldPiece(1),
+	SilverPiece(.1),
+	CopperPiece(.01);
 
-	public Class()
+	private double unity;
+
+	private CoinType(double unity)
 	{
-		this.hitDiceResultPool = new HashSet<Integer>();
+		this.unity = unity;
 	}
 
-	public Set<Integer> getHitDiceResultPool()
+	public double getUnity()
 	{
-		return hitDiceResultPool;
+		return unity;
 	}
-
-	public int getSavingThrow(SavingThrowType type)
-	{
-		int sThrow = 0;
-		switch (type)
-		{
-			case Fortitude:
-				sThrow += getFortitude();
-				break;
-			case Reflexes:
-				sThrow += getReflexes();
-				break;
-			case WillPower:
-				sThrow += getWillPower();
-				break;
-		}
-		return sThrow;
-	}
-
-	public abstract int getBab(int attack);
-
-	public abstract int getLevel();
-
-	public abstract int getFortitude();
-
-	public abstract int getReflexes();
-
-	public abstract int getWillPower();
-
-	public abstract Dice getHitDice();
-
-	public abstract Set<Language> getSpokenLanguages();
 }

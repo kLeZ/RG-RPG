@@ -25,6 +25,7 @@ import it.d4nguard.rgrpg.util.NumericUtils;
 
 import java.util.Collection;
 import java.util.HashSet;
+import java.util.List;
 import java.util.Set;
 
 public class D20Character extends Character
@@ -37,6 +38,10 @@ public class D20Character extends Character
 	private final Set<? extends Class> classes;
 	private Attributes attributes;
 	private int damage;
+	private List<Integer> hpModifiers;
+	private List<Integer> babModifiers;
+	private List<Integer> acModifiers;
+	private List<Integer> stModifiers;
 	private DamageReduction damageReduction;
 	private Set<ResistanceToEnergy> resistanceToEnergies;
 	private int deflection;
@@ -57,9 +62,13 @@ public class D20Character extends Character
 		this.spokenLanguages.add(Language.COMMON);
 	}
 
-	public int getHealthPoints()
+	public int getHealthPoints(boolean current)
 	{
-
+		int hp = 0;
+		for (Class c : classes)
+			hp += NumericUtils.sum(attributes.getStamina().getModifier(), c.getHitDiceResultPool());
+		hp = NumericUtils.sum(hp, hpModifiers);
+		return (current ? NumericUtils.sum(hp, -damage) : hp);
 	}
 
 	public Set<Language> getSpokenLanguages()
@@ -101,7 +110,7 @@ public class D20Character extends Character
 				bab += attributes.getStrength().getModifier();
 				break;
 		}
-		return bab;
+		return NumericUtils.sum(bab, babModifiers);
 	}
 
 	public int getMaxDexterity()
@@ -133,7 +142,7 @@ public class D20Character extends Character
 		}
 		ac += race.getSize().getModifier();
 		ac += deflection;
-		return ac;
+		return NumericUtils.sum(ac, acModifiers);
 	}
 
 	public int getSavingThrow(SavingThrowType type)
@@ -153,6 +162,6 @@ public class D20Character extends Character
 				save += attributes.getWisdom().getModifier();
 				break;
 		}
-		return save;
+		return NumericUtils.sum(save, stModifiers);
 	}
 }
