@@ -16,24 +16,21 @@
 // You should have received a copy of the GNU General Public License
 // along with this program.  If not, see <http://www.gnu.org/licenses/>.
 // 
-package it.d4nguard.rgrpg.d20;
+package it.d4nguard.rgrpg.profile;
 
 import org.joda.time.DateMidnight;
 
 public class GeneralInfo
 {
 	private String description;
-	private Race race;
 	private String skinColor;
 	private String hairColor;
 	private String eyesColor;
 	private short height;
 	private short weight;
-	private SizeType size;
 	private DateMidnight dateOfBirth;
 	private GenderType gender;
-	private AlignmentType alignment;
-	private String deity;
+	private String philosophyDeityReligion;
 
 	public GeneralInfo()
 	{
@@ -47,16 +44,6 @@ public class GeneralInfo
 	public void setDescription(String description)
 	{
 		this.description = description;
-	}
-
-	public Race getRace()
-	{
-		return race;
-	}
-
-	public void setRace(Race race)
-	{
-		this.race = race;
 	}
 
 	public String getSkinColor()
@@ -109,16 +96,6 @@ public class GeneralInfo
 		this.weight = weight;
 	}
 
-	public SizeType getSize()
-	{
-		return size;
-	}
-
-	public void setSize(SizeType size)
-	{
-		this.size = size;
-	}
-
 	public DateMidnight getDateOfBirth()
 	{
 		return dateOfBirth;
@@ -139,23 +116,13 @@ public class GeneralInfo
 		this.gender = gender;
 	}
 
-	public AlignmentType getAlignment()
+	public String getPhilosophyDeityReligion()
 	{
-		return alignment;
+		return philosophyDeityReligion;
 	}
 
-	public void setAlignment(AlignmentType alignment)
+	public void setPhilosophyDeityReligion(String philosophyDeityReligion)
 	{
-		this.alignment = alignment;
-	}
-
-	public String getDeity()
-	{
-		return deity;
-	}
-
-	public void setDeity(String deity)
-	{
-		this.deity = deity;
+		this.philosophyDeityReligion = philosophyDeityReligion;
 	}
 }

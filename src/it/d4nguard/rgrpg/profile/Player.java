@@ -18,24 +18,19 @@
 // 
 package it.d4nguard.rgrpg.profile;
 
-import it.d4nguard.rgrpg.d20.Character;
-
-import java.util.HashSet;
-import java.util.Set;
-
-import org.joda.time.Duration;
+import java.util.HashMap;
+import java.util.Map;
 
 public class Player
 {
 	public static final String LF = System.getProperty("line.separator");
 
 	private String name;
-	private final Set<Character> characters;
-	private Duration playedTime;
+	private final Map<Character, CharacterInfo> characters;
 
 	public Player()
 	{
-		this.characters = new HashSet<Character>();
+		this.characters = new HashMap<Character, CharacterInfo>();
 	}
 
 	public String getName()
@@ -48,7 +43,7 @@ public class Player
 		this.name = name;
 	}
 
-	public Set<Character> getCharacters()
+	public Map<Character, CharacterInfo> getCharacters()
 	{
 		return characters;
 	}
@@ -67,10 +62,10 @@ public class Player
 		StringBuilder sb = new StringBuilder();
 		sb.append("PLAYER").append(LF);
 		sb.append("======").append(LF);
-		sb.append("Name: ").append(this.name).append(LF);
+		sb.append("Name: ").append(this.name).append(LF).append(LF);
 		sb.append("= CHARACTERS").append(LF);
 		sb.append("------------").append(LF);
-		for (Character c : this.characters)
+		for (Character c : this.characters.keySet())
 		{
 			sb.append(c).append(LF);
 		}

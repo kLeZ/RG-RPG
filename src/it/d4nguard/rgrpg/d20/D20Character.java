@@ -18,6 +18,7 @@
 // 
 package it.d4nguard.rgrpg.d20;
 
+import it.d4nguard.rgrpg.profile.Character;
 import it.d4nguard.rgrpg.profile.Player;
 import it.d4nguard.rgrpg.util.NumericUtils;
 
@@ -25,12 +26,14 @@ import java.util.Collection;
 import java.util.HashSet;
 import java.util.Set;
 
-public class Character
+public class D20Character extends Character
 {
 	private Player owner;
 	private String name;
+	private Race race;
 	private float experience;
-	private GeneralInfo info;
+	private AlignmentType alignment;
+	private SizeType size;
 	private final Set<? extends Class> classes;
 	private Attributes attributes;
 	private Health health;
@@ -42,7 +45,7 @@ public class Character
 	private Set<Language> spokenLanguages;
 	private AlteredStatuses alteredStatuses;
 
-	public Character()
+	public D20Character()
 	{
 		this.classes = new HashSet<Class>();
 		this.spokenLanguages = new HashSet<Language>();
@@ -52,7 +55,7 @@ public class Character
 	public int getLevel()
 	{
 		int level = 0;
-		level += info.getRace().getLevelAdjustment();
+		level += race.getLevelAdjustment();
 		for (Class c : classes)
 			level += c.getLevel();
 		return level;
@@ -66,15 +69,15 @@ public class Character
 		switch (type)
 		{
 			case Melee:
-				bab += info.getSize().getModifier();
+				bab += size.getModifier();
 				bab += attributes.getStrength().getModifier();
 				break;
 			case Ranged:
-				bab += info.getSize().getModifier();
+				bab += size.getModifier();
 				bab += attributes.getDexterity().getModifier();
 				break;
 			case Grapple:
-				bab += info.getSize().getGrapple();
+				bab += size.getGrapple();
 				bab += attributes.getStrength().getModifier();
 				break;
 		}
@@ -95,20 +98,20 @@ public class Character
 				ac += armor.getArmorClass();
 				ac += shield.getArmorClass();
 				ac += getMaxDexterity();
-				ac += info.getRace().getArmorClass();
+				ac += race.getArmorClass();
 				ac = NumericUtils.sum(ac, dodgeBonuses);
 				break;
 			case FlatFooted: // Denies DEX
 				ac += armor.getArmorClass();
 				ac += shield.getArmorClass();
-				ac += info.getRace().getArmorClass();
+				ac += race.getArmorClass();
 				break;
 			case Touch: // Denies ARM, SHI, NAT
 				ac += getMaxDexterity();
 				ac = NumericUtils.sum(ac, dodgeBonuses);
 				break;
 		}
-		ac += info.getSize().getModifier();
+		ac += size.getModifier();
 		ac += deflection;
 		return ac;
 	}
