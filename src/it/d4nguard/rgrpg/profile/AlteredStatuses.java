@@ -18,41 +18,7 @@
 // 
 package it.d4nguard.rgrpg.profile;
 
-public enum Size
+public class AlteredStatuses
 {
-	Fine(8, -16, 16),
-	Diminutive(4, -12, 12),
-	Tiny(2, -8, 8),
-	Small(1, -4, 4),
-	Medium(0, 0, 0),
-	Large(-1, 4, -4),
-	Huge(-2, 8, -8),
-	Gargantuan(-4, 12, -12),
-	Colossal(-8, 16, -16);
-
-	private int modifier;
-	private int grapple;
-	private int hide;
-
-	private Size(int modifier, int grapple, int hide)
-	{
-		this.modifier = modifier;
-		this.grapple = grapple;
-		this.hide = hide;
-	}
-
-	public int getModifier()
-	{
-		return this.modifier;
-	}
-
-	public int getGrapple()
-	{
-		return this.grapple;
-	}
-
-	public int getHide()
-	{
-		return hide;
-	}
+	private Attributes attributes;
 }

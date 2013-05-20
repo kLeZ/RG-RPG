@@ -18,20 +18,14 @@
 // 
 package it.d4nguard.rgrpg.profile;
 
-import java.util.Set;
 import java.util.HashSet;
+import java.util.Set;
 
 public class Player
 {
 	public static final String LF = System.getProperty("line.separator");
 
 	private String name;
-	private float experience;
-	private int level;
-	private int tacticPoints;
-	private int dialecticPoints;
-	private int interpretativePoints;
-	private int masteredParametersPoints;
 	private final Set<Character> characters;
 
 	public Player()
@@ -47,66 +41,6 @@ public class Player
 	public void setName(String name)
 	{
 		this.name = name;
-	}
-
-	public float getExperience()
-	{
-		return experience;
-	}
-
-	public void setExperience(float experience)
-	{
-		this.experience = experience;
-	}
-
-	public int getLevel()
-	{
-		return level;
-	}
-
-	public void setLevel(int level)
-	{
-		this.level = level;
-	}
-
-	public int getTacticPoints()
-	{
-		return tacticPoints;
-	}
-
-	public void setTacticPoints(int tacticPoints)
-	{
-		this.tacticPoints = tacticPoints;
-	}
-
-	public int getDialecticPoints()
-	{
-		return dialecticPoints;
-	}
-
-	public void setDialecticPoints(int dialecticPoints)
-	{
-		this.dialecticPoints = dialecticPoints;
-	}
-
-	public int getInterpretativePoints()
-	{
-		return interpretativePoints;
-	}
-
-	public void setInterpretativePoints(int interpretativePoints)
-	{
-		this.interpretativePoints = interpretativePoints;
-	}
-
-	public int getMasteredParametersPoints()
-	{
-		return masteredParametersPoints;
-	}
-
-	public void setMasteredParametersPoints(int masteredParametersPoints)
-	{
-		this.masteredParametersPoints = masteredParametersPoints;
 	}
 
 	public Set<Character> getCharacters()
@@ -129,12 +63,6 @@ public class Player
 		sb.append("PLAYER").append(LF);
 		sb.append("======").append(LF);
 		sb.append("Name: ").append(this.name).append(LF);
-		sb.append("Level: ").append(this.level).append(LF);
-		sb.append("Experience: ").append(this.experience).append(LF);
-		sb.append("Tactic Points: ").append(this.tacticPoints).append(LF);
-		sb.append("Dialectic Points: ").append(this.dialecticPoints).append(LF);
-		sb.append("Interpretative Points: ").append(this.interpretativePoints).append(LF);
-		sb.append("Mastered Parameters Points: ").append(this.masteredParametersPoints).append(LF);
 		sb.append("= CHARACTERS").append(LF);
 		sb.append("------------").append(LF);
 		for (Character c : this.characters)

@@ -20,5 +20,5 @@ package it.d4nguard.rgrpg.profile;
 
 public abstract class Shield
 {
-
+	public abstract int getArmorClass();
 }

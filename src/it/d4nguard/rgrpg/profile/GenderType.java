@@ -18,7 +18,7 @@
 // 
 package it.d4nguard.rgrpg.profile;
 
-public enum SavingThrow
+public enum GenderType
 {
-	Fortitude, Reflexes, WillPower;
+	Male, Female, Unknown;
 }

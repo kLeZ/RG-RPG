@@ -18,7 +18,7 @@
 // 
 package it.d4nguard.rgrpg.profile;
 
-public enum Bab
+public enum AlignmentType
 {
-	Melee, Ranged, Grapple;
+	LawfulGood, NeutralGood, ChaoticGood, LawfulNeutral, PureNeutral, ChaoticNeutral, LawfulEvil, NeutralEvil, ChaoticEvil;
 }

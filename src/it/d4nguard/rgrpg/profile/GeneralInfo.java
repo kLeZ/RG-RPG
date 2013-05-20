@@ -29,10 +29,10 @@ public class GeneralInfo
 	private String eyesColor;
 	private short height;
 	private short weight;
-	private Size size;
+	private SizeType size;
 	private DateMidnight dateOfBirth;
-	private Gender gender;
-	private Alignment alignment;
+	private GenderType gender;
+	private AlignmentType alignment;
 	private String deity;
 
 	public GeneralInfo()
@@ -109,12 +109,12 @@ public class GeneralInfo
 		this.weight = weight;
 	}
 
-	public Size getSize()
+	public SizeType getSize()
 	{
 		return size;
 	}
 
-	public void setSize(Size size)
+	public void setSize(SizeType size)
 	{
 		this.size = size;
 	}
@@ -129,22 +129,22 @@ public class GeneralInfo
 		this.dateOfBirth = dateOfBirth;
 	}
 
-	public Gender getGender()
+	public GenderType getGender()
 	{
 		return gender;
 	}
 
-	public void setGender(Gender gender)
+	public void setGender(GenderType gender)
 	{
 		this.gender = gender;
 	}
 
-	public Alignment getAlignment()
+	public AlignmentType getAlignment()
 	{
 		return alignment;
 	}
 
-	public void setAlignment(Alignment alignment)
+	public void setAlignment(AlignmentType alignment)
 	{
 		this.alignment = alignment;
 	}

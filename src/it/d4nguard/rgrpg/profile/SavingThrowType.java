@@ -18,45 +18,7 @@
 // 
 package it.d4nguard.rgrpg.profile;
 
-import java.lang.reflect.Field;
-
-public class Trait
+public enum SavingThrowType
 {
-	private String name;
-	private Field appliesTo;
-	private int modifier;
-
-	public Trait()
-	{
-	}
-
-	public String getName()
-	{
-		return name;
-	}
-
-	public void setName(String name)
-	{
-		this.name = name;
-	}
-
-	public Field getAppliesTo()
-	{
-		return appliesTo;
-	}
-
-	public void setAppliesTo(Field appliesTo)
-	{
-		this.appliesTo = appliesTo;
-	}
-
-	public int getModifier()
-	{
-		return modifier;
-	}
-
-	public void setModifier(int modifier)
-	{
-		this.modifier = modifier;
-	}
+	Fortitude, Reflexes, WillPower;
 }

@@ -18,8 +18,11 @@
 // 
 package it.d4nguard.rgrpg.profile;
 
-import java.util.Set;
+import it.d4nguard.rgrpg.util.NumericUtils;
+
+import java.util.Collection;
 import java.util.HashSet;
+import java.util.Set;
 
 import org.joda.time.Duration;
 
@@ -33,9 +36,12 @@ public class Character
 	private final Set<? extends Class> classes;
 	private Attributes attributes;
 	private Health health;
+	private int deflection;
+	private Collection<Integer> dodgeBonuses;
 	private Armor armor;
 	private Shield shield;
 	private Weapon weapon;
+	private AlteredStatuses alteredStatuses;
 
 	public Character()
 	{
@@ -51,7 +57,7 @@ public class Character
 		return level;
 	}
 
-	public int getBab(Bab type, int attack)
+	public int getBab(BabType type, int attack)
 	{
 		int bab = 0;
 		for (Class c : classes)
@@ -74,24 +80,34 @@ public class Character
 		return bab;
 	}
 
-	public int getArmorClass(ArmorClass type)
+	public int getArmorClass(ArmorClassType type)
 	{
 		int ac = 10;
 		switch (type)
 		{
 			case Normal:
-				
+				ac += armor.getArmorClass();
+				ac += shield.getArmorClass();
+				ac += attributes.getDexterity().getModifier();
+				ac += info.getRace().getArmorClass();
+				ac = NumericUtils.sum(ac, dodgeBonuses);
 				break;
-			case FlatFooted:
+			case FlatFooted: // Denies DEX
+				ac += armor.getArmorClass();
+				ac += shield.getArmorClass();
+				ac += info.getRace().getArmorClass();
 				break;
-			case Touch:
+			case Touch: // Denies ARM, SHI, NAT
+				ac += attributes.getDexterity().getModifier();
+				ac = NumericUtils.sum(ac, dodgeBonuses);
 				break;
 		}
 		ac += info.getSize().getModifier();
+		ac += deflection;
 		return ac;
 	}
 
-	public int getSavingThrow(SavingThrow type)
+	public int getSavingThrow(SavingThrowType type, int... modifiers)
 	{
 		int sThrow = 0;
 		for (Class c : classes)
@@ -108,6 +124,7 @@ public class Character
 				sThrow += attributes.getWisdom().getModifier();
 				break;
 		}
+		sThrow = NumericUtils.sum(sThrow, modifiers);
 		return sThrow;
 	}
 }

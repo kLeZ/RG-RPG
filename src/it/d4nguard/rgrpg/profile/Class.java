@@ -26,7 +26,7 @@ public abstract class Class
 	public abstract int getReflexes();
 	public abstract int getWillPower();
 
-	public int getSavingThrow(SavingThrow type)
+	public int getSavingThrow(SavingThrowType type)
 	{
 		int sThrow = 0;
 		switch (type)

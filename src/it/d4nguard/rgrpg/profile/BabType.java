@@ -18,27 +18,7 @@
 // 
 package it.d4nguard.rgrpg.profile;
 
-import java.util.HashSet;
-import java.util.Set;
-
-public class PersonalTraits
+public enum BabType
 {
-	private final Set<Trait> strengths;
-	private final Set<Trait> weaknesses;
-
-	public PersonalTraits()
-	{
-		this.strengths = new HashSet<Trait>();
-		this.weaknesses = new HashSet<Trait>();
-	}
-
-	public Set<Trait> getStrengths()
-	{
-		return strengths;
-	}
-
-	public Set<Trait> getWeaknesses()
-	{
-		return weaknesses;
-	}
+	Melee, Ranged, Grapple;
 }

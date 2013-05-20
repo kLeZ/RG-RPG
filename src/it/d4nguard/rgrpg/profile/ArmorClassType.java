@@ -18,7 +18,7 @@
 // 
 package it.d4nguard.rgrpg.profile;
 
-public enum Alignment
+public enum ArmorClassType
 {
-	LawfulGood, NeutralGood, ChaoticGood, LawfulNeutral, PureNeutral, ChaoticNeutral, LawfulEvil, NeutralEvil, ChaoticEvil;
+	Normal, FlatFooted, Touch;
 }

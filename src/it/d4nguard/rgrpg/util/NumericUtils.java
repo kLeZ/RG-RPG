@@ -16,9 +16,31 @@
 // You should have received a copy of the GNU General Public License
 // along with this program.  If not, see <http://www.gnu.org/licenses/>.
 // 
-package it.d4nguard.rgrpg.profile;
+package it.d4nguard.rgrpg.util;
 
-public enum ArmorClass
+import java.util.ArrayList;
+import java.util.Collection;
+
+public class NumericUtils
 {
-	Normal, FlatFooted, Touch;
+	public static int sum(final int base, final Collection<Integer> ints)
+	{
+		int ret = base;
+		for (int i : ints)
+			ret += i;
+		return ret;
+	}
+
+	public static int sum(final int base, final int[] ints)
+	{
+		return sum(base, toIntegerCollection(ints));
+	}
+
+	public static Collection<Integer> toIntegerCollection(int[] ints)
+	{
+		ArrayList<Integer> ret = new ArrayList<Integer>();
+		for (int i : ints)
+			ret.add(new Integer(i));
+		return ret;
+	}
 }

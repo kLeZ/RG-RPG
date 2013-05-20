@@ -21,4 +21,5 @@ package it.d4nguard.rgrpg.profile;
 public abstract class Race
 {
 	public abstract int getLevelAdjustment();
+	public abstract int getArmorClass();
 }
