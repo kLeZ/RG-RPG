@@ -16,35 +16,9 @@
 // You should have received a copy of the GNU General Public License
 // along with this program.  If not, see <http://www.gnu.org/licenses/>.
 // 
-package it.d4nguard.rgrpg.profile;
+package it.d4nguard.rgrpg.d20;
 
-public class DamageReduction
+public enum AlignmentType
 {
-	private DamageReductionType type;
-	private int points;
-
-	public DamageReduction()
-	{
-		type = DamageReductionType.None;
-	}
-
-	public DamageReductionType getType()
-	{
-		return type;
-	}
-
-	public void setType(DamageReductionType type)
-	{
-		this.type = type;
-	}
-
-	public int getPoints()
-	{
-		return points;
-	}
-
-	public void setPoints(int points)
-	{
-		this.points = points;
-	}
+	LawfulGood, NeutralGood, ChaoticGood, LawfulNeutral, PureNeutral, ChaoticNeutral, LawfulEvil, NeutralEvil, ChaoticEvil;
 }

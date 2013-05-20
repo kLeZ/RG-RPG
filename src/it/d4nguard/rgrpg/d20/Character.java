@@ -16,20 +16,18 @@
 // You should have received a copy of the GNU General Public License
 // along with this program.  If not, see <http://www.gnu.org/licenses/>.
 // 
-package it.d4nguard.rgrpg.profile;
+package it.d4nguard.rgrpg.d20;
 
+import it.d4nguard.rgrpg.profile.Player;
 import it.d4nguard.rgrpg.util.NumericUtils;
 
 import java.util.Collection;
 import java.util.HashSet;
 import java.util.Set;
 
-import org.joda.time.Duration;
-
 public class Character
 {
 	private Player owner;
-	private Duration playedTime;
 	private String name;
 	private float experience;
 	private GeneralInfo info;

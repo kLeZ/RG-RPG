@@ -16,15 +16,34 @@
 // You should have received a copy of the GNU General Public License
 // along with this program.  If not, see <http://www.gnu.org/licenses/>.
 // 
-package it.d4nguard.rgrpg.profile;
+package it.d4nguard.rgrpg.d20;
 
-import java.util.Set;
-
-public abstract class Race
+public class Attribute
 {
-	public abstract int getLevelAdjustment();
+	private int value;
+	private int modifier;
 
-	public abstract int getArmorClass();
+	public Attribute()
+	{
+	}
 
-	public abstract Set<Language> getSpokenLanguages();
+	public int getValue()
+	{
+		return value;
+	}
+
+	public void setValue(int value)
+	{
+		this.value = value;
+	}
+
+	public int getModifier()
+	{
+		return modifier;
+	}
+
+	public void setModifier(int modifier)
+	{
+		this.modifier = modifier;
+	}
 }

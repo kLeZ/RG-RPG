@@ -16,9 +16,31 @@
 // You should have received a copy of the GNU General Public License
 // along with this program.  If not, see <http://www.gnu.org/licenses/>.
 // 
-package it.d4nguard.rgrpg.profile;
+package it.d4nguard.rgrpg.d20;
 
-public enum SavingThrowType
+public abstract class Class
 {
-	Fortitude, Reflexes, WillPower;
+	public abstract int getBab(int attack);
+	public abstract int getLevel();
+	public abstract int getFortitude();
+	public abstract int getReflexes();
+	public abstract int getWillPower();
+
+	public int getSavingThrow(SavingThrowType type)
+	{
+		int sThrow = 0;
+		switch (type)
+		{
+			case Fortitude:
+				sThrow += getFortitude();
+				break;
+			case Reflexes:
+				sThrow += getReflexes();
+				break;
+			case WillPower:
+				sThrow += getWillPower();
+				break;
+		}
+		return sThrow;
+	}
 }

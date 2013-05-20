@@ -16,45 +16,9 @@
 // You should have received a copy of the GNU General Public License
 // along with this program.  If not, see <http://www.gnu.org/licenses/>.
 // 
-package it.d4nguard.rgrpg.profile;
+package it.d4nguard.rgrpg.d20;
 
-public class Resistance
+public enum ArmorClassType
 {
-	private ResistanceType type;
-	private int points;
-	private boolean immune;
-
-	public Resistance()
-	{
-	}
-
-	public ResistanceType getType()
-	{
-		return type;
-	}
-
-	public void setType(ResistanceType type)
-	{
-		this.type = type;
-	}
-
-	public int getPoints()
-	{
-		return points;
-	}
-
-	public void setPoints(int points)
-	{
-		this.points = points;
-	}
-
-	public boolean isImmune()
-	{
-		return immune;
-	}
-
-	public void setImmune(boolean immune)
-	{
-		this.immune = immune;
-	}
+	Normal, FlatFooted, Touch;
 }

@@ -16,38 +16,15 @@
 // You should have received a copy of the GNU General Public License
 // along with this program.  If not, see <http://www.gnu.org/licenses/>.
 // 
-package it.d4nguard.rgrpg.profile;
+package it.d4nguard.rgrpg.d20;
 
-public class Language
+import java.util.Set;
+
+public abstract class Race
 {
-	public static final Language COMMON = new Language("Common", "Common");
+	public abstract int getLevelAdjustment();
 
-	private String name;
-	private String alphabet;
+	public abstract int getArmorClass();
 
-	public Language(String name, String alphabet)
-	{
-		this.name = name;
-		this.alphabet = alphabet;
-	}
-
-	public String getName()
-	{
-		return name;
-	}
-
-	public void setName(String name)
-	{
-		this.name = name;
-	}
-
-	public String getAlphabet()
-	{
-		return alphabet;
-	}
-
-	public void setAlphabet(String alphabet)
-	{
-		this.alphabet = alphabet;
-	}
+	public abstract Set<Language> getSpokenLanguages();
 }

@@ -16,34 +16,38 @@
 // You should have received a copy of the GNU General Public License
 // along with this program.  If not, see <http://www.gnu.org/licenses/>.
 // 
-package it.d4nguard.rgrpg.profile;
+package it.d4nguard.rgrpg.d20;
 
-public class Attribute
+public class Language
 {
-	private int value;
-	private int modifier;
+	public static final Language COMMON = new Language("Common", "Common");
 
-	public Attribute()
+	private String name;
+	private String alphabet;
+
+	public Language(String name, String alphabet)
 	{
+		this.name = name;
+		this.alphabet = alphabet;
 	}
 
-	public int getValue()
+	public String getName()
 	{
-		return value;
+		return name;
 	}
 
-	public void setValue(int value)
+	public void setName(String name)
 	{
-		this.value = value;
+		this.name = name;
 	}
 
-	public int getModifier()
+	public String getAlphabet()
 	{
-		return modifier;
+		return alphabet;
 	}
 
-	public void setModifier(int modifier)
+	public void setAlphabet(String alphabet)
 	{
-		this.modifier = modifier;
+		this.alphabet = alphabet;
 	}
 }

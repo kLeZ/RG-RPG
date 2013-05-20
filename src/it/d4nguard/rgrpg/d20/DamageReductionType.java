@@ -16,9 +16,9 @@
 // You should have received a copy of the GNU General Public License
 // along with this program.  If not, see <http://www.gnu.org/licenses/>.
 // 
-package it.d4nguard.rgrpg.profile;
+package it.d4nguard.rgrpg.d20;
 
-public enum AlignmentType
+public enum DamageReductionType
 {
-	LawfulGood, NeutralGood, ChaoticGood, LawfulNeutral, PureNeutral, ChaoticNeutral, LawfulEvil, NeutralEvil, ChaoticEvil;
+	All, None;
 }

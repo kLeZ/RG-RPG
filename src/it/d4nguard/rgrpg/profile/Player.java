@@ -18,8 +18,12 @@
 // 
 package it.d4nguard.rgrpg.profile;
 
+import it.d4nguard.rgrpg.d20.Character;
+
 import java.util.HashSet;
 import java.util.Set;
+
+import org.joda.time.Duration;
 
 public class Player
 {
@@ -27,6 +31,7 @@ public class Player
 
 	private String name;
 	private final Set<Character> characters;
+	private Duration playedTime;
 
 	public Player()
 	{
