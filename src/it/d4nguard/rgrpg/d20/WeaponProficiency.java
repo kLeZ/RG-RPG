@@ -18,10 +18,42 @@
 // 
 package it.d4nguard.rgrpg.d20;
 
+import java.util.HashSet;
 import java.util.Set;
 
-public class Proficiency<I>
+public class WeaponProficiency
 {
-	private Set<I> proficientItems;
-	private boolean fullProficiency;
+	private final Set<Weapon> items;
+	private boolean allSimple;
+	private boolean allMartial;
+
+	public WeaponProficiency()
+	{
+		this.items = new HashSet<Weapon>();
+	}
+
+	public boolean isAllSimple()
+	{
+		return allSimple;
+	}
+
+	public void setAllSimple(boolean allSimple)
+	{
+		this.allSimple = allSimple;
+	}
+
+	public boolean isAllMartial()
+	{
+		return allMartial;
+	}
+
+	public void setAllMartial(boolean allMartial)
+	{
+		this.allMartial = allMartial;
+	}
+
+	public Set<Weapon> getItems()
+	{
+		return items;
+	}
 }

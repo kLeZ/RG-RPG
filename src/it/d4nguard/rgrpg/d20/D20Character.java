@@ -43,7 +43,9 @@ public class D20Character extends Character
 	private Shield shield;
 	private Weapon weapon;
 	private Set<Language> spokenLanguages;
-	private Set<Proficiency<Armor>> armorProficiency;
+	private ArmorProficiency armorProficiency;
+	private ShieldProficiency shieldProficiency;
+	private WeaponProficiency weaponProficiency;
 	private AlteredStatuses alteredStatuses;
 
 	public D20Character()
