@@ -18,7 +18,7 @@
 // 
 package it.d4nguard.rgrpg.d20;
 
-public abstract class Weapon
+public abstract class Weapon implements Item
 {
 
 }

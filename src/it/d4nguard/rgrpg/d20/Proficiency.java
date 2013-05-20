@@ -18,7 +18,10 @@
 // 
 package it.d4nguard.rgrpg.d20;
 
-public abstract class Shield implements Item
+import java.util.Set;
+
+public class Proficiency<I>
 {
-	public abstract int getArmorClass();
+	private Set<I> proficientItems;
+	private boolean fullProficiency;
 }
