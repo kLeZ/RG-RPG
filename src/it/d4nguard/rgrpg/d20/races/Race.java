@@ -26,6 +26,8 @@ import java.util.HashMap;
 import java.util.HashSet;
 import java.util.Set;
 
+import com.db4o.foundation.ArgumentNullException;
+
 public abstract class Race
 {
 	private static final HashMap<RaceType, HashSet<Trait>> RACE_TRAITS = new HashMap<RaceType, HashSet<Trait>>();
@@ -53,9 +55,10 @@ public abstract class Race
 		this.humanoidSubType = humanoidSubType;
 		this.spokenLanguages = new HashSet<Language>();
 		this.traits = new HashSet<Trait>();
+		if (type == null) throw new ArgumentNullException("type");
 		this.traits.addAll(RACE_TRAITS.get(this.type));
-		this.traits.addAll(SUB_RACE_TRAITS.get(this.subType));
-		this.traits.addAll(HUMANOID_RACE_TRAITS.get(this.humanoidSubType));
+		if (subType != null) this.traits.addAll(SUB_RACE_TRAITS.get(this.subType));
+		if (humanoidSubType != null) this.traits.addAll(HUMANOID_RACE_TRAITS.get(this.humanoidSubType));
 	}
 
 	public SizeType getSize()

@@ -36,7 +36,9 @@ public class D20Character extends Character
 	private AlignmentType alignment;
 	private final Set<? extends Class> classes;
 	private Attributes attributes;
-	private Health health;
+	private int damage;
+	private DamageReduction damageReduction;
+	private Set<ResistanceToEnergy> resistanceToEnergies;
 	private int deflection;
 	private Collection<Integer> dodgeBonuses;
 	private Armor armor;
@@ -53,6 +55,11 @@ public class D20Character extends Character
 		this.classes = new HashSet<Class>();
 		this.spokenLanguages = new HashSet<Language>();
 		this.spokenLanguages.add(Language.COMMON);
+	}
+
+	public int getHealthPoints()
+	{
+
 	}
 
 	public Set<Language> getSpokenLanguages()
