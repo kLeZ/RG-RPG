@@ -20,5 +20,7 @@ package it.d4nguard.rgrpg.d20;
 
 public enum ArmorClassType
 {
-	Normal, FlatFooted, Touch;
+	Normal,
+	FlatFooted,
+	Touch;
 }

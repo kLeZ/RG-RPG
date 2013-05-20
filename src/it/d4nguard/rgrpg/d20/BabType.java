@@ -20,5 +20,7 @@ package it.d4nguard.rgrpg.d20;
 
 public enum BabType
 {
-	Melee, Ranged, Grapple;
+	Melee,
+	Ranged,
+	Grapple;
 }

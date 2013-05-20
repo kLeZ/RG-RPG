@@ -25,7 +25,6 @@ public class DamageReduction
 
 	public DamageReduction()
 	{
-		type = DamageReductionType.None;
 	}
 
 	public DamageReductionType getType()

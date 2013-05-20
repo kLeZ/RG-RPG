@@ -18,6 +18,7 @@
 // 
 package it.d4nguard.rgrpg.d20;
 
+import it.d4nguard.rgrpg.d20.races.Race;
 import it.d4nguard.rgrpg.profile.Character;
 import it.d4nguard.rgrpg.profile.Player;
 import it.d4nguard.rgrpg.util.NumericUtils;
@@ -33,7 +34,6 @@ public class D20Character extends Character
 	private Race race;
 	private float experience;
 	private AlignmentType alignment;
-	private SizeType size;
 	private final Set<? extends Class> classes;
 	private Attributes attributes;
 	private Health health;
@@ -55,10 +55,20 @@ public class D20Character extends Character
 		this.spokenLanguages.add(Language.COMMON);
 	}
 
+	public Set<Language> getSpokenLanguages()
+	{
+		Set<Language> langs = new HashSet<Language>();
+		langs.addAll(spokenLanguages);
+		langs.addAll(race.getSpokenLanguages());
+		for (Class c : classes)
+			langs.addAll(c.getSpokenLanguages());
+		return langs;
+	}
+
 	public int getLevel()
 	{
 		int level = 0;
-		level += race.getLevelAdjustment();
+		level += race.getEffectiveCharacterLevel();
 		for (Class c : classes)
 			level += c.getLevel();
 		return level;
@@ -72,15 +82,15 @@ public class D20Character extends Character
 		switch (type)
 		{
 			case Melee:
-				bab += size.getModifier();
+				bab += race.getSize().getModifier();
 				bab += attributes.getStrength().getModifier();
 				break;
 			case Ranged:
-				bab += size.getModifier();
+				bab += race.getSize().getModifier();
 				bab += attributes.getDexterity().getModifier();
 				break;
 			case Grapple:
-				bab += size.getGrapple();
+				bab += race.getSize().getGrapple();
 				bab += attributes.getStrength().getModifier();
 				break;
 		}
@@ -114,7 +124,7 @@ public class D20Character extends Character
 				ac = NumericUtils.sum(ac, dodgeBonuses);
 				break;
 		}
-		ac += size.getModifier();
+		ac += race.getSize().getModifier();
 		ac += deflection;
 		return ac;
 	}

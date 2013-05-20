@@ -18,13 +18,21 @@
 // 
 package it.d4nguard.rgrpg.d20;
 
+import java.util.Set;
+
 public abstract class Class
 {
 	public abstract int getBab(int attack);
+
 	public abstract int getLevel();
+
 	public abstract int getFortitude();
+
 	public abstract int getReflexes();
+
 	public abstract int getWillPower();
+
+	public abstract Set<Language> getSpokenLanguages();
 
 	public int getSavingThrow(SavingThrowType type)
 	{

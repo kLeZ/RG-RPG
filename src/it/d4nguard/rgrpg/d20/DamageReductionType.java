@@ -20,5 +20,6 @@ package it.d4nguard.rgrpg.d20;
 
 public enum DamageReductionType
 {
-	All, None;
+	All,
+	None;
 }

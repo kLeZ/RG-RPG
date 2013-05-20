@@ -20,5 +20,13 @@ package it.d4nguard.rgrpg.d20;
 
 public enum AlignmentType
 {
-	LawfulGood, NeutralGood, ChaoticGood, LawfulNeutral, PureNeutral, ChaoticNeutral, LawfulEvil, NeutralEvil, ChaoticEvil;
+	LawfulGood,
+	NeutralGood,
+	ChaoticGood,
+	LawfulNeutral,
+	PureNeutral,
+	ChaoticNeutral,
+	LawfulEvil,
+	NeutralEvil,
+	ChaoticEvil;
 }

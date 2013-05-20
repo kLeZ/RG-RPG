@@ -26,11 +26,11 @@ public class Health
 	private int totalHealthPoints;
 	private int currentHealthPoints;
 	private DamageReduction damageReduction;
-	private Set<Resistance> resistances;
+	private Set<ResistanceToEnergy> resistanceToEnergies;
 
 	public Health()
 	{
-		this.resistances = new HashSet<Resistance>();
+		this.resistanceToEnergies = new HashSet<ResistanceToEnergy>();
 	}
 
 	public int getTotalHealthPoints()
@@ -63,13 +63,13 @@ public class Health
 		this.damageReduction = damageReduction;
 	}
 
-	public Set<Resistance> getResistances()
+	public Set<ResistanceToEnergy> getResistances()
 	{
-		return resistances;
+		return resistanceToEnergies;
 	}
 
-	public void setResistances(Set<Resistance> resistances)
+	public void setResistances(Set<ResistanceToEnergy> resistanceToEnergies)
 	{
-		this.resistances = resistances;
+		this.resistanceToEnergies = resistanceToEnergies;
 	}
 }

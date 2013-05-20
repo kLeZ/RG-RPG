@@ -16,9 +16,20 @@
 // You should have received a copy of the GNU General Public License
 // along with this program.  If not, see <http://www.gnu.org/licenses/>.
 // 
-package it.d4nguard.rgrpg.d20;
+package it.d4nguard.rgrpg.d20.races;
 
-public enum ResistanceType
+import it.d4nguard.rgrpg.d20.Language;
+import it.d4nguard.rgrpg.d20.SizeType;
+
+import java.util.Set;
+
+public interface Race
 {
-	Light, Darkness, Fire, Wind, Water, Hearth, Poison, Sleep;
+	public abstract int getEffectiveCharacterLevel();
+
+	public abstract int getArmorClass();
+
+	public abstract Set<Language> getSpokenLanguages();
+
+	public abstract SizeType getSize();
 }

@@ -18,22 +18,21 @@
 // 
 package it.d4nguard.rgrpg.d20;
 
-public class Resistance
+public class ResistanceToEnergy
 {
-	private ResistanceType type;
+	private EnergyType type;
 	private int points;
-	private boolean immune;
 
-	public Resistance()
+	public ResistanceToEnergy()
 	{
 	}
 
-	public ResistanceType getType()
+	public EnergyType getType()
 	{
 		return type;
 	}
 
-	public void setType(ResistanceType type)
+	public void setType(EnergyType type)
 	{
 		this.type = type;
 	}
@@ -46,15 +45,5 @@ public class Resistance
 	public void setPoints(int points)
 	{
 		this.points = points;
-	}
-
-	public boolean isImmune()
-	{
-		return immune;
-	}
-
-	public void setImmune(boolean immune)
-	{
-		this.immune = immune;
 	}
 }

@@ -18,13 +18,10 @@
 // 
 package it.d4nguard.rgrpg.d20;
 
-import java.util.Set;
-
-public abstract class Race
+public enum EnergyType
 {
-	public abstract int getLevelAdjustment();
-
-	public abstract int getArmorClass();
-
-	public abstract Set<Language> getSpokenLanguages();
+	Acid,
+	Cold,
+	Fire,
+	Electricity;
 }
