@@ -28,33 +28,42 @@ public class Character
 	private Player owner;
 	private Duration playedTime;
 	private String name;
+	private float experience;
 	private GeneralInfo info;
 	private final Set<? extends Class> classes;
 	private Attributes attributes;
-	private PersonalTraits personalTraits;
 	private Health health;
-	private Initiative initiative;
+	private Armor armor;
+	private Shield shield;
+	private Weapon weapon;
 
 	public Character()
 	{
 		this.classes = new HashSet<Class>();
 	}
 
+	public int getLevel()
+	{
+		int level = 0;
+		level += info.getRace().getLevelAdjustment();
+		for (Class c : classes)
+			level += c.getLevel();
+		return level;
+	}
+
 	public int getBab(Bab type, int attack)
 	{
 		int bab = 0;
 		for (Class c : classes)
-		{
 			bab += c.getBab(attack);
-		}
 		switch (type)
 		{
 			case Melee:
-				bab += info.getSize().getAttack();
+				bab += info.getSize().getModifier();
 				bab += attributes.getStrength().getModifier();
 				break;
 			case Ranged:
-				bab += info.getSize().getAttack();
+				bab += info.getSize().getModifier();
 				bab += attributes.getDexterity().getModifier();
 				break;
 			case Grapple:
@@ -63,5 +72,42 @@ public class Character
 				break;
 		}
 		return bab;
+	}
+
+	public int getArmorClass(ArmorClass type)
+	{
+		int ac = 10;
+		switch (type)
+		{
+			case Normal:
+				
+				break;
+			case FlatFooted:
+				break;
+			case Touch:
+				break;
+		}
+		ac += info.getSize().getModifier();
+		return ac;
+	}
+
+	public int getSavingThrow(SavingThrow type)
+	{
+		int sThrow = 0;
+		for (Class c : classes)
+			sThrow += c.getSavingThrow(type);
+		switch (type)
+		{
+			case Fortitude:
+				sThrow += attributes.getStamina().getModifier();
+				break;
+			case Reflexes:
+				sThrow += attributes.getDexterity().getModifier();
+				break;
+			case WillPower:
+				sThrow += attributes.getWisdom().getModifier();
+				break;
+		}
+		return sThrow;
 	}
 }

@@ -21,4 +21,26 @@ package it.d4nguard.rgrpg.profile;
 public abstract class Class
 {
 	public abstract int getBab(int attack);
+	public abstract int getLevel();
+	public abstract int getFortitude();
+	public abstract int getReflexes();
+	public abstract int getWillPower();
+
+	public int getSavingThrow(SavingThrow type)
+	{
+		int sThrow = 0;
+		switch (type)
+		{
+			case Fortitude:
+				sThrow += getFortitude();
+				break;
+			case Reflexes:
+				sThrow += getReflexes();
+				break;
+			case WillPower:
+				sThrow += getWillPower();
+				break;
+		}
+		return sThrow;
+	}
 }

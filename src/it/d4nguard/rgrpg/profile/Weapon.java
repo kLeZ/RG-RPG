@@ -18,31 +18,7 @@
 // 
 package it.d4nguard.rgrpg.profile;
 
-import java.util.HashSet;
-import java.util.Set;
-
-public class Initiative
+public abstract class Weapon
 {
-	private int initiativeBonus;
-	private final Set<Integer> modifiers;
 
-	public Initiative()
-	{
-		modifiers = new HashSet<Integer>();
-	}
-
-	public int getInitiativeBonus()
-	{
-		return initiativeBonus;
-	}
-
-	public void setInitiativeBonus(int initiativeBonus)
-	{
-		this.initiativeBonus = initiativeBonus;
-	}
-
-	public Set<Integer> getModifiers()
-	{
-		return modifiers;
-	}
 }

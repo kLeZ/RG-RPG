@@ -18,32 +18,7 @@
 // 
 package it.d4nguard.rgrpg.profile;
 
-public class Attribute
+public enum SavingThrow
 {
-	private int value;
-	private int modifier;
-
-	public Attribute()
-	{
-	}
-
-	public int getValue()
-	{
-		return value;
-	}
-
-	public void setValue(int value)
-	{
-		this.value = value;
-	}
-
-	public int getModifier()
-	{
-		return modifier;
-	}
-
-	public void setModifier(int modifier)
-	{
-		this.modifier = modifier;
-	}
+	Fortitude, Reflexes, WillPower;
 }

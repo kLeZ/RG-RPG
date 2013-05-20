@@ -23,17 +23,9 @@ public class Attributes
 	private Attribute strength;
 	private Attribute dexterity;
 	private Attribute stamina;
-	private Attribute Attributeelligence;
+	private Attribute intelligence;
 	private Attribute wisdom;
-	private Attribute perception;
 	private Attribute charisma;
-	private Attribute appearance;
-	private Attribute dialectic;
-	private Attribute fortune;
-
-	public Attributes()
-	{
-	}
 
 	public Attribute getStrength()
 	{
@@ -65,14 +57,14 @@ public class Attributes
 		this.stamina = stamina;
 	}
 
-	public Attribute getAttributeelligence()
+	public Attribute getIntelligence()
 	{
-		return Attributeelligence;
+		return intelligence;
 	}
 
-	public void setAttributeelligence(Attribute attributeelligence)
+	public void setIntelligence(Attribute intelligence)
 	{
-		Attributeelligence = attributeelligence;
+		this.intelligence = intelligence;
 	}
 
 	public Attribute getWisdom()
@@ -85,16 +77,6 @@ public class Attributes
 		this.wisdom = wisdom;
 	}
 
-	public Attribute getPerception()
-	{
-		return perception;
-	}
-
-	public void setPerception(Attribute perception)
-	{
-		this.perception = perception;
-	}
-
 	public Attribute getCharisma()
 	{
 		return charisma;
@@ -105,33 +87,7 @@ public class Attributes
 		this.charisma = charisma;
 	}
 
-	public Attribute getAppearance()
+	public Attributes()
 	{
-		return appearance;
-	}
-
-	public void setAppearance(Attribute appearance)
-	{
-		this.appearance = appearance;
-	}
-
-	public Attribute getDialectic()
-	{
-		return dialectic;
-	}
-
-	public void setDialectic(Attribute dialectic)
-	{
-		this.dialectic = dialectic;
-	}
-
-	public Attribute getFortune()
-	{
-		return fortune;
-	}
-
-	public void setFortune(Attribute fortune)
-	{
-		this.fortune = fortune;
 	}
 }

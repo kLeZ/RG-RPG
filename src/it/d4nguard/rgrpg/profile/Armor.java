@@ -18,32 +18,7 @@
 // 
 package it.d4nguard.rgrpg.profile;
 
-public class Attribute
+public abstract class Armor
 {
-	private int value;
-	private int modifier;
 
-	public Attribute()
-	{
-	}
-
-	public int getValue()
-	{
-		return value;
-	}
-
-	public void setValue(int value)
-	{
-		this.value = value;
-	}
-
-	public int getModifier()
-	{
-		return modifier;
-	}
-
-	public void setModifier(int modifier)
-	{
-		this.modifier = modifier;
-	}
 }

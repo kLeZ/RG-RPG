@@ -30,20 +30,20 @@ public enum Size
 	Gargantuan(-4, 12, -12),
 	Colossal(-8, 16, -16);
 
-	private int attack;
+	private int modifier;
 	private int grapple;
 	private int hide;
 
-	private Size(int attack, int grapple, int hide)
+	private Size(int modifier, int grapple, int hide)
 	{
-		this.attack = attack;
+		this.modifier = modifier;
 		this.grapple = grapple;
 		this.hide = hide;
 	}
 
-	public int getAttack()
+	public int getModifier()
 	{
-		return this.attack;
+		return this.modifier;
 	}
 
 	public int getGrapple()

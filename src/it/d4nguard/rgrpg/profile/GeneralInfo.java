@@ -23,7 +23,10 @@ import org.joda.time.DateMidnight;
 public class GeneralInfo
 {
 	private String description;
-	private String race;
+	private Race race;
+	private String skinColor;
+	private String hairColor;
+	private String eyesColor;
 	private short height;
 	private short weight;
 	private Size size;
@@ -46,14 +49,44 @@ public class GeneralInfo
 		this.description = description;
 	}
 
-	public String getRace()
+	public Race getRace()
 	{
 		return race;
 	}
 
-	public void setRace(String race)
+	public void setRace(Race race)
 	{
 		this.race = race;
+	}
+
+	public String getSkinColor()
+	{
+		return skinColor;
+	}
+
+	public void setSkinColor(String skinColor)
+	{
+		this.skinColor = skinColor;
+	}
+
+	public String getHairColor()
+	{
+		return hairColor;
+	}
+
+	public void setHairColor(String hairColor)
+	{
+		this.hairColor = hairColor;
+	}
+
+	public String getEyesColor()
+	{
+		return eyesColor;
+	}
+
+	public void setEyesColor(String eyesColor)
+	{
+		this.eyesColor = eyesColor;
 	}
 
 	public short getHeight()
