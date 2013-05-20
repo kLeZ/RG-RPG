@@ -21,4 +21,6 @@ package it.d4nguard.rgrpg.profile;
 public abstract class Armor
 {
 	public abstract int getArmorClass();
+
+	public abstract int getMaxDexterity();
 }

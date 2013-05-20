@@ -41,11 +41,14 @@ public class Character
 	private Armor armor;
 	private Shield shield;
 	private Weapon weapon;
+	private Set<Language> spokenLanguages;
 	private AlteredStatuses alteredStatuses;
 
 	public Character()
 	{
 		this.classes = new HashSet<Class>();
+		this.spokenLanguages = new HashSet<Language>();
+		this.spokenLanguages.add(Language.COMMON);
 	}
 
 	public int getLevel()
@@ -80,6 +83,11 @@ public class Character
 		return bab;
 	}
 
+	public int getMaxDexterity()
+	{
+		return NumericUtils.min(attributes.getDexterity().getModifier(), armor.getMaxDexterity());
+	}
+
 	public int getArmorClass(ArmorClassType type)
 	{
 		int ac = 10;
@@ -88,7 +96,7 @@ public class Character
 			case Normal:
 				ac += armor.getArmorClass();
 				ac += shield.getArmorClass();
-				ac += attributes.getDexterity().getModifier();
+				ac += getMaxDexterity();
 				ac += info.getRace().getArmorClass();
 				ac = NumericUtils.sum(ac, dodgeBonuses);
 				break;
@@ -98,7 +106,7 @@ public class Character
 				ac += info.getRace().getArmorClass();
 				break;
 			case Touch: // Denies ARM, SHI, NAT
-				ac += attributes.getDexterity().getModifier();
+				ac += getMaxDexterity();
 				ac = NumericUtils.sum(ac, dodgeBonuses);
 				break;
 		}
@@ -107,24 +115,23 @@ public class Character
 		return ac;
 	}
 
-	public int getSavingThrow(SavingThrowType type, int... modifiers)
+	public int getSavingThrow(SavingThrowType type)
 	{
-		int sThrow = 0;
+		int save = 0;
 		for (Class c : classes)
-			sThrow += c.getSavingThrow(type);
+			save += c.getSavingThrow(type);
 		switch (type)
 		{
 			case Fortitude:
-				sThrow += attributes.getStamina().getModifier();
+				save += attributes.getStamina().getModifier();
 				break;
 			case Reflexes:
-				sThrow += attributes.getDexterity().getModifier();
+				save += attributes.getDexterity().getModifier();
 				break;
 			case WillPower:
-				sThrow += attributes.getWisdom().getModifier();
+				save += attributes.getWisdom().getModifier();
 				break;
 		}
-		sThrow = NumericUtils.sum(sThrow, modifiers);
-		return sThrow;
+		return save;
 	}
 }

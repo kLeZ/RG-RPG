@@ -20,13 +20,24 @@ package it.d4nguard.rgrpg.util;
 
 import java.util.ArrayList;
 import java.util.Collection;
+import java.util.Collections;
 
 public class NumericUtils
 {
+	public static int sum(final Collection<Integer> ints)
+	{
+		return sum(0, ints);
+	}
+
+	public static int sum(final int[] ints)
+	{
+		return sum(0, ints);
+	}
+
 	public static int sum(final int base, final Collection<Integer> ints)
 	{
 		int ret = base;
-		for (int i : ints)
+		for (Integer i : ints)
 			ret += i;
 		return ret;
 	}
@@ -42,5 +53,10 @@ public class NumericUtils
 		for (int i : ints)
 			ret.add(new Integer(i));
 		return ret;
+	}
+
+	public static int min(int... ints)
+	{
+		return Collections.min(toIntegerCollection(ints));
 	}
 }

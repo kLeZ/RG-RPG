@@ -18,13 +18,36 @@
 // 
 package it.d4nguard.rgrpg.profile;
 
-import java.util.Set;
-
-public abstract class Race
+public class Language
 {
-	public abstract int getLevelAdjustment();
+	public static final Language COMMON = new Language("Common", "Common");
 
-	public abstract int getArmorClass();
+	private String name;
+	private String alphabet;
 
-	public abstract Set<Language> getSpokenLanguages();
+	public Language(String name, String alphabet)
+	{
+		this.name = name;
+		this.alphabet = alphabet;
+	}
+
+	public String getName()
+	{
+		return name;
+	}
+
+	public void setName(String name)
+	{
+		this.name = name;
+	}
+
+	public String getAlphabet()
+	{
+		return alphabet;
+	}
+
+	public void setAlphabet(String alphabet)
+	{
+		this.alphabet = alphabet;
+	}
 }
