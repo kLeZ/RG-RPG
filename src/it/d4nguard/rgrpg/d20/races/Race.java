@@ -32,4 +32,1356 @@ public interface Race
 	public abstract Set<Language> getSpokenLanguages();
 
 	public abstract SizeType getSize();
+
+	public interface Aberration
+	{
+		public interface Air
+		{
+		}
+
+		public interface Angel
+		{
+		}
+
+		public interface Aquatic
+		{
+		}
+
+		public interface Archon
+		{
+		}
+
+		public interface Augmented
+		{
+		}
+
+		public interface Chaotic
+		{
+		}
+
+		public interface Cold
+		{
+		}
+
+		public interface Demon
+		{
+		}
+
+		public interface Devil
+		{
+		}
+
+		public interface Earth
+		{
+		}
+
+		public interface Evil
+		{
+		}
+
+		public interface Extraplanar
+		{
+		}
+
+		public interface Fire
+		{
+		}
+
+		public interface Good
+		{
+		}
+
+		public interface Incorporeal
+		{
+		}
+
+		public interface Lawful
+		{
+		}
+
+		public interface Native
+		{
+		}
+
+		public interface Psionic
+		{
+		}
+
+		public interface Shapechanger
+		{
+		}
+
+		public interface Swarm
+		{
+		}
+
+		public interface Water
+		{
+		}
+	}
+
+	public interface Animal
+	{
+		public interface Air
+		{
+		}
+
+		public interface Angel
+		{
+		}
+
+		public interface Aquatic
+		{
+		}
+
+		public interface Archon
+		{
+		}
+
+		public interface Augmented
+		{
+		}
+
+		public interface Chaotic
+		{
+		}
+
+		public interface Cold
+		{
+		}
+
+		public interface Demon
+		{
+		}
+
+		public interface Devil
+		{
+		}
+
+		public interface Earth
+		{
+		}
+
+		public interface Evil
+		{
+		}
+
+		public interface Extraplanar
+		{
+		}
+
+		public interface Fire
+		{
+		}
+
+		public interface Good
+		{
+		}
+
+		public interface Incorporeal
+		{
+		}
+
+		public interface Lawful
+		{
+		}
+
+		public interface Native
+		{
+		}
+
+		public interface Psionic
+		{
+		}
+
+		public interface Shapechanger
+		{
+		}
+
+		public interface Swarm
+		{
+		}
+
+		public interface Water
+		{
+		}
+	}
+
+	public interface Celestial
+	{
+		public interface Air
+		{
+		}
+
+		public interface Angel
+		{
+		}
+
+		public interface Aquatic
+		{
+		}
+
+		public interface Archon
+		{
+		}
+
+		public interface Augmented
+		{
+		}
+
+		public interface Chaotic
+		{
+		}
+
+		public interface Cold
+		{
+		}
+
+		public interface Demon
+		{
+		}
+
+		public interface Devil
+		{
+		}
+
+		public interface Earth
+		{
+		}
+
+		public interface Evil
+		{
+		}
+
+		public interface Extraplanar
+		{
+		}
+
+		public interface Fire
+		{
+		}
+
+		public interface Good
+		{
+		}
+
+		public interface Incorporeal
+		{
+		}
+
+		public interface Lawful
+		{
+		}
+
+		public interface Native
+		{
+		}
+
+		public interface Psionic
+		{
+		}
+
+		public interface Shapechanger
+		{
+		}
+
+		public interface Swarm
+		{
+		}
+
+		public interface Water
+		{
+		}
+	}
+
+	public interface Construct
+	{
+		public interface Air
+		{
+		}
+
+		public interface Angel
+		{
+		}
+
+		public interface Aquatic
+		{
+		}
+
+		public interface Archon
+		{
+		}
+
+		public interface Augmented
+		{
+		}
+
+		public interface Chaotic
+		{
+		}
+
+		public interface Cold
+		{
+		}
+
+		public interface Demon
+		{
+		}
+
+		public interface Devil
+		{
+		}
+
+		public interface Earth
+		{
+		}
+
+		public interface Evil
+		{
+		}
+
+		public interface Extraplanar
+		{
+		}
+
+		public interface Fire
+		{
+		}
+
+		public interface Good
+		{
+		}
+
+		public interface Incorporeal
+		{
+		}
+
+		public interface Lawful
+		{
+		}
+
+		public interface Native
+		{
+		}
+
+		public interface Psionic
+		{
+		}
+
+		public interface Shapechanger
+		{
+		}
+
+		public interface Swarm
+		{
+		}
+
+		public interface Water
+		{
+		}
+	}
+
+	public interface Dragon
+	{
+		public interface Air
+		{
+		}
+
+		public interface Angel
+		{
+		}
+
+		public interface Aquatic
+		{
+		}
+
+		public interface Archon
+		{
+		}
+
+		public interface Augmented
+		{
+		}
+
+		public interface Chaotic
+		{
+		}
+
+		public interface Cold
+		{
+		}
+
+		public interface Demon
+		{
+		}
+
+		public interface Devil
+		{
+		}
+
+		public interface Earth
+		{
+		}
+
+		public interface Evil
+		{
+		}
+
+		public interface Extraplanar
+		{
+		}
+
+		public interface Fire
+		{
+		}
+
+		public interface Good
+		{
+		}
+
+		public interface Incorporeal
+		{
+		}
+
+		public interface Lawful
+		{
+		}
+
+		public interface Native
+		{
+		}
+
+		public interface Psionic
+		{
+		}
+
+		public interface Shapechanger
+		{
+		}
+
+		public interface Swarm
+		{
+		}
+
+		public interface Water
+		{
+		}
+	}
+
+	public interface Elemental
+	{
+		public interface Air
+		{
+		}
+
+		public interface Angel
+		{
+		}
+
+		public interface Aquatic
+		{
+		}
+
+		public interface Archon
+		{
+		}
+
+		public interface Augmented
+		{
+		}
+
+		public interface Chaotic
+		{
+		}
+
+		public interface Cold
+		{
+		}
+
+		public interface Demon
+		{
+		}
+
+		public interface Devil
+		{
+		}
+
+		public interface Earth
+		{
+		}
+
+		public interface Evil
+		{
+		}
+
+		public interface Extraplanar
+		{
+		}
+
+		public interface Fire
+		{
+		}
+
+		public interface Good
+		{
+		}
+
+		public interface Incorporeal
+		{
+		}
+
+		public interface Lawful
+		{
+		}
+
+		public interface Native
+		{
+		}
+
+		public interface Psionic
+		{
+		}
+
+		public interface Shapechanger
+		{
+		}
+
+		public interface Swarm
+		{
+		}
+
+		public interface Water
+		{
+		}
+	}
+
+	public interface Fey
+	{
+	}
+
+	public interface Fiend
+	{
+		public interface Air
+		{
+		}
+
+		public interface Angel
+		{
+		}
+
+		public interface Aquatic
+		{
+		}
+
+		public interface Archon
+		{
+		}
+
+		public interface Augmented
+		{
+		}
+
+		public interface Chaotic
+		{
+		}
+
+		public interface Cold
+		{
+		}
+
+		public interface Demon
+		{
+		}
+
+		public interface Devil
+		{
+		}
+
+		public interface Earth
+		{
+		}
+
+		public interface Evil
+		{
+		}
+
+		public interface Extraplanar
+		{
+		}
+
+		public interface Fire
+		{
+		}
+
+		public interface Good
+		{
+		}
+
+		public interface Incorporeal
+		{
+		}
+
+		public interface Lawful
+		{
+		}
+
+		public interface Native
+		{
+		}
+
+		public interface Psionic
+		{
+		}
+
+		public interface Shapechanger
+		{
+		}
+
+		public interface Swarm
+		{
+		}
+
+		public interface Water
+		{
+		}
+	}
+
+	public interface Giant
+	{
+		public interface Air
+		{
+		}
+
+		public interface Angel
+		{
+		}
+
+		public interface Aquatic
+		{
+		}
+
+		public interface Archon
+		{
+		}
+
+		public interface Augmented
+		{
+		}
+
+		public interface Chaotic
+		{
+		}
+
+		public interface Cold
+		{
+		}
+
+		public interface Demon
+		{
+		}
+
+		public interface Devil
+		{
+		}
+
+		public interface Earth
+		{
+		}
+
+		public interface Evil
+		{
+		}
+
+		public interface Extraplanar
+		{
+		}
+
+		public interface Fire
+		{
+		}
+
+		public interface Good
+		{
+		}
+
+		public interface Incorporeal
+		{
+		}
+
+		public interface Lawful
+		{
+		}
+
+		public interface Native
+		{
+		}
+
+		public interface Psionic
+		{
+		}
+
+		public interface Shapechanger
+		{
+		}
+
+		public interface Swarm
+		{
+		}
+
+		public interface Water
+		{
+		}
+	}
+
+	public interface Humanoid
+	{
+		public interface Aquatic
+		{
+		}
+
+		public interface Dwarf
+		{
+		}
+
+		public interface Elf
+		{
+		}
+
+		public interface Gnoll
+		{
+		}
+
+		public interface Gnome
+		{
+		}
+
+		public interface Goblinoid
+		{
+		}
+
+		public interface Halfling
+		{
+		}
+
+		public interface Human
+		{
+		}
+
+		public interface Orc
+		{
+		}
+
+		public interface Reptilian
+		{
+		}
+	}
+
+	public interface MagicalBeast
+	{
+		public interface Air
+		{
+		}
+
+		public interface Angel
+		{
+		}
+
+		public interface Aquatic
+		{
+		}
+
+		public interface Archon
+		{
+		}
+
+		public interface Augmented
+		{
+		}
+
+		public interface Chaotic
+		{
+		}
+
+		public interface Cold
+		{
+		}
+
+		public interface Demon
+		{
+		}
+
+		public interface Devil
+		{
+		}
+
+		public interface Earth
+		{
+		}
+
+		public interface Evil
+		{
+		}
+
+		public interface Extraplanar
+		{
+		}
+
+		public interface Fire
+		{
+		}
+
+		public interface Good
+		{
+		}
+
+		public interface Incorporeal
+		{
+		}
+
+		public interface Lawful
+		{
+		}
+
+		public interface Native
+		{
+		}
+
+		public interface Psionic
+		{
+		}
+
+		public interface Shapechanger
+		{
+		}
+
+		public interface Swarm
+		{
+		}
+
+		public interface Water
+		{
+		}
+	}
+
+	public interface MonstrousHumanoid
+	{
+		public interface Air
+		{
+		}
+
+		public interface Angel
+		{
+		}
+
+		public interface Aquatic
+		{
+		}
+
+		public interface Archon
+		{
+		}
+
+		public interface Augmented
+		{
+		}
+
+		public interface Chaotic
+		{
+		}
+
+		public interface Cold
+		{
+		}
+
+		public interface Demon
+		{
+		}
+
+		public interface Devil
+		{
+		}
+
+		public interface Earth
+		{
+		}
+
+		public interface Evil
+		{
+		}
+
+		public interface Extraplanar
+		{
+		}
+
+		public interface Fire
+		{
+		}
+
+		public interface Good
+		{
+		}
+
+		public interface Incorporeal
+		{
+		}
+
+		public interface Lawful
+		{
+		}
+
+		public interface Native
+		{
+		}
+
+		public interface Psionic
+		{
+		}
+
+		public interface Shapechanger
+		{
+		}
+
+		public interface Swarm
+		{
+		}
+
+		public interface Water
+		{
+		}
+	}
+
+	public interface Ooze
+	{
+		public interface Air
+		{
+		}
+
+		public interface Angel
+		{
+		}
+
+		public interface Aquatic
+		{
+		}
+
+		public interface Archon
+		{
+		}
+
+		public interface Augmented
+		{
+		}
+
+		public interface Chaotic
+		{
+		}
+
+		public interface Cold
+		{
+		}
+
+		public interface Demon
+		{
+		}
+
+		public interface Devil
+		{
+		}
+
+		public interface Earth
+		{
+		}
+
+		public interface Evil
+		{
+		}
+
+		public interface Extraplanar
+		{
+		}
+
+		public interface Fire
+		{
+		}
+
+		public interface Good
+		{
+		}
+
+		public interface Incorporeal
+		{
+		}
+
+		public interface Lawful
+		{
+		}
+
+		public interface Native
+		{
+		}
+
+		public interface Psionic
+		{
+		}
+
+		public interface Shapechanger
+		{
+		}
+
+		public interface Swarm
+		{
+		}
+
+		public interface Water
+		{
+		}
+	}
+
+	public interface Outsider
+	{
+		public interface Air
+		{
+		}
+
+		public interface Angel
+		{
+		}
+
+		public interface Aquatic
+		{
+		}
+
+		public interface Archon
+		{
+		}
+
+		public interface Augmented
+		{
+		}
+
+		public interface Chaotic
+		{
+		}
+
+		public interface Cold
+		{
+		}
+
+		public interface Demon
+		{
+		}
+
+		public interface Devil
+		{
+		}
+
+		public interface Earth
+		{
+		}
+
+		public interface Evil
+		{
+		}
+
+		public interface Extraplanar
+		{
+		}
+
+		public interface Fire
+		{
+		}
+
+		public interface Good
+		{
+		}
+
+		public interface Incorporeal
+		{
+		}
+
+		public interface Lawful
+		{
+		}
+
+		public interface Native
+		{
+		}
+
+		public interface Psionic
+		{
+		}
+
+		public interface Shapechanger
+		{
+		}
+
+		public interface Swarm
+		{
+		}
+
+		public interface Water
+		{
+		}
+	}
+
+	public interface Plant
+	{
+		public interface Air
+		{
+		}
+
+		public interface Angel
+		{
+		}
+
+		public interface Aquatic
+		{
+		}
+
+		public interface Archon
+		{
+		}
+
+		public interface Augmented
+		{
+		}
+
+		public interface Chaotic
+		{
+		}
+
+		public interface Cold
+		{
+		}
+
+		public interface Demon
+		{
+		}
+
+		public interface Devil
+		{
+		}
+
+		public interface Earth
+		{
+		}
+
+		public interface Evil
+		{
+		}
+
+		public interface Extraplanar
+		{
+		}
+
+		public interface Fire
+		{
+		}
+
+		public interface Good
+		{
+		}
+
+		public interface Incorporeal
+		{
+		}
+
+		public interface Lawful
+		{
+		}
+
+		public interface Native
+		{
+		}
+
+		public interface Psionic
+		{
+		}
+
+		public interface Shapechanger
+		{
+		}
+
+		public interface Swarm
+		{
+		}
+
+		public interface Water
+		{
+		}
+	}
+
+	public interface Undead
+	{
+		public interface Air
+		{
+		}
+
+		public interface Angel
+		{
+		}
+
+		public interface Aquatic
+		{
+		}
+
+		public interface Archon
+		{
+		}
+
+		public interface Augmented
+		{
+		}
+
+		public interface Chaotic
+		{
+		}
+
+		public interface Cold
+		{
+		}
+
+		public interface Demon
+		{
+		}
+
+		public interface Devil
+		{
+		}
+
+		public interface Earth
+		{
+		}
+
+		public interface Evil
+		{
+		}
+
+		public interface Extraplanar
+		{
+		}
+
+		public interface Fire
+		{
+		}
+
+		public interface Good
+		{
+		}
+
+		public interface Incorporeal
+		{
+		}
+
+		public interface Lawful
+		{
+		}
+
+		public interface Native
+		{
+		}
+
+		public interface Psionic
+		{
+		}
+
+		public interface Shapechanger
+		{
+		}
+
+		public interface Swarm
+		{
+		}
+
+		public interface Water
+		{
+		}
+	}
+
+	public interface Vermin
+	{
+		public interface Air
+		{
+		}
+
+		public interface Angel
+		{
+		}
+
+		public interface Aquatic
+		{
+		}
+
+		public interface Archon
+		{
+		}
+
+		public interface Augmented
+		{
+		}
+
+		public interface Chaotic
+		{
+		}
+
+		public interface Cold
+		{
+		}
+
+		public interface Demon
+		{
+		}
+
+		public interface Devil
+		{
+		}
+
+		public interface Earth
+		{
+		}
+
+		public interface Evil
+		{
+		}
+
+		public interface Extraplanar
+		{
+		}
+
+		public interface Fire
+		{
+		}
+
+		public interface Good
+		{
+		}
+
+		public interface Incorporeal
+		{
+		}
+
+		public interface Lawful
+		{
+		}
+
+		public interface Native
+		{
+		}
+
+		public interface Psionic
+		{
+		}
+
+		public interface Shapechanger
+		{
+		}
+
+		public interface Swarm
+		{
+		}
+
+		public interface Water
+		{
+		}
+	}
 }
