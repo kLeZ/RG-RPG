@@ -22,11 +22,58 @@ import it.d4nguard.rgrpg.profile.Coin;
 
 import javax.measure.Measurable;
 import javax.measure.quantity.Mass;
+import javax.measure.quantity.Velocity;
 
 public class Armor extends Item
 {
 	private final int armorClass;
 	private final int maxDexterity;
 	private final ArmorCategoryType armorCategory;
-	private final 
+	private final int armorCheckPenalty;
+	private final int arcaneSpellFailure;
+	private final Measurable<Velocity> speed;
+
+	public Armor(String name, String description, Coin cost,
+					Measurable<Mass> weight, int armorClass, int maxDexterity,
+					ArmorCategoryType armorCategory, int armorCheckPenalty,
+					int arcaneSpellFailure, Measurable<Velocity> speed)
+	{
+		super(name, description, cost, weight);
+		this.armorClass = armorClass;
+		this.maxDexterity = maxDexterity;
+		this.armorCategory = armorCategory;
+		this.armorCheckPenalty = armorCheckPenalty;
+		this.arcaneSpellFailure = arcaneSpellFailure;
+		this.speed = speed;
+	}
+
+	public int getArmorClass()
+	{
+		return armorClass;
+	}
+
+	public int getMaxDexterity()
+	{
+		return maxDexterity;
+	}
+
+	public ArmorCategoryType getArmorCategory()
+	{
+		return armorCategory;
+	}
+
+	public int getArmorCheckPenalty()
+	{
+		return armorCheckPenalty;
+	}
+
+	public int getArcaneSpellFailure()
+	{
+		return arcaneSpellFailure;
+	}
+
+	public Measurable<Velocity> getSpeed()
+	{
+		return speed;
+	}
 }

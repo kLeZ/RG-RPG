@@ -18,7 +18,54 @@
 // 
 package it.d4nguard.rgrpg.d20;
 
+import it.d4nguard.rgrpg.profile.Coin;
+
+import javax.measure.Measurable;
+import javax.measure.quantity.Mass;
+
 public class Shield extends Item
 {
-	public abstract int getArmorClass();
+	private final int armorClass;
+	private final int maxDexterity;
+	private final ArmorCategoryType armorCategory;
+	private final int armorCheckPenalty;
+	private final int arcaneSpellFailure;
+
+	public Shield(String name, String description, Coin cost,
+					Measurable<Mass> weight, int armorClass, int maxDexterity,
+					ArmorCategoryType armorCategory, int armorCheckPenalty,
+					int arcaneSpellFailure)
+	{
+		super(name, description, cost, weight);
+		this.armorClass = armorClass;
+		this.maxDexterity = maxDexterity;
+		this.armorCategory = armorCategory;
+		this.armorCheckPenalty = armorCheckPenalty;
+		this.arcaneSpellFailure = arcaneSpellFailure;
+	}
+
+	public int getArmorClass()
+	{
+		return armorClass;
+	}
+
+	public int getMaxDexterity()
+	{
+		return maxDexterity;
+	}
+
+	public ArmorCategoryType getArmorCategory()
+	{
+		return armorCategory;
+	}
+
+	public int getArmorCheckPenalty()
+	{
+		return armorCheckPenalty;
+	}
+
+	public int getArcaneSpellFailure()
+	{
+		return arcaneSpellFailure;
+	}
 }

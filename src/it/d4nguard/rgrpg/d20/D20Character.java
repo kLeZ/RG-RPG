@@ -54,7 +54,6 @@ public class D20Character extends Character
 	private ArmorProficiency armorProficiency;
 	private ShieldProficiency shieldProficiency;
 	private WeaponProficiency weaponProficiency;
-	private AlteredStatuses alteredStatuses;
 
 	public D20Character()
 	{
