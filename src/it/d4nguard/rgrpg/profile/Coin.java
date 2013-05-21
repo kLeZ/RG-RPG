@@ -51,19 +51,6 @@ public class Coin
 
 	public static double convert(Coin coin, CoinType type)
 	{
-		double ret = 0;
-		switch (coin.getType())
-		{
-			case PlatinumPiece:
-				break;
-			case GoldPiece:
-				ret = coin.getAmount() * type.getUnity();
-				break;
-			case SilverPiece:
-				break;
-			case CopperPiece:
-				break;
-		}
-		return ret;
+		return coin.getAmount() * coin.getType().getUnity(type);
 	}
 }

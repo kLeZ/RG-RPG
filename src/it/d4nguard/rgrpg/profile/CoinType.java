@@ -20,20 +20,42 @@ package it.d4nguard.rgrpg.profile;
 
 public enum CoinType
 {
-	PlatinumPiece(10),
-	GoldPiece(1),
-	SilverPiece(.1),
-	CopperPiece(.01);
+	PlatinumPiece(1000, 100, 10, 1),
+	GoldPiece(100, 10, 1, .1),
+	SilverPiece(10, 1, .1, .01),
+	CopperPiece(1, .1, .01, .001);
 
-	private double unity;
+	private final double cp;
+	private final double sp;
+	private final double gp;
+	private final double pp;
 
-	private CoinType(double unity)
+	private CoinType(final double cp, final double sp, final double gp, final double pp)
 	{
-		this.unity = unity;
+		this.cp = cp;
+		this.sp = sp;
+		this.gp = gp;
+		this.pp = pp;
 	}
 
-	public double getUnity()
+	public double getUnity(CoinType type)
 	{
-		return unity;
+		double ret = 0;
+		switch (type)
+		{
+			case PlatinumPiece:
+				ret = pp;
+				break;
+			case GoldPiece:
+				ret = gp;
+				break;
+			case SilverPiece:
+				ret = sp;
+				break;
+			case CopperPiece:
+				ret = cp;
+				break;
+		}
+		return ret;
 	}
 }
