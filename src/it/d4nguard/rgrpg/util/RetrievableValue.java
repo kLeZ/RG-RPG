@@ -19,6 +19,7 @@
 package it.d4nguard.rgrpg.util;
 
 import java.lang.reflect.Field;
+import java.lang.reflect.InvocationTargetException;
 import java.lang.reflect.Method;
 
 public class RetrievableValue
@@ -39,6 +40,19 @@ public class RetrievableValue
 
 	public int getInt()
 	{
-		return 0; //TODO: Implement
+		int ret = 0;
+		return ret; //TODO: Implement
+	}
+
+	public Object get() throws IllegalArgumentException,
+					IllegalAccessException, InvocationTargetException
+	{
+		Object o = null;
+		if (toCall != null) toCall.invoke(obj);
+		else if (toRetrieve != null)
+		{
+
+		}
+		return o;
 	}
 }
