@@ -18,23 +18,9 @@
 // 
 package it.d4nguard.rgrpg.d20;
 
-import it.d4nguard.rgrpg.util.Dice;
-
-import java.util.EnumSet;
-
-import javax.measure.Measurable;
-import javax.measure.quantity.Length;
-import javax.measure.quantity.Mass;
-
-public abstract class Weapon implements Item
+public enum WeaponType
 {
-	public abstract Dice getDamage();
-
-	public abstract CriticalHit getCriticalHit();
-
-	public abstract Measurable<Length> getRangeIncrement();
-
-	public abstract Measurable<Mass> getWeight();
-
-	public abstract EnumSet<WeaponType> getWeaponType();
+	Slashing,
+	Bludgeoning,
+	Piercing;
 }

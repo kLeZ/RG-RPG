@@ -18,6 +18,10 @@
 // 
 package it.d4nguard.rgrpg.profile;
 
+import javax.measure.Measurable;
+import javax.measure.quantity.Length;
+import javax.measure.quantity.Mass;
+
 import org.joda.time.DateMidnight;
 
 public class GeneralInfo
@@ -26,8 +30,8 @@ public class GeneralInfo
 	private String skinColor;
 	private String hairColor;
 	private String eyesColor;
-	private short height;
-	private short weight;
+	private Measurable<Length> height;
+	private Measurable<Mass> weight;
 	private DateMidnight dateOfBirth;
 	private GenderType gender;
 	private String philosophyDeityReligion;
@@ -76,22 +80,22 @@ public class GeneralInfo
 		this.eyesColor = eyesColor;
 	}
 
-	public short getHeight()
+	public Measurable<Length> getHeight()
 	{
 		return height;
 	}
 
-	public void setHeight(short height)
+	public void setHeight(Measurable<Length> height)
 	{
 		this.height = height;
 	}
 
-	public short getWeight()
+	public Measurable<Mass> getWeight()
 	{
 		return weight;
 	}
 
-	public void setWeight(short weight)
+	public void setWeight(Measurable<Mass> weight)
 	{
 		this.weight = weight;
 	}
