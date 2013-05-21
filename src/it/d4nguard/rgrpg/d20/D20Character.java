@@ -66,7 +66,8 @@ public class D20Character extends Character
 	{
 		int hp = 0;
 		for (Class c : classes)
-			hp += NumericUtils.sum(attributes.getStamina().getModifier(), c.getHitDiceResultPool());
+			hp += NumericUtils.sum(attributes.getStamina().getModifier(),
+							c.getHitDiceResultPool());
 		hp = NumericUtils.sum(hp, hpModifiers);
 		return (current ? NumericUtils.sum(hp, -damage) : hp);
 	}
@@ -115,7 +116,8 @@ public class D20Character extends Character
 
 	public int getMaxDexterity()
 	{
-		return NumericUtils.min(attributes.getDexterity().getModifier(), armor.getMaxDexterity());
+		return NumericUtils.min(attributes.getDexterity().getModifier(),
+						armor.getMaxDexterity());
 	}
 
 	public int getArmorClass(ArmorClassType type)

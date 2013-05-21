@@ -43,7 +43,8 @@ public class Utils
 		return ret;
 	}
 
-	public static ArrayList<String> splitEncolosed(String s, char open_tag, char close_tag)
+	public static ArrayList<String> splitEncolosed(String s, char open_tag,
+					char close_tag)
 	{
 		ArrayList<String> ret = new ArrayList<String>();
 		char[] chars = s.toCharArray();

@@ -43,7 +43,8 @@ public class CommandsInterpreter implements Runnable
 		try
 		{
 			boolean exit = false;
-			BufferedReader reader = new BufferedReader(new InputStreamReader(in));
+			BufferedReader reader = new BufferedReader(
+							new InputStreamReader(in));
 			while (!exit)
 			{
 				System.out.print(new PromptFeeder().get());
@@ -53,7 +54,8 @@ public class CommandsInterpreter implements Runnable
 					String[] args = cmdLn.split("\\s");
 					// System.out.println(String.format("Command: %s%nArgs: %s%n#Args: %d", cmdLn, Arrays.toString(args), args.length));
 					cmdLn = args[0];
-					if (args.length > 1) args = Arrays.<String> copyOfRange(args, 1, args.length);
+					if (args.length > 1) args = Arrays.<String> copyOfRange(
+									args, 1, args.length);
 					else args = new String[] {};
 					try
 					{
@@ -79,10 +81,13 @@ public class CommandsInterpreter implements Runnable
 		}
 	}
 
-	public static Command resolveCommand(String cmdLn) throws ClassNotFoundException
+	public static Command resolveCommand(String cmdLn)
+					throws ClassNotFoundException
 	{
 		Command cmd = null;
-		String className = String.format("it.d4nguard.rgrpg.commands.%sCommand", StringUtils.capitalize(cmdLn));
+		String className = String.format(
+						"it.d4nguard.rgrpg.commands.%sCommand",
+						StringUtils.capitalize(cmdLn));
 		try
 		{
 			Class<?> clazz = Class.forName(className);

@@ -18,7 +18,7 @@
 // 
 package it.d4nguard.rgrpg.d20;
 
-public abstract class Shield implements Item
+public class Shield extends Item
 {
 	public abstract int getArmorClass();
 }

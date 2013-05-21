@@ -48,7 +48,8 @@ public abstract class Race
 
 	private final Set<Trait> traits;
 
-	public Race(RaceType type, RaceSubType subType, HumanoidRaceSubType humanoidSubType)
+	public Race(RaceType type, RaceSubType subType,
+					HumanoidRaceSubType humanoidSubType)
 	{
 		this.type = type;
 		this.subType = subType;

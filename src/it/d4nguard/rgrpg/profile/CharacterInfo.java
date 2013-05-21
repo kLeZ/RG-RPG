@@ -74,7 +74,9 @@ public class CharacterInfo
 		return lastSessionEarnedExperience;
 	}
 
-	public void setLastSessionEarnedExperience(float lastSessionEarnedExperience)
+	public void
+					setLastSessionEarnedExperience(
+									float lastSessionEarnedExperience)
 	{
 		this.lastSessionEarnedExperience = lastSessionEarnedExperience;
 	}

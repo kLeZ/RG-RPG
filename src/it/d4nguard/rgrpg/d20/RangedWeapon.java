@@ -16,29 +16,36 @@
 // You should have received a copy of the GNU General Public License
 // along with this program.  If not, see <http://www.gnu.org/licenses/>.
 // 
-package it.d4nguard.rgrpg.commands;
+package it.d4nguard.rgrpg.d20;
 
-public class VersionCommand implements Command
+import it.d4nguard.rgrpg.profile.Coin;
+import it.d4nguard.rgrpg.util.Dice;
+
+import java.util.EnumSet;
+
+import javax.measure.Measurable;
+import javax.measure.quantity.Length;
+import javax.measure.quantity.Mass;
+
+public class RangedWeapon extends Weapon
 {
-	public static final int MAJOR = 0;
-	public static final int MINOR = 0;
-	public static final int REVISION = 1;
+	private final Measurable<Length> rangeIncrement;
 
-	@Override
-	public void execute(String... args)
+	public RangedWeapon(String name, String description, Coin cost,
+					Measurable<Mass> weight, WeaponCategoryType weaponCategory,
+					WeaponEncumbranceType weaponEncumbrance, SizeType size,
+					Dice damage, CriticalHit criticalHit,
+					EnumSet<WeaponType> weaponType,
+					Measurable<Length> rangeIncrement)
 	{
-		System.out.println("RG-RPG is a Java-based text, roleplaying-gal game, in which you");
-		System.out.println("have to carry many girls. The RG-RPG acronym is a recursive one and");
-		System.out.println("it means \"RG-RPG is a Gal Role playing game Pointing on Girls.\"");
-		System.out.println("Copyright (C) 2013 by Alessandro Accardo <julius8774@gmail.com>");
-		System.out.println(String.format("RG-RPG version %d.%02d.%03d%s",
-						MAJOR, MINOR, REVISION,
-						System.getProperty("line.separator")));
+		super(name, description, cost, weight, weaponCategory,
+						weaponEncumbrance, size, damage, criticalHit,
+						weaponType);
+		this.rangeIncrement = rangeIncrement;
 	}
 
-	@Override
-	public String getHelp()
+	public Measurable<Length> getRangeIncrement()
 	{
-		return "Prints some info about the program and its version.";
+		return rangeIncrement;
 	}
 }

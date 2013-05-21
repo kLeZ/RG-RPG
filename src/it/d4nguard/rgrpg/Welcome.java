@@ -28,7 +28,9 @@ public class Welcome
 		System.out.println("Welcome to RG-RPG!");
 		System.out.println();
 		new VersionCommand().execute();
-		Scanner scn = new Scanner(ClassLoader.getSystemClassLoader().getResourceAsStream("it/d4nguard/rgrpg/Welcome.txt"));
+		Scanner scn = new Scanner(
+						ClassLoader.getSystemClassLoader().getResourceAsStream(
+										"it/d4nguard/rgrpg/Welcome.txt"));
 		while (scn.hasNext())
 		{
 			System.out.println(scn.nextLine());

@@ -37,18 +37,24 @@ public class HelpCommand implements Command
 		{
 			System.out.println();
 			System.out.println("Listing available commands:");
-			Reflections reflections = new Reflections("it.d4nguard.rgrpg.commands");
+			Reflections reflections = new Reflections(
+							"it.d4nguard.rgrpg.commands");
 			Set<Class<? extends Command>> commands = reflections.getSubTypesOf(Command.class);
 			for (Class<? extends Command> cmd : commands)
 			{
 				String cmdLn = cmd.getSimpleName().replace("Command", "");
 				try
 				{
-					System.out.println(String.format("%s: %s", cmdLn, CommandsInterpreter.resolveCommand(cmdLn).getHelp()));
+					System.out.println(String.format(
+									"%s: %s",
+									cmdLn,
+									CommandsInterpreter.resolveCommand(cmdLn).getHelp()));
 				}
 				catch (ClassNotFoundException e)
 				{
-					System.err.println(String.format("There was an error reading '%s' command: '%s'", cmdLn, e.getMessage()));
+					System.err.println(String.format(
+									"There was an error reading '%s' command: '%s'",
+									cmdLn, e.getMessage()));
 				}
 			}
 			System.out.println();
@@ -62,7 +68,9 @@ public class HelpCommand implements Command
 			}
 			catch (ClassNotFoundException e)
 			{
-				System.out.println(String.format("There is no help for specified command '%s'", args[0]));
+				System.out.println(String.format(
+								"There is no help for specified command '%s'",
+								args[0]));
 			}
 		}
 	}

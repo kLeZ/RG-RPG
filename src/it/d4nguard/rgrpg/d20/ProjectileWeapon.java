@@ -19,43 +19,35 @@
 package it.d4nguard.rgrpg.d20;
 
 import it.d4nguard.rgrpg.profile.Coin;
+import it.d4nguard.rgrpg.util.Dice;
+
+import java.util.ArrayList;
+import java.util.EnumSet;
 
 import javax.measure.Measurable;
+import javax.measure.quantity.Length;
 import javax.measure.quantity.Mass;
 
-public abstract class Item
+public class ProjectileWeapon extends RangedWeapon
 {
-	private final String name;
-	private final String description;
-	private final Coin cost;
-	private final Measurable<Mass> weight;
+	private final ArrayList<Ammunition> ammunitions;
 
-	public Item(String name, String description, Coin cost,
-					Measurable<Mass> weight)
+	public ProjectileWeapon(String name, String description, Coin cost,
+					Measurable<Mass> weight, WeaponCategoryType weaponCategory,
+					WeaponEncumbranceType weaponEncumbrance, SizeType size,
+					Dice damage, CriticalHit criticalHit,
+					EnumSet<WeaponType> weaponType,
+					Measurable<Length> rangeIncrement,
+					ArrayList<Ammunition> ammunitions)
 	{
-		this.name = name;
-		this.description = description;
-		this.cost = cost;
-		this.weight = weight;
+		super(name, description, cost, weight, weaponCategory,
+						weaponEncumbrance, size, damage, criticalHit,
+						weaponType, rangeIncrement);
+		this.ammunitions = ammunitions;
 	}
 
-	public String getName()
+	public ArrayList<Ammunition> getAmmunitions()
 	{
-		return name;
-	}
-
-	public String getDescription()
-	{
-		return description;
-	}
-
-	public Coin getCost()
-	{
-		return cost;
-	}
-
-	public Measurable<Mass> getWeight()
-	{
-		return weight;
+		return ammunitions;
 	}
 }

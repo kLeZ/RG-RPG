@@ -42,7 +42,8 @@ public class Dice
 		modifier = Integer.MIN_VALUE;
 	}
 
-	public Dice(int nThrows, int nFaces, OperatorType modifierOperator, int modifier)
+	public Dice(int nThrows, int nFaces, OperatorType modifierOperator,
+					int modifier)
 	{
 		this.nThrows = nThrows;
 		this.nFaces = nFaces;
@@ -98,7 +99,8 @@ public class Dice
 	public static LinkedHashMap<Dice, OperatorType> parseMany(String dts)
 	{
 		LinkedHashMap<Dice, OperatorType> ret = new LinkedHashMap<Dice, OperatorType>();
-		ArrayList<String> parts = Utils.splitEncolosed(dts, OPENED_DICE, CLOSED_DICE);
+		ArrayList<String> parts = Utils.splitEncolosed(dts, OPENED_DICE,
+						CLOSED_DICE);
 		Dice dt = null;
 		OperatorType ot = null;
 

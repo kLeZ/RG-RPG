@@ -30,7 +30,8 @@ public enum CoinType
 	private final double gp;
 	private final double pp;
 
-	private CoinType(final double cp, final double sp, final double gp, final double pp)
+	private CoinType(final double cp, final double sp, final double gp,
+					final double pp)
 	{
 		this.cp = cp;
 		this.sp = sp;
