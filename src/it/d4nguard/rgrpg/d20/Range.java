@@ -18,11 +18,53 @@
 // 
 package it.d4nguard.rgrpg.d20;
 
-import it.d4nguard.rgrpg.util.Dice;
-
-public abstract class Weapon implements Item
+public class Range
 {
-	public abstract Dice getDamage();
+	public static final int STEP_MAGIC = 1;
 
-	public abstract CriticalHit getCriticalHit();
+	private int step;
+	private int min;
+	private final int max;
+
+	public Range()
+	{
+		this(20, 20);
+	}
+
+	public Range(int min)
+	{
+		this(min, 20);
+	}
+
+	public Range(int min, int max)
+	{
+		this.min = min;
+		this.max = max;
+		this.step = max - min + STEP_MAGIC;
+	}
+
+	public int getMin()
+	{
+		return min;
+	}
+
+	private void setMin(int min)
+	{
+		this.min = min;
+	}
+
+	public int getMax()
+	{
+		return max;
+	}
+
+	public boolean inRange(final int i)
+	{
+		return i >= min && i <= max;
+	}
+
+	public void increase()
+	{
+		setMin(max - (++step - STEP_MAGIC));
+	}
 }

@@ -18,11 +18,29 @@
 // 
 package it.d4nguard.rgrpg.d20;
 
-import it.d4nguard.rgrpg.util.Dice;
-
-public abstract class Weapon implements Item
+public class CriticalHit
 {
-	public abstract Dice getDamage();
+	private final Range menaceRange;
+	private final int multiplier;
 
-	public abstract CriticalHit getCriticalHit();
+	public CriticalHit()
+	{
+		this(new Range(), 2);
+	}
+
+	public CriticalHit(Range menaceRange, int multiplier)
+	{
+		this.menaceRange = menaceRange;
+		this.multiplier = multiplier;
+	}
+
+	public Range getMenaceRange()
+	{
+		return menaceRange;
+	}
+
+	public int getMultiplier()
+	{
+		return multiplier;
+	}
 }
