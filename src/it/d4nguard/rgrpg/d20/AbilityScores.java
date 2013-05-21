@@ -18,76 +18,76 @@
 // 
 package it.d4nguard.rgrpg.d20;
 
-public class Attributes
+public class AbilityScores
 {
-	private Attribute strength;
-	private Attribute dexterity;
-	private Attribute stamina;
-	private Attribute intelligence;
-	private Attribute wisdom;
-	private Attribute charisma;
+	private AbilityScore strength;
+	private AbilityScore dexterity;
+	private AbilityScore stamina;
+	private AbilityScore intelligence;
+	private AbilityScore wisdom;
+	private AbilityScore charisma;
 
-	public Attribute getStrength()
+	public AbilityScore getStrength()
 	{
 		return strength;
 	}
 
-	public void setStrength(Attribute strength)
+	public void setStrength(AbilityScore strength)
 	{
 		this.strength = strength;
 	}
 
-	public Attribute getDexterity()
+	public AbilityScore getDexterity()
 	{
 		return dexterity;
 	}
 
-	public void setDexterity(Attribute dexterity)
+	public void setDexterity(AbilityScore dexterity)
 	{
 		this.dexterity = dexterity;
 	}
 
-	public Attribute getStamina()
+	public AbilityScore getStamina()
 	{
 		return stamina;
 	}
 
-	public void setStamina(Attribute stamina)
+	public void setStamina(AbilityScore stamina)
 	{
 		this.stamina = stamina;
 	}
 
-	public Attribute getIntelligence()
+	public AbilityScore getIntelligence()
 	{
 		return intelligence;
 	}
 
-	public void setIntelligence(Attribute intelligence)
+	public void setIntelligence(AbilityScore intelligence)
 	{
 		this.intelligence = intelligence;
 	}
 
-	public Attribute getWisdom()
+	public AbilityScore getWisdom()
 	{
 		return wisdom;
 	}
 
-	public void setWisdom(Attribute wisdom)
+	public void setWisdom(AbilityScore wisdom)
 	{
 		this.wisdom = wisdom;
 	}
 
-	public Attribute getCharisma()
+	public AbilityScore getCharisma()
 	{
 		return charisma;
 	}
 
-	public void setCharisma(Attribute charisma)
+	public void setCharisma(AbilityScore charisma)
 	{
 		this.charisma = charisma;
 	}
 
-	public Attributes()
+	public AbilityScores()
 	{
 	}
 }

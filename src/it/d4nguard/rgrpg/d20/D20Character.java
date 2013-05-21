@@ -36,7 +36,7 @@ public class D20Character extends Character
 	private float experience;
 	private AlignmentType alignment;
 	private final Set<? extends Class> classes;
-	private Attributes attributes;
+	private AbilityScores abilityScores;
 	private int damage;
 	private List<Integer> hpModifiers;
 	private List<Integer> babModifiers;
@@ -48,6 +48,7 @@ public class D20Character extends Character
 	private Collection<Integer> dodgeBonuses;
 	private Equipment equipment;
 	private Set<Language> spokenLanguages;
+	private Set<Skill> skills;
 
 	public D20Character()
 	{
@@ -60,7 +61,7 @@ public class D20Character extends Character
 	{
 		int hp = 0;
 		for (Class c : classes)
-			hp += NumericUtils.sum(attributes.getStamina().getModifier(),
+			hp += NumericUtils.sum(abilityScores.getStamina().getModifier(),
 							c.getHitDiceResultPool());
 		hp = NumericUtils.sum(hp, hpModifiers);
 		return (current ? NumericUtils.sum(hp, -damage) : hp);
@@ -94,15 +95,15 @@ public class D20Character extends Character
 		{
 			case Melee:
 				bab += race.getSize().getModifier();
-				bab += attributes.getStrength().getModifier();
+				bab += abilityScores.getStrength().getModifier();
 				break;
 			case Ranged:
 				bab += race.getSize().getModifier();
-				bab += attributes.getDexterity().getModifier();
+				bab += abilityScores.getDexterity().getModifier();
 				break;
 			case Grapple:
 				bab += race.getSize().getGrapple();
-				bab += attributes.getStrength().getModifier();
+				bab += abilityScores.getStrength().getModifier();
 				break;
 		}
 		return NumericUtils.sum(bab, babModifiers);
@@ -110,7 +111,7 @@ public class D20Character extends Character
 
 	public int getMaxDexterity()
 	{
-		return NumericUtils.min(attributes.getDexterity().getModifier(),
+		return NumericUtils.min(abilityScores.getDexterity().getModifier(),
 						equipment.getArmor().getMaxDexterity());
 	}
 
@@ -149,13 +150,13 @@ public class D20Character extends Character
 		switch (type)
 		{
 			case Fortitude:
-				save += attributes.getStamina().getModifier();
+				save += abilityScores.getStamina().getModifier();
 				break;
 			case Reflexes:
-				save += attributes.getDexterity().getModifier();
+				save += abilityScores.getDexterity().getModifier();
 				break;
 			case WillPower:
-				save += attributes.getWisdom().getModifier();
+				save += abilityScores.getWisdom().getModifier();
 				break;
 		}
 		return NumericUtils.sum(save, stModifiers);

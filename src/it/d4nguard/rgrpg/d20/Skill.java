@@ -18,62 +18,50 @@
 // 
 package it.d4nguard.rgrpg.d20;
 
-import it.d4nguard.rgrpg.d20.weapons.Weapon;
+import it.d4nguard.rgrpg.util.NumericUtils;
+import it.d4nguard.rgrpg.util.RetrievableValue;
 
 import java.util.ArrayList;
 import java.util.List;
 
-public class Equipment
+public class Skill
 {
-	private Armor armor;
-	private Shield shield;
-	private Weapon weapon;
-	private final List<Item> inventory;
-	private final Wallet wallet;
+	private int ranks;
+	private RetrievableValue abilityMod;
+	private final List<Integer> miscMod;
 
-	public Equipment()
+	public Skill()
 	{
-		this.inventory = new ArrayList<Item>();
-		this.wallet = new Wallet();
+		this.miscMod = new ArrayList<Integer>();
 	}
 
-	public Armor getArmor()
+	public int getRanks()
 	{
-		return armor;
+		return ranks;
 	}
 
-	public void setArmor(Armor armor)
+	public void setRanks(int ranks)
 	{
-		this.armor = armor;
+		this.ranks = ranks;
 	}
 
-	public Shield getShield()
+	public RetrievableValue getAbilityModifier()
 	{
-		return shield;
+		return abilityMod;
 	}
 
-	public void setShield(Shield shield)
+	public void setAbilityModifier(RetrievableValue abilityModifier)
 	{
-		this.shield = shield;
+		this.abilityMod = abilityModifier;
 	}
 
-	public Weapon getWeapon()
+	public List<Integer> getMiscMod()
 	{
-		return weapon;
+		return miscMod;
 	}
 
-	public void setWeapon(Weapon weapon)
+	public int getSkillModifier()
 	{
-		this.weapon = weapon;
-	}
-
-	public List<Item> getInventory()
-	{
-		return inventory;
-	}
-
-	public Wallet getWallet()
-	{
-		return wallet;
+		return NumericUtils.sum(ranks + abilityMod.getInt(), miscMod);
 	}
 }

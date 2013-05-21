@@ -18,32 +18,51 @@
 // 
 package it.d4nguard.rgrpg.d20;
 
-public class Attribute
+import it.d4nguard.rgrpg.profile.Coin;
+import it.d4nguard.rgrpg.profile.CoinType;
+
+import java.util.ArrayList;
+import java.util.List;
+
+public class Wallet
 {
-	private int value;
-	private int modifier;
+	private final List<Item> gems;
+	private final Coin cp;
+	private final Coin sp;
+	private final Coin gp;
+	private final Coin pp;
 
-	public Attribute()
+	public Wallet()
 	{
+		this.gems = new ArrayList<Item>();
+		this.cp = new Coin(CoinType.CopperPiece);
+		this.sp = new Coin(CoinType.SilverPiece);
+		this.gp = new Coin(CoinType.GoldPiece);
+		this.pp = new Coin(CoinType.PlatinumPiece);
 	}
 
-	public int getValue()
+	public List<Item> getGems()
 	{
-		return value;
+		return gems;
 	}
 
-	public void setValue(int value)
+	public Coin getCp()
 	{
-		this.value = value;
+		return cp;
 	}
 
-	public int getModifier()
+	public Coin getSp()
 	{
-		return modifier;
+		return sp;
 	}
 
-	public void setModifier(int modifier)
+	public Coin getGp()
 	{
-		this.modifier = modifier;
+		return gp;
+	}
+
+	public Coin getPp()
+	{
+		return pp;
 	}
 }

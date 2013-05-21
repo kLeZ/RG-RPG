@@ -16,64 +16,29 @@
 // You should have received a copy of the GNU General Public License
 // along with this program.  If not, see <http://www.gnu.org/licenses/>.
 // 
-package it.d4nguard.rgrpg.d20;
+package it.d4nguard.rgrpg.util;
 
-import it.d4nguard.rgrpg.d20.weapons.Weapon;
+import java.lang.reflect.Field;
+import java.lang.reflect.Method;
 
-import java.util.ArrayList;
-import java.util.List;
-
-public class Equipment
+public class RetrievableValue
 {
-	private Armor armor;
-	private Shield shield;
-	private Weapon weapon;
-	private final List<Item> inventory;
-	private final Wallet wallet;
+	private final Object obj;
+	private final Field toRetrieve;
+	private final Method toCall;
+	private final Class<?> expectedReturnType;
 
-	public Equipment()
+	public RetrievableValue(Object obj, Field toRetrieve, Method toCall,
+					Class<?> expectedReturnType)
 	{
-		this.inventory = new ArrayList<Item>();
-		this.wallet = new Wallet();
+		this.obj = obj;
+		this.toRetrieve = toRetrieve;
+		this.toCall = toCall;
+		this.expectedReturnType = expectedReturnType;
 	}
 
-	public Armor getArmor()
+	public int getInt()
 	{
-		return armor;
-	}
-
-	public void setArmor(Armor armor)
-	{
-		this.armor = armor;
-	}
-
-	public Shield getShield()
-	{
-		return shield;
-	}
-
-	public void setShield(Shield shield)
-	{
-		this.shield = shield;
-	}
-
-	public Weapon getWeapon()
-	{
-		return weapon;
-	}
-
-	public void setWeapon(Weapon weapon)
-	{
-		this.weapon = weapon;
-	}
-
-	public List<Item> getInventory()
-	{
-		return inventory;
-	}
-
-	public Wallet getWallet()
-	{
-		return wallet;
+		return 0; //TODO: Implement
 	}
 }

@@ -18,62 +18,32 @@
 // 
 package it.d4nguard.rgrpg.d20;
 
-import it.d4nguard.rgrpg.d20.weapons.Weapon;
-
-import java.util.ArrayList;
-import java.util.List;
-
-public class Equipment
+public class AbilityScore
 {
-	private Armor armor;
-	private Shield shield;
-	private Weapon weapon;
-	private final List<Item> inventory;
-	private final Wallet wallet;
+	private int value;
+	private int modifier;
 
-	public Equipment()
+	public AbilityScore()
 	{
-		this.inventory = new ArrayList<Item>();
-		this.wallet = new Wallet();
 	}
 
-	public Armor getArmor()
+	public int getValue()
 	{
-		return armor;
+		return value;
 	}
 
-	public void setArmor(Armor armor)
+	public void setValue(int value)
 	{
-		this.armor = armor;
+		this.value = value;
 	}
 
-	public Shield getShield()
+	public int getModifier()
 	{
-		return shield;
+		return modifier;
 	}
 
-	public void setShield(Shield shield)
+	public void setModifier(int modifier)
 	{
-		this.shield = shield;
-	}
-
-	public Weapon getWeapon()
-	{
-		return weapon;
-	}
-
-	public void setWeapon(Weapon weapon)
-	{
-		this.weapon = weapon;
-	}
-
-	public List<Item> getInventory()
-	{
-		return inventory;
-	}
-
-	public Wallet getWallet()
-	{
-		return wallet;
+		this.modifier = modifier;
 	}
 }
