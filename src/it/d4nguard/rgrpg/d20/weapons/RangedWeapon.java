@@ -16,67 +16,38 @@
 // You should have received a copy of the GNU General Public License
 // along with this program.  If not, see <http://www.gnu.org/licenses/>.
 // 
-package it.d4nguard.rgrpg.d20;
+package it.d4nguard.rgrpg.d20.weapons;
 
+import it.d4nguard.rgrpg.d20.CriticalHit;
+import it.d4nguard.rgrpg.d20.SizeType;
 import it.d4nguard.rgrpg.profile.Coin;
 import it.d4nguard.rgrpg.util.Dice;
 
 import java.util.EnumSet;
 
 import javax.measure.Measurable;
+import javax.measure.quantity.Length;
 import javax.measure.quantity.Mass;
 
-public abstract class Weapon extends Item
+public class RangedWeapon extends Weapon
 {
-	private final WeaponCategoryType weaponCategory;
-	private final WeaponEncumbranceType weaponEncumbrance;
-	private final SizeType size;
-	private final Dice damage;
-	private final CriticalHit criticalHit;
-	private final EnumSet<WeaponType> weaponType;
+	private final Measurable<Length> rangeIncrement;
 
-	public Weapon(String name, String description, Coin cost,
+	public RangedWeapon(String name, String description, Coin cost,
 					Measurable<Mass> weight, WeaponCategoryType weaponCategory,
 					WeaponEncumbranceType weaponEncumbrance, SizeType size,
 					Dice damage, CriticalHit criticalHit,
-					EnumSet<WeaponType> weaponType)
+					EnumSet<WeaponType> weaponType,
+					Measurable<Length> rangeIncrement)
 	{
-		super(name, description, cost, weight);
-		this.weaponCategory = weaponCategory;
-		this.weaponEncumbrance = weaponEncumbrance;
-		this.size = size;
-		this.damage = damage;
-		this.criticalHit = criticalHit;
-		this.weaponType = weaponType;
+		super(name, description, cost, weight, weaponCategory,
+						weaponEncumbrance, size, damage, criticalHit,
+						weaponType);
+		this.rangeIncrement = rangeIncrement;
 	}
 
-	public WeaponCategoryType getWeaponCategory()
+	public Measurable<Length> getRangeIncrement()
 	{
-		return weaponCategory;
-	}
-
-	public WeaponEncumbranceType getWeaponEncumbrance()
-	{
-		return weaponEncumbrance;
-	}
-
-	public SizeType getSize()
-	{
-		return size;
-	}
-
-	public Dice getDamage()
-	{
-		return damage;
-	}
-
-	public CriticalHit getCriticalHit()
-	{
-		return criticalHit;
-	}
-
-	public EnumSet<WeaponType> getWeaponType()
-	{
-		return weaponType;
+		return rangeIncrement;
 	}
 }

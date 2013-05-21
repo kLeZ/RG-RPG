@@ -16,31 +16,70 @@
 // You should have received a copy of the GNU General Public License
 // along with this program.  If not, see <http://www.gnu.org/licenses/>.
 // 
-package it.d4nguard.rgrpg.d20;
+package it.d4nguard.rgrpg.d20.weapons;
 
+import it.d4nguard.rgrpg.d20.CriticalHit;
+import it.d4nguard.rgrpg.d20.Item;
+import it.d4nguard.rgrpg.d20.SizeType;
 import it.d4nguard.rgrpg.profile.Coin;
 import it.d4nguard.rgrpg.util.Dice;
 
-import java.math.BigDecimal;
 import java.util.EnumSet;
 
-import javax.measure.DecimalMeasure;
 import javax.measure.Measurable;
-import javax.measure.quantity.Length;
 import javax.measure.quantity.Mass;
-import javax.measure.unit.NonSI;
 
-public class ThrownWeapon extends RangedWeapon
+public abstract class Weapon extends Item
 {
-	public ThrownWeapon(String name, String description, Coin cost,
+	private final WeaponCategoryType weaponCategory;
+	private final WeaponEncumbranceType weaponEncumbrance;
+	private final SizeType size;
+	private final Dice damage;
+	private final CriticalHit criticalHit;
+	private final EnumSet<WeaponType> weaponType;
+
+	public Weapon(String name, String description, Coin cost,
 					Measurable<Mass> weight, WeaponCategoryType weaponCategory,
 					WeaponEncumbranceType weaponEncumbrance, SizeType size,
 					Dice damage, CriticalHit criticalHit,
 					EnumSet<WeaponType> weaponType)
 	{
-		super(name, description, cost, weight, weaponCategory,
-						weaponEncumbrance, size, damage, criticalHit,
-						weaponType, new DecimalMeasure<Length>(new BigDecimal(
-										10.0), NonSI.FOOT));
+		super(name, description, cost, weight);
+		this.weaponCategory = weaponCategory;
+		this.weaponEncumbrance = weaponEncumbrance;
+		this.size = size;
+		this.damage = damage;
+		this.criticalHit = criticalHit;
+		this.weaponType = weaponType;
+	}
+
+	public WeaponCategoryType getWeaponCategory()
+	{
+		return weaponCategory;
+	}
+
+	public WeaponEncumbranceType getWeaponEncumbrance()
+	{
+		return weaponEncumbrance;
+	}
+
+	public SizeType getSize()
+	{
+		return size;
+	}
+
+	public Dice getDamage()
+	{
+		return damage;
+	}
+
+	public CriticalHit getCriticalHit()
+	{
+		return criticalHit;
+	}
+
+	public EnumSet<WeaponType> getWeaponType()
+	{
+		return weaponType;
 	}
 }

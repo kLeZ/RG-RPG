@@ -28,29 +28,5 @@ public class Armor extends Item
 	private final int armorClass;
 	private final int maxDexterity;
 	private final ArmorCategoryType armorCategory;
-
-	public Armor(String name, String description, Coin cost,
-					Measurable<Mass> weight, int armorClass, int maxDexterity,
-					ArmorCategoryType armorCategory)
-	{
-		super(name, description, cost, weight);
-		this.armorClass = armorClass;
-		this.maxDexterity = maxDexterity;
-		this.armorCategory = armorCategory;
-	}
-
-	public int getArmorClass()
-	{
-		return armorClass;
-	}
-
-	public int getMaxDexterity()
-	{
-		return maxDexterity;
-	}
-
-	public ArmorCategoryType getArmorCategory()
-	{
-		return armorCategory;
-	}
+	private final 
 }

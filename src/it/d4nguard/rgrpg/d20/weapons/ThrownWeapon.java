@@ -16,19 +16,25 @@
 // You should have received a copy of the GNU General Public License
 // along with this program.  If not, see <http://www.gnu.org/licenses/>.
 // 
-package it.d4nguard.rgrpg.d20;
+package it.d4nguard.rgrpg.d20.weapons;
 
+import it.d4nguard.rgrpg.d20.CriticalHit;
+import it.d4nguard.rgrpg.d20.SizeType;
 import it.d4nguard.rgrpg.profile.Coin;
 import it.d4nguard.rgrpg.util.Dice;
 
+import java.math.BigDecimal;
 import java.util.EnumSet;
 
+import javax.measure.DecimalMeasure;
 import javax.measure.Measurable;
+import javax.measure.quantity.Length;
 import javax.measure.quantity.Mass;
+import javax.measure.unit.NonSI;
 
-public class MeleeWeapon extends Weapon
+public class ThrownWeapon extends RangedWeapon
 {
-	public MeleeWeapon(String name, String description, Coin cost,
+	public ThrownWeapon(String name, String description, Coin cost,
 					Measurable<Mass> weight, WeaponCategoryType weaponCategory,
 					WeaponEncumbranceType weaponEncumbrance, SizeType size,
 					Dice damage, CriticalHit criticalHit,
@@ -36,6 +42,7 @@ public class MeleeWeapon extends Weapon
 	{
 		super(name, description, cost, weight, weaponCategory,
 						weaponEncumbrance, size, damage, criticalHit,
-						weaponType);
+						weaponType, new DecimalMeasure<Length>(new BigDecimal(
+										10.0), NonSI.FOOT));
 	}
 }

@@ -18,6 +18,8 @@
 // 
 package it.d4nguard.rgrpg.d20;
 
+import it.d4nguard.rgrpg.d20.weapons.Weapon;
+
 import java.util.HashSet;
 import java.util.Set;
 

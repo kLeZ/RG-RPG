@@ -16,36 +16,11 @@
 // You should have received a copy of the GNU General Public License
 // along with this program.  If not, see <http://www.gnu.org/licenses/>.
 // 
-package it.d4nguard.rgrpg.d20;
+package it.d4nguard.rgrpg.d20.weapons;
 
-import it.d4nguard.rgrpg.profile.Coin;
-import it.d4nguard.rgrpg.util.Dice;
-
-import java.util.EnumSet;
-
-import javax.measure.Measurable;
-import javax.measure.quantity.Length;
-import javax.measure.quantity.Mass;
-
-public class RangedWeapon extends Weapon
+public enum WeaponType
 {
-	private final Measurable<Length> rangeIncrement;
-
-	public RangedWeapon(String name, String description, Coin cost,
-					Measurable<Mass> weight, WeaponCategoryType weaponCategory,
-					WeaponEncumbranceType weaponEncumbrance, SizeType size,
-					Dice damage, CriticalHit criticalHit,
-					EnumSet<WeaponType> weaponType,
-					Measurable<Length> rangeIncrement)
-	{
-		super(name, description, cost, weight, weaponCategory,
-						weaponEncumbrance, size, damage, criticalHit,
-						weaponType);
-		this.rangeIncrement = rangeIncrement;
-	}
-
-	public Measurable<Length> getRangeIncrement()
-	{
-		return rangeIncrement;
-	}
+	Slashing,
+	Bludgeoning,
+	Piercing;
 }

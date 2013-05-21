@@ -19,6 +19,7 @@
 package it.d4nguard.rgrpg.d20;
 
 import it.d4nguard.rgrpg.d20.races.Race;
+import it.d4nguard.rgrpg.d20.weapons.Weapon;
 import it.d4nguard.rgrpg.profile.Character;
 import it.d4nguard.rgrpg.profile.Player;
 import it.d4nguard.rgrpg.util.NumericUtils;
