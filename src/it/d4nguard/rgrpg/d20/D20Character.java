@@ -19,7 +19,6 @@
 package it.d4nguard.rgrpg.d20;
 
 import it.d4nguard.rgrpg.d20.races.Race;
-import it.d4nguard.rgrpg.d20.weapons.Weapon;
 import it.d4nguard.rgrpg.profile.Character;
 import it.d4nguard.rgrpg.profile.Player;
 import it.d4nguard.rgrpg.util.NumericUtils;
@@ -47,13 +46,8 @@ public class D20Character extends Character
 	private Set<ResistanceToEnergy> resistanceToEnergies;
 	private int deflection;
 	private Collection<Integer> dodgeBonuses;
-	private Armor armor;
-	private Shield shield;
-	private Weapon weapon;
+	private Equipment equipment;
 	private Set<Language> spokenLanguages;
-	private ArmorProficiency armorProficiency;
-	private ShieldProficiency shieldProficiency;
-	private WeaponProficiency weaponProficiency;
 
 	public D20Character()
 	{
@@ -117,7 +111,7 @@ public class D20Character extends Character
 	public int getMaxDexterity()
 	{
 		return NumericUtils.min(attributes.getDexterity().getModifier(),
-						armor.getMaxDexterity());
+						equipment.getArmor().getMaxDexterity());
 	}
 
 	public int getArmorClass(ArmorClassType type)
@@ -126,15 +120,15 @@ public class D20Character extends Character
 		switch (type)
 		{
 			case Normal:
-				ac += armor.getArmorClass();
-				ac += shield.getArmorClass();
+				ac += equipment.getArmor().getArmorClass();
+				ac += equipment.getShield().getArmorClass();
 				ac += getMaxDexterity();
 				ac += race.getArmorClass();
 				ac = NumericUtils.sum(ac, dodgeBonuses);
 				break;
 			case FlatFooted: // Denies DEX
-				ac += armor.getArmorClass();
-				ac += shield.getArmorClass();
+				ac += equipment.getArmor().getArmorClass();
+				ac += equipment.getShield().getArmorClass();
 				ac += race.getArmorClass();
 				break;
 			case Touch: // Denies ARM, SHI, NAT
