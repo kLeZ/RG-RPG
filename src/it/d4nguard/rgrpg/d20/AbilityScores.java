@@ -27,6 +27,10 @@ public class AbilityScores
 	private AbilityScore wisdom;
 	private AbilityScore charisma;
 
+	public AbilityScores()
+	{
+	}
+
 	public AbilityScore getStrength()
 	{
 		return strength;
@@ -85,9 +89,5 @@ public class AbilityScores
 	public void setCharisma(AbilityScore charisma)
 	{
 		this.charisma = charisma;
-	}
-
-	public AbilityScores()
-	{
 	}
 }

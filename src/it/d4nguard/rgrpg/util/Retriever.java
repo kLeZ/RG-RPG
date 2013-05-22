@@ -18,24 +18,21 @@
 // 
 package it.d4nguard.rgrpg.util;
 
-import java.lang.reflect.Field;
 import java.lang.reflect.InvocationTargetException;
-import java.lang.reflect.Method;
 
-public class RetrievableValue
+import com.db4o.foundation.ArgumentNullException;
+
+public class Retriever
 {
-	private final Object obj;
-	private final Field toRetrieve;
-	private final Method toCall;
-	private final Class<?> expectedReturnType;
+	private final Retrievable<?> obj;
+	private final String toRetrieve;
 
-	public RetrievableValue(Object obj, Field toRetrieve, Method toCall,
-					Class<?> expectedReturnType)
+	public Retriever(Retrievable<?> obj, String toRetrieve)
 	{
+		if (obj == null) throw new ArgumentNullException("obj");
+		if (toRetrieve == null) throw new ArgumentNullException("toRetrieve");
 		this.obj = obj;
 		this.toRetrieve = toRetrieve;
-		this.toCall = toCall;
-		this.expectedReturnType = expectedReturnType;
 	}
 
 	public int getInt()
@@ -48,10 +45,9 @@ public class RetrievableValue
 					IllegalAccessException, InvocationTargetException
 	{
 		Object o = null;
-		if (toCall != null) toCall.invoke(obj);
-		else if (toRetrieve != null)
+		if (toRetrieve != null && !toRetrieve.isEmpty())
 		{
-
+			o = obj.getRegisteredField(toRetrieve).get(obj.get());
 		}
 		return o;
 	}

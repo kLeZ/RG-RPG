@@ -16,52 +16,15 @@
 // You should have received a copy of the GNU General Public License
 // along with this program.  If not, see <http://www.gnu.org/licenses/>.
 // 
-package it.d4nguard.rgrpg.d20;
+package it.d4nguard.rgrpg.util;
 
-import it.d4nguard.rgrpg.util.NumericUtils;
-import it.d4nguard.rgrpg.util.Retriever;
+import java.lang.annotation.ElementType;
+import java.lang.annotation.Retention;
+import java.lang.annotation.RetentionPolicy;
+import java.lang.annotation.Target;
 
-import java.util.ArrayList;
-import java.util.List;
-
-public class Skill
+@Target(ElementType.FIELD)
+@Retention(RetentionPolicy.RUNTIME)
+public @interface Retrieve
 {
-	private int ranks;
-	private Retriever abilityMod;
-	private final List<Integer> miscMod;
-
-	public Skill()
-	{
-		this.miscMod = new ArrayList<Integer>();
-	}
-
-	public int getRanks()
-	{
-		return ranks;
-	}
-
-	public void setRanks(int ranks)
-	{
-		this.ranks = ranks;
-	}
-
-	public Retriever getAbilityModifier()
-	{
-		return abilityMod;
-	}
-
-	public void setAbilityModifier(Retriever abilityModifier)
-	{
-		this.abilityMod = abilityModifier;
-	}
-
-	public List<Integer> getMiscMod()
-	{
-		return miscMod;
-	}
-
-	public int getSkillModifier()
-	{
-		return NumericUtils.sum(ranks + abilityMod.getInt(), miscMod);
-	}
 }
