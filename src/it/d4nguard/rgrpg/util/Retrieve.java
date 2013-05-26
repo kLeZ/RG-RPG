@@ -27,4 +27,5 @@ import java.lang.annotation.Target;
 @Retention(RetentionPolicy.RUNTIME)
 public @interface Retrieve
 {
+	public String subType() default "";
 }
