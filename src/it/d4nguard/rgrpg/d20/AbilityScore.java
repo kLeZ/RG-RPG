@@ -20,11 +20,14 @@ package it.d4nguard.rgrpg.d20;
 
 public class AbilityScore
 {
+	public static final int MID_RANGE = 10;
+
 	private int value;
 	private int modifier;
 
-	public AbilityScore()
+	public AbilityScore(int value)
 	{
+		setValue(value);
 	}
 
 	public int getValue()
@@ -35,6 +38,7 @@ public class AbilityScore
 	public void setValue(int value)
 	{
 		this.value = value;
+		this.modifier = getModifier(value);
 	}
 
 	public int getModifier()
@@ -42,8 +46,8 @@ public class AbilityScore
 		return modifier;
 	}
 
-	public void setModifier(int modifier)
+	public static int getModifier(int value)
 	{
-		this.modifier = modifier;
+		return (int) Math.round(Math.floor(((float) (value - MID_RANGE)) / 2.0F));
 	}
 }

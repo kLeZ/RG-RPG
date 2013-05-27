@@ -21,6 +21,7 @@ package it.d4nguard.rgrpg.commands;
 import java.util.Set;
 
 import it.d4nguard.rgrpg.commands.Command;
+import it.d4nguard.rgrpg.util.CommandsInterpreter;
 
 import org.reflections.Reflections;
 

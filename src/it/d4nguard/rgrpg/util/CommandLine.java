@@ -16,24 +16,30 @@
 // You should have received a copy of the GNU General Public License
 // along with this program.  If not, see <http://www.gnu.org/licenses/>.
 // 
-package it.d4nguard.rgrpg;
+package it.d4nguard.rgrpg.util;
 
-import it.d4nguard.rgrpg.util.CommandsInterpreter;
-
-public class Main
+public class CommandLine
 {
-	public static void main(String[] args)
+	private String proc;
+	private String[] args;
+
+	public String getProc()
 	{
-		Welcome.print();
-		Thread t = new Thread(new CommandsInterpreter(System.in));
-		try
-		{
-			t.start();
-			t.join();
-		}
-		catch (InterruptedException e)
-		{
-			e.printStackTrace();
-		}
+		return proc;
+	}
+
+	public void setProc(String proc)
+	{
+		this.proc = proc;
+	}
+
+	public String[] getArgs()
+	{
+		return args;
+	}
+
+	public void setArgs(String[] args)
+	{
+		this.args = args;
 	}
 }

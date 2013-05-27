@@ -18,11 +18,48 @@
 // 
 package it.d4nguard.rgrpg.util;
 
+import java.util.Arrays;
+import java.util.Scanner;
+
 public class StringUtils
 {
 	public static String capitalize(String s)
 	{
-		return s.substring(0, 1).toUpperCase().concat(
-						s.substring(1).toLowerCase());
+		StringBuilder sb = new StringBuilder();
+		Scanner scn = new Scanner(s);
+		scn.useDelimiter("\\s");
+		while (scn.hasNext())
+		{
+			String curr = scn.next();
+			sb.append(curr.substring(0, 1).toUpperCase().concat(
+							curr.substring(1)));
+		}
+		scn.close();
+		return sb.toString();
+	}
+
+	public static CommandLine getArgs(String cmdLn)
+	{
+		CommandLine ret = new CommandLine();
+		String[] args = cmdLn.split("\\s");
+		// System.out.println(String.format("Command: %s%nArgs: %s%n#Args: %d", cmdLn, Arrays.toString(args), args.length));
+		cmdLn = args[0];
+		if (args.length > 1) args = Arrays.<String> copyOfRange(args, 1,
+						args.length);
+		else args = new String[] {};
+		ret.setProc(cmdLn);
+		ret.setArgs(args);
+		return ret;
+	}
+
+	public static String join(String sep, String... args)
+	{
+		StringBuilder sb = new StringBuilder();
+		for (int i = 0; i < args.length; i++)
+		{
+			sb.append(args[i]);
+			if (i + 1 < args.length) sb.append(sep);
+		}
+		return sb.toString();
 	}
 }

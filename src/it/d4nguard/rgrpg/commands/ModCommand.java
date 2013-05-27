@@ -16,24 +16,32 @@
 // You should have received a copy of the GNU General Public License
 // along with this program.  If not, see <http://www.gnu.org/licenses/>.
 // 
-package it.d4nguard.rgrpg;
+package it.d4nguard.rgrpg.commands;
 
-import it.d4nguard.rgrpg.util.CommandsInterpreter;
+import it.d4nguard.rgrpg.d20.AbilityScore;
 
-public class Main
+public class ModCommand implements Command
 {
-	public static void main(String[] args)
+
+	@Override
+	public void execute(String... args)
 	{
-		Welcome.print();
-		Thread t = new Thread(new CommandsInterpreter(System.in));
 		try
 		{
-			t.start();
-			t.join();
+			AbilityScore dex = new AbilityScore(Integer.valueOf(args[0]));
+			Object obj = AbilityScore.class.getMethod("getModifier",
+							new Class<?>[] {}).invoke(dex, new Object[] {});
+			System.out.println(obj);
 		}
-		catch (InterruptedException e)
+		catch (Throwable e)
 		{
 			e.printStackTrace();
 		}
+	}
+
+	@Override
+	public String getHelp()
+	{
+		return "This command tests the MethodHandle mechanism built in the new JDK7";
 	}
 }

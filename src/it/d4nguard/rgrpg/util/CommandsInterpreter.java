@@ -16,17 +16,15 @@
 // You should have received a copy of the GNU General Public License
 // along with this program.  If not, see <http://www.gnu.org/licenses/>.
 // 
-package it.d4nguard.rgrpg.commands;
-
-import java.io.InputStream;
-import java.io.IOException;
-import java.io.BufferedReader;
-import java.io.InputStreamReader;
-import java.util.Arrays;
+package it.d4nguard.rgrpg.util;
 
 import it.d4nguard.rgrpg.ExitRuntimeException;
-import it.d4nguard.rgrpg.util.PromptFeeder;
-import it.d4nguard.rgrpg.util.StringUtils;
+import it.d4nguard.rgrpg.commands.Command;
+
+import java.io.BufferedReader;
+import java.io.IOException;
+import java.io.InputStream;
+import java.io.InputStreamReader;
 
 public class CommandsInterpreter implements Runnable
 {
@@ -51,12 +49,9 @@ public class CommandsInterpreter implements Runnable
 				String cmdLn = reader.readLine();
 				if (cmdLn != null && !cmdLn.isEmpty())
 				{
-					String[] args = cmdLn.split("\\s");
-					// System.out.println(String.format("Command: %s%nArgs: %s%n#Args: %d", cmdLn, Arrays.toString(args), args.length));
-					cmdLn = args[0];
-					if (args.length > 1) args = Arrays.<String> copyOfRange(
-									args, 1, args.length);
-					else args = new String[] {};
+					CommandLine cmd = StringUtils.getArgs(cmdLn);
+					cmdLn = cmd.getProc();
+					String[] args = cmd.getArgs();
 					try
 					{
 						// System.out.println(String.format("Command: %s%nArgs: %s", cmdLn, Arrays.toString(args)));

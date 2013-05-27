@@ -32,7 +32,7 @@
 		<url>https://github.com/kLeZ/RG-RPG/issues</url>
 	</issueManagement>
 	<properties>
-		<jdk.version>1.6</jdk.version>
+		<jdk.version>1.7</jdk.version>
 	</properties>
 	<repositories>
 		<repository>

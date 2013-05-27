@@ -76,4 +76,13 @@ public class Utils
 		}
 		return ret;
 	}
+
+	public static String[] replace(String target, String replacement,
+					String... args)
+	{
+		ArrayList<String> ret = new ArrayList<String>();
+		for (String s : args)
+			ret.add(s.replace(target, replacement));
+		return ret.toArray(new String[] {});
+	}
 }
