@@ -19,20 +19,52 @@
 package it.d4nguard.rgrpg.d20;
 
 import it.d4nguard.rgrpg.util.NumericUtils;
-import it.d4nguard.rgrpg.util.Retriever;
 
 import java.util.ArrayList;
 import java.util.List;
 
 public class Skill
 {
-	private int ranks;
-	private Retriever abilityMod;
-	private final List<Integer> miscMod;
+	private final String name;
+	private final AbilityScore ability;
+	private final int ranks;
+	private final List<Integer> misc;
+	private final boolean trained;
+	private final ArmorCheckPenaltyType armorCheckPenalty;
+	private final TryAgainType tryAgain;
 
-	public Skill()
+	public Skill(String name, AbilityScore ability)
 	{
-		this.miscMod = new ArrayList<Integer>();
+		this(name, ability, false, ArmorCheckPenaltyType.None,
+						TryAgainType.Limited);
+	}
+
+	public Skill(String name, AbilityScore ability, boolean trained,
+					ArmorCheckPenaltyType armorCheckPenalty,
+					TryAgainType tryAgain)
+	{
+		this.name = name;
+		this.ability = ability;
+		this.trained = trained;
+		this.armorCheckPenalty = armorCheckPenalty;
+		this.tryAgain = tryAgain;
+		this.ranks = 0;
+		this.misc = new ArrayList<Integer>();
+	}
+
+	public int getSkillModifier()
+	{
+		return NumericUtils.sum(ranks + ability.getModifier(), misc);
+	}
+
+	public String getName()
+	{
+		return name;
+	}
+
+	public AbilityScore getAbility()
+	{
+		return ability;
 	}
 
 	public int getRanks()
@@ -40,28 +72,23 @@ public class Skill
 		return ranks;
 	}
 
-	public void setRanks(int ranks)
+	public List<Integer> getMisc()
 	{
-		this.ranks = ranks;
+		return misc;
 	}
 
-	public Retriever getAbilityModifier()
+	public boolean isTrained()
 	{
-		return abilityMod;
+		return trained;
 	}
 
-	public void setAbilityModifier(Retriever abilityModifier)
+	public ArmorCheckPenaltyType getArmorCheckPenalty()
 	{
-		this.abilityMod = abilityModifier;
+		return armorCheckPenalty;
 	}
 
-	public List<Integer> getMiscMod()
+	public TryAgainType getTryAgain()
 	{
-		return miscMod;
-	}
-
-	public int getSkillModifier()
-	{
-		return NumericUtils.sum(ranks + abilityMod.getInt(), miscMod);
+		return tryAgain;
 	}
 }

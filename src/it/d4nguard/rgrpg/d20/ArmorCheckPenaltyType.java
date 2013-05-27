@@ -16,16 +16,11 @@
 // You should have received a copy of the GNU General Public License
 // along with this program.  If not, see <http://www.gnu.org/licenses/>.
 // 
-package it.d4nguard.rgrpg.util;
+package it.d4nguard.rgrpg.d20;
 
-import java.lang.annotation.ElementType;
-import java.lang.annotation.Retention;
-import java.lang.annotation.RetentionPolicy;
-import java.lang.annotation.Target;
-
-@Target(ElementType.FIELD)
-@Retention(RetentionPolicy.RUNTIME)
-public @interface Retrieve
+public enum ArmorCheckPenaltyType
 {
-	public String subType() default "";
+	None,
+	NormalPenalty,
+	DoublePenalty;
 }

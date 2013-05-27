@@ -16,39 +16,12 @@
 // You should have received a copy of the GNU General Public License
 // along with this program.  If not, see <http://www.gnu.org/licenses/>.
 // 
-package it.d4nguard.rgrpg.util;
+package it.d4nguard.rgrpg.d20;
 
-import java.lang.reflect.InvocationTargetException;
-
-import com.db4o.foundation.ArgumentNullException;
-
-public class Retriever
+public enum TryAgainType
 {
-	private final Retrievable<?> obj;
-	private final String toRetrieve;
-
-	public Retriever(Retrievable<?> obj, String toRetrieve)
-	{
-		if (obj == null) throw new ArgumentNullException("obj");
-		if (toRetrieve == null) throw new ArgumentNullException("toRetrieve");
-		this.obj = obj;
-		this.toRetrieve = toRetrieve;
-	}
-
-	public int getInt()
-	{
-		int ret = 0;
-		return ret; //TODO: Implement
-	}
-
-	public Object get() throws IllegalArgumentException,
-					IllegalAccessException, InvocationTargetException
-	{
-		Object o = null;
-		if (toRetrieve != null && !toRetrieve.isEmpty())
-		{
-			o = obj.getRegisteredField(toRetrieve).get(obj.get());
-		}
-		return o;
-	}
+	Once,
+	Limited,
+	WithPenalty,
+	Always;
 }

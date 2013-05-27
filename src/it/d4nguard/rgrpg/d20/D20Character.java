@@ -61,7 +61,7 @@ public class D20Character extends Character
 	{
 		int hp = 0;
 		for (Class c : classes)
-			hp += NumericUtils.sum(abilityScores.getStamina().getModifier(),
+			hp += NumericUtils.sum(abilityScores.getConstitution().getModifier(),
 							c.getHitDiceResultPool());
 		hp = NumericUtils.sum(hp, hpModifiers);
 		return (current ? NumericUtils.sum(hp, -damage) : hp);
@@ -150,7 +150,7 @@ public class D20Character extends Character
 		switch (type)
 		{
 			case Fortitude:
-				save += abilityScores.getStamina().getModifier();
+				save += abilityScores.getConstitution().getModifier();
 				break;
 			case Reflexes:
 				save += abilityScores.getDexterity().getModifier();

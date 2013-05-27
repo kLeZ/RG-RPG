@@ -18,76 +18,100 @@
 // 
 package it.d4nguard.rgrpg.d20;
 
+import it.d4nguard.rgrpg.d20.AbilityScore.UnmodifiableAbilityScore;
+
+import java.util.HashMap;
+import java.util.Map;
+
 public class AbilityScores
 {
-	private AbilityScore strength;
-	private AbilityScore dexterity;
-	private AbilityScore stamina;
-	private AbilityScore intelligence;
-	private AbilityScore wisdom;
-	private AbilityScore charisma;
+	public static final String STRENGTH = "strength";
+	public static final String DEXTERITY = "dexterity";
+	public static final String CONSTITUTION = "constitution";
+	public static final String INTELLIGENCE = "intelligence";
+	public static final String WISDOM = "wisdom";
+	public static final String CHARISMA = "charisma";
+
+	private final Map<String, AbilityScore> scores;
 
 	public AbilityScores()
 	{
+		this.scores = new HashMap<String, AbilityScore>();
+		scores.put(STRENGTH, new AbilityScore(STRENGTH));
+		scores.put(DEXTERITY, new AbilityScore(DEXTERITY));
+		scores.put(CONSTITUTION, new AbilityScore(CONSTITUTION));
+		scores.put(INTELLIGENCE, new AbilityScore(INTELLIGENCE));
+		scores.put(WISDOM, new AbilityScore(WISDOM));
+		scores.put(CHARISMA, new AbilityScore(CHARISMA));
 	}
 
 	public AbilityScore getStrength()
 	{
-		return strength;
-	}
-
-	public void setStrength(AbilityScore strength)
-	{
-		this.strength = strength;
+		return getAbilityScore(STRENGTH);
 	}
 
 	public AbilityScore getDexterity()
 	{
-		return dexterity;
+		return getAbilityScore(DEXTERITY);
 	}
 
-	public void setDexterity(AbilityScore dexterity)
+	public AbilityScore getConstitution()
 	{
-		this.dexterity = dexterity;
-	}
-
-	public AbilityScore getStamina()
-	{
-		return stamina;
-	}
-
-	public void setStamina(AbilityScore stamina)
-	{
-		this.stamina = stamina;
+		return getAbilityScore(CONSTITUTION);
 	}
 
 	public AbilityScore getIntelligence()
 	{
-		return intelligence;
-	}
-
-	public void setIntelligence(AbilityScore intelligence)
-	{
-		this.intelligence = intelligence;
+		return getAbilityScore(INTELLIGENCE);
 	}
 
 	public AbilityScore getWisdom()
 	{
-		return wisdom;
-	}
-
-	public void setWisdom(AbilityScore wisdom)
-	{
-		this.wisdom = wisdom;
+		return getAbilityScore(WISDOM);
 	}
 
 	public AbilityScore getCharisma()
 	{
-		return charisma;
+		return getAbilityScore(CHARISMA);
 	}
 
-	public void setCharisma(AbilityScore charisma)
+	public void setStrength(int strength)
 	{
-		this.charisma = charisma;
+		scores.get(STRENGTH).setValue(strength);
+	}
+
+	public void setDexterity(int dexterity)
+	{
+		scores.get(DEXTERITY).setValue(dexterity);
+	}
+
+	public void setConstitution(int constitution)
+	{
+		scores.get(CONSTITUTION).setValue(constitution);
+	}
+
+	public void setIntelligence(int intelligence)
+	{
+		scores.get(INTELLIGENCE).setValue(intelligence);
+	}
+
+	public void setWisdom(int wisdom)
+	{
+		scores.get(WISDOM).setValue(wisdom);
+	}
+
+	public void setCharisma(int charisma)
+	{
+		scores.get(CHARISMA).setValue(charisma);
+	}
+
+	public AbilityScore getAbilityScore(String name)
+	{
+		return AbilityScores.unmodifiableAbilityScore(scores.get(name));
+	}
+
+	public static AbilityScore unmodifiableAbilityScore(AbilityScore as)
+	{
+		return new UnmodifiableAbilityScore(as);
 	}
 }

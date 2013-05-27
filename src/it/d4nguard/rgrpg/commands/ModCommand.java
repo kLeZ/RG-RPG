@@ -28,7 +28,8 @@ public class ModCommand implements Command
 	{
 		try
 		{
-			AbilityScore dex = new AbilityScore(Integer.valueOf(args[0]));
+			AbilityScore dex = new AbilityScore("Dexterity",
+							Integer.valueOf(args[0]));
 			Object obj = AbilityScore.class.getMethod("getModifier",
 							new Class<?>[] {}).invoke(dex, new Object[] {});
 			System.out.println(obj);

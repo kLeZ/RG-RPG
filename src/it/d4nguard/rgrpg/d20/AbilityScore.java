@@ -22,12 +22,24 @@ public class AbilityScore
 {
 	public static final int MID_RANGE = 10;
 
+	private final String name;
 	private int value;
 	private int modifier;
 
-	public AbilityScore(int value)
+	public AbilityScore(String name)
 	{
+		this(name, MID_RANGE);
+	}
+
+	public AbilityScore(String name, int value)
+	{
+		this.name = name;
 		setValue(value);
+	}
+
+	public String getName()
+	{
+		return name;
 	}
 
 	public int getValue()
@@ -49,5 +61,19 @@ public class AbilityScore
 	public static int getModifier(int value)
 	{
 		return (int) Math.round(Math.floor(((float) (value - MID_RANGE)) / 2.0F));
+	}
+
+	public static class UnmodifiableAbilityScore extends AbilityScore
+	{
+		public UnmodifiableAbilityScore(AbilityScore as)
+		{
+			super(as.getName(), as.getValue());
+		}
+
+		@Override
+		public void setValue(int value)
+		{
+			throw new UnsupportedOperationException();
+		}
 	}
 }
