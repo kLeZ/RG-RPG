@@ -18,7 +18,10 @@
 // 
 package it.d4nguard.rgrpg.d20;
 
-import it.d4nguard.rgrpg.d20.weapons.Weapon;
+import it.d4nguard.rgrpg.d20.items.Armor;
+import it.d4nguard.rgrpg.d20.items.Item;
+import it.d4nguard.rgrpg.d20.items.Shield;
+import it.d4nguard.rgrpg.d20.items.weapons.Weapon;
 
 import java.util.ArrayList;
 import java.util.List;

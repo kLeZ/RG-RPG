@@ -16,56 +16,38 @@
 // You should have received a copy of the GNU General Public License
 // along with this program.  If not, see <http://www.gnu.org/licenses/>.
 // 
-package it.d4nguard.rgrpg.d20;
+package it.d4nguard.rgrpg.d20.items.weapons;
 
+import it.d4nguard.rgrpg.d20.CriticalHit;
+import it.d4nguard.rgrpg.d20.types.SizeType;
 import it.d4nguard.rgrpg.profile.Coin;
+import it.d4nguard.rgrpg.util.Dice;
+
+import java.util.EnumSet;
 
 import javax.measure.Measurable;
+import javax.measure.quantity.Length;
 import javax.measure.quantity.Mass;
 
-public class Shield extends Item
+public class RangedWeapon extends Weapon
 {
-	private final int armorClass;
-	private final int maxDexterity;
-	private final ArmorCategoryType armorCategory;
-	private final int armorCheckPenalty;
-	private final int arcaneSpellFailure;
+	private final Measurable<Length> rangeIncrement;
 
-	public Shield(String name, String description, Coin cost,
-					Measurable<Mass> weight, int armorClass, int maxDexterity,
-					ArmorCategoryType armorCategory, int armorCheckPenalty,
-					int arcaneSpellFailure)
+	public RangedWeapon(String name, String description, Coin cost,
+					Measurable<Mass> weight, WeaponCategoryType weaponCategory,
+					WeaponEncumbranceType weaponEncumbrance, SizeType size,
+					Dice damage, CriticalHit criticalHit,
+					EnumSet<WeaponType> weaponType,
+					Measurable<Length> rangeIncrement)
 	{
-		super(name, description, cost, weight);
-		this.armorClass = armorClass;
-		this.maxDexterity = maxDexterity;
-		this.armorCategory = armorCategory;
-		this.armorCheckPenalty = armorCheckPenalty;
-		this.arcaneSpellFailure = arcaneSpellFailure;
+		super(name, description, cost, weight, weaponCategory,
+						weaponEncumbrance, size, damage, criticalHit,
+						weaponType);
+		this.rangeIncrement = rangeIncrement;
 	}
 
-	public int getArmorClass()
+	public Measurable<Length> getRangeIncrement()
 	{
-		return armorClass;
-	}
-
-	public int getMaxDexterity()
-	{
-		return maxDexterity;
-	}
-
-	public ArmorCategoryType getArmorCategory()
-	{
-		return armorCategory;
-	}
-
-	public int getArmorCheckPenalty()
-	{
-		return armorCheckPenalty;
-	}
-
-	public int getArcaneSpellFailure()
-	{
-		return arcaneSpellFailure;
+		return rangeIncrement;
 	}
 }

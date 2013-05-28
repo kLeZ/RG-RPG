@@ -16,11 +16,46 @@
 // You should have received a copy of the GNU General Public License
 // along with this program.  If not, see <http://www.gnu.org/licenses/>.
 // 
-package it.d4nguard.rgrpg.d20.weapons;
+package it.d4nguard.rgrpg.d20.items;
 
-public enum WeaponCategoryType
+import it.d4nguard.rgrpg.profile.Coin;
+
+import javax.measure.Measurable;
+import javax.measure.quantity.Mass;
+
+public abstract class Item
 {
-	Simple,
-	Martial,
-	Exotic;
+	private final String name;
+	private final String description;
+	private final Coin cost;
+	private final Measurable<Mass> weight;
+
+	public Item(String name, String description, Coin cost,
+					Measurable<Mass> weight)
+	{
+		this.name = name;
+		this.description = description;
+		this.cost = cost;
+		this.weight = weight;
+	}
+
+	public String getName()
+	{
+		return name;
+	}
+
+	public String getDescription()
+	{
+		return description;
+	}
+
+	public Coin getCost()
+	{
+		return cost;
+	}
+
+	public Measurable<Mass> getWeight()
+	{
+		return weight;
+	}
 }

@@ -16,46 +16,11 @@
 // You should have received a copy of the GNU General Public License
 // along with this program.  If not, see <http://www.gnu.org/licenses/>.
 // 
-package it.d4nguard.rgrpg.d20;
+package it.d4nguard.rgrpg.d20.items.weapons;
 
-import it.d4nguard.rgrpg.d20.weapons.Weapon;
-
-import java.util.HashSet;
-import java.util.Set;
-
-public class WeaponProficiency
+public enum WeaponType
 {
-	private final Set<Weapon> items;
-	private boolean allSimple;
-	private boolean allMartial;
-
-	public WeaponProficiency()
-	{
-		this.items = new HashSet<Weapon>();
-	}
-
-	public boolean isAllSimple()
-	{
-		return allSimple;
-	}
-
-	public void setAllSimple(boolean allSimple)
-	{
-		this.allSimple = allSimple;
-	}
-
-	public boolean isAllMartial()
-	{
-		return allMartial;
-	}
-
-	public void setAllMartial(boolean allMartial)
-	{
-		this.allMartial = allMartial;
-	}
-
-	public Set<Weapon> getItems()
-	{
-		return items;
-	}
+	Slashing,
+	Bludgeoning,
+	Piercing;
 }

@@ -18,6 +18,8 @@
 // 
 package it.d4nguard.rgrpg.d20;
 
+import it.d4nguard.rgrpg.d20.types.EnergyType;
+
 public class ResistanceToEnergy
 {
 	private EnergyType type;

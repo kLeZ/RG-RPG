@@ -16,9 +16,19 @@
 // You should have received a copy of the GNU General Public License
 // along with this program.  If not, see <http://www.gnu.org/licenses/>.
 // 
-package it.d4nguard.rgrpg.d20;
+package it.d4nguard.rgrpg.d20.items.weapons;
 
-public class Trait
+import it.d4nguard.rgrpg.d20.items.Item;
+import it.d4nguard.rgrpg.profile.Coin;
+
+import javax.measure.Measurable;
+import javax.measure.quantity.Mass;
+
+public class Ammunition extends Item
 {
-
+	public Ammunition(String name, String description, Coin cost,
+					Measurable<Mass> weight)
+	{
+		super(name, description, cost, weight);
+	}
 }

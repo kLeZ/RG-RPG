@@ -16,44 +16,43 @@
 // You should have received a copy of the GNU General Public License
 // along with this program.  If not, see <http://www.gnu.org/licenses/>.
 // 
-package it.d4nguard.rgrpg.d20;
+package it.d4nguard.rgrpg.d20.types;
 
-import java.util.HashSet;
-import java.util.Set;
-
-public class ShieldProficiency
+public enum SizeType
 {
-	private final Set<Shield> items;
-	private boolean all;
-	private boolean tower;
+	Fine(8, -16, 16),
+	Diminutive(4, -12, 12),
+	Tiny(2, -8, 8),
+	Small(1, -4, 4),
+	Medium(0, 0, 0),
+	Large(-1, 4, -4),
+	Huge(-2, 8, -8),
+	Gargantuan(-4, 12, -12),
+	Colossal(-8, 16, -16);
 
-	public ShieldProficiency()
+	private int modifier;
+	private int grapple;
+	private int hide;
+
+	private SizeType(int modifier, int grapple, int hide)
 	{
-		this.items = new HashSet<Shield>();
+		this.modifier = modifier;
+		this.grapple = grapple;
+		this.hide = hide;
 	}
 
-	public boolean isAll()
+	public int getModifier()
 	{
-		return all;
+		return this.modifier;
 	}
 
-	public void setAll(boolean all)
+	public int getGrapple()
 	{
-		this.all = all;
+		return this.grapple;
 	}
 
-	public boolean isTower()
+	public int getHide()
 	{
-		return tower;
-	}
-
-	public void setTower(boolean tower)
-	{
-		this.tower = tower;
-	}
-
-	public Set<Shield> getItems()
-	{
-		return items;
+		return hide;
 	}
 }

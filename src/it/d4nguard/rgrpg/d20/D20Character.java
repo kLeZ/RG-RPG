@@ -19,6 +19,10 @@
 package it.d4nguard.rgrpg.d20;
 
 import it.d4nguard.rgrpg.d20.races.Race;
+import it.d4nguard.rgrpg.d20.types.AlignmentType;
+import it.d4nguard.rgrpg.d20.types.ArmorClassType;
+import it.d4nguard.rgrpg.d20.types.BabType;
+import it.d4nguard.rgrpg.d20.types.SavingThrowType;
 import it.d4nguard.rgrpg.profile.Character;
 import it.d4nguard.rgrpg.profile.Player;
 import it.d4nguard.rgrpg.util.NumericUtils;

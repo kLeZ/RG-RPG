@@ -19,8 +19,7 @@
 package it.d4nguard.rgrpg.d20.races;
 
 import it.d4nguard.rgrpg.d20.Language;
-import it.d4nguard.rgrpg.d20.SizeType;
-import it.d4nguard.rgrpg.d20.Trait;
+import it.d4nguard.rgrpg.d20.types.SizeType;
 
 import java.util.HashMap;
 import java.util.HashSet;

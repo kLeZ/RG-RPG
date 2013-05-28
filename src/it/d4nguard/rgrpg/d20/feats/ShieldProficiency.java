@@ -16,11 +16,46 @@
 // You should have received a copy of the GNU General Public License
 // along with this program.  If not, see <http://www.gnu.org/licenses/>.
 // 
-package it.d4nguard.rgrpg.d20.weapons;
+package it.d4nguard.rgrpg.d20.feats;
 
-public enum WeaponType
+import it.d4nguard.rgrpg.d20.items.Shield;
+
+import java.util.HashSet;
+import java.util.Set;
+
+public class ShieldProficiency
 {
-	Slashing,
-	Bludgeoning,
-	Piercing;
+	private final Set<Shield> items;
+	private boolean all;
+	private boolean tower;
+
+	public ShieldProficiency()
+	{
+		this.items = new HashSet<Shield>();
+	}
+
+	public boolean isAll()
+	{
+		return all;
+	}
+
+	public void setAll(boolean all)
+	{
+		this.all = all;
+	}
+
+	public boolean isTower()
+	{
+		return tower;
+	}
+
+	public void setTower(boolean tower)
+	{
+		this.tower = tower;
+	}
+
+	public Set<Shield> getItems()
+	{
+		return items;
+	}
 }

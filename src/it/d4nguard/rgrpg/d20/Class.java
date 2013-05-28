@@ -18,6 +18,7 @@
 // 
 package it.d4nguard.rgrpg.d20;
 
+import it.d4nguard.rgrpg.d20.types.SavingThrowType;
 import it.d4nguard.rgrpg.util.Dice;
 
 import java.util.HashSet;

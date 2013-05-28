@@ -16,55 +16,11 @@
 // You should have received a copy of the GNU General Public License
 // along with this program.  If not, see <http://www.gnu.org/licenses/>.
 // 
-package it.d4nguard.rgrpg.d20;
+package it.d4nguard.rgrpg.d20.types;
 
-import java.util.HashSet;
-import java.util.Set;
-
-public class ArmorProficiency
+public enum ArmorClassType
 {
-	private final Set<Armor> items;
-	private boolean allLight;
-	private boolean allMedium;
-	private boolean allHeavy;
-
-	public ArmorProficiency()
-	{
-		this.items = new HashSet<Armor>();
-	}
-
-	public boolean isAllLight()
-	{
-		return allLight;
-	}
-
-	public void setAllLight(boolean allLight)
-	{
-		this.allLight = allLight;
-	}
-
-	public boolean isAllMedium()
-	{
-		return allMedium;
-	}
-
-	public void setAllMedium(boolean allMedium)
-	{
-		this.allMedium = allMedium;
-	}
-
-	public boolean isAllHeavy()
-	{
-		return allHeavy;
-	}
-
-	public void setAllHeavy(boolean allHeavy)
-	{
-		this.allHeavy = allHeavy;
-	}
-
-	public Set<Armor> getItems()
-	{
-		return items;
-	}
+	Normal,
+	FlatFooted,
+	Touch;
 }

@@ -18,6 +18,8 @@
 // 
 package it.d4nguard.rgrpg.d20;
 
+import it.d4nguard.rgrpg.d20.types.ArmorCheckPenaltyType;
+import it.d4nguard.rgrpg.d20.types.TryAgainType;
 import it.d4nguard.rgrpg.util.NumericUtils;
 
 import java.util.ArrayList;

@@ -16,40 +16,29 @@
 // You should have received a copy of the GNU General Public License
 // along with this program.  If not, see <http://www.gnu.org/licenses/>.
 // 
-package it.d4nguard.rgrpg.d20.weapons;
+package it.d4nguard.rgrpg.d20.items.weapons;
 
 import it.d4nguard.rgrpg.d20.CriticalHit;
-import it.d4nguard.rgrpg.d20.SizeType;
+import it.d4nguard.rgrpg.d20.types.SizeType;
 import it.d4nguard.rgrpg.profile.Coin;
 import it.d4nguard.rgrpg.util.Dice;
 
-import java.util.ArrayList;
 import java.util.EnumSet;
 
 import javax.measure.Measurable;
-import javax.measure.quantity.Length;
 import javax.measure.quantity.Mass;
 
-public class ProjectileWeapon extends RangedWeapon
+public class DoubleWeapon extends MeleeWeapon
 {
-	private final ArrayList<Ammunition> ammunitions;
 
-	public ProjectileWeapon(String name, String description, Coin cost,
+	public DoubleWeapon(String name, String description, Coin cost,
 					Measurable<Mass> weight, WeaponCategoryType weaponCategory,
-					WeaponEncumbranceType weaponEncumbrance, SizeType size,
-					Dice damage, CriticalHit criticalHit,
-					EnumSet<WeaponType> weaponType,
-					Measurable<Length> rangeIncrement,
-					ArrayList<Ammunition> ammunitions)
+					SizeType size, Dice damage, CriticalHit criticalHit,
+					EnumSet<WeaponType> weaponType)
 	{
 		super(name, description, cost, weight, weaponCategory,
-						weaponEncumbrance, size, damage, criticalHit,
-						weaponType, rangeIncrement);
-		this.ammunitions = ammunitions;
+						WeaponEncumbranceType.TwoHanded, size, damage,
+						criticalHit, weaponType);
 	}
 
-	public ArrayList<Ammunition> getAmmunitions()
-	{
-		return ammunitions;
-	}
 }
