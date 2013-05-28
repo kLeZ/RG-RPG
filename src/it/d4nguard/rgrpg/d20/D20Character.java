@@ -18,6 +18,7 @@
 // 
 package it.d4nguard.rgrpg.d20;
 
+import it.d4nguard.rgrpg.d20.feats.Feat;
 import it.d4nguard.rgrpg.d20.races.Race;
 import it.d4nguard.rgrpg.d20.types.AlignmentType;
 import it.d4nguard.rgrpg.d20.types.ArmorClassType;
@@ -53,6 +54,7 @@ public class D20Character extends Character
 	private Equipment equipment;
 	private Set<Language> spokenLanguages;
 	private Set<Skill> skills;
+	private Set<Feat> feats;
 
 	public D20Character()
 	{
@@ -65,7 +67,8 @@ public class D20Character extends Character
 	{
 		int hp = 0;
 		for (Class c : classes)
-			hp += NumericUtils.sum(abilityScores.getConstitution().getModifier(),
+			hp += NumericUtils.sum(
+							abilityScores.getConstitution().getModifier(),
 							c.getHitDiceResultPool());
 		hp = NumericUtils.sum(hp, hpModifiers);
 		return (current ? NumericUtils.sum(hp, -damage) : hp);

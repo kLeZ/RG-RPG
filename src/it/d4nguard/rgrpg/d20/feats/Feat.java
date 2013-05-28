@@ -18,44 +18,7 @@
 // 
 package it.d4nguard.rgrpg.d20.feats;
 
-import it.d4nguard.rgrpg.d20.items.Shield;
-
-import java.util.HashSet;
-import java.util.Set;
-
-public class ShieldProficiency extends Feat
+public abstract class Feat
 {
-	private final Set<Shield> items;
-	private boolean all;
-	private boolean tower;
-
-	public ShieldProficiency()
-	{
-		this.items = new HashSet<Shield>();
-	}
-
-	public boolean isAll()
-	{
-		return all;
-	}
-
-	public void setAll(boolean all)
-	{
-		this.all = all;
-	}
-
-	public boolean isTower()
-	{
-		return tower;
-	}
-
-	public void setTower(boolean tower)
-	{
-		this.tower = tower;
-	}
-
-	public Set<Shield> getItems()
-	{
-		return items;
-	}
+	//TODO: Implement
 }

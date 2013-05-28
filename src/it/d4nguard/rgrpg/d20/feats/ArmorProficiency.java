@@ -23,7 +23,7 @@ import it.d4nguard.rgrpg.d20.items.Armor;
 import java.util.HashSet;
 import java.util.Set;
 
-public class ArmorProficiency
+public class ArmorProficiency extends Feat
 {
 	private final Set<Armor> items;
 	private boolean allLight;

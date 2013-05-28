@@ -23,7 +23,7 @@ import it.d4nguard.rgrpg.d20.items.weapons.Weapon;
 import java.util.HashSet;
 import java.util.Set;
 
-public class WeaponProficiency
+public class WeaponProficiency extends Feat
 {
 	private final Set<Weapon> items;
 	private boolean allSimple;
