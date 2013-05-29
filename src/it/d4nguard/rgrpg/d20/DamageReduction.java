@@ -22,12 +22,8 @@ import it.d4nguard.rgrpg.d20.types.DamageReductionType;
 
 public class DamageReduction
 {
-	private DamageReductionType type;
-	private int points;
-
-	public DamageReduction()
-	{
-	}
+	private DamageReductionType type = DamageReductionType.None;
+	private int points = 0;
 
 	public DamageReductionType getType()
 	{

@@ -25,41 +25,162 @@ import it.d4nguard.rgrpg.d20.types.ArmorClassType;
 import it.d4nguard.rgrpg.d20.types.BabType;
 import it.d4nguard.rgrpg.d20.types.SavingThrowType;
 import it.d4nguard.rgrpg.profile.Character;
+import it.d4nguard.rgrpg.profile.GeneralInfo;
 import it.d4nguard.rgrpg.profile.Player;
 import it.d4nguard.rgrpg.util.NumericUtils;
 
-import java.util.Collection;
+import java.util.ArrayList;
 import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
 
 public class D20Character extends Character
 {
-	private Player owner;
-	private Race race;
-	private float experience;
-	private AlignmentType alignment;
-	private final Set<? extends Class> classes;
-	private AbilityScores abilityScores;
-	private int damage;
-	private List<Integer> hpModifiers;
-	private List<Integer> babModifiers;
-	private List<Integer> acModifiers;
-	private List<Integer> stModifiers;
-	private DamageReduction damageReduction;
-	private Set<ResistanceToEnergy> resistanceToEnergies;
-	private int deflection;
-	private Collection<Integer> dodgeBonuses;
-	private Equipment equipment;
-	private Set<Language> spokenLanguages;
-	private Set<Skill> skills;
-	private Set<Feat> feats;
+	private final Race race;
+	private final AlignmentType alignment;
+	private final AbilityScores abilityScores;
+	private final Equipment equipment;
+	private final DamageReduction damageReduction;
 
-	public D20Character()
+	private final Set<Class> classes;
+	private final Set<ResistanceToEnergy> resistanceToEnergies;
+	private final Set<Language> spokenLanguages;
+	private final Set<Skill> skills;
+	private final Set<Feat> feats;
+	private final List<Integer> hpModifiers;
+	private final List<Integer> babModifiers;
+	private final List<Integer> acModifiers;
+	private final List<Integer> stModifiers;
+	private final List<Integer> dodgeBonuses;
+
+	private float experience = 0;
+	private int damage = 0;
+	private int deflection = 0;
+
+	public D20Character(Player owner, GeneralInfo info, Race race,
+					AlignmentType alignment, Class initialClass)
 	{
+		super(owner, info);
+		this.race = race;
+		this.alignment = alignment;
+		this.abilityScores = new AbilityScores();
+		this.equipment = new Equipment();
+		this.damageReduction = new DamageReduction();
+
 		this.classes = new HashSet<Class>();
+		this.skills = new HashSet<Skill>();
+		this.feats = new HashSet<Feat>();
 		this.spokenLanguages = new HashSet<Language>();
+		this.resistanceToEnergies = new HashSet<ResistanceToEnergy>();
+
+		this.dodgeBonuses = new ArrayList<Integer>();
+		this.hpModifiers = new ArrayList<Integer>();
+		this.babModifiers = new ArrayList<Integer>();
+		this.acModifiers = new ArrayList<Integer>();
+		this.stModifiers = new ArrayList<Integer>();
+
 		this.spokenLanguages.add(Language.COMMON);
+		this.classes.add(initialClass);
+	}
+
+	public float getExperience()
+	{
+		return experience;
+	}
+
+	public void setExperience(float experience)
+	{
+		this.experience = experience;
+	}
+
+	public int getDamage()
+	{
+		return damage;
+	}
+
+	public void setDamage(int damage)
+	{
+		this.damage = damage;
+	}
+
+	public int getDeflection()
+	{
+		return deflection;
+	}
+
+	public void setDeflection(int deflection)
+	{
+		this.deflection = deflection;
+	}
+
+	public Race getRace()
+	{
+		return race;
+	}
+
+	public AlignmentType getAlignment()
+	{
+		return alignment;
+	}
+
+	public AbilityScores getAbilityScores()
+	{
+		return abilityScores;
+	}
+
+	public Equipment getEquipment()
+	{
+		return equipment;
+	}
+
+	public DamageReduction getDamageReduction()
+	{
+		return damageReduction;
+	}
+
+	public Set<Class> getClasses()
+	{
+		return classes;
+	}
+
+	public Set<ResistanceToEnergy> getResistanceToEnergies()
+	{
+		return resistanceToEnergies;
+	}
+
+	public Set<Skill> getSkills()
+	{
+		return skills;
+	}
+
+	public Set<Feat> getFeats()
+	{
+		return feats;
+	}
+
+	public List<Integer> getHpModifiers()
+	{
+		return hpModifiers;
+	}
+
+	public List<Integer> getBabModifiers()
+	{
+		return babModifiers;
+	}
+
+	public List<Integer> getAcModifiers()
+	{
+		return acModifiers;
+	}
+
+	public List<Integer> getStModifiers()
+	{
+		return stModifiers;
+	}
+
+	public List<Integer> getDodgeBonuses()
+	{
+		return dodgeBonuses;
 	}
 
 	public int getHealthPoints(boolean current)

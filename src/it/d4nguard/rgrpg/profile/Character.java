@@ -20,15 +20,22 @@ package it.d4nguard.rgrpg.profile;
 
 public abstract class Character
 {
-	private GeneralInfo info;
+	private final Player owner;
+	private final GeneralInfo info;
+
+	public Character(Player owner, GeneralInfo info)
+	{
+		this.owner = owner;
+		this.info = info;
+	}
+
+	public Player getOwner()
+	{
+		return owner;
+	}
 
 	public GeneralInfo getInfo()
 	{
 		return info;
-	}
-
-	public void setInfo(GeneralInfo info)
-	{
-		this.info = info;
 	}
 }

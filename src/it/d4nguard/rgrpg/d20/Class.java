@@ -26,11 +26,18 @@ import java.util.Set;
 
 public abstract class Class
 {
+	private final String name;
 	private final Set<Integer> hitDiceResultPool;
 
-	public Class()
+	public Class(String name)
 	{
+		this.name = name;
 		this.hitDiceResultPool = new HashSet<Integer>();
+	}
+
+	public String getName()
+	{
+		return name;
 	}
 
 	public Set<Integer> getHitDiceResultPool()

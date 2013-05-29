@@ -18,6 +18,8 @@
 // 
 package it.d4nguard.rgrpg.util;
 
+import java.security.SecureRandom;
+import java.util.Calendar;
 import java.util.Random;
 
 /**
@@ -109,7 +111,10 @@ public class MersenneTwister extends Random
 	public MersenneTwister()
 	{
 		mt = new int[N];
-		setSeed(System.currentTimeMillis());
+		SecureRandom random = new SecureRandom();
+		byte[] seed = random.generateSeed(Calendar.getInstance().get(
+						Calendar.SECOND));
+		setSeed((int) seed[random.nextInt(seed.length - 1)]);
 	}
 
 	/**
