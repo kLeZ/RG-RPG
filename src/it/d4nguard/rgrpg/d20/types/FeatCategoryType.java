@@ -16,48 +16,19 @@
 // You should have received a copy of the GNU General Public License
 // along with this program.  If not, see <http://www.gnu.org/licenses/>.
 // 
-package it.d4nguard.rgrpg.d20.feats;
+package it.d4nguard.rgrpg.d20.types;
 
-import it.d4nguard.rgrpg.d20.items.Shield;
-import it.d4nguard.rgrpg.d20.types.FeatCategoryType;
-
-import java.util.HashSet;
-import java.util.Set;
-
-public class ShieldProficiency extends Feat
+public enum FeatCategoryType
 {
-	private final Set<Shield> items;
-	private boolean all;
-	private boolean tower;
-
-	public ShieldProficiency()
-	{
-		super("Shield Proficiency", FeatCategoryType.General);
-		this.items = new HashSet<Shield>();
-	}
-
-	public boolean isAll()
-	{
-		return all;
-	}
-
-	public void setAll(boolean all)
-	{
-		this.all = all;
-	}
-
-	public boolean isTower()
-	{
-		return tower;
-	}
-
-	public void setTower(boolean tower)
-	{
-		this.tower = tower;
-	}
-
-	public Set<Shield> getItems()
-	{
-		return items;
-	}
+	General,
+	FighterBonus,
+	Divine,
+	Epic,
+	ItemCreation,
+	Metamagic,
+	Metapsionic,
+	Psionic,
+	Antipsionic,
+	Wild,
+	Creature;
 }

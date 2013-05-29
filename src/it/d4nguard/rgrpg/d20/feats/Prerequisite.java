@@ -19,50 +19,48 @@
 package it.d4nguard.rgrpg.d20.feats;
 
 import it.d4nguard.rgrpg.d20.D20Character;
-import it.d4nguard.rgrpg.d20.types.FeatCategoryType;
-import it.d4nguard.rgrpg.util.BooleanUtils;
 
-import java.lang.reflect.InvocationTargetException;
-import java.util.ArrayList;
-import java.util.List;
+import java.lang.reflect.Method;
 
-public abstract class Feat
+import ognl.Ognl;
+import ognl.OgnlException;
+
+public class Prerequisite
 {
-	private final String name;
-	private final FeatCategoryType featCategory;
-	private final List<Prerequisite> prerequisites;
+	private final String description;
+	private final String expression;
 
-	public Feat(String name, FeatCategoryType featCategory)
+	public Prerequisite(String description, String expression)
 	{
-		this(name, featCategory, new ArrayList<Prerequisite>());
+		this.description = description;
+		this.expression = expression;
 	}
 
-	public Feat(String name, FeatCategoryType featCategory,
-					List<Prerequisite> prerequisites)
+	public String getDescription()
 	{
-		this.name = name;
-		this.featCategory = featCategory;
-		this.prerequisites = prerequisites;
+		return description;
 	}
 
-	public boolean meets(D20Character character) throws IllegalAccessException,
-					IllegalArgumentException, InvocationTargetException
+	public String getExpression()
 	{
-		return BooleanUtils.all(prerequisites, Prerequisite.MEETS, character);
+		return expression;
 	}
 
-	public String getName()
+	public boolean meets(D20Character character) throws OgnlException
 	{
-		return name;
+		return ((Boolean) Ognl.getValue(expression, character)).booleanValue();
 	}
 
-	public FeatCategoryType getFeatCategory()
+	public static Method MEETS;
+	static
 	{
-		return featCategory;
-	}
-
-	public List<Prerequisite> getPrerequisites()
-	{
-		return prerequisites;
+		try
+		{
+			MEETS = Prerequisite.class.getMethod("meets", D20Character.class);
+		}
+		catch (NoSuchMethodException | SecurityException e)
+		{
+			e.printStackTrace();
+		}
 	}
 }

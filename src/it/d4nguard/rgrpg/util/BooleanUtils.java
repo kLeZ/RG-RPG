@@ -16,53 +16,23 @@
 // You should have received a copy of the GNU General Public License
 // along with this program.  If not, see <http://www.gnu.org/licenses/>.
 // 
-package it.d4nguard.rgrpg.d20.feats;
-
-import it.d4nguard.rgrpg.d20.D20Character;
-import it.d4nguard.rgrpg.d20.types.FeatCategoryType;
-import it.d4nguard.rgrpg.util.BooleanUtils;
+package it.d4nguard.rgrpg.util;
 
 import java.lang.reflect.InvocationTargetException;
-import java.util.ArrayList;
-import java.util.List;
+import java.lang.reflect.Method;
+import java.util.Collection;
 
-public abstract class Feat
+public class BooleanUtils
 {
-	private final String name;
-	private final FeatCategoryType featCategory;
-	private final List<Prerequisite> prerequisites;
-
-	public Feat(String name, FeatCategoryType featCategory)
-	{
-		this(name, featCategory, new ArrayList<Prerequisite>());
-	}
-
-	public Feat(String name, FeatCategoryType featCategory,
-					List<Prerequisite> prerequisites)
-	{
-		this.name = name;
-		this.featCategory = featCategory;
-		this.prerequisites = prerequisites;
-	}
-
-	public boolean meets(D20Character character) throws IllegalAccessException,
+	public static <T> boolean all(Collection<T> items, Method method,
+					Object... args) throws IllegalAccessException,
 					IllegalArgumentException, InvocationTargetException
 	{
-		return BooleanUtils.all(prerequisites, Prerequisite.MEETS, character);
-	}
-
-	public String getName()
-	{
-		return name;
-	}
-
-	public FeatCategoryType getFeatCategory()
-	{
-		return featCategory;
-	}
-
-	public List<Prerequisite> getPrerequisites()
-	{
-		return prerequisites;
+		boolean ret = false;
+		for (T t : items)
+		{
+			ret &= ((Boolean) method.invoke(t, args)).booleanValue();
+		}
+		return ret;
 	}
 }

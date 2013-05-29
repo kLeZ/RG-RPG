@@ -19,6 +19,7 @@
 package it.d4nguard.rgrpg.d20.feats;
 
 import it.d4nguard.rgrpg.d20.items.weapons.Weapon;
+import it.d4nguard.rgrpg.d20.types.FeatCategoryType;
 
 import java.util.HashSet;
 import java.util.Set;
@@ -31,6 +32,7 @@ public class WeaponProficiency extends Feat
 
 	public WeaponProficiency()
 	{
+		super("Weapon Proficiency", FeatCategoryType.General);
 		this.items = new HashSet<Weapon>();
 	}
 

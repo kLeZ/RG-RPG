@@ -26,6 +26,7 @@ import org.joda.time.DateMidnight;
 
 public class GeneralInfo
 {
+	private String name;
 	private String description;
 	private String skinColor;
 	private String hairColor;
@@ -36,8 +37,14 @@ public class GeneralInfo
 	private GenderType gender;
 	private String philosophyDeityReligion;
 
-	public GeneralInfo()
+	public String getName()
 	{
+		return name;
+	}
+
+	public void setName(String name)
+	{
+		this.name = name;
 	}
 
 	public String getDescription()

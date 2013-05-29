@@ -36,7 +36,6 @@ import java.util.Set;
 public class D20Character extends Character
 {
 	private Player owner;
-	private String name;
 	private Race race;
 	private float experience;
 	private AlignmentType alignment;

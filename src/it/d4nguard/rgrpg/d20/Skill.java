@@ -54,7 +54,7 @@ public class Skill
 		this.misc = new ArrayList<Integer>();
 	}
 
-	public int getSkillModifier()
+	public int getModifier()
 	{
 		return NumericUtils.sum(ranks + ability.getModifier(), misc);
 	}
