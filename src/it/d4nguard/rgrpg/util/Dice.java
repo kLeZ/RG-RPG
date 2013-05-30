@@ -204,7 +204,7 @@ public class Dice
 	public static String rollShowResults(String diceExpression)
 	{
 		LinkedHashMap<Dice, OperatorType> dice = parseMany(diceExpression);
-		StringBuilder sb = new StringBuilder();
+		StringCompiler sb = new StringCompiler();
 		Iterator<Map.Entry<Dice, OperatorType>> it = dice.entrySet().iterator();
 		OperatorType op = null;
 		Integer res = 0, roll = 0;
@@ -318,7 +318,7 @@ public class Dice
 	@Override
 	public String toString()
 	{
-		StringBuilder sb = new StringBuilder();
+		StringCompiler sb = new StringCompiler();
 		sb.append(nThrows).append(DICE_TOKEN).append(nFaces);
 		if (modifierOperator != null)
 		{

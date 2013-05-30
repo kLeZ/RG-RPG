@@ -25,7 +25,7 @@ public class StringUtils
 {
 	public static String capitalize(String s)
 	{
-		StringBuilder sb = new StringBuilder();
+		StringCompiler sb = new StringCompiler();
 		Scanner scn = new Scanner(s);
 		scn.useDelimiter("\\s");
 		while (scn.hasNext())
@@ -54,7 +54,7 @@ public class StringUtils
 
 	public static String join(String sep, String... args)
 	{
-		StringBuilder sb = new StringBuilder();
+		StringCompiler sb = new StringCompiler();
 		for (int i = 0; i < args.length; i++)
 		{
 			sb.append(args[i]);

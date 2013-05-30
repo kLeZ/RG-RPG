@@ -18,29 +18,25 @@
 // 
 package it.d4nguard.rgrpg.profile;
 
+import it.d4nguard.rgrpg.util.StringCompiler;
+
 import java.util.HashMap;
 import java.util.Map;
 
 public class Player
 {
-	public static final String LF = System.getProperty("line.separator");
-
-	private String name;
+	private final String name;
 	private final Map<Character, CharacterInfo> characters;
 
-	public Player()
+	public Player(String name)
 	{
+		this.name = name;
 		this.characters = new HashMap<Character, CharacterInfo>();
 	}
 
 	public String getName()
 	{
 		return name;
-	}
-
-	public void setName(String name)
-	{
-		this.name = name;
 	}
 
 	public Map<Character, CharacterInfo> getCharacters()
@@ -59,17 +55,17 @@ public class Player
 	@Override
 	public String toString()
 	{
-		StringBuilder sb = new StringBuilder();
-		sb.append("PLAYER").append(LF);
-		sb.append("======").append(LF);
-		sb.append("Name: ").append(this.name).append(LF).append(LF);
-		sb.append("= CHARACTERS").append(LF);
-		sb.append("------------").append(LF);
+		StringCompiler sc = new StringCompiler();
+		sc.appendln("PLAYER");
+		sc.appendln("======");
+		sc.append("Name: ").appendln(this.name).appendNewLine();
+		sc.appendln("= CHARACTERS");
+		sc.appendln("------------");
 		for (Character c : this.characters.keySet())
 		{
-			sb.append(c).append(LF);
+			sc.appendln(c);
 		}
-		sb.append("------------").append(LF);
-		return sb.toString();
+		sc.appendln("------------");
+		return sc.toString();
 	}
 }

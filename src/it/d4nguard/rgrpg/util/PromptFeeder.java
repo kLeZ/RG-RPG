@@ -19,12 +19,11 @@
 package it.d4nguard.rgrpg.util;
 
 import java.io.BufferedReader;
-import java.io.InputStreamReader;
 import java.io.IOException;
+import java.io.InputStreamReader;
 
 public class PromptFeeder
 {
-	public static final String LF = System.getProperty("line.separator");
 	public static final String PROMPT_ENV = "RGRPG_PROMPT";
 	public static final String PROMPT_DEFAULT = "\\u@\\h:\\w> ";
 
@@ -39,32 +38,26 @@ public class PromptFeeder
 
 	public String getHelp()
 	{
-		StringBuilder sb = new StringBuilder();
-		sb.append("STRINGA DI PROMPT").append(LF);
-		sb.append("=================").append(LF);
-		sb.append(LF);
-		sb.append("La shell di base che completa RG-RPG, rendendolo un gioco interattivo, comprende anche un prompt che aiuta nell'utilizzo. ");
-		sb.append("Questo è personalizzabile in base alle esigenze, esportando la variabile \"").append(
-						PROMPT_ENV).append("\".").append(LF).append(LF);
-		sb.append("Le funzioni utilizzabili sono le seguenti:").append(LF);
-		sb.append("\t\t\\u:\tStampa il nome dell'utente corrente.").append(LF);
-		sb.append("\t\t\\h:\tStampa il nome dell'host, fino al primo punto.").append(
-						LF);
-		sb.append("\t\t\\H:\tStampa il nome dell'host, completo.").append(LF);
-		sb.append("\t\t\\w:\tStampa la directory corrente, sostituendo la home dell'utente corrente con una tilde (~).").append(
-						LF);
-		sb.append("\t\t\\r:\tStampa un Ritorno di Carrello (Carriage Return) letterale.").append(
-						LF);
-		sb.append("\t\t\\n:\tStampa un Aumento di Linea (Line Feed) letterale.").append(
-						LF);
-		sb.append("\t\t\\\\:\tStampa un backslash (\\) letterale.").append(LF).append(
-						LF);
-		return sb.toString();
+		StringCompiler sc = new StringCompiler();
+		sc.appendln("STRINGA DI PROMPT");
+		sc.appendln("=================").appendNewLine();
+		sc.appendln("La shell di base che completa RG-RPG, rendendolo un gioco interattivo, comprende anche un prompt che aiuta nell'utilizzo.");
+		sc.appendln("Questo è personalizzabile in base alle esigenze, esportando la variabile \"%s\".",
+						PROMPT_ENV);
+		sc.appendln("Le funzioni utilizzabili sono le seguenti:");
+		sc.appendln("\t\t\\u:\tStampa il nome dell'utente corrente.");
+		sc.appendln("\t\t\\h:\tStampa il nome dell'host, fino al primo punto.");
+		sc.appendln("\t\t\\H:\tStampa il nome dell'host, completo.");
+		sc.appendln("\t\t\\w:\tStampa la directory corrente, sostituendo la home dell'utente corrente con una tilde (~).");
+		sc.appendln("\t\t\\r:\tStampa un Ritorno di Carrello (Carriage Return) letterale.");
+		sc.appendln("\t\t\\n:\tStampa un Aumento di Linea (Line Feed) letterale.");
+		sc.appendln("\t\t\\\\:\tStampa un backslash (\\) letterale.");
+		return sc.toString();
 	}
 
 	public String get()
 	{
-		StringBuilder ret = new StringBuilder();
+		StringCompiler ret = new StringCompiler();
 		char[] tokens = this.prompt.toCharArray();
 		boolean isCmd = false;
 

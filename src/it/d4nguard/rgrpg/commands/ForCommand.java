@@ -20,6 +20,7 @@ package it.d4nguard.rgrpg.commands;
 
 import it.d4nguard.rgrpg.util.CommandLine;
 import it.d4nguard.rgrpg.util.CommandsInterpreter;
+import it.d4nguard.rgrpg.util.StringCompiler;
 import it.d4nguard.rgrpg.util.StringUtils;
 import it.d4nguard.rgrpg.util.Utils;
 
@@ -27,7 +28,6 @@ import java.util.Arrays;
 
 public class ForCommand implements Command
 {
-	private static final String LF = System.getProperty("line.separator");
 	private static final String INDEX_TOKEN = "$i";
 
 	@Override
@@ -54,13 +54,11 @@ public class ForCommand implements Command
 	@Override
 	public String getHelp()
 	{
-		StringBuilder sb = new StringBuilder();
-		sb.append("Executes the specified command iteratively n times.").append(
-						LF);
-		sb.append("\tSyntax: for [min] [max] command {args}").append(LF);
-		sb.append("\tYou can specify a '").append(INDEX_TOKEN).append(
-						"' as a parameter to use the index of the cycle.").append(
-						LF);
+		StringCompiler sb = new StringCompiler();
+		sb.appendln("Executes the specified command iteratively n times.");
+		sb.appendln("\tSyntax: for [min] [max] command {args}");
+		sb.appendln("\tYou can specify a '%s' as a parameter to use the index of the cycle.",
+						INDEX_TOKEN);
 		return sb.toString();
 	}
 }

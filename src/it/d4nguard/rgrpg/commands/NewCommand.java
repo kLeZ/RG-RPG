@@ -18,29 +18,44 @@
 // 
 package it.d4nguard.rgrpg.commands;
 
+import it.d4nguard.rgrpg.Context;
+import it.d4nguard.rgrpg.profile.Player;
+import it.d4nguard.rgrpg.util.CommandLine;
 import it.d4nguard.rgrpg.util.StringCompiler;
+import it.d4nguard.rgrpg.util.StringUtils;
 
-public class VersionCommand implements Command
+public class NewCommand implements Command
 {
-	public static final int MAJOR = 0;
-	public static final int MINOR = 0;
-	public static final int REVISION = 1;
-
 	@Override
 	public void execute(String... args)
 	{
-		StringCompiler sb = new StringCompiler();
-		sb.appendln("RG-RPG is a Java-based text, roleplaying-gal game, in which you");
-		sb.appendln("have to carry many girls. The RG-RPG acronym is a recursive one and");
-		sb.appendln("it means \"RG-RPG is a Gal Role playing game Pointing on Girls.\"");
-		sb.appendln("Copyright (C) 2013 by Alessandro Accardo <julius8774@gmail.com>");
-		sb.appendln("RG-RPG version %d.%02d.%03d", MAJOR, MINOR, REVISION);
-		System.out.println(sb.toString());
+		CommandLine cmd = StringUtils.getArgs(StringUtils.join(" ", args));
+		String name = StringUtils.join(" ", cmd.getArgs());
+		switch (cmd.getProc())
+		{
+			case "player":
+			{
+				if (!Context.playerExists(name))
+				{
+					Player p = Context.newPlayer(name);
+					System.out.println(p);
+				}
+				else System.out.println(String.format(
+								"User '%s' already exists!", name));
+				break;
+			}
+			case "character":
+			{
+				break;
+			}
+		}
 	}
 
 	@Override
 	public String getHelp()
 	{
-		return "Prints some info about the program and its version.";
+		StringCompiler sc = new StringCompiler();
+		sc.append("Creates a new player, with the specified name");
+		return sc.toString();
 	}
 }
