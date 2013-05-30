@@ -23,4 +23,6 @@ public interface Command
 	void execute(String... args);
 
 	String getHelp();
+
+	String getDescription();
 }

@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE properties SYSTEM "http://java.sun.com/dtd/properties.dtd">
+<properties>
+	<comment>Default xml properties file for localization purposes</comment>
+
+	<entry key="welcome">Welcome to RG-RPG! A Gal Game full featured fantasy RPG.</entry>
+
+	<entry key="help.description">Prints the help of the passed command or lists all available commands</entry>
+	<entry key="help.help">Prints the help of the passed command or lists all available commands</entry>
+	<entry key="help.listavailable">Listing available commands:</entry>
+	<entry key="help.err.nohelp">There is no help for specified command '%s'</entry>
+
+	<entry key="new.description">Creates a new entity, with the specified name</entry>
+	<entry key="new.help">Creates a new entity, with the specified name.
+An entity can be a player, or a character, you should specify it.
+new (player|character) {name}
+e.g. new player player1
+e.g. new character mialee</entry>
+	<entry key="new.err.player.exists">Player '%s' already exists!</entry>
+
+	<entry key="exit.description">Exits from the Commands Interpreter</entry>
+	<entry key="exit.help">Exits from the Commands Interpreter</entry>
+
+	<entry key="for.description">Executes the specified command iteratively n times</entry>
+	<entry key="for.help">Executes the specified command iteratively n times.
+	Syntax: for [min] [max] command {args}
+	You can specify a '%s' as a parameter to use the index of the cycle.</entry>
+
+	<entry key="del.description">Deletes an entity, with the specified name</entry>
+	<entry key="del.help">Deletes an entity, with the specified name.
+An entity can be a player, or a character, you should specify it.
+del (player|character) {name}
+e.g. del player player1
+e.g. del character mialee</entry>
+
+	<entry key="login.description">Performs the login to the game</entry>
+	<entry key="login.help">Performs the login to the game.</entry>
+
+	<entry key="play.description">Starts a new game, or continue a new undone one</entry>
+	<entry key="play.help">Starts a new game, or continue a new undone one.</entry>
+
+	<entry key="version.description">Prints some info about the program and its version numbers</entry>
+	<entry key="version.help">Prints some info about the program and its version numbers.</entry>
+	<entry key="version.msg"><![CDATA[RG-RPG is a Java-based text, roleplaying-gal game, in which you have to carry many girls.
+The RG-RPG acronym is a recursive one and it means "RG-RPG is a Gal Role playing game Pointing on Girls."
+Copyright (C) 2013 by Alessandro Accardo <julius8774@gmail.com>
+
+RG-RPG version %d.%02d.%03d]]>
+	</entry>
+</properties>

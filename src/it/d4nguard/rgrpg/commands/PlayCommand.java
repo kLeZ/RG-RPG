@@ -18,6 +18,8 @@
 // 
 package it.d4nguard.rgrpg.commands;
 
+import it.d4nguard.rgrpg.Context;
+
 public class PlayCommand implements Command
 {
 	public PlayCommand()
@@ -32,6 +34,12 @@ public class PlayCommand implements Command
 	@Override
 	public String getHelp()
 	{
-		return "Starts a new game, or continue a new undone one.";
+		return Context.getString("play.help");
+	}
+
+	@Override
+	public String getDescription()
+	{
+		return Context.getString("play.description");
 	}
 }

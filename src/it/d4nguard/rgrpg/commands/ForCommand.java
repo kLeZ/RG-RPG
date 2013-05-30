@@ -18,6 +18,7 @@
 // 
 package it.d4nguard.rgrpg.commands;
 
+import it.d4nguard.rgrpg.Context;
 import it.d4nguard.rgrpg.util.CommandLine;
 import it.d4nguard.rgrpg.util.CommandsInterpreter;
 import it.d4nguard.rgrpg.util.StringCompiler;
@@ -59,6 +60,12 @@ public class ForCommand implements Command
 		sb.appendln("\tSyntax: for [min] [max] command {args}");
 		sb.appendln("\tYou can specify a '%s' as a parameter to use the index of the cycle.",
 						INDEX_TOKEN);
-		return sb.toString();
+		return String.format(Context.getString("for.help"), INDEX_TOKEN);
+	}
+
+	@Override
+	public String getDescription()
+	{
+		return Context.getString("for.description");
 	}
 }

@@ -18,45 +18,33 @@
 // 
 package it.d4nguard.rgrpg.commands;
 
-import java.util.Set;
-
-import it.d4nguard.rgrpg.commands.Command;
+import it.d4nguard.rgrpg.Context;
 import it.d4nguard.rgrpg.util.CommandsInterpreter;
+import it.d4nguard.rgrpg.util.StringUtils;
+
+import java.util.Set;
 
 import org.reflections.Reflections;
 
 public class HelpCommand implements Command
 {
-	public HelpCommand()
-	{
-	}
-
 	@Override
 	public void execute(String... args)
 	{
 		if (args.length == 0)
 		{
 			System.out.println();
-			System.out.println("Listing available commands:");
+			System.out.println(Context.getString("help.listavailable"));
 			Reflections reflections = new Reflections(
-							"it.d4nguard.rgrpg.commands");
+							Command.class.getPackage().getName());
 			Set<Class<? extends Command>> commands = reflections.getSubTypesOf(Command.class);
 			for (Class<? extends Command> cmd : commands)
 			{
-				String cmdLn = cmd.getSimpleName().replace("Command", "");
-				try
-				{
-					System.out.println(String.format(
-									"%s: %s",
-									cmdLn,
-									CommandsInterpreter.resolveCommand(cmdLn).getHelp()));
-				}
-				catch (ClassNotFoundException e)
-				{
-					System.err.println(String.format(
-									"There was an error reading '%s' command: '%s'",
-									cmdLn, e.getMessage()));
-				}
+				System.out.println(String.format(
+								"%s: %s",
+								StringUtils.decapitalize(cmd.getSimpleName().replace(
+												"Command", "")),
+								CommandsInterpreter.newCommand(cmd).getDescription()));
 			}
 			System.out.println();
 		}
@@ -70,8 +58,7 @@ public class HelpCommand implements Command
 			catch (ClassNotFoundException e)
 			{
 				System.out.println(String.format(
-								"There is no help for specified command '%s'",
-								args[0]));
+								Context.getString("help.err.nohelp"), args[0]));
 			}
 		}
 	}
@@ -79,6 +66,12 @@ public class HelpCommand implements Command
 	@Override
 	public String getHelp()
 	{
-		return "Prints the help of the passed command or lists all available commands.";
+		return Context.getString("help.help");
+	}
+
+	@Override
+	public String getDescription()
+	{
+		return Context.getString("help.description");
 	}
 }

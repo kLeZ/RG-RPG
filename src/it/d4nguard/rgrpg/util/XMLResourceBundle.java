@@ -16,33 +16,34 @@
 // You should have received a copy of the GNU General Public License
 // along with this program.  If not, see <http://www.gnu.org/licenses/>.
 // 
-package it.d4nguard.rgrpg.commands;
+package it.d4nguard.rgrpg.util;
 
-import it.d4nguard.rgrpg.d20.AbilityScore;
+import java.io.IOException;
+import java.io.InputStream;
+import java.util.Collections;
+import java.util.Enumeration;
+import java.util.Properties;
+import java.util.ResourceBundle;
+import java.util.Set;
 
-public class ModCommand implements Command
+public class XMLResourceBundle extends ResourceBundle
 {
+	private Properties props;
 
-	@Override
-	public void execute(String... args)
+	XMLResourceBundle(InputStream stream) throws IOException
 	{
-		try
-		{
-			AbilityScore dex = new AbilityScore("Dexterity",
-							Integer.valueOf(args[0]));
-			Object obj = AbilityScore.class.getMethod("getModifier",
-							new Class<?>[] {}).invoke(dex, new Object[] {});
-			System.out.println(obj);
-		}
-		catch (Throwable e)
-		{
-			e.printStackTrace();
-		}
+		props = new Properties();
+		props.loadFromXML(stream);
 	}
 
-	@Override
-	public String getHelp()
+	protected Object handleGetObject(String key)
 	{
-		return "This command tests the MethodHandle mechanism built in the new JDK7";
+		return props.getProperty(key);
+	}
+
+	public Enumeration<String> getKeys()
+	{
+		Set<String> handleKeys = props.stringPropertyNames();
+		return Collections.enumeration(handleKeys);
 	}
 }

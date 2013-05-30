@@ -76,6 +76,24 @@ public class CommandsInterpreter implements Runnable
 		}
 	}
 
+	public static Command newCommand(Class<?> clazz)
+	{
+		Command cmd = null;
+		try
+		{
+			cmd = (Command) clazz.newInstance();
+		}
+		catch (InstantiationException e)
+		{
+			e.printStackTrace();
+		}
+		catch (IllegalAccessException e)
+		{
+			e.printStackTrace();
+		}
+		return cmd;
+	}
+
 	public static Command resolveCommand(String cmdLn)
 					throws ClassNotFoundException
 	{
@@ -86,15 +104,7 @@ public class CommandsInterpreter implements Runnable
 		try
 		{
 			Class<?> clazz = Class.forName(className);
-			cmd = (Command) clazz.newInstance();
-		}
-		catch (IllegalAccessException e)
-		{
-			e.printStackTrace();
-		}
-		catch (InstantiationException e)
-		{
-			e.printStackTrace();
+			cmd = newCommand(clazz);
 		}
 		catch (SecurityException e)
 		{

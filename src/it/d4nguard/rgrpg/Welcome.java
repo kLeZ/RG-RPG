@@ -18,15 +18,15 @@
 // 
 package it.d4nguard.rgrpg;
 
-import java.util.Scanner;
 import it.d4nguard.rgrpg.commands.VersionCommand;
+
+import java.util.Scanner;
 
 public class Welcome
 {
 	public static void print()
 	{
-		System.out.println("Welcome to RG-RPG!");
-		System.out.println();
+		System.out.println(Context.getString("welcome"));
 		new VersionCommand().execute();
 		Scanner scn = new Scanner(
 						ClassLoader.getSystemClassLoader().getResourceAsStream(

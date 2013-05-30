@@ -18,7 +18,7 @@
 // 
 package it.d4nguard.rgrpg.commands;
 
-import it.d4nguard.rgrpg.util.StringCompiler;
+import it.d4nguard.rgrpg.Context;
 
 public class VersionCommand implements Command
 {
@@ -29,18 +29,19 @@ public class VersionCommand implements Command
 	@Override
 	public void execute(String... args)
 	{
-		StringCompiler sb = new StringCompiler();
-		sb.appendln("RG-RPG is a Java-based text, roleplaying-gal game, in which you");
-		sb.appendln("have to carry many girls. The RG-RPG acronym is a recursive one and");
-		sb.appendln("it means \"RG-RPG is a Gal Role playing game Pointing on Girls.\"");
-		sb.appendln("Copyright (C) 2013 by Alessandro Accardo <julius8774@gmail.com>");
-		sb.appendln("RG-RPG version %d.%02d.%03d", MAJOR, MINOR, REVISION);
-		System.out.println(sb.toString());
+		System.out.println(String.format(Context.getString("version.msg"),
+						MAJOR, MINOR, REVISION));
 	}
 
 	@Override
 	public String getHelp()
 	{
-		return "Prints some info about the program and its version.";
+		return Context.getString("version.help");
+	}
+
+	@Override
+	public String getDescription()
+	{
+		return Context.getString("version.description");
 	}
 }

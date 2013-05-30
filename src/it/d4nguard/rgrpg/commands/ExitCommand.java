@@ -18,6 +18,7 @@
 // 
 package it.d4nguard.rgrpg.commands;
 
+import it.d4nguard.rgrpg.Context;
 import it.d4nguard.rgrpg.ExitRuntimeException;
 
 public class ExitCommand implements Command
@@ -35,6 +36,12 @@ public class ExitCommand implements Command
 	@Override
 	public String getHelp()
 	{
-		return "Exits from the Commands Interpreter.";
+		return Context.getString("exit.help");
+	}
+
+	@Override
+	public String getDescription()
+	{
+		return Context.getString("exit.description");
 	}
 }

@@ -18,20 +18,25 @@
 // 
 package it.d4nguard.rgrpg.commands;
 
+import it.d4nguard.rgrpg.Context;
+
 public class DelCommand implements Command
 {
 
 	@Override
 	public void execute(String... args)
 	{
-		// TODO Auto-generated method stub
-
 	}
 
 	@Override
 	public String getHelp()
 	{
-		// TODO Auto-generated method stub
-		return null;
+		return Context.getString("del.help");
+	}
+
+	@Override
+	public String getDescription()
+	{
+		return Context.getString("del.description");
 	}
 }

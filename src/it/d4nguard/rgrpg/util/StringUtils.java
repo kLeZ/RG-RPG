@@ -23,6 +23,21 @@ import java.util.Scanner;
 
 public class StringUtils
 {
+	public static String decapitalize(String s)
+	{
+		StringCompiler sb = new StringCompiler();
+		Scanner scn = new Scanner(s);
+		scn.useDelimiter("\\s");
+		while (scn.hasNext())
+		{
+			String curr = scn.next();
+			sb.append(curr.substring(0, 1).toLowerCase().concat(
+							curr.substring(1)));
+		}
+		scn.close();
+		return sb.toString();
+	}
+
 	public static String capitalize(String s)
 	{
 		StringCompiler sb = new StringCompiler();

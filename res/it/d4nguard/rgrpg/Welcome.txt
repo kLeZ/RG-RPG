@@ -6,7 +6,7 @@ many girls. The RG-RPG acronym is a recursive one and it means "RG-RPG is a Gal
 Role playing game Pointing on Girls."
 
 It is developed entirely with emacs(-nox) and it includes a Makefile which uses
-plain old javac executable (POJACE).  Its main reason to be is my fun and a
+plain old javac executable (POJACE). Its main reason to be is my fun and a
 growing will to learn emacs from its basics, using it instead of only reading a
 book.
 

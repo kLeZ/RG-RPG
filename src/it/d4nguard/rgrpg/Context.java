@@ -19,22 +19,33 @@
 package it.d4nguard.rgrpg;
 
 import it.d4nguard.rgrpg.profile.Player;
+import it.d4nguard.rgrpg.util.XMLResourceBundleControl;
 
 import java.util.HashSet;
+import java.util.ResourceBundle;
 import java.util.Set;
 
 public class Context
 {
+	public static final String STRINGS = "it.d4nguard.rgrpg.l10n.Strings";
+
 	private static enum Singleton
 	{
 		Current;
 
 		private final Set<Player> players;
 		private Player current;
+		private ResourceBundle bundle = ResourceBundle.getBundle(STRINGS,
+						new XMLResourceBundleControl());
 
 		private Singleton()
 		{
 			this.players = new HashSet<Player>();
+		}
+
+		private ResourceBundle getBundle()
+		{
+			return bundle;
 		}
 
 		private Set<Player> getPlayers()
@@ -58,20 +69,6 @@ public class Context
 		return Singleton.Current.getPlayers();
 	}
 
-	public static boolean playerExists(String name)
-	{
-		for (Player p : getPlayers())
-			if (p.getName().equals(name)) return true;
-		return false;
-	}
-
-	public static Player newPlayer(String name)
-	{
-		Player p = new Player(name);
-		getPlayers().add(p);
-		return p;
-	}
-
 	public static Player getCurrentPlayer()
 	{
 		return Singleton.Current.getCurrent();
@@ -80,5 +77,10 @@ public class Context
 	public static void setCurrentPlayer(Player current)
 	{
 		Singleton.Current.setCurrent(current);
+	}
+
+	public static String getString(String name)
+	{
+		return Singleton.Current.getBundle().getString(name);
 	}
 }

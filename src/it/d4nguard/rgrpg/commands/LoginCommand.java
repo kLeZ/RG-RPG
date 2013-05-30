@@ -18,6 +18,8 @@
 // 
 package it.d4nguard.rgrpg.commands;
 
+import it.d4nguard.rgrpg.Context;
+
 public class LoginCommand implements Command
 {
 	public LoginCommand()
@@ -32,6 +34,12 @@ public class LoginCommand implements Command
 	@Override
 	public String getHelp()
 	{
-		return "Performs the login to the game.";
+		return Context.getString("login.help");
+	}
+
+	@Override
+	public String getDescription()
+	{
+		return Context.getString("login.description");
 	}
 }

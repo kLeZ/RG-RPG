@@ -21,7 +21,6 @@ package it.d4nguard.rgrpg.commands;
 import it.d4nguard.rgrpg.Context;
 import it.d4nguard.rgrpg.profile.Player;
 import it.d4nguard.rgrpg.util.CommandLine;
-import it.d4nguard.rgrpg.util.StringCompiler;
 import it.d4nguard.rgrpg.util.StringUtils;
 
 public class NewCommand implements Command
@@ -35,13 +34,14 @@ public class NewCommand implements Command
 		{
 			case "player":
 			{
-				if (!Context.playerExists(name))
+				Player p = new Player(name);
+				if (Context.getPlayers().add(p))
 				{
-					Player p = Context.newPlayer(name);
 					System.out.println(p);
 				}
 				else System.out.println(String.format(
-								"User '%s' already exists!", name));
+								Context.getString("new.err.player.exists"),
+								name));
 				break;
 			}
 			case "character":
@@ -54,8 +54,12 @@ public class NewCommand implements Command
 	@Override
 	public String getHelp()
 	{
-		StringCompiler sc = new StringCompiler();
-		sc.append("Creates a new player, with the specified name");
-		return sc.toString();
+		return Context.getString("new.help");
+	}
+
+	@Override
+	public String getDescription()
+	{
+		return Context.getString("new.description");
 	}
 }
