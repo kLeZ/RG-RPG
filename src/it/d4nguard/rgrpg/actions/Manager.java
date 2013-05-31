@@ -16,28 +16,19 @@
 // You should have received a copy of the GNU General Public License
 // along with this program.  If not, see <http://www.gnu.org/licenses/>.
 // 
-package it.d4nguard.rgrpg.commands;
+package it.d4nguard.rgrpg.actions;
 
-import it.d4nguard.rgrpg.Context;
-
-public class DelCommand implements Command
+public interface Manager<E>
 {
+	public E create(String name);
 
-	@Override
-	public void execute(String... args)
-	{
+	public boolean delete(String name);
 
-	}
+	public E rename(String name, String newName);
 
-	@Override
-	public String getHelp()
-	{
-		return Context.getString("del.help");
-	}
+	public E use(String name);
 
-	@Override
-	public String getDescription()
-	{
-		return Context.getString("del.description");
-	}
+	public E current();
+
+	public E get(String name);
 }

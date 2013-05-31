@@ -16,28 +16,64 @@
 // You should have received a copy of the GNU General Public License
 // along with this program.  If not, see <http://www.gnu.org/licenses/>.
 // 
-package it.d4nguard.rgrpg.commands;
+package it.d4nguard.rgrpg.actions;
 
 import it.d4nguard.rgrpg.Context;
+import it.d4nguard.rgrpg.profile.Player;
 
-public class DelCommand implements Command
+import java.util.Iterator;
+
+public class PlayerManager implements Manager<Player>
 {
-
 	@Override
-	public void execute(String... args)
+	public Player create(String name)
 	{
-
+		Player p = new Player(name);
+		if (Context.getPlayers().add(p))
+		{
+			System.out.println(p);
+		}
+		else System.out.println(String.format(
+						Context.getString("new.err.player.exists"), name));
+		return p;
 	}
 
 	@Override
-	public String getHelp()
+	public boolean delete(String name)
 	{
-		return Context.getString("del.help");
+		return Context.getPlayers().remove(get(name));
 	}
 
 	@Override
-	public String getDescription()
+	public Player rename(String name, String newName)
 	{
-		return Context.getString("del.description");
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public Player use(String name)
+	{
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public Player current()
+	{
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public Player get(String name)
+	{
+		Iterator<Player> it = Context.getPlayers().iterator();
+		while (it.hasNext())
+		{
+			Player curr = it.next();
+			if (curr.getName().equals(name)) return curr;
+		}
+		return null;
 	}
 }
