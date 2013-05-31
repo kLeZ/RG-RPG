@@ -1,7 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE properties SYSTEM "http://java.sun.com/dtd/properties.dtd">
 <properties>
-	<comment>Default xml properties file for localization purposes</comment>
+	<comment>Default strings xml properties file for localization purposes</comment>
+
+	<entry key="exit.msg">Exiting...</entry>
 
 	<entry key="welcome">Welcome to RG-RPG! A Gal Game full featured fantasy RPG.</entry>
 
@@ -47,4 +49,20 @@ Copyright (C) 2013 by Alessandro Accardo <julius8774@gmail.com>
 
 RG-RPG version %d.%02d.%03d]]>
 	</entry>
+
+	<entry key="commandsinterpreter.warn.commandnotfound">Warning: Command not found. You may need some help?
+Type 'help' to see the full list of commands currently available.</entry>
+
+	<entry key="promptfeeder.help">PROMPT STRING
+=================
+The base shell that completes RG-RPG, making it an interactive game, has even a prompt that helps in using the game.
+This is customizable by your needs, exporting the "%s" environment variable.
+Functions that you can currently use are:
+	\u:	Prints current user.
+	\h:	Prints host name, up to the first point.
+	\H:	Prints host name, full.
+	\w:	Prints current directory, replacing user's home with a tilde (~).
+	\r:	Prints a literal carriage return.
+	\n:	Prints a literal line feed.
+	\\:	Prints a literal backslash.</entry>
 </properties>

@@ -18,6 +18,7 @@
 // 
 package it.d4nguard.rgrpg.d20.feats;
 
+import it.d4nguard.rgrpg.Context;
 import it.d4nguard.rgrpg.d20.items.weapons.Weapon;
 import it.d4nguard.rgrpg.d20.types.FeatCategoryType;
 
@@ -32,7 +33,7 @@ public class WeaponProficiency extends Feat
 
 	public WeaponProficiency()
 	{
-		super("Weapon Proficiency", FeatCategoryType.General);
+		super(Context.getFeat("weapon.proficiency"), FeatCategoryType.General);
 		this.items = new HashSet<Weapon>();
 	}
 

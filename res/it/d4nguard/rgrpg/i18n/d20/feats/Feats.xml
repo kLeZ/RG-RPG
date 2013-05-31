@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE properties SYSTEM "http://java.sun.com/dtd/properties.dtd">
+<properties>
+	<comment>Default feats xml properties file for localization purposes</comment>
+
+	<entry key="weapon.proficiency">Weapon Proficiency</entry>
+	<entry key="armor.proficiency">Armor Proficiency</entry>
+	<entry key="shield.proficiency">Shield Proficiency</entry>
+</properties>

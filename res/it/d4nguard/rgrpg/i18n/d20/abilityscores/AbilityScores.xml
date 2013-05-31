@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE properties SYSTEM "http://java.sun.com/dtd/properties.dtd">
+<properties>
+	<comment>Default ability scores xml properties file for localization purposes</comment>
+
+	<entry key="strength">strength</entry>
+	<entry key="dexterity">dexterity</entry>
+	<entry key="constitution">constitution</entry>
+	<entry key="intelligence">intelligence</entry>
+	<entry key="wisdom">wisdom</entry>
+	<entry key="charisma">charisma</entry>
+</properties>

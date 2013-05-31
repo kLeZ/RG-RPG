@@ -18,6 +18,7 @@
 // 
 package it.d4nguard.rgrpg.d20.feats;
 
+import it.d4nguard.rgrpg.Context;
 import it.d4nguard.rgrpg.d20.items.Shield;
 import it.d4nguard.rgrpg.d20.types.FeatCategoryType;
 
@@ -32,7 +33,7 @@ public class ShieldProficiency extends Feat
 
 	public ShieldProficiency()
 	{
-		super("Shield Proficiency", FeatCategoryType.General);
+		super(Context.getFeat("shield.proficiency"), FeatCategoryType.General);
 		this.items = new HashSet<Shield>();
 	}
 

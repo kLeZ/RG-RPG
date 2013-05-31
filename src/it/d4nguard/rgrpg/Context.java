@@ -19,7 +19,7 @@
 package it.d4nguard.rgrpg;
 
 import it.d4nguard.rgrpg.profile.Player;
-import it.d4nguard.rgrpg.util.XMLResourceBundleControl;
+import it.d4nguard.rgrpg.util.BundleSet;
 
 import java.util.HashSet;
 import java.util.ResourceBundle;
@@ -27,25 +27,43 @@ import java.util.Set;
 
 public class Context
 {
-	public static final String STRINGS = "it.d4nguard.rgrpg.l10n.Strings";
+	private static final String I18N_PACKAGE = "it.d4nguard.rgrpg.i18n";
+	private static final String STRINGS = I18N_PACKAGE.concat(".strings.Strings");
+	private static final String FEATS = I18N_PACKAGE.concat(".d20.feats.Feats");
+	private static final String LANGUAGES = I18N_PACKAGE.concat(".d20.languages.Languages");
+	private static final String ABILITY_SCORES = I18N_PACKAGE.concat(".d20.abilityscores.AbilityScores");
 
 	private static enum Singleton
 	{
 		Current;
 
+		private boolean debug = false;
 		private final Set<Player> players;
+		private final BundleSet bundles;
 		private Player current;
-		private ResourceBundle bundle = ResourceBundle.getBundle(STRINGS,
-						new XMLResourceBundleControl());
 
 		private Singleton()
 		{
-			this.players = new HashSet<Player>();
+			players = new HashSet<Player>();
+			bundles = new BundleSet();
+			bundles.add(STRINGS);
+			bundles.add(FEATS);
+			bundles.add(LANGUAGES);
 		}
 
-		private ResourceBundle getBundle()
+		public boolean isDebug()
 		{
-			return bundle;
+			return debug;
+		}
+
+		public void setDebug(boolean debug)
+		{
+			this.debug = debug;
+		}
+
+		private ResourceBundle getBundle(String name)
+		{
+			return bundles.get(name);
 		}
 
 		private Set<Player> getPlayers()
@@ -64,6 +82,16 @@ public class Context
 		}
 	};
 
+	public static boolean isDebug()
+	{
+		return Singleton.Current.isDebug();
+	}
+
+	public static void setDebug(boolean debug)
+	{
+		Singleton.Current.setDebug(debug);
+	}
+
 	public static Set<Player> getPlayers()
 	{
 		return Singleton.Current.getPlayers();
@@ -81,6 +109,21 @@ public class Context
 
 	public static String getString(String name)
 	{
-		return Singleton.Current.getBundle().getString(name);
+		return Singleton.Current.getBundle(STRINGS).getString(name);
+	}
+
+	public static String getFeat(String name)
+	{
+		return Singleton.Current.getBundle(FEATS).getString(name);
+	}
+
+	public static String getLanguage(String name)
+	{
+		return Singleton.Current.getBundle(LANGUAGES).getString(name);
+	}
+
+	public static String getAbilityScore(String name)
+	{
+		return Singleton.Current.getBundle(ABILITY_SCORES).getString(name);
 	}
 }

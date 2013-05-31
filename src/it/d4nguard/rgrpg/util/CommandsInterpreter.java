@@ -18,6 +18,7 @@
 // 
 package it.d4nguard.rgrpg.util;
 
+import it.d4nguard.rgrpg.Context;
 import it.d4nguard.rgrpg.ExitRuntimeException;
 import it.d4nguard.rgrpg.commands.Command;
 
@@ -25,6 +26,7 @@ import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.InputStreamReader;
+import java.util.Arrays;
 
 public class CommandsInterpreter implements Runnable
 {
@@ -54,17 +56,18 @@ public class CommandsInterpreter implements Runnable
 					String[] args = cmd.getArgs();
 					try
 					{
-						// System.out.println(String.format("Command: %s%nArgs: %s", cmdLn, Arrays.toString(args)));
+						if (Context.isDebug()) System.out.println(String.format(
+										"Command: %s%nArgs: %s", cmdLn,
+										Arrays.toString(args)));
 						CommandsInterpreter.resolveCommand(cmdLn).execute(args);
 					}
 					catch (ClassNotFoundException e)
 					{
-						System.out.println("Warning: Command not found. You may need some help?");
-						System.out.println("Type 'help' to see the full list of commands currently available.");
+						System.out.println(Context.getString("commandsinterpreter.warn.commandnotfound"));
 					}
 					catch (ExitRuntimeException e)
 					{
-						System.out.println("Exiting...");
+						System.out.println(Context.getString("exit.msg"));
 						exit = true;
 					}
 				}
@@ -98,8 +101,8 @@ public class CommandsInterpreter implements Runnable
 					throws ClassNotFoundException
 	{
 		Command cmd = null;
-		String className = String.format(
-						"it.d4nguard.rgrpg.commands.%sCommand",
+		String className = String.format("%s.%sCommand",
+						Command.class.getPackage().getName(),
 						StringUtils.capitalize(cmdLn));
 		try
 		{

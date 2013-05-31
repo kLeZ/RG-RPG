@@ -18,6 +18,8 @@
 // 
 package it.d4nguard.rgrpg.util;
 
+import it.d4nguard.rgrpg.Context;
+
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
@@ -38,21 +40,7 @@ public class PromptFeeder
 
 	public String getHelp()
 	{
-		StringCompiler sc = new StringCompiler();
-		sc.appendln("STRINGA DI PROMPT");
-		sc.appendln("=================").appendNewLine();
-		sc.appendln("La shell di base che completa RG-RPG, rendendolo un gioco interattivo, comprende anche un prompt che aiuta nell'utilizzo.");
-		sc.appendln("Questo è personalizzabile in base alle esigenze, esportando la variabile \"%s\".",
-						PROMPT_ENV);
-		sc.appendln("Le funzioni utilizzabili sono le seguenti:");
-		sc.appendln("\t\t\\u:\tStampa il nome dell'utente corrente.");
-		sc.appendln("\t\t\\h:\tStampa il nome dell'host, fino al primo punto.");
-		sc.appendln("\t\t\\H:\tStampa il nome dell'host, completo.");
-		sc.appendln("\t\t\\w:\tStampa la directory corrente, sostituendo la home dell'utente corrente con una tilde (~).");
-		sc.appendln("\t\t\\r:\tStampa un Ritorno di Carrello (Carriage Return) letterale.");
-		sc.appendln("\t\t\\n:\tStampa un Aumento di Linea (Line Feed) letterale.");
-		sc.appendln("\t\t\\\\:\tStampa un backslash (\\) letterale.");
-		return sc.toString();
+		return Context.getString("promptfeeder.help");
 	}
 
 	public String get()

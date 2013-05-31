@@ -18,6 +18,7 @@
 // 
 package it.d4nguard.rgrpg.d20;
 
+import it.d4nguard.rgrpg.Context;
 import it.d4nguard.rgrpg.d20.AbilityScore.UnmodifiableAbilityScore;
 
 import java.util.HashMap;
@@ -26,23 +27,29 @@ import java.util.Map;
 public class AbilityScores
 {
 	public static final String STRENGTH = "strength";
+	public static final String STRENGTH_D = Context.getAbilityScore(STRENGTH);
 	public static final String DEXTERITY = "dexterity";
+	public static final String DEXTERITY_D = Context.getAbilityScore(DEXTERITY);
 	public static final String CONSTITUTION = "constitution";
+	public static final String CONSTITUTION_D = Context.getAbilityScore(CONSTITUTION);
 	public static final String INTELLIGENCE = "intelligence";
+	public static final String INTELLIGENCE_D = Context.getAbilityScore(INTELLIGENCE);
 	public static final String WISDOM = "wisdom";
+	public static final String WISDOM_D = Context.getAbilityScore(WISDOM);
 	public static final String CHARISMA = "charisma";
+	public static final String CHARISMA_D = Context.getAbilityScore(CHARISMA);
 
 	private final Map<String, AbilityScore> scores;
 
 	public AbilityScores()
 	{
 		this.scores = new HashMap<String, AbilityScore>();
-		scores.put(STRENGTH, new AbilityScore(STRENGTH));
-		scores.put(DEXTERITY, new AbilityScore(DEXTERITY));
-		scores.put(CONSTITUTION, new AbilityScore(CONSTITUTION));
-		scores.put(INTELLIGENCE, new AbilityScore(INTELLIGENCE));
-		scores.put(WISDOM, new AbilityScore(WISDOM));
-		scores.put(CHARISMA, new AbilityScore(CHARISMA));
+		scores.put(STRENGTH, new AbilityScore(STRENGTH_D));
+		scores.put(DEXTERITY, new AbilityScore(DEXTERITY_D));
+		scores.put(CONSTITUTION, new AbilityScore(CONSTITUTION_D));
+		scores.put(INTELLIGENCE, new AbilityScore(INTELLIGENCE_D));
+		scores.put(WISDOM, new AbilityScore(WISDOM_D));
+		scores.put(CHARISMA, new AbilityScore(CHARISMA_D));
 	}
 
 	public AbilityScore getStrength()

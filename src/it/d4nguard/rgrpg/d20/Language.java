@@ -18,9 +18,13 @@
 // 
 package it.d4nguard.rgrpg.d20;
 
+import it.d4nguard.rgrpg.Context;
+
 public class Language
 {
-	public static final Language COMMON = new Language("Common", "Common");
+	public static final Language COMMON = new Language(
+					Context.getLanguage("common.lang"),
+					Context.getLanguage("common.dialect"));
 
 	private String name;
 	private String alphabet;
