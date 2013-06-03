@@ -21,6 +21,7 @@ package it.d4nguard.rgrpg.util;
 import java.lang.reflect.InvocationTargetException;
 import java.lang.reflect.Method;
 import java.util.Collection;
+import java.util.Iterator;
 
 public class BooleanUtils
 {
@@ -28,10 +29,24 @@ public class BooleanUtils
 					Object... args) throws IllegalAccessException,
 					IllegalArgumentException, InvocationTargetException
 	{
-		boolean ret = false;
+		boolean ret = true;
 		for (T t : items)
 		{
 			ret &= ((Boolean) method.invoke(t, args)).booleanValue();
+		}
+		return ret;
+	}
+
+	public static <T> boolean any(Collection<T> items, Method method,
+					Object... args) throws IllegalAccessException,
+					IllegalArgumentException, InvocationTargetException
+	{
+		boolean ret = false;
+		Iterator<T> it = items.iterator();
+		while (it.hasNext() && ret)
+		{
+			T t = it.next();
+			ret |= ((Boolean) method.invoke(t, args)).booleanValue();
 		}
 		return ret;
 	}

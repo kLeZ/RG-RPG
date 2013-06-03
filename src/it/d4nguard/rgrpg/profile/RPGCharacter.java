@@ -16,45 +16,50 @@
 // You should have received a copy of the GNU General Public License
 // along with this program.  If not, see <http://www.gnu.org/licenses/>.
 // 
-package it.d4nguard.rgrpg.commands;
+package it.d4nguard.rgrpg.profile;
 
 import it.d4nguard.rgrpg.Context;
-import it.d4nguard.rgrpg.managers.CharacterManager;
-import it.d4nguard.rgrpg.managers.PlayerManager;
-import it.d4nguard.rgrpg.util.CommandLine;
-import it.d4nguard.rgrpg.util.StringUtils;
+import it.d4nguard.rgrpg.d20.D20Character;
 
-public class DelCommand implements Command
+public class RPGCharacter
 {
-	@Override
-	public void execute(String... args)
+	private final Player owner;
+	private final GeneralInfo info;
+
+	public RPGCharacter(Player owner, GeneralInfo info)
 	{
-		CommandLine cmd = StringUtils.getArgs(args);
-		String name = StringUtils.join(" ", cmd.getArgs());
-		switch (cmd.getProc())
+		this.owner = owner;
+		this.info = info;
+	}
+
+	public Player getOwner()
+	{
+		return owner;
+	}
+
+	public GeneralInfo getInfo()
+	{
+		return info;
+	}
+
+	public static RPGCharacter build(String name, Object... args)
+	{
+		RPGCharacter ret = null;
+		Player current = Context.getCurrentPlayer();
+		GeneralInfo gi = new GeneralInfo();
+		gi.setName(name);
+		String charType = String.valueOf(args[0]);
+
+		switch (charType)
 		{
-			case "player":
+			case "d20":
 			{
-				new PlayerManager().delete(name);
+				ret = new D20Character(current, gi);
 				break;
 			}
-			case "character":
-			{
-				new CharacterManager().delete(name);
-				break;
-			}
+			default:
+				ret = new RPGCharacter(current, gi);
 		}
-	}
-
-	@Override
-	public String getHelp()
-	{
-		return Context.getString("del.help");
-	}
-
-	@Override
-	public String getDescription()
-	{
-		return Context.getString("del.description");
+		return ret;
 	}
 }

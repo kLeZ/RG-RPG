@@ -16,26 +16,44 @@
 // You should have received a copy of the GNU General Public License
 // along with this program.  If not, see <http://www.gnu.org/licenses/>.
 // 
-package it.d4nguard.rgrpg.profile;
+package it.d4nguard.rgrpg.commands;
 
-public abstract class Character
+import it.d4nguard.rgrpg.Context;
+import it.d4nguard.rgrpg.managers.CharacterManager;
+import it.d4nguard.rgrpg.managers.PlayerManager;
+import it.d4nguard.rgrpg.util.CommandLine;
+import it.d4nguard.rgrpg.util.StringUtils;
+
+public class CurCommand implements Command
 {
-	private final Player owner;
-	private final GeneralInfo info;
-
-	public Character(Player owner, GeneralInfo info)
+	@Override
+	public void execute(String... args)
 	{
-		this.owner = owner;
-		this.info = info;
+		CommandLine cmd = StringUtils.getArgs(args);
+		switch (cmd.getProc())
+		{
+			case "player":
+			{
+				System.out.println(new PlayerManager().current());
+				break;
+			}
+			case "character":
+			{
+				System.out.println(new CharacterManager().current());
+				break;
+			}
+		}
 	}
 
-	public Player getOwner()
+	@Override
+	public String getHelp()
 	{
-		return owner;
+		return Context.getString("cur.help");
 	}
 
-	public GeneralInfo getInfo()
+	@Override
+	public String getDescription()
 	{
-		return info;
+		return Context.getString("cur.description");
 	}
 }

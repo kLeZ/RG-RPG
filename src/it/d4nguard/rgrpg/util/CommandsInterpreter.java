@@ -63,12 +63,16 @@ public class CommandsInterpreter implements Runnable
 					}
 					catch (ClassNotFoundException e)
 					{
-						System.out.println(Context.getString("commandsinterpreter.warn.commandnotfound"));
+						System.err.println(Context.getString("commandsinterpreter.warn.commandnotfound"));
 					}
 					catch (ExitRuntimeException e)
 					{
 						System.out.println(Context.getString("exit.msg"));
 						exit = true;
+					}
+					catch (Throwable e)
+					{
+						System.err.println(e.getLocalizedMessage());
 					}
 				}
 			}

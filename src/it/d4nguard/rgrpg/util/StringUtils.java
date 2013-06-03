@@ -53,6 +53,11 @@ public class StringUtils
 		return sb.toString();
 	}
 
+	public static CommandLine getArgs(String... toJoin)
+	{
+		return getArgs(join(" ", toJoin));
+	}
+
 	public static CommandLine getArgs(String cmdLn)
 	{
 		CommandLine ret = new CommandLine();

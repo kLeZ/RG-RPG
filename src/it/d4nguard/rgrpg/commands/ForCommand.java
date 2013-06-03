@@ -21,7 +21,6 @@ package it.d4nguard.rgrpg.commands;
 import it.d4nguard.rgrpg.Context;
 import it.d4nguard.rgrpg.util.CommandLine;
 import it.d4nguard.rgrpg.util.CommandsInterpreter;
-import it.d4nguard.rgrpg.util.StringCompiler;
 import it.d4nguard.rgrpg.util.StringUtils;
 import it.d4nguard.rgrpg.util.Utils;
 
@@ -35,8 +34,8 @@ public class ForCommand implements Command
 	public void execute(String... args)
 	{
 		int min = Integer.parseInt(args[0]), max = Integer.parseInt(args[1]);
-		CommandLine cmd = StringUtils.getArgs(StringUtils.join(" ",
-						Arrays.copyOfRange(args, 2, args.length)));
+		CommandLine cmd = StringUtils.getArgs(Arrays.copyOfRange(args, 2,
+						args.length));
 		try
 		{
 			for (int i = min; i < max; i++)
@@ -55,11 +54,6 @@ public class ForCommand implements Command
 	@Override
 	public String getHelp()
 	{
-		StringCompiler sb = new StringCompiler();
-		sb.appendln("Executes the specified command iteratively n times.");
-		sb.appendln("\tSyntax: for [min] [max] command {args}");
-		sb.appendln("\tYou can specify a '%s' as a parameter to use the index of the cycle.",
-						INDEX_TOKEN);
 		return String.format(Context.getString("for.help"), INDEX_TOKEN);
 	}
 

@@ -3,7 +3,7 @@
 <properties>
 	<comment>Default feats xml properties file for localization purposes</comment>
 
-	<entry key="weapon.proficiency">Weapon Proficiency</entry>
-	<entry key="armor.proficiency">Armor Proficiency</entry>
-	<entry key="shield.proficiency">Shield Proficiency</entry>
+	<entry key="weapon.proficiency.title">Weapon Proficiency</entry>
+	<entry key="armor.proficiency.title">Armor Proficiency</entry>
+	<entry key="shield.proficiency.title">Shield Proficiency</entry>
 </properties>

@@ -24,7 +24,7 @@ import it.d4nguard.rgrpg.managers.PlayerManager;
 import it.d4nguard.rgrpg.util.CommandLine;
 import it.d4nguard.rgrpg.util.StringUtils;
 
-public class DelCommand implements Command
+public class UseCommand implements Command
 {
 	@Override
 	public void execute(String... args)
@@ -35,12 +35,12 @@ public class DelCommand implements Command
 		{
 			case "player":
 			{
-				new PlayerManager().delete(name);
+				new PlayerManager().use(name);
 				break;
 			}
 			case "character":
 			{
-				new CharacterManager().delete(name);
+				new CharacterManager().use(name);
 				break;
 			}
 		}
@@ -49,12 +49,12 @@ public class DelCommand implements Command
 	@Override
 	public String getHelp()
 	{
-		return Context.getString("del.help");
+		return Context.getString("use.help");
 	}
 
 	@Override
 	public String getDescription()
 	{
-		return Context.getString("del.description");
+		return Context.getString("use.description");
 	}
 }

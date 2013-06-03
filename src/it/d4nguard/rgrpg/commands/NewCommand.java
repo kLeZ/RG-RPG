@@ -19,7 +19,8 @@
 package it.d4nguard.rgrpg.commands;
 
 import it.d4nguard.rgrpg.Context;
-import it.d4nguard.rgrpg.profile.Player;
+import it.d4nguard.rgrpg.managers.CharacterManager;
+import it.d4nguard.rgrpg.managers.PlayerManager;
 import it.d4nguard.rgrpg.util.CommandLine;
 import it.d4nguard.rgrpg.util.StringUtils;
 
@@ -28,24 +29,21 @@ public class NewCommand implements Command
 	@Override
 	public void execute(String... args)
 	{
-		CommandLine cmd = StringUtils.getArgs(StringUtils.join(" ", args));
-		String name = StringUtils.join(" ", cmd.getArgs());
+		CommandLine cmd = StringUtils.getArgs(args);
+		String name;
 		switch (cmd.getProc())
 		{
 			case "player":
 			{
-				Player p = new Player(name);
-				if (Context.getPlayers().add(p))
-				{
-					System.out.println(p);
-				}
-				else System.out.println(String.format(
-								Context.getString("new.err.player.exists"),
-								name));
+				name = StringUtils.join(" ", cmd.getArgs());
+				new PlayerManager().create(name);
 				break;
 			}
 			case "character":
 			{
+				CommandLine cmd_c = StringUtils.getArgs(cmd.getArgs());
+				name = StringUtils.join(" ", cmd_c.getArgs());
+				new CharacterManager().create(name, cmd_c.getProc());
 				break;
 			}
 		}

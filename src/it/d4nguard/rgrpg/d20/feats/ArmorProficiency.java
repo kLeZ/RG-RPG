@@ -34,7 +34,8 @@ public class ArmorProficiency extends Feat
 
 	public ArmorProficiency()
 	{
-		super(Context.getFeat("armor.proficiency"), FeatCategoryType.General);
+		super(Context.getFeat("armor.proficiency.title"),
+						FeatCategoryType.General);
 		this.items = new HashSet<Armor>();
 	}
 

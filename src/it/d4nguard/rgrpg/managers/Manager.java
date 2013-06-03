@@ -16,11 +16,11 @@
 // You should have received a copy of the GNU General Public License
 // along with this program.  If not, see <http://www.gnu.org/licenses/>.
 // 
-package it.d4nguard.rgrpg.actions;
+package it.d4nguard.rgrpg.managers;
 
 public interface Manager<E>
 {
-	public E create(String name);
+	public E create(String name, Object... args);
 
 	public boolean delete(String name);
 

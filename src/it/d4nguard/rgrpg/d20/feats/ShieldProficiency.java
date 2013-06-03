@@ -33,7 +33,8 @@ public class ShieldProficiency extends Feat
 
 	public ShieldProficiency()
 	{
-		super(Context.getFeat("shield.proficiency"), FeatCategoryType.General);
+		super(Context.getFeat("shield.proficiency.title"),
+						FeatCategoryType.General);
 		this.items = new HashSet<Shield>();
 	}
 

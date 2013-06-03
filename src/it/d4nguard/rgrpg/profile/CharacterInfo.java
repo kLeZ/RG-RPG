@@ -23,61 +23,80 @@ import org.joda.time.Duration;
 
 public class CharacterInfo
 {
-	private DateTime creationDate;
-	private Duration playedTime;
-	private DateTime lastSession;
-	private Duration lastSessionDuration;
-	private float lastSessionEarnedExperience;
+	private DateTime creation;
+	private Duration played;
+	private DateTime last;
+	private Duration lastDuration;
+	private float lastExp;
+	private boolean current;
 
-	public DateTime getCreationDate()
+	public CharacterInfo()
 	{
-		return creationDate;
+		this.creation = DateTime.now();
+		this.played = new Duration(0);
+		this.last = new DateTime(this.creation.getMillis());
+		this.lastDuration = new Duration(0);
+		this.lastExp = 0;
+		this.current = false;
 	}
 
-	public void setCreationDate(DateTime creationDate)
+	public DateTime getCreation()
 	{
-		this.creationDate = creationDate;
+		return creation;
 	}
 
-	public Duration getPlayedTime()
+	public void setCreation(DateTime creation)
 	{
-		return playedTime;
+		this.creation = creation;
 	}
 
-	public void setPlayedTime(Duration playedTime)
+	public Duration getPlayed()
 	{
-		this.playedTime = playedTime;
+		return played;
 	}
 
-	public DateTime getLastSession()
+	public void setPlayed(Duration played)
 	{
-		return lastSession;
+		this.played = played;
 	}
 
-	public void setLastSession(DateTime lastSession)
+	public DateTime getLast()
 	{
-		this.lastSession = lastSession;
+		return last;
 	}
 
-	public Duration getLastSessionDuration()
+	public void setLast(DateTime last)
 	{
-		return lastSessionDuration;
+		this.last = last;
 	}
 
-	public void setLastSessionDuration(Duration lastSessionDuration)
+	public Duration getLastDuration()
 	{
-		this.lastSessionDuration = lastSessionDuration;
+		return lastDuration;
 	}
 
-	public float getLastSessionEarnedExperience()
+	public void setLastDuration(Duration lastDuration)
 	{
-		return lastSessionEarnedExperience;
+		this.lastDuration = lastDuration;
 	}
 
-	public void
-					setLastSessionEarnedExperience(
-									float lastSessionEarnedExperience)
+	public float getLastExp()
 	{
-		this.lastSessionEarnedExperience = lastSessionEarnedExperience;
+		return lastExp;
+	}
+
+	public void setLastExp(float lastExp)
+	{
+		this.lastExp = lastExp;
+	}
+
+	public boolean isCurrent()
+	{
+		return current;
+	}
+
+	public void setCurrent(boolean current)
+	{
+		this.current = current;
 	}
 }

@@ -16,64 +16,51 @@
 // You should have received a copy of the GNU General Public License
 // along with this program.  If not, see <http://www.gnu.org/licenses/>.
 // 
-package it.d4nguard.rgrpg.actions;
+package it.d4nguard.rgrpg.commands;
 
 import it.d4nguard.rgrpg.Context;
-import it.d4nguard.rgrpg.profile.Player;
+import it.d4nguard.rgrpg.managers.CharacterManager;
+import it.d4nguard.rgrpg.managers.PlayerManager;
+import it.d4nguard.rgrpg.util.CommandLine;
+import it.d4nguard.rgrpg.util.StringUtils;
 
-import java.util.Iterator;
+import java.util.StringTokenizer;
 
-public class PlayerManager implements Manager<Player>
+public class RenCommand implements Command
 {
 	@Override
-	public Player create(String name)
+	public void execute(String... args)
 	{
-		Player p = new Player(name);
-		if (Context.getPlayers().add(p))
+		// ren player kLeZ :: kLeZ-hAcK
+		CommandLine cmd = StringUtils.getArgs(args);
+		String names = StringUtils.join(" ", cmd.getArgs());
+		StringTokenizer st = new StringTokenizer(names, "::", false);
+		String name = st.nextToken();
+		String newName = st.nextToken();
+		switch (cmd.getProc())
 		{
-			System.out.println(p);
+			case "player":
+			{
+				new PlayerManager().rename(name, newName);
+				break;
+			}
+			case "character":
+			{
+				new CharacterManager().rename(name, newName);
+				break;
+			}
 		}
-		else System.out.println(String.format(
-						Context.getString("new.err.player.exists"), name));
-		return p;
 	}
 
 	@Override
-	public boolean delete(String name)
+	public String getHelp()
 	{
-		return Context.getPlayers().remove(get(name));
+		return Context.getString("ren.help");
 	}
 
 	@Override
-	public Player rename(String name, String newName)
+	public String getDescription()
 	{
-		// TODO Auto-generated method stub
-		return null;
-	}
-
-	@Override
-	public Player use(String name)
-	{
-		// TODO Auto-generated method stub
-		return null;
-	}
-
-	@Override
-	public Player current()
-	{
-		// TODO Auto-generated method stub
-		return null;
-	}
-
-	@Override
-	public Player get(String name)
-	{
-		Iterator<Player> it = Context.getPlayers().iterator();
-		while (it.hasNext())
-		{
-			Player curr = it.next();
-			if (curr.getName().equals(name)) return curr;
-		}
-		return null;
+		return Context.getString("ren.description");
 	}
 }

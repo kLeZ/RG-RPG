@@ -24,7 +24,7 @@ import it.d4nguard.rgrpg.d20.types.AlignmentType;
 import it.d4nguard.rgrpg.d20.types.ArmorClassType;
 import it.d4nguard.rgrpg.d20.types.BabType;
 import it.d4nguard.rgrpg.d20.types.SavingThrowType;
-import it.d4nguard.rgrpg.profile.Character;
+import it.d4nguard.rgrpg.profile.RPGCharacter;
 import it.d4nguard.rgrpg.profile.GeneralInfo;
 import it.d4nguard.rgrpg.profile.Player;
 import it.d4nguard.rgrpg.util.NumericUtils;
@@ -34,10 +34,11 @@ import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
 
-public class D20Character extends Character
+public class D20Character extends RPGCharacter
 {
-	private final Race race;
-	private final AlignmentType alignment;
+	private Race race;
+	private AlignmentType alignment;
+
 	private final AbilityScores abilityScores;
 	private final Equipment equipment;
 	private final DamageReduction damageReduction;
@@ -57,12 +58,9 @@ public class D20Character extends Character
 	private int damage = 0;
 	private int deflection = 0;
 
-	public D20Character(Player owner, GeneralInfo info, Race race,
-					AlignmentType alignment, Class initialClass)
+	public D20Character(Player owner, GeneralInfo info)
 	{
 		super(owner, info);
-		this.race = race;
-		this.alignment = alignment;
 		this.abilityScores = new AbilityScores();
 		this.equipment = new Equipment();
 		this.damageReduction = new DamageReduction();
@@ -80,7 +78,6 @@ public class D20Character extends Character
 		this.stModifiers = new ArrayList<Integer>();
 
 		this.spokenLanguages.add(Language.COMMON);
-		this.classes.add(initialClass);
 	}
 
 	public float getExperience()
@@ -118,9 +115,19 @@ public class D20Character extends Character
 		return race;
 	}
 
+	public void setRace(Race race)
+	{
+		this.race = race;
+	}
+
 	public AlignmentType getAlignment()
 	{
 		return alignment;
+	}
+
+	public void setAlignment(AlignmentType alignment)
+	{
+		this.alignment = alignment;
 	}
 
 	public AbilityScores getAbilityScores()

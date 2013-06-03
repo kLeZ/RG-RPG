@@ -26,12 +26,17 @@ import java.util.Map;
 public class Player
 {
 	private final String name;
-	private final Map<Character, CharacterInfo> characters;
+	private final Map<RPGCharacter, CharacterInfo> rPGCharacters;
 
 	public Player(String name)
 	{
+		this(name, new HashMap<RPGCharacter, CharacterInfo>());
+	}
+
+	private Player(String name, Map<RPGCharacter, CharacterInfo> rPGCharacters)
+	{
 		this.name = name;
-		this.characters = new HashMap<Character, CharacterInfo>();
+		this.rPGCharacters = rPGCharacters;
 	}
 
 	public String getName()
@@ -39,9 +44,14 @@ public class Player
 		return name;
 	}
 
-	public Map<Character, CharacterInfo> getCharacters()
+	public Map<RPGCharacter, CharacterInfo> getCharacters()
 	{
-		return characters;
+		return rPGCharacters;
+	}
+
+	public Player copyRename(String name)
+	{
+		return new Player(name, this.rPGCharacters);
 	}
 
 	@Override
@@ -61,7 +71,7 @@ public class Player
 		sc.append("Name: ").appendln(this.name).appendNewLine();
 		sc.appendln("= CHARACTERS");
 		sc.appendln("------------");
-		for (Character c : this.characters.keySet())
+		for (RPGCharacter c : this.rPGCharacters.keySet())
 		{
 			sc.appendln(c);
 		}
