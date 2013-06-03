@@ -68,23 +68,23 @@ Functions that you can currently use are:
 	\n:	Prints a literal line feed.
 	\\:	Prints a literal backslash.</entry>
 
-	<entry key="ren.help">Renames the entity with the specified name to the new specified one</entry>
-	<entry key="ren.description">Renames the entity with the specified name to the new specified one.
+	<entry key="ren.description">Renames the entity with the specified name to the new specified one</entry>
+	<entry key="ren.help">Renames the entity with the specified name to the new specified one.
 An entity can be a player, or a character, you should specify it.
 ren (player|character) {name} :: {newName}
 e.g. ren player player1 :: player2
 e.g. ren character mialee :: Mialee
 e.g. ren character Celawyn Desh :: Celawyn</entry>
 
-	<entry key="ren.help">Prints the current entity</entry>
-	<entry key="ren.description">Prints the current entity.
+	<entry key="cur.description">Prints the current entity</entry>
+	<entry key="cur.help">Prints the current entity.
 An entity can be a player, or a character, you should specify it.
 cur (player|character)
 e.g. cur player
 e.g. cur character</entry>
 
-	<entry key="use.help">Sets the specified entity as current</entry>
-	<entry key="use.description">Sets the specified entity as current.
+	<entry key="use.description">Sets the specified entity as current</entry>
+	<entry key="use.help">Sets the specified entity as current.
 An entity can be a player, or a character, you should specify it.
 use (player|character) {name}
 e.g. use player player1
