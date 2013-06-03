@@ -19,46 +19,24 @@
 package it.d4nguard.rgrpg.commands;
 
 import it.d4nguard.rgrpg.Context;
-import it.d4nguard.rgrpg.managers.CharacterManager;
-import it.d4nguard.rgrpg.managers.PlayerManager;
-import it.d4nguard.rgrpg.util.CommandLine;
-import it.d4nguard.rgrpg.util.StringUtils;
 
-public class NewCommand implements Command
+public class DebugCommand implements Command
 {
 	@Override
 	public void execute(String... args)
 	{
-		CommandLine cmd = StringUtils.getArgs(args);
-		String name;
-		switch (cmd.getProc())
-		{
-			case "player":
-			{
-				name = StringUtils.join(" ", cmd.getArgs());
-				System.out.println(new PlayerManager().create(name));
-				break;
-			}
-			case "character":
-			{
-				CommandLine cmd_c = StringUtils.getArgs(cmd.getArgs());
-				name = StringUtils.join(" ", cmd_c.getArgs());
-				System.out.println(new CharacterManager().create(name,
-								cmd_c.getProc()));
-				break;
-			}
-		}
+		Context.setDebug(Boolean.parseBoolean(args[0]));
 	}
 
 	@Override
 	public String getHelp()
 	{
-		return Context.getString("new.help");
+		return Context.getString("debug.help");
 	}
 
 	@Override
 	public String getDescription()
 	{
-		return Context.getString("new.description");
+		return Context.getString("debug.description");
 	}
 }

@@ -35,12 +35,12 @@ public class UseCommand implements Command
 		{
 			case "player":
 			{
-				new PlayerManager().use(name);
+				System.out.println(new PlayerManager().use(name));
 				break;
 			}
 			case "character":
 			{
-				new CharacterManager().use(name);
+				System.out.println(new CharacterManager().use(name));
 				break;
 			}
 		}

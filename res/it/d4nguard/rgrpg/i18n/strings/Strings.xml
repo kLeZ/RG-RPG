@@ -110,4 +110,8 @@ An entity can be a player, or a character, you should specify it.
 set (player|character) {name} "{exp}"
 e.g. set player player1 
 e.g. show character mialee</entry>
+
+	<entry key="debug.description">Sets debug bit</entry>
+	<entry key="debug.help">Sets debug bit.
+debug (true|false)</entry>
 </properties>

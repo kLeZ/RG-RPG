@@ -99,6 +99,7 @@ public class Context
 
 	public static Player getCurrentPlayer()
 	{
+		if (isDebug()) System.out.println(Singleton.Current.getCurrent());
 		return Singleton.Current.getCurrent();
 	}
 
