@@ -42,6 +42,18 @@ public class RPGCharacter
 		return info;
 	}
 
+	@Override
+	public String toString()
+	{
+		StringBuilder builder = new StringBuilder();
+		builder.append("RPGCharacter [owner=");
+		builder.append(owner);
+		builder.append(", info=");
+		builder.append(info);
+		builder.append("]");
+		return builder.toString();
+	}
+
 	public static RPGCharacter build(String name, Object... args)
 	{
 		RPGCharacter ret = null;

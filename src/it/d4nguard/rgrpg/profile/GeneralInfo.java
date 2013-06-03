@@ -18,11 +18,15 @@
 // 
 package it.d4nguard.rgrpg.profile;
 
-import javax.measure.Measurable;
+import static javax.measure.unit.SI.KILOGRAM;
+import static javax.measure.unit.SI.METER;
+
 import javax.measure.quantity.Length;
 import javax.measure.quantity.Mass;
+import javax.measure.unit.UnitFormat;
 
 import org.joda.time.DateMidnight;
+import org.jscience.physics.amount.Amount;
 
 public class GeneralInfo
 {
@@ -31,11 +35,17 @@ public class GeneralInfo
 	private String skinColor;
 	private String hairColor;
 	private String eyesColor;
-	private Measurable<Length> height;
-	private Measurable<Mass> weight;
+	private Amount<Length> height;
+	private Amount<Mass> weight;
 	private DateMidnight dateOfBirth;
 	private GenderType gender;
 	private String philosophyDeityReligion;
+
+	public GeneralInfo()
+	{
+		height = Amount.valueOf(1.0D, METER);
+		weight = Amount.valueOf(1.0D, KILOGRAM);
+	}
 
 	public String getName()
 	{
@@ -87,22 +97,22 @@ public class GeneralInfo
 		this.eyesColor = eyesColor;
 	}
 
-	public Measurable<Length> getHeight()
+	public Amount<Length> getHeight()
 	{
 		return height;
 	}
 
-	public void setHeight(Measurable<Length> height)
+	public void setHeight(Amount<Length> height)
 	{
 		this.height = height;
 	}
 
-	public Measurable<Mass> getWeight()
+	public Amount<Mass> getWeight()
 	{
 		return weight;
 	}
 
-	public void setWeight(Measurable<Mass> weight)
+	public void setWeight(Amount<Mass> weight)
 	{
 		this.weight = weight;
 	}
@@ -135,5 +145,34 @@ public class GeneralInfo
 	public void setPhilosophyDeityReligion(String philosophyDeityReligion)
 	{
 		this.philosophyDeityReligion = philosophyDeityReligion;
+	}
+
+	@Override
+	public String toString()
+	{
+		UnitFormat uf = UnitFormat.getInstance();
+		StringBuilder builder = new StringBuilder();
+		builder.append("GeneralInfo [name=");
+		builder.append(name);
+		builder.append(", description=");
+		builder.append(description);
+		builder.append(", skinColor=");
+		builder.append(skinColor);
+		builder.append(", hairColor=");
+		builder.append(hairColor);
+		builder.append(", eyesColor=");
+		builder.append(eyesColor);
+		builder.append(", height=");
+		builder.append(uf.format(height));
+		builder.append(", weight=");
+		builder.append(uf.format(weight));
+		builder.append(", dateOfBirth=");
+		builder.append(dateOfBirth);
+		builder.append(", gender=");
+		builder.append(gender);
+		builder.append(", philosophyDeityReligion=");
+		builder.append(philosophyDeityReligion);
+		builder.append("]");
+		return builder.toString();
 	}
 }
