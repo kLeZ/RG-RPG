@@ -89,4 +89,25 @@ An entity can be a player, or a character, you should specify it.
 use (player|character) {name}
 e.g. use player player1
 e.g. use character mialee</entry>
+
+	<entry key="list.description">Shows all the created entities</entry>
+	<entry key="list.help">Shows all the created entities.
+An entity can be a player, or a character, you should specify it.
+list (players|characters)
+e.g. list players
+e.g. list characters</entry>
+
+	<entry key="show.description">Shows the specified entity</entry>
+	<entry key="show.help">Shows the specified entity.
+An entity can be a player, or a character, you should specify it.
+show (player|character) {name}
+e.g. show player player1
+e.g. show character mialee</entry>
+
+	<entry key="set.description">Sets an expression for the specified entity with the given name</entry>
+	<entry key="set.help">Sets an expression for the specified entity with the given name.
+An entity can be a player, or a character, you should specify it.
+set (player|character) {name} "{exp}"
+e.g. set player player1 
+e.g. show character mialee</entry>
 </properties>

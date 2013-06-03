@@ -2,29 +2,25 @@ package it.d4nguard.rgrpg.managers;
 
 import it.d4nguard.rgrpg.Context;
 import it.d4nguard.rgrpg.profile.CharacterInfo;
-import it.d4nguard.rgrpg.profile.Player;
 import it.d4nguard.rgrpg.profile.RPGCharacter;
 
 import java.util.Iterator;
-import java.util.Map;
 import java.util.Map.Entry;
 
 public class CharacterManager implements Manager<RPGCharacter>
 {
-	private final Player player = Context.getCurrentPlayer();
-	private final Map<RPGCharacter, CharacterInfo> characters = player.getCharacters();
-
 	@Override
 	public RPGCharacter create(String name, Object... args)
 	{
-		characters.put(RPGCharacter.build(name, args), new CharacterInfo());
+		Context.getCurrentPlayer().getCharacters().put(
+						RPGCharacter.build(name, args), new CharacterInfo());
 		return get(name);
 	}
 
 	@Override
 	public boolean delete(String name)
 	{
-		return characters.remove(get(name)) != null;
+		return Context.getCurrentPlayer().getCharacters().remove(get(name)) != null;
 	}
 
 	@Override
@@ -38,7 +34,7 @@ public class CharacterManager implements Manager<RPGCharacter>
 	public RPGCharacter use(String name)
 	{
 		RPGCharacter ret = null;
-		Iterator<Entry<RPGCharacter, CharacterInfo>> it = characters.entrySet().iterator();
+		Iterator<Entry<RPGCharacter, CharacterInfo>> it = Context.getCurrentPlayer().getCharacters().entrySet().iterator();
 		while (it.hasNext())
 		{
 			Entry<RPGCharacter, CharacterInfo> e = it.next();
@@ -51,7 +47,7 @@ public class CharacterManager implements Manager<RPGCharacter>
 	public RPGCharacter current()
 	{
 		RPGCharacter ret = null;
-		Iterator<Entry<RPGCharacter, CharacterInfo>> it = characters.entrySet().iterator();
+		Iterator<Entry<RPGCharacter, CharacterInfo>> it = Context.getCurrentPlayer().getCharacters().entrySet().iterator();
 		while (it.hasNext() && ret == null)
 		{
 			Entry<RPGCharacter, CharacterInfo> e = it.next();
@@ -64,7 +60,7 @@ public class CharacterManager implements Manager<RPGCharacter>
 	public RPGCharacter get(String name)
 	{
 		RPGCharacter ret = null;
-		Iterator<RPGCharacter> it = characters.keySet().iterator();
+		Iterator<RPGCharacter> it = Context.getCurrentPlayer().getCharacters().keySet().iterator();
 		while (it.hasNext() && ret == null)
 		{
 			RPGCharacter c = it.next();
