@@ -23,6 +23,11 @@ import it.d4nguard.rgrpg.profile.Player;
 import it.d4nguard.rgrpg.profile.RPGCharacter;
 import it.d4nguard.rgrpg.util.BundleSet;
 
+import java.io.FileInputStream;
+import java.io.FileOutputStream;
+import java.io.IOException;
+import java.io.ObjectInputStream;
+import java.io.ObjectOutputStream;
 import java.util.HashSet;
 import java.util.Iterator;
 import java.util.Map.Entry;
@@ -36,10 +41,11 @@ public class Context
 	private static final String FEATS = I18N_PACKAGE.concat(".d20.feats.Feats");
 	private static final String LANGUAGES = I18N_PACKAGE.concat(".d20.languages.Languages");
 	private static final String ABILITY_SCORES = I18N_PACKAGE.concat(".d20.abilityscores.AbilityScores");
+	private static final String DB_PATH = "";
 
-	private static enum Singleton
+	private static class Singleton
 	{
-		Current;
+		private static Singleton Current = new Singleton();
 
 		private boolean debug = false;
 		private final Set<Player> players;
@@ -91,6 +97,38 @@ public class Context
 			players.clear();
 			current = null;
 			debug = false;
+		}
+
+		private void load()
+		{
+			try
+			{
+				FileInputStream fis = new FileInputStream(DB_PATH);
+				ObjectInputStream ois = new ObjectInputStream(fis);
+				Singleton.Current = (Singleton) ois.readObject();
+				ois.close();
+				fis.close();
+			}
+			catch (ClassNotFoundException | IOException e)
+			{
+				e.printStackTrace();
+			}
+		}
+
+		private void save()
+		{
+			try
+			{
+				FileOutputStream fos = new FileOutputStream(DB_PATH);
+				ObjectOutputStream oos = new ObjectOutputStream(fos);
+				oos.writeObject(Singleton.Current);
+				oos.close();
+				fos.close();
+			}
+			catch (IOException e)
+			{
+				e.printStackTrace();
+			}
 		}
 	};
 
@@ -160,5 +198,15 @@ public class Context
 	{
 		for (Player p : getPlayers())
 			if (player == null || p.getName().equals(player)) p.getCharacters().clear();
+	}
+
+	public static void load()
+	{
+		Singleton.Current.load();
+	}
+
+	public static void save()
+	{
+		Singleton.Current.save();
 	}
 }

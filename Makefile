@@ -8,7 +8,7 @@ clean:
 build:
 	mvn compile
 
-test: build
+test: clean
 	mvn test
 
 jar: build
