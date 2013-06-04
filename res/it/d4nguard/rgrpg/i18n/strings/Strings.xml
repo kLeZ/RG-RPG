@@ -114,4 +114,16 @@ e.g. set character mialee "info.description=A good and beautiful mage"</entry>
 	<entry key="debug.description">Sets debug bit</entry>
 	<entry key="debug.help">Sets debug bit.
 debug (true|false)</entry>
+
+	<entry key="path.err.cannotcreate">Cannot create directory '%s' for saving or loading data.</entry>
+
+	<entry key="save.description">Saves current state</entry>
+	<entry key="save.help">Saves current state.
+{path} is the path and file name where to save the file, e.g. ~/.rgrpg/session.dat
+save {path}</entry>
+
+	<entry key="save.description">Loads current state</entry>
+	<entry key="save.help">Loads current state.
+{path} is the path and file name where to load the file, e.g. ~/.rgrpg/session.dat
+load {path}</entry>
 </properties>

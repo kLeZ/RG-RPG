@@ -22,7 +22,9 @@ import it.d4nguard.rgrpg.profile.CharacterInfo;
 import it.d4nguard.rgrpg.profile.Player;
 import it.d4nguard.rgrpg.profile.RPGCharacter;
 import it.d4nguard.rgrpg.util.BundleSet;
+import it.d4nguard.rgrpg.util.StringUtils;
 
+import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileOutputStream;
 import java.io.IOException;
@@ -41,7 +43,7 @@ public class Context
 	private static final String FEATS = I18N_PACKAGE.concat(".d20.feats.Feats");
 	private static final String LANGUAGES = I18N_PACKAGE.concat(".d20.languages.Languages");
 	private static final String ABILITY_SCORES = I18N_PACKAGE.concat(".d20.abilityscores.AbilityScores");
-	private static final String DB_PATH = "";
+	private static final String DB_PATH = "~/.rgrpg/session.dat";
 
 	private static class Singleton
 	{
@@ -99,11 +101,21 @@ public class Context
 			debug = false;
 		}
 
-		private void load()
+		private String getDBPath(String path)
+		{
+			String db = DB_PATH.replace("~", System.getProperty("user.home"));
+			if (!StringUtils.isNullOrWhitespace(path)) db = path;
+			File f = new File(db);
+			if (!f.exists() && !f.mkdirs()) throw new RuntimeException(
+							String.format(getString("path.err.cannotcreate"), f));
+			return db;
+		}
+
+		private void load(String path)
 		{
 			try
 			{
-				FileInputStream fis = new FileInputStream(DB_PATH);
+				FileInputStream fis = new FileInputStream(getDBPath(path));
 				ObjectInputStream ois = new ObjectInputStream(fis);
 				Singleton.Current = (Singleton) ois.readObject();
 				ois.close();
@@ -115,11 +127,11 @@ public class Context
 			}
 		}
 
-		private void save()
+		private void save(String path)
 		{
 			try
 			{
-				FileOutputStream fos = new FileOutputStream(DB_PATH);
+				FileOutputStream fos = new FileOutputStream(getDBPath(path));
 				ObjectOutputStream oos = new ObjectOutputStream(fos);
 				oos.writeObject(Singleton.Current);
 				oos.close();
@@ -200,13 +212,13 @@ public class Context
 			if (player == null || p.getName().equals(player)) p.getCharacters().clear();
 	}
 
-	public static void load()
+	public static void load(String path)
 	{
-		Singleton.Current.load();
+		Singleton.Current.load(path);
 	}
 
-	public static void save()
+	public static void save(String path)
 	{
-		Singleton.Current.save();
+		Singleton.Current.save(path);
 	}
 }
