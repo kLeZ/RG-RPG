@@ -18,10 +18,14 @@
 // 
 package it.d4nguard.rgrpg;
 
+import it.d4nguard.rgrpg.profile.CharacterInfo;
 import it.d4nguard.rgrpg.profile.Player;
+import it.d4nguard.rgrpg.profile.RPGCharacter;
 import it.d4nguard.rgrpg.util.BundleSet;
 
 import java.util.HashSet;
+import java.util.Iterator;
+import java.util.Map.Entry;
 import java.util.ResourceBundle;
 import java.util.Set;
 
@@ -49,6 +53,7 @@ public class Context
 			bundles.add(STRINGS);
 			bundles.add(FEATS);
 			bundles.add(LANGUAGES);
+			bundles.add(ABILITY_SCORES);
 		}
 
 		public boolean isDebug()
@@ -126,5 +131,17 @@ public class Context
 	public static String getAbilityScore(String name)
 	{
 		return Singleton.Current.getBundle(ABILITY_SCORES).getString(name);
+	}
+
+	public static RPGCharacter getCurrentCharacter()
+	{
+		RPGCharacter ret = null;
+		Iterator<Entry<RPGCharacter, CharacterInfo>> it = Context.getCurrentPlayer().getCharacters().entrySet().iterator();
+		while (it.hasNext() && ret == null)
+		{
+			Entry<RPGCharacter, CharacterInfo> e = it.next();
+			if (e.getValue().isCurrent()) ret = e.getKey();
+		}
+		return ret;
 	}
 }

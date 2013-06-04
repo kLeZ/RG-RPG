@@ -46,9 +46,7 @@ public class RPGCharacter
 	public String toString()
 	{
 		StringBuilder builder = new StringBuilder();
-		builder.append("RPGCharacter [owner=");
-		builder.append(owner);
-		builder.append(", info=");
+		builder.append("RPGCharacter [info=");
 		builder.append(info);
 		builder.append("]");
 		return builder.toString();

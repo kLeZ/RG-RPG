@@ -163,9 +163,9 @@ public class GeneralInfo
 		builder.append(", eyesColor=");
 		builder.append(eyesColor);
 		builder.append(", height=");
-		builder.append(uf.format(height));
+		builder.append(uf.format(height.getUnit()));
 		builder.append(", weight=");
-		builder.append(uf.format(weight));
+		builder.append(uf.format(weight.getUnit()));
 		builder.append(", dateOfBirth=");
 		builder.append(dateOfBirth);
 		builder.append(", gender=");
