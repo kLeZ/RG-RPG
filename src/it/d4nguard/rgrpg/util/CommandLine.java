@@ -18,6 +18,8 @@
 // 
 package it.d4nguard.rgrpg.util;
 
+import java.util.Arrays;
+
 public class CommandLine
 {
 	private String proc;
@@ -41,5 +43,17 @@ public class CommandLine
 	public void setArgs(String[] args)
 	{
 		this.args = args;
+	}
+
+	@Override
+	public String toString()
+	{
+		StringBuilder builder = new StringBuilder();
+		builder.append("CommandLine [proc=");
+		builder.append(proc);
+		builder.append(", args=");
+		builder.append(Arrays.toString(args));
+		builder.append("]");
+		return builder.toString();
 	}
 }

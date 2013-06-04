@@ -17,6 +17,7 @@ public class CharacterManagerTest
 	@Before
 	public void setUp()
 	{
+		Context.wipe();
 		Context.setCurrentPlayer(new PlayerManager().create("kLeZ",
 						new Object[] {}));
 	}
@@ -24,6 +25,7 @@ public class CharacterManagerTest
 	@Test
 	public final void testCreate()
 	{
+		Context.clearCharacters(null);
 		ArrayList<RPGCharacter> list = new ArrayList<RPGCharacter>();
 		String[] names = new String[] { "Julius", "Mialee", "Viktor", "Hansel", "Marril", "Pipino" };
 		for (String name : names)
@@ -93,7 +95,7 @@ public class CharacterManagerTest
 		}
 		assertNotNull(c);
 		assertEquals(c, new CharacterManager().use("Marril"));
-		assertEquals(c, Context.getCurrentPlayer());
+		assertEquals(c, Context.getCurrentCharacter());
 	}
 
 	@Test

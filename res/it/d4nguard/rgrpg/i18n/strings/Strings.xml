@@ -108,8 +108,8 @@ e.g. show character mialee</entry>
 	<entry key="set.help">Sets an expression for the specified entity with the given name.
 An entity can be a player, or a character, you should specify it.
 set (player|character) {name} "{exp}"
-e.g. set player player1 
-e.g. show character mialee</entry>
+e.g. set player player1 "name=player2"
+e.g. set character mialee "info.description=A good and beautiful mage"</entry>
 
 	<entry key="debug.description">Sets debug bit</entry>
 	<entry key="debug.help">Sets debug bit.

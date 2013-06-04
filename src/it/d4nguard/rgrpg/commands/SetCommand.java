@@ -31,14 +31,36 @@ import ognl.OgnlException;
 
 public class SetCommand implements Command
 {
+	public static void qotprn(Object arg)
+	{
+		System.out.println(String.format("'%s'", arg));
+	}
+
 	@Override
 	public void execute(String... args)
 	{
 		CommandLine cmd = StringUtils.getArgs(args);
 		String str = StringUtils.join(" ", cmd.getArgs());
 		int start = str.indexOf('"'), end = str.lastIndexOf('"');
-		String name = StringUtils.join(" ", cmd.getArgs()).substring(0, start);
-		String exp = str.substring(start, end);
+		String name = StringUtils.join(" ", cmd.getArgs()).substring(0, start).trim();
+		String tokenizerFeed = str.substring(start + 1, end);
+		if (Context.isDebug())
+		{
+			qotprn(cmd);
+			qotprn(str);
+			qotprn(String.format("%d:%d", start, end));
+			qotprn(name);
+			qotprn(tokenizerFeed);
+		}
+		StringTokenizer st = new StringTokenizer(tokenizerFeed, "=", false);
+		if (Context.isDebug()) System.out.println(st.countTokens());
+		String exp = st.nextToken();
+		String val = st.nextToken();
+		if (Context.isDebug())
+		{
+			qotprn(exp);
+			qotprn(val);
+		}
 		try
 		{
 			Object root = null;
@@ -55,8 +77,7 @@ public class SetCommand implements Command
 					break;
 				}
 			}
-			StringTokenizer st = new StringTokenizer("=", exp, false);
-			Ognl.setValue(st.nextToken(), root, st.nextToken());
+			Ognl.setValue(exp, root, val);
 		}
 		catch (OgnlException e)
 		{

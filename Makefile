@@ -1,4 +1,4 @@
-all: clean build jar
+all: clean build test jar
 
 clean:
 	find . -regextype posix-extended -regex '(.*~|\..*~|.*\.swp|\..*\.swp)' -print -exec rm {} \;
@@ -7,6 +7,9 @@ clean:
 
 build:
 	mvn compile
+
+test: build
+	mvn test
 
 jar: build
 	mvn package

@@ -56,12 +56,12 @@ public class Context
 			bundles.add(ABILITY_SCORES);
 		}
 
-		public boolean isDebug()
+		private boolean isDebug()
 		{
 			return debug;
 		}
 
-		public void setDebug(boolean debug)
+		private void setDebug(boolean debug)
 		{
 			this.debug = debug;
 		}
@@ -85,6 +85,13 @@ public class Context
 		{
 			this.current = current;
 		}
+
+		private void wipe()
+		{
+			players.clear();
+			current = null;
+			debug = false;
+		}
 	};
 
 	public static boolean isDebug()
@@ -104,7 +111,6 @@ public class Context
 
 	public static Player getCurrentPlayer()
 	{
-		if (isDebug()) System.out.println(Singleton.Current.getCurrent());
 		return Singleton.Current.getCurrent();
 	}
 
@@ -143,5 +149,16 @@ public class Context
 			if (e.getValue().isCurrent()) ret = e.getKey();
 		}
 		return ret;
+	}
+
+	public static void wipe()
+	{
+		Singleton.Current.wipe();
+	}
+
+	public static void clearCharacters(String player)
+	{
+		for (Player p : getPlayers())
+			if (player == null || p.getName().equals(player)) p.getCharacters().clear();
 	}
 }

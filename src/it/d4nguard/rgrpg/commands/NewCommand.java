@@ -21,6 +21,7 @@ package it.d4nguard.rgrpg.commands;
 import it.d4nguard.rgrpg.Context;
 import it.d4nguard.rgrpg.managers.CharacterManager;
 import it.d4nguard.rgrpg.managers.PlayerManager;
+import it.d4nguard.rgrpg.profile.Player;
 import it.d4nguard.rgrpg.util.CommandLine;
 import it.d4nguard.rgrpg.util.StringUtils;
 
@@ -36,7 +37,12 @@ public class NewCommand implements Command
 			case "player":
 			{
 				name = StringUtils.join(" ", cmd.getArgs());
-				System.out.println(new PlayerManager().create(name));
+				Player p = new PlayerManager().create(name);
+				if (p != null) System.out.println(p);
+				else System.out.println(String.format(
+								Context.getString("new.err.player.exists"),
+								name));
+
 				break;
 			}
 			case "character":

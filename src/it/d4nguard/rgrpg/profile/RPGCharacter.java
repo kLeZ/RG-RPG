@@ -21,7 +21,7 @@ package it.d4nguard.rgrpg.profile;
 import it.d4nguard.rgrpg.Context;
 import it.d4nguard.rgrpg.d20.D20Character;
 
-public class RPGCharacter
+public abstract class RPGCharacter
 {
 	private final Player owner;
 	private final GeneralInfo info;
@@ -40,6 +40,20 @@ public class RPGCharacter
 	public GeneralInfo getInfo()
 	{
 		return info;
+	}
+
+	@Override
+	public int hashCode()
+	{
+		return info.getName().hashCode();
+	}
+
+	@Override
+	public boolean equals(Object obj)
+	{
+		if (obj == null) return false;
+		if (!(obj instanceof RPGCharacter)) return false;
+		return info.getName().equals(((RPGCharacter) obj).getInfo().getName());
 	}
 
 	@Override
@@ -68,7 +82,7 @@ public class RPGCharacter
 				break;
 			}
 			default:
-				ret = new RPGCharacter(current, gi);
+				break;
 		}
 		return ret;
 	}

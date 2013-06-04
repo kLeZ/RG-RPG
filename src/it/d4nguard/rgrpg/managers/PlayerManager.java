@@ -29,10 +29,7 @@ public class PlayerManager implements Manager<Player>
 	public Player create(String name, Object... args)
 	{
 		Player p = new Player(name);
-		if (Context.getPlayers().add(p)) System.out.println(p);
-		else System.out.println(String.format(
-						Context.getString("new.err.player.exists"), name));
-		return p;
+		return Context.getPlayers().add(p) ? p : null;
 	}
 
 	@Override

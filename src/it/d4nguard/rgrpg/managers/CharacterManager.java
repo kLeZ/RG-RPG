@@ -33,14 +33,13 @@ public class CharacterManager implements Manager<RPGCharacter>
 	@Override
 	public RPGCharacter use(String name)
 	{
-		RPGCharacter ret = null;
 		Iterator<Entry<RPGCharacter, CharacterInfo>> it = Context.getCurrentPlayer().getCharacters().entrySet().iterator();
 		while (it.hasNext())
 		{
 			Entry<RPGCharacter, CharacterInfo> e = it.next();
 			e.getValue().setCurrent(e.getKey().getInfo().getName().equals(name));
 		}
-		return ret;
+		return current();
 	}
 
 	@Override

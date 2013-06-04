@@ -23,10 +23,10 @@ import static javax.measure.unit.SI.METER;
 
 import javax.measure.quantity.Length;
 import javax.measure.quantity.Mass;
-import javax.measure.unit.UnitFormat;
 
 import org.joda.time.DateMidnight;
 import org.jscience.physics.amount.Amount;
+import org.jscience.physics.amount.AmountFormat;
 
 public class GeneralInfo
 {
@@ -150,7 +150,7 @@ public class GeneralInfo
 	@Override
 	public String toString()
 	{
-		UnitFormat uf = UnitFormat.getInstance();
+		AmountFormat af = AmountFormat.getInstance();
 		StringBuilder builder = new StringBuilder();
 		builder.append("GeneralInfo [name=");
 		builder.append(name);
@@ -163,9 +163,9 @@ public class GeneralInfo
 		builder.append(", eyesColor=");
 		builder.append(eyesColor);
 		builder.append(", height=");
-		builder.append(uf.format(height.getUnit()));
+		builder.append(af.format(height));
 		builder.append(", weight=");
-		builder.append(uf.format(weight.getUnit()));
+		builder.append(af.format(weight));
 		builder.append(", dateOfBirth=");
 		builder.append(dateOfBirth);
 		builder.append(", gender=");
