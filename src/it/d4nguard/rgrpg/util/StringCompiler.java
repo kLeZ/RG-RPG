@@ -18,6 +18,8 @@
 // 
 package it.d4nguard.rgrpg.util;
 
+import java.util.Arrays;
+
 import org.apache.commons.lang3.text.StrBuilder;
 
 public class StringCompiler extends StrBuilder
@@ -30,5 +32,12 @@ public class StringCompiler extends StrBuilder
 	public StrBuilder appendln(String fmt, Object... args)
 	{
 		return super.appendln(String.format(fmt, args));
+	}
+
+	public StrBuilder fill(int length, char toFill)
+	{
+		char[] filler = new char[length];
+		Arrays.fill(filler, toFill);
+		return super.append(filler);
 	}
 }

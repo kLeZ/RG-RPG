@@ -19,7 +19,9 @@
 package it.d4nguard.rgrpg.managers;
 
 import it.d4nguard.rgrpg.Context;
+import it.d4nguard.rgrpg.Main;
 import it.d4nguard.rgrpg.profile.Player;
+import it.d4nguard.rgrpg.util.StringUtils;
 
 import java.util.Iterator;
 
@@ -72,5 +74,12 @@ public class PlayerManager implements Manager<Player>
 			if (curr.getName().equals(name)) return curr;
 		}
 		return null;
+	}
+
+	@Override
+	public String availables()
+	{
+		return StringUtils.prettyPrint(Main.class.getPackage().getName(),
+						Player.class);
 	}
 }

@@ -18,10 +18,14 @@
 // 
 package it.d4nguard.rgrpg.util;
 
+import java.lang.reflect.Field;
 import java.util.Arrays;
 import java.util.Collection;
 import java.util.Map;
 import java.util.Scanner;
+import java.util.Set;
+
+import org.reflections.Reflections;
 
 public class StringUtils
 {
@@ -260,5 +264,32 @@ public class StringUtils
 	public static boolean hasText(final String str)
 	{
 		return hasText((CharSequence) str);
+	}
+
+	public static <T> String prettyPrint(String prefix, Class<T> clazz)
+	{
+		StringCompiler sc = new StringCompiler();
+		Reflections reflections = new Reflections(prefix);
+		Set<Class<? extends T>> classes = reflections.getSubTypesOf(clazz);
+		for (Class<? extends T> c : classes)
+		{
+			sc.appendln(prettyPrint(c));
+		}
+		return sc.toString();
+	}
+
+	public static <T> String prettyPrint(Class<T> clazz)
+	{
+		StringCompiler sc = new StringCompiler();
+		sc.appendln(clazz.getSimpleName());
+		sc.fill(clazz.getSimpleName().length(), '=').appendNewLine();
+		Field[] fields = clazz.getDeclaredFields();
+		for (Field field : fields)
+		{
+			//TODO: Complete this method!
+			sc.appendln("%s %s", field.getType().getSimpleName(),
+							field.getName());
+		}
+		return sc.toString();
 	}
 }

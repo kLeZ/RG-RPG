@@ -1,8 +1,10 @@
 package it.d4nguard.rgrpg.managers;
 
 import it.d4nguard.rgrpg.Context;
+import it.d4nguard.rgrpg.Main;
 import it.d4nguard.rgrpg.profile.CharacterInfo;
 import it.d4nguard.rgrpg.profile.RPGCharacter;
+import it.d4nguard.rgrpg.util.StringUtils;
 
 import java.util.Iterator;
 import java.util.Map.Entry;
@@ -59,5 +61,12 @@ public class CharacterManager implements Manager<RPGCharacter>
 			if (c.getInfo().getName().equals(name)) ret = c;
 		}
 		return ret;
+	}
+
+	@Override
+	public String availables()
+	{
+		return StringUtils.prettyPrint(Main.class.getPackage().getName(),
+						RPGCharacter.class);
 	}
 }

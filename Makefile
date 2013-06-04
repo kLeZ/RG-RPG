@@ -5,16 +5,16 @@ clean:
 	find . -name rgrpg-dist.tar.gz -delete
 	mvn clean
 
-build:
+build: clean
 	mvn compile
 
-test: clean
+test:
 	mvn test
 
 jar: build
 	mvn package
 
-run: all
+run:
 	java -jar bin/rgrpg-all.jar
 
 install: all

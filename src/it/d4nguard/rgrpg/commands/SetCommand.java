@@ -68,12 +68,22 @@ public class SetCommand implements Command
 			{
 				case "player":
 				{
-					root = new PlayerManager().get(name);
+					CommandLine descCmd = StringUtils.getArgs(cmd.getArgs());
+					if (descCmd.getProc().equals("availables"))
+					{
+						System.out.println(new PlayerManager().availables());
+					}
+					else root = new PlayerManager().get(name);
 					break;
 				}
 				case "character":
 				{
-					root = new CharacterManager().get(name);
+					CommandLine descCmd = StringUtils.getArgs(cmd.getArgs());
+					if (descCmd.getProc().equals("availables"))
+					{
+						System.out.println(new CharacterManager().availables());
+					}
+					else root = new CharacterManager().get(name);
 					break;
 				}
 			}

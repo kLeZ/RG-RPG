@@ -122,8 +122,8 @@ debug (true|false)</entry>
 {path} is the path and file name where to save the file, e.g. ~/.rgrpg/session.dat
 save {path}</entry>
 
-	<entry key="save.description">Loads current state</entry>
-	<entry key="save.help">Loads current state.
+	<entry key="load.description">Loads previously saved state</entry>
+	<entry key="load.help">Loads previously saved state.
 {path} is the path and file name where to load the file, e.g. ~/.rgrpg/session.dat
 load {path}</entry>
 </properties>

@@ -29,8 +29,6 @@ import java.util.HashMap;
 import java.util.HashSet;
 import java.util.Set;
 
-import com.db4o.foundation.ArgumentNullException;
-
 public abstract class Race implements Serializable
 {
 	private static final long serialVersionUID = 7221883394924344504L;
@@ -61,7 +59,7 @@ public abstract class Race implements Serializable
 		this.humanoidSubType = humanoidSubType;
 		this.spokenLanguages = new HashSet<Language>();
 		this.traits = new HashSet<Trait>();
-		if (type == null) throw new ArgumentNullException("type");
+		if (type == null) throw new NullPointerException("type");
 		this.traits.addAll(RACE_TRAITS.get(this.type));
 		if (subType != null) this.traits.addAll(SUB_RACE_TRAITS.get(this.subType));
 		if (humanoidSubType != null) this.traits.addAll(HUMANOID_RACE_TRAITS.get(this.humanoidSubType));
