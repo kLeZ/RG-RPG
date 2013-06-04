@@ -16,25 +16,11 @@
 // You should have received a copy of the GNU General Public License
 // along with this program.  If not, see <http://www.gnu.org/licenses/>.
 // 
-package it.d4nguard.rgrpg.d20.races;
+package it.d4nguard.rgrpg.d20.types;
 
-public enum RaceType
+public enum ArmorCategoryType
 {
-	Aberration,
-	Animal,
-	Celestial,
-	Construct,
-	Dragon,
-	Elemental,
-	Fey,
-	Fiend,
-	Giant,
-	Humanoid,
-	MagicalBeast,
-	MonstrousHumanoid,
-	Ooze,
-	Outsider,
-	Plant,
-	Undead,
-	Vermin;
+	Light,
+	Medium,
+	Heavy;
 }

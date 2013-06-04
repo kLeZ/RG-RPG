@@ -18,8 +18,12 @@
 // 
 package it.d4nguard.rgrpg.d20;
 
-public class Range
+import java.io.Serializable;
+
+public class Range implements Serializable
 {
+	private static final long serialVersionUID = -7074663435117171410L;
+
 	public static final int STEP_MAGIC = 1;
 
 	private int step;

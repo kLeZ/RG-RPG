@@ -23,11 +23,14 @@ import it.d4nguard.rgrpg.d20.items.Item;
 import it.d4nguard.rgrpg.d20.items.Shield;
 import it.d4nguard.rgrpg.d20.items.weapons.Weapon;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
 
-public class Equipment
+public class Equipment implements Serializable
 {
+	private static final long serialVersionUID = 8592149089544477908L;
+
 	private Armor armor;
 	private Shield shield;
 	private Weapon weapon;

@@ -22,11 +22,14 @@ import it.d4nguard.rgrpg.d20.types.ArmorCheckPenaltyType;
 import it.d4nguard.rgrpg.d20.types.TryAgainType;
 import it.d4nguard.rgrpg.util.NumericUtils;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
 
-public class Skill
+public class Skill implements Serializable
 {
+	private static final long serialVersionUID = 6997008011152393042L;
+
 	private final String name;
 	private final AbilityScore ability;
 	private final int ranks;

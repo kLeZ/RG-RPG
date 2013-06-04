@@ -21,11 +21,14 @@ package it.d4nguard.rgrpg.d20;
 import it.d4nguard.rgrpg.Context;
 import it.d4nguard.rgrpg.d20.AbilityScore.UnmodifiableAbilityScore;
 
+import java.io.Serializable;
 import java.util.HashMap;
 import java.util.Map;
 
-public class AbilityScores
+public class AbilityScores implements Serializable
 {
+	private static final long serialVersionUID = 1363222839096421722L;
+
 	public static final String STRENGTH = "strength";
 	public final String StrengthD = Context.getAbilityScore(STRENGTH);
 	public static final String DEXTERITY = "dexterity";

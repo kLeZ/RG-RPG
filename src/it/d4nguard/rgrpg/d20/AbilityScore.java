@@ -18,8 +18,12 @@
 // 
 package it.d4nguard.rgrpg.d20;
 
-public class AbilityScore
+import java.io.Serializable;
+
+public class AbilityScore implements Serializable
 {
+	private static final long serialVersionUID = -7369119723062034841L;
+
 	public static final int MID_RANGE = 10;
 
 	private final String name;
@@ -65,6 +69,11 @@ public class AbilityScore
 
 	public static class UnmodifiableAbilityScore extends AbilityScore
 	{
+		/**
+		 * 
+		 */
+		private static final long serialVersionUID = 8740668067478743803L;
+
 		public UnmodifiableAbilityScore(AbilityScore as)
 		{
 			super(as.getName(), as.getValue());

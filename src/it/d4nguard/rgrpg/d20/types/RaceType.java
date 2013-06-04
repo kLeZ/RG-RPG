@@ -16,11 +16,25 @@
 // You should have received a copy of the GNU General Public License
 // along with this program.  If not, see <http://www.gnu.org/licenses/>.
 // 
-package it.d4nguard.rgrpg.d20.items.weapons;
+package it.d4nguard.rgrpg.d20.types;
 
-public enum WeaponEncumbranceType
+public enum RaceType
 {
-	Light,
-	OneHanded,
-	TwoHanded;
+	Aberration,
+	Animal,
+	Celestial,
+	Construct,
+	Dragon,
+	Elemental,
+	Fey,
+	Fiend,
+	Giant,
+	Humanoid,
+	MagicalBeast,
+	MonstrousHumanoid,
+	Ooze,
+	Outsider,
+	Plant,
+	Undead,
+	Vermin;
 }

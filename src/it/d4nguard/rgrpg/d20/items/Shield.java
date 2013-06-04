@@ -18,6 +18,7 @@
 // 
 package it.d4nguard.rgrpg.d20.items;
 
+import it.d4nguard.rgrpg.d20.types.ArmorCategoryType;
 import it.d4nguard.rgrpg.profile.Coin;
 
 import javax.measure.Measurable;
@@ -25,6 +26,8 @@ import javax.measure.quantity.Mass;
 
 public class Shield extends Item
 {
+	private static final long serialVersionUID = 2532064778068639831L;
+
 	private final int armorClass;
 	private final int maxDexterity;
 	private final ArmorCategoryType armorCategory;

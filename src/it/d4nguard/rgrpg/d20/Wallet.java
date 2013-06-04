@@ -22,11 +22,14 @@ import it.d4nguard.rgrpg.d20.items.Item;
 import it.d4nguard.rgrpg.profile.Coin;
 import it.d4nguard.rgrpg.profile.CoinType;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
 
-public class Wallet
+public class Wallet implements Serializable
 {
+	private static final long serialVersionUID = 612105702965224166L;
+
 	private final List<Item> gems;
 	private final Coin cp;
 	private final Coin sp;

@@ -18,7 +18,11 @@
 // 
 package it.d4nguard.rgrpg.d20.races;
 
-public class Trait
+import java.io.Serializable;
+
+public class Trait implements Serializable
 {
+	private static final long serialVersionUID = 533188275661902850L;
+
 	//TODO: Implement
 }

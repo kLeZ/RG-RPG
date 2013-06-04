@@ -20,8 +20,12 @@ package it.d4nguard.rgrpg.d20;
 
 import it.d4nguard.rgrpg.d20.types.DamageReductionType;
 
-public class DamageReduction
+import java.io.Serializable;
+
+public class DamageReduction implements Serializable
 {
+	private static final long serialVersionUID = -2013207030411719125L;
+
 	private DamageReductionType type = DamageReductionType.None;
 	private int points = 0;
 

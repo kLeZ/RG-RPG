@@ -20,13 +20,16 @@ package it.d4nguard.rgrpg.d20.feats;
 
 import it.d4nguard.rgrpg.d20.D20Character;
 
+import java.io.Serializable;
 import java.lang.reflect.Method;
 
 import ognl.Ognl;
 import ognl.OgnlException;
 
-public class Prerequisite
+public class Prerequisite implements Serializable
 {
+	private static final long serialVersionUID = 4585271111842174784L;
+
 	private final String description;
 	private final String expression;
 

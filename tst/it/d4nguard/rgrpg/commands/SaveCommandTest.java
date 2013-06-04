@@ -18,37 +18,46 @@
 // 
 package it.d4nguard.rgrpg.commands;
 
-import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertTrue;
 import it.d4nguard.rgrpg.Context;
 import it.d4nguard.rgrpg.managers.CharacterManager;
 import it.d4nguard.rgrpg.managers.PlayerManager;
 
+import java.io.File;
+
+import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
 
-public class SetCommandTest
+public class SaveCommandTest
 {
 	@Before
-	public void setUp()
+	public final void setUp() throws Exception
 	{
 		Context.wipe();
 		PlayerManager pm = new PlayerManager();
 		CharacterManager cm = new CharacterManager();
-		pm.create("kLeZ", new Object[] {});
-		pm.use("kLeZ");
-
-		cm.create("Julius", "d20");
-		cm.use("Julius");
+		pm.use(pm.create("kLeZ", new Object[] {}).getName());
+		String[] names = new String[] { "Julius", "Mialee", "Viktor", "Hansel", "Marril", "Pipino" };
+		for (String name : names)
+			cm.create(name, "d20");
 	}
 
 	@Test
 	public final void testExecute()
 	{
-		CharacterManager cm = new CharacterManager();
-		SetCommand set = new SetCommand();
-		String cmd = "character Julius \"info.description=This is a simple description for this character\"";
-		set.execute(cmd.split("\\s"));
-		assertEquals("This is a simple description for this character",
-						cm.get("Julius").getInfo().getDescription());
+		String path = "~/test-session.dat";
+		new SaveCommand().execute(path);
+		File f = new File(path.replace("~", System.getProperty("user.home")));
+		assertTrue(f.exists());
+		assertTrue(f.length() > 0);
+	}
+
+	@After
+	public final void tearDown()
+	{
+		String path = "~/test-session.dat";
+		File f = new File(path.replace("~", System.getProperty("user.home")));
+		f.delete();
 	}
 }

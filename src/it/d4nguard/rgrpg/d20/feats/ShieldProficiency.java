@@ -27,6 +27,8 @@ import java.util.Set;
 
 public class ShieldProficiency extends Feat
 {
+	private static final long serialVersionUID = 4088624038996266287L;
+
 	private final Set<Shield> items;
 	private boolean all;
 	private boolean tower;

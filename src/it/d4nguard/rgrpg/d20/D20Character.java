@@ -24,9 +24,9 @@ import it.d4nguard.rgrpg.d20.types.AlignmentType;
 import it.d4nguard.rgrpg.d20.types.ArmorClassType;
 import it.d4nguard.rgrpg.d20.types.BabType;
 import it.d4nguard.rgrpg.d20.types.SavingThrowType;
-import it.d4nguard.rgrpg.profile.RPGCharacter;
 import it.d4nguard.rgrpg.profile.GeneralInfo;
 import it.d4nguard.rgrpg.profile.Player;
+import it.d4nguard.rgrpg.profile.RPGCharacter;
 import it.d4nguard.rgrpg.util.NumericUtils;
 
 import java.util.ArrayList;
@@ -36,6 +36,8 @@ import java.util.Set;
 
 public class D20Character extends RPGCharacter
 {
+	private static final long serialVersionUID = -8727304403745570110L;
+
 	private Race race;
 	private AlignmentType alignment;
 

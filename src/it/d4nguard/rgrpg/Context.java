@@ -30,6 +30,7 @@ import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
+import java.io.Serializable;
 import java.util.HashSet;
 import java.util.Iterator;
 import java.util.Map.Entry;
@@ -45,19 +46,26 @@ public class Context
 	private static final String ABILITY_SCORES = I18N_PACKAGE.concat(".d20.abilityscores.AbilityScores");
 	private static final String DB_PATH = "~/.rgrpg/session.dat";
 
-	private static class Singleton
+	private static class Singleton implements Serializable
 	{
+		private static final long serialVersionUID = -5518515093530450430L;
+
 		private static Singleton Current = new Singleton();
+		private static transient BundleSet bundles;
 
 		private boolean debug = false;
-		private final Set<Player> players;
-		private final BundleSet bundles;
 		private Player current;
+
+		private final Set<Player> players = new HashSet<Player>();
 
 		private Singleton()
 		{
-			players = new HashSet<Player>();
-			bundles = new BundleSet();
+			init();
+		}
+
+		private void init()
+		{
+			if (bundles == null) bundles = new BundleSet();
 			bundles.add(STRINGS);
 			bundles.add(FEATS);
 			bundles.add(LANGUAGES);
@@ -101,13 +109,17 @@ public class Context
 			debug = false;
 		}
 
-		private String getDBPath(String path)
+		private String getDBPath(String path) throws IOException
 		{
-			String db = DB_PATH.replace("~", System.getProperty("user.home"));
+			String db = DB_PATH;
 			if (!StringUtils.isNullOrWhitespace(path)) db = path;
+			db = db.replace("~", System.getProperty("user.home"));
 			File f = new File(db);
-			if (!f.exists() && !f.mkdirs()) throw new RuntimeException(
-							String.format(getString("path.err.cannotcreate"), f));
+			if (!f.exists())
+			{
+				f.getParentFile().mkdirs();
+				f.createNewFile();
+			}
 			return db;
 		}
 
@@ -125,6 +137,7 @@ public class Context
 			{
 				e.printStackTrace();
 			}
+			init();
 		}
 
 		private void save(String path)

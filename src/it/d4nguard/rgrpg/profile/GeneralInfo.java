@@ -18,8 +18,7 @@
 // 
 package it.d4nguard.rgrpg.profile;
 
-import static javax.measure.unit.SI.KILOGRAM;
-import static javax.measure.unit.SI.METER;
+import java.io.Serializable;
 
 import javax.measure.quantity.Length;
 import javax.measure.quantity.Mass;
@@ -28,8 +27,10 @@ import org.joda.time.DateMidnight;
 import org.jscience.physics.amount.Amount;
 import org.jscience.physics.amount.AmountFormat;
 
-public class GeneralInfo
+public class GeneralInfo implements Serializable
 {
+	private static final long serialVersionUID = -6846828906540838870L;
+
 	private String name;
 	private String description;
 	private String skinColor;
@@ -40,12 +41,6 @@ public class GeneralInfo
 	private DateMidnight dateOfBirth;
 	private GenderType gender;
 	private String philosophyDeityReligion;
-
-	public GeneralInfo()
-	{
-		height = Amount.valueOf(1.0D, METER);
-		weight = Amount.valueOf(1.0D, KILOGRAM);
-	}
 
 	public String getName()
 	{
@@ -162,10 +157,16 @@ public class GeneralInfo
 		builder.append(hairColor);
 		builder.append(", eyesColor=");
 		builder.append(eyesColor);
-		builder.append(", height=");
-		builder.append(af.format(height));
-		builder.append(", weight=");
-		builder.append(af.format(weight));
+		if (height != null)
+		{
+			builder.append(", height=");
+			builder.append(af.format(height));
+		}
+		if (weight != null)
+		{
+			builder.append(", weight=");
+			builder.append(af.format(weight));
+		}
 		builder.append(", dateOfBirth=");
 		builder.append(dateOfBirth);
 		builder.append(", gender=");

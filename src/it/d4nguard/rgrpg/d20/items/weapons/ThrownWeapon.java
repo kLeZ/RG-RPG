@@ -20,6 +20,9 @@ package it.d4nguard.rgrpg.d20.items.weapons;
 
 import it.d4nguard.rgrpg.d20.CriticalHit;
 import it.d4nguard.rgrpg.d20.types.SizeType;
+import it.d4nguard.rgrpg.d20.types.WeaponCategoryType;
+import it.d4nguard.rgrpg.d20.types.WeaponEncumbranceType;
+import it.d4nguard.rgrpg.d20.types.WeaponType;
 import it.d4nguard.rgrpg.profile.Coin;
 import it.d4nguard.rgrpg.util.Dice;
 
@@ -34,6 +37,8 @@ import javax.measure.unit.NonSI;
 
 public class ThrownWeapon extends RangedWeapon
 {
+	private static final long serialVersionUID = 7115948668956860344L;
+
 	public ThrownWeapon(String name, String description, Coin cost,
 					Measurable<Mass> weight, WeaponCategoryType weaponCategory,
 					WeaponEncumbranceType weaponEncumbrance, SizeType size,

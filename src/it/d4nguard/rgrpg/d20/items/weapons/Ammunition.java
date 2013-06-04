@@ -26,6 +26,8 @@ import javax.measure.quantity.Mass;
 
 public class Ammunition extends Item
 {
+	private static final long serialVersionUID = -7244714329584333095L;
+
 	public Ammunition(String name, String description, Coin cost,
 					Measurable<Mass> weight)
 	{

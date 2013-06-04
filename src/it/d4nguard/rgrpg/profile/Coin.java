@@ -18,8 +18,12 @@
 // 
 package it.d4nguard.rgrpg.profile;
 
-public class Coin
+import java.io.Serializable;
+
+public class Coin implements Serializable
 {
+	private static final long serialVersionUID = -8403667979960797301L;
+
 	private final CoinType type;
 	private double amount;
 

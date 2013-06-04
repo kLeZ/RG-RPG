@@ -27,6 +27,8 @@ import java.util.Set;
 
 public class WeaponProficiency extends Feat
 {
+	private static final long serialVersionUID = 5281622416467554030L;
+
 	private final Set<Weapon> items;
 	private boolean allSimple;
 	private boolean allMartial;

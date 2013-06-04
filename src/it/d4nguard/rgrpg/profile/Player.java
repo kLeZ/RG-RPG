@@ -20,11 +20,14 @@ package it.d4nguard.rgrpg.profile;
 
 import it.d4nguard.rgrpg.util.StringCompiler;
 
+import java.io.Serializable;
 import java.util.HashMap;
 import java.util.Map;
 
-public class Player
+public class Player implements Serializable
 {
+	private static final long serialVersionUID = 2005023218428164699L;
+
 	private final String name;
 	private final Map<RPGCharacter, CharacterInfo> characters;
 

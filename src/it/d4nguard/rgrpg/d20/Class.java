@@ -21,11 +21,14 @@ package it.d4nguard.rgrpg.d20;
 import it.d4nguard.rgrpg.d20.types.SavingThrowType;
 import it.d4nguard.rgrpg.util.Dice;
 
+import java.io.Serializable;
 import java.util.HashSet;
 import java.util.Set;
 
-public abstract class Class
+public abstract class Class implements Serializable
 {
+	private static final long serialVersionUID = -8001346462155284274L;
+
 	private final String name;
 	private final Set<Integer> hitDiceResultPool;
 

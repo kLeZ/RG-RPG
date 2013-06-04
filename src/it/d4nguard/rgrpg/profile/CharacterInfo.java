@@ -18,11 +18,15 @@
 // 
 package it.d4nguard.rgrpg.profile;
 
+import java.io.Serializable;
+
 import org.joda.time.DateTime;
 import org.joda.time.Duration;
 
-public class CharacterInfo
+public class CharacterInfo implements Serializable
 {
+	private static final long serialVersionUID = 5583221130662794997L;
+
 	private DateTime creation;
 	private Duration played;
 	private DateTime last;

@@ -20,11 +20,15 @@ package it.d4nguard.rgrpg.d20.items;
 
 import it.d4nguard.rgrpg.profile.Coin;
 
+import java.io.Serializable;
+
 import javax.measure.Measurable;
 import javax.measure.quantity.Mass;
 
-public abstract class Item
+public abstract class Item implements Serializable
 {
+	private static final long serialVersionUID = -1105954765958477231L;
+
 	private final String name;
 	private final String description;
 	private final Coin cost;

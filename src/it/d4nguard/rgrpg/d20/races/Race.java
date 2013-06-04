@@ -19,16 +19,22 @@
 package it.d4nguard.rgrpg.d20.races;
 
 import it.d4nguard.rgrpg.d20.Language;
+import it.d4nguard.rgrpg.d20.types.HumanoidRaceSubType;
+import it.d4nguard.rgrpg.d20.types.RaceSubType;
+import it.d4nguard.rgrpg.d20.types.RaceType;
 import it.d4nguard.rgrpg.d20.types.SizeType;
 
+import java.io.Serializable;
 import java.util.HashMap;
 import java.util.HashSet;
 import java.util.Set;
 
 import com.db4o.foundation.ArgumentNullException;
 
-public abstract class Race
+public abstract class Race implements Serializable
 {
+	private static final long serialVersionUID = 7221883394924344504L;
+
 	private static final HashMap<RaceType, HashSet<Trait>> RACE_TRAITS = new HashMap<RaceType, HashSet<Trait>>();
 	private static final HashMap<RaceSubType, HashSet<Trait>> SUB_RACE_TRAITS = new HashMap<RaceSubType, HashSet<Trait>>();
 	private static final HashMap<HumanoidRaceSubType, HashSet<Trait>> HUMANOID_RACE_TRAITS = new HashMap<HumanoidRaceSubType, HashSet<Trait>>();

@@ -21,8 +21,12 @@ package it.d4nguard.rgrpg.profile;
 import it.d4nguard.rgrpg.Context;
 import it.d4nguard.rgrpg.d20.D20Character;
 
-public abstract class RPGCharacter
+import java.io.Serializable;
+
+public abstract class RPGCharacter implements Serializable
 {
+	private static final long serialVersionUID = 5045353718327076827L;
+
 	private final Player owner;
 	private final GeneralInfo info;
 

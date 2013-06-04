@@ -19,36 +19,64 @@
 package it.d4nguard.rgrpg.commands;
 
 import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertTrue;
 import it.d4nguard.rgrpg.Context;
 import it.d4nguard.rgrpg.managers.CharacterManager;
 import it.d4nguard.rgrpg.managers.PlayerManager;
+import it.d4nguard.rgrpg.profile.RPGCharacter;
 
+import java.io.File;
+import java.util.HashSet;
+import java.util.Iterator;
+import java.util.Set;
+
+import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
 
-public class SetCommandTest
+public class LoadCommandTest
 {
+	Set<String> names = new HashSet<String>();
+	{
+		names.add("Julius");
+		names.add("Mialee");
+		names.add("Viktor");
+		names.add("Hansel");
+		names.add("Marril");
+		names.add("Pipino");
+	}
+
 	@Before
-	public void setUp()
+	public void setUp() throws Exception
 	{
 		Context.wipe();
 		PlayerManager pm = new PlayerManager();
 		CharacterManager cm = new CharacterManager();
-		pm.create("kLeZ", new Object[] {});
-		pm.use("kLeZ");
-
-		cm.create("Julius", "d20");
-		cm.use("Julius");
+		pm.use(pm.create("kLeZ", new Object[] {}).getName());
+		for (String name : names)
+			cm.create(name, "d20");
+		Context.save("~/test-session.dat");
+		Context.wipe();
 	}
 
 	@Test
 	public final void testExecute()
 	{
-		CharacterManager cm = new CharacterManager();
-		SetCommand set = new SetCommand();
-		String cmd = "character Julius \"info.description=This is a simple description for this character\"";
-		set.execute(cmd.split("\\s"));
-		assertEquals("This is a simple description for this character",
-						cm.get("Julius").getInfo().getDescription());
+		new LoadCommand().execute("~/test-session.dat");
+		assertEquals("kLeZ", Context.getCurrentPlayer().getName());
+		Iterator<RPGCharacter> it = Context.getCurrentPlayer().getCharacters().keySet().iterator();
+		while (it.hasNext())
+		{
+			RPGCharacter c = it.next();
+			assertTrue(names.contains(c.getInfo().getName()));
+		}
+	}
+
+	@After
+	public final void tearDown()
+	{
+		String path = "~/test-session.dat";
+		File f = new File(path.replace("~", System.getProperty("user.home")));
+		f.delete();
 	}
 }

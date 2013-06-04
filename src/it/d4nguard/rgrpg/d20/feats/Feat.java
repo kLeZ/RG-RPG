@@ -22,12 +22,15 @@ import it.d4nguard.rgrpg.d20.D20Character;
 import it.d4nguard.rgrpg.d20.types.FeatCategoryType;
 import it.d4nguard.rgrpg.util.BooleanUtils;
 
+import java.io.Serializable;
 import java.lang.reflect.InvocationTargetException;
 import java.util.ArrayList;
 import java.util.List;
 
-public abstract class Feat
+public abstract class Feat implements Serializable
 {
+	private static final long serialVersionUID = 2194072657322601662L;
+
 	private final String name;
 	private final FeatCategoryType featCategory;
 	private final List<Prerequisite> prerequisites;

@@ -1,4 +1,4 @@
-package it.d4nguard.rgrpg.d20.races;
+package it.d4nguard.rgrpg.d20.types;
 
 public enum HumanoidRaceSubType
 {

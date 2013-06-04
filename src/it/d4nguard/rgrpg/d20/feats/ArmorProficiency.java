@@ -27,6 +27,8 @@ import java.util.Set;
 
 public class ArmorProficiency extends Feat
 {
+	private static final long serialVersionUID = 1908088878347106595L;
+
 	private final Set<Armor> items;
 	private boolean allLight;
 	private boolean allMedium;

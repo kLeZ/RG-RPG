@@ -20,6 +20,9 @@ package it.d4nguard.rgrpg.d20.items.weapons;
 
 import it.d4nguard.rgrpg.d20.CriticalHit;
 import it.d4nguard.rgrpg.d20.types.SizeType;
+import it.d4nguard.rgrpg.d20.types.WeaponCategoryType;
+import it.d4nguard.rgrpg.d20.types.WeaponEncumbranceType;
+import it.d4nguard.rgrpg.d20.types.WeaponType;
 import it.d4nguard.rgrpg.profile.Coin;
 import it.d4nguard.rgrpg.util.Dice;
 
@@ -31,6 +34,8 @@ import javax.measure.quantity.Mass;
 
 public class ReachWeapon extends MeleeWeapon
 {
+	private static final long serialVersionUID = 4791193210807081294L;
+
 	private final Measurable<Length> rangeIncrement;
 
 	public ReachWeapon(String name, String description, Coin cost,

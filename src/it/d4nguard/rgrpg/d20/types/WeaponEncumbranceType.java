@@ -16,11 +16,11 @@
 // You should have received a copy of the GNU General Public License
 // along with this program.  If not, see <http://www.gnu.org/licenses/>.
 // 
-package it.d4nguard.rgrpg.d20.items.weapons;
+package it.d4nguard.rgrpg.d20.types;
 
-public enum WeaponCategoryType
+public enum WeaponEncumbranceType
 {
-	Simple,
-	Martial,
-	Exotic;
+	Light,
+	OneHanded,
+	TwoHanded;
 }

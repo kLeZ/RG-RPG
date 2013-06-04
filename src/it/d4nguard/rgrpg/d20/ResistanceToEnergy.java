@@ -20,8 +20,12 @@ package it.d4nguard.rgrpg.d20;
 
 import it.d4nguard.rgrpg.d20.types.EnergyType;
 
-public class ResistanceToEnergy
+import java.io.Serializable;
+
+public class ResistanceToEnergy implements Serializable
 {
+	private static final long serialVersionUID = -7632526609183447438L;
+
 	private EnergyType type;
 	private int points;
 
