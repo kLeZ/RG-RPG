@@ -19,9 +19,14 @@
 package it.d4nguard.rgrpg.commands;
 
 import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.fail;
 import it.d4nguard.rgrpg.Context;
 import it.d4nguard.rgrpg.managers.CharacterManager;
 import it.d4nguard.rgrpg.managers.PlayerManager;
+import it.d4nguard.rgrpg.profile.GenderType;
+import it.d4nguard.rgrpg.profile.RPGCharacter;
+import ognl.Ognl;
+import ognl.OgnlException;
 
 import org.junit.Before;
 import org.junit.Test;
@@ -50,5 +55,15 @@ public class SetCommandTest
 		set.execute(cmd.split("\\s"));
 		assertEquals("This is a simple description for this character",
 						cm.get("Julius").getInfo().getDescription());
+		RPGCharacter c = cm.get("Julius");
+		try
+		{
+			Ognl.setValue("info.gender", c, GenderType.Male);
+		}
+		catch (OgnlException e)
+		{
+			fail(e.getLocalizedMessage());
+		}
+		assertEquals(GenderType.Male, c.getInfo().getGender());
 	}
 }

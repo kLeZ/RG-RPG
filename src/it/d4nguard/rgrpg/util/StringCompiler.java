@@ -24,20 +24,54 @@ import org.apache.commons.lang3.text.StrBuilder;
 
 public class StringCompiler extends StrBuilder
 {
-	public StrBuilder append(String fmt, Object... args)
+	public static final char NUL = '\0';
+
+	private final int length;
+	private final char fill;
+
+	public StringCompiler()
 	{
-		return super.append(String.format(fmt, args));
+		length = 0;
+		fill = NUL;
 	}
 
-	public StrBuilder appendln(String fmt, Object... args)
+	public StringCompiler(int length, char fill)
 	{
-		return super.appendln(String.format(fmt, args));
+		this.length = length;
+		this.fill = fill;
 	}
 
-	public StrBuilder fill(int length, char toFill)
+	private StringCompiler to(StrBuilder sb)
+	{
+		return (StringCompiler) sb;
+	}
+
+	private boolean canFill()
+	{
+		return length > 0 && fill != NUL;
+	}
+
+	public StringCompiler append(String fmt, Object... args)
+	{
+		String app = String.format(fmt, args);
+		return to(canFill() ? fill().append(super.append(app)) : super.append(app));
+	}
+
+	public StringCompiler appendln(String fmt, Object... args)
+	{
+		String app = String.format(fmt, args);
+		return to(canFill() ? fill().append(super.appendln(app)) : super.appendln(app));
+	}
+
+	public StringCompiler fill()
+	{
+		return fill(length, fill);
+	}
+
+	public StringCompiler fill(int length, char fill)
 	{
 		char[] filler = new char[length];
-		Arrays.fill(filler, toFill);
-		return super.append(filler);
+		Arrays.fill(filler, fill);
+		return (StringCompiler) super.append(filler);
 	}
 }

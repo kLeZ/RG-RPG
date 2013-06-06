@@ -19,8 +19,16 @@
 package it.d4nguard.rgrpg.util;
 
 import java.lang.reflect.Field;
+import java.lang.reflect.GenericArrayType;
+import java.lang.reflect.Modifier;
+import java.lang.reflect.ParameterizedType;
+import java.lang.reflect.Type;
+import java.lang.reflect.TypeVariable;
+import java.lang.reflect.WildcardType;
 import java.util.Arrays;
 import java.util.Collection;
+import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 import java.util.Scanner;
 import java.util.Set;
@@ -29,6 +37,9 @@ import org.reflections.Reflections;
 
 public class StringUtils
 {
+	public static final String STD_LIB_PKG_RGX = "(java|javax|com\\.sun|com\\.oracle|sun|sunw|org\\.w3c|org\\.xml|org\\.omg)\\..*";
+	private static final String[] SA = new String[] {};
+
 	public static String decapitalize(String s)
 	{
 		StringCompiler sb = new StringCompiler();
@@ -72,7 +83,7 @@ public class StringUtils
 		cmdLn = args[0];
 		if (args.length > 1) args = Arrays.<String> copyOfRange(args, 1,
 						args.length);
-		else args = new String[] {};
+		else args = SA;
 		ret.setProc(cmdLn);
 		ret.setArgs(args);
 		return ret;
@@ -273,22 +284,96 @@ public class StringUtils
 		Set<Class<? extends T>> classes = reflections.getSubTypesOf(clazz);
 		for (Class<? extends T> c : classes)
 		{
-			sc.appendln(prettyPrint(c));
+			sc.append(prettyPrint(c));
 		}
 		return sc.toString();
 	}
 
 	public static <T> String prettyPrint(Class<T> clazz)
 	{
-		StringCompiler sc = new StringCompiler();
-		sc.appendln(clazz.getSimpleName());
-		sc.fill(clazz.getSimpleName().length(), '=').appendNewLine();
-		Field[] fields = clazz.getDeclaredFields();
-		for (Field field : fields)
+		return prettyPrint(clazz, 0, StringCompiler.NUL);
+	}
+
+	public static <T> String prettyPrint(Class<T> clazz, int length, char fill)
+	{
+		return prettyPrint(clazz, 0, StringCompiler.NUL, false);
+	}
+
+	public static <T> String prettyPrint(Class<T> clazz, int length, char fill,
+					boolean stdLib)
+	{
+		StringCompiler sc = new StringCompiler(length, fill);
+		boolean matches = clazz.getPackage().getName().matches(STD_LIB_PKG_RGX);
+
+		if (BooleanUtils.xnor(stdLib, matches))
 		{
-			//TODO: Complete this method!
-			sc.appendln("%s %s", field.getType().getSimpleName(),
-							field.getName());
+			sc.appendln(clazz.getSimpleName());
+			sc.fill(clazz.getSimpleName().length(), '=').appendNewLine();
+			Field[] fields = clazz.getDeclaredFields();
+			for (Field field : fields)
+			{
+				if (!Modifier.isStatic(field.getModifiers()))
+				{
+					sc.appendln(printField(field));
+				}
+			}
+		}
+		return sc.toString();
+	}
+
+	public static String printField(Field field)
+	{
+		StringCompiler sc = new StringCompiler();
+		Type t = field.getGenericType();
+		HashMap<Class<?>, String> toPrint = new HashMap<Class<?>, String>();
+		if (t instanceof Class)
+		{
+			// It's a normal class, I will print it as usual
+			toPrint.put(field.getType(), field.getType().getSimpleName());
+		}
+		else if (t instanceof ParameterizedType)
+		{
+			ParameterizedType pt = (ParameterizedType) t;
+			Class<?> raw = (Class<?>) pt.getRawType();
+			toPrint.put(raw, raw.getSimpleName());
+			for (Type argt : pt.getActualTypeArguments())
+			{
+				Class<?> cls = null;
+				if (argt instanceof GenericArrayType)
+				{
+					cls = (Class<?>) argt;
+				}
+				else if (argt instanceof ParameterizedType)
+				{
+					cls = (Class<?>) argt;
+				}
+				else if (argt instanceof TypeVariable)
+				{
+					cls = ((TypeVariable<?>) argt).getGenericDeclaration().getClass();
+				}
+				else if (argt instanceof WildcardType)
+				{
+					cls = (Class<?>) argt;
+				}
+				else cls = (Class<?>) argt;
+				toPrint.put(cls, cls.getSimpleName());
+			}
+		}
+		List<String> values = Arrays.asList(toPrint.values().toArray(SA));
+		if (toPrint.size() == 1)
+		{
+			sc.append(values.get(0));
+		}
+		else if (toPrint.size() > 1)
+		{
+			String gen = join(", ", values.subList(1, values.size()));
+			sc.append("%s<%s>", values.get(0), gen);
+		}
+		int length = sc.length();
+		sc.append(" %s", field.getName());
+		for (Class<?> c : toPrint.keySet())
+		{
+			sc.fill(length, '=').appendln(" %s", prettyPrint(c, length, ' '));
 		}
 		return sc.toString();
 	}

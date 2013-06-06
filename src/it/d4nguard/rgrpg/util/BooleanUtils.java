@@ -25,6 +25,16 @@ import java.util.Iterator;
 
 public class BooleanUtils
 {
+	public static boolean xnor(boolean x, boolean y)
+	{
+		return !xor(x, y);
+	}
+
+	public static boolean xor(boolean x, boolean y)
+	{
+		return (x || y) && !(x && y);
+	}
+
 	public static <T> boolean all(Collection<T> items, Method method,
 					Object... args) throws IllegalAccessException,
 					IllegalArgumentException, InvocationTargetException
