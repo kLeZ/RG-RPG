@@ -17,6 +17,8 @@ jar: build
 run:
 	java -jar bin/rgrpg-all.jar
 
+try: all run
+
 install: all
 	mvn install
 

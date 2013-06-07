@@ -37,7 +37,7 @@ import org.reflections.Reflections;
 
 public class StringUtils
 {
-	public static final String STD_LIB_PKG_RGX = "(java|javax|com\\.sun|com\\.oracle|sun|sunw|org\\.w3c|org\\.xml|org\\.omg)\\..*";
+	public static final String STD_LIB_PKG_RGX = "(java|javax|com\\.sun|com\\.oracle|sun|sunw|org\\.w3c|org\\.xml|org\\.omg|org\\.dom4j)\\..*";
 	private static final String[] SA = new String[] {};
 
 	public static String decapitalize(String s)

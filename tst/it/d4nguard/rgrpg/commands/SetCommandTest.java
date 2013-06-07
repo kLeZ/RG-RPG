@@ -66,5 +66,6 @@ public class SetCommandTest
 		}
 		assertEquals(GenderType.Male, c.getInfo().getGender());
 		set.execute("character availables Weapon".split("\\s"));
+		set.execute("availables Item".split("\\s"));
 	}
 }
