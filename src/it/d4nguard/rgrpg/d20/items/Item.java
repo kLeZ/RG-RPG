@@ -22,8 +22,9 @@ import it.d4nguard.rgrpg.profile.Coin;
 
 import java.io.Serializable;
 
-import javax.measure.Measurable;
 import javax.measure.quantity.Mass;
+
+import org.jscience.physics.amount.Amount;
 
 public abstract class Item implements Serializable
 {
@@ -32,10 +33,9 @@ public abstract class Item implements Serializable
 	private final String name;
 	private final String description;
 	private final Coin cost;
-	private final Measurable<Mass> weight;
+	private final Amount<Mass> weight;
 
-	public Item(String name, String description, Coin cost,
-					Measurable<Mass> weight)
+	public Item(String name, String description, Coin cost, Amount<Mass> weight)
 	{
 		this.name = name;
 		this.description = description;
@@ -58,7 +58,7 @@ public abstract class Item implements Serializable
 		return cost;
 	}
 
-	public Measurable<Mass> getWeight()
+	public Amount<Mass> getWeight()
 	{
 		return weight;
 	}

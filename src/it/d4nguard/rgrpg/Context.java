@@ -18,6 +18,7 @@
 // 
 package it.d4nguard.rgrpg;
 
+import static org.reflections.util.ClasspathHelper.forPackage;
 import it.d4nguard.rgrpg.profile.CharacterInfo;
 import it.d4nguard.rgrpg.profile.Player;
 import it.d4nguard.rgrpg.profile.RPGCharacter;
@@ -37,8 +38,12 @@ import java.util.Map.Entry;
 import java.util.ResourceBundle;
 import java.util.Set;
 
+import org.reflections.Reflections;
+import org.reflections.scanners.SubTypesScanner;
+
 public class Context
 {
+	private static final String PACKAGE = Context.class.getPackage().getName();
 	private static final String I18N_PACKAGE = "it.d4nguard.rgrpg.i18n";
 	private static final String STRINGS = I18N_PACKAGE.concat(".strings.Strings");
 	private static final String FEATS = I18N_PACKAGE.concat(".d20.feats.Feats");
@@ -49,6 +54,8 @@ public class Context
 	private static class Singleton implements Serializable
 	{
 		private static final long serialVersionUID = -5518515093530450430L;
+
+		private static final SubTypesScanner STS = new SubTypesScanner(false);
 
 		private static Singleton Current = new Singleton();
 		private static transient BundleSet bundles;
@@ -155,6 +162,11 @@ public class Context
 				e.printStackTrace();
 			}
 		}
+
+		private Reflections getReflections()
+		{
+			return new Reflections(forPackage(PACKAGE), STS);
+		}
 	};
 
 	public static boolean isDebug()
@@ -234,4 +246,10 @@ public class Context
 	{
 		Singleton.Current.save(path);
 	}
+
+	public static Reflections getReflections()
+	{
+		return Singleton.Current.getReflections();
+	}
+
 }

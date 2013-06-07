@@ -28,22 +28,23 @@ import it.d4nguard.rgrpg.util.Dice;
 
 import java.util.EnumSet;
 
-import javax.measure.Measurable;
 import javax.measure.quantity.Length;
 import javax.measure.quantity.Mass;
+
+import org.jscience.physics.amount.Amount;
 
 public class RangedWeapon extends Weapon
 {
 	private static final long serialVersionUID = 2422402475576547702L;
 
-	private final Measurable<Length> rangeIncrement;
+	private final Amount<Length> rangeIncrement;
 
 	public RangedWeapon(String name, String description, Coin cost,
-					Measurable<Mass> weight, WeaponCategoryType weaponCategory,
+					Amount<Mass> weight, WeaponCategoryType weaponCategory,
 					WeaponEncumbranceType weaponEncumbrance, SizeType size,
 					Dice damage, CriticalHit criticalHit,
 					EnumSet<WeaponType> weaponType,
-					Measurable<Length> rangeIncrement)
+					Amount<Length> rangeIncrement)
 	{
 		super(name, description, cost, weight, weaponCategory,
 						weaponEncumbrance, size, damage, criticalHit,
@@ -51,7 +52,7 @@ public class RangedWeapon extends Weapon
 		this.rangeIncrement = rangeIncrement;
 	}
 
-	public Measurable<Length> getRangeIncrement()
+	public Amount<Length> getRangeIncrement()
 	{
 		return rangeIncrement;
 	}

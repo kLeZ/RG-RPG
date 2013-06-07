@@ -29,8 +29,9 @@ import it.d4nguard.rgrpg.util.Dice;
 
 import java.util.EnumSet;
 
-import javax.measure.Measurable;
 import javax.measure.quantity.Mass;
+
+import org.jscience.physics.amount.Amount;
 
 public abstract class Weapon extends Item
 {
@@ -44,7 +45,7 @@ public abstract class Weapon extends Item
 	private final EnumSet<WeaponType> weaponType;
 
 	public Weapon(String name, String description, Coin cost,
-					Measurable<Mass> weight, WeaponCategoryType weaponCategory,
+					Amount<Mass> weight, WeaponCategoryType weaponCategory,
 					WeaponEncumbranceType weaponEncumbrance, SizeType size,
 					Dice damage, CriticalHit criticalHit,
 					EnumSet<WeaponType> weaponType)

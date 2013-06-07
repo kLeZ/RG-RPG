@@ -29,9 +29,10 @@ import it.d4nguard.rgrpg.util.Dice;
 import java.util.ArrayList;
 import java.util.EnumSet;
 
-import javax.measure.Measurable;
 import javax.measure.quantity.Length;
 import javax.measure.quantity.Mass;
+
+import org.jscience.physics.amount.Amount;
 
 public class ProjectileWeapon extends RangedWeapon
 {
@@ -40,11 +41,11 @@ public class ProjectileWeapon extends RangedWeapon
 	private final ArrayList<Ammunition> ammunitions;
 
 	public ProjectileWeapon(String name, String description, Coin cost,
-					Measurable<Mass> weight, WeaponCategoryType weaponCategory,
+					Amount<Mass> weight, WeaponCategoryType weaponCategory,
 					WeaponEncumbranceType weaponEncumbrance, SizeType size,
 					Dice damage, CriticalHit criticalHit,
 					EnumSet<WeaponType> weaponType,
-					Measurable<Length> rangeIncrement,
+					Amount<Length> rangeIncrement,
 					ArrayList<Ammunition> ammunitions)
 	{
 		super(name, description, cost, weight, weaponCategory,

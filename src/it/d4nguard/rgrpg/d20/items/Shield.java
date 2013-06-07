@@ -21,8 +21,9 @@ package it.d4nguard.rgrpg.d20.items;
 import it.d4nguard.rgrpg.d20.types.ArmorCategoryType;
 import it.d4nguard.rgrpg.profile.Coin;
 
-import javax.measure.Measurable;
 import javax.measure.quantity.Mass;
+
+import org.jscience.physics.amount.Amount;
 
 public class Shield extends Item
 {
@@ -35,7 +36,7 @@ public class Shield extends Item
 	private final int arcaneSpellFailure;
 
 	public Shield(String name, String description, Coin cost,
-					Measurable<Mass> weight, int armorClass, int maxDexterity,
+					Amount<Mass> weight, int armorClass, int maxDexterity,
 					ArmorCategoryType armorCategory, int armorCheckPenalty,
 					int arcaneSpellFailure)
 	{

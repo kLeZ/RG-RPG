@@ -1,7 +1,7 @@
 package it.d4nguard.rgrpg.util;
 
 import it.d4nguard.rgrpg.d20.D20Character;
-import it.d4nguard.rgrpg.profile.RPGCharacter;
+import it.d4nguard.rgrpg.d20.items.Item;
 
 import org.junit.Assert;
 import org.junit.Test;
@@ -12,7 +12,7 @@ public class StringUtilsTest
 	public final void testPrettyPrintStringClassOfT()
 	{
 		System.out.print(StringUtils.prettyPrint("it.d4nguard.rgrpg",
-						RPGCharacter.class));
+						Item.class));
 		Assert.assertTrue(true);
 	}
 

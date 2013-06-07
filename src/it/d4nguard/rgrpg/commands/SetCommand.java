@@ -24,10 +24,14 @@ import it.d4nguard.rgrpg.managers.PlayerManager;
 import it.d4nguard.rgrpg.util.CommandLine;
 import it.d4nguard.rgrpg.util.StringUtils;
 
+import java.util.Iterator;
+import java.util.Set;
 import java.util.StringTokenizer;
 
 import ognl.Ognl;
 import ognl.OgnlException;
+
+import org.reflections.Reflections;
 
 public class SetCommand implements Command
 {
@@ -42,8 +46,9 @@ public class SetCommand implements Command
 		CommandLine cmd = StringUtils.getArgs(args);
 		String str = StringUtils.join(" ", cmd.getArgs());
 		int start = str.indexOf('"'), end = str.lastIndexOf('"');
-		String name = StringUtils.join(" ", cmd.getArgs()).substring(0, start).trim();
-		String tokenizerFeed = str.substring(start + 1, end);
+		String name = StringUtils.join(" ", cmd.getArgs()).substring(0,
+						start >= 0 ? start : 0).trim();
+		String tokenizerFeed = str.substring(start + 1, end >= 0 ? end : 0);
 		if (Context.isDebug())
 		{
 			qotprn(cmd);
@@ -54,8 +59,8 @@ public class SetCommand implements Command
 		}
 		StringTokenizer st = new StringTokenizer(tokenizerFeed, "=", false);
 		if (Context.isDebug()) System.out.println(st.countTokens());
-		String exp = st.nextToken();
-		Object val = st.nextToken();
+		String exp = st.hasMoreTokens() ? st.nextToken() : "";
+		Object val = st.hasMoreTokens() ? st.nextToken() : null;
 		if (Context.isDebug())
 		{
 			qotprn(exp);
@@ -86,8 +91,25 @@ public class SetCommand implements Command
 					else root = new CharacterManager().get(name);
 					break;
 				}
+				case "availables":
+				{
+					String arg = StringUtils.join(" ", cmd.getArgs());
+					if (!StringUtils.isNullOrWhitespace(arg))
+					{
+						Reflections r = Context.getReflections();
+						Set<Class<?>> classes = r.getSubTypesOf(Object.class);
+						Iterator<Class<?>> it = classes.iterator();
+						Class<?> requested = null;
+						while (it.hasNext() && requested == null)
+							if (!(requested = it.next()).getSimpleName().equals(
+											arg)) requested = null;
+						for (Class<?> c : r.getSubTypesOf(requested))
+							System.out.println(StringUtils.prettyPrint(c));
+					}
+					break;
+				}
 			}
-			Ognl.setValue(exp, root, val);
+			if (root != null) Ognl.setValue(exp, root, val);
 		}
 		catch (OgnlException e)
 		{

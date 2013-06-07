@@ -21,15 +21,16 @@ package it.d4nguard.rgrpg.d20.items.weapons;
 import it.d4nguard.rgrpg.d20.items.Item;
 import it.d4nguard.rgrpg.profile.Coin;
 
-import javax.measure.Measurable;
 import javax.measure.quantity.Mass;
+
+import org.jscience.physics.amount.Amount;
 
 public class Ammunition extends Item
 {
 	private static final long serialVersionUID = -7244714329584333095L;
 
 	public Ammunition(String name, String description, Coin cost,
-					Measurable<Mass> weight)
+					Amount<Mass> weight)
 	{
 		super(name, description, cost, weight);
 	}

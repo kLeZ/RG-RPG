@@ -27,7 +27,7 @@ import java.lang.reflect.TypeVariable;
 import java.lang.reflect.WildcardType;
 import java.util.Arrays;
 import java.util.Collection;
-import java.util.HashMap;
+import java.util.LinkedHashMap;
 import java.util.List;
 import java.util.Map;
 import java.util.Scanner;
@@ -284,7 +284,7 @@ public class StringUtils
 		Set<Class<? extends T>> classes = reflections.getSubTypesOf(clazz);
 		for (Class<? extends T> c : classes)
 		{
-			sc.append(prettyPrint(c));
+			sc.appendln(prettyPrint(c));
 		}
 		return sc.toString();
 	}
@@ -296,18 +296,21 @@ public class StringUtils
 
 	public static <T> String prettyPrint(Class<T> clazz, int length, char fill)
 	{
-		return prettyPrint(clazz, 0, StringCompiler.NUL, false);
+		return prettyPrint(clazz, length, fill, false);
 	}
 
 	public static <T> String prettyPrint(Class<T> clazz, int length, char fill,
 					boolean stdLib)
 	{
+		if (clazz == null) return "";
 		StringCompiler sc = new StringCompiler(length, fill);
-		boolean matches = clazz.getPackage().getName().matches(STD_LIB_PKG_RGX);
+		boolean matches = BooleanUtils.xor(stdLib, clazz.isPrimitive()) || clazz.getPackage().getName().matches(
+						STD_LIB_PKG_RGX);
 
 		if (BooleanUtils.xnor(stdLib, matches))
 		{
 			sc.appendln(clazz.getSimpleName());
+			if (sc.canFill()) sc.fill();
 			sc.fill(clazz.getSimpleName().length(), '=').appendNewLine();
 			Field[] fields = clazz.getDeclaredFields();
 			for (Field field : fields)
@@ -325,7 +328,7 @@ public class StringUtils
 	{
 		StringCompiler sc = new StringCompiler();
 		Type t = field.getGenericType();
-		HashMap<Class<?>, String> toPrint = new HashMap<Class<?>, String>();
+		LinkedHashMap<Class<?>, String> toPrint = new LinkedHashMap<Class<?>, String>();
 		if (t instanceof Class)
 		{
 			// It's a normal class, I will print it as usual
@@ -369,12 +372,13 @@ public class StringUtils
 			String gen = join(", ", values.subList(1, values.size()));
 			sc.append("%s<%s>", values.get(0), gen);
 		}
-		int length = sc.length();
+		// int length = sc.length();
 		sc.append(" %s", field.getName());
-		for (Class<?> c : toPrint.keySet())
-		{
-			sc.fill(length, '=').appendln(" %s", prettyPrint(c, length, ' '));
-		}
+		// FIXME: We're not ready to do a full print of an Object structure
+		// for (Class<?> c : toPrint.keySet())
+		// {
+		// 	sc.appendln(prettyPrint(c, length, ' '));
+		// }
 		return sc.toString();
 	}
 }

@@ -26,28 +26,25 @@ import it.d4nguard.rgrpg.d20.types.WeaponType;
 import it.d4nguard.rgrpg.profile.Coin;
 import it.d4nguard.rgrpg.util.Dice;
 
-import java.math.BigDecimal;
 import java.util.EnumSet;
 
-import javax.measure.DecimalMeasure;
-import javax.measure.Measurable;
-import javax.measure.quantity.Length;
 import javax.measure.quantity.Mass;
 import javax.measure.unit.NonSI;
+
+import org.jscience.physics.amount.Amount;
 
 public class ThrownWeapon extends RangedWeapon
 {
 	private static final long serialVersionUID = 7115948668956860344L;
 
 	public ThrownWeapon(String name, String description, Coin cost,
-					Measurable<Mass> weight, WeaponCategoryType weaponCategory,
+					Amount<Mass> weight, WeaponCategoryType weaponCategory,
 					WeaponEncumbranceType weaponEncumbrance, SizeType size,
 					Dice damage, CriticalHit criticalHit,
 					EnumSet<WeaponType> weaponType)
 	{
 		super(name, description, cost, weight, weaponCategory,
 						weaponEncumbrance, size, damage, criticalHit,
-						weaponType, new DecimalMeasure<Length>(new BigDecimal(
-										10.0), NonSI.FOOT));
+						weaponType, Amount.valueOf(10.0, NonSI.FOOT));
 	}
 }

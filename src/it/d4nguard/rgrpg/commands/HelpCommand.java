@@ -35,8 +35,7 @@ public class HelpCommand implements Command
 		{
 			System.out.println();
 			System.out.println(Context.getString("help.listavailable"));
-			Reflections reflections = new Reflections(
-							Command.class.getPackage().getName());
+			Reflections reflections = Context.getReflections();
 			Set<Class<? extends Command>> commands = reflections.getSubTypesOf(Command.class);
 			for (Class<? extends Command> cmd : commands)
 			{

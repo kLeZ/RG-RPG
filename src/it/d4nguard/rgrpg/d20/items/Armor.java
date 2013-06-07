@@ -21,9 +21,10 @@ package it.d4nguard.rgrpg.d20.items;
 import it.d4nguard.rgrpg.d20.types.ArmorCategoryType;
 import it.d4nguard.rgrpg.profile.Coin;
 
-import javax.measure.Measurable;
 import javax.measure.quantity.Mass;
 import javax.measure.quantity.Velocity;
+
+import org.jscience.physics.amount.Amount;
 
 public class Armor extends Item
 {
@@ -34,12 +35,12 @@ public class Armor extends Item
 	private final ArmorCategoryType armorCategory;
 	private final int armorCheckPenalty;
 	private final int arcaneSpellFailure;
-	private final Measurable<Velocity> speed;
+	private final Amount<Velocity> speed;
 
 	public Armor(String name, String description, Coin cost,
-					Measurable<Mass> weight, int armorClass, int maxDexterity,
+					Amount<Mass> weight, int armorClass, int maxDexterity,
 					ArmorCategoryType armorCategory, int armorCheckPenalty,
-					int arcaneSpellFailure, Measurable<Velocity> speed)
+					int arcaneSpellFailure, Amount<Velocity> speed)
 	{
 		super(name, description, cost, weight);
 		this.armorClass = armorClass;
@@ -75,7 +76,7 @@ public class Armor extends Item
 		return arcaneSpellFailure;
 	}
 
-	public Measurable<Velocity> getSpeed()
+	public Amount<Velocity> getSpeed()
 	{
 		return speed;
 	}

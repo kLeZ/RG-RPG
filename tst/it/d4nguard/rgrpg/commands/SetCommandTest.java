@@ -65,5 +65,6 @@ public class SetCommandTest
 			fail(e.getLocalizedMessage());
 		}
 		assertEquals(GenderType.Male, c.getInfo().getGender());
+		set.execute("character availables Weapon".split("\\s"));
 	}
 }

@@ -28,15 +28,16 @@ import it.d4nguard.rgrpg.util.Dice;
 
 import java.util.EnumSet;
 
-import javax.measure.Measurable;
 import javax.measure.quantity.Mass;
+
+import org.jscience.physics.amount.Amount;
 
 public class DoubleWeapon extends MeleeWeapon
 {
 	private static final long serialVersionUID = -1333343278522555475L;
 
 	public DoubleWeapon(String name, String description, Coin cost,
-					Measurable<Mass> weight, WeaponCategoryType weaponCategory,
+					Amount<Mass> weight, WeaponCategoryType weaponCategory,
 					SizeType size, Dice damage, CriticalHit criticalHit,
 					EnumSet<WeaponType> weaponType)
 	{
