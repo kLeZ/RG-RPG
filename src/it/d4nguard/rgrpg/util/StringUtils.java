@@ -28,6 +28,7 @@ import java.lang.reflect.WildcardType;
 import java.util.Arrays;
 import java.util.Collection;
 import java.util.LinkedHashMap;
+import java.util.LinkedList;
 import java.util.List;
 import java.util.Map;
 import java.util.Scanner;
@@ -380,5 +381,27 @@ public class StringUtils
 		// 	sc.appendln(prettyPrint(c, length, ' '));
 		// }
 		return sc.toString();
+	}
+
+	public static String getExcludeFirst(String in, String regex)
+	{
+		LinkedList<String> ll = new LinkedList<String>(
+						Arrays.asList(in.split(regex)));
+		if (!ll.isEmpty()) ll.removeFirst();
+		StringBuilder sb = new StringBuilder();
+		for (String s : ll)
+			sb.append(s);
+		return sb.toString();
+	}
+
+	public static String getExcludeLast(String in, String regex)
+	{
+		LinkedList<String> ll = new LinkedList<String>(
+						Arrays.asList(in.split(regex)));
+		if (!ll.isEmpty()) ll.removeLast();
+		StringBuilder sb = new StringBuilder();
+		for (String s : ll)
+			sb.append(s);
+		return sb.toString();
 	}
 }

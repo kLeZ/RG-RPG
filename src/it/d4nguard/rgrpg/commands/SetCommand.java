@@ -22,14 +22,13 @@ import it.d4nguard.rgrpg.Context;
 import it.d4nguard.rgrpg.managers.CharacterManager;
 import it.d4nguard.rgrpg.managers.PlayerManager;
 import it.d4nguard.rgrpg.util.CommandLine;
+import it.d4nguard.rgrpg.util.DynaManipulator;
+import it.d4nguard.rgrpg.util.DynaManipulatorException;
 import it.d4nguard.rgrpg.util.StringUtils;
 
 import java.util.Iterator;
 import java.util.Set;
 import java.util.StringTokenizer;
-
-import ognl.Ognl;
-import ognl.OgnlException;
 
 import org.reflections.Reflections;
 
@@ -66,52 +65,51 @@ public class SetCommand implements Command
 			qotprn(exp);
 			qotprn(val);
 		}
-		try
+		Object root = null;
+		switch (cmd.getProc())
 		{
-			Object root = null;
-			switch (cmd.getProc())
+			case "player":
 			{
-				case "player":
+				CommandLine descCmd = StringUtils.getArgs(cmd.getArgs());
+				if (descCmd.getProc().equals("availables"))
 				{
-					CommandLine descCmd = StringUtils.getArgs(cmd.getArgs());
-					if (descCmd.getProc().equals("availables"))
-					{
-						System.out.println(new PlayerManager().availables());
-					}
-					else root = new PlayerManager().get(name);
-					break;
+					System.out.println(new PlayerManager().availables());
 				}
-				case "character":
-				{
-					CommandLine descCmd = StringUtils.getArgs(cmd.getArgs());
-					if (descCmd.getProc().equals("availables"))
-					{
-						System.out.println(new CharacterManager().availables());
-					}
-					else root = new CharacterManager().get(name);
-					break;
-				}
-				case "availables":
-				{
-					String arg = StringUtils.join(" ", cmd.getArgs());
-					if (!StringUtils.isNullOrWhitespace(arg))
-					{
-						Reflections r = Context.getReflections();
-						Set<Class<?>> classes = r.getSubTypesOf(Object.class);
-						Iterator<Class<?>> it = classes.iterator();
-						Class<?> requested = null;
-						while (it.hasNext() && requested == null)
-							if (!(requested = it.next()).getSimpleName().equals(
-											arg)) requested = null;
-						for (Class<?> c : r.getSubTypesOf(requested))
-							System.out.println(StringUtils.prettyPrint(c));
-					}
-					break;
-				}
+				else root = new PlayerManager().get(name);
+				break;
 			}
-			if (root != null) Ognl.setValue(exp, root, val);
+			case "character":
+			{
+				CommandLine descCmd = StringUtils.getArgs(cmd.getArgs());
+				if (descCmd.getProc().equals("availables"))
+				{
+					System.out.println(new CharacterManager().availables());
+				}
+				else root = new CharacterManager().get(name);
+				break;
+			}
+			case "availables":
+			{
+				String arg = StringUtils.join(" ", cmd.getArgs());
+				if (!StringUtils.isNullOrWhitespace(arg))
+				{
+					Reflections r = Context.getReflections();
+					Set<Class<?>> classes = r.getSubTypesOf(Object.class);
+					Iterator<Class<?>> it = classes.iterator();
+					Class<?> requested = null;
+					while (it.hasNext() && requested == null)
+						if (!(requested = it.next()).getSimpleName().equals(arg)) requested = null;
+					for (Class<?> c : r.getSubTypesOf(requested))
+						System.out.println(StringUtils.prettyPrint(c));
+				}
+				break;
+			}
 		}
-		catch (OgnlException e)
+		if (root != null) try
+		{
+			DynaManipulator.setValue(exp, root, val);
+		}
+		catch (DynaManipulatorException e)
 		{
 			e.printStackTrace();
 		}

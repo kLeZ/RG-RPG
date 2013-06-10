@@ -19,12 +19,11 @@
 package it.d4nguard.rgrpg.d20.feats;
 
 import it.d4nguard.rgrpg.d20.D20Character;
+import it.d4nguard.rgrpg.util.DynaManipulator;
+import it.d4nguard.rgrpg.util.DynaManipulatorException;
 
 import java.io.Serializable;
 import java.lang.reflect.Method;
-
-import ognl.Ognl;
-import ognl.OgnlException;
 
 public class Prerequisite implements Serializable
 {
@@ -49,9 +48,10 @@ public class Prerequisite implements Serializable
 		return expression;
 	}
 
-	public boolean meets(D20Character character) throws OgnlException
+	public boolean meets(D20Character character)
+					throws DynaManipulatorException
 	{
-		return ((Boolean) Ognl.getValue(expression, character)).booleanValue();
+		return ((Boolean) DynaManipulator.getValue(expression, character)).booleanValue();
 	}
 
 	public static Method MEETS;

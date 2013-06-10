@@ -19,14 +19,13 @@
 package it.d4nguard.rgrpg.commands;
 
 import static org.junit.Assert.assertEquals;
-import static org.junit.Assert.fail;
 import it.d4nguard.rgrpg.Context;
 import it.d4nguard.rgrpg.managers.CharacterManager;
 import it.d4nguard.rgrpg.managers.PlayerManager;
 import it.d4nguard.rgrpg.profile.GenderType;
 import it.d4nguard.rgrpg.profile.RPGCharacter;
-import ognl.Ognl;
-import ognl.OgnlException;
+import it.d4nguard.rgrpg.util.DynaManipulator;
+import it.d4nguard.rgrpg.util.DynaManipulatorException;
 
 import org.junit.Before;
 import org.junit.Test;
@@ -58,11 +57,11 @@ public class SetCommandTest
 		RPGCharacter c = cm.get("Julius");
 		try
 		{
-			Ognl.setValue("info.gender", c, GenderType.Male);
+			DynaManipulator.setValue("info.gender", c, GenderType.Male);
 		}
-		catch (OgnlException e)
+		catch (DynaManipulatorException e)
 		{
-			fail(e.getLocalizedMessage());
+			e.printStackTrace();
 		}
 		assertEquals(GenderType.Male, c.getInfo().getGender());
 		set.execute("character availables Weapon".split("\\s"));

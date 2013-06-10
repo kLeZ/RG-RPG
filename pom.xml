@@ -24,7 +24,7 @@
 		</developer>
 	</developers>
 	<scm>
-		<url>https://github.com/kLeZ/RG-RPG.git</url>
+		<url>scm:git:https://github.com/kLeZ/RG-RPG.git</url>
 		<developerConnection>Alessandro Accardo</developerConnection>
 	</scm>
 	<issueManagement>
@@ -34,12 +34,6 @@
 	<properties>
 		<jdk.version>1.7</jdk.version>
 	</properties>
-	<repositories>
-		<repository>
-			<id>source.db4o</id>
-			<url>http://source.db4o.com/maven</url>
-		</repository>
-	</repositories>
 	<build>
 		<directory>bin</directory>
 		<outputDirectory>bin</outputDirectory>
@@ -118,6 +112,24 @@
 					</execution>
 				</executions>
 			</plugin>
+			<!-- <plugin> -->
+			<!-- <groupId>com.github.igor-petruk.protobuf</groupId> -->
+			<!-- <artifactId>protobuf-maven-plugin</artifactId> -->
+			<!-- <version>0.6.3</version> -->
+			<!-- <executions> -->
+			<!-- <execution> -->
+			<!-- <configuration> -->
+			<!-- <outputDirectory>${project.build.directory}</outputDirectory> -->
+			<!-- <inputDirectories> -->
+			<!-- <inputDirectory>res</inputDirectory> -->
+			<!-- </inputDirectories> -->
+			<!-- </configuration> -->
+			<!-- <goals> -->
+			<!-- <goal>run</goal> -->
+			<!-- </goals> -->
+			<!-- </execution> -->
+			<!-- </executions> -->
+			<!-- </plugin> -->
 		</plugins>
 	</build>
 	<dependencies>
@@ -136,11 +148,11 @@
 			<artifactId>jscience</artifactId>
 			<version>4.3.1</version>
 		</dependency>
-		<dependency>
-			<groupId>ognl</groupId>
-			<artifactId>ognl</artifactId>
-			<version>3.0.6</version>
-		</dependency>
+		<!-- <dependency> -->
+		<!-- <groupId>com.google.protobuf</groupId> -->
+		<!-- <artifactId>protobuf-java</artifactId> -->
+		<!-- <version>2.5.0</version> -->
+		<!-- </dependency> -->
 		<dependency>
 			<groupId>org.apache.commons</groupId>
 			<artifactId>commons-lang3</artifactId>
