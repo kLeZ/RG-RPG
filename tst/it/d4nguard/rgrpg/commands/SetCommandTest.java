@@ -24,8 +24,8 @@ import it.d4nguard.rgrpg.managers.CharacterManager;
 import it.d4nguard.rgrpg.managers.PlayerManager;
 import it.d4nguard.rgrpg.profile.GenderType;
 import it.d4nguard.rgrpg.profile.RPGCharacter;
-import it.d4nguard.rgrpg.util.DynaManipulator;
-import it.d4nguard.rgrpg.util.DynaManipulatorException;
+import it.d4nguard.rgrpg.util.dynacast.DynaManipulator;
+import it.d4nguard.rgrpg.util.dynacast.DynaManipulatorException;
 
 import org.junit.Before;
 import org.junit.Test;

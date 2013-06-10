@@ -16,7 +16,9 @@
 // You should have received a copy of the GNU General Public License
 // along with this program.  If not, see <http://www.gnu.org/licenses/>.
 // 
-package it.d4nguard.rgrpg.util;
+package it.d4nguard.rgrpg.util.dynacast;
+
+import it.d4nguard.rgrpg.util.StringUtils;
 
 import java.lang.reflect.Field;
 import java.util.LinkedList;
@@ -33,7 +35,8 @@ public class DynaManipulator
 		{
 			Field f = getField(exp, root);
 			f.setAccessible(true);
-			//TODO: Add Implicit Typecasting!!!
+			//TODO: Add Typecasting!!!
+			//HACK!! The winner for type conversion handling is Adapter Pattern, with Factory Pattern (same as Gson, thanks BigG+!)
 			f.set(getValue(StringUtils.getExcludeLast(exp, "\\."), root), value);
 		}
 		catch (IllegalArgumentException | IllegalAccessException e)
