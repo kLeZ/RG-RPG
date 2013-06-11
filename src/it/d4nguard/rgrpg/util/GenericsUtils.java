@@ -106,7 +106,7 @@ public class GenericsUtils
 	 */
 	public static boolean isPrimitiveOrPrimitiveWrapper(final Class<?> type)
 	{
-		return type.isPrimitive() || primitives.values().contains(type);
+		return type.isPrimitive() || primitives.containsValue(type);
 	}
 
 	public static Class<?> getFieldType(final Class<?> fieldContainer,

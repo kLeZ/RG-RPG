@@ -16,9 +16,32 @@
 // You should have received a copy of the GNU General Public License
 // along with this program.  If not, see <http://www.gnu.org/licenses/>.
 // 
-package it.d4nguard.rgrpg.util.dynacast;
+package it.d4nguard.rgrpg.util.dynacast.adapters;
 
-public interface Adapter<T>
+import it.d4nguard.rgrpg.util.dynacast.Adapter;
+import it.d4nguard.rgrpg.util.dynacast.AdapterFactory;
+
+public class EnumAdapter<E extends Enum<E>> implements Adapter<E>
 {
-	T adapt(String value);
+	public final AdapterFactory<E> FACTORY = new AdapterFactory<E>()
+	{
+		@Override
+		public Adapter<E> create(Class<E> type)
+		{
+			return new EnumAdapter<E>(type);
+		}
+	};
+
+	private final Class<E> type;
+
+	public EnumAdapter(Class<E> type)
+	{
+		this.type = type;
+	}
+
+	@Override
+	public E adapt(String value)
+	{
+		return Enum.valueOf(type, value);
+	}
 }

@@ -59,7 +59,7 @@ public class SetCommand implements Command
 		StringTokenizer st = new StringTokenizer(tokenizerFeed, "=", false);
 		if (Context.isDebug()) System.out.println(st.countTokens());
 		String exp = st.hasMoreTokens() ? st.nextToken() : "";
-		Object val = st.hasMoreTokens() ? st.nextToken() : null;
+		String val = st.hasMoreTokens() ? st.nextToken() : null;
 		if (Context.isDebug())
 		{
 			qotprn(exp);

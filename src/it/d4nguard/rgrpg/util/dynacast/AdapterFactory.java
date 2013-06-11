@@ -18,7 +18,7 @@
 // 
 package it.d4nguard.rgrpg.util.dynacast;
 
-public interface AdapterFactory
+public interface AdapterFactory<T>
 {
-	<T> Adapter<T> create(Class<T> type);
+	Adapter<T> create(final Class<T> type);
 }

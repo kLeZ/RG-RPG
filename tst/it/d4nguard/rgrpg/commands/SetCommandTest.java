@@ -57,7 +57,7 @@ public class SetCommandTest
 		RPGCharacter c = cm.get("Julius");
 		try
 		{
-			DynaManipulator.setValue("info.gender", c, GenderType.Male);
+			DynaManipulator.setValue("info.gender", c, "GenderType.Male");
 		}
 		catch (DynaManipulatorException e)
 		{

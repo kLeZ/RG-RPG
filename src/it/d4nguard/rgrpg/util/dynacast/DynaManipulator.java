@@ -26,7 +26,7 @@ import java.util.StringTokenizer;
 
 public class DynaManipulator
 {
-	public static void setValue(String exp, Object root, Object value)
+	public static void setValue(String exp, Object root, String value)
 					throws DynaManipulatorException
 	{
 		assert root != null;
@@ -37,7 +37,9 @@ public class DynaManipulator
 			f.setAccessible(true);
 			//TODO: Add Typecasting!!!
 			//HACK!! The winner for type conversion handling is Adapter Pattern, with Factory Pattern (same as Gson, thanks BigG+!)
-			f.set(getValue(StringUtils.getExcludeLast(exp, "\\."), root), value);
+			Adapter<?> a = TypeCaster.getAdapter(f.getType());
+			Object nurt = getValue(StringUtils.getExcludeLast(exp, "\\."), root);
+			f.set(nurt, a.adapt(value));
 		}
 		catch (IllegalArgumentException | IllegalAccessException e)
 		{

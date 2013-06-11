@@ -18,33 +18,52 @@
 // 
 package it.d4nguard.rgrpg.util.dynacast;
 
+import it.d4nguard.rgrpg.util.dynacast.adapters.PrimitivesAdapters;
+
 import java.util.HashMap;
 import java.util.Map;
 
 public class TypeCaster
 {
-	private final Map<Class<?>, AdapterFactory> factories;
-
-	public TypeCaster()
+	private static final HashMap<String, Class<?>> primitives = new HashMap<String, Class<?>>();
+	static
 	{
-		factories = new HashMap<Class<?>, AdapterFactory>();
+		primitives.put("boolean", Boolean.class);
+		primitives.put("byte", Byte.class);
+		primitives.put("char", Character.class);
+		primitives.put("double", Double.class);
+		primitives.put("float", Float.class);
+		primitives.put("int", Integer.class);
+		primitives.put("long", Long.class);
+		primitives.put("short", Short.class);
 	}
 
-	private <T> AdapterFactory newFactory(final Class<T> type)
+	private static final Map<Class<?>, AdapterFactory<?>> factories;
+	static
 	{
-		return new AdapterFactory()
-		{
-			@Override
-			public <T> Adapter<T> create(Class<T> type)
-			{
-				return factories.get(type).create(type);
-			}
+		factories = new HashMap<Class<?>, AdapterFactory<?>>();
+		factories.putAll(PrimitivesAdapters.getAll());
+		//factories.put(Enum.class, EnumAdapter.FACTORY);
+	}
 
-			@Override
-			public String toString()
-			{
-				return String.format("Adapter for %s", type.getSimpleName());
-			}
-		};
+	/**
+	 * This static method gets a type adapter from its factory class. <br>
+	 * Call example:<br>
+	 * <code>TypeCaster.getAdapter(Integer.class).adapt("5");</code>
+	 * 
+	 * @param type
+	 *            is the type you want to adapt to.
+	 * @return An adapter class that can adapt a string to the recalled object.
+	 */
+	@SuppressWarnings({ "rawtypes", "unchecked" })
+	public static Adapter<?> getAdapter(Class type)
+	{
+		return factories.get(unbox(type)).create(type);
+	}
+
+	private static Class<?> unbox(Class<?> type)
+	{
+		if (type.isPrimitive()) return primitives.get(type.getName());
+		else return type;
 	}
 }
