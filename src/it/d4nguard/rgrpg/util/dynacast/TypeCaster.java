@@ -26,19 +26,6 @@ import java.util.Map;
 
 public class TypeCaster
 {
-	private static final HashMap<String, Class<?>> primitives = new HashMap<String, Class<?>>();
-	static
-	{
-		primitives.put("boolean", Boolean.class);
-		primitives.put("byte", Byte.class);
-		primitives.put("char", Character.class);
-		primitives.put("double", Double.class);
-		primitives.put("float", Float.class);
-		primitives.put("int", Integer.class);
-		primitives.put("long", Long.class);
-		primitives.put("short", Short.class);
-	}
-
 	private static final Map<Class<?>, AdapterFactory<?>> factories;
 	static
 	{
@@ -66,12 +53,9 @@ public class TypeCaster
 	@SuppressWarnings({ "rawtypes", "unchecked" })
 	public static Adapter<?> getAdapter(Class type)
 	{
-		return factories.get(unbox(type)).create(type);
-	}
-
-	private static Class<?> unbox(Class<?> type)
-	{
-		if (type.isPrimitive()) return primitives.get(type.getName());
-		else return type;
+		Strategy strategy = StrategyFactory.getStrategy(type);
+		Class<?> applied = strategy.apply(type);
+		AdapterFactory factory = factories.get(applied);
+		return factory.create(type);
 	}
 }
