@@ -18,6 +18,7 @@
 // 
 package it.d4nguard.rgrpg.util.dynacast;
 
+import it.d4nguard.rgrpg.util.dynacast.adapters.EnumAdapter;
 import it.d4nguard.rgrpg.util.dynacast.adapters.PrimitivesAdapters;
 
 import java.util.HashMap;
@@ -43,7 +44,14 @@ public class TypeCaster
 	{
 		factories = new HashMap<Class<?>, AdapterFactory<?>>();
 		factories.putAll(PrimitivesAdapters.getAll());
-		//factories.put(Enum.class, EnumAdapter.FACTORY);
+		factories.put(Enum.class, new AdapterFactory<Enum<?>>()
+		{
+			@Override
+			public Adapter<Enum<?>> create(Class<Enum<?>> type)
+			{
+				return new EnumAdapter<>(type);
+			}
+		});
 	}
 
 	/**

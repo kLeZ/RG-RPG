@@ -19,19 +19,9 @@
 package it.d4nguard.rgrpg.util.dynacast.adapters;
 
 import it.d4nguard.rgrpg.util.dynacast.Adapter;
-import it.d4nguard.rgrpg.util.dynacast.AdapterFactory;
 
-public class EnumAdapter<E extends Enum<E>> implements Adapter<E>
+public class EnumAdapter<E extends Enum<?>> implements Adapter<E>
 {
-	public final AdapterFactory<E> FACTORY = new AdapterFactory<E>()
-	{
-		@Override
-		public Adapter<E> create(Class<E> type)
-		{
-			return new EnumAdapter<E>(type);
-		}
-	};
-
 	private final Class<E> type;
 
 	public EnumAdapter(Class<E> type)
@@ -39,9 +29,11 @@ public class EnumAdapter<E extends Enum<E>> implements Adapter<E>
 		this.type = type;
 	}
 
+	@SuppressWarnings({ "unchecked", "rawtypes" })
 	@Override
 	public E adapt(String value)
 	{
-		return Enum.valueOf(type, value);
+		Class<? extends Enum> ce = (Class<? extends Enum>) type;
+		return (E) Enum.valueOf(ce, value);
 	}
 }

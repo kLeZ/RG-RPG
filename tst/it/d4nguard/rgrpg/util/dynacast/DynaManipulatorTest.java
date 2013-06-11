@@ -9,6 +9,12 @@ import org.junit.Test;
 
 public class DynaManipulatorTest
 {
+	enum Gender
+	{
+		Male,
+		Female;
+	}
+
 	class Bean
 	{
 		private int ranks;
@@ -19,6 +25,7 @@ public class DynaManipulatorTest
 		private double pi;
 		private float temp;
 		private boolean all;
+		private Gender gender;
 
 		public int getRanks()
 		{
@@ -99,6 +106,16 @@ public class DynaManipulatorTest
 		{
 			this.all = all;
 		}
+
+		public Gender getGender()
+		{
+			return gender;
+		}
+
+		public void setGender(Gender gender)
+		{
+			this.gender = gender;
+		}
 	}
 
 	public final Bean b = new Bean();
@@ -130,6 +147,9 @@ public class DynaManipulatorTest
 											Calendar.YEAR)));
 			assertEquals((short) Calendar.getInstance().get(Calendar.YEAR),
 							b.getYear());
+			DynaManipulator.setValue("gender", b, "Male");
+			assertEquals(Gender.Male, b.getGender());
+
 		}
 		catch (DynaManipulatorException e)
 		{
@@ -161,6 +181,8 @@ public class DynaManipulatorTest
 			b.setYear((short) Calendar.getInstance().get(Calendar.YEAR));
 			assertEquals((short) Calendar.getInstance().get(Calendar.YEAR),
 							DynaManipulator.getValue("year", b));
+			b.setGender(Gender.Male);
+			assertEquals(Gender.Male, DynaManipulator.getValue("gender", b));
 		}
 		catch (DynaManipulatorException e)
 		{
