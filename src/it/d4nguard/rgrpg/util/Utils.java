@@ -19,6 +19,7 @@
 package it.d4nguard.rgrpg.util;
 
 import java.util.ArrayList;
+import java.util.Collection;
 
 public class Utils
 {
@@ -84,5 +85,11 @@ public class Utils
 		for (String s : args)
 			ret.add(s.replace(target, replacement));
 		return ret.toArray(new String[] {});
+	}
+
+	public static <T> void doAll(Collection<? extends T> c, Delegate<T> d)
+	{
+		for (T t : c)
+			d.execute(t);
 	}
 }

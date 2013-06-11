@@ -16,17 +16,9 @@
 // You should have received a copy of the GNU General Public License
 // along with this program.  If not, see <http://www.gnu.org/licenses/>.
 // 
-package it.d4nguard.rgrpg.util.dynacast;
+package it.d4nguard.rgrpg.util;
 
-import it.d4nguard.rgrpg.util.dynacast.strategies.EnumStrategy;
-import it.d4nguard.rgrpg.util.dynacast.strategies.PrimitiveStrategy;
-
-public class StrategyFactory
+public interface Delegate<T>
 {
-	public static Strategy getStrategy(Class<?> type)
-	{
-		if (type.isPrimitive()) return new PrimitiveStrategy();
-		else if (type.isEnum()) return new EnumStrategy();
-		return null;
-	}
+	void execute(T t);
 }

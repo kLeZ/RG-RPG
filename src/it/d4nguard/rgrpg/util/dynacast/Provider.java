@@ -18,7 +18,9 @@
 // 
 package it.d4nguard.rgrpg.util.dynacast;
 
-public interface AdapterFactory<T>
+import java.util.Map;
+
+public interface Provider<T>
 {
-	Adapter<T> create(final Class<T> type);
+	<K> Map<K, T> get();
 }

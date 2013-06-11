@@ -16,29 +16,18 @@
 // You should have received a copy of the GNU General Public License
 // along with this program.  If not, see <http://www.gnu.org/licenses/>.
 // 
-package it.d4nguard.rgrpg.util.dynacast;
+package it.d4nguard.rgrpg.util.dynacast.factories;
 
-import it.d4nguard.rgrpg.util.dynacast.factories.AdapterFactory;
-import it.d4nguard.rgrpg.util.dynacast.factories.AdapterFactoryMap;
-import it.d4nguard.rgrpg.util.dynacast.factories.StrategyFactory;
+import it.d4nguard.rgrpg.util.dynacast.Strategy;
+import it.d4nguard.rgrpg.util.dynacast.strategies.EnumStrategy;
+import it.d4nguard.rgrpg.util.dynacast.strategies.PrimitiveStrategy;
 
-public class TypeCaster
+public class StrategyFactory
 {
-	/**
-	 * This static method gets a type adapter from its factory class. <br>
-	 * Call example:<br>
-	 * <code>TypeCaster.getAdapter(Integer.class).adapt("5");</code>
-	 * 
-	 * @param type
-	 *            is the type you want to adapt to.
-	 * @return An adapter class that can adapt a string to the recalled object.
-	 */
-	@SuppressWarnings({ "rawtypes", "unchecked" })
-	public static Adapter<?> getAdapter(Class type)
+	public static Strategy getStrategy(Class<?> type)
 	{
-		Strategy strategy = StrategyFactory.getStrategy(type);
-		Class<?> applied = strategy.apply(type);
-		AdapterFactory factory = AdapterFactoryMap.current().get(applied);
-		return factory.create(type);
+		if (type.isPrimitive()) return new PrimitiveStrategy();
+		else if (type.isEnum()) return new EnumStrategy();
+		return null;
 	}
 }

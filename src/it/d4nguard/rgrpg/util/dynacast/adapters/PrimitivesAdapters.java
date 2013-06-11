@@ -19,150 +19,138 @@
 package it.d4nguard.rgrpg.util.dynacast.adapters;
 
 import it.d4nguard.rgrpg.util.dynacast.Adapter;
-import it.d4nguard.rgrpg.util.dynacast.AdapterFactory;
+import it.d4nguard.rgrpg.util.dynacast.Provider;
+import it.d4nguard.rgrpg.util.dynacast.factories.AdapterFactory;
 
-import java.util.Collections;
 import java.util.HashMap;
 import java.util.Map;
 
-public class PrimitivesAdapters
+public class PrimitivesAdapters implements Provider<AdapterFactory<?>>
 {
-	public static final AdapterFactory<Boolean> BOOL = new AdapterFactory<Boolean>()
+	@Override
+	public Map<Class<?>, AdapterFactory<?>> get()
 	{
-		@Override
-		public Adapter<Boolean> create(final Class<Boolean> type)
+		Map<Class<?>, AdapterFactory<?>> ret = new HashMap<Class<?>, AdapterFactory<?>>();
+		ret.put(Boolean.class, new AdapterFactory<Boolean>()
 		{
-			return new Adapter<Boolean>()
+			@Override
+			public Adapter<Boolean> create(final Class<Boolean> type)
 			{
-				@Override
-				public Boolean adapt(String value)
+				return new Adapter<Boolean>()
 				{
-					return Boolean.valueOf(value);
-				}
-			};
-		}
-	};
-	public static final AdapterFactory<Byte> BYTE = new AdapterFactory<Byte>()
-	{
-		@Override
-		public Adapter<Byte> create(Class<Byte> type)
+					@Override
+					public Boolean adapt(String value)
+					{
+						return Boolean.valueOf(value);
+					}
+				};
+			}
+		});
+		ret.put(Byte.class, new AdapterFactory<Byte>()
 		{
-			return new Adapter<Byte>()
+			@Override
+			public Adapter<Byte> create(Class<Byte> type)
 			{
-				@Override
-				public Byte adapt(String value)
+				return new Adapter<Byte>()
 				{
-					return Byte.valueOf(value, 2);
-				}
-			};
-		}
-	};
-	public static final AdapterFactory<Character> CHAR = new AdapterFactory<Character>()
-	{
-		@Override
-		public Adapter<Character> create(Class<Character> type)
+					@Override
+					public Byte adapt(String value)
+					{
+						return Byte.valueOf(value, 2);
+					}
+				};
+			}
+		});
+		ret.put(Character.class, new AdapterFactory<Character>()
 		{
-			return new Adapter<Character>()
+			@Override
+			public Adapter<Character> create(Class<Character> type)
 			{
-				@Override
-				public Character adapt(String value)
+				return new Adapter<Character>()
 				{
-					return value.isEmpty() ? '\0' : value.charAt(0);
-				}
-			};
-		}
-	};
-	public static final AdapterFactory<Double> DOUBLE = new AdapterFactory<Double>()
-	{
-		@Override
-		public Adapter<Double> create(Class<Double> type)
+					@Override
+					public Character adapt(String value)
+					{
+						return value.isEmpty() ? '\0' : value.charAt(0);
+					}
+				};
+			}
+		});
+		ret.put(Double.class, new AdapterFactory<Double>()
 		{
-			return new Adapter<Double>()
+			@Override
+			public Adapter<Double> create(Class<Double> type)
 			{
-				@Override
-				public Double adapt(String value)
+				return new Adapter<Double>()
 				{
-					return Double.valueOf(value);
-				}
-			};
-		}
-	};
-	public static final AdapterFactory<Float> FLOAT = new AdapterFactory<Float>()
-	{
-		@Override
-		public Adapter<Float> create(Class<Float> type)
+					@Override
+					public Double adapt(String value)
+					{
+						return Double.valueOf(value);
+					}
+				};
+			}
+		});
+		ret.put(Float.class, new AdapterFactory<Float>()
 		{
-			return new Adapter<Float>()
+			@Override
+			public Adapter<Float> create(Class<Float> type)
 			{
-				@Override
-				public Float adapt(String value)
+				return new Adapter<Float>()
 				{
-					return Float.valueOf(value);
-				}
-			};
-		}
-	};
-	public static final AdapterFactory<Integer> INT = new AdapterFactory<Integer>()
-	{
-		@Override
-		public Adapter<Integer> create(Class<Integer> type)
+					@Override
+					public Float adapt(String value)
+					{
+						return Float.valueOf(value);
+					}
+				};
+			}
+		});
+		ret.put(Integer.class, new AdapterFactory<Integer>()
 		{
-			return new Adapter<Integer>()
+			@Override
+			public Adapter<Integer> create(Class<Integer> type)
 			{
-				@Override
-				public Integer adapt(String value)
+				return new Adapter<Integer>()
 				{
-					return Integer.valueOf(value);
-				}
-			};
-		}
-	};
-	public static final AdapterFactory<Long> LONG = new AdapterFactory<Long>()
-	{
-		@Override
-		public Adapter<Long> create(Class<Long> type)
+					@Override
+					public Integer adapt(String value)
+					{
+						return Integer.valueOf(value);
+					}
+				};
+			}
+		});
+		ret.put(Long.class, new AdapterFactory<Long>()
 		{
-			return new Adapter<Long>()
+			@Override
+			public Adapter<Long> create(Class<Long> type)
 			{
-				@Override
-				public Long adapt(String value)
+				return new Adapter<Long>()
 				{
-					return Long.valueOf(value);
-				}
-			};
-		}
-	};
-	public static final AdapterFactory<Short> SHORT = new AdapterFactory<Short>()
-	{
-		@Override
-		public Adapter<Short> create(Class<Short> type)
+					@Override
+					public Long adapt(String value)
+					{
+						return Long.valueOf(value);
+					}
+				};
+			}
+		});
+		ret.put(Short.class, new AdapterFactory<Short>()
 		{
-			return new Adapter<Short>()
+			@Override
+			public Adapter<Short> create(Class<Short> type)
 			{
-				@Override
-				public Short adapt(String value)
+				return new Adapter<Short>()
 				{
-					return Short.valueOf(value);
-				}
-			};
-		}
-	};
-
-	private static final Map<Class<?>, AdapterFactory<?>> ALL = new HashMap<Class<?>, AdapterFactory<?>>();
-	static
-	{
-		ALL.put(Boolean.class, BOOL);
-		ALL.put(Byte.class, BYTE);
-		ALL.put(Character.class, CHAR);
-		ALL.put(Double.class, DOUBLE);
-		ALL.put(Float.class, FLOAT);
-		ALL.put(Integer.class, INT);
-		ALL.put(Long.class, LONG);
-		ALL.put(Short.class, SHORT);
-	}
-
-	public static Map<Class<?>, AdapterFactory<?>> getAll()
-	{
-		return Collections.unmodifiableMap(ALL);
+					@Override
+					public Short adapt(String value)
+					{
+						return Short.valueOf(value);
+					}
+				};
+			}
+		});
+		return ret;
 	}
 }
