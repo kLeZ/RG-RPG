@@ -28,6 +28,13 @@ public class StrategyFactory
 	{
 		if (type.isPrimitive()) return new PrimitiveStrategy();
 		else if (type.isEnum()) return new EnumStrategy();
-		return null;
+		else return new Strategy()
+		{
+			@Override
+			public Class<?> apply(Class<?> type)
+			{
+				return type;
+			}
+		};
 	}
 }

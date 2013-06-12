@@ -35,8 +35,6 @@ public class DynaManipulator
 		{
 			Field f = getField(exp, root);
 			f.setAccessible(true);
-			//TODO: Add Typecasting!!!
-			//HACK!! The winner for type conversion handling is Adapter Pattern, with Factory Pattern (same as Gson, thanks BigG+!)
 			Adapter<?> a = TypeCaster.getAdapter(f.getType());
 			Object nurt = getValue(StringUtils.getExcludeLast(exp, "\\."), root);
 			f.set(nurt, a.adapt(value));

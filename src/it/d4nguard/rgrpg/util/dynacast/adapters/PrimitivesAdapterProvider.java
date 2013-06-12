@@ -32,6 +32,21 @@ public class PrimitivesAdapterProvider implements Provider<AdapterFactory<?>>
 	public Map<Class<?>, AdapterFactory<?>> get()
 	{
 		Map<Class<?>, AdapterFactory<?>> ret = new HashMap<Class<?>, AdapterFactory<?>>();
+		ret.put(String.class, new AdapterFactory<String>()
+		{
+			@Override
+			public Adapter<String> create(Class<String> type)
+			{
+				return new Adapter<String>()
+				{
+					@Override
+					public String adapt(String value)
+					{
+						return value;
+					}
+				};
+			}
+		});
 		ret.put(Boolean.class, new AdapterFactory<Boolean>()
 		{
 			@Override
