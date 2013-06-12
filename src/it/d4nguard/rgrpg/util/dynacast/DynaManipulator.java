@@ -75,6 +75,7 @@ public class DynaManipulator
 	public static LinkedList<Field> getExpPath(String exp, Object root)
 					throws NoSuchFieldException
 	{
+		// TODO: Implement arrays and collections logic.
 		assert root != null;
 		StringTokenizer st = new StringTokenizer(exp, ".");
 		String fst = st.hasMoreTokens() ? st.nextToken() : "";

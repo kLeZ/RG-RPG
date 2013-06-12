@@ -18,12 +18,16 @@
 // 
 package it.d4nguard.rgrpg.util.dynacast.adapters;
 
+import java.util.Locale;
+
 import org.joda.time.DateMidnight;
 import org.joda.time.DateTime;
 import org.joda.time.Instant;
 import org.joda.time.MutableDateTime;
 import org.joda.time.ReadableInstant;
 import org.joda.time.format.DateTimeFormat;
+import org.joda.time.format.DateTimeFormatter;
+import org.joda.time.format.ISODateTimeFormat;
 
 public class DateTimeAdapter extends AbstractAdapter<ReadableInstant>
 {
@@ -33,19 +37,26 @@ public class DateTimeAdapter extends AbstractAdapter<ReadableInstant>
 	public ReadableInstant adapt(String value)
 	{
 		// value is a string formatted as: "07/04/1987[dd/MM/yyyy]"
-		String date = "", fmt = "";
+		String date = "";
+		DateTimeFormatter fmt;
 		int start = value.indexOf('['), end = value.indexOf(']');
-		if (start <= 0 || end <= 0) throw new IllegalArgumentException("value");
-		date = value.substring(0, start);
-		fmt = value.substring(start + 1, end);
-		if (type.equals(DateTime.class)) return DateTime.parse(date,
-						DateTimeFormat.forPattern(fmt));
+		if (start > 0 && end > 0)
+		{
+			date = value.substring(0, start);
+			fmt = DateTimeFormat.forPattern(value.substring(start + 1, end));
+		}
+		else
+		{
+			date = value;
+			fmt = ISODateTimeFormat.localDateOptionalTimeParser();
+		}
+		fmt = fmt.withLocale(Locale.getDefault());
+		if (type.equals(DateTime.class)) return DateTime.parse(date, fmt);
 		else if (type.equals(DateMidnight.class)) return DateMidnight.parse(
-						date, DateTimeFormat.forPattern(fmt));
-		else if (type.equals(Instant.class)) return Instant.parse(date,
-						DateTimeFormat.forPattern(fmt));
+						date, fmt);
+		else if (type.equals(Instant.class)) return Instant.parse(date, fmt);
 		else if (type.equals(MutableDateTime.class)) return MutableDateTime.parse(
-						date, DateTimeFormat.forPattern(fmt));
+						date, fmt);
 		else throw new UnsupportedOperationException("type");
 	}
 
