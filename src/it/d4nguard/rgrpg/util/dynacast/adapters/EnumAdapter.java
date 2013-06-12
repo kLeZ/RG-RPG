@@ -18,34 +18,12 @@
 // 
 package it.d4nguard.rgrpg.util.dynacast.adapters;
 
-import it.d4nguard.rgrpg.util.dynacast.Adapter;
-import it.d4nguard.rgrpg.util.dynacast.Provider;
-import it.d4nguard.rgrpg.util.dynacast.factories.AdapterFactory;
-
-import java.util.HashMap;
-import java.util.Map;
-
-public class EnumAdapter<E extends Enum<?>> implements Adapter<E>, Provider<AdapterFactory<E>>
+public class EnumAdapter<E extends Enum<?>> extends AbstractAdapter<E>
 {
-	private final Class<E> type;
+	private Class<E> type;
 
-	/**
-	 * This constructor is used only for the Provider part of this concrete
-	 * class.
-	 * Please do not use if you need an adapter, because it will not work.
-	 */
-	public EnumAdapter()
-	{
-		this.type = null;
-	}
-
-	public EnumAdapter(Class<E> type)
-	{
-		this.type = type;
-	}
-
-	@SuppressWarnings({ "unchecked", "rawtypes" })
 	@Override
+	@SuppressWarnings({ "unchecked", "rawtypes" })
 	public E adapt(String value)
 	{
 		Class<? extends Enum> ce = (Class<? extends Enum>) type;
@@ -53,18 +31,8 @@ public class EnumAdapter<E extends Enum<?>> implements Adapter<E>, Provider<Adap
 	}
 
 	@Override
-	@SuppressWarnings({ "rawtypes", "unchecked" })
-	public Map<Class<Enum>, AdapterFactory<Enum<?>>> get()
+	public void beforeCreateAdapter(Class<E> type)
 	{
-		HashMap<Class<Enum>, AdapterFactory<Enum<?>>> ret = new HashMap<>();
-		ret.put(Enum.class, new AdapterFactory<Enum<?>>()
-		{
-			@Override
-			public Adapter<Enum<?>> create(Class<Enum<?>> type)
-			{
-				return new EnumAdapter<>(type);
-			}
-		});
-		return ret;
+		this.type = type;
 	}
 }

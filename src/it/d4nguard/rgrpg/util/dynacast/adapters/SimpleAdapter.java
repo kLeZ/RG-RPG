@@ -18,70 +18,10 @@
 // 
 package it.d4nguard.rgrpg.util.dynacast.adapters;
 
-import it.d4nguard.rgrpg.util.dynacast.Adapter;
-import it.d4nguard.rgrpg.util.dynacast.Provider;
-import it.d4nguard.rgrpg.util.dynacast.factories.AdapterFactory;
-
-import java.lang.reflect.GenericArrayType;
-import java.lang.reflect.ParameterizedType;
-import java.lang.reflect.Type;
-import java.lang.reflect.TypeVariable;
-import java.lang.reflect.WildcardType;
-import java.util.HashMap;
-import java.util.Map;
-
-@SuppressWarnings("rawtypes")
-public abstract class SimpleAdapter<T> implements Adapter<T>, Provider<AdapterFactory>
+public abstract class SimpleAdapter<T> extends AbstractAdapter<T>
 {
-	private final SimpleAdapter<T> myself = this;
-
 	@Override
-	@SuppressWarnings("unchecked")
-	public final Map<Class<?>, AdapterFactory> get()
+	public void beforeCreateAdapter(Class<T> type)
 	{
-		HashMap<Class<?>, AdapterFactory> ret = new HashMap<>();
-		ret.put(getFirstGenericType(getClass()), new AdapterFactory<T>()
-		{
-			@Override
-			public Adapter<T> create(Class<T> type)
-			{
-				return myself;
-			}
-		});
-		return ret;
-	}
-
-	private Type[] getGenericTypes(Class<?> c)
-	{
-		ParameterizedType t = (ParameterizedType) c.getGenericSuperclass();
-		return t.getActualTypeArguments();
-	}
-
-	protected Class<?> getFirstGenericType(Class<?> c)
-	{
-		for (Type t : getGenericTypes(getClass()))
-			return getClass(t);
-		return c;
-	}
-
-	private Class<?> getClass(Type t)
-	{
-		if (t instanceof GenericArrayType)
-		{
-			return getClass(((GenericArrayType) t).getGenericComponentType());
-		}
-		else if (t instanceof ParameterizedType)
-		{
-			return getClass(((ParameterizedType) t).getRawType());
-		}
-		else if (t instanceof TypeVariable)
-		{
-			return getClass(((TypeVariable) t).getBounds()[0]);
-		}
-		else if (t instanceof WildcardType)
-		{
-			return ((WildcardType) t).getClass();
-		}
-		else return (Class<?>) t;
 	}
 }
