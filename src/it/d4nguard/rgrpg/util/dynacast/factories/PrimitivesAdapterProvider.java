@@ -16,18 +16,18 @@
 // You should have received a copy of the GNU General Public License
 // along with this program.  If not, see <http://www.gnu.org/licenses/>.
 // 
-package it.d4nguard.rgrpg.util.dynacast.adapters;
+package it.d4nguard.rgrpg.util.dynacast.factories;
 
 import it.d4nguard.rgrpg.util.dynacast.Adapter;
 import it.d4nguard.rgrpg.util.dynacast.Provider;
-import it.d4nguard.rgrpg.util.dynacast.factories.AdapterFactory;
 
 import java.util.HashMap;
 import java.util.Map;
 
-public class PrimitivesAdapters implements Provider<AdapterFactory<?>>
+public class PrimitivesAdapterProvider implements Provider<AdapterFactory<?>>
 {
 	@Override
+	@SuppressWarnings("unchecked")
 	public Map<Class<?>, AdapterFactory<?>> get()
 	{
 		Map<Class<?>, AdapterFactory<?>> ret = new HashMap<Class<?>, AdapterFactory<?>>();
