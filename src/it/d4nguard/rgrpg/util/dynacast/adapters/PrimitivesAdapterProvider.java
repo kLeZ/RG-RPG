@@ -16,10 +16,11 @@
 // You should have received a copy of the GNU General Public License
 // along with this program.  If not, see <http://www.gnu.org/licenses/>.
 // 
-package it.d4nguard.rgrpg.util.dynacast.factories;
+package it.d4nguard.rgrpg.util.dynacast.adapters;
 
 import it.d4nguard.rgrpg.util.dynacast.Adapter;
 import it.d4nguard.rgrpg.util.dynacast.Provider;
+import it.d4nguard.rgrpg.util.dynacast.factories.AdapterFactory;
 
 import java.util.HashMap;
 import java.util.Map;
@@ -31,6 +32,21 @@ public class PrimitivesAdapterProvider implements Provider<AdapterFactory<?>>
 	public Map<Class<?>, AdapterFactory<?>> get()
 	{
 		Map<Class<?>, AdapterFactory<?>> ret = new HashMap<Class<?>, AdapterFactory<?>>();
+		ret.put(String.class, new AdapterFactory<String>()
+		{
+			@Override
+			public Adapter<String> create(Class<String> type)
+			{
+				return new Adapter<String>()
+				{
+					@Override
+					public String adapt(String value)
+					{
+						return value;
+					}
+				};
+			}
+		});
 		ret.put(Boolean.class, new AdapterFactory<Boolean>()
 		{
 			@Override

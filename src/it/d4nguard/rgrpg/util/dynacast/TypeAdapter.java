@@ -22,12 +22,12 @@ import it.d4nguard.rgrpg.util.dynacast.factories.AdapterFactory;
 import it.d4nguard.rgrpg.util.dynacast.factories.AdapterFactoryMap;
 import it.d4nguard.rgrpg.util.dynacast.factories.StrategyFactory;
 
-public class TypeCaster
+public class TypeAdapter
 {
 	/**
 	 * This static method gets a type adapter from its factory class. <br>
 	 * Call example:<br>
-	 * <code>TypeCaster.getAdapter(Integer.class).adapt("5");</code>
+	 * <code>TypeAdapter.getAdapter(Integer.class).adapt("5");</code>
 	 * 
 	 * @param type
 	 *            is the type you want to adapt to.
