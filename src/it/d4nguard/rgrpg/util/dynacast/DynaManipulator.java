@@ -39,7 +39,7 @@ public class DynaManipulator
 			Object nurt = getValue(StringUtils.getExcludeLast(exp, "\\."), root);
 			f.set(nurt, a.adapt(value));
 		}
-		catch (IllegalArgumentException | IllegalAccessException e)
+		catch (Throwable e)
 		{
 			throw new DynaManipulatorException(e);
 		}
@@ -59,7 +59,7 @@ public class DynaManipulator
 				ret = f.get(ret);
 			}
 		}
-		catch (IllegalArgumentException | IllegalAccessException e)
+		catch (Throwable e)
 		{
 			throw new DynaManipulatorException(e);
 		}

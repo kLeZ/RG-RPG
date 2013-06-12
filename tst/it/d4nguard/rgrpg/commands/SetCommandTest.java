@@ -83,6 +83,5 @@ public class SetCommandTest
 		assertEquals(DateMidnight.parse("07/04/1987",
 						DateTimeFormat.forPattern("dd/MM/yyyy")),
 						c.getInfo().getDateOfBirth());
-
 	}
 }
