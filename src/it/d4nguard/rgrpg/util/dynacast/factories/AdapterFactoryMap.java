@@ -76,6 +76,13 @@ public class AdapterFactoryMap extends AbstractMap<Class<?>, AdapterFactory<?>>
 				}
 			}
 		});
+		/*
+		for (Entry<Class<?>, AdapterFactory<?>> e : __map.entrySet())
+		{
+			System.out.println(String.format("[%s] %s", e.getKey(),
+							e.getValue()));
+		}
+		*/
 	}
 
 	private static AdapterFactoryMap instance;

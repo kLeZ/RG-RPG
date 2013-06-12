@@ -16,15 +16,20 @@
 // You should have received a copy of the GNU General Public License
 // along with this program.  If not, see <http://www.gnu.org/licenses/>.
 // 
-package it.d4nguard.rgrpg.util.dynacast.adapters;
+package it.d4nguard.rgrpg.util.dynacast.strategies;
+
+import it.d4nguard.rgrpg.util.dynacast.Strategy;
 
 import org.joda.time.ReadableInstant;
 
-public class InstantAdapter extends SimpleAdapter<ReadableInstant>
+public class DateTimeStrategy implements Strategy
 {
+	public static final Class<?> TYPE = ReadableInstant.class;
+
 	@Override
-	public ReadableInstant adapt(String value)
+	public Class<?> apply(Class<?> type)
 	{
-		return null;
+		if (TYPE.isAssignableFrom(type)) return TYPE;
+		else return type;
 	}
 }

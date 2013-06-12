@@ -19,6 +19,7 @@
 package it.d4nguard.rgrpg.util.dynacast.factories;
 
 import it.d4nguard.rgrpg.util.dynacast.Strategy;
+import it.d4nguard.rgrpg.util.dynacast.strategies.DateTimeStrategy;
 import it.d4nguard.rgrpg.util.dynacast.strategies.EnumStrategy;
 import it.d4nguard.rgrpg.util.dynacast.strategies.PrimitiveStrategy;
 
@@ -28,6 +29,7 @@ public class StrategyFactory
 	{
 		if (type.isPrimitive()) return new PrimitiveStrategy();
 		else if (type.isEnum()) return new EnumStrategy();
+		else if (DateTimeStrategy.TYPE.isAssignableFrom(type)) return new DateTimeStrategy();
 		else return new Strategy() // The dummy one
 		{
 			@Override
