@@ -149,7 +149,6 @@ public class DynaManipulatorTest
 							b.getYear());
 			DynaManipulator.setValue("gender", b, "Male");
 			assertEquals(Gender.Male, b.getGender());
-
 		}
 		catch (DynaManipulatorException e)
 		{

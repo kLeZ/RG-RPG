@@ -67,38 +67,30 @@ public class DynaManipulator
 	}
 
 	public static Field getField(String exp, Object root)
-					throws DynaManipulatorException
+					throws NoSuchFieldException
 	{
 		return getExpPath(exp, root).getLast();
 	}
 
 	public static LinkedList<Field> getExpPath(String exp, Object root)
-					throws DynaManipulatorException
+					throws NoSuchFieldException
 	{
 		assert root != null;
 		StringTokenizer st = new StringTokenizer(exp, ".");
 		String fst = st.hasMoreTokens() ? st.nextToken() : "";
 		LinkedList<Field> ret = new LinkedList<Field>();
-		try
+		if (!StringUtils.isNullOrWhitespace(fst))
 		{
-			if (!StringUtils.isNullOrWhitespace(fst))
+			ret.add(findField(fst, root.getClass()));
+			while (st.hasMoreTokens())
 			{
-				ret.add(findField(fst, root.getClass()));
-				while (st.hasMoreTokens())
+				String next = st.nextToken();
+				if (ret.getLast() != null)
 				{
-					String next = st.nextToken();
-					if (ret.getLast() != null)
-					{
-						ret.add(findField(next, ret.getLast().getType()));
-					}
-					else throw new DynaManipulatorException(
-									new NoSuchFieldException(next));
+					ret.add(findField(next, ret.getLast().getType()));
 				}
+				else throw new NoSuchFieldException(next);
 			}
-		}
-		catch (IllegalArgumentException e)
-		{
-			throw new DynaManipulatorException(e);
 		}
 		return ret;
 	}

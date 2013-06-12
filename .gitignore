@@ -20,3 +20,6 @@ bin/**/*
 .settings/**/*
 .project
 .classpath
+
+# Log files
+*.log

@@ -19,6 +19,7 @@
 package it.d4nguard.rgrpg.commands;
 
 import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.fail;
 import it.d4nguard.rgrpg.Context;
 import it.d4nguard.rgrpg.managers.CharacterManager;
 import it.d4nguard.rgrpg.managers.PlayerManager;
@@ -26,6 +27,9 @@ import it.d4nguard.rgrpg.profile.GenderType;
 import it.d4nguard.rgrpg.profile.RPGCharacter;
 
 import javax.measure.unit.SI;
+
+import ognl.Ognl;
+import ognl.OgnlException;
 
 import org.joda.time.DateMidnight;
 import org.joda.time.format.DateTimeFormat;
@@ -83,5 +87,17 @@ public class SetCommandTest
 		assertEquals(DateMidnight.parse("07/04/1987",
 						DateTimeFormat.forPattern("dd/MM/yyyy")),
 						c.getInfo().getDateOfBirth());
+
+		// TODO: OGNL Tests, I'll try again
+		try
+		{
+			Ognl.setValue("hpModifiers", c, null);
+		}
+		catch (OgnlException e)
+		{
+			e.printStackTrace();
+			fail(e.getLocalizedMessage());
+		}
+
 	}
 }
