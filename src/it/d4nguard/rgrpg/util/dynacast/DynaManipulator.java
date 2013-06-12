@@ -35,7 +35,7 @@ public class DynaManipulator
 		{
 			Field f = getField(exp, root);
 			f.setAccessible(true);
-			Adapter<?> a = TypeCaster.getAdapter(f.getType());
+			Adapter<?> a = TypeAdapter.getAdapter(f.getType());
 			Object nurt = getValue(StringUtils.getExcludeLast(exp, "\\."), root);
 			f.set(nurt, a.adapt(value));
 		}
