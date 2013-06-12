@@ -16,25 +16,15 @@
 // You should have received a copy of the GNU General Public License
 // along with this program.  If not, see <http://www.gnu.org/licenses/>.
 // 
-package it.d4nguard.rgrpg.util.dynacast.factories;
+package it.d4nguard.rgrpg.util.dynacast.adapters;
 
-import it.d4nguard.rgrpg.util.dynacast.Strategy;
-import it.d4nguard.rgrpg.util.dynacast.strategies.EnumStrategy;
-import it.d4nguard.rgrpg.util.dynacast.strategies.PrimitiveStrategy;
+import org.joda.time.ReadableInstant;
 
-public class StrategyFactory
+public class InstantAdapter extends SimpleAdapter<ReadableInstant>
 {
-	public static Strategy getStrategy(Class<?> type)
+	@Override
+	public ReadableInstant adapt(String value)
 	{
-		if (type.isPrimitive()) return new PrimitiveStrategy();
-		else if (type.isEnum()) return new EnumStrategy();
-		else return new Strategy()
-		{
-			@Override
-			public Class<?> apply(Class<?> type)
-			{
-				return type;
-			}
-		};
+		return null;
 	}
 }

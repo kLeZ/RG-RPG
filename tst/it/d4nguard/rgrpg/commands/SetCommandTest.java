@@ -24,47 +24,56 @@ import it.d4nguard.rgrpg.managers.CharacterManager;
 import it.d4nguard.rgrpg.managers.PlayerManager;
 import it.d4nguard.rgrpg.profile.GenderType;
 import it.d4nguard.rgrpg.profile.RPGCharacter;
-import it.d4nguard.rgrpg.util.dynacast.DynaManipulator;
-import it.d4nguard.rgrpg.util.dynacast.DynaManipulatorException;
 
+import javax.measure.unit.SI;
+
+import org.jscience.physics.amount.Amount;
 import org.junit.Before;
 import org.junit.Test;
 
 public class SetCommandTest
 {
+	private SetCommand set;
+	private String cmd;
+	private RPGCharacter c;
+
 	@Before
 	public void setUp()
 	{
 		Context.wipe();
 		PlayerManager pm = new PlayerManager();
 		CharacterManager cm = new CharacterManager();
+		set = new SetCommand();
 		pm.create("kLeZ", new Object[] {});
 		pm.use("kLeZ");
 
 		cm.create("Julius", "d20");
-		cm.use("Julius");
+		c = cm.use("Julius");
 	}
 
 	@Test
 	public final void testExecute()
 	{
-		CharacterManager cm = new CharacterManager();
-		SetCommand set = new SetCommand();
-		String cmd = "character Julius \"info.description=This is a simple description for this character\"";
+		cmd = "character Julius \"info.description=This is a simple description for this character\"";
 		set.execute(cmd.split("\\s"));
 		assertEquals("This is a simple description for this character",
-						cm.get("Julius").getInfo().getDescription());
-		RPGCharacter c = cm.get("Julius");
-		try
-		{
-			DynaManipulator.setValue("info.gender", c, "GenderType.Male");
-		}
-		catch (DynaManipulatorException e)
-		{
-			e.printStackTrace();
-		}
+						c.getInfo().getDescription());
+
+		cmd = "character Julius \"info.gender=Male\"";
+		set.execute(cmd.split("\\s"));
 		assertEquals(GenderType.Male, c.getInfo().getGender());
-		set.execute("character availables Weapon".split("\\s"));
-		set.execute("availables Item".split("\\s"));
+
+		cmd = "character Julius \"info.height=185 cm\"";
+		set.execute(cmd.split("\\s"));
+		assertEquals(Amount.valueOf(185, SI.CENTIMETER),
+						c.getInfo().getHeight());
+
+		cmd = "character Julius \"info.weight=65 kg\"";
+		set.execute(cmd.split("\\s"));
+		assertEquals(Amount.valueOf(65, SI.KILOGRAM), c.getInfo().getWeight());
+
+		cmd = "character Julius \"info.gender=Male\"";
+		set.execute(cmd.split("\\s"));
+		assertEquals(GenderType.Male, c.getInfo().getGender());
 	}
 }

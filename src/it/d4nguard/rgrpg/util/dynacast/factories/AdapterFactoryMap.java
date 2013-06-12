@@ -22,6 +22,7 @@ import it.d4nguard.rgrpg.util.Delegate;
 import it.d4nguard.rgrpg.util.Utils;
 import it.d4nguard.rgrpg.util.dynacast.Provider;
 
+import java.lang.reflect.Modifier;
 import java.util.AbstractMap;
 import java.util.HashMap;
 import java.util.Map;
@@ -59,8 +60,11 @@ public class AdapterFactoryMap extends AbstractMap<Class<?>, AdapterFactory<?>>
 			{
 				try
 				{
-					Provider p = t.newInstance();
-					__map.putAll(p.get());
+					if (!Modifier.isAbstract(t.getModifiers()))
+					{
+						Provider p = t.newInstance();
+						__map.putAll(p.get());
+					}
 				}
 				catch (InstantiationException e)
 				{

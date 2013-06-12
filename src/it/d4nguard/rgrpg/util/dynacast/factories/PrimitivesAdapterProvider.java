@@ -151,6 +151,21 @@ public class PrimitivesAdapterProvider implements Provider<AdapterFactory<?>>
 				};
 			}
 		});
+		ret.put(String.class, new AdapterFactory<String>()
+		{
+			@Override
+			public Adapter<String> create(Class<String> type)
+			{
+				return new Adapter<String>()
+				{
+					@Override
+					public String adapt(String value)
+					{
+						return value;
+					}
+				};
+			}
+		});
 		return ret;
 	}
 }
