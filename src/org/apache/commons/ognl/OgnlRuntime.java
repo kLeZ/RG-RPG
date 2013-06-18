@@ -19,6 +19,9 @@ package org.apache.commons.ognl;
  * under the License.
  */
 
+import it.d4nguard.rgrpg.util.dynacast.Adapter;
+import it.d4nguard.rgrpg.util.dynacast.TypeAdapter;
+
 import java.beans.BeanInfo;
 import java.beans.IndexedPropertyDescriptor;
 import java.beans.IntrospectionException;
@@ -1172,8 +1175,9 @@ public class OgnlRuntime
 		{
 			if (method != null)
 			{
-				//TODO: Put Type Adapter code!
-				Object[] args = new Object[] { value };
+				// FIX: Hope this will fix...
+				Adapter<?> a = TypeAdapter.getAdapter(target.getClass());
+				Object[] args = new Object[] { a.adapt(String.valueOf(value)) };
 				callAppropriateMethod(context, target, target,
 								method.getName(), propertyName,
 								Collections.nCopies(1, method), args);
