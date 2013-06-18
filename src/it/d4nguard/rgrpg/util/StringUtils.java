@@ -404,4 +404,33 @@ public class StringUtils
 			sb.append(s);
 		return sb.toString();
 	}
+
+	public static Triplet<String, String, String> getBetween(String s,
+					char before, char after)
+	{
+		int start = s.indexOf(before), end = s.lastIndexOf(after);
+		return getBetween(s, start, end);
+	}
+
+	public static Triplet<String, String, String> getBetween(String s,
+					String before, String after)
+	{
+		int start = s.indexOf(before), end = s.lastIndexOf(after);
+		return getBetween(s, start, end);
+	}
+
+	public static Triplet<String, String, String> getBetween(String s,
+					int start, int end) throws IndexOutOfBoundsException
+	{
+		Triplet<String, String, String> ret = new Triplet<>();
+		start = start < 0 ? 0 : start;
+		end = end < 0 ? 0 : end;
+		if (end > s.length() || start > end) throw new IndexOutOfBoundsException();
+
+		ret.setLeft(s.substring(0, start <= 0 ? 0 : start - 1));
+		ret.setCenter(s.substring(start + 1, end <= 0 ? 0 : end));
+		ret.setRight(s.substring(end + 1));
+
+		return ret;
+	}
 }

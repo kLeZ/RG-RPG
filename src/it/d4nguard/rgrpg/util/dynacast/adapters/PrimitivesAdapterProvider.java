@@ -32,21 +32,6 @@ public class PrimitivesAdapterProvider implements Provider<AdapterFactory<?>>
 	public Map<Class<?>, AdapterFactory<?>> get()
 	{
 		Map<Class<?>, AdapterFactory<?>> ret = new HashMap<Class<?>, AdapterFactory<?>>();
-		ret.put(String.class, new AdapterFactory<String>()
-		{
-			@Override
-			public Adapter<String> create(Class<String> type)
-			{
-				return new Adapter<String>()
-				{
-					@Override
-					public String adapt(String value)
-					{
-						return value;
-					}
-				};
-			}
-		});
 		ret.put(Boolean.class, new AdapterFactory<Boolean>()
 		{
 			@Override
@@ -58,6 +43,12 @@ public class PrimitivesAdapterProvider implements Provider<AdapterFactory<?>>
 					public Boolean adapt(String value)
 					{
 						return Boolean.valueOf(value);
+					}
+
+					@Override
+					public Class<Boolean> getType()
+					{
+						return Boolean.class;
 					}
 				};
 			}
@@ -74,6 +65,12 @@ public class PrimitivesAdapterProvider implements Provider<AdapterFactory<?>>
 					{
 						return Byte.valueOf(value, 2);
 					}
+
+					@Override
+					public Class<Byte> getType()
+					{
+						return Byte.class;
+					}
 				};
 			}
 		});
@@ -88,6 +85,12 @@ public class PrimitivesAdapterProvider implements Provider<AdapterFactory<?>>
 					public Character adapt(String value)
 					{
 						return value.isEmpty() ? '\0' : value.charAt(0);
+					}
+
+					@Override
+					public Class<Character> getType()
+					{
+						return Character.class;
 					}
 				};
 			}
@@ -104,6 +107,12 @@ public class PrimitivesAdapterProvider implements Provider<AdapterFactory<?>>
 					{
 						return Double.valueOf(value);
 					}
+
+					@Override
+					public Class<Double> getType()
+					{
+						return Double.class;
+					}
 				};
 			}
 		});
@@ -118,6 +127,12 @@ public class PrimitivesAdapterProvider implements Provider<AdapterFactory<?>>
 					public Float adapt(String value)
 					{
 						return Float.valueOf(value);
+					}
+
+					@Override
+					public Class<Float> getType()
+					{
+						return Float.class;
 					}
 				};
 			}
@@ -134,6 +149,12 @@ public class PrimitivesAdapterProvider implements Provider<AdapterFactory<?>>
 					{
 						return Integer.valueOf(value);
 					}
+
+					@Override
+					public Class<Integer> getType()
+					{
+						return Integer.class;
+					}
 				};
 			}
 		});
@@ -148,6 +169,12 @@ public class PrimitivesAdapterProvider implements Provider<AdapterFactory<?>>
 					public Long adapt(String value)
 					{
 						return Long.valueOf(value);
+					}
+
+					@Override
+					public Class<Long> getType()
+					{
+						return Long.class;
 					}
 				};
 			}
@@ -164,6 +191,12 @@ public class PrimitivesAdapterProvider implements Provider<AdapterFactory<?>>
 					{
 						return Short.valueOf(value);
 					}
+
+					@Override
+					public Class<Short> getType()
+					{
+						return Short.class;
+					}
 				};
 			}
 		});
@@ -178,6 +211,12 @@ public class PrimitivesAdapterProvider implements Provider<AdapterFactory<?>>
 					public String adapt(String value)
 					{
 						return value;
+					}
+
+					@Override
+					public Class<String> getType()
+					{
+						return String.class;
 					}
 				};
 			}

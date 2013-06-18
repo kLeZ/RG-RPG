@@ -21,4 +21,6 @@ package it.d4nguard.rgrpg.util.dynacast;
 public interface Adapter<T>
 {
 	T adapt(String value);
+
+	Class<T> getType();
 }

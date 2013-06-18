@@ -1,0 +1,60 @@
+// RG-RPG is a Java-based text, roleplaying-gal game, in which you
+// have to carry many girls. The RG-RPG acronym is a recursive one and
+// it means "RG-RPG is a Gal Role playing game Pointing on Girls."
+// Copyright (C) 2013 by Alessandro Accardo <julius8774@gmail.com>
+// 
+// This program is free software: you can redistribute it and/or modify
+// it under the terms of the GNU General Public License as published by
+// the Free Software Foundation, either version 2 of the License, or (at
+// your option) any later version.
+// 
+// This program is distributed in the hope that it will be useful, but
+// WITHOUT ANY WARRANTY; without even the implied warranty of
+// MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU
+// General Public License for more details.
+// 
+// You should have received a copy of the GNU General Public License
+// along with this program.  If not, see <http://www.gnu.org/licenses/>.
+// 
+package it.d4nguard.rgrpg.util;
+
+import java.util.Iterator;
+import java.util.Map;
+import java.util.Map.Entry;
+import java.util.Set;
+
+public class CollectionsUtils
+{
+	public static <T> T getByIndex(Iterable<T> iterable, int index)
+	{
+		T el = null;
+		Iterator<T> it = iterable.iterator();
+		for (int i = 0; it.hasNext(); i++)
+		{
+			T cur = it.next();
+			if (i == index)
+			{
+				el = cur;
+				break;
+			}
+		}
+		return el;
+	}
+
+	public static <K, V> K getByValue(Map<K, V> map, V value)
+	{
+		Set<Entry<K, V>> entrySet = map.entrySet();
+		K el = null;
+		Iterator<Entry<K, V>> it = entrySet.iterator();
+		while (it.hasNext())
+		{
+			Entry<K, V> cur = it.next();
+			if (cur.getValue().equals(value))
+			{
+				el = cur.getKey();
+				break;
+			}
+		}
+		return el;
+	}
+}

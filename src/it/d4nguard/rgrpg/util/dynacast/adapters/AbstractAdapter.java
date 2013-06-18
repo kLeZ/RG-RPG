@@ -34,6 +34,7 @@ import java.util.Map;
 public abstract class AbstractAdapter<T> implements Adapter<T>, Provider<AdapterFactory>
 {
 	private final AbstractAdapter<T> myself = this;
+	private Class<T> adaptedType;
 
 	@Override
 	@SuppressWarnings("unchecked")
@@ -45,11 +46,18 @@ public abstract class AbstractAdapter<T> implements Adapter<T>, Provider<Adapter
 			@Override
 			public Adapter<T> create(Class<T> type)
 			{
+				adaptedType = type;
 				beforeCreateAdapter(type);
 				return myself;
 			}
 		});
 		return ret;
+	}
+
+	@Override
+	public Class<T> getType()
+	{
+		return adaptedType;
 	}
 
 	public abstract void beforeCreateAdapter(Class<T> type);

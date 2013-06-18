@@ -34,7 +34,7 @@ public class TypeAdapter
 	 * @return An adapter class that can adapt a string to the recalled object.
 	 */
 	@SuppressWarnings({ "rawtypes", "unchecked" })
-	public static Adapter<?> getAdapter(Class type)
+	public static <T> Adapter<T> getAdapter(Class<T> type)
 	{
 		Strategy strategy = StrategyFactory.getStrategy(type);
 		Class<?> applied = strategy.apply(type);

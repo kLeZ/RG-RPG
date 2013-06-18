@@ -18,6 +18,9 @@
 // 
 package it.d4nguard.rgrpg.util.dynacast.adapters;
 
+import it.d4nguard.rgrpg.util.StringUtils;
+import it.d4nguard.rgrpg.util.Triplet;
+
 import java.util.Locale;
 
 import org.joda.time.DateMidnight;
@@ -39,17 +42,11 @@ public class DateTimeAdapter extends AbstractAdapter<ReadableInstant>
 		// value is a string formatted as: "07/04/1987[dd/MM/yyyy]"
 		String date = "";
 		DateTimeFormatter fmt;
-		int start = value.indexOf('['), end = value.indexOf(']');
-		if (start > 0 && end > 0)
-		{
-			date = value.substring(0, start);
-			fmt = DateTimeFormat.forPattern(value.substring(start + 1, end));
-		}
-		else
-		{
-			date = value;
-			fmt = ISODateTimeFormat.localDateOptionalTimeParser();
-		}
+		Triplet<String, String, String> tri = StringUtils.getBetween(value,
+						'[', ']');
+		date = tri.getLeft();
+		if (tri.hasCenter()) fmt = DateTimeFormat.forPattern(tri.getCenter());
+		else fmt = ISODateTimeFormat.localDateOptionalTimeParser();
 		fmt = fmt.withLocale(Locale.getDefault());
 		if (type.equals(DateTime.class)) return DateTime.parse(date, fmt);
 		else if (type.equals(DateMidnight.class)) return DateMidnight.parse(

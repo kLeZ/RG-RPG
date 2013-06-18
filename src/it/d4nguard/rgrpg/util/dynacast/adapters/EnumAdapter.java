@@ -18,21 +18,13 @@
 // 
 package it.d4nguard.rgrpg.util.dynacast.adapters;
 
-public class EnumAdapter<E extends Enum<?>> extends AbstractAdapter<E>
+public class EnumAdapter<E extends Enum<?>> extends SimpleAdapter<E>
 {
-	private Class<E> type;
-
 	@Override
 	@SuppressWarnings({ "unchecked", "rawtypes" })
 	public E adapt(String value)
 	{
-		Class<? extends Enum> ce = (Class<? extends Enum>) type;
+		Class<? extends Enum> ce = (Class<? extends Enum>) getType();
 		return (E) Enum.valueOf(ce, value);
-	}
-
-	@Override
-	public void beforeCreateAdapter(Class<E> type)
-	{
-		this.type = type;
 	}
 }

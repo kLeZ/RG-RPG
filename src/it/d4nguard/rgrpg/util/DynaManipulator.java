@@ -16,13 +16,16 @@
 // You should have received a copy of the GNU General Public License
 // along with this program.  If not, see <http://www.gnu.org/licenses/>.
 // 
-package it.d4nguard.rgrpg.util.dynacast;
+package it.d4nguard.rgrpg.util;
 
-import it.d4nguard.rgrpg.util.StringUtils;
+import it.d4nguard.rgrpg.util.dynacast.AdapterTypeConverter;
 
 import java.lang.reflect.Field;
 import java.util.LinkedList;
+import java.util.Map;
 import java.util.StringTokenizer;
+
+import org.apache.commons.ognl.Ognl;
 
 public class DynaManipulator
 {
@@ -33,11 +36,16 @@ public class DynaManipulator
 		assert value != null;
 		try
 		{
+			Map<String, Object> context = Ognl.createDefaultContext(root, null,
+							new AdapterTypeConverter());
+			Ognl.setValue(exp, context, root, value);
+			/*
 			Field f = getField(exp, root);
 			f.setAccessible(true);
 			Adapter<?> a = TypeAdapter.getAdapter(f.getType());
 			Object nurt = getValue(StringUtils.getExcludeLast(exp, "\\."), root);
 			f.set(nurt, a.adapt(value));
+			*/
 		}
 		catch (Throwable e)
 		{
@@ -52,12 +60,18 @@ public class DynaManipulator
 		Object ret = root;
 		try
 		{
+			Object expression = Ognl.parseExpression(exp);
+			Map<String, Object> context = Ognl.createDefaultContext(root);
+			Ognl.setTypeConverter(context, new AdapterTypeConverter());
+			ret = Ognl.getValue(expression, context, root);
+			/*
 			LinkedList<Field> path = getExpPath(exp, root);
 			for (Field f : path)
 			{
 				f.setAccessible(true);
 				ret = f.get(ret);
 			}
+			*/
 		}
 		catch (Throwable e)
 		{

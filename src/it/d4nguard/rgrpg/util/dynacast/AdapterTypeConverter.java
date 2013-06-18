@@ -18,12 +18,23 @@
 // 
 package it.d4nguard.rgrpg.util.dynacast;
 
-public class DynaManipulatorException extends Exception
-{
-	private static final long serialVersionUID = 1L;
+import java.lang.reflect.Field;
+import java.lang.reflect.Member;
+import java.util.Map;
 
-	public DynaManipulatorException(Throwable inner)
+import org.apache.commons.ognl.TypeConverter;
+
+public class AdapterTypeConverter implements TypeConverter
+{
+	public <T> T convertValue(Map<String, Object> context, Object target,
+					Member member, String propertyName, Object value,
+					Class<T> toType)
 	{
-		super(inner);
+		if (member instanceof Field)
+		{
+			Adapter<T> a = TypeAdapter.getAdapter(toType);
+			return a.adapt(String.valueOf(value));
+		}
+		return null;
 	}
 }

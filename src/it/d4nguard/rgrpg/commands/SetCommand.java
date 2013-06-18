@@ -22,9 +22,10 @@ import it.d4nguard.rgrpg.Context;
 import it.d4nguard.rgrpg.managers.CharacterManager;
 import it.d4nguard.rgrpg.managers.PlayerManager;
 import it.d4nguard.rgrpg.util.CommandLine;
+import it.d4nguard.rgrpg.util.DynaManipulator;
+import it.d4nguard.rgrpg.util.DynaManipulatorException;
 import it.d4nguard.rgrpg.util.StringUtils;
-import it.d4nguard.rgrpg.util.dynacast.DynaManipulator;
-import it.d4nguard.rgrpg.util.dynacast.DynaManipulatorException;
+import it.d4nguard.rgrpg.util.Triplet;
 
 import java.util.Iterator;
 import java.util.Set;
@@ -43,16 +44,15 @@ public class SetCommand implements Command
 	public void execute(String... args)
 	{
 		CommandLine cmd = StringUtils.getArgs(args);
-		String str = StringUtils.join(" ", cmd.getArgs());
-		int start = str.indexOf('"'), end = str.lastIndexOf('"');
-		String name = StringUtils.join(" ", cmd.getArgs()).substring(0,
-						start >= 0 ? start : 0).trim();
-		String tokenizerFeed = str.substring(start + 1, end >= 0 ? end : 0);
+		Triplet<String, String, String> str = StringUtils.getBetween(
+						StringUtils.join(" ", cmd.getArgs()), '"', '"');
+		String tokenizerFeed = str.getCenter().trim();
+		String name = str.getLeft().trim();
+
 		if (Context.isDebug())
 		{
 			qotprn(cmd);
 			qotprn(str);
-			qotprn(String.format("%d:%d", start, end));
 			qotprn(name);
 			qotprn(tokenizerFeed);
 		}

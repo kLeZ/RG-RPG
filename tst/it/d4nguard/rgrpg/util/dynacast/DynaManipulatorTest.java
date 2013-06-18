@@ -3,6 +3,9 @@ package it.d4nguard.rgrpg.util.dynacast;
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.fail;
 
+import it.d4nguard.rgrpg.util.DynaManipulator;
+import it.d4nguard.rgrpg.util.DynaManipulatorException;
+
 import java.util.Calendar;
 
 import org.junit.Test;
@@ -26,6 +29,7 @@ public class DynaManipulatorTest
 		private float temp;
 		private boolean all;
 		private Gender gender;
+		private String description;
 
 		public int getRanks()
 		{
@@ -116,6 +120,16 @@ public class DynaManipulatorTest
 		{
 			this.gender = gender;
 		}
+
+		public String getDescription()
+		{
+			return description;
+		}
+
+		public void setDescription(String description)
+		{
+			this.description = description;
+		}
 	}
 
 	public final Bean b = new Bean();
@@ -125,6 +139,10 @@ public class DynaManipulatorTest
 	{
 		try
 		{
+			DynaManipulator.setValue("description", b,
+							"This would be a simple description");
+			assertEquals("This would be a simple description",
+							b.getDescription());
 			long millis = System.currentTimeMillis();
 			DynaManipulator.setValue("all", b, "true");
 			assertEquals(true, b.isAll());
