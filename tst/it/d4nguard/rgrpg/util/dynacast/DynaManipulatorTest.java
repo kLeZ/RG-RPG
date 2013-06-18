@@ -3,8 +3,6 @@ package it.d4nguard.rgrpg.util.dynacast;
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.fail;
 
-import it.d4nguard.rgrpg.util.DynaManipulator;
-import it.d4nguard.rgrpg.util.DynaManipulatorException;
 
 import java.util.Calendar;
 

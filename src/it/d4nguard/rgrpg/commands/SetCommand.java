@@ -22,10 +22,10 @@ import it.d4nguard.rgrpg.Context;
 import it.d4nguard.rgrpg.managers.CharacterManager;
 import it.d4nguard.rgrpg.managers.PlayerManager;
 import it.d4nguard.rgrpg.util.CommandLine;
-import it.d4nguard.rgrpg.util.DynaManipulator;
-import it.d4nguard.rgrpg.util.DynaManipulatorException;
 import it.d4nguard.rgrpg.util.StringUtils;
 import it.d4nguard.rgrpg.util.Triplet;
+import it.d4nguard.rgrpg.util.dynacast.DynaManipulator;
+import it.d4nguard.rgrpg.util.dynacast.DynaManipulatorException;
 
 import java.util.Iterator;
 import java.util.Set;

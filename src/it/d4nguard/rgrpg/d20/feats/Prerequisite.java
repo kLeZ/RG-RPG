@@ -19,8 +19,8 @@
 package it.d4nguard.rgrpg.d20.feats;
 
 import it.d4nguard.rgrpg.d20.D20Character;
-import it.d4nguard.rgrpg.util.DynaManipulator;
-import it.d4nguard.rgrpg.util.DynaManipulatorException;
+import it.d4nguard.rgrpg.util.dynacast.DynaManipulator;
+import it.d4nguard.rgrpg.util.dynacast.DynaManipulatorException;
 
 import java.io.Serializable;
 import java.lang.reflect.Method;
