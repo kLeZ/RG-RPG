@@ -122,5 +122,18 @@ public class StringUtilsTest
 		assertEquals(left, t.getLeft().trim());
 		assertEquals(center, t.getCenter().trim());
 		assertEquals(right, t.getRight().trim());
+
+		//	Special cases
+		//	Total blank
+		s = "";
+		t = StringUtils.getBetween(s, before, after);
+
+		System.out.println(s);
+		System.out.println(t);
+
+		assertEquals("", t.getLeft().trim());
+		assertEquals("", t.getCenter().trim());
+		assertEquals("", t.getRight().trim());
+
 	}
 }

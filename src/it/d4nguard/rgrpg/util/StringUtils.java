@@ -427,9 +427,10 @@ public class StringUtils
 		end = end < 0 ? 0 : end;
 		if (end > s.length() || start > end) throw new IndexOutOfBoundsException();
 
-		ret.setLeft(s.substring(0, start <= 0 ? 0 : start - 1));
-		ret.setCenter(s.substring(start + 1, end <= 0 ? 0 : end));
-		ret.setRight(s.substring(end + 1));
+		ret.setLeft(s.substring(0, start <= 0 ? 0 : start));
+		ret.setCenter(s.substring(start == end ? start : start + 1,
+						end <= 0 ? 0 : end));
+		ret.setRight(s.substring(end == s.length() ? end : end + 1));
 
 		return ret;
 	}

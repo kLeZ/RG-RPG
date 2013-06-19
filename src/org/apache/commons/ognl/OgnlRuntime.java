@@ -1175,9 +1175,17 @@ public class OgnlRuntime
 		{
 			if (method != null)
 			{
-				// FIX: Hope this will fix...
-				Adapter<?> a = TypeAdapter.getAdapter(target.getClass());
-				Object[] args = new Object[] { a.adapt(String.valueOf(value)) };
+				Object[] args = null;
+				try
+				{
+					Adapter<?> a = TypeAdapter.getAdapter(target.getClass().getDeclaredField(
+									propertyName).getType());
+					args = new Object[] { a.adapt(String.valueOf(value)) };
+				}
+				catch (NoSuchFieldException | SecurityException e)
+				{
+					e.printStackTrace();
+				}
 				callAppropriateMethod(context, target, target,
 								method.getName(), propertyName,
 								Collections.nCopies(1, method), args);
@@ -1353,6 +1361,7 @@ public class OgnlRuntime
 						propertyName);
 	}
 
+	@SuppressWarnings({ "unchecked", "rawtypes" })
 	public static Object getStaticField(OgnlContext context, String className,
 					String fieldName) throws OgnlException
 	{
