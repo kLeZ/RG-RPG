@@ -1178,13 +1178,22 @@ public class OgnlRuntime
 				Object[] args = null;
 				try
 				{
-					Adapter<?> a = TypeAdapter.getAdapter(target.getClass().getDeclaredField(
-									propertyName).getType());
-					args = new Object[] { a.adapt(String.valueOf(value)) };
+					Class<?> type = null;
+					PropertyDescriptor pd = getProperty(target.getClass(),
+									propertyName);
+					if (pd != null) type = pd.getPropertyType();
+					else type = target.getClass().getDeclaredField(propertyName).getType();
+					if (type != null)
+					{
+						Adapter<?> a = TypeAdapter.getAdapter(type);
+						if (a != null) args = new Object[] { a.adapt(TypeAdapter.toString(value)) };
+					}
+					else args = new Object[] { value };
 				}
 				catch (NoSuchFieldException | SecurityException e)
 				{
 					e.printStackTrace();
+					args = new Object[] { value };
 				}
 				callAppropriateMethod(context, target, target,
 								method.getName(), propertyName,

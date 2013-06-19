@@ -16,29 +16,17 @@
 // You should have received a copy of the GNU General Public License
 // along with this program.  If not, see <http://www.gnu.org/licenses/>.
 // 
-package it.d4nguard.rgrpg.util.dynacast.factories;
+package it.d4nguard.rgrpg.util.dynacast.strategies;
 
 import it.d4nguard.rgrpg.util.dynacast.Strategy;
-import it.d4nguard.rgrpg.util.dynacast.strategies.ArrayStrategy;
-import it.d4nguard.rgrpg.util.dynacast.strategies.DateTimeStrategy;
-import it.d4nguard.rgrpg.util.dynacast.strategies.EnumStrategy;
-import it.d4nguard.rgrpg.util.dynacast.strategies.PrimitiveStrategy;
 
-public class StrategyFactory
+import java.lang.reflect.Array;
+
+public class ArrayStrategy implements Strategy
 {
-	public static Strategy getStrategy(Class<?> type)
+	@Override
+	public Class<?> apply(Class<?> type)
 	{
-		if (type.isPrimitive()) return new PrimitiveStrategy();
-		else if (type.isEnum()) return new EnumStrategy();
-		else if (type.isArray()) return new ArrayStrategy();
-		else if (DateTimeStrategy.TYPE.isAssignableFrom(type)) return new DateTimeStrategy();
-		else return new Strategy() // The dummy one
-		{
-			@Override
-			public Class<?> apply(Class<?> type)
-			{
-				return type;
-			}
-		};
+		return Array.class;
 	}
 }

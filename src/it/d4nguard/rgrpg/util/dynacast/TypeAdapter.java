@@ -18,6 +18,8 @@
 // 
 package it.d4nguard.rgrpg.util.dynacast;
 
+import it.d4nguard.rgrpg.util.CollectionsUtils;
+import it.d4nguard.rgrpg.util.StringUtils;
 import it.d4nguard.rgrpg.util.dynacast.factories.AdapterFactory;
 import it.d4nguard.rgrpg.util.dynacast.factories.AdapterFactoryMap;
 import it.d4nguard.rgrpg.util.dynacast.factories.StrategyFactory;
@@ -39,6 +41,19 @@ public class TypeAdapter
 		Strategy strategy = StrategyFactory.getStrategy(type);
 		Class<?> applied = strategy.apply(type);
 		AdapterFactory factory = AdapterFactoryMap.current().get(applied);
-		return factory.create(type);
+		return factory == null ? null : factory.create(type);
+	}
+
+	public static String toString(Object value)
+	{
+		String ret = "";
+		if (value.getClass().isArray())
+		{
+			Object[] arr = CollectionsUtils.getArray(value);
+			ret = StringUtils.join(", ", arr);
+			ret = String.format("[%s]", ret);
+		}
+		else ret = String.valueOf(value);
+		return ret;
 	}
 }

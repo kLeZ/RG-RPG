@@ -32,10 +32,8 @@ import org.joda.time.format.DateTimeFormat;
 import org.joda.time.format.DateTimeFormatter;
 import org.joda.time.format.ISODateTimeFormat;
 
-public class DateTimeAdapter extends AbstractAdapter<ReadableInstant>
+public class DateTimeAdapter extends SimpleAdapter<ReadableInstant>
 {
-	private Class<ReadableInstant> type;
-
 	@Override
 	public ReadableInstant adapt(String value)
 	{
@@ -48,18 +46,13 @@ public class DateTimeAdapter extends AbstractAdapter<ReadableInstant>
 		if (tri.hasCenter()) fmt = DateTimeFormat.forPattern(tri.getCenter());
 		else fmt = ISODateTimeFormat.localDateOptionalTimeParser();
 		fmt = fmt.withLocale(Locale.getDefault());
-		if (type.equals(DateTime.class)) return DateTime.parse(date, fmt);
-		else if (type.equals(DateMidnight.class)) return DateMidnight.parse(
+		if (getType().equals(DateTime.class)) return DateTime.parse(date, fmt);
+		else if (getType().equals(DateMidnight.class)) return DateMidnight.parse(
 						date, fmt);
-		else if (type.equals(Instant.class)) return Instant.parse(date, fmt);
-		else if (type.equals(MutableDateTime.class)) return MutableDateTime.parse(
+		else if (getType().equals(Instant.class)) return Instant.parse(date,
+						fmt);
+		else if (getType().equals(MutableDateTime.class)) return MutableDateTime.parse(
 						date, fmt);
 		else throw new UnsupportedOperationException("type");
-	}
-
-	@Override
-	public void beforeCreateAdapter(Class<ReadableInstant> type)
-	{
-		this.type = type;
 	}
 }
