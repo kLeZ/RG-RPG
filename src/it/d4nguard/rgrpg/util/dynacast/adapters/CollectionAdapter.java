@@ -19,8 +19,16 @@
 package it.d4nguard.rgrpg.util.dynacast.adapters;
 
 import it.d4nguard.rgrpg.util.GenericsUtils;
+import it.d4nguard.rgrpg.util.StringUtils;
+import it.d4nguard.rgrpg.util.dynacast.Adapter;
+import it.d4nguard.rgrpg.util.dynacast.TypeAdapter;
 
+import java.lang.reflect.Array;
+import java.lang.reflect.Modifier;
 import java.util.Collection;
+import java.util.List;
+import java.util.Queue;
+import java.util.Set;
 
 public class CollectionAdapter<T> extends AbstractAdapter<Collection<T>>
 {
@@ -30,11 +38,35 @@ public class CollectionAdapter<T> extends AbstractAdapter<Collection<T>>
 	public Collection<T> adapt(String value)
 	{
 		Collection<T> ret = null;
+		Adapter<T> a = TypeAdapter.getAdapter(type);
+		String str = StringUtils.getBetween(value, '[', ']').getCenter().trim();
+		String[] split = str.split(",");
+		Object o = Array.newInstance(getType(), split.length);
+		for (int i = 0; i < split.length; i++)
+			Array.set(o, i, a.adapt(split[i].trim()));
+
+		int mod = getType().getModifiers();
+
+		if (getType().equals(List.class))
+		{
+			if (Modifier.isInterface(mod))
+			{
+
+			}
+		}
+		else if (getType().equals(Set.class))
+		{
+
+		}
+		else if (getType().equals(Queue.class))
+		{
+
+		}
 		return ret;
 	}
 
-	@SuppressWarnings("unchecked")
 	@Override
+	@SuppressWarnings("unchecked")
 	public void beforeCreateAdapter(Class<Collection<T>> type)
 	{
 		this.type = (Class<T>) GenericsUtils.getFirstGenericType(type);
