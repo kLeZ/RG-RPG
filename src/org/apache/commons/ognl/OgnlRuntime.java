@@ -1192,7 +1192,6 @@ public class OgnlRuntime
 				}
 				catch (NoSuchFieldException | SecurityException e)
 				{
-					e.printStackTrace();
 					args = new Object[] { value };
 				}
 				callAppropriateMethod(context, target, target,
