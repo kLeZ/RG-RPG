@@ -25,6 +25,7 @@ import java.lang.reflect.InvocationTargetException;
 import java.lang.reflect.ParameterizedType;
 import java.lang.reflect.Type;
 import java.lang.reflect.TypeVariable;
+import java.lang.reflect.WildcardType;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
@@ -212,5 +213,40 @@ public class GenericsUtils
 			typeArgumentsAsClasses.add(getClass(baseType));
 		}
 		return typeArgumentsAsClasses;
+	}
+
+	public static Class<?> getFirstGenericType(Class<?> c)
+	{
+		for (Type t : getGenericTypes(c))
+			return getClassFromType(t);
+		return c;
+	}
+
+	public static Type[] getGenericTypes(Class<?> c)
+	{
+		ParameterizedType t = (ParameterizedType) c.getGenericSuperclass();
+		return t.getActualTypeArguments();
+	}
+
+	@SuppressWarnings("rawtypes")
+	public static Class<?> getClassFromType(Type t)
+	{
+		if (t instanceof GenericArrayType)
+		{
+			return getClass(((GenericArrayType) t).getGenericComponentType());
+		}
+		else if (t instanceof ParameterizedType)
+		{
+			return getClass(((ParameterizedType) t).getRawType());
+		}
+		else if (t instanceof TypeVariable)
+		{
+			return getClass(((TypeVariable) t).getBounds()[0]);
+		}
+		else if (t instanceof WildcardType)
+		{
+			return ((WildcardType) t).getClass();
+		}
+		else return (Class<?>) t;
 	}
 }

@@ -19,43 +19,24 @@
 package it.d4nguard.rgrpg.util.dynacast.adapters;
 
 import it.d4nguard.rgrpg.util.GenericsUtils;
-import it.d4nguard.rgrpg.util.dynacast.Adapter;
-import it.d4nguard.rgrpg.util.dynacast.Provider;
-import it.d4nguard.rgrpg.util.dynacast.factories.AdapterFactory;
 
-import java.util.HashMap;
-import java.util.Map;
+import java.util.Collection;
 
-@SuppressWarnings("rawtypes")
-public abstract class AbstractAdapter<T> implements Adapter<T>, Provider<AdapterFactory>
+public class CollectionAdapter<T> extends AbstractAdapter<Collection<T>>
 {
-	private final AbstractAdapter<T> myself = this;
-	private Class<T> adaptedType;
+	private Class<T> type;
 
 	@Override
-	@SuppressWarnings("unchecked")
-	public Map<Class<?>, AdapterFactory> get()
+	public Collection<T> adapt(String value)
 	{
-		HashMap<Class<?>, AdapterFactory> ret = new HashMap<>();
-		ret.put(GenericsUtils.getFirstGenericType(getClass()),
-						new AdapterFactory<T>()
-						{
-							@Override
-							public Adapter<T> create(Class<T> type)
-							{
-								adaptedType = type;
-								beforeCreateAdapter(type);
-								return myself;
-							}
-						});
+		Collection<T> ret = null;
 		return ret;
 	}
 
+	@SuppressWarnings("unchecked")
 	@Override
-	public Class<T> getType()
+	public void beforeCreateAdapter(Class<Collection<T>> type)
 	{
-		return adaptedType;
+		this.type = (Class<T>) GenericsUtils.getFirstGenericType(type);
 	}
-
-	public abstract void beforeCreateAdapter(Class<T> type);
 }
