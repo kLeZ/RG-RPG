@@ -4,7 +4,6 @@ import static org.junit.Assert.assertArrayEquals;
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.fail;
 
-import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Calendar;
 import java.util.List;
@@ -194,8 +193,7 @@ public class DynaManipulatorTest
 			DynaManipulator.setValue("data", b, TypeAdapter.toString(data));
 			assertArrayEquals(data, b.getData());
 
-			List<Integer> modifiers = new ArrayList<>(
-							Arrays.asList(new Integer[] { 1, 5, 4, 8, 6, 4, 23, 5, 87, 5, 2, 4 }));
+			List<Integer> modifiers = Arrays.asList(new Integer[] { 1, 5, 4, 8, 6, 4, 23, 5, 87, 5, 2, 4 });
 			DynaManipulator.setValue("modifiers", b,
 							TypeAdapter.toString(modifiers));
 			assertEquals(modifiers, b.getModifiers());
@@ -239,8 +237,7 @@ public class DynaManipulatorTest
 			b.setData(data);
 			assertArrayEquals(data,
 							(byte[]) DynaManipulator.getValue("data", b));
-			List<Integer> modifiers = new ArrayList<>(
-							Arrays.asList(new Integer[] { 1, 5, 4, 8, 6, 4, 23, 5, 87, 5, 2, 4 }));
+			List<Integer> modifiers = Arrays.asList(new Integer[] { 1, 5, 4, 8, 6, 4, 23, 5, 87, 5, 2, 4 });
 			b.setModifiers(modifiers);
 			assertEquals(modifiers, DynaManipulator.getValue("modifiers", b));
 		}

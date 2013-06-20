@@ -20,5 +20,9 @@ package it.d4nguard.rgrpg.util.dynacast;
 
 public interface Strategy
 {
+	Class<?> getMine(Class<?> type);
+
+	boolean isMine(Class<?> type);
+
 	Class<?> apply(Class<?> type);
 }
