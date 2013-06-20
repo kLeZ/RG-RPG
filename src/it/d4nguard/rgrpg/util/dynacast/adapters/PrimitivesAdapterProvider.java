@@ -63,7 +63,11 @@ public class PrimitivesAdapterProvider implements Provider<AdapterFactory<?>>
 					@Override
 					public Byte adapt(String value)
 					{
-						return Byte.valueOf(value, 2);
+						char sign = value.charAt(0);
+						int i = sign == '+' || sign == '-' ? 0 : -1;
+						if (value.startsWith("0b", i + 1)) return Byte.valueOf(
+										value, 2);
+						else return Byte.decode(value);
 					}
 
 					@Override

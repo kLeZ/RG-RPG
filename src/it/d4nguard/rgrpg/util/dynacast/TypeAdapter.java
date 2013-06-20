@@ -50,7 +50,7 @@ public class TypeAdapter
 		if (value.getClass().isArray())
 		{
 			Object[] arr = CollectionsUtils.getArray(value);
-			ret = StringUtils.join(", ", arr);
+			ret = StringUtils.join(Adapter.ARRAY_JOINER, arr);
 			ret = String.format("[%s]", ret);
 		}
 		else ret = String.valueOf(value);

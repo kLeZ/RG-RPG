@@ -3,7 +3,6 @@ package it.d4nguard.rgrpg.util.dynacast;
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.fail;
 
-
 import java.util.Calendar;
 
 import org.junit.Test;
@@ -28,6 +27,7 @@ public class DynaManipulatorTest
 		private boolean all;
 		private Gender gender;
 		private String description;
+		private byte[] data;
 
 		public int getRanks()
 		{
@@ -128,6 +128,16 @@ public class DynaManipulatorTest
 		{
 			this.description = description;
 		}
+
+		public byte[] getData()
+		{
+			return data;
+		}
+
+		public void setData(byte[] data)
+		{
+			this.data = data;
+		}
 	}
 
 	public final Bean b = new Bean();
@@ -146,7 +156,7 @@ public class DynaManipulatorTest
 			assertEquals(true, b.isAll());
 			DynaManipulator.setValue("control", b, "c");
 			assertEquals('c', b.getControl());
-			DynaManipulator.setValue("magic", b, "1010011");
+			DynaManipulator.setValue("magic", b, "0b1010011");
 			assertEquals(0b1010011, b.getMagic());
 			DynaManipulator.setValue("millis", b, String.valueOf(millis));
 			assertEquals(millis, b.getMillis());
@@ -165,6 +175,10 @@ public class DynaManipulatorTest
 							b.getYear());
 			DynaManipulator.setValue("gender", b, "Male");
 			assertEquals(Gender.Male, b.getGender());
+			byte[] data = new byte[] { 0x1C, 0x75, 0x08, 0x4B, (byte) 0xd6, 0x6A };
+			DynaManipulator.setValue("data", b, TypeAdapter.toString(data));
+			assertEquals(data, b.getData());
+
 		}
 		catch (DynaManipulatorException e)
 		{

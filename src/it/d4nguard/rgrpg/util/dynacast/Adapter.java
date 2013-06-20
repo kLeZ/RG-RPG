@@ -20,6 +20,8 @@ package it.d4nguard.rgrpg.util.dynacast;
 
 public interface Adapter<T>
 {
+	public static final String ARRAY_JOINER = "|";
+
 	T adapt(String value);
 
 	Class<T> getType();

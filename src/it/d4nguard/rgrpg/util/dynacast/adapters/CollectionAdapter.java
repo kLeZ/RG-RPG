@@ -46,21 +46,19 @@ public class CollectionAdapter<T> extends AbstractAdapter<Collection<T>>
 			Array.set(o, i, a.adapt(split[i].trim()));
 
 		int mod = getType().getModifiers();
-
-		if (getType().equals(List.class))
+		if (Modifier.isInterface(mod))
 		{
-			if (Modifier.isInterface(mod))
+			if (getType().equals(List.class))
+			{
+			}
+			else if (getType().equals(Set.class))
 			{
 
 			}
-		}
-		else if (getType().equals(Set.class))
-		{
+			else if (getType().equals(Queue.class))
+			{
 
-		}
-		else if (getType().equals(Queue.class))
-		{
-
+			}
 		}
 		return ret;
 	}

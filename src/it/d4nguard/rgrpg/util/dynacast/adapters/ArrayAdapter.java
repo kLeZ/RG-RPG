@@ -27,6 +27,7 @@ import it.d4nguard.rgrpg.util.dynacast.factories.AdapterFactory;
 import java.lang.reflect.Array;
 import java.util.HashMap;
 import java.util.Map;
+import java.util.StringTokenizer;
 
 public class ArrayAdapter<T> implements Adapter<T>, Provider<AdapterFactory<?>>
 {
@@ -39,10 +40,10 @@ public class ArrayAdapter<T> implements Adapter<T>, Provider<AdapterFactory<?>>
 	{
 		Adapter<T> a = TypeAdapter.getAdapter(getType());
 		String str = StringUtils.getBetween(value, '[', ']').getCenter().trim();
-		String[] split = str.split(",");
-		Object ret = Array.newInstance(getType(), split.length);
-		for (int i = 0; i < split.length; i++)
-			Array.set(ret, i, a.adapt(split[i].trim()));
+		StringTokenizer st = new StringTokenizer(str, ARRAY_JOINER);
+		Object ret = Array.newInstance(getType(), st.countTokens());
+		for (int i = 0; st.hasMoreTokens(); i++)
+			Array.set(ret, i, a.adapt(st.nextToken().trim()));
 		return (T) ret;
 	}
 
