@@ -18,7 +18,7 @@
 // 
 package it.d4nguard.rgrpg.util;
 
-public interface Delegate<T>
+public interface Delegate<E, R>
 {
-	void execute(T t);
+	R execute(E e);
 }

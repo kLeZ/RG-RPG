@@ -19,6 +19,7 @@
 package it.d4nguard.rgrpg.util;
 
 import java.lang.reflect.Array;
+import java.util.Collection;
 import java.util.Iterator;
 import java.util.Map;
 import java.util.Map.Entry;
@@ -81,5 +82,31 @@ public class CollectionsUtils
 			}
 		}
 		return el;
+	}
+
+	public static <T> void cleanNulls(Collection<T> c)
+	{
+		Iterator<T> it = c.iterator();
+		try
+		{
+			while (it.hasNext())
+				if (it.next() == null) c.remove(null);
+		}
+		catch (NullPointerException e)
+		{
+			// Does not permit nulls, it should be ok
+		}
+	}
+
+	public static <T> T getFirstNonNull(Collection<T> c)
+	{
+		T ret = null;
+		Iterator<T> it = c.iterator();
+		while (it.hasNext() && ret == null)
+		{
+			T t = it.next();
+			if (t != null) ret = t;
+		}
+		return ret;
 	}
 }

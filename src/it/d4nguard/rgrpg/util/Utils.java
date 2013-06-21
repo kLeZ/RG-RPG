@@ -20,6 +20,10 @@ package it.d4nguard.rgrpg.util;
 
 import java.util.ArrayList;
 import java.util.Collection;
+import java.util.Set;
+
+import org.reflections.Reflections;
+import org.reflections.scanners.SubTypesScanner;
 
 public class Utils
 {
@@ -87,9 +91,27 @@ public class Utils
 		return ret.toArray(new String[] {});
 	}
 
-	public static <T> void doAll(Collection<? extends T> c, Delegate<T> d)
+	public static <E, R> Collection<R> doAll(Collection<? extends E> c,
+					Delegate<E, R> d)
 	{
-		for (T t : c)
-			d.execute(t);
+		Collection<R> ret = new ArrayList<>();
+		for (E e : c)
+			ret.add(d.execute(e));
+		return ret;
+	}
+
+	public static <T> Set<Class<? extends T>> getSubTypesOf(Class<T> type)
+	{
+		return getSubTypesOf(type, false);
+	}
+
+	public static <T> Set<Class<? extends T>> getSubTypesOf(Class<T> type,
+					boolean excludeObjectClass)
+	{
+		String pkg = type.getPackage().getName().split("\\.")[0];
+		Reflections r = new Reflections(pkg, new SubTypesScanner(
+						excludeObjectClass));
+		Set<Class<? extends T>> subTypes = r.getSubTypesOf(type);
+		return subTypes;
 	}
 }

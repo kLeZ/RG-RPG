@@ -55,7 +55,7 @@ public class TypeAdapter
 			ret = StringUtils.join(Adapter.ARRAY_JOINER, arr);
 			ret = String.format("[%s]", ret);
 		}
-		else if (Collection.class.isInstance(value))
+		else if (Collection.class.isAssignableFrom(value.getClass()))
 		{
 			Collection<?> coll = (Collection<?>) value;
 			ret = StringUtils.join(Adapter.ARRAY_JOINER, coll);
