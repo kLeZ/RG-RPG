@@ -24,6 +24,8 @@ import it.d4nguard.rgrpg.util.dynacast.factories.AdapterFactory;
 import it.d4nguard.rgrpg.util.dynacast.factories.AdapterFactoryMap;
 import it.d4nguard.rgrpg.util.dynacast.factories.StrategyFactory;
 
+import java.util.Collection;
+
 public class TypeAdapter
 {
 	/**
@@ -51,6 +53,12 @@ public class TypeAdapter
 		{
 			Object[] arr = CollectionsUtils.getArray(value);
 			ret = StringUtils.join(Adapter.ARRAY_JOINER, arr);
+			ret = String.format("[%s]", ret);
+		}
+		else if (Collection.class.isInstance(value))
+		{
+			Collection<?> coll = (Collection<?>) value;
+			ret = StringUtils.join(Adapter.ARRAY_JOINER, coll);
 			ret = String.format("[%s]", ret);
 		}
 		else ret = String.valueOf(value);

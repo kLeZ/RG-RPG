@@ -18,18 +18,13 @@
 // 
 package it.d4nguard.rgrpg.util.dynacast.strategies;
 
-import it.d4nguard.rgrpg.util.dynacast.Strategy;
-
 import org.joda.time.ReadableInstant;
 
-public class DateTimeStrategy implements Strategy
+public class DateTimeStrategy extends SimpleStrategy
 {
-	public static final Class<?> TYPE = ReadableInstant.class;
-
 	@Override
-	public Class<?> apply(Class<?> type)
+	public Class<?> getMine(Class<?> type)
 	{
-		if (TYPE.isAssignableFrom(type)) return TYPE;
-		else return type;
+		return ReadableInstant.class;
 	}
 }

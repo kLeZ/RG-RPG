@@ -1,9 +1,12 @@
 package it.d4nguard.rgrpg.util.dynacast;
 
+import static org.junit.Assert.assertArrayEquals;
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.fail;
 
+import java.util.Arrays;
 import java.util.Calendar;
+import java.util.List;
 
 import org.junit.Test;
 
@@ -28,6 +31,7 @@ public class DynaManipulatorTest
 		private Gender gender;
 		private String description;
 		private byte[] data;
+		private List<Integer> modifiers;
 
 		public int getRanks()
 		{
@@ -138,6 +142,16 @@ public class DynaManipulatorTest
 		{
 			this.data = data;
 		}
+
+		public List<Integer> getModifiers()
+		{
+			return modifiers;
+		}
+
+		public void setModifiers(List<Integer> modifiers)
+		{
+			this.modifiers = modifiers;
+		}
 	}
 
 	public final Bean b = new Bean();
@@ -177,8 +191,12 @@ public class DynaManipulatorTest
 			assertEquals(Gender.Male, b.getGender());
 			byte[] data = new byte[] { 0x1C, 0x75, 0x08, 0x4B, (byte) 0xd6, 0x6A };
 			DynaManipulator.setValue("data", b, TypeAdapter.toString(data));
-			assertEquals(data, b.getData());
+			assertArrayEquals(data, b.getData());
 
+			List<Integer> modifiers = Arrays.asList(new Integer[] { 1, 5, 4, 8, 6, 4, 23, 5, 87, 5, 2, 4 });
+			DynaManipulator.setValue("modifiers", b,
+							TypeAdapter.toString(modifiers));
+			assertEquals(modifiers, b.getModifiers());
 		}
 		catch (DynaManipulatorException e)
 		{
@@ -212,6 +230,16 @@ public class DynaManipulatorTest
 							DynaManipulator.getValue("year", b));
 			b.setGender(Gender.Male);
 			assertEquals(Gender.Male, DynaManipulator.getValue("gender", b));
+			b.setDescription("This would be a simple description");
+			assertEquals("This would be a simple description",
+							DynaManipulator.getValue("description", b));
+			byte[] data = new byte[] { 0x1C, 0x75, 0x08, 0x4B, (byte) 0xd6, 0x6A };
+			b.setData(data);
+			assertArrayEquals(data,
+							(byte[]) DynaManipulator.getValue("data", b));
+			List<Integer> modifiers = Arrays.asList(new Integer[] { 1, 5, 4, 8, 6, 4, 23, 5, 87, 5, 2, 4 });
+			b.setModifiers(modifiers);
+			assertEquals(modifiers, DynaManipulator.getValue("modifiers", b));
 		}
 		catch (DynaManipulatorException e)
 		{

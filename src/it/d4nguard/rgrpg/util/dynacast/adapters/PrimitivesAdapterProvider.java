@@ -65,8 +65,8 @@ public class PrimitivesAdapterProvider implements Provider<AdapterFactory<?>>
 					{
 						char sign = value.charAt(0);
 						int i = sign == '+' || sign == '-' ? 0 : -1;
-						if (value.startsWith("0b", i + 1)) return Byte.valueOf(
-										value, 2);
+						if (value.startsWith("0b", ++i)) return Byte.valueOf(
+										value.substring(i + 2), 2);
 						else return Byte.decode(value);
 					}
 

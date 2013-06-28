@@ -18,26 +18,63 @@
 // 
 package it.d4nguard.rgrpg.util.dynacast.factories;
 
+import it.d4nguard.rgrpg.util.Delegate;
+import it.d4nguard.rgrpg.util.Utils;
 import it.d4nguard.rgrpg.util.dynacast.Strategy;
-import it.d4nguard.rgrpg.util.dynacast.strategies.ArrayStrategy;
-import it.d4nguard.rgrpg.util.dynacast.strategies.DateTimeStrategy;
-import it.d4nguard.rgrpg.util.dynacast.strategies.EnumStrategy;
-import it.d4nguard.rgrpg.util.dynacast.strategies.PrimitiveStrategy;
+
+import java.lang.reflect.Modifier;
+import java.util.LinkedList;
+import java.util.Set;
+
+import org.reflections.Reflections;
+import org.reflections.scanners.SubTypesScanner;
 
 public class StrategyFactory
 {
-	public static Strategy getStrategy(Class<?> type)
+	public static Strategy getStrategy(final Class<?> type)
 	{
-		if (type.isPrimitive()) return new PrimitiveStrategy();
-		else if (type.isEnum()) return new EnumStrategy();
-		else if (type.isArray()) return new ArrayStrategy();
-		else if (DateTimeStrategy.TYPE.isAssignableFrom(type)) return new DateTimeStrategy();
+		final LinkedList<Strategy> ret = new LinkedList<Strategy>();
+		String pkg = StrategyFactory.class.getPackage().getName().split("\\.")[0];
+		Reflections r = new Reflections(pkg, new SubTypesScanner(false));
+		Set<Class<? extends Strategy>> subTypes = r.getSubTypesOf(Strategy.class);
+		Utils.doAll(subTypes, new Delegate<Class<? extends Strategy>>()
+		{
+			@Override
+			public void execute(Class<? extends Strategy> t)
+			{
+				if (!Modifier.isAbstract(t.getModifiers()))
+				{
+					try
+					{
+						Strategy s = t.newInstance();
+						if (s.isMine(type)) ret.add(s);
+					}
+					catch (InstantiationException | IllegalAccessException e)
+					{
+						e.printStackTrace();
+					}
+				}
+			}
+		});
+		if (!ret.isEmpty()) return ret.getFirst();
 		else return new Strategy() // The dummy one
 		{
+			@Override
+			public boolean isMine(Class<?> type)
+			{
+				return false;
+			}
+
 			@Override
 			public Class<?> apply(Class<?> type)
 			{
 				return type;
+			}
+
+			@Override
+			public Class<?> getMine(Class<?> type)
+			{
+				return Object.class;
 			}
 		};
 	}

@@ -1187,6 +1187,7 @@ public class OgnlRuntime
 					{
 						Adapter<?> a = TypeAdapter.getAdapter(type);
 						if (a != null) args = new Object[] { a.adapt(TypeAdapter.toString(value)) };
+						else args = new Object[] { value };
 					}
 					else args = new Object[] { value };
 				}

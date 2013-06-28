@@ -18,11 +18,9 @@
 // 
 package it.d4nguard.rgrpg.util.dynacast.strategies;
 
-import it.d4nguard.rgrpg.util.dynacast.Strategy;
-
 import java.util.HashMap;
 
-public class PrimitiveStrategy implements Strategy
+public class PrimitiveStrategy extends AbstractStrategy
 {
 	private static final HashMap<String, Class<?>> primitives = new HashMap<String, Class<?>>();
 	static
@@ -38,9 +36,14 @@ public class PrimitiveStrategy implements Strategy
 	}
 
 	@Override
-	public Class<?> apply(Class<?> type)
+	public boolean isMine(Class<?> type)
 	{
-		if (type.isPrimitive()) return primitives.get(type.getName());
-		else return type;
+		return type.isPrimitive();
+	}
+
+	@Override
+	public Class<?> getMine(Class<?> type)
+	{
+		return primitives.get(type.getName());
 	}
 }

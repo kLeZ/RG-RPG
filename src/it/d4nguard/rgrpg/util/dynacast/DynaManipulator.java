@@ -18,12 +18,7 @@
 // 
 package it.d4nguard.rgrpg.util.dynacast;
 
-import it.d4nguard.rgrpg.util.StringUtils;
-
-import java.lang.reflect.Field;
-import java.util.LinkedList;
 import java.util.Map;
-import java.util.StringTokenizer;
 
 import org.apache.commons.ognl.Ognl;
 
@@ -39,15 +34,8 @@ public class DynaManipulator
 			Map<String, Object> context = Ognl.createDefaultContext(root, null,
 							new AdapterTypeConverter());
 			Ognl.setValue(exp, context, root, value);
-			/*
-			Field f = getField(exp, root);
-			f.setAccessible(true);
-			Adapter<?> a = TypeAdapter.getAdapter(f.getType());
-			Object nurt = getValue(StringUtils.getExcludeLast(exp, "\\."), root);
-			f.set(nurt, a.adapt(value));
-			*/
 		}
-		catch (Throwable e)
+		catch (Exception e)
 		{
 			throw new DynaManipulatorException(e);
 		}
@@ -61,61 +49,14 @@ public class DynaManipulator
 		try
 		{
 			Object expression = Ognl.parseExpression(exp);
-			Map<String, Object> context = Ognl.createDefaultContext(root);
-			Ognl.setTypeConverter(context, new AdapterTypeConverter());
+			Map<String, Object> context = Ognl.createDefaultContext(root, null,
+							new AdapterTypeConverter());
 			ret = Ognl.getValue(expression, context, root);
-			/*
-			LinkedList<Field> path = getExpPath(exp, root);
-			for (Field f : path)
-			{
-				f.setAccessible(true);
-				ret = f.get(ret);
-			}
-			*/
 		}
-		catch (Throwable e)
+		catch (Exception e)
 		{
 			throw new DynaManipulatorException(e);
 		}
 		return ret;
-	}
-
-	public static Field getField(String exp, Object root)
-					throws NoSuchFieldException
-	{
-		return getExpPath(exp, root).getLast();
-	}
-
-	public static LinkedList<Field> getExpPath(String exp, Object root)
-					throws NoSuchFieldException
-	{
-		// TODO: Implement arrays and collections logic.
-		assert root != null;
-		StringTokenizer st = new StringTokenizer(exp, ".");
-		String fst = st.hasMoreTokens() ? st.nextToken() : "";
-		LinkedList<Field> ret = new LinkedList<Field>();
-		if (!StringUtils.isNullOrWhitespace(fst))
-		{
-			ret.add(findField(fst, root.getClass()));
-			while (st.hasMoreTokens())
-			{
-				String next = st.nextToken();
-				if (ret.getLast() != null)
-				{
-					ret.add(findField(next, ret.getLast().getType()));
-				}
-				else throw new NoSuchFieldException(next);
-			}
-		}
-		return ret;
-	}
-
-	public static Field findField(String name, Class<?> root)
-	{
-		if (root == null) return null;
-		Field[] fields = root.getDeclaredFields();
-		for (Field f : fields)
-			if (f.getName().equals(name)) return f;
-		return findField(name, root.getSuperclass());
 	}
 }

@@ -18,17 +18,14 @@
 // 
 package it.d4nguard.rgrpg.util.dynacast.strategies;
 
-public class EnumStrategy extends AbstractStrategy
+import it.d4nguard.rgrpg.util.dynacast.Strategy;
+
+public abstract class AbstractStrategy implements Strategy
 {
 	@Override
-	public boolean isMine(Class<?> type)
+	public Class<?> apply(Class<?> type)
 	{
-		return type.isEnum();
-	}
-
-	@Override
-	public Class<?> getMine(Class<?> type)
-	{
-		return Enum.class;
+		if (isMine(type)) return getMine(type);
+		else return type;
 	}
 }

@@ -26,40 +26,52 @@ import it.d4nguard.rgrpg.util.dynacast.TypeAdapter;
 import java.lang.reflect.Array;
 import java.lang.reflect.Modifier;
 import java.util.Collection;
+import java.util.Collections;
 import java.util.List;
-import java.util.Queue;
 import java.util.Set;
+import java.util.StringTokenizer;
 
 public class CollectionAdapter<T> extends AbstractAdapter<Collection<T>>
 {
 	private Class<T> type;
+	private Class<Collection<T>> collType;
 
 	@Override
+	@SuppressWarnings("unchecked")
 	public Collection<T> adapt(String value)
 	{
 		Collection<T> ret = null;
 		Adapter<T> a = TypeAdapter.getAdapter(type);
 		String str = StringUtils.getBetween(value, '[', ']').getCenter().trim();
-		String[] split = str.split(",");
-		Object o = Array.newInstance(getType(), split.length);
-		for (int i = 0; i < split.length; i++)
-			Array.set(o, i, a.adapt(split[i].trim()));
+		StringTokenizer st = new StringTokenizer(str, ARRAY_JOINER);
+		Object arr = Array.newInstance(getType(), st.countTokens());
+		for (int i = 0; st.hasMoreTokens(); i++)
+			Array.set(arr, i, a.adapt(st.nextToken().trim()));
 
 		int mod = getType().getModifiers();
 		if (Modifier.isInterface(mod))
 		{
 			if (getType().equals(List.class))
 			{
+				ret = Collections.<T> emptyList();
 			}
 			else if (getType().equals(Set.class))
 			{
-
-			}
-			else if (getType().equals(Queue.class))
-			{
-
+				ret = Collections.<T> emptySet();
 			}
 		}
+		else if (!Modifier.isAbstract(mod))
+		{
+			try
+			{
+				ret = collType.newInstance();
+			}
+			catch (InstantiationException | IllegalAccessException e)
+			{
+				e.printStackTrace();
+			}
+		}
+		Collections.addAll(ret, (T[]) arr);
 		return ret;
 	}
 
@@ -67,6 +79,7 @@ public class CollectionAdapter<T> extends AbstractAdapter<Collection<T>>
 	@SuppressWarnings("unchecked")
 	public void beforeCreateAdapter(Class<Collection<T>> type)
 	{
+		this.collType = type;
 		this.type = (Class<T>) GenericsUtils.getFirstGenericType(type);
 	}
 }
