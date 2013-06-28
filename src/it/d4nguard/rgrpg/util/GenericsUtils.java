@@ -225,8 +225,17 @@ public class GenericsUtils
 	public static Type[] getGenericTypes(Class<?> c)
 	{
 		ParameterizedType t = (ParameterizedType) c.getGenericSuperclass();
-		// FIX: Returns Null!!
-		return t.getActualTypeArguments();
+		if (t == null)
+		{
+			List<Type> types = new ArrayList<Type>();
+			for (Type type : c.getGenericInterfaces())
+			{
+				t = (ParameterizedType) type;
+				types.add(t);
+			}
+			return types.toArray(new Type[] {});
+		}
+		else return t.getActualTypeArguments();
 	}
 
 	@SuppressWarnings("rawtypes")
