@@ -28,9 +28,6 @@ import java.util.HashMap;
 import java.util.Map;
 import java.util.Set;
 
-import org.reflections.Reflections;
-import org.reflections.scanners.SubTypesScanner;
-
 public class AdapterFactoryMap extends AbstractMap<Class<?>, AdapterFactory<?>>
 {
 	private final Map<Class<?>, AdapterFactory<?>> __map = new HashMap<Class<?>, AdapterFactory<?>>();
@@ -49,14 +46,12 @@ public class AdapterFactoryMap extends AbstractMap<Class<?>, AdapterFactory<?>>
 	@SuppressWarnings("rawtypes")
 	private void init()
 	{
-		String pkg = getClass().getPackage().getName().split("\\.")[0];
-		Reflections r = new Reflections(pkg, new SubTypesScanner(false));
-		Set<Class<? extends Provider>> subTypes = r.getSubTypesOf(Provider.class);
-		Utils.doAll(subTypes, new Delegate<Class<? extends Provider>>()
+		Set<Class<? extends Provider>> subTypes = Utils.getSubTypesOf(Provider.class);
+		Utils.doAll(subTypes, new Delegate<Class<? extends Provider>, Void>()
 		{
 			@Override
 			@SuppressWarnings("unchecked")
-			public void execute(Class<? extends Provider> t)
+			public Void execute(Class<? extends Provider> t)
 			{
 				try
 				{
@@ -66,14 +61,11 @@ public class AdapterFactoryMap extends AbstractMap<Class<?>, AdapterFactory<?>>
 						__map.putAll(p.get());
 					}
 				}
-				catch (InstantiationException e)
+				catch (InstantiationException | IllegalAccessException e)
 				{
 					e.printStackTrace();
 				}
-				catch (IllegalAccessException e)
-				{
-					e.printStackTrace();
-				}
+				return null;
 			}
 		});
 		/*

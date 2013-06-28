@@ -225,6 +225,7 @@ public class GenericsUtils
 	public static Type[] getGenericTypes(Class<?> c)
 	{
 		ParameterizedType t = (ParameterizedType) c.getGenericSuperclass();
+		// FIX: Returns Null!!
 		return t.getActualTypeArguments();
 	}
 

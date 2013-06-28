@@ -18,45 +18,41 @@
 // 
 package it.d4nguard.rgrpg.util.dynacast.factories;
 
-import it.d4nguard.rgrpg.util.Delegate;
 import it.d4nguard.rgrpg.util.Utils;
 import it.d4nguard.rgrpg.util.dynacast.Strategy;
 
 import java.lang.reflect.Modifier;
-import java.util.LinkedList;
+import java.util.Iterator;
 import java.util.Set;
-
-import org.reflections.Reflections;
-import org.reflections.scanners.SubTypesScanner;
 
 public class StrategyFactory
 {
 	public static Strategy getStrategy(final Class<?> type)
 	{
-		final LinkedList<Strategy> ret = new LinkedList<Strategy>();
-		String pkg = StrategyFactory.class.getPackage().getName().split("\\.")[0];
-		Reflections r = new Reflections(pkg, new SubTypesScanner(false));
-		Set<Class<? extends Strategy>> subTypes = r.getSubTypesOf(Strategy.class);
-		Utils.doAll(subTypes, new Delegate<Class<? extends Strategy>>()
+		Strategy ret = null;
+		Set<Class<? extends Strategy>> subTypes = Utils.getSubTypesOf(Strategy.class);
+		Iterator<Class<? extends Strategy>> it = subTypes.iterator();
+		while (it.hasNext() && ret == null)
 		{
-			@Override
-			public void execute(Class<? extends Strategy> t)
+			Class<? extends Strategy> e = it.next();
+			if (!Modifier.isAbstract(e.getModifiers()))
 			{
-				if (!Modifier.isAbstract(t.getModifiers()))
+				try
 				{
-					try
-					{
-						Strategy s = t.newInstance();
-						if (s.isMine(type)) ret.add(s);
-					}
-					catch (InstantiationException | IllegalAccessException e)
-					{
-						e.printStackTrace();
-					}
+					Strategy s = e.newInstance();
+					if (s.isMine(type)) ret = s;
+				}
+				catch (InstantiationException | IllegalAccessException ex)
+				{
+					ex.printStackTrace();
 				}
 			}
-		});
-		if (!ret.isEmpty()) return ret.getFirst();
+		}
+
+		if (ret != null)
+		{
+			return ret;
+		}
 		else return new Strategy() // The dummy one
 		{
 			@Override
