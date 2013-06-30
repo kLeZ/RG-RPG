@@ -18,16 +18,20 @@
 // 
 package it.d4nguard.rgrpg.util.dynacast.strategies;
 
+import it.d4nguard.rgrpg.util.GenericsUtils;
+
+import java.lang.reflect.Type;
+
 public class EnumStrategy extends AbstractStrategy
 {
 	@Override
-	public boolean isMine(Class<?> type)
+	public boolean isMine(Type type)
 	{
-		return type.isEnum();
+		return GenericsUtils.getClassFromType(type).isEnum();
 	}
 
 	@Override
-	public Class<?> getMine(Class<?> type)
+	public Class<?> getMine(Type type)
 	{
 		return Enum.class;
 	}

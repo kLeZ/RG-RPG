@@ -18,12 +18,13 @@
 // 
 package it.d4nguard.rgrpg.util.dynacast.strategies;
 
+import java.lang.reflect.Type;
 import java.util.Collection;
 
 public class CollectionStrategy extends SimpleStrategy
 {
 	@Override
-	public Class<?> getMine(Class<?> type)
+	public Class<?> getMine(Type type)
 	{
 		return Collection.class;
 	}

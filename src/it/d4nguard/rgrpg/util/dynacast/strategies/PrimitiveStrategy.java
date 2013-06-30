@@ -18,6 +18,9 @@
 // 
 package it.d4nguard.rgrpg.util.dynacast.strategies;
 
+import it.d4nguard.rgrpg.util.GenericsUtils;
+
+import java.lang.reflect.Type;
 import java.util.HashMap;
 
 public class PrimitiveStrategy extends AbstractStrategy
@@ -36,14 +39,14 @@ public class PrimitiveStrategy extends AbstractStrategy
 	}
 
 	@Override
-	public boolean isMine(Class<?> type)
+	public boolean isMine(Type type)
 	{
-		return type.isPrimitive();
+		return GenericsUtils.getClassFromType(type).isPrimitive();
 	}
 
 	@Override
-	public Class<?> getMine(Class<?> type)
+	public Class<?> getMine(Type type)
 	{
-		return primitives.get(type.getName());
+		return primitives.get(GenericsUtils.getClassFromType(type).getName());
 	}
 }

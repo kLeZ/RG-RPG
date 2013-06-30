@@ -18,11 +18,13 @@
 // 
 package it.d4nguard.rgrpg.util.dynacast;
 
+import java.lang.reflect.Type;
+
 public interface Strategy
 {
-	Class<?> getMine(Class<?> type);
+	Class<?> getMine(Type type);
 
-	boolean isMine(Class<?> type);
+	boolean isMine(Type type);
 
-	Class<?> apply(Class<?> type);
+	Type apply(Type type);
 }

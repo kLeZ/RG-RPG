@@ -22,6 +22,7 @@ import it.d4nguard.rgrpg.util.dynacast.Adapter;
 import it.d4nguard.rgrpg.util.dynacast.Provider;
 import it.d4nguard.rgrpg.util.dynacast.factories.AdapterFactory;
 
+import java.lang.reflect.Type;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -35,7 +36,7 @@ public class PrimitivesAdapterProvider implements Provider<AdapterFactory<?>>
 		ret.put(Boolean.class, new AdapterFactory<Boolean>()
 		{
 			@Override
-			public Adapter<Boolean> create(final Class<Boolean> type)
+			public Adapter<Boolean> create(final Type type)
 			{
 				return new Adapter<Boolean>()
 				{
@@ -56,7 +57,7 @@ public class PrimitivesAdapterProvider implements Provider<AdapterFactory<?>>
 		ret.put(Byte.class, new AdapterFactory<Byte>()
 		{
 			@Override
-			public Adapter<Byte> create(Class<Byte> type)
+			public Adapter<Byte> create(Type type)
 			{
 				return new Adapter<Byte>()
 				{
@@ -81,7 +82,7 @@ public class PrimitivesAdapterProvider implements Provider<AdapterFactory<?>>
 		ret.put(Character.class, new AdapterFactory<Character>()
 		{
 			@Override
-			public Adapter<Character> create(Class<Character> type)
+			public Adapter<Character> create(Type type)
 			{
 				return new Adapter<Character>()
 				{
@@ -102,7 +103,7 @@ public class PrimitivesAdapterProvider implements Provider<AdapterFactory<?>>
 		ret.put(Double.class, new AdapterFactory<Double>()
 		{
 			@Override
-			public Adapter<Double> create(Class<Double> type)
+			public Adapter<Double> create(Type type)
 			{
 				return new Adapter<Double>()
 				{
@@ -123,7 +124,7 @@ public class PrimitivesAdapterProvider implements Provider<AdapterFactory<?>>
 		ret.put(Float.class, new AdapterFactory<Float>()
 		{
 			@Override
-			public Adapter<Float> create(Class<Float> type)
+			public Adapter<Float> create(Type type)
 			{
 				return new Adapter<Float>()
 				{
@@ -144,7 +145,7 @@ public class PrimitivesAdapterProvider implements Provider<AdapterFactory<?>>
 		ret.put(Integer.class, new AdapterFactory<Integer>()
 		{
 			@Override
-			public Adapter<Integer> create(Class<Integer> type)
+			public Adapter<Integer> create(Type type)
 			{
 				return new Adapter<Integer>()
 				{
@@ -165,7 +166,7 @@ public class PrimitivesAdapterProvider implements Provider<AdapterFactory<?>>
 		ret.put(Long.class, new AdapterFactory<Long>()
 		{
 			@Override
-			public Adapter<Long> create(Class<Long> type)
+			public Adapter<Long> create(Type type)
 			{
 				return new Adapter<Long>()
 				{
@@ -186,7 +187,7 @@ public class PrimitivesAdapterProvider implements Provider<AdapterFactory<?>>
 		ret.put(Short.class, new AdapterFactory<Short>()
 		{
 			@Override
-			public Adapter<Short> create(Class<Short> type)
+			public Adapter<Short> create(Type type)
 			{
 				return new Adapter<Short>()
 				{
@@ -207,7 +208,7 @@ public class PrimitivesAdapterProvider implements Provider<AdapterFactory<?>>
 		ret.put(String.class, new AdapterFactory<String>()
 		{
 			@Override
-			public Adapter<String> create(Class<String> type)
+			public Adapter<String> create(Type type)
 			{
 				return new Adapter<String>()
 				{

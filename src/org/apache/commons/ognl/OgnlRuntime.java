@@ -19,6 +19,7 @@ package org.apache.commons.ognl;
  * under the License.
  */
 
+import it.d4nguard.rgrpg.util.GenericsUtils;
 import it.d4nguard.rgrpg.util.dynacast.Adapter;
 import it.d4nguard.rgrpg.util.dynacast.TypeAdapter;
 
@@ -1179,10 +1180,17 @@ public class OgnlRuntime
 				try
 				{
 					Class<?> type = null;
-					PropertyDescriptor pd = getProperty(target.getClass(),
-									propertyName);
-					if (pd != null) type = pd.getPropertyType();
-					else type = target.getClass().getDeclaredField(propertyName).getType();
+					Field f = target.getClass().getDeclaredField(propertyName);
+					if (f != null) type = GenericsUtils.getClassFromType(f.getGenericType());
+					else
+					{
+						PropertyDescriptor pd = getProperty(target.getClass(),
+										propertyName);
+						if (pd != null) type = pd.getPropertyType();
+						else type = target.getClass().getDeclaredField(
+										propertyName).getType();
+					}
+
 					if (type != null)
 					{
 						Adapter<?> a = TypeAdapter.getAdapter(type);

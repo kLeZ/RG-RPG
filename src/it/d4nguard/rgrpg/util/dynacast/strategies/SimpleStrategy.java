@@ -18,11 +18,15 @@
 // 
 package it.d4nguard.rgrpg.util.dynacast.strategies;
 
+import it.d4nguard.rgrpg.util.GenericsUtils;
+
+import java.lang.reflect.Type;
+
 public abstract class SimpleStrategy extends AbstractStrategy
 {
 	@Override
-	public boolean isMine(Class<?> type)
+	public boolean isMine(Type type)
 	{
-		return getMine(type).isAssignableFrom(type);
+		return ((Class<?>) getMine(type)).isAssignableFrom(GenericsUtils.getClassFromType(type));
 	}
 }

@@ -20,10 +20,12 @@ package it.d4nguard.rgrpg.util.dynacast.strategies;
 
 import it.d4nguard.rgrpg.util.dynacast.Strategy;
 
+import java.lang.reflect.Type;
+
 public abstract class AbstractStrategy implements Strategy
 {
 	@Override
-	public Class<?> apply(Class<?> type)
+	public Type apply(Type type)
 	{
 		if (isMine(type)) return getMine(type);
 		else return type;

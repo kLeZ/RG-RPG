@@ -25,8 +25,11 @@ import it.d4nguard.rgrpg.util.dynacast.TypeAdapter;
 
 import java.lang.reflect.Array;
 import java.lang.reflect.Modifier;
+import java.lang.reflect.Type;
+import java.util.ArrayList;
 import java.util.Collection;
 import java.util.Collections;
+import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
 import java.util.StringTokenizer;
@@ -40,25 +43,20 @@ public class CollectionAdapter<T> extends AbstractAdapter<Collection<T>>
 	@SuppressWarnings("unchecked")
 	public Collection<T> adapt(String value)
 	{
+
 		Collection<T> ret = null;
 		Adapter<T> a = TypeAdapter.getAdapter(type);
 		String str = StringUtils.getBetween(value, '[', ']').getCenter().trim();
 		StringTokenizer st = new StringTokenizer(str, ARRAY_JOINER);
-		Object arr = Array.newInstance(getType(), st.countTokens());
+		Object arr = Array.newInstance(collType, st.countTokens());
 		for (int i = 0; st.hasMoreTokens(); i++)
 			Array.set(arr, i, a.adapt(st.nextToken().trim()));
 
-		int mod = getType().getModifiers();
+		int mod = collType.getModifiers();
 		if (Modifier.isInterface(mod))
 		{
-			if (getType().equals(List.class))
-			{
-				ret = Collections.<T> emptyList();
-			}
-			else if (getType().equals(Set.class))
-			{
-				ret = Collections.<T> emptySet();
-			}
+			if (collType.equals(List.class)) ret = new ArrayList<T>();
+			else if (collType.equals(Set.class)) ret = new HashSet<T>();
 		}
 		else if (!Modifier.isAbstract(mod))
 		{
@@ -77,9 +75,9 @@ public class CollectionAdapter<T> extends AbstractAdapter<Collection<T>>
 
 	@Override
 	@SuppressWarnings("unchecked")
-	public void beforeCreateAdapter(Class<Collection<T>> type)
+	public void beforeCreateAdapter(Type type)
 	{
-		this.collType = type;
-		this.type = (Class<T>) GenericsUtils.getFirstGenericType(type);
+		this.collType = (Class<Collection<T>>) GenericsUtils.getClassFromType(type);
+		this.type = (Class<T>) GenericsUtils.getFirstGenericType(GenericsUtils.getClassFromType(type));
 	}
 }

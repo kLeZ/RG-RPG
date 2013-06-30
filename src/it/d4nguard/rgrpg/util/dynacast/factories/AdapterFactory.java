@@ -20,7 +20,9 @@ package it.d4nguard.rgrpg.util.dynacast.factories;
 
 import it.d4nguard.rgrpg.util.dynacast.Adapter;
 
+import java.lang.reflect.Type;
+
 public interface AdapterFactory<T>
 {
-	Adapter<T> create(final Class<T> type);
+	Adapter<T> create(final Type type);
 }

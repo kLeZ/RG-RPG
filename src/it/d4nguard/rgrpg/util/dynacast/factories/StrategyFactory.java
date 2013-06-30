@@ -22,12 +22,13 @@ import it.d4nguard.rgrpg.util.Utils;
 import it.d4nguard.rgrpg.util.dynacast.Strategy;
 
 import java.lang.reflect.Modifier;
+import java.lang.reflect.Type;
 import java.util.Iterator;
 import java.util.Set;
 
 public class StrategyFactory
 {
-	public static Strategy getStrategy(final Class<?> type)
+	public static Strategy getStrategy(final Type type)
 	{
 		Strategy ret = null;
 		Set<Class<? extends Strategy>> subTypes = Utils.getSubTypesOf(Strategy.class);
@@ -56,19 +57,19 @@ public class StrategyFactory
 		else return new Strategy() // The dummy one
 		{
 			@Override
-			public boolean isMine(Class<?> type)
+			public boolean isMine(Type type)
 			{
 				return false;
 			}
 
 			@Override
-			public Class<?> apply(Class<?> type)
+			public Type apply(Type type)
 			{
 				return type;
 			}
 
 			@Override
-			public Class<?> getMine(Class<?> type)
+			public Class<?> getMine(Type type)
 			{
 				return Object.class;
 			}

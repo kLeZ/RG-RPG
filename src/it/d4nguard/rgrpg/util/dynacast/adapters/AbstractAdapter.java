@@ -23,6 +23,7 @@ import it.d4nguard.rgrpg.util.dynacast.Adapter;
 import it.d4nguard.rgrpg.util.dynacast.Provider;
 import it.d4nguard.rgrpg.util.dynacast.factories.AdapterFactory;
 
+import java.lang.reflect.Type;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -30,7 +31,7 @@ import java.util.Map;
 public abstract class AbstractAdapter<T> implements Adapter<T>, Provider<AdapterFactory>
 {
 	private final AbstractAdapter<T> myself = this;
-	private Class<T> adaptedType;
+	private Type adaptedType;
 
 	@Override
 	@SuppressWarnings("unchecked")
@@ -41,7 +42,7 @@ public abstract class AbstractAdapter<T> implements Adapter<T>, Provider<Adapter
 						new AdapterFactory<T>()
 						{
 							@Override
-							public Adapter<T> create(Class<T> type)
+							public Adapter<T> create(Type type)
 							{
 								adaptedType = type;
 								beforeCreateAdapter(type);
@@ -52,10 +53,10 @@ public abstract class AbstractAdapter<T> implements Adapter<T>, Provider<Adapter
 	}
 
 	@Override
-	public Class<T> getType()
+	public Type getType()
 	{
 		return adaptedType;
 	}
 
-	public abstract void beforeCreateAdapter(Class<T> type);
+	public abstract void beforeCreateAdapter(Type type);
 }

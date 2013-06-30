@@ -24,6 +24,7 @@ import it.d4nguard.rgrpg.util.dynacast.factories.AdapterFactory;
 import it.d4nguard.rgrpg.util.dynacast.factories.AdapterFactoryMap;
 import it.d4nguard.rgrpg.util.dynacast.factories.StrategyFactory;
 
+import java.lang.reflect.Type;
 import java.util.Collection;
 
 public class TypeAdapter
@@ -38,10 +39,10 @@ public class TypeAdapter
 	 * @return An adapter class that can adapt a string to the recalled object.
 	 */
 	@SuppressWarnings({ "rawtypes", "unchecked" })
-	public static <T> Adapter<T> getAdapter(Class<T> type)
+	public static <T> Adapter<T> getAdapter(Type type)
 	{
 		Strategy strategy = StrategyFactory.getStrategy(type);
-		Class<?> applied = strategy.apply(type);
+		Type applied = strategy.apply(type);
 		AdapterFactory factory = AdapterFactoryMap.current().get(applied);
 		return factory == null ? null : factory.create(type);
 	}

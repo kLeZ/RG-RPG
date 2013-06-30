@@ -18,12 +18,14 @@
 // 
 package it.d4nguard.rgrpg.util.dynacast.strategies;
 
+import java.lang.reflect.Type;
+
 import org.joda.time.ReadableInstant;
 
 public class DateTimeStrategy extends SimpleStrategy
 {
 	@Override
-	public Class<?> getMine(Class<?> type)
+	public Class<?> getMine(Type type)
 	{
 		return ReadableInstant.class;
 	}

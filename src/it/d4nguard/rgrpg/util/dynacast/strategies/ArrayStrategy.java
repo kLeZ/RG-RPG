@@ -18,18 +18,21 @@
 // 
 package it.d4nguard.rgrpg.util.dynacast.strategies;
 
+import it.d4nguard.rgrpg.util.GenericsUtils;
+
 import java.lang.reflect.Array;
+import java.lang.reflect.Type;
 
 public class ArrayStrategy extends AbstractStrategy
 {
 	@Override
-	public boolean isMine(Class<?> type)
+	public boolean isMine(Type type)
 	{
-		return type.isArray();
+		return GenericsUtils.getClassFromType(type).isArray();
 	}
 
 	@Override
-	public Class<?> getMine(Class<?> type)
+	public Class<?> getMine(Type type)
 	{
 		return Array.class;
 	}

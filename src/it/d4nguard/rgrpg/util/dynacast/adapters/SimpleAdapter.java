@@ -18,10 +18,12 @@
 // 
 package it.d4nguard.rgrpg.util.dynacast.adapters;
 
+import java.lang.reflect.Type;
+
 public abstract class SimpleAdapter<T> extends AbstractAdapter<T>
 {
 	@Override
-	public void beforeCreateAdapter(Class<T> type)
+	public void beforeCreateAdapter(Type type)
 	{
 	}
 }

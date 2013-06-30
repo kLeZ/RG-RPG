@@ -25,6 +25,8 @@ import it.d4nguard.rgrpg.util.dynacast.TypeAdapter;
 import it.d4nguard.rgrpg.util.dynacast.factories.AdapterFactory;
 
 import java.lang.reflect.Array;
+import java.lang.reflect.GenericArrayType;
+import java.lang.reflect.Type;
 import java.util.HashMap;
 import java.util.Map;
 import java.util.StringTokenizer;
@@ -32,7 +34,7 @@ import java.util.StringTokenizer;
 public class ArrayAdapter<T> implements Adapter<T>, Provider<AdapterFactory<?>>
 {
 	private final ArrayAdapter<T> myself = this;
-	private Class<T> adaptedType;
+	private Type adaptedType;
 
 	@Override
 	@SuppressWarnings("unchecked")
@@ -41,7 +43,7 @@ public class ArrayAdapter<T> implements Adapter<T>, Provider<AdapterFactory<?>>
 		Adapter<T> a = TypeAdapter.getAdapter(getType());
 		String str = StringUtils.getBetween(value, '[', ']').getCenter().trim();
 		StringTokenizer st = new StringTokenizer(str, ARRAY_JOINER);
-		Object ret = Array.newInstance(getType(), st.countTokens());
+		Object ret = Array.newInstance((Class<?>) getType(), st.countTokens());
 		for (int i = 0; st.hasMoreTokens(); i++)
 			Array.set(ret, i, a.adapt(st.nextToken().trim()));
 		return (T) ret;
@@ -55,9 +57,9 @@ public class ArrayAdapter<T> implements Adapter<T>, Provider<AdapterFactory<?>>
 		ret.put(Array.class, new AdapterFactory<T>()
 		{
 			@Override
-			public Adapter<T> create(Class<T> type)
+			public Adapter<T> create(Type type)
 			{
-				adaptedType = (Class<T>) type.getComponentType();
+				adaptedType = ((GenericArrayType) type).getGenericComponentType();
 				return myself;
 			}
 		});
@@ -65,7 +67,7 @@ public class ArrayAdapter<T> implements Adapter<T>, Provider<AdapterFactory<?>>
 	}
 
 	@Override
-	public Class<T> getType()
+	public Type getType()
 	{
 		return adaptedType;
 	}
