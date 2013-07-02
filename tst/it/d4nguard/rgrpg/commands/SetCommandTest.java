@@ -20,6 +20,7 @@ package it.d4nguard.rgrpg.commands;
 
 import static org.junit.Assert.assertEquals;
 import it.d4nguard.rgrpg.Context;
+import it.d4nguard.rgrpg.d20.D20Character;
 import it.d4nguard.rgrpg.managers.CharacterManager;
 import it.d4nguard.rgrpg.managers.PlayerManager;
 import it.d4nguard.rgrpg.profile.GenderType;
@@ -84,5 +85,12 @@ public class SetCommandTest
 						DateTimeFormat.forPattern("dd/MM/yyyy")),
 						c.getInfo().getDateOfBirth());
 
+		// 16 14 12 10 10 8
+		cmd = "character Julius \"abilityScores.strength=8\"";
+		set.execute(cmd.split("\\s"));
+		assertEquals(8,
+						((D20Character) c).getAbilityScores().getStrength().getValue());
+		assertEquals(-1,
+						((D20Character) c).getAbilityScores().getStrength().getModifier());
 	}
 }

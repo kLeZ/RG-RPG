@@ -38,7 +38,7 @@ public class AbilityScore implements Serializable
 	public AbilityScore(String name, int value)
 	{
 		this.name = name;
-		setValue(value);
+		safeSetValue(value);
 	}
 
 	public String getName()
@@ -53,13 +53,18 @@ public class AbilityScore implements Serializable
 
 	public void setValue(int value)
 	{
-		this.value = value;
-		this.modifier = getModifier(value);
+		safeSetValue(value);
 	}
 
 	public int getModifier()
 	{
 		return modifier;
+	}
+
+	private void safeSetValue(int value)
+	{
+		this.value = value;
+		this.modifier = getModifier(value);
 	}
 
 	public static int getModifier(int value)
@@ -69,9 +74,6 @@ public class AbilityScore implements Serializable
 
 	public static class UnmodifiableAbilityScore extends AbilityScore
 	{
-		/**
-		 * 
-		 */
 		private static final long serialVersionUID = 8740668067478743803L;
 
 		public UnmodifiableAbilityScore(AbilityScore as)

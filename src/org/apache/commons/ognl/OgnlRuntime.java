@@ -1180,7 +1180,8 @@ public class OgnlRuntime
 				try
 				{
 					Class<?> type = null;
-					Field f = target.getClass().getDeclaredField(propertyName);
+					Field f = GenericsUtils.safeGetDeclaredField(
+									target.getClass(), propertyName);
 					if (f != null) type = GenericsUtils.getClassFromType(f.getGenericType());
 					else
 					{

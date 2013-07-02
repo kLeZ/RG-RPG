@@ -250,4 +250,18 @@ public class GenericsUtils
 		}
 		else return (Class<?>) t;
 	}
+
+	public static Field safeGetDeclaredField(Class<?> clazz, String fieldName)
+	{
+		Field f = null;
+		try
+		{
+			f = clazz.getDeclaredField(fieldName);
+		}
+		catch (NoSuchFieldException | SecurityException e)
+		{
+			f = null;
+		}
+		return f;
+	}
 }
