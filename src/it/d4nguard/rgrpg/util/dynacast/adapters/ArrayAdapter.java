@@ -59,7 +59,8 @@ public class ArrayAdapter<T> implements Adapter<T>, Provider<AdapterFactory<?>>
 			@Override
 			public Adapter<T> create(Type type)
 			{
-				adaptedType = ((GenericArrayType) type).getGenericComponentType();
+				if (type instanceof Class) adaptedType = ((Class<?>) type).getComponentType();
+				else adaptedType = ((GenericArrayType) type).getGenericComponentType();
 				return myself;
 			}
 		});

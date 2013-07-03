@@ -23,27 +23,10 @@ import it.d4nguard.rgrpg.util.GenericsUtils;
 import it.d4nguard.rgrpg.util.dynacast.Adapter;
 import it.d4nguard.rgrpg.util.dynacast.TypeAdapter;
 
-import java.beans.BeanInfo;
-import java.beans.IndexedPropertyDescriptor;
-import java.beans.IntrospectionException;
-import java.beans.Introspector;
-import java.beans.MethodDescriptor;
-import java.beans.PropertyDescriptor;
-import java.lang.reflect.Constructor;
-import java.lang.reflect.Field;
-import java.lang.reflect.InvocationTargetException;
-import java.lang.reflect.Member;
-import java.lang.reflect.Method;
-import java.lang.reflect.Modifier;
-import java.lang.reflect.ParameterizedType;
-import java.lang.reflect.Proxy;
+import java.beans.*;
+import java.lang.reflect.*;
 import java.security.Permission;
-import java.util.ArrayList;
-import java.util.Collection;
-import java.util.Collections;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
+import java.util.*;
 
 import org.apache.commons.ognl.enhance.ExpressionCompiler;
 import org.apache.commons.ognl.enhance.OgnlExpressionCompiler;
@@ -218,16 +201,13 @@ public class OgnlRuntime
 			}
 			catch (ClassNotFoundException e)
 			{
-				throw new IllegalArgumentException(
-								"Javassist library is missing in classpath! Please add missed dependency!",
-								e);
+				throw new IllegalArgumentException("Javassist library is missing in classpath! Please add missed dependency!", e);
 			}
 		}
 		return compiler;
 	}
 
-	public static void compileExpression(OgnlContext context, Node expression,
-					Object root) throws Exception
+	public static void compileExpression(OgnlContext context, Node expression, Object root) throws Exception
 	{
 		getCompiler(context).compileExpression(context, expression, root);
 	}
@@ -337,8 +317,7 @@ public class OgnlRuntime
 	 * include the package name, else it will be
 	 * just the class' base name.
 	 */
-	public static String getUniqueDescriptor(Object object,
-					boolean fullyQualified)
+	public static String getUniqueDescriptor(Object object, boolean fullyQualified)
 	{
 		StringBuilder stringBuilder = new StringBuilder();
 
@@ -401,8 +380,7 @@ public class OgnlRuntime
 	/**
 	 * Returns the parameter types of the given method.
 	 */
-	public static Class<?>[] getParameterTypes(Method method)
-					throws CacheException
+	public static Class<?>[] getParameterTypes(Method method) throws CacheException
 	{
 		return cache.getMethodParameterTypes(method);
 	}
@@ -420,13 +398,11 @@ public class OgnlRuntime
 	 * @return Array of parameter types for the given method.
 	 * @throws org.apache.commons.ognl.internal.CacheException
 	 */
-	public static Class<?>[] findParameterTypes(Class<?> type, Method method)
-					throws CacheException
+	public static Class<?>[] findParameterTypes(Class<?> type, Method method) throws CacheException
 	{
 		if (type == null || type.getGenericSuperclass() == null || !ParameterizedType.class.isInstance(type.getGenericSuperclass()) || method.getDeclaringClass().getTypeParameters() == null) { return getParameterTypes(method); }
 
-		GenericMethodParameterTypeCacheEntry key = new GenericMethodParameterTypeCacheEntry(
-						method, type);
+		GenericMethodParameterTypeCacheEntry key = new GenericMethodParameterTypeCacheEntry(method, type);
 		return cache.getGenericMethodParameterTypes(key);
 	}
 
@@ -437,8 +413,7 @@ public class OgnlRuntime
 	 * @return
 	 * @throws org.apache.commons.ognl.internal.CacheException
 	 */
-	public static Class<?>[] getParameterTypes(Constructor<?> constructor)
-					throws CacheException
+	public static Class<?>[] getParameterTypes(Constructor<?> constructor) throws CacheException
 	{
 		return cache.getParameterTypes(constructor);
 	}
@@ -480,14 +455,11 @@ public class OgnlRuntime
 		return cache.getInvokePermission(key);
 	}
 
-	public static Object invokeMethod(Object target, Method method,
-					Object[] argsArray) throws InvocationTargetException,
-					IllegalAccessException, CacheException
+	public static Object invokeMethod(Object target, Method method, Object[] argsArray) throws InvocationTargetException, IllegalAccessException, CacheException
 	{
 		Object result;
 
-		if (securityManager != null && !cache.getMethodPerm(method)) { throw new IllegalAccessException(
-						"Method [" + method + "] cannot be accessed."); }
+		if (securityManager != null && !cache.getMethodPerm(method)) { throw new IllegalAccessException("Method [" + method + "] cannot be accessed."); }
 
 		MethodAccessEntryValue entry = cache.getMethodAccess(method);
 		if (!entry.isAccessible())
@@ -589,8 +561,7 @@ public class OgnlRuntime
 		return areArgsCompatible(args, classes, null);
 	}
 
-	public static boolean areArgsCompatible(Object[] args, Class<?>[] classes,
-					Method method)
+	public static boolean areArgsCompatible(Object[] args, Class<?>[] classes, Method method)
 	{
 		boolean result = true;
 		boolean varArgs = method != null && method.isVarArgs();
@@ -612,8 +583,7 @@ public class OgnlRuntime
 
 				if (!result && classes[index].isArray())
 				{
-					result = isTypeCompatible(args[index],
-									classes[index].getComponentType());
+					result = isTypeCompatible(args[index], classes[index].getComponentType());
 				}
 			}
 		}
@@ -632,8 +602,7 @@ public class OgnlRuntime
 	 * second. Assumes that the two arrays are of the
 	 * same length.
 	 */
-	public static boolean isMoreSpecific(Class<?>[] classes1,
-					Class<?>[] classes2)
+	public static boolean isMoreSpecific(Class<?>[] classes1, Class<?>[] classes2)
 	{
 		for (int index = 0; index < classes1.length; ++index)
 		{
@@ -656,8 +625,7 @@ public class OgnlRuntime
 		return false;
 	}
 
-	public static Class<?> classForName(OgnlContext context, String className)
-					throws ClassNotFoundException
+	public static Class<?> classForName(OgnlContext context, String className) throws ClassNotFoundException
 	{
 		Class<?> result = primitiveTypes.get(className);
 
@@ -672,14 +640,12 @@ public class OgnlRuntime
 			result = resolver.classForName(className, context);
 		}
 
-		if (result == null) { throw new ClassNotFoundException(
-						"Unable to resolve class: " + className); }
+		if (result == null) { throw new ClassNotFoundException("Unable to resolve class: " + className); }
 
 		return result;
 	}
 
-	public static boolean isInstance(OgnlContext context, Object value,
-					String className) throws OgnlException
+	public static boolean isInstance(OgnlContext context, Object value, String className) throws OgnlException
 	{
 		try
 		{
@@ -702,17 +668,12 @@ public class OgnlRuntime
 		return numericDefaults.get(forClass);
 	}
 
-	public static Object getConvertedType(OgnlContext context, Object target,
-					Member member, String propertyName, Object value,
-					Class<?> type)
+	public static Object getConvertedType(OgnlContext context, Object target, Member member, String propertyName, Object value, Class<?> type)
 	{
-		return context.getTypeConverter().convertValue(context, target, member,
-						propertyName, value, type);
+		return context.getTypeConverter().convertValue(context, target, member, propertyName, value, type);
 	}
 
-	public static boolean getConvertedTypes(OgnlContext context, Object target,
-					Member member, String propertyName,
-					Class<?>[] parameterTypes, Object[] args, Object[] newArgs)
+	public static boolean getConvertedTypes(OgnlContext context, Object target, Member member, String propertyName, Class<?>[] parameterTypes, Object[] args, Object[] newArgs)
 
 	{
 		boolean result = false;
@@ -731,8 +692,7 @@ public class OgnlRuntime
 				}
 				else
 				{
-					Object convertedType = getConvertedType(context, target,
-									member, propertyName, arg, type);
+					Object convertedType = getConvertedType(context, target, member, propertyName, arg, type);
 
 					if (convertedType == OgnlRuntime.NoConversionPossible)
 					{
@@ -748,9 +708,7 @@ public class OgnlRuntime
 		return result;
 	}
 
-	public static Method getConvertedMethodAndArgs(OgnlContext context,
-					Object target, String propertyName, List<Method> methods,
-					Object[] args, Object[] newArgs)
+	public static Method getConvertedMethodAndArgs(OgnlContext context, Object target, String propertyName, List<Method> methods, Object[] args, Object[] newArgs)
 
 	{
 		Method convertedMethod = null;
@@ -762,12 +720,9 @@ public class OgnlRuntime
 			for (int i = 0; (convertedMethod == null) && (i < methodsSize); i++)
 			{
 				Method method = methods.get(i);
-				Class<?>[] parameterTypes = findParameterTypes(
-								target != null ? target.getClass() : null,
-								method);// getParameterTypes(method);
+				Class<?>[] parameterTypes = findParameterTypes(target != null ? target.getClass() : null, method);// getParameterTypes(method);
 
-				if (getConvertedTypes(context, target, method, propertyName,
-								parameterTypes, args, newArgs))
+				if (getConvertedTypes(context, target, method, propertyName, parameterTypes, args, newArgs))
 				{
 					convertedMethod = method;
 				}
@@ -776,10 +731,7 @@ public class OgnlRuntime
 		return convertedMethod;
 	}
 
-	public static Constructor<?> getConvertedConstructorAndArgs(
-					OgnlContext context, Object target,
-					List<Constructor<?>> constructors, Object[] args,
-					Object[] newArgs)
+	public static Constructor<?> getConvertedConstructorAndArgs(OgnlContext context, Object target, List<Constructor<?>> constructors, Object[] args, Object[] newArgs)
 
 	{
 		Constructor<?> constructor = null;
@@ -792,8 +744,7 @@ public class OgnlRuntime
 				Constructor<?> ctor = constructors.get(i);
 				Class<?>[] parameterTypes = getParameterTypes(ctor);
 
-				if (getConvertedTypes(context, target, ctor, null,
-								parameterTypes, args, newArgs))
+				if (getConvertedTypes(context, target, ctor, null, parameterTypes, args, newArgs))
 				{
 					constructor = ctor;
 				}
@@ -826,9 +777,7 @@ public class OgnlRuntime
 	 *            Converted arguments.
 	 * @return Best method match or null if none could be found.
 	 */
-	public static Method getAppropriateMethod(OgnlContext context,
-					Object source, Object target, String propertyName,
-					List<Method> methods, Object[] args, Object[] actualArgs)
+	public static Method getAppropriateMethod(OgnlContext context, Object source, Object target, String propertyName, List<Method> methods, Object[] args, Object[] actualArgs)
 
 	{
 		Method appropriateMethod = null;
@@ -844,11 +793,9 @@ public class OgnlRuntime
 					typeClass = (Class<?>) source;
 				}
 
-				Class<?>[] mParameterTypes = findParameterTypes(typeClass,
-								method);
+				Class<?>[] mParameterTypes = findParameterTypes(typeClass, method);
 
-				if (areArgsCompatible(args, mParameterTypes, method) && ((appropriateMethod == null) || isMoreSpecific(
-								mParameterTypes, resultParameterTypes)))
+				if (areArgsCompatible(args, mParameterTypes, method) && ((appropriateMethod == null) || isMoreSpecific(mParameterTypes, resultParameterTypes)))
 				{
 					appropriateMethod = method;
 					resultParameterTypes = mParameterTypes;
@@ -860,9 +807,7 @@ public class OgnlRuntime
 
 						if (type.isPrimitive() && (actualArgs[i] == null))
 						{
-							actualArgs[i] = getConvertedType(context, source,
-											appropriateMethod, propertyName,
-											null, type);
+							actualArgs[i] = getConvertedType(context, source, appropriateMethod, propertyName, null, type);
 						}
 					}
 				}
@@ -871,28 +816,22 @@ public class OgnlRuntime
 
 		if (appropriateMethod == null)
 		{
-			appropriateMethod = getConvertedMethodAndArgs(context, target,
-							propertyName, methods, args, actualArgs);
+			appropriateMethod = getConvertedMethodAndArgs(context, target, propertyName, methods, args, actualArgs);
 		}
 
 		return appropriateMethod;
 	}
 
-	public static Object callAppropriateMethod(OgnlContext context,
-					Object source, Object target, String methodName,
-					String propertyName, List<Method> methods, Object[] args)
-					throws MethodFailedException
+	public static Object callAppropriateMethod(OgnlContext context, Object source, Object target, String methodName, String propertyName, List<Method> methods, Object[] args) throws MethodFailedException
 	{
 		Throwable cause = null;
 		Object[] actualArgs = new Object[args.length];
 
 		try
 		{
-			Method method = getAppropriateMethod(context, source, target,
-							propertyName, methods, args, actualArgs);
+			Method method = getAppropriateMethod(context, source, target, propertyName, methods, args, actualArgs);
 
-			if ((method == null) || !isMethodAccessible(context, source,
-							method, propertyName))
+			if ((method == null) || !isMethodAccessible(context, source, method, propertyName))
 			{
 				StringBuilder buffer = new StringBuilder();
 				String className = "";
@@ -913,8 +852,7 @@ public class OgnlRuntime
 					}
 				}
 
-				throw new NoSuchMethodException(
-								className + methodName + "(" + buffer + ")");
+				throw new NoSuchMethodException(className + methodName + "(" + buffer + ")");
 			}
 
 			Object[] convertedArgs = actualArgs;
@@ -932,8 +870,7 @@ public class OgnlRuntime
 					if (parmTypes[i].isArray())
 					{
 						convertedArgs = new Object[i + 1];
-						System.arraycopy(actualArgs, 0, convertedArgs, 0,
-										convertedArgs.length);
+						System.arraycopy(actualArgs, 0, convertedArgs, 0, convertedArgs.length);
 
 						Object[] varArgs;
 
@@ -982,20 +919,16 @@ public class OgnlRuntime
 		throw new MethodFailedException(source, methodName, cause);
 	}
 
-	public static Object callStaticMethod(OgnlContext context,
-					String className, String methodName, Object[] args)
-					throws OgnlException
+	public static Object callStaticMethod(OgnlContext context, String className, String methodName, Object[] args) throws OgnlException
 	{
 		try
 		{
 			Class<?> targetClass = classForName(context, className);
-			if (targetClass == null) { throw new ClassNotFoundException(
-							"Unable to resolve class with name " + className); }
+			if (targetClass == null) { throw new ClassNotFoundException("Unable to resolve class with name " + className); }
 
 			MethodAccessor methodAccessor = getMethodAccessor(targetClass);
 
-			return methodAccessor.callStaticMethod(context, targetClass,
-							methodName, args);
+			return methodAccessor.callStaticMethod(context, targetClass, methodName, args);
 		}
 		catch (ClassNotFoundException ex)
 		{
@@ -1018,18 +951,14 @@ public class OgnlRuntime
 	 * @throws OgnlException
 	 *             For lots of different reasons.
 	 */
-	public static Object callMethod(OgnlContext context, Object target,
-					String methodName, Object[] args) throws OgnlException
+	public static Object callMethod(OgnlContext context, Object target, String methodName, Object[] args) throws OgnlException
 	{
-		if (target == null) { throw new NullPointerException(
-						"target is null for method " + methodName); }
+		if (target == null) { throw new NullPointerException("target is null for method " + methodName); }
 
-		return getMethodAccessor(target.getClass()).callMethod(context, target,
-						methodName, args);
+		return getMethodAccessor(target.getClass()).callMethod(context, target, methodName, args);
 	}
 
-	public static Object callConstructor(OgnlContext context, String className,
-					Object[] args) throws OgnlException
+	public static Object callConstructor(OgnlContext context, String className, Object[] args) throws OgnlException
 	{
 		Throwable cause = null;
 		Object[] actualArgs = args;
@@ -1045,8 +974,7 @@ public class OgnlRuntime
 			{
 				Class<?>[] cParameterTypes = getParameterTypes(constructor);
 
-				if (areArgsCompatible(args, cParameterTypes) && (ctor == null || isMoreSpecific(
-								cParameterTypes, ctorParameterTypes)))
+				if (areArgsCompatible(args, cParameterTypes) && (ctor == null || isMoreSpecific(cParameterTypes, ctorParameterTypes)))
 				{
 					ctor = constructor;
 					ctorParameterTypes = cParameterTypes;
@@ -1055,12 +983,9 @@ public class OgnlRuntime
 			if (ctor == null)
 			{
 				actualArgs = new Object[args.length];
-				if ((ctor = getConvertedConstructorAndArgs(context, target,
-								constructors, args, actualArgs)) == null) { throw new NoSuchMethodException(); }
+				if ((ctor = getConvertedConstructorAndArgs(context, target, constructors, args, actualArgs)) == null) { throw new NoSuchMethodException(); }
 			}
-			if (!context.getMemberAccess().isAccessible(context, target, ctor,
-							null)) { throw new IllegalAccessException(
-							"access denied to " + target.getName() + "()"); }
+			if (!context.getMemberAccess().isAccessible(context, target, ctor, null)) { throw new IllegalAccessException("access denied to " + target.getName() + "()"); }
 			return ctor.newInstance(actualArgs);
 		}
 		catch (ClassNotFoundException e)
@@ -1087,10 +1012,7 @@ public class OgnlRuntime
 		throw new MethodFailedException(className, "new", cause);
 	}
 
-	public static Object getMethodValue(OgnlContext context, Object target,
-					String propertyName) throws OgnlException,
-					IllegalAccessException, NoSuchMethodException,
-					IntrospectionException
+	public static Object getMethodValue(OgnlContext context, Object target, String propertyName) throws OgnlException, IllegalAccessException, NoSuchMethodException, IntrospectionException
 	{
 		return getMethodValue(context, target, propertyName, false);
 	}
@@ -1101,10 +1023,7 @@ public class OgnlRuntime
 	 * accessible according to the context's MemberAccess. If neither test
 	 * passes this will return NotFound.
 	 */
-	public static Object getMethodValue(OgnlContext context, Object target,
-					String propertyName, boolean checkAccessAndExistence)
-					throws OgnlException, IllegalAccessException,
-					NoSuchMethodException, IntrospectionException
+	public static Object getMethodValue(OgnlContext context, Object target, String propertyName, boolean checkAccessAndExistence) throws OgnlException, IllegalAccessException, NoSuchMethodException, IntrospectionException
 	{
 		Object methodValue = null;
 		Class<?> targetClass = target == null ? null : target.getClass();
@@ -1116,8 +1035,7 @@ public class OgnlRuntime
 
 		if (checkAccessAndExistence)
 		{
-			if ((method == null) || !context.getMemberAccess().isAccessible(
-							context, target, method, propertyName))
+			if ((method == null) || !context.getMemberAccess().isAccessible(context, target, method, propertyName))
 			{
 				methodValue = NotFound;
 			}
@@ -1132,8 +1050,7 @@ public class OgnlRuntime
 				}
 				catch (InvocationTargetException ex)
 				{
-					throw new OgnlException(propertyName,
-									ex.getTargetException());
+					throw new OgnlException(propertyName, ex.getTargetException());
 				}
 			}
 			else
@@ -1144,29 +1061,19 @@ public class OgnlRuntime
 		return methodValue;
 	}
 
-	public static boolean setMethodValue(OgnlContext context, Object target,
-					String propertyName, Object value) throws OgnlException,
-					IllegalAccessException, NoSuchMethodException,
-					IntrospectionException
+	public static boolean setMethodValue(OgnlContext context, Object target, String propertyName, Object value) throws OgnlException, IllegalAccessException, NoSuchMethodException, IntrospectionException
 	{
 		return setMethodValue(context, target, propertyName, value, false);
 	}
 
-	public static boolean setMethodValue(OgnlContext context, Object target,
-					String propertyName, Object value,
-					boolean checkAccessAndExistence) throws OgnlException,
-					IllegalAccessException, NoSuchMethodException,
-					IntrospectionException
+	public static boolean setMethodValue(OgnlContext context, Object target, String propertyName, Object value, boolean checkAccessAndExistence) throws OgnlException, IllegalAccessException, NoSuchMethodException, IntrospectionException
 	{
 		boolean result = true;
-		Method method = getSetMethod(context,
-						(target == null) ? null : target.getClass(),
-						propertyName);
+		Method method = getSetMethod(context, (target == null) ? null : target.getClass(), propertyName);
 
 		if (checkAccessAndExistence)
 		{
-			if ((method == null) || !context.getMemberAccess().isAccessible(
-							context, target, method, propertyName))
+			if ((method == null) || !context.getMemberAccess().isAccessible(context, target, method, propertyName))
 			{
 				result = false;
 			}
@@ -1179,34 +1086,33 @@ public class OgnlRuntime
 				Object[] args = null;
 				try
 				{
-					Class<?> type = null;
-					Field f = GenericsUtils.safeGetDeclaredField(
-									target.getClass(), propertyName);
-					if (f != null) type = GenericsUtils.getClassFromType(f.getGenericType());
+					Type type = null;
+					Field f = GenericsUtils.safeGetDeclaredField(target.getClass(), propertyName);
+					if (f != null) type = f.getGenericType();
 					else
 					{
-						PropertyDescriptor pd = getProperty(target.getClass(),
-										propertyName);
+						PropertyDescriptor pd = getProperty(target.getClass(), propertyName);
 						if (pd != null) type = pd.getPropertyType();
-						else type = target.getClass().getDeclaredField(
-										propertyName).getType();
+						else type = target.getClass().getDeclaredField(propertyName).getType();
 					}
 
 					if (type != null)
 					{
 						Adapter<?> a = TypeAdapter.getAdapter(type);
-						if (a != null) args = new Object[] { a.adapt(TypeAdapter.toString(value)) };
-						else args = new Object[] { value };
+						if (a != null) args = new Object[]
+						{ a.adapt(TypeAdapter.toString(value)) };
+						else args = new Object[]
+						{ value };
 					}
-					else args = new Object[] { value };
+					else args = new Object[]
+					{ value };
 				}
 				catch (NoSuchFieldException | SecurityException e)
 				{
-					args = new Object[] { value };
+					args = new Object[]
+					{ value };
 				}
-				callAppropriateMethod(context, target, target,
-								method.getName(), propertyName,
-								Collections.nCopies(1, method), args);
+				callAppropriateMethod(context, target, target, method.getName(), propertyName, Collections.nCopies(1, method), args);
 			}
 			else
 			{
@@ -1228,17 +1134,14 @@ public class OgnlRuntime
 	 *            if true (false) returns only the (non-)static methods
 	 * @return Returns the map of methods for a given class
 	 */
-	public static Map<String, List<Method>> getMethods(Class<?> targetClass,
-					boolean staticMethods)
+	public static Map<String, List<Method>> getMethods(Class<?> targetClass, boolean staticMethods)
 	{
 		DeclaredMethodCacheEntry.MethodType type = staticMethods ? DeclaredMethodCacheEntry.MethodType.STATIC : DeclaredMethodCacheEntry.MethodType.NON_STATIC;
-		DeclaredMethodCacheEntry key = new DeclaredMethodCacheEntry(
-						targetClass, type);
+		DeclaredMethodCacheEntry key = new DeclaredMethodCacheEntry(targetClass, type);
 		return cache.getMethod(key);
 	}
 
-	public static List<Method> getMethods(Class<?> targetClass, String name,
-					boolean staticMethods)
+	public static List<Method> getMethods(Class<?> targetClass, String name, boolean staticMethods)
 	{
 		return getMethods(targetClass, staticMethods).get(name);
 	}
@@ -1266,15 +1169,12 @@ public class OgnlRuntime
 		return field;
 	}
 
-	public static Object getFieldValue(OgnlContext context, Object target,
-					String propertyName) throws NoSuchFieldException
+	public static Object getFieldValue(OgnlContext context, Object target, String propertyName) throws NoSuchFieldException
 	{
 		return getFieldValue(context, target, propertyName, false);
 	}
 
-	public static Object getFieldValue(OgnlContext context, Object target,
-					String propertyName, boolean checkAccessAndExistence)
-					throws NoSuchFieldException
+	public static Object getFieldValue(OgnlContext context, Object target, String propertyName, boolean checkAccessAndExistence) throws NoSuchFieldException
 	{
 		Object result = null;
 		Class<?> targetClass = target == null ? null : target.getClass();
@@ -1282,8 +1182,7 @@ public class OgnlRuntime
 
 		if (checkAccessAndExistence)
 		{
-			if ((field == null) || !context.getMemberAccess().isAccessible(
-							context, target, field, propertyName))
+			if ((field == null) || !context.getMemberAccess().isAccessible(context, target, field, propertyName))
 			{
 				result = NotFound;
 			}
@@ -1297,11 +1196,9 @@ public class OgnlRuntime
 
 				if (!Modifier.isStatic(field.getModifiers()))
 				{
-					state = context.getMemberAccess().setup(context, target,
-									field, propertyName);
+					state = context.getMemberAccess().setup(context, target, field, propertyName);
 					result = field.get(target);
-					context.getMemberAccess().restore(context, target, field,
-									propertyName, state);
+					context.getMemberAccess().restore(context, target, field, propertyName, state);
 				}
 				else
 				{
@@ -1317,8 +1214,7 @@ public class OgnlRuntime
 		return result;
 	}
 
-	public static boolean setFieldValue(OgnlContext context, Object target,
-					String propertyName, Object value) throws OgnlException
+	public static boolean setFieldValue(OgnlContext context, Object target, String propertyName, Object value) throws OgnlException
 	{
 		boolean result = false;
 
@@ -1330,13 +1226,10 @@ public class OgnlRuntime
 
 			if ((field != null) && !Modifier.isStatic(field.getModifiers()))
 			{
-				state = context.getMemberAccess().setup(context, target, field,
-								propertyName);
+				state = context.getMemberAccess().setup(context, target, field, propertyName);
 				try
 				{
-					if (isTypeCompatible(value, field.getType()) || ((value = getConvertedType(
-									context, target, field, propertyName,
-									value, field.getType())) != null))
+					if (isTypeCompatible(value, field.getType()) || ((value = getConvertedType(context, target, field, propertyName, value, field.getType())) != null))
 					{
 						field.set(target, value);
 						result = true;
@@ -1344,8 +1237,7 @@ public class OgnlRuntime
 				}
 				finally
 				{
-					context.getMemberAccess().restore(context, target, field,
-									propertyName, state);
+					context.getMemberAccess().restore(context, target, field, propertyName, state);
 				}
 			}
 		}
@@ -1356,40 +1248,33 @@ public class OgnlRuntime
 		return result;
 	}
 
-	public static boolean isFieldAccessible(OgnlContext context, Object target,
-					Class<?> inClass, String propertyName)
+	public static boolean isFieldAccessible(OgnlContext context, Object target, Class<?> inClass, String propertyName)
 	{
-		return isFieldAccessible(context, target,
-						getField(inClass, propertyName), propertyName);
+		return isFieldAccessible(context, target, getField(inClass, propertyName), propertyName);
 	}
 
-	public static boolean isFieldAccessible(OgnlContext context, Object target,
-					Field field, String propertyName)
+	public static boolean isFieldAccessible(OgnlContext context, Object target, Field field, String propertyName)
 	{
-		return context.getMemberAccess().isAccessible(context, target, field,
-						propertyName);
+		return context.getMemberAccess().isAccessible(context, target, field, propertyName);
 	}
 
-	public static boolean hasField(OgnlContext context, Object target,
-					Class<?> inClass, String propertyName)
+	public static boolean hasField(OgnlContext context, Object target, Class<?> inClass, String propertyName)
 	{
 		Field field = getField(inClass, propertyName);
 
-		return (field != null) && isFieldAccessible(context, target, field,
-						propertyName);
+		return (field != null) && isFieldAccessible(context, target, field, propertyName);
 	}
 
-	@SuppressWarnings({ "unchecked", "rawtypes" })
-	public static Object getStaticField(OgnlContext context, String className,
-					String fieldName) throws OgnlException
+	@SuppressWarnings(
+	{ "unchecked", "rawtypes" })
+	public static Object getStaticField(OgnlContext context, String className, String fieldName) throws OgnlException
 	{
 		Exception cause;
 		try
 		{
 			Class<?> clazz = classForName(context, className);
 
-			if (clazz == null) { throw new OgnlException(
-							"Unable to find class " + className + " when resolving field name of " + fieldName); }
+			if (clazz == null) { throw new OgnlException("Unable to find class " + className + " when resolving field name of " + fieldName); }
 
 			/*
 			 * Check for virtual static field "class"; this cannot interfere with normal static fields because it is a
@@ -1406,8 +1291,7 @@ public class OgnlRuntime
 			else
 			{
 				Field field = clazz.getField(fieldName);
-				if (!Modifier.isStatic(field.getModifiers())) { throw new OgnlException(
-								"Field " + fieldName + " of class " + className + " is not static"); }
+				if (!Modifier.isStatic(field.getModifiers())) { throw new OgnlException("Field " + fieldName + " of class " + className + " is not static"); }
 
 				return field.get(null);
 			}
@@ -1429,9 +1313,7 @@ public class OgnlRuntime
 			cause = e;
 		}
 
-		throw new OgnlException(
-						"Could not get static field " + fieldName + " from class " + className,
-						cause);
+		throw new OgnlException("Could not get static field " + fieldName + " from class " + className, cause);
 	}
 
 	/**
@@ -1442,8 +1324,7 @@ public class OgnlRuntime
 	 *         name
 	 *         @
 	 */
-	public static List<Method> getDeclaredMethods(Class<?> targetClass,
-					String propertyName, boolean findSets)
+	public static List<Method> getDeclaredMethods(Class<?> targetClass, String propertyName, boolean findSets)
 	{
 		String baseName = Character.toUpperCase(propertyName.charAt(0)) + propertyName.substring(1);
 		List<Method> methods = new ArrayList<Method>();
@@ -1459,8 +1340,7 @@ public class OgnlRuntime
 		}
 		for (String methodName : methodNames)
 		{
-			DeclaredMethodCacheEntry key = new DeclaredMethodCacheEntry(
-							targetClass);
+			DeclaredMethodCacheEntry key = new DeclaredMethodCacheEntry(targetClass);
 			List<Method> methodList = cache.getMethod(key).get(methodName);
 			if (methodList != null)
 			{
@@ -1486,21 +1366,17 @@ public class OgnlRuntime
 
 	}
 
-	public static Method getGetMethod(OgnlContext unused, Class<?> targetClass,
-					String propertyName) throws IntrospectionException,
-					OgnlException
+	public static Method getGetMethod(OgnlContext unused, Class<?> targetClass, String propertyName) throws IntrospectionException, OgnlException
 	{
 		Method result = null;
 
-		List<Method> methods = getDeclaredMethods(targetClass, propertyName,
-						false /* find 'get' methods */);
+		List<Method> methods = getDeclaredMethods(targetClass, propertyName, false /* find 'get' methods */);
 
 		if (methods != null)
 		{
 			for (Method method : methods)
 			{
-				Class<?>[] mParameterTypes = findParameterTypes(targetClass,
-								method); // getParameterTypes(method);
+				Class<?>[] mParameterTypes = findParameterTypes(targetClass, method); // getParameterTypes(method);
 
 				if (mParameterTypes.length == 0)
 				{
@@ -1513,37 +1389,27 @@ public class OgnlRuntime
 		return result;
 	}
 
-	public static boolean isMethodAccessible(OgnlContext context,
-					Object target, Method method, String propertyName)
+	public static boolean isMethodAccessible(OgnlContext context, Object target, Method method, String propertyName)
 	{
-		return (method != null) && context.getMemberAccess().isAccessible(
-						context, target, method, propertyName);
+		return (method != null) && context.getMemberAccess().isAccessible(context, target, method, propertyName);
 	}
 
-	public static boolean hasGetMethod(OgnlContext context, Object target,
-					Class<?> targetClass, String propertyName)
-					throws IntrospectionException, OgnlException
+	public static boolean hasGetMethod(OgnlContext context, Object target, Class<?> targetClass, String propertyName) throws IntrospectionException, OgnlException
 	{
-		return isMethodAccessible(context, target,
-						getGetMethod(context, targetClass, propertyName),
-						propertyName);
+		return isMethodAccessible(context, target, getGetMethod(context, targetClass, propertyName), propertyName);
 	}
 
-	public static Method getSetMethod(OgnlContext context,
-					Class<?> targetClass, String propertyName)
-					throws IntrospectionException, OgnlException
+	public static Method getSetMethod(OgnlContext context, Class<?> targetClass, String propertyName) throws IntrospectionException, OgnlException
 	{
 		Method setMethod = null;
 
-		List<Method> methods = getDeclaredMethods(targetClass, propertyName,
-						true /* find 'set' methods */);
+		List<Method> methods = getDeclaredMethods(targetClass, propertyName, true /* find 'set' methods */);
 
 		if (methods != null)
 		{
 			for (Method method : methods)
 			{
-				Class<?>[] mParameterTypes = findParameterTypes(targetClass,
-								method); // getParameterTypes(method);
+				Class<?>[] mParameterTypes = findParameterTypes(targetClass, method); // getParameterTypes(method);
 
 				if (mParameterTypes.length == 1)
 				{
@@ -1556,33 +1422,25 @@ public class OgnlRuntime
 		return setMethod;
 	}
 
-	public static boolean hasSetMethod(OgnlContext context, Object target,
-					Class<?> targetClass, String propertyName)
-					throws IntrospectionException, OgnlException
+	public static boolean hasSetMethod(OgnlContext context, Object target, Class<?> targetClass, String propertyName) throws IntrospectionException, OgnlException
 	{
-		return isMethodAccessible(context, target,
-						getSetMethod(context, targetClass, propertyName),
-						propertyName);
+		return isMethodAccessible(context, target, getSetMethod(context, targetClass, propertyName), propertyName);
 	}
 
-	public static boolean hasGetProperty(OgnlContext context, Object target,
-					Object oname) throws IntrospectionException, OgnlException
+	public static boolean hasGetProperty(OgnlContext context, Object target, Object oname) throws IntrospectionException, OgnlException
 	{
 		Class<?> targetClass = (target == null) ? null : target.getClass();
 		String name = oname.toString();
 
-		return hasGetMethod(context, target, targetClass, name) || hasField(
-						context, target, targetClass, name);
+		return hasGetMethod(context, target, targetClass, name) || hasField(context, target, targetClass, name);
 	}
 
-	public static boolean hasSetProperty(OgnlContext context, Object target,
-					Object oname) throws IntrospectionException, OgnlException
+	public static boolean hasSetProperty(OgnlContext context, Object target, Object oname) throws IntrospectionException, OgnlException
 	{
 		Class<?> targetClass = (target == null) ? null : target.getClass();
 		String name = oname.toString();
 
-		return hasSetMethod(context, target, targetClass, name) || hasField(
-						context, target, targetClass, name);
+		return hasSetMethod(context, target, targetClass, name) || hasField(context, target, targetClass, name);
 	}
 
 	/**
@@ -1597,9 +1455,7 @@ public class OgnlRuntime
 	 * @throws OgnlException
 	 *             On general errors.
 	 */
-	public static Map<String, PropertyDescriptor> getPropertyDescriptors(
-					Class<?> targetClass) throws IntrospectionException,
-					OgnlException
+	public static Map<String, PropertyDescriptor> getPropertyDescriptors(Class<?> targetClass) throws IntrospectionException, OgnlException
 	{
 		return cache.getPropertyDescriptor(targetClass);
 	}
@@ -1618,21 +1474,16 @@ public class OgnlRuntime
 	 * @throws java.beans.IntrospectionException
 	 * @throws OgnlException
 	 */
-	public static PropertyDescriptor getPropertyDescriptor(
-					Class<?> targetClass, String propertyName)
-					throws IntrospectionException, OgnlException
+	public static PropertyDescriptor getPropertyDescriptor(Class<?> targetClass, String propertyName) throws IntrospectionException, OgnlException
 	{
 		if (targetClass == null) { return null; }
 
 		return getPropertyDescriptors(targetClass).get(propertyName);
 	}
 
-	public static PropertyDescriptor[] getPropertyDescriptorsArray(
-					Class<?> targetClass) throws IntrospectionException,
-					OgnlException
+	public static PropertyDescriptor[] getPropertyDescriptorsArray(Class<?> targetClass) throws IntrospectionException, OgnlException
 	{
-		Collection<PropertyDescriptor> propertyDescriptors = getPropertyDescriptors(
-						targetClass).values();
+		Collection<PropertyDescriptor> propertyDescriptors = getPropertyDescriptors(targetClass).values();
 		return propertyDescriptors.toArray(new PropertyDescriptor[propertyDescriptors.size()]);
 	}
 
@@ -1649,9 +1500,7 @@ public class OgnlRuntime
 	 * @throws java.beans.IntrospectionException
 	 * @throws OgnlException
 	 */
-	public static PropertyDescriptor getPropertyDescriptorFromArray(
-					Class<?> targetClass, String name)
-					throws IntrospectionException, OgnlException
+	public static PropertyDescriptor getPropertyDescriptorFromArray(Class<?> targetClass, String name) throws IntrospectionException, OgnlException
 	{
 		PropertyDescriptor result = null;
 		PropertyDescriptor[] propertyDescriptors = getPropertyDescriptorsArray(targetClass);
@@ -1670,44 +1519,37 @@ public class OgnlRuntime
 		return result;
 	}
 
-	public static void
-					setMethodAccessor(Class<?> clazz, MethodAccessor accessor)
+	public static void setMethodAccessor(Class<?> clazz, MethodAccessor accessor)
 	{
 		cache.setMethodAccessor(clazz, accessor);
 	}
 
-	public static MethodAccessor getMethodAccessor(Class<?> clazz)
-					throws OgnlException
+	public static MethodAccessor getMethodAccessor(Class<?> clazz) throws OgnlException
 	{
 		return cache.getMethodAccessor(clazz);
 	}
 
-	public static void setPropertyAccessor(Class<?> clazz,
-					PropertyAccessor accessor)
+	public static void setPropertyAccessor(Class<?> clazz, PropertyAccessor accessor)
 	{
 		cache.setPropertyAccessor(clazz, accessor);
 	}
 
-	public static PropertyAccessor getPropertyAccessor(Class<?> clazz)
-					throws OgnlException
+	public static PropertyAccessor getPropertyAccessor(Class<?> clazz) throws OgnlException
 	{
 		return cache.getPropertyAccessor(clazz);
 	}
 
-	public static ElementsAccessor getElementsAccessor(Class<?> clazz)
-					throws OgnlException
+	public static ElementsAccessor getElementsAccessor(Class<?> clazz) throws OgnlException
 	{
 		return cache.getElementsAccessor(clazz);
 	}
 
-	public static void setElementsAccessor(Class<?> clazz,
-					ElementsAccessor accessor)
+	public static void setElementsAccessor(Class<?> clazz, ElementsAccessor accessor)
 	{
 		cache.setElementsAccessor(clazz, accessor);
 	}
 
-	public static NullHandler getNullHandler(Class<?> clazz)
-					throws OgnlException
+	public static NullHandler getNullHandler(Class<?> clazz) throws OgnlException
 	{
 		return cache.getNullHandler(clazz);
 	}
@@ -1717,28 +1559,22 @@ public class OgnlRuntime
 		cache.setNullHandler(clazz, handler);
 	}
 
-	public static Object getProperty(OgnlContext context, Object source,
-					Object name) throws OgnlException
+	public static Object getProperty(OgnlContext context, Object source, Object name) throws OgnlException
 	{
 		PropertyAccessor accessor;
 
-		if (source == null) { throw new OgnlException(
-						"source is null for getProperty(null, \"" + name + "\")"); }
-		if ((accessor = getPropertyAccessor(getTargetClass(source))) == null) { throw new OgnlException(
-						"No property accessor for " + getTargetClass(source).getName()); }
+		if (source == null) { throw new OgnlException("source is null for getProperty(null, \"" + name + "\")"); }
+		if ((accessor = getPropertyAccessor(getTargetClass(source))) == null) { throw new OgnlException("No property accessor for " + getTargetClass(source).getName()); }
 
 		return accessor.getProperty(context, source, name);
 	}
 
-	public static void setProperty(OgnlContext context, Object target,
-					Object name, Object value) throws OgnlException
+	public static void setProperty(OgnlContext context, Object target, Object name, Object value) throws OgnlException
 	{
 		PropertyAccessor accessor;
 
-		if (target == null) { throw new OgnlException(
-						"target is null for setProperty(null, \"" + name + "\", " + value + ")"); }
-		if ((accessor = getPropertyAccessor(getTargetClass(target))) == null) { throw new OgnlException(
-						"No property accessor for " + getTargetClass(target).getName()); }
+		if (target == null) { throw new OgnlException("target is null for setProperty(null, \"" + name + "\", " + value + ")"); }
+		if ((accessor = getPropertyAccessor(getTargetClass(target))) == null) { throw new OgnlException("No property accessor for " + getTargetClass(target).getName()); }
 
 		accessor.setProperty(context, target, name, value);
 	}
@@ -1753,15 +1589,13 @@ public class OgnlRuntime
 	 * arbitrary object indexable (returns <code>INDEXED_PROPERTY_OBJECT</code>
 	 * ).
 	 */
-	public static int getIndexedPropertyType(OgnlContext context,
-					Class<?> sourceClass, String name) throws OgnlException
+	public static int getIndexedPropertyType(OgnlContext context, Class<?> sourceClass, String name) throws OgnlException
 	{
 		int result = INDEXED_PROPERTY_NONE;
 
 		try
 		{
-			PropertyDescriptor propertyDescriptor = getPropertyDescriptor(
-							sourceClass, name);
+			PropertyDescriptor propertyDescriptor = getPropertyDescriptor(sourceClass, name);
 			if (propertyDescriptor != null)
 			{
 				if (propertyDescriptor instanceof IndexedPropertyDescriptor)
@@ -1779,22 +1613,19 @@ public class OgnlRuntime
 		}
 		catch (Exception ex)
 		{
-			throw new OgnlException(
-							"problem determining if '" + name + "' is an indexed property",
-							ex);
+			throw new OgnlException("problem determining if '" + name + "' is an indexed property", ex);
 		}
 		return result;
 	}
 
-	public static Object getIndexedProperty(OgnlContext context, Object source,
-					String name, Object index) throws OgnlException
+	public static Object getIndexedProperty(OgnlContext context, Object source, String name, Object index) throws OgnlException
 	{
-		Object[] args = new Object[] { index };
+		Object[] args = new Object[]
+		{ index };
 
 		try
 		{
-			PropertyDescriptor propertyDescriptor = getPropertyDescriptor(
-							(source == null) ? null : source.getClass(), name);
+			PropertyDescriptor propertyDescriptor = getPropertyDescriptor((source == null) ? null : source.getClass(), name);
 			Method method;
 
 			if (propertyDescriptor instanceof IndexedPropertyDescriptor)
@@ -1809,8 +1640,7 @@ public class OgnlRuntime
 				}
 				else
 				{
-					throw new OgnlException(
-									"property '" + name + "' is not an indexed property");
+					throw new OgnlException("property '" + name + "' is not an indexed property");
 				}
 			}
 
@@ -1823,22 +1653,18 @@ public class OgnlRuntime
 		}
 		catch (Exception ex)
 		{
-			throw new OgnlException(
-							"getting indexed property descriptor for '" + name + "'",
-							ex);
+			throw new OgnlException("getting indexed property descriptor for '" + name + "'", ex);
 		}
 	}
 
-	public static void setIndexedProperty(OgnlContext context, Object source,
-					String name, Object index, Object value)
-					throws OgnlException
+	public static void setIndexedProperty(OgnlContext context, Object source, String name, Object index, Object value) throws OgnlException
 	{
-		Object[] args = new Object[] { index, value };
+		Object[] args = new Object[]
+		{ index, value };
 
 		try
 		{
-			PropertyDescriptor propertyDescriptor = getPropertyDescriptor(
-							(source == null) ? null : source.getClass(), name);
+			PropertyDescriptor propertyDescriptor = getPropertyDescriptor((source == null) ? null : source.getClass(), name);
 			Method method;
 
 			if (propertyDescriptor instanceof IndexedPropertyDescriptor)
@@ -1853,8 +1679,7 @@ public class OgnlRuntime
 				}
 				else
 				{
-					throw new OgnlException(
-									"property '" + name + "' is not an indexed property");
+					throw new OgnlException("property '" + name + "' is not an indexed property");
 				}
 			}
 
@@ -1867,9 +1692,7 @@ public class OgnlRuntime
 		}
 		catch (Exception ex)
 		{
-			throw new OgnlException(
-							"getting indexed property descriptor for '" + name + "'",
-							ex);
+			throw new OgnlException("getting indexed property descriptor for '" + name + "'", ex);
 		}
 	}
 
@@ -1888,9 +1711,7 @@ public class OgnlRuntime
 		cache.setClassCacheInspector(inspector);
 	}
 
-	public static Method getMethod(OgnlContext context, Class<?> target,
-					String name, Node[] children, boolean includeStatic)
-					throws Exception
+	public static Method getMethod(OgnlContext context, Class<?> target, String name, Node[] children, boolean includeStatic) throws Exception
 	{
 		Class<?>[] parms;
 		if (children != null && children.length > 0)
@@ -1924,8 +1745,7 @@ public class OgnlRuntime
 			parms = new Class[0];
 		}
 
-		List<Method> methods = OgnlRuntime.getMethods(target, name,
-						includeStatic);
+		List<Method> methods = OgnlRuntime.getMethods(target, name, includeStatic);
 		if (methods == null) { return null; }
 
 		for (Method method : methods)
@@ -1989,8 +1809,7 @@ public class OgnlRuntime
 		return getReadMethod(target, name, -1);
 	}
 
-	public static Method getReadMethod(Class<?> target, String name,
-					int numParms)
+	public static Method getReadMethod(Class<?> target, String name, int numParms)
 	{
 		try
 		{
@@ -2043,8 +1862,7 @@ public class OgnlRuntime
 					continue;
 				}
 
-				if (methodDescriptor.getName().toLowerCase().endsWith(name) && !methodDescriptor.getName().startsWith(
-								"set") && methodDescriptor.getMethod().getReturnType() != Void.TYPE)
+				if (methodDescriptor.getName().toLowerCase().endsWith(name) && !methodDescriptor.getName().startsWith("set") && methodDescriptor.getMethod().getReturnType() != Void.TYPE)
 				{
 
 					if (numParms > 0 && methodDescriptor.getMethod().getParameterTypes().length == numParms)
@@ -2065,8 +1883,7 @@ public class OgnlRuntime
 
 			// try one last time adding a get to beginning
 
-			if (!name.startsWith("get")) { return OgnlRuntime.getReadMethod(
-							target, "get" + name, numParms); }
+			if (!name.startsWith("get")) { return OgnlRuntime.getReadMethod(target, "get" + name, numParms); }
 
 		}
 		catch (Throwable t)
@@ -2082,8 +1899,7 @@ public class OgnlRuntime
 		return getWriteMethod(target, name, -1);
 	}
 
-	public static Method getWriteMethod(Class<?> target, String name,
-					int numParms)
+	public static Method getWriteMethod(Class<?> target, String name, int numParms)
 	{
 		try
 		{
@@ -2099,10 +1915,7 @@ public class OgnlRuntime
 					continue;
 				}
 
-				if ((method.getName().equalsIgnoreCase(name) || method.getName().toLowerCase().equals(
-								name.toLowerCase()) || method.getName().toLowerCase().equals(
-								"set" + name.toLowerCase())) && !method.getName().startsWith(
-								"get"))
+				if ((method.getName().equalsIgnoreCase(name) || method.getName().toLowerCase().equals(name.toLowerCase()) || method.getName().toLowerCase().equals("set" + name.toLowerCase())) && !method.getName().startsWith("get"))
 				{
 
 					if (numParms > 0 && method.getMethod().getParameterTypes().length == numParms)
@@ -2123,10 +1936,7 @@ public class OgnlRuntime
 					continue;
 				}
 
-				if ((cmethod.getName().equalsIgnoreCase(name) || cmethod.getName().toLowerCase().equals(
-								name.toLowerCase()) || cmethod.getName().toLowerCase().equals(
-								"set" + name.toLowerCase())) && !cmethod.getName().startsWith(
-								"get"))
+				if ((cmethod.getName().equalsIgnoreCase(name) || cmethod.getName().toLowerCase().equals(name.toLowerCase()) || cmethod.getName().toLowerCase().equals("set" + name.toLowerCase())) && !cmethod.getName().startsWith("get"))
 				{
 
 					if (numParms > 0 && cmethod.getParameterTypes().length == numParms)
@@ -2139,8 +1949,7 @@ public class OgnlRuntime
 
 			// try one last time adding a set to beginning
 
-			if (!name.startsWith("set")) { return OgnlRuntime.getReadMethod(
-							target, "set" + name, numParms); }
+			if (!name.startsWith("set")) { return OgnlRuntime.getReadMethod(target, "set" + name, numParms); }
 
 		}
 		catch (Throwable t)
@@ -2163,9 +1972,7 @@ public class OgnlRuntime
 			{
 
 				String propertyDescriptorName = propertyDescriptor.getName();
-				if (propertyDescriptorName.equalsIgnoreCase(name) || propertyDescriptorName.toLowerCase().equals(
-								name.toLowerCase()) || propertyDescriptorName.toLowerCase().endsWith(
-								name.toLowerCase())) { return propertyDescriptor; }
+				if (propertyDescriptorName.equalsIgnoreCase(name) || propertyDescriptorName.toLowerCase().equals(name.toLowerCase()) || propertyDescriptorName.toLowerCase().endsWith(name.toLowerCase())) { return propertyDescriptor; }
 			}
 
 		}
@@ -2226,8 +2033,7 @@ public class OgnlRuntime
 	 * @throws OgnlException
 	 *             Mandatory exception throwing catching.. (blehh)
 	 */
-	public static String getChildSource(OgnlContext context, Object target,
-					Node child) throws OgnlException
+	public static String getChildSource(OgnlContext context, Object target, Node child) throws OgnlException
 	{
 		return getChildSource(context, target, child, false);
 	}
@@ -2255,8 +2061,7 @@ public class OgnlRuntime
 	 * @throws OgnlException
 	 *             Mandatory exception throwing catching.. (blehh)
 	 */
-	public static String getChildSource(OgnlContext context, Object target,
-					Node child, boolean forceConversion) throws OgnlException
+	public static String getChildSource(OgnlContext context, Object target, Node child, boolean forceConversion) throws OgnlException
 	{
 		String pre = (String) context.get("_currentChain");
 		if (pre == null)
@@ -2302,8 +2107,7 @@ public class OgnlRuntime
 
 		if (context.getRoot() != null)
 		{
-			source = ExpressionCompiler.getRootExpression(child,
-							context.getRoot(), context) + source;
+			source = ExpressionCompiler.getRootExpression(child, context.getRoot(), context) + source;
 			context.setCurrentAccessor(context.getRoot().getClass());
 		}
 

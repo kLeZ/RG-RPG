@@ -25,14 +25,9 @@ import it.d4nguard.rgrpg.util.dynacast.TypeAdapter;
 
 import java.lang.reflect.Array;
 import java.lang.reflect.Modifier;
+import java.lang.reflect.ParameterizedType;
 import java.lang.reflect.Type;
-import java.util.ArrayList;
-import java.util.Collection;
-import java.util.Collections;
-import java.util.HashSet;
-import java.util.List;
-import java.util.Set;
-import java.util.StringTokenizer;
+import java.util.*;
 
 public class CollectionAdapter<T> extends AbstractAdapter<Collection<T>>
 {
@@ -43,12 +38,11 @@ public class CollectionAdapter<T> extends AbstractAdapter<Collection<T>>
 	@SuppressWarnings("unchecked")
 	public Collection<T> adapt(String value)
 	{
-
 		Collection<T> ret = null;
 		Adapter<T> a = TypeAdapter.getAdapter(type);
 		String str = StringUtils.getBetween(value, '[', ']').getCenter().trim();
 		StringTokenizer st = new StringTokenizer(str, ARRAY_JOINER);
-		Object arr = Array.newInstance(collType, st.countTokens());
+		Object arr = Array.newInstance(type, st.countTokens());
 		for (int i = 0; st.hasMoreTokens(); i++)
 			Array.set(arr, i, a.adapt(st.nextToken().trim()));
 
@@ -78,6 +72,6 @@ public class CollectionAdapter<T> extends AbstractAdapter<Collection<T>>
 	public void beforeCreateAdapter(Type type)
 	{
 		this.collType = (Class<Collection<T>>) GenericsUtils.getClassFromType(type);
-		this.type = (Class<T>) GenericsUtils.getFirstGenericType(GenericsUtils.getClassFromType(type));
+		this.type = (Class<T>) GenericsUtils.getFirstGenericType((ParameterizedType) type);
 	}
 }
