@@ -52,6 +52,7 @@
 		<finalName>${project.artifactId}-${project.version}</finalName>
 		<sourceDirectory>src</sourceDirectory>
 		<testSourceDirectory>tst</testSourceDirectory>
+		<testOutputDirectory>bin</testOutputDirectory>
 		<resources>
 			<resource>
 				<directory>res</directory>
