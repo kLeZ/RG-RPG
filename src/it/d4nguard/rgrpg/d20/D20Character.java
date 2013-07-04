@@ -208,7 +208,7 @@ public class D20Character extends RPGCharacter
 	{
 		Set<Language> langs = new HashSet<Language>();
 		langs.addAll(spokenLanguages);
-		langs.addAll(race.getSpokenLanguages());
+		if (race != null) langs.addAll(race.getSpokenLanguages());
 		for (Class c : classes)
 			langs.addAll(c.getSpokenLanguages());
 		return langs;
@@ -304,24 +304,32 @@ public class D20Character extends RPGCharacter
 	{
 		StringCompiler sc = new StringCompiler();
 		sc.appendln("D20Character [");
-		sc.append("race=").appendln(race);
-		sc.append("alignment=").appendln(alignment);
-		sc.append("abilityScores=").appendln(abilityScores);
-		sc.append("equipment=").appendln(equipment);
-		sc.append("damageReduction=").appendln(damageReduction);
-		sc.append("classes=").appendln(classes);
-		sc.append("resistanceToEnergies=").appendln(resistanceToEnergies);
-		sc.append("spokenLanguages=").appendln(spokenLanguages);
-		sc.append("skills=").appendln(skills);
-		sc.append("feats=").appendln(feats);
-		sc.append("hpModifiers=").appendln(hpModifiers);
-		sc.append("babModifiers=").appendln(babModifiers);
-		sc.append("acModifiers=").appendln(acModifiers);
-		sc.append("stModifiers=").appendln(stModifiers);
-		sc.append("dodgeBonuses=").appendln(dodgeBonuses);
-		sc.append("experience=").appendln(experience);
-		sc.append("damage=").appendln(damage);
-		sc.append("deflection=").appendln(deflection);
+		try
+		{
+			sc.appendln(super.getClass(), this, "info");
+			sc.appendln(getClass(), this, "race");
+			sc.appendln(getClass(), this, "alignment");
+			sc.appendln(getClass(), this, "abilityScores");
+			sc.appendln(getClass(), this, "equipment");
+			sc.appendln(getClass(), this, "damageReduction");
+			sc.appendln(getClass(), this, "classes");
+			sc.appendln(getClass(), this, "resistanceToEnergies");
+			sc.appendln(getClass(), this, "spokenLanguages");
+			sc.appendln(getClass(), this, "skills");
+			sc.appendln(getClass(), this, "feats");
+			sc.appendln(getClass(), this, "hpModifiers");
+			sc.appendln(getClass(), this, "babModifiers");
+			sc.appendln(getClass(), this, "acModifiers");
+			sc.appendln(getClass(), this, "stModifiers");
+			sc.appendln(getClass(), this, "dodgeBonuses");
+			sc.appendln(getClass(), this, "experience");
+			sc.appendln(getClass(), this, "damage");
+			sc.appendln(getClass(), this, "deflection");
+		}
+		catch (RuntimeException e)
+		{
+			e.printStackTrace();
+		}
 		sc.append("]");
 		return sc.toString();
 	}

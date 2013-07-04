@@ -18,7 +18,14 @@
 // 
 package it.d4nguard.rgrpg.util;
 
-import java.lang.reflect.*;
+import java.lang.reflect.Array;
+import java.lang.reflect.Field;
+import java.lang.reflect.GenericArrayType;
+import java.lang.reflect.InvocationTargetException;
+import java.lang.reflect.ParameterizedType;
+import java.lang.reflect.Type;
+import java.lang.reflect.TypeVariable;
+import java.lang.reflect.WildcardType;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
@@ -44,13 +51,15 @@ public class GenericsUtils
 		return unsafeValueOf(valueType, value, null);
 	}
 
-	public static <T> T valueOf(final Class<T> valueType, final String value, final Object defaultValue)
+	public static <T> T valueOf(final Class<T> valueType, final String value,
+					final Object defaultValue)
 	{
 		return unsafeValueOf(valueType, value, defaultValue);
 	}
 
 	@SuppressWarnings("unchecked")
-	private static <T> T unsafeValueOf(final Class<T> valueType, final String value, final Object defaultValue)
+	private static <T> T unsafeValueOf(final Class<T> valueType,
+					final String value, final Object defaultValue)
 	{
 		T ret = null;
 		if (valueType.isInstance(value)) ret = (T) value;
@@ -58,7 +67,8 @@ public class GenericsUtils
 		{
 			// Character has only valueOf(char)
 			// All primitives have valueOf(String) except Character
-			ret = (T) valueType.getMethod("valueOf", String.class).invoke(null, value);
+			ret = (T) valueType.getMethod("valueOf", String.class).invoke(null,
+							value);
 		}
 		catch (final IllegalAccessException e)
 		{
@@ -100,7 +110,8 @@ public class GenericsUtils
 		return type.isPrimitive() || primitives.containsValue(type);
 	}
 
-	public static Class<?> getFieldType(final Class<?> fieldContainer, final String fieldName)
+	public static Class<?> getFieldType(final Class<?> fieldContainer,
+					final String fieldName)
 	{
 		Class<?> t = null;
 		final Field[] fields = fieldContainer.getDeclaredFields();
@@ -150,7 +161,8 @@ public class GenericsUtils
 		{
 			final Type componentType = ((GenericArrayType) type).getGenericComponentType();
 			final Class<?> componentClass = getClass(componentType);
-			if (componentClass != null) return Array.newInstance(componentClass, 0).getClass();
+			if (componentClass != null) return Array.newInstance(
+							componentClass, 0).getClass();
 			else return null;
 		}
 		else return null;
@@ -166,7 +178,8 @@ public class GenericsUtils
 	 *            the child class
 	 * @return a list of the raw classes for the actual type arguments.
 	 */
-	public static <T> List<Class<?>> getTypeArguments(final Class<T> baseClass, final Class<? extends T> childClass)
+	public static <T> List<Class<?>> getTypeArguments(final Class<T> baseClass,
+					final Class<? extends T> childClass)
 	{
 		final Map<Type, Type> resolvedTypes = new HashMap<Type, Type>();
 		Type type = childClass;
@@ -251,7 +264,11 @@ public class GenericsUtils
 		}
 		catch (NoSuchFieldException | SecurityException e)
 		{
-			f = null;
+			if (clazz.getSuperclass() != null)
+			{
+				f = safeGetDeclaredField(clazz.getSuperclass(), fieldName);
+			}
+			else f = null;
 		}
 		return f;
 	}

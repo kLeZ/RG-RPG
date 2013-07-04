@@ -27,8 +27,8 @@ public abstract class RPGCharacter implements Serializable
 {
 	private static final long serialVersionUID = 5045353718327076827L;
 
-	private final Player owner;
-	private final GeneralInfo info;
+	protected final Player owner;
+	protected final GeneralInfo info;
 
 	public RPGCharacter(Player owner, GeneralInfo info)
 	{

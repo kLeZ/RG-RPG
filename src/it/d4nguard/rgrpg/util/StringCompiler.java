@@ -18,9 +18,13 @@
 // 
 package it.d4nguard.rgrpg.util;
 
+import it.d4nguard.rgrpg.util.dynacast.DynaManipulator;
+import it.d4nguard.rgrpg.util.dynacast.DynaManipulatorException;
+
 import java.io.Reader;
 import java.io.Serializable;
 import java.io.Writer;
+import java.lang.reflect.Field;
 import java.util.Arrays;
 import java.util.Iterator;
 import java.util.List;
@@ -713,6 +717,31 @@ public class StringCompiler implements CharSequence, Appendable, Serializable
 		return this;
 	}
 
+	public StringCompiler
+					append(Class<?> clazz, Object value, String fieldName)
+	{
+		preliminars();
+		Field field = GenericsUtils.safeGetDeclaredField(clazz, fieldName);
+		if (field != null)
+		{
+			append(field.getName()).append("=");
+			if (field.getType().isArray() || Iterable.class.isAssignableFrom(clazz))
+			{
+				fill(field.getName().length() + 1, ' ');
+			}
+			try
+			{
+				append(DynaManipulator.getValue(fieldName, value));
+			}
+			catch (DynaManipulatorException e)
+			{
+				append("null");
+			}
+		}
+		else append(fieldName).append("=null");
+		return this;
+	}
+
 	/**
 	 * Appends each item in a iterable to the builder without any separators.
 	 * Appending a null iterable will have no effect.
@@ -1142,6 +1171,11 @@ public class StringCompiler implements CharSequence, Appendable, Serializable
 					int length)
 	{
 		return append(str, startIndex, length).appendNewLine();
+	}
+
+	public StringCompiler appendln(Class<?> clazz, Object value, String field)
+	{
+		return append(clazz, value, field).appendNewLine();
 	}
 
 	//-----------------------------------------------------------------------
