@@ -27,7 +27,7 @@ import java.io.InputStreamReader;
 public class PromptFeeder
 {
 	public static final String PROMPT_ENV = "RGRPG_PROMPT";
-	public static final String PROMPT_DEFAULT = "\\u@\\h:\\w> ";
+	public static final String PROMPT_DEFAULT = "\\s@\\p> ";
 
 	private final String prompt;
 
@@ -103,6 +103,22 @@ public class PromptFeeder
 						break;
 					case 'n':
 						ret.append('\n');
+						break;
+					case 'p':
+						String player = "No-player-selected";
+						if (Context.hasCurrentPlayer())
+						{
+							player = Context.getCurrentPlayer().getName();
+						}
+						ret.append('[').append(player).append(']');
+						break;
+					case 's':
+						String character = "No-character-selected";
+						if (Context.hasCurrentCharacter())
+						{
+							character = Context.getCurrentCharacter().getInfo().getName();
+						}
+						ret.append('[').append(character).append(']');
 						break;
 					default:
 						ret.append(token);

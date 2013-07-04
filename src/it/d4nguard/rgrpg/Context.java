@@ -194,6 +194,11 @@ public class Context
 		Singleton.Current.setCurrent(current);
 	}
 
+	public static boolean hasCurrentPlayer()
+	{
+		return Singleton.Current.getCurrent() != null;
+	}
+
 	public static String getString(String name)
 	{
 		return Singleton.Current.getBundle(STRINGS).getString(name);
@@ -217,13 +222,22 @@ public class Context
 	public static RPGCharacter getCurrentCharacter()
 	{
 		RPGCharacter ret = null;
-		Iterator<Entry<RPGCharacter, CharacterInfo>> it = Context.getCurrentPlayer().getCharacters().entrySet().iterator();
-		while (it.hasNext() && ret == null)
+		if (hasCurrentPlayer())
 		{
-			Entry<RPGCharacter, CharacterInfo> e = it.next();
-			if (e.getValue().isCurrent()) ret = e.getKey();
+			Iterator<Entry<RPGCharacter, CharacterInfo>> it;
+			it = Context.getCurrentPlayer().getCharacters().entrySet().iterator();
+			while (it.hasNext() && ret == null)
+			{
+				Entry<RPGCharacter, CharacterInfo> e = it.next();
+				if (e.getValue().isCurrent()) ret = e.getKey();
+			}
 		}
 		return ret;
+	}
+
+	public static boolean hasCurrentCharacter()
+	{
+		return getCurrentCharacter() != null;
 	}
 
 	public static void wipe()

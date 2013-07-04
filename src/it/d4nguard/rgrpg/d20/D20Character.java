@@ -28,6 +28,7 @@ import it.d4nguard.rgrpg.profile.GeneralInfo;
 import it.d4nguard.rgrpg.profile.Player;
 import it.d4nguard.rgrpg.profile.RPGCharacter;
 import it.d4nguard.rgrpg.util.NumericUtils;
+import it.d4nguard.rgrpg.util.StringCompiler;
 
 import java.util.ArrayList;
 import java.util.HashSet;
@@ -296,5 +297,32 @@ public class D20Character extends RPGCharacter
 				break;
 		}
 		return NumericUtils.sum(save, stModifiers);
+	}
+
+	@Override
+	public String toString()
+	{
+		StringCompiler sc = new StringCompiler();
+		sc.appendln("D20Character [");
+		sc.append("race=").appendln(race);
+		sc.append("alignment=").appendln(alignment);
+		sc.append("abilityScores=").appendln(abilityScores);
+		sc.append("equipment=").appendln(equipment);
+		sc.append("damageReduction=").appendln(damageReduction);
+		sc.append("classes=").appendln(classes);
+		sc.append("resistanceToEnergies=").appendln(resistanceToEnergies);
+		sc.append("spokenLanguages=").appendln(spokenLanguages);
+		sc.append("skills=").appendln(skills);
+		sc.append("feats=").appendln(feats);
+		sc.append("hpModifiers=").appendln(hpModifiers);
+		sc.append("babModifiers=").appendln(babModifiers);
+		sc.append("acModifiers=").appendln(acModifiers);
+		sc.append("stModifiers=").appendln(stModifiers);
+		sc.append("dodgeBonuses=").appendln(dodgeBonuses);
+		sc.append("experience=").appendln(experience);
+		sc.append("damage=").appendln(damage);
+		sc.append("deflection=").appendln(deflection);
+		sc.append("]");
+		return sc.toString();
 	}
 }
