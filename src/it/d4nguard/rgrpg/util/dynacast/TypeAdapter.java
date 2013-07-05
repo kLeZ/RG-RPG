@@ -38,9 +38,11 @@ public class TypeAdapter
 	 *            is the type you want to adapt to.
 	 * @return An adapter class that can adapt a string to the recalled object.
 	 */
-	@SuppressWarnings({ "rawtypes", "unchecked" })
+	@SuppressWarnings(
+	{ "rawtypes", "unchecked" })
 	public static <T> Adapter<T> getAdapter(Type type)
 	{
+		assert type != null;
 		Strategy strategy = StrategyFactory.getStrategy(type);
 		Type applied = strategy.apply(type);
 		AdapterFactory factory = AdapterFactoryMap.current().get(applied);

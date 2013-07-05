@@ -41,7 +41,7 @@ public class PrimitiveStrategy extends AbstractStrategy
 	@Override
 	public boolean isMine(Type type)
 	{
-		return GenericsUtils.getClassFromType(type).isPrimitive();
+		return (type instanceof Class ? ((Class<?>) type).isPrimitive() : false);
 	}
 
 	@Override
