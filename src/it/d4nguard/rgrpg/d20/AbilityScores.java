@@ -20,6 +20,7 @@ package it.d4nguard.rgrpg.d20;
 
 import it.d4nguard.rgrpg.Context;
 import it.d4nguard.rgrpg.d20.AbilityScore.UnmodifiableAbilityScore;
+import it.d4nguard.rgrpg.util.StringCompiler;
 
 import java.io.Serializable;
 import java.util.HashMap;
@@ -115,9 +116,19 @@ public class AbilityScores implements Serializable
 		scores.get(CHARISMA).setValue(charisma);
 	}
 
+	@Override
+	public String toString()
+	{
+		StringCompiler sc = new StringCompiler();
+		sc.appendln("AbilityScores [");
+		sc.appendln(scores.values());
+		sc.append("]");
+		return sc.toString();
+	}
+
 	public AbilityScore getAbilityScore(String name)
 	{
-		return AbilityScores.unmodifiableAbilityScore(scores.get(name));
+		return unmodifiableAbilityScore(scores.get(name));
 	}
 
 	public static AbilityScore unmodifiableAbilityScore(AbilityScore as)

@@ -22,6 +22,7 @@ import it.d4nguard.rgrpg.d20.items.Armor;
 import it.d4nguard.rgrpg.d20.items.Item;
 import it.d4nguard.rgrpg.d20.items.Shield;
 import it.d4nguard.rgrpg.d20.items.weapons.Weapon;
+import it.d4nguard.rgrpg.util.StringUtils;
 
 import java.io.Serializable;
 import java.util.ArrayList;
@@ -81,5 +82,11 @@ public class Equipment implements Serializable
 	public Wallet getWallet()
 	{
 		return wallet;
+	}
+
+	@Override
+	public String toString()
+	{
+		return StringUtils.genericToString(getClass(), this);
 	}
 }

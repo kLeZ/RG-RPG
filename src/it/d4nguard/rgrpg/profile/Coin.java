@@ -18,6 +18,8 @@
 // 
 package it.d4nguard.rgrpg.profile;
 
+import it.d4nguard.rgrpg.util.StringUtils;
+
 import java.io.Serializable;
 
 public class Coin implements Serializable
@@ -56,5 +58,11 @@ public class Coin implements Serializable
 	public static double convert(Coin coin, CoinType type)
 	{
 		return coin.getAmount() * coin.getType().getUnity(type);
+	}
+
+	@Override
+	public String toString()
+	{
+		return StringUtils.genericToString(getClass(), this);
 	}
 }

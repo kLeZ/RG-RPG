@@ -19,7 +19,7 @@
 package it.d4nguard.rgrpg.d20;
 
 import it.d4nguard.rgrpg.Context;
-import it.d4nguard.rgrpg.util.StringCompiler;
+import it.d4nguard.rgrpg.util.StringUtils;
 
 import java.io.Serializable;
 
@@ -63,11 +63,6 @@ public class Language implements Serializable
 	@Override
 	public String toString()
 	{
-		StringCompiler sc = new StringCompiler();
-		sc.appendln("Language [");
-		sc.append("name=").appendln(name);
-		sc.append("alphabet=").appendln(alphabet);
-		sc.append("]");
-		return sc.toString();
+		return StringUtils.genericToString(getClass(), this);
 	}
 }

@@ -19,7 +19,7 @@
 package it.d4nguard.rgrpg.d20;
 
 import it.d4nguard.rgrpg.d20.types.DamageReductionType;
-import it.d4nguard.rgrpg.util.StringCompiler;
+import it.d4nguard.rgrpg.util.StringUtils;
 
 import java.io.Serializable;
 
@@ -53,11 +53,6 @@ public class DamageReduction implements Serializable
 	@Override
 	public String toString()
 	{
-		StringCompiler sc = new StringCompiler();
-		sc.appendln("DamageReduction [");
-		sc.appendln(getClass(), this, "type");
-		sc.appendln(getClass(), this, "points");
-		sc.append("]");
-		return sc.toString();
+		return StringUtils.genericToString(getClass(), this);
 	}
 }

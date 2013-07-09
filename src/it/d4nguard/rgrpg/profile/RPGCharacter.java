@@ -20,6 +20,7 @@ package it.d4nguard.rgrpg.profile;
 
 import it.d4nguard.rgrpg.Context;
 import it.d4nguard.rgrpg.d20.D20Character;
+import it.d4nguard.rgrpg.util.StringUtils;
 
 import java.io.Serializable;
 
@@ -63,11 +64,8 @@ public abstract class RPGCharacter implements Serializable
 	@Override
 	public String toString()
 	{
-		StringBuilder builder = new StringBuilder();
-		builder.append("RPGCharacter [info=");
-		builder.append(info);
-		builder.append("]");
-		return builder.toString();
+		return StringUtils.genericToString(getClass(), this,
+						"serialVersionUID", "owner");
 	}
 
 	public static RPGCharacter build(String name, Object... args)

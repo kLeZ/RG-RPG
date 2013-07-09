@@ -18,6 +18,8 @@
 // 
 package it.d4nguard.rgrpg.profile;
 
+import it.d4nguard.rgrpg.util.StringUtils;
+
 import java.io.Serializable;
 
 import org.joda.time.DateTime;
@@ -102,5 +104,11 @@ public class CharacterInfo implements Serializable
 	public void setCurrent(boolean current)
 	{
 		this.current = current;
+	}
+
+	@Override
+	public String toString()
+	{
+		return StringUtils.genericToString(getClass(), this);
 	}
 }

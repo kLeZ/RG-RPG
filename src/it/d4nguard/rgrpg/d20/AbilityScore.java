@@ -72,6 +72,12 @@ public class AbilityScore implements Serializable
 		return (int) Math.round(Math.floor(((float) (value - MID_RANGE)) / 2.0F));
 	}
 
+	@Override
+	public String toString()
+	{
+		return String.format("%s: %d(%+d)", name, value, getModifier(value));
+	}
+
 	public static class UnmodifiableAbilityScore extends AbilityScore
 	{
 		private static final long serialVersionUID = 8740668067478743803L;

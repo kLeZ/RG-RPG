@@ -28,7 +28,7 @@ import it.d4nguard.rgrpg.profile.GeneralInfo;
 import it.d4nguard.rgrpg.profile.Player;
 import it.d4nguard.rgrpg.profile.RPGCharacter;
 import it.d4nguard.rgrpg.util.NumericUtils;
-import it.d4nguard.rgrpg.util.StringCompiler;
+import it.d4nguard.rgrpg.util.StringUtils;
 
 import java.util.ArrayList;
 import java.util.HashSet;
@@ -302,35 +302,7 @@ public class D20Character extends RPGCharacter
 	@Override
 	public String toString()
 	{
-		StringCompiler sc = new StringCompiler();
-		sc.appendln("D20Character [");
-		try
-		{
-			sc.appendln(super.getClass(), this, "info");
-			sc.appendln(getClass(), this, "race");
-			sc.appendln(getClass(), this, "alignment");
-			sc.appendln(getClass(), this, "abilityScores");
-			sc.appendln(getClass(), this, "equipment");
-			sc.appendln(getClass(), this, "damageReduction");
-			sc.appendln(getClass(), this, "classes");
-			sc.appendln(getClass(), this, "resistanceToEnergies");
-			sc.appendln(getClass(), this, "spokenLanguages");
-			sc.appendln(getClass(), this, "skills");
-			sc.appendln(getClass(), this, "feats");
-			sc.appendln(getClass(), this, "hpModifiers");
-			sc.appendln(getClass(), this, "babModifiers");
-			sc.appendln(getClass(), this, "acModifiers");
-			sc.appendln(getClass(), this, "stModifiers");
-			sc.appendln(getClass(), this, "dodgeBonuses");
-			sc.appendln(getClass(), this, "experience");
-			sc.appendln(getClass(), this, "damage");
-			sc.appendln(getClass(), this, "deflection");
-		}
-		catch (RuntimeException e)
-		{
-			e.printStackTrace();
-		}
-		sc.append("]");
-		return sc.toString();
+		return StringUtils.genericToString(getClass(), this,
+						"serialVersionUID", "owner", "\\$SWITCH_TABLE\\$.*");
 	}
 }

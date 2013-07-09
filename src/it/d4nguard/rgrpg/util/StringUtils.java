@@ -375,7 +375,7 @@ public class StringUtils
 		}
 		// int length = sc.length();
 		sc.append(" %s", field.getName());
-		// FIXME: We're not ready to do a full print of an Object structure
+		// FIX: We're not ready to do a full print of an Object structure
 		// for (Class<?> c : toPrint.keySet())
 		// {
 		// 	sc.appendln(prettyPrint(c, length, ' '));
@@ -433,5 +433,55 @@ public class StringUtils
 		ret.setRight(s.substring(end == s.length() ? end : end + 1));
 
 		return ret;
+	}
+
+	public static boolean multiMatchAll(String against, String... patterns)
+	{
+		boolean ret = true;
+		List<String> regexes = Arrays.asList(patterns);
+		for (String regex : regexes)
+			ret &= against.matches(regex);
+		return ret;
+	}
+
+	public static boolean multiMatchAny(String against, String... patterns)
+	{
+		boolean ret = false;
+		List<String> regexes = Arrays.asList(patterns);
+		for (String regex : regexes)
+			ret |= against.matches(regex);
+		return ret;
+	}
+
+	public static String genericToString(Class<?> c, Object o)
+	{
+		return genericToString(c, o, "serialVersionUID");
+	}
+
+	public static String genericToString(Class<?> c, Object o,
+					String... excluded)
+	{
+		return genericToString(c, o, 0, StringCompiler.NUL, true, excluded);
+	}
+
+	public static String genericToString(Class<?> c, Object o, int length,
+					char filler, boolean recurseSuper, String... excluded)
+	{
+		if (c.equals(Object.class)) return "";
+		StringCompiler sc = new StringCompiler(length, filler);
+		sc.append(c.getSimpleName()).appendln("[");
+		if (recurseSuper)
+		{
+			String s = genericToString(c.getSuperclass(), o, length, filler,
+							recurseSuper, excluded);
+			if (!isNullOrWhitespace(s)) sc.appendln(s);
+		}
+		for (Field f : c.getDeclaredFields())
+			if (!multiMatchAny(f.getName(), excluded))
+			{
+				sc.fill().appendln(c, o, f.getName());
+			}
+		sc.append("]");
+		return sc.toString();
 	}
 }
