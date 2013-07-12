@@ -23,15 +23,22 @@ import it.d4nguard.rgrpg.util.StringUtils;
 public class Chapter
 {
 	private final Story parent;
+	private final Place place;
 
-	public Chapter(Story parent)
+	public Chapter(Story parent, Place place)
 	{
 		this.parent = parent;
+		this.place = place;
 	}
 
 	public Story getParent()
 	{
 		return parent;
+	}
+
+	public Place getPlace()
+	{
+		return place;
 	}
 
 	@Override

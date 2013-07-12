@@ -18,7 +18,55 @@
 // 
 package it.d4nguard.rgrpg.storyboard;
 
-public class World
-{
+import it.d4nguard.rgrpg.profile.RPGCharacter;
+import it.d4nguard.rgrpg.util.StringUtils;
 
+import java.util.HashSet;
+import java.util.Set;
+import java.util.TreeSet;
+
+public class Place
+{
+	private final TreeSet<Place> places;
+	private final Set<RPGCharacter> npcs;
+	private final Set<Event<?>> events;
+	private String description;
+
+	public Place()
+	{
+		places = new TreeSet<>();
+		npcs = new HashSet<>();
+		events = new HashSet<>();
+	}
+
+	public String getDescription()
+	{
+		return description;
+	}
+
+	public void setDescription(String description)
+	{
+		this.description = description;
+	}
+
+	public Set<RPGCharacter> getNpcs()
+	{
+		return npcs;
+	}
+
+	public Set<Event<?>> getEvents()
+	{
+		return events;
+	}
+
+	public TreeSet<Place> getPlaces()
+	{
+		return places;
+	}
+
+	@Override
+	public String toString()
+	{
+		return StringUtils.genericToString(getClass(), this);
+	}
 }

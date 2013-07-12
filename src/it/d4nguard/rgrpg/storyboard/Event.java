@@ -18,33 +18,38 @@
 // 
 package it.d4nguard.rgrpg.storyboard;
 
+import it.d4nguard.rgrpg.profile.RPGCharacter;
 import it.d4nguard.rgrpg.util.StringUtils;
 
-import java.io.Serializable;
 import java.util.HashSet;
 import java.util.Set;
 
-public class Story implements Serializable
+public abstract class Event<T>
 {
-	private static final long serialVersionUID = 7740473809178561351L;
+	private String description;
+	private final Set<RPGCharacter> npcs;
 
-	private final Place world;
-	private final Set<Chapter> chapters;
-
-	public Story(Place world)
+	public Event()
 	{
-		this.world = world;
-		chapters = new HashSet<Chapter>();
+		npcs = new HashSet<>();
 	}
 
-	public Place getWorld()
+	@SuppressWarnings("unchecked")
+	public abstract String doEvent(RPGCharacter human, T... variables);
+
+	public String getDescription()
 	{
-		return world;
+		return description;
 	}
 
-	public Set<Chapter> getChapters()
+	public void setDescription(String description)
 	{
-		return chapters;
+		this.description = description;
+	}
+
+	public Set<RPGCharacter> getNpcs()
+	{
+		return npcs;
 	}
 
 	@Override
