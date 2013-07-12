@@ -21,8 +21,17 @@ package it.d4nguard.rgrpg.util.dynacast.strategies;
 import java.lang.reflect.Type;
 import java.util.Collection;
 
+/**
+ * This class implements a {@link SimpleStrategy} for {@link Collection}s.<br>
+ * The {@link #getMine(Type)} method returns {@link Collection}.class
+ * 
+ * @author kLeZ-hAcK
+ */
 public class CollectionStrategy extends SimpleStrategy
 {
+	/**
+	 * {@inheritDoc}
+	 */
 	@Override
 	public Class<?> getMine(Type type)
 	{

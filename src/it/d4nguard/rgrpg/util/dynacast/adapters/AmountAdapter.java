@@ -20,8 +20,17 @@ package it.d4nguard.rgrpg.util.dynacast.adapters;
 
 import org.jscience.physics.amount.Amount;
 
+/**
+ * Implements a {@link SimpleAdapter} of {@link Amount}, a type of the jscience
+ * project.
+ * 
+ * @author kLeZ-hAcK
+ */
 public class AmountAdapter extends SimpleAdapter<Amount<?>>
 {
+	/**
+	 * {@inheritDoc}
+	 */
 	@Override
 	public Amount<?> adapt(String value)
 	{

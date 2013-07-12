@@ -26,8 +26,35 @@ import java.lang.reflect.Type;
 import java.util.Iterator;
 import java.util.Set;
 
+import org.reflections.Reflections;
+
+/**
+ * This is the factory class for {@link Strategy} objects. It retrieves the
+ * right {@link Strategy} for the given type.
+ * 
+ * @author kLeZ-hAcK
+ */
 public class StrategyFactory
 {
+	/**
+	 * This method gets the correct {@link Strategy} by searching the given type
+	 * in a {@link Set} of {@link Strategy} sub types returned by
+	 * {@link Reflections}.
+	 * 
+	 * @param type
+	 *            The type of which a {@link Strategy} must be returned.
+	 * @return A {@link Strategy} that can apply to the given type or a dummy
+	 *         Strategy hard coded as:<br>
+	 *         <code>new Strategy() // The dummy one<br>
+	 *         {<br>
+	 *         &nbsp;&nbsp;{@literal @Override}<br>
+	 *         &nbsp;&nbsp;public boolean isMine(Type type) { return false; }<br>
+	 *         &nbsp;&nbsp;{@literal @Override}<br>
+	 *         &nbsp;&nbsp;public Type apply(Type type) { return type; }<br>
+	 *         &nbsp;&nbsp;{@literal @Override}<br>
+	 *         &nbsp;&nbsp;public Class<?> getMine(Type type) { return Object.class; }<br>
+	 *         };</code>
+	 */
 	public static Strategy getStrategy(final Type type)
 	{
 		Strategy ret = null;
@@ -56,18 +83,27 @@ public class StrategyFactory
 		}
 		else return new Strategy() // The dummy one
 		{
+			/**
+			 * {@inheritDoc}
+			 */
 			@Override
 			public boolean isMine(Type type)
 			{
 				return false;
 			}
 
+			/**
+			 * {@inheritDoc}
+			 */
 			@Override
 			public Type apply(Type type)
 			{
 				return type;
 			}
 
+			/**
+			 * {@inheritDoc}
+			 */
 			@Override
 			public Class<?> getMine(Type type)
 			{

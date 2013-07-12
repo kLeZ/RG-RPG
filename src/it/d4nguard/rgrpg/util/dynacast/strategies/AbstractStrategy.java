@@ -22,8 +22,22 @@ import it.d4nguard.rgrpg.util.dynacast.Strategy;
 
 import java.lang.reflect.Type;
 
+/**
+ * This abstract class implements a {@link Strategy} in which the only
+ * implemented method is {@link Strategy#apply(Type)}.<br>
+ * The underlying logic is:<br>
+ * <code>
+ * if (isMine(type)) return getMine(type);<br>
+ * else return type;
+ * </code>
+ * 
+ * @author kLeZ-hAcK
+ */
 public abstract class AbstractStrategy implements Strategy
 {
+	/**
+	 * {@inheritDoc}
+	 */
 	@Override
 	public Type apply(Type type)
 	{

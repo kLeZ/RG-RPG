@@ -18,10 +18,25 @@
 // 
 package it.d4nguard.rgrpg.util.dynacast.adapters;
 
+import it.d4nguard.rgrpg.util.dynacast.Adapter;
+
 import java.lang.reflect.Type;
 
+/**
+ * This abstract class implements an {@link AbstractAdapter} providing an empty
+ * {@link AbstractAdapter#beforeCreateAdapter(Type)} method for those classes
+ * who don't need it.
+ * This class has reason to be only because it helps to keep the code simpler.
+ * 
+ * @author kLeZ-hAcK
+ * @param <T>
+ *            The type of the implementing {@link Adapter}
+ */
 public abstract class SimpleAdapter<T> extends AbstractAdapter<T>
 {
+	/**
+	 * {@inheritDoc}
+	 */
 	@Override
 	public void beforeCreateAdapter(Type type)
 	{

@@ -24,8 +24,17 @@ import java.util.Map;
 
 import org.apache.commons.ognl.TypeConverter;
 
+/**
+ * An implementation of the {@link TypeConverter} class that implements dynacast
+ * logic.
+ * 
+ * @author kLeZ-hAcK
+ */
 public class AdapterTypeConverter implements TypeConverter
 {
+	/**
+	 * {@inheritDoc}
+	 */
 	public <T> T convertValue(Map<String, Object> context, Object target,
 					Member member, String propertyName, Object value,
 					Class<T> toType)

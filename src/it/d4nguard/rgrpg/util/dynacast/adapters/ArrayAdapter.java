@@ -31,11 +31,26 @@ import java.util.HashMap;
 import java.util.Map;
 import java.util.StringTokenizer;
 
+/**
+ * Implements an {@link Adapter} and a {@link Provider} of
+ * {@link AdapterFactory} for Arrays conversion.<br>
+ * A string representation of an array, to be understood by this adapter class,
+ * must be in the form of:<br>
+ * <code>[element1|element2|...|elementN]</code><br>
+ * The separator is defined in the {@link Adapter#ARRAY_JOINER} constant.
+ * 
+ * @author kLeZ-hAcK
+ * @param <T>
+ *            The component type of the array to adapt.
+ */
 public class ArrayAdapter<T> implements Adapter<T>, Provider<AdapterFactory<?>>
 {
 	private final ArrayAdapter<T> myself = this;
 	private Type adaptedType;
 
+	/**
+	 * {@inheritDoc}
+	 */
 	@Override
 	@SuppressWarnings("unchecked")
 	public T adapt(String value)
@@ -49,6 +64,9 @@ public class ArrayAdapter<T> implements Adapter<T>, Provider<AdapterFactory<?>>
 		return (T) ret;
 	}
 
+	/**
+	 * {@inheritDoc}
+	 */
 	@Override
 	@SuppressWarnings("unchecked")
 	public Map<Class<?>, AdapterFactory<?>> get()
@@ -67,6 +85,9 @@ public class ArrayAdapter<T> implements Adapter<T>, Provider<AdapterFactory<?>>
 		return ret;
 	}
 
+	/**
+	 * {@inheritDoc}
+	 */
 	@Override
 	public Type getType()
 	{

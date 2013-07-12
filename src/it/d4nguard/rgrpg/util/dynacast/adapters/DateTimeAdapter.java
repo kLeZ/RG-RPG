@@ -32,8 +32,34 @@ import org.joda.time.format.DateTimeFormat;
 import org.joda.time.format.DateTimeFormatter;
 import org.joda.time.format.ISODateTimeFormat;
 
+/**
+ * Implements a {@link SimpleAdapter} of {@link ReadableInstant}, an interface
+ * of the joda.time project.<br>
+ * Currently it converts:<br>
+ * <ul>
+ * <li>{@link DateTime}</li>
+ * <li>{@link DateMidnight}</li>
+ * <li>{@link Instant}</li>
+ * <li>{@link MutableDateTime}</li>
+ * </ul>
+ * The value must be a string formatted according to
+ * {@link ISODateTimeFormat#localDateOptionalTimeParser()}.<br>
+ * <br>
+ * Optionally in the value you can specify a pattern of date and/or time in
+ * order to pass a custom formatted value.<br>
+ * Passing a pattern for date and/or time can be done by appending to the value
+ * the string below:<br>
+ * <b>{some custom formatted date}[{the pattern of your choice according to</b>
+ * {@link DateTimeFormat#forPattern(String)}<b>]</b><br>
+ * That is: the value, opened square, the pattern, closed square, no spaces.
+ * 
+ * @author kLeZ-hAcK
+ */
 public class DateTimeAdapter extends SimpleAdapter<ReadableInstant>
 {
+	/**
+	 * {@inheritDoc}
+	 */
 	@Override
 	public ReadableInstant adapt(String value)
 	{

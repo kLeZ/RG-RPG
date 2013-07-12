@@ -23,6 +23,14 @@ import it.d4nguard.rgrpg.util.GenericsUtils;
 import java.lang.reflect.Type;
 import java.util.HashMap;
 
+/**
+ * This class implements an {@link AbstractStrategy} that applies to
+ * primitive types.<br>
+ * The {@link #getMine(Type)} method returns a wrapper object of the given
+ * primitive type.
+ * 
+ * @author kLeZ-hAcK
+ */
 public class PrimitiveStrategy extends AbstractStrategy
 {
 	private static final HashMap<String, Class<?>> primitives = new HashMap<String, Class<?>>();
@@ -38,12 +46,18 @@ public class PrimitiveStrategy extends AbstractStrategy
 		primitives.put("short", Short.class);
 	}
 
+	/**
+	 * {@inheritDoc}
+	 */
 	@Override
 	public boolean isMine(Type type)
 	{
 		return (type instanceof Class ? ((Class<?>) type).isPrimitive() : false);
 	}
 
+	/**
+	 * {@inheritDoc}
+	 */
 	@Override
 	public Class<?> getMine(Type type)
 	{

@@ -28,21 +28,42 @@ import java.util.HashMap;
 import java.util.Map;
 import java.util.Set;
 
+import org.reflections.Reflections;
+
+/**
+ * This class implements a wise {@link Map} in the form of {@link AbstractMap}<
+ * {@link Class}<?>, {@link AdapterFactory}<?>>.<br>
+ * Initializes this {@link AbstractMap} with all the sub types of
+ * {@link Provider}.class, found by {@link Reflections}.
+ * 
+ * @author kLeZ-hAcK
+ */
 public class AdapterFactoryMap extends AbstractMap<Class<?>, AdapterFactory<?>>
 {
 	private final Map<Class<?>, AdapterFactory<?>> __map = new HashMap<Class<?>, AdapterFactory<?>>();
 
+	/**
+	 * Initializes this {@link AbstractMap} with all the sub types of
+	 * {@link Provider}.class, found by {@link Reflections}.
+	 */
 	public AdapterFactoryMap()
 	{
 		init();
 	}
 
+	/**
+	 * {@inheritDoc}
+	 */
 	@Override
 	public Set<Entry<Class<?>, AdapterFactory<?>>> entrySet()
 	{
 		return __map.entrySet();
 	}
 
+	/**
+	 * Initializes this {@link AbstractMap} with all the sub types of
+	 * {@link Provider}.class, found by {@link Reflections}.
+	 */
 	@SuppressWarnings("rawtypes")
 	private void init()
 	{
@@ -79,6 +100,14 @@ public class AdapterFactoryMap extends AbstractMap<Class<?>, AdapterFactory<?>>
 
 	private static AdapterFactoryMap instance;
 
+	/**
+	 * This static method acts as the entry point of a singleton pattern through
+	 * which the unique instance of this {@link Map} can be retrieved. <br>
+	 * Initializes this {@link AbstractMap} with all the sub types of
+	 * {@link Provider}.class, found by {@link Reflections}.
+	 * 
+	 * @return The singleton of this {@link Map}.
+	 */
 	public static AdapterFactoryMap current()
 	{
 		if (instance == null) instance = new AdapterFactoryMap();

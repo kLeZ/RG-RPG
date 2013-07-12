@@ -22,7 +22,22 @@ import it.d4nguard.rgrpg.util.dynacast.Adapter;
 
 import java.lang.reflect.Type;
 
+/**
+ * This interface represents a factory that can create an adapter, given its
+ * type.
+ * 
+ * @author kLeZ-hAcK
+ * @param <T>
+ *            The type that the {@link Adapter} implements.
+ */
 public interface AdapterFactory<T>
 {
+	/**
+	 * Creates a new {@link Adapter} for the given type.
+	 * 
+	 * @param type
+	 *            The type to use to create the {@link Adapter}
+	 * @return An {@link Adapter} that can adapt the given type.
+	 */
 	Adapter<T> create(final Type type);
 }

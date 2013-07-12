@@ -18,6 +18,12 @@
 // 
 package it.d4nguard.rgrpg.util.dynacast;
 
+/**
+ * This exception is used to wrap all possible exceptions in the DynaManipulator
+ * object.
+ * 
+ * @author kLeZ-hAcK
+ */
 public class DynaManipulatorException extends Exception
 {
 	private static final long serialVersionUID = 1L;

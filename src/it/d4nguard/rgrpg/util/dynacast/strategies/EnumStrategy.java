@@ -20,6 +20,13 @@ package it.d4nguard.rgrpg.util.dynacast.strategies;
 
 import java.lang.reflect.Type;
 
+/**
+ * This class implements an {@link AbstractStrategy} that applies to
+ * {@link Enum}s.<br>
+ * The {@link #getMine(Type)} method returns {@link Enum}.class.
+ * 
+ * @author kLeZ-hAcK
+ */
 public class EnumStrategy extends AbstractStrategy
 {
 	@Override

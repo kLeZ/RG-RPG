@@ -20,8 +20,24 @@ package it.d4nguard.rgrpg.util.dynacast.adapters;
 
 import org.joda.time.Duration;
 
+/**
+ * Implements a {@link SimpleAdapter} of {@link Duration}, an interface
+ * of the joda.time project.<br>
+ * It adapts a string representation of a duration according to
+ * {@link Duration#parse(String)}.<br>
+ * <br>
+ * The value will be formatted before it can be passed to the
+ * {@link Duration#parse(String)} method. The format is esplicitly done by
+ * calling {@link String#format(String, Object...)} with "PT%sS" as the format
+ * string.
+ * 
+ * @author kLeZ-hAcK
+ */
 public class DurationAdapter extends SimpleAdapter<Duration>
 {
+	/**
+	 * {@inheritDoc}
+	 */
 	@Override
 	public Duration adapt(String value)
 	{

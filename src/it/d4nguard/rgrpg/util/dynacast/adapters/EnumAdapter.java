@@ -18,8 +18,17 @@
 // 
 package it.d4nguard.rgrpg.util.dynacast.adapters;
 
+/**
+ * Implements a {@link SimpleAdapter} of E, where E extends {@link Enum}.
+ * 
+ * @author kLeZ-hAcK
+ * @param <E>
+ */
 public class EnumAdapter<E extends Enum<?>> extends SimpleAdapter<E>
 {
+	/**
+	 * {@inheritDoc}
+	 */
 	@Override
 	@SuppressWarnings({ "unchecked", "rawtypes" })
 	public E adapt(String value)

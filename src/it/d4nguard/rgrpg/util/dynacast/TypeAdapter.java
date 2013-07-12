@@ -27,10 +27,16 @@ import it.d4nguard.rgrpg.util.dynacast.factories.StrategyFactory;
 import java.lang.reflect.Type;
 import java.util.Collection;
 
+/**
+ * This class contains an helper method (this is a Facade, in fact) that does
+ * the dirty work of getting an adapter for the given type.
+ * 
+ * @author kLeZ-hAcK
+ */
 public class TypeAdapter
 {
 	/**
-	 * This static method gets a type adapter from its factory class. <br>
+	 * This static method gets a type adapter from its factory class.<br>
 	 * Call example:<br>
 	 * <code>TypeAdapter.getAdapter(Integer.class).adapt("5");</code>
 	 * 
@@ -38,8 +44,7 @@ public class TypeAdapter
 	 *            is the type you want to adapt to.
 	 * @return An adapter class that can adapt a string to the recalled object.
 	 */
-	@SuppressWarnings(
-	{ "rawtypes", "unchecked" })
+	@SuppressWarnings({ "rawtypes", "unchecked" })
 	public static <T> Adapter<T> getAdapter(Type type)
 	{
 		assert type != null;
@@ -49,6 +54,14 @@ public class TypeAdapter
 		return factory == null ? null : factory.create(type);
 	}
 
+	/**
+	 * An helper method that generates a string representation of an object
+	 * value.
+	 * 
+	 * @param value
+	 *            The object to represent.
+	 * @return A string representation of the value passed.
+	 */
 	public static String toString(Object value)
 	{
 		String ret = "";

@@ -26,8 +26,17 @@ import java.lang.reflect.Type;
 import java.util.HashMap;
 import java.util.Map;
 
+/**
+ * Implements a {@link Provider} of {@link AdapterFactory} that provides
+ * {@link Adapter}s for all the primitive types, and their wrapper objects.
+ * 
+ * @author kLeZ-hAcK
+ */
 public class PrimitivesAdapterProvider implements Provider<AdapterFactory<?>>
 {
+	/**
+	 * {@inheritDoc}
+	 */
 	@Override
 	@SuppressWarnings("unchecked")
 	public Map<Class<?>, AdapterFactory<?>> get()
@@ -35,17 +44,26 @@ public class PrimitivesAdapterProvider implements Provider<AdapterFactory<?>>
 		Map<Class<?>, AdapterFactory<?>> ret = new HashMap<Class<?>, AdapterFactory<?>>();
 		ret.put(Boolean.class, new AdapterFactory<Boolean>()
 		{
+			/**
+			 * {@inheritDoc}
+			 */
 			@Override
 			public Adapter<Boolean> create(final Type type)
 			{
 				return new Adapter<Boolean>()
 				{
+					/**
+					 * {@inheritDoc}
+					 */
 					@Override
 					public Boolean adapt(String value)
 					{
 						return Boolean.valueOf(value);
 					}
 
+					/**
+					 * {@inheritDoc}
+					 */
 					@Override
 					public Class<Boolean> getType()
 					{
@@ -56,11 +74,17 @@ public class PrimitivesAdapterProvider implements Provider<AdapterFactory<?>>
 		});
 		ret.put(Byte.class, new AdapterFactory<Byte>()
 		{
+			/**
+			 * {@inheritDoc}
+			 */
 			@Override
 			public Adapter<Byte> create(Type type)
 			{
 				return new Adapter<Byte>()
 				{
+					/**
+					 * {@inheritDoc}
+					 */
 					@Override
 					public Byte adapt(String value)
 					{
@@ -71,6 +95,9 @@ public class PrimitivesAdapterProvider implements Provider<AdapterFactory<?>>
 						else return Byte.decode(value);
 					}
 
+					/**
+					 * {@inheritDoc}
+					 */
 					@Override
 					public Class<Byte> getType()
 					{
@@ -81,17 +108,26 @@ public class PrimitivesAdapterProvider implements Provider<AdapterFactory<?>>
 		});
 		ret.put(Character.class, new AdapterFactory<Character>()
 		{
+			/**
+			 * {@inheritDoc}
+			 */
 			@Override
 			public Adapter<Character> create(Type type)
 			{
 				return new Adapter<Character>()
 				{
+					/**
+					 * {@inheritDoc}
+					 */
 					@Override
 					public Character adapt(String value)
 					{
 						return value.isEmpty() ? '\0' : value.charAt(0);
 					}
 
+					/**
+					 * {@inheritDoc}
+					 */
 					@Override
 					public Class<Character> getType()
 					{
@@ -102,17 +138,26 @@ public class PrimitivesAdapterProvider implements Provider<AdapterFactory<?>>
 		});
 		ret.put(Double.class, new AdapterFactory<Double>()
 		{
+			/**
+			 * {@inheritDoc}
+			 */
 			@Override
 			public Adapter<Double> create(Type type)
 			{
 				return new Adapter<Double>()
 				{
+					/**
+					 * {@inheritDoc}
+					 */
 					@Override
 					public Double adapt(String value)
 					{
 						return Double.valueOf(value);
 					}
 
+					/**
+					 * {@inheritDoc}
+					 */
 					@Override
 					public Class<Double> getType()
 					{
@@ -123,17 +168,26 @@ public class PrimitivesAdapterProvider implements Provider<AdapterFactory<?>>
 		});
 		ret.put(Float.class, new AdapterFactory<Float>()
 		{
+			/**
+			 * {@inheritDoc}
+			 */
 			@Override
 			public Adapter<Float> create(Type type)
 			{
 				return new Adapter<Float>()
 				{
+					/**
+					 * {@inheritDoc}
+					 */
 					@Override
 					public Float adapt(String value)
 					{
 						return Float.valueOf(value);
 					}
 
+					/**
+					 * {@inheritDoc}
+					 */
 					@Override
 					public Class<Float> getType()
 					{
@@ -144,17 +198,26 @@ public class PrimitivesAdapterProvider implements Provider<AdapterFactory<?>>
 		});
 		ret.put(Integer.class, new AdapterFactory<Integer>()
 		{
+			/**
+			 * {@inheritDoc}
+			 */
 			@Override
 			public Adapter<Integer> create(Type type)
 			{
 				return new Adapter<Integer>()
 				{
+					/**
+					 * {@inheritDoc}
+					 */
 					@Override
 					public Integer adapt(String value)
 					{
 						return Integer.valueOf(value);
 					}
 
+					/**
+					 * {@inheritDoc}
+					 */
 					@Override
 					public Class<Integer> getType()
 					{
@@ -165,17 +228,26 @@ public class PrimitivesAdapterProvider implements Provider<AdapterFactory<?>>
 		});
 		ret.put(Long.class, new AdapterFactory<Long>()
 		{
+			/**
+			 * {@inheritDoc}
+			 */
 			@Override
 			public Adapter<Long> create(Type type)
 			{
 				return new Adapter<Long>()
 				{
+					/**
+					 * {@inheritDoc}
+					 */
 					@Override
 					public Long adapt(String value)
 					{
 						return Long.valueOf(value);
 					}
 
+					/**
+					 * {@inheritDoc}
+					 */
 					@Override
 					public Class<Long> getType()
 					{
@@ -186,17 +258,26 @@ public class PrimitivesAdapterProvider implements Provider<AdapterFactory<?>>
 		});
 		ret.put(Short.class, new AdapterFactory<Short>()
 		{
+			/**
+			 * {@inheritDoc}
+			 */
 			@Override
 			public Adapter<Short> create(Type type)
 			{
 				return new Adapter<Short>()
 				{
+					/**
+					 * {@inheritDoc}
+					 */
 					@Override
 					public Short adapt(String value)
 					{
 						return Short.valueOf(value);
 					}
 
+					/**
+					 * {@inheritDoc}
+					 */
 					@Override
 					public Class<Short> getType()
 					{
@@ -207,17 +288,26 @@ public class PrimitivesAdapterProvider implements Provider<AdapterFactory<?>>
 		});
 		ret.put(String.class, new AdapterFactory<String>()
 		{
+			/**
+			 * {@inheritDoc}
+			 */
 			@Override
 			public Adapter<String> create(Type type)
 			{
 				return new Adapter<String>()
 				{
+					/**
+					 * {@inheritDoc}
+					 */
 					@Override
 					public String adapt(String value)
 					{
 						return value;
 					}
 
+					/**
+					 * {@inheritDoc}
+					 */
 					@Override
 					public Class<String> getType()
 					{

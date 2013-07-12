@@ -20,11 +20,30 @@ package it.d4nguard.rgrpg.util.dynacast;
 
 import java.lang.reflect.Type;
 
+/**
+ * This is the main interface to write an adapter.
+ * 
+ * @author kLeZ-hAcK
+ * @param <T>
+ */
 public interface Adapter<T>
 {
 	public static final String ARRAY_JOINER = "|";
 
+	/**
+	 * Adapts the string representation of a value to its related object.
+	 * 
+	 * @param value
+	 *            The string representation of the value to adapt as object.
+	 * @return An object that can keep the value represented by the input
+	 *         string.
+	 */
 	T adapt(String value);
 
+	/**
+	 * The type that will be adapted from the value passed to the component.
+	 * 
+	 * @return
+	 */
 	Type getType();
 }

@@ -27,12 +27,27 @@ import java.lang.reflect.Type;
 import java.util.HashMap;
 import java.util.Map;
 
+/**
+ * This class implements an abstract adapter, which should be a base (except for
+ * some rare cases) for all the adapters that will be implemented out there.
+ * Actually it implements an {@link Adapter} and a {@link Provider} of
+ * {@link AdapterFactory}, in this way much of the work (and classes) that
+ * should be implemented are grouped in a single implementation, useful and
+ * generic.
+ * 
+ * @author kLeZ-hAcK
+ * @param <T>
+ *            The type to adapt, passed to {@link Adapter}
+ */
 @SuppressWarnings("rawtypes")
 public abstract class AbstractAdapter<T> implements Adapter<T>, Provider<AdapterFactory>
 {
 	private final AbstractAdapter<T> myself = this;
 	private Type adaptedType;
 
+	/**
+	 * {@inheritDoc}
+	 */
 	@Override
 	@SuppressWarnings("unchecked")
 	public Map<Class<?>, AdapterFactory> get()
@@ -41,6 +56,9 @@ public abstract class AbstractAdapter<T> implements Adapter<T>, Provider<Adapter
 		ret.put(GenericsUtils.getFirstGenericType(getClass()),
 						new AdapterFactory<T>()
 						{
+							/**
+							 * {@inheritDoc}
+							 */
 							@Override
 							public Adapter<T> create(Type type)
 							{
@@ -52,11 +70,23 @@ public abstract class AbstractAdapter<T> implements Adapter<T>, Provider<Adapter
 		return ret;
 	}
 
+	/**
+	 * {@inheritDoc}
+	 */
 	@Override
 	public Type getType()
 	{
 		return adaptedType;
 	}
 
+	/**
+	 * This method acts as a custom interaction in the
+	 * {@link AdapterFactory#create(Type)} method, right before the return
+	 * instruction.
+	 * 
+	 * @param type
+	 *            The exact type, without modifictions, passed to
+	 *            {@link AdapterFactory#create(Type)}
+	 */
 	public abstract void beforeCreateAdapter(Type type);
 }

@@ -22,8 +22,17 @@ import java.lang.reflect.Type;
 
 import org.joda.time.ReadableInstant;
 
+/**
+ * This class implements a {@link SimpleStrategy} for {@link ReadableInstant}s.<br>
+ * The {@link #getMine(Type)} method returns {@link ReadableInstant}.class
+ * 
+ * @author kLeZ-hAcK
+ */
 public class DateTimeStrategy extends SimpleStrategy
 {
+	/**
+	 * {@inheritDoc}
+	 */
 	@Override
 	public Class<?> getMine(Type type)
 	{

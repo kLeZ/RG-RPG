@@ -22,8 +22,27 @@ import java.util.Map;
 
 import org.apache.commons.ognl.Ognl;
 
+/**
+ * Main class to access the {get/set}Value methods. The entry point of the
+ * component.
+ * 
+ * @author kLeZ-hAcK
+ */
 public class DynaManipulator
 {
+	/**
+	 * Evaluates the given OGNL expression to insert a value into the object
+	 * graph rooted at the given root object.
+	 * 
+	 * @param exp
+	 *            the OGNL expression to be parsed
+	 * @param root
+	 *            the root object for the OGNL expression
+	 * @param value
+	 *            the value to insert into the object graph
+	 * @throws DynaManipulatorException
+	 *             if something fails below.
+	 */
 	public static void setValue(String exp, Object root, String value)
 					throws DynaManipulatorException
 	{
@@ -41,6 +60,18 @@ public class DynaManipulator
 		}
 	}
 
+	/**
+	 * Evaluates the given OGNL expression tree to extract a value from the
+	 * given root object.
+	 * 
+	 * @see Ognl#parseExpression(String)
+	 * @param exp
+	 *            the OGNL expression to be parsed
+	 * @param root
+	 *            the root object for the OGNL expression
+	 * @return
+	 * @throws DynaManipulatorException
+	 */
 	public static Object getValue(String exp, Object root)
 					throws DynaManipulatorException
 	{

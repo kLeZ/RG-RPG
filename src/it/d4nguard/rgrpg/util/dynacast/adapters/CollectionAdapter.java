@@ -27,13 +27,34 @@ import java.lang.reflect.Array;
 import java.lang.reflect.Modifier;
 import java.lang.reflect.ParameterizedType;
 import java.lang.reflect.Type;
-import java.util.*;
+import java.util.ArrayList;
+import java.util.Collection;
+import java.util.Collections;
+import java.util.HashSet;
+import java.util.List;
+import java.util.Set;
+import java.util.StringTokenizer;
 
+/**
+ * Implements an {@link AbstractAdapter} of {@link Collection} for Collections
+ * conversion. Currently it adapts {@link List}s and {@link Set}s.<br>
+ * A string representation of a collection, to be understood by this adapter
+ * class, must be in the form of:<br>
+ * <code>[element1|element2|...|elementN]</code><br>
+ * The separator is defined in the {@link Adapter#ARRAY_JOINER} constant.
+ * 
+ * @author kLeZ-hAcK
+ * @param <T>
+ *            The type of the objects handled by the {@link Collection}
+ */
 public class CollectionAdapter<T> extends AbstractAdapter<Collection<T>>
 {
 	private Class<T> type;
 	private Class<Collection<T>> collType;
 
+	/**
+	 * {@inheritDoc}
+	 */
 	@Override
 	@SuppressWarnings("unchecked")
 	public Collection<T> adapt(String value)
@@ -67,6 +88,9 @@ public class CollectionAdapter<T> extends AbstractAdapter<Collection<T>>
 		return ret;
 	}
 
+	/**
+	 * {@inheritDoc}
+	 */
 	@Override
 	@SuppressWarnings("unchecked")
 	public void beforeCreateAdapter(Type type)

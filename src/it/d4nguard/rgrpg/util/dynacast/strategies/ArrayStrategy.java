@@ -23,14 +23,27 @@ import it.d4nguard.rgrpg.util.GenericsUtils;
 import java.lang.reflect.Array;
 import java.lang.reflect.Type;
 
+/**
+ * This class implements an {@link AbstractStrategy} that applies to
+ * {@link Array}s.<br>
+ * The {@link #getMine(Type)} method returns {@link Array}.class.
+ * 
+ * @author kLeZ-hAcK
+ */
 public class ArrayStrategy extends AbstractStrategy
 {
+	/**
+	 * {@inheritDoc}
+	 */
 	@Override
 	public boolean isMine(Type type)
 	{
 		return GenericsUtils.getClassFromType(type).isArray();
 	}
 
+	/**
+	 * {@inheritDoc}
+	 */
 	@Override
 	public Class<?> getMine(Type type)
 	{

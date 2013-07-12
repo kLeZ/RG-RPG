@@ -22,8 +22,17 @@ import java.lang.reflect.Type;
 
 import org.jscience.physics.amount.Amount;
 
+/**
+ * This class implements a {@link SimpleStrategy} in which the returned type
+ * from {@link #getMine(Type)} is simply {@link Amount}.class.
+ * 
+ * @author kLeZ-hAcK
+ */
 public class AmountStrategy extends SimpleStrategy
 {
+	/**
+	 * {@inheritDoc}
+	 */
 	@Override
 	public Class<?> getMine(Type type)
 	{

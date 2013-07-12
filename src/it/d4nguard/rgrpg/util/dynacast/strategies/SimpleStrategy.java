@@ -19,11 +19,27 @@
 package it.d4nguard.rgrpg.util.dynacast.strategies;
 
 import it.d4nguard.rgrpg.util.GenericsUtils;
+import it.d4nguard.rgrpg.util.dynacast.Strategy;
 
 import java.lang.reflect.Type;
 
+/**
+ * This abstract class implements an {@link AbstractStrategy}. The only
+ * different thing is the implementation of {@link Strategy#isMine(Type)}
+ * method.<br>
+ * <br>
+ * The logic behind this method is:<br>
+ * <code>
+ * someTypecastingToClass(getMine(type)).isAssignableFrom(someTypecastingToClass(type));
+ * </code>
+ * 
+ * @author kLeZ-hAcK
+ */
 public abstract class SimpleStrategy extends AbstractStrategy
 {
+	/**
+	 * {@inheritDoc}
+	 */
 	@Override
 	public boolean isMine(Type type)
 	{

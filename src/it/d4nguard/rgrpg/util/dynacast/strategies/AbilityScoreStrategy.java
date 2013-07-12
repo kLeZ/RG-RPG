@@ -23,14 +23,26 @@ import it.d4nguard.rgrpg.util.GenericsUtils;
 
 import java.lang.reflect.Type;
 
+/**
+ * This class implements an {@link AbstractStrategy} that applies to
+ * {@link AbilityScore} type.
+ * 
+ * @author kLeZ-hAcK
+ */
 public class AbilityScoreStrategy extends AbstractStrategy
 {
+	/**
+	 * {@inheritDoc}
+	 */
 	@Override
 	public Class<?> getMine(Type type)
 	{
 		return Integer.class;
 	}
 
+	/**
+	 * {@inheritDoc}
+	 */
 	@Override
 	public boolean isMine(Type type)
 	{
