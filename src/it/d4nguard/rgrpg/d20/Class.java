@@ -66,6 +66,15 @@ public abstract class Class implements Serializable
 		return sThrow;
 	}
 
+	/**
+	 * Gets the Base Attack Bonus (BAB) of the attack you want.<br />
+	 * For example, if you need the 3rd attack for that class, call getBab(3);
+	 * 
+	 * @param attack
+	 *            is the index, counting from 1, of the attack in the list of
+	 *            attacks the class provides to the character.
+	 * @return
+	 */
 	public abstract int getBab(int attack);
 
 	public abstract int getLevel();

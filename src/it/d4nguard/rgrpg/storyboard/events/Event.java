@@ -16,47 +16,11 @@
 // You should have received a copy of the GNU General Public License
 // along with this program.  If not, see <http://www.gnu.org/licenses/>.
 // 
-package it.d4nguard.rgrpg.profile;
+package it.d4nguard.rgrpg.storyboard.events;
 
-public enum CoinType
+import it.d4nguard.rgrpg.storyboard.events.actors.Actor;
+
+public interface Event
 {
-	PlatinumPiece(1000, 100, 10, 1),
-	GoldPiece(100, 10, 1, .1),
-	SilverPiece(10, 1, .1, .01),
-	CopperPiece(1, .1, .01, .001);
-
-	private final double cp;
-	private final double sp;
-	private final double gp;
-	private final double pp;
-
-	private CoinType(final double cp, final double sp, final double gp,
-					final double pp)
-	{
-		this.cp = cp;
-		this.sp = sp;
-		this.gp = gp;
-		this.pp = pp;
-	}
-
-	public double getUnity(CoinType type)
-	{
-		double ret = 0;
-		switch (type)
-		{
-			case PlatinumPiece:
-				ret = pp;
-				break;
-			case GoldPiece:
-				ret = gp;
-				break;
-			case SilverPiece:
-				ret = sp;
-				break;
-			case CopperPiece:
-				ret = cp;
-				break;
-		}
-		return ret;
-	}
+	public void addActor(Actor actor);
 }

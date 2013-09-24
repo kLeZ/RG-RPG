@@ -23,8 +23,8 @@ import it.d4nguard.rgrpg.Context;
 import it.d4nguard.rgrpg.d20.D20Character;
 import it.d4nguard.rgrpg.managers.CharacterManager;
 import it.d4nguard.rgrpg.managers.PlayerManager;
-import it.d4nguard.rgrpg.profile.GenderType;
 import it.d4nguard.rgrpg.profile.RPGCharacter;
+import it.d4nguard.rgrpg.profile.types.GenderType;
 
 import javax.measure.unit.SI;
 

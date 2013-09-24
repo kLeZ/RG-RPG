@@ -18,52 +18,38 @@
 // 
 package it.d4nguard.rgrpg.profile;
 
-import it.d4nguard.rgrpg.profile.types.CoinType;
-import it.d4nguard.rgrpg.util.StringUtils;
+import it.d4nguard.rgrpg.profile.types.ActionType;
+import it.d4nguard.rgrpg.profile.types.AttackType;
 
-import java.io.Serializable;
-
-public class Coin implements Serializable
+/**
+ * This interface represents an action that can be performed by an RPG
+ * Character.<br/>
+ * There are many action types, two of which must be "Talk" and "Attack",
+ * because of the mandatory actions that an RPG Character can necessarily
+ * perform.
+ * 
+ * @author kLeZ-hAcK
+ */
+public interface Action
 {
-	private static final long serialVersionUID = -8403667979960797301L;
+	/**
+	 * Gets the {@link ActionType} of this Action.
+	 * 
+	 * @return the action type for this Action
+	 */
+	public ActionType getActionType();
 
-	private final CoinType type;
-	private double amount;
+	/**
+	 * Gets the {@link AttackType} of this action, in case this is an attack
+	 * action, it returns 'null' otherwise.
+	 * 
+	 * @return the {@link AttackType} of this attack action, if it is so,
+	 *         otherwise null.
+	 */
+	public AttackType getAttackType();
 
-	public Coin(CoinType type)
-	{
-		this(type, 0);
-	}
-
-	public Coin(CoinType type, double amount)
-	{
-		this.type = type;
-		this.amount = amount;
-	}
-
-	public double getAmount()
-	{
-		return amount;
-	}
-
-	public void setAmount(double amount)
-	{
-		this.amount = amount;
-	}
-
-	public CoinType getType()
-	{
-		return type;
-	}
-
-	public static double convert(Coin coin, CoinType type)
-	{
-		return coin.getAmount() * coin.getType().getUnity(type);
-	}
-
-	@Override
-	public String toString()
-	{
-		return StringUtils.genericToString(getClass(), this);
-	}
+	/**
+	 * Performs the action of this action object.
+	 */
+	public void perform();
 }

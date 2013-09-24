@@ -16,57 +16,14 @@
 // You should have received a copy of the GNU General Public License
 // along with this program.  If not, see <http://www.gnu.org/licenses/>.
 // 
-package it.d4nguard.rgrpg.storyboard;
+package it.d4nguard.rgrpg.engine;
 
-import it.d4nguard.rgrpg.profile.RPGCharacter;
-import it.d4nguard.rgrpg.util.StringUtils;
-
-import java.util.HashSet;
-import java.util.Set;
-import java.util.TreeSet;
-
-public class Place
+/**
+ * An Engine interface that lets the game to interact with all the objects.
+ * 
+ * @author kLeZ-hAcK
+ */
+public interface Engine
 {
-	private final TreeSet<Place> places;
-	private final Set<RPGCharacter> npcs;
-	private final Set<Event<?>> events;
-	private String description;
 
-	public Place()
-	{
-		places = new TreeSet<>();
-		npcs = new HashSet<>();
-		events = new HashSet<>();
-	}
-
-	public String getDescription()
-	{
-		return description;
-	}
-
-	public void setDescription(String description)
-	{
-		this.description = description;
-	}
-
-	public Set<RPGCharacter> getNpcs()
-	{
-		return npcs;
-	}
-
-	public Set<Event<?>> getEvents()
-	{
-		return events;
-	}
-
-	public TreeSet<Place> getPlaces()
-	{
-		return places;
-	}
-
-	@Override
-	public String toString()
-	{
-		return StringUtils.genericToString(getClass(), this);
-	}
 }

@@ -16,45 +16,47 @@
 // You should have received a copy of the GNU General Public License
 // along with this program.  If not, see <http://www.gnu.org/licenses/>.
 // 
-package it.d4nguard.rgrpg.storyboard;
+package it.d4nguard.rgrpg.profile.types;
 
-import it.d4nguard.rgrpg.profile.RPGCharacter;
-import it.d4nguard.rgrpg.util.StringUtils;
-
-import java.util.HashSet;
-import java.util.Set;
-
-public abstract class Event<T>
+public enum CoinType
 {
-	private String description;
-	private final Set<RPGCharacter> npcs;
+	PlatinumPiece(1000, 100, 10, 1),
+	GoldPiece(100, 10, 1, .1),
+	SilverPiece(10, 1, .1, .01),
+	CopperPiece(1, .1, .01, .001);
 
-	public Event()
+	private final double cp;
+	private final double sp;
+	private final double gp;
+	private final double pp;
+
+	private CoinType(final double cp, final double sp, final double gp,
+					final double pp)
 	{
-		npcs = new HashSet<>();
+		this.cp = cp;
+		this.sp = sp;
+		this.gp = gp;
+		this.pp = pp;
 	}
 
-	@SuppressWarnings("unchecked")
-	public abstract String doEvent(RPGCharacter human, T... variables);
-
-	public String getDescription()
+	public double getUnity(CoinType type)
 	{
-		return description;
-	}
-
-	public void setDescription(String description)
-	{
-		this.description = description;
-	}
-
-	public Set<RPGCharacter> getNpcs()
-	{
-		return npcs;
-	}
-
-	@Override
-	public String toString()
-	{
-		return StringUtils.genericToString(getClass(), this);
+		double ret = 0;
+		switch (type)
+		{
+			case PlatinumPiece:
+				ret = pp;
+				break;
+			case GoldPiece:
+				ret = gp;
+				break;
+			case SilverPiece:
+				ret = sp;
+				break;
+			case CopperPiece:
+				ret = cp;
+				break;
+		}
+		return ret;
 	}
 }

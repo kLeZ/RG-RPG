@@ -16,51 +16,11 @@
 // You should have received a copy of the GNU General Public License
 // along with this program.  If not, see <http://www.gnu.org/licenses/>.
 // 
-package it.d4nguard.rgrpg.storyboard;
+package it.d4nguard.rgrpg.storyboard.events.actors;
 
-import it.d4nguard.rgrpg.util.StringUtils;
-
-public class Chapter
+public interface TalkActor extends Actor
 {
-	private final Chapter prev;
-	private final Zone zone;
-	private Chapter next;
+	public void hear(String message);
 
-	public Chapter(Chapter prev, Zone zone)
-	{
-		this.prev = prev;
-		this.zone = zone;
-	}
-
-	public Chapter(Chapter prev, Zone zone, Chapter next)
-	{
-		this(prev, zone);
-		this.setNext(next);
-	}
-
-	public Zone getZone()
-	{
-		return zone;
-	}
-
-	public Chapter getPrev()
-	{
-		return prev;
-	}
-
-	public Chapter getNext()
-	{
-		return next;
-	}
-
-	public void setNext(Chapter next)
-	{
-		this.next = next;
-	}
-
-	@Override
-	public String toString()
-	{
-		return StringUtils.genericToString(getClass(), this);
-	}
+	public String answer(String question);
 }

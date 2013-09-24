@@ -16,51 +16,24 @@
 // You should have received a copy of the GNU General Public License
 // along with this program.  If not, see <http://www.gnu.org/licenses/>.
 // 
-package it.d4nguard.rgrpg.storyboard;
+package it.d4nguard.rgrpg.storyboard.events;
 
-import it.d4nguard.rgrpg.util.StringUtils;
+import it.d4nguard.rgrpg.storyboard.events.actors.Actor;
 
-public class Chapter
+import java.util.HashSet;
+
+public abstract class AbstractEvent implements Event
 {
-	private final Chapter prev;
-	private final Zone zone;
-	private Chapter next;
+	protected final HashSet<Actor> actors;
 
-	public Chapter(Chapter prev, Zone zone)
+	public AbstractEvent()
 	{
-		this.prev = prev;
-		this.zone = zone;
-	}
-
-	public Chapter(Chapter prev, Zone zone, Chapter next)
-	{
-		this(prev, zone);
-		this.setNext(next);
-	}
-
-	public Zone getZone()
-	{
-		return zone;
-	}
-
-	public Chapter getPrev()
-	{
-		return prev;
-	}
-
-	public Chapter getNext()
-	{
-		return next;
-	}
-
-	public void setNext(Chapter next)
-	{
-		this.next = next;
+		this.actors = new HashSet<>();
 	}
 
 	@Override
-	public String toString()
+	public void addActor(Actor actor)
 	{
-		return StringUtils.genericToString(getClass(), this);
+		actors.add(actor);
 	}
 }

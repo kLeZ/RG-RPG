@@ -18,6 +18,8 @@
 // 
 package it.d4nguard.rgrpg.profile;
 
+import it.d4nguard.rgrpg.profile.types.GenderType;
+
 import java.io.Serializable;
 
 import javax.measure.quantity.Length;

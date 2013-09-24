@@ -16,11 +16,30 @@
 // You should have received a copy of the GNU General Public License
 // along with this program.  If not, see <http://www.gnu.org/licenses/>.
 // 
-package it.d4nguard.rgrpg.profile;
+package it.d4nguard.rgrpg.storyboard.events.impl;
 
-public enum GenderType
+import it.d4nguard.rgrpg.storyboard.events.AbstractEvent;
+import it.d4nguard.rgrpg.storyboard.events.TalkEvent;
+import it.d4nguard.rgrpg.storyboard.events.actors.Actor;
+import it.d4nguard.rgrpg.storyboard.events.actors.TalkActor;
+
+public class Chat extends AbstractEvent implements TalkEvent
 {
-	Male,
-	Female,
-	Unknown;
+	@Override
+	public void say(String something)
+	{
+		for (Actor a : actors)
+		{
+			if (a instanceof TalkActor)
+			{
+				((TalkActor) a).hear(something);
+			}
+		}
+	}
+
+	@Override
+	public void ask(String question, TalkActor someone)
+	{
+		someone.answer(question);
+	}
 }

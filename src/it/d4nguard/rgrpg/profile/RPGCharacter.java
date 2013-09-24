@@ -23,6 +23,7 @@ import it.d4nguard.rgrpg.d20.D20Character;
 import it.d4nguard.rgrpg.util.StringUtils;
 
 import java.io.Serializable;
+import java.util.HashSet;
 
 public abstract class RPGCharacter implements Serializable
 {
@@ -30,11 +31,13 @@ public abstract class RPGCharacter implements Serializable
 
 	protected final Player owner;
 	protected final GeneralInfo info;
+	protected final HashSet<Action> permittedActions;
 
 	public RPGCharacter(Player owner, GeneralInfo info)
 	{
 		this.owner = owner;
 		this.info = info;
+		this.permittedActions = new HashSet<>();
 	}
 
 	public Player getOwner()

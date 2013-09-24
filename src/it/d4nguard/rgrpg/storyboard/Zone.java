@@ -16,11 +16,50 @@
 // You should have received a copy of the GNU General Public License
 // along with this program.  If not, see <http://www.gnu.org/licenses/>.
 // 
-package it.d4nguard.rgrpg.d20.types;
+package it.d4nguard.rgrpg.storyboard;
 
-public enum BabType
+import it.d4nguard.rgrpg.storyboard.events.Event;
+import it.d4nguard.rgrpg.util.StringUtils;
+
+import java.util.HashSet;
+import java.util.Set;
+import java.util.TreeSet;
+
+public class Zone
 {
-	Melee,
-	Ranged,
-	Grapple;
+	private final TreeSet<Zone> subZones;
+	private final Set<Event> events;
+	private String description;
+
+	public Zone()
+	{
+		subZones = new TreeSet<>();
+		events = new HashSet<>();
+	}
+
+	public String getDescription()
+	{
+		return description;
+	}
+
+	public void setDescription(String description)
+	{
+		this.description = description;
+	}
+
+	public Set<Event> getEvents()
+	{
+		return events;
+	}
+
+	public TreeSet<Zone> getSubZones()
+	{
+		return subZones;
+	}
+
+	@Override
+	public String toString()
+	{
+		return StringUtils.genericToString(getClass(), this);
+	}
 }

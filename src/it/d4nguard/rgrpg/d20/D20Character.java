@@ -22,11 +22,11 @@ import it.d4nguard.rgrpg.d20.feats.Feat;
 import it.d4nguard.rgrpg.d20.races.Race;
 import it.d4nguard.rgrpg.d20.types.AlignmentType;
 import it.d4nguard.rgrpg.d20.types.ArmorClassType;
-import it.d4nguard.rgrpg.d20.types.BabType;
 import it.d4nguard.rgrpg.d20.types.SavingThrowType;
 import it.d4nguard.rgrpg.profile.GeneralInfo;
 import it.d4nguard.rgrpg.profile.Player;
 import it.d4nguard.rgrpg.profile.RPGCharacter;
+import it.d4nguard.rgrpg.profile.types.AttackType;
 import it.d4nguard.rgrpg.util.NumericUtils;
 import it.d4nguard.rgrpg.util.StringUtils;
 
@@ -223,7 +223,7 @@ public class D20Character extends RPGCharacter
 		return level;
 	}
 
-	public int getBab(BabType type, int attack)
+	public int getBab(AttackType type, int attack)
 	{
 		int bab = 0;
 		for (Class c : classes)

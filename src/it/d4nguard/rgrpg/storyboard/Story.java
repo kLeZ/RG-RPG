@@ -21,30 +21,28 @@ package it.d4nguard.rgrpg.storyboard;
 import it.d4nguard.rgrpg.util.StringUtils;
 
 import java.io.Serializable;
-import java.util.HashSet;
-import java.util.Set;
 
 public class Story implements Serializable
 {
 	private static final long serialVersionUID = 7740473809178561351L;
 
-	private final Place world;
-	private final Set<Chapter> chapters;
+	private final Chapter first;
+	private final String description;
 
-	public Story(Place world)
+	public Story(String description, Chapter chapter)
 	{
-		this.world = world;
-		chapters = new HashSet<Chapter>();
+		this.first = chapter;
+		this.description = description;
 	}
 
-	public Place getWorld()
+	public Chapter getFirst()
 	{
-		return world;
+		return first;
 	}
 
-	public Set<Chapter> getChapters()
+	public String getDescription()
 	{
-		return chapters;
+		return description;
 	}
 
 	@Override

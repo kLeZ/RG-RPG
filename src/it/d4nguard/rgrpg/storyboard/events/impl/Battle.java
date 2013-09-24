@@ -16,51 +16,13 @@
 // You should have received a copy of the GNU General Public License
 // along with this program.  If not, see <http://www.gnu.org/licenses/>.
 // 
-package it.d4nguard.rgrpg.storyboard;
+package it.d4nguard.rgrpg.storyboard.events.impl;
 
-import it.d4nguard.rgrpg.util.StringUtils;
+import it.d4nguard.rgrpg.storyboard.events.AbstractEvent;
+import it.d4nguard.rgrpg.storyboard.events.BattleEvent;
 
-public class Chapter
+//FIX: This is NOT an abstract class, just to avoid build errors.
+public abstract class Battle extends AbstractEvent implements BattleEvent
 {
-	private final Chapter prev;
-	private final Zone zone;
-	private Chapter next;
 
-	public Chapter(Chapter prev, Zone zone)
-	{
-		this.prev = prev;
-		this.zone = zone;
-	}
-
-	public Chapter(Chapter prev, Zone zone, Chapter next)
-	{
-		this(prev, zone);
-		this.setNext(next);
-	}
-
-	public Zone getZone()
-	{
-		return zone;
-	}
-
-	public Chapter getPrev()
-	{
-		return prev;
-	}
-
-	public Chapter getNext()
-	{
-		return next;
-	}
-
-	public void setNext(Chapter next)
-	{
-		this.next = next;
-	}
-
-	@Override
-	public String toString()
-	{
-		return StringUtils.genericToString(getClass(), this);
-	}
 }
