@@ -22,5 +22,11 @@ try: all run
 install: all
 	mvn install
 
+docs: all
+	mvn javadoc
+
+site: docs
+	mvn site
+
 dist: clean
 	find . -exec tar -czf rgrpg-dist.tar.gz {} \+

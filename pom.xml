@@ -18,19 +18,24 @@
 			<organization>D4nGuARd</organization>
 			<roles>
 				<role>Founder</role>
-				<role>Developer</role>
 			</roles>
 			<timezone>1</timezone>
 		</developer>
 	</developers>
 	<scm>
-		<url>scm:git:https://github.com/kLeZ/RG-RPG.git</url>
-		<developerConnection>Alessandro Accardo</developerConnection>
+		<url>https://github.com/kLeZ/RG-RPG</url>
+		<connection>scm:git:https://github.com/kLeZ/RG-RPG.git</connection>
 	</scm>
 	<issueManagement>
 		<system>GitHub</system>
 		<url>https://github.com/kLeZ/RG-RPG/issues</url>
 	</issueManagement>
+	<licenses>
+		<license>
+			<name>General Public License 3.0</name>
+			<url>http://www.gnu.org/licenses/gpl-3.0-standalone.html</url>
+		</license>
+	</licenses>
 	<properties>
 		<jdk.version>1.7</jdk.version>
 	</properties>
@@ -137,9 +142,10 @@
 							<outputDirectory>gen</outputDirectory>
 							<timestampDirectory>gen/tmstmp</timestampDirectory>
 							<package>org.apache.commons.ognl</package>
-							<!-- Uncomment if AST files needs to be generated <nodePackage>*.jtree</nodePackage> -->
+							<!-- Uncomment if AST files needs to be generated 
+							<nodePackage>*.jtree</nodePackage> -->
 							<!-- Uncomment if visitor default implementation needs to be generated 
-								<visitor>true</visitor> -->
+							<visitor>true</visitor> -->
 						</configuration>
 						<goals>
 							<!-- change goal to jtree-javacc to generate AST too -->
@@ -147,6 +153,26 @@
 						</goals>
 					</execution>
 				</executions>
+			</plugin>
+			<plugin>
+				<!-- Requires GraphViz to be installed and the GRAPHVIZ_HOME env var set -->
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-javadoc-plugin</artifactId>
+				<version>2.9.1</version>
+				<configuration>
+					<doclet>org.umlgraph.doclet.UmlGraphDoc</doclet>
+					<docletArtifact>
+						<groupId>org.umlgraph</groupId>
+						<artifactId>umlgraph</artifactId>
+						<version>5.6.6</version>
+					</docletArtifact>
+					<!-- <additionalparam>-horizontal -attributes -enumconstants
+						-enumerations -operations -types -visibility -inferrel -inferdep
+						-hide java.* -inferrel -collpackages java.util.*</additionalparam> -->
+					<additionalparam>-views -all</additionalparam>
+					<useStandardDocletOptions>true</useStandardDocletOptions>
+					<show>public</show>
+				</configuration>
 			</plugin>
 		</plugins>
 	</build>

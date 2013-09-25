@@ -1,7 +1,6 @@
 package it.d4nguard.rgrpg.util;
 
 import static org.junit.Assert.assertEquals;
-import static org.junit.Assert.fail;
 import it.d4nguard.rgrpg.Context;
 import it.d4nguard.rgrpg.d20.D20Character;
 import it.d4nguard.rgrpg.d20.items.Item;
@@ -142,13 +141,20 @@ public class StringUtilsTest
 	@Test
 	public final void testGenericToString()
 	{
-		Context.load("");
-		if (Context.hasCurrentCharacter())
+		try
 		{
-			RPGCharacter c = Context.getCurrentCharacter();
-			System.out.println(StringUtils.genericToString(c.getClass(), c,
-							"serialVersionUID", "owner", "\\$SWITCH_TABLE\\$.*"));
+			Context.loadDefault();
+			if (Context.hasCurrentCharacter())
+			{
+				RPGCharacter c = Context.getCurrentCharacter();
+				System.out.println(StringUtils.genericToString(c.getClass(), c,
+								"serialVersionUID", "owner",
+								"\\$SWITCH_TABLE\\$.*"));
+			}
 		}
-		else fail("Preload some data!");
+		catch (Throwable t)
+		{
+			Assert.fail(t.getMessage());
+		}
 	}
 }

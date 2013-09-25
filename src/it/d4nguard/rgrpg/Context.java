@@ -251,6 +251,11 @@ public class Context
 			if (player == null || p.getName().equals(player)) p.getCharacters().clear();
 	}
 
+	public static void loadDefault()
+	{
+		load("");
+	}
+
 	public static void load(String path)
 	{
 		Singleton.Current.load(path);
@@ -259,6 +264,11 @@ public class Context
 	public static void save(String path)
 	{
 		Singleton.Current.save(path);
+	}
+
+	public static void saveDefault()
+	{
+		save("");
 	}
 
 	public static Reflections getReflections()
