@@ -18,6 +18,9 @@
 // 
 package it.d4nguard.rgrpg.engine;
 
+import it.d4nguard.rgrpg.profile.RPGCharacter;
+import it.d4nguard.rgrpg.profile.Skill;
+
 /**
  * An Engine interface that lets the game to interact with all the objects.
  * 
@@ -25,5 +28,9 @@ package it.d4nguard.rgrpg.engine;
  */
 public interface Engine
 {
+	public boolean skillCheck(RPGCharacter character, Skill skill, int DC,
+					int DCMul);
+
+	public boolean defenseCheck();
 
 }

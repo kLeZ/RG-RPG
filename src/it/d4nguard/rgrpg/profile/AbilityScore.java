@@ -16,24 +16,17 @@
 // You should have received a copy of the GNU General Public License
 // along with this program.  If not, see <http://www.gnu.org/licenses/>.
 // 
-package it.d4nguard.rgrpg.d20;
+package it.d4nguard.rgrpg.profile;
 
 import java.io.Serializable;
 
-public class AbilityScore implements Serializable
+public abstract class AbilityScore implements Serializable
 {
 	private static final long serialVersionUID = -7369119723062034841L;
-
-	public static final int MID_RANGE = 10;
 
 	private final String name;
 	private int value;
 	private int modifier;
-
-	public AbilityScore(String name)
-	{
-		this(name, MID_RANGE);
-	}
 
 	public AbilityScore(String name, int value)
 	{
@@ -64,18 +57,16 @@ public class AbilityScore implements Serializable
 	private void safeSetValue(int value)
 	{
 		this.value = value;
-		this.modifier = getModifier(value);
+		this.modifier = calculateModifier(value);
 	}
 
-	public static int getModifier(int value)
-	{
-		return (int) Math.round(Math.floor(((float) (value - MID_RANGE)) / 2.0F));
-	}
+	public abstract int calculateModifier(int value);
 
 	@Override
 	public String toString()
 	{
-		return String.format("%s: %d(%+d)", name, value, getModifier(value));
+		return String.format("%s: %d(%+d)", name, value,
+						calculateModifier(value));
 	}
 
 	public static class UnmodifiableAbilityScore extends AbilityScore
@@ -91,6 +82,12 @@ public class AbilityScore implements Serializable
 		public void setValue(int value)
 		{
 			throw new UnsupportedOperationException();
+		}
+
+		@Override
+		public int calculateModifier(int value)
+		{
+			return 0;
 		}
 	}
 }

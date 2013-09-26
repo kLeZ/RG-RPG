@@ -49,7 +49,7 @@ public class D20Character extends RPGCharacter
 	private final Set<Class> classes;
 	private final Set<ResistanceToEnergy> resistanceToEnergies;
 	private final Set<Language> spokenLanguages;
-	private final Set<Skill> skills;
+	private final Set<D20Skill> skills;
 	private final Set<Feat> feats;
 	private final List<Integer> hpModifiers;
 	private final List<Integer> babModifiers;
@@ -69,7 +69,7 @@ public class D20Character extends RPGCharacter
 		this.damageReduction = new DamageReduction();
 
 		this.classes = new HashSet<Class>();
-		this.skills = new HashSet<Skill>();
+		this.skills = new HashSet<D20Skill>();
 		this.feats = new HashSet<Feat>();
 		this.spokenLanguages = new HashSet<Language>();
 		this.resistanceToEnergies = new HashSet<ResistanceToEnergy>();
@@ -158,7 +158,7 @@ public class D20Character extends RPGCharacter
 		return resistanceToEnergies;
 	}
 
-	public Set<Skill> getSkills()
+	public Set<D20Skill> getSkills()
 	{
 		return skills;
 	}

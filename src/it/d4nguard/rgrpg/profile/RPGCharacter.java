@@ -24,6 +24,7 @@ import it.d4nguard.rgrpg.util.StringUtils;
 
 import java.io.Serializable;
 import java.util.HashSet;
+import java.util.Set;
 
 public abstract class RPGCharacter implements Serializable
 {
@@ -32,12 +33,14 @@ public abstract class RPGCharacter implements Serializable
 	protected final Player owner;
 	protected final GeneralInfo info;
 	protected final HashSet<Action> permittedActions;
+	protected final Set<Skill> skills;
 
 	public RPGCharacter(Player owner, GeneralInfo info)
 	{
 		this.owner = owner;
 		this.info = info;
 		this.permittedActions = new HashSet<>();
+		this.skills = new HashSet<>();
 	}
 
 	public Player getOwner()

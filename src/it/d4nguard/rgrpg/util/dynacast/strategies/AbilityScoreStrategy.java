@@ -18,7 +18,7 @@
 // 
 package it.d4nguard.rgrpg.util.dynacast.strategies;
 
-import it.d4nguard.rgrpg.d20.AbilityScore;
+import it.d4nguard.rgrpg.profile.AbilityScore;
 import it.d4nguard.rgrpg.util.GenericsUtils;
 
 import java.lang.reflect.Type;

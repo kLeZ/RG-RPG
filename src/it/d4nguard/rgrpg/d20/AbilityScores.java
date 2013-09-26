@@ -19,7 +19,8 @@
 package it.d4nguard.rgrpg.d20;
 
 import it.d4nguard.rgrpg.Context;
-import it.d4nguard.rgrpg.d20.AbilityScore.UnmodifiableAbilityScore;
+import it.d4nguard.rgrpg.profile.AbilityScore;
+import it.d4nguard.rgrpg.profile.AbilityScore.UnmodifiableAbilityScore;
 import it.d4nguard.rgrpg.util.StringCompiler;
 
 import java.io.Serializable;
@@ -48,12 +49,12 @@ public class AbilityScores implements Serializable
 	public AbilityScores()
 	{
 		this.scores = new HashMap<String, AbilityScore>();
-		scores.put(STRENGTH, new AbilityScore(StrengthD));
-		scores.put(DEXTERITY, new AbilityScore(DexterityD));
-		scores.put(CONSTITUTION, new AbilityScore(ConstitutionD));
-		scores.put(INTELLIGENCE, new AbilityScore(IntelligenceD));
-		scores.put(WISDOM, new AbilityScore(WisdomD));
-		scores.put(CHARISMA, new AbilityScore(CharismaD));
+		scores.put(STRENGTH, new D20AbilityScore(StrengthD));
+		scores.put(DEXTERITY, new D20AbilityScore(DexterityD));
+		scores.put(CONSTITUTION, new D20AbilityScore(ConstitutionD));
+		scores.put(INTELLIGENCE, new D20AbilityScore(IntelligenceD));
+		scores.put(WISDOM, new D20AbilityScore(WisdomD));
+		scores.put(CHARISMA, new D20AbilityScore(CharismaD));
 	}
 
 	public AbilityScore getStrength()
@@ -134,5 +135,28 @@ public class AbilityScores implements Serializable
 	public static AbilityScore unmodifiableAbilityScore(AbilityScore as)
 	{
 		return new UnmodifiableAbilityScore(as);
+	}
+
+	public class D20AbilityScore extends AbilityScore
+	{
+		private static final long serialVersionUID = 113611044329823552L;
+		public static final int MID_RANGE = 10;
+
+		public D20AbilityScore(String name)
+		{
+			this(name, MID_RANGE);
+		}
+
+		public D20AbilityScore(String name, int value)
+		{
+			super(name, value);
+		}
+
+		@Override
+		public int calculateModifier(int value)
+		{
+			return (int) Math.round(Math.floor(((float) (value - MID_RANGE)) / 2.0F));
+		}
+
 	}
 }
