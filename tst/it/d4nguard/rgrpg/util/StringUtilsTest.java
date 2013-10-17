@@ -2,9 +2,8 @@ package it.d4nguard.rgrpg.util;
 
 import static org.junit.Assert.assertEquals;
 import it.d4nguard.rgrpg.Context;
-import it.d4nguard.rgrpg.d20.D20Character;
 import it.d4nguard.rgrpg.d20.items.Item;
-import it.d4nguard.rgrpg.profile.RPGCharacter;
+import it.d4nguard.rgrpg.profile.Character;
 
 import org.junit.Assert;
 import org.junit.Test;
@@ -22,7 +21,7 @@ public class StringUtilsTest
 	@Test
 	public final void testPrettyPrintClassOfT()
 	{
-		System.out.print(StringUtils.prettyPrint(D20Character.class));
+		System.out.print(StringUtils.prettyPrint(Character.class));
 		Assert.assertTrue(true);
 	}
 
@@ -146,7 +145,7 @@ public class StringUtilsTest
 			Context.loadDefault();
 			if (Context.hasCurrentCharacter())
 			{
-				RPGCharacter c = Context.getCurrentCharacter();
+				Character c = Context.getCurrentCharacter();
 				System.out.println(StringUtils.genericToString(c.getClass(), c,
 								"serialVersionUID", "owner",
 								"\\$SWITCH_TABLE\\$.*"));

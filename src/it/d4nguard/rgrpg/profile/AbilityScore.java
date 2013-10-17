@@ -34,6 +34,13 @@ public abstract class AbilityScore implements Serializable
 		safeSetValue(value);
 	}
 
+	protected AbilityScore(String name, int value, int modifier)
+	{
+		this.name = name;
+		this.value = value;
+		this.modifier = modifier;
+	}
+
 	public String getName()
 	{
 		return name;
@@ -65,8 +72,7 @@ public abstract class AbilityScore implements Serializable
 	@Override
 	public String toString()
 	{
-		return String.format("%s: %d(%+d)", name, value,
-						calculateModifier(value));
+		return String.format("%s: %d(%+d)", name, value, modifier);
 	}
 
 	public static class UnmodifiableAbilityScore extends AbilityScore
@@ -75,7 +81,7 @@ public abstract class AbilityScore implements Serializable
 
 		public UnmodifiableAbilityScore(AbilityScore as)
 		{
-			super(as.getName(), as.getValue());
+			super(as.getName(), as.getValue(), as.getModifier());
 		}
 
 		@Override

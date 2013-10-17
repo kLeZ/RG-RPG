@@ -22,7 +22,7 @@ import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertNotNull;
 import static org.junit.Assert.assertTrue;
 import it.d4nguard.rgrpg.Context;
-import it.d4nguard.rgrpg.profile.RPGCharacter;
+import it.d4nguard.rgrpg.profile.Character;
 
 import java.util.ArrayList;
 import java.util.Iterator;
@@ -44,15 +44,16 @@ public class CharacterManagerTest
 	public final void testCreate()
 	{
 		Context.clearCharacters(null);
-		ArrayList<RPGCharacter> list = new ArrayList<RPGCharacter>();
+		ArrayList<Character> list = new ArrayList<Character>();
 		String[] names = new String[] { "Julius", "Mialee", "Viktor", "Hansel", "Marril", "Pipino" };
 		for (String name : names)
-			list.add(new CharacterManager().create(name, "d20"));
+			list.add(new CharacterManager().create(name,
+							it.d4nguard.rgrpg.d20.Character.TYPE));
 
-		Iterator<RPGCharacter> it = Context.getCurrentPlayer().getCharacters().keySet().iterator();
+		Iterator<Character> it = Context.getCurrentPlayer().getCharacters().keySet().iterator();
 		while (it.hasNext())
 		{
-			RPGCharacter c = it.next();
+			Character c = it.next();
 			assertTrue(list.contains(c));
 		}
 		assertEquals(6, Context.getCurrentPlayer().getCharacters().size());
@@ -63,11 +64,11 @@ public class CharacterManagerTest
 	{
 		testCreate();
 		assertEquals(6, Context.getCurrentPlayer().getCharacters().size());
-		RPGCharacter c = null;
-		Iterator<RPGCharacter> it = Context.getCurrentPlayer().getCharacters().keySet().iterator();
+		Character c = null;
+		Iterator<Character> it = Context.getCurrentPlayer().getCharacters().keySet().iterator();
 		while (it.hasNext() && c == null)
 		{
-			RPGCharacter cur = it.next();
+			Character cur = it.next();
 			if (cur.getInfo().getName().equals("Julius"))
 			{
 				c = cur;
@@ -82,11 +83,11 @@ public class CharacterManagerTest
 	public final void testRename()
 	{
 		testCreate();
-		RPGCharacter c = null;
-		Iterator<RPGCharacter> it = Context.getCurrentPlayer().getCharacters().keySet().iterator();
+		Character c = null;
+		Iterator<Character> it = Context.getCurrentPlayer().getCharacters().keySet().iterator();
 		while (it.hasNext() && c == null)
 		{
-			RPGCharacter cur = it.next();
+			Character cur = it.next();
 			if (cur.getInfo().getName().equals("Viktor"))
 			{
 				c = cur;
@@ -101,11 +102,11 @@ public class CharacterManagerTest
 	public final void testUse()
 	{
 		testCreate();
-		RPGCharacter c = null;
-		Iterator<RPGCharacter> it = Context.getCurrentPlayer().getCharacters().keySet().iterator();
+		Character c = null;
+		Iterator<Character> it = Context.getCurrentPlayer().getCharacters().keySet().iterator();
 		while (it.hasNext() && c == null)
 		{
-			RPGCharacter cur = it.next();
+			Character cur = it.next();
 			if (cur.getInfo().getName().equals("Marril"))
 			{
 				c = cur;
@@ -130,7 +131,7 @@ public class CharacterManagerTest
 	public final void testGet()
 	{
 		testCreate();
-		RPGCharacter c = new CharacterManager().get("Pipino");
+		Character c = new CharacterManager().get("Pipino");
 		assertNotNull(c);
 		assertEquals("Pipino", c.getInfo().getName());
 	}

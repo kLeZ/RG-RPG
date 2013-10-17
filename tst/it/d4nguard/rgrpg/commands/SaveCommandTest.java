@@ -46,9 +46,9 @@ public class SaveCommandTest
 	@Test
 	public final void testExecute()
 	{
-		String path = "~/test-session.dat";
-		new SaveCommand().execute(path);
-		File f = new File(path.replace("~", System.getProperty("user.home")));
+		String file = "~/test-session.dat";
+		new SaveCommand().execute(file);
+		File f = new File(file.replace("~", System.getProperty("user.home")));
 		assertTrue(f.exists());
 		assertTrue(f.length() > 0);
 	}
@@ -56,8 +56,8 @@ public class SaveCommandTest
 	@After
 	public final void tearDown()
 	{
-		String path = "~/test-session.dat";
-		File f = new File(path.replace("~", System.getProperty("user.home")));
+		String file = "~/test-session.dat";
+		File f = new File(file.replace("~", System.getProperty("user.home")));
 		f.delete();
 	}
 }

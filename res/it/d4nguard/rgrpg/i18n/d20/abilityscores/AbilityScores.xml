@@ -3,10 +3,10 @@
 <properties>
 	<comment>Default ability scores xml properties file for localization purposes</comment>
 
-	<entry key="strength">strength</entry>
-	<entry key="dexterity">dexterity</entry>
-	<entry key="constitution">constitution</entry>
-	<entry key="intelligence">intelligence</entry>
-	<entry key="wisdom">wisdom</entry>
-	<entry key="charisma">charisma</entry>
+	<entry key="d20-strength">strength</entry>
+	<entry key="d20-dexterity">dexterity</entry>
+	<entry key="d20-constitution">constitution</entry>
+	<entry key="d20-intelligence">intelligence</entry>
+	<entry key="d20-wisdom">wisdom</entry>
+	<entry key="d20-charisma">charisma</entry>
 </properties>

@@ -18,43 +18,31 @@
 // 
 package it.d4nguard.rgrpg.d20;
 
-import it.d4nguard.rgrpg.Context;
 import it.d4nguard.rgrpg.profile.AbilityScore;
-import it.d4nguard.rgrpg.profile.AbilityScore.UnmodifiableAbilityScore;
-import it.d4nguard.rgrpg.util.StringCompiler;
 
 import java.io.Serializable;
-import java.util.HashMap;
-import java.util.Map;
 
-public class AbilityScores implements Serializable
+public class AbilityScores extends it.d4nguard.rgrpg.profile.AbilityScores implements Serializable
 {
 	private static final long serialVersionUID = 1363222839096421722L;
 
-	public static final String STRENGTH = "strength";
-	public final String StrengthD = Context.getAbilityScore(STRENGTH);
-	public static final String DEXTERITY = "dexterity";
-	public final String DexterityD = Context.getAbilityScore(DEXTERITY);
-	public static final String CONSTITUTION = "constitution";
-	public final String ConstitutionD = Context.getAbilityScore(CONSTITUTION);
-	public static final String INTELLIGENCE = "intelligence";
-	public final String IntelligenceD = Context.getAbilityScore(INTELLIGENCE);
-	public static final String WISDOM = "wisdom";
-	public final String WisdomD = Context.getAbilityScore(WISDOM);
-	public static final String CHARISMA = "charisma";
-	public final String CharismaD = Context.getAbilityScore(CHARISMA);
+	public static final String STRENGTH = "d20-strength";
+	public static final String DEXTERITY = "d20-dexterity";
+	public static final String CONSTITUTION = "d20-constitution";
+	public static final String INTELLIGENCE = "d20-intelligence";
+	public static final String WISDOM = "d20-wisdom";
+	public static final String CHARISMA = "d20-charisma";
 
-	private final Map<String, AbilityScore> scores;
-
-	public AbilityScores()
+	@Override
+	protected AbilityScore newAbilityScore(String abilityScore)
 	{
-		this.scores = new HashMap<String, AbilityScore>();
-		scores.put(STRENGTH, new D20AbilityScore(StrengthD));
-		scores.put(DEXTERITY, new D20AbilityScore(DexterityD));
-		scores.put(CONSTITUTION, new D20AbilityScore(ConstitutionD));
-		scores.put(INTELLIGENCE, new D20AbilityScore(IntelligenceD));
-		scores.put(WISDOM, new D20AbilityScore(WisdomD));
-		scores.put(CHARISMA, new D20AbilityScore(CharismaD));
+		return new D20AbilityScore(abilityScore);
+	}
+
+	@Override
+	public String getPropertyPrefix()
+	{
+		return "d20-";
 	}
 
 	public AbilityScore getStrength()
@@ -117,26 +105,6 @@ public class AbilityScores implements Serializable
 		scores.get(CHARISMA).setValue(charisma);
 	}
 
-	@Override
-	public String toString()
-	{
-		StringCompiler sc = new StringCompiler();
-		sc.appendln("AbilityScores [");
-		sc.appendln(scores.values());
-		sc.append("]");
-		return sc.toString();
-	}
-
-	public AbilityScore getAbilityScore(String name)
-	{
-		return unmodifiableAbilityScore(scores.get(name));
-	}
-
-	public static AbilityScore unmodifiableAbilityScore(AbilityScore as)
-	{
-		return new UnmodifiableAbilityScore(as);
-	}
-
 	public class D20AbilityScore extends AbilityScore
 	{
 		private static final long serialVersionUID = 113611044329823552L;
@@ -157,6 +125,5 @@ public class AbilityScores implements Serializable
 		{
 			return (int) Math.round(Math.floor(((float) (value - MID_RANGE)) / 2.0F));
 		}
-
 	}
 }

@@ -19,9 +19,9 @@
 package it.d4nguard.rgrpg;
 
 import static org.reflections.util.ClasspathHelper.forPackage;
+import it.d4nguard.rgrpg.profile.Character;
 import it.d4nguard.rgrpg.profile.CharacterInfo;
 import it.d4nguard.rgrpg.profile.Player;
-import it.d4nguard.rgrpg.profile.RPGCharacter;
 import it.d4nguard.rgrpg.util.BundleSet;
 import it.d4nguard.rgrpg.util.StringUtils;
 
@@ -32,6 +32,7 @@ import java.io.IOException;
 import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
 import java.io.Serializable;
+import java.util.Enumeration;
 import java.util.HashSet;
 import java.util.Iterator;
 import java.util.Map.Entry;
@@ -219,16 +220,21 @@ public class Context
 		return Singleton.Current.getBundle(ABILITY_SCORES).getString(name);
 	}
 
-	public static RPGCharacter getCurrentCharacter()
+	public static Enumeration<String> getAvailableAbilityScores()
 	{
-		RPGCharacter ret = null;
+		return Singleton.Current.getBundle(ABILITY_SCORES).getKeys();
+	}
+
+	public static Character getCurrentCharacter()
+	{
+		Character ret = null;
 		if (hasCurrentPlayer())
 		{
-			Iterator<Entry<RPGCharacter, CharacterInfo>> it;
+			Iterator<Entry<Character, CharacterInfo>> it;
 			it = Context.getCurrentPlayer().getCharacters().entrySet().iterator();
 			while (it.hasNext() && ret == null)
 			{
-				Entry<RPGCharacter, CharacterInfo> e = it.next();
+				Entry<Character, CharacterInfo> e = it.next();
 				if (e.getValue().isCurrent()) ret = e.getKey();
 			}
 		}

@@ -145,6 +145,80 @@ public class GeneralInfo implements Serializable
 	}
 
 	@Override
+	public int hashCode()
+	{
+		final int prime = 31;
+		int result = 1;
+		result = prime * result + ((dateOfBirth == null) ? 0 : dateOfBirth.hashCode());
+		result = prime * result + ((description == null) ? 0 : description.hashCode());
+		result = prime * result + ((eyesColor == null) ? 0 : eyesColor.hashCode());
+		result = prime * result + ((gender == null) ? 0 : gender.hashCode());
+		result = prime * result + ((hairColor == null) ? 0 : hairColor.hashCode());
+		result = prime * result + ((height == null) ? 0 : height.hashCode());
+		result = prime * result + ((name == null) ? 0 : name.hashCode());
+		result = prime * result + ((philosophyDeityReligion == null) ? 0 : philosophyDeityReligion.hashCode());
+		result = prime * result + ((skinColor == null) ? 0 : skinColor.hashCode());
+		result = prime * result + ((weight == null) ? 0 : weight.hashCode());
+		return result;
+	}
+
+	@Override
+	public boolean equals(Object obj)
+	{
+		if (this == obj) return true;
+		if (obj == null) return false;
+		if (!(obj instanceof GeneralInfo)) return false;
+		GeneralInfo other = (GeneralInfo) obj;
+		if (dateOfBirth == null)
+		{
+			if (other.dateOfBirth != null) return false;
+		}
+		else if (!dateOfBirth.equals(other.dateOfBirth)) return false;
+		if (description == null)
+		{
+			if (other.description != null) return false;
+		}
+		else if (!description.equals(other.description)) return false;
+		if (eyesColor == null)
+		{
+			if (other.eyesColor != null) return false;
+		}
+		else if (!eyesColor.equals(other.eyesColor)) return false;
+		if (gender != other.gender) return false;
+		if (hairColor == null)
+		{
+			if (other.hairColor != null) return false;
+		}
+		else if (!hairColor.equals(other.hairColor)) return false;
+		if (height == null)
+		{
+			if (other.height != null) return false;
+		}
+		else if (!height.equals(other.height)) return false;
+		if (name == null)
+		{
+			if (other.name != null) return false;
+		}
+		else if (!name.equals(other.name)) return false;
+		if (philosophyDeityReligion == null)
+		{
+			if (other.philosophyDeityReligion != null) return false;
+		}
+		else if (!philosophyDeityReligion.equals(other.philosophyDeityReligion)) return false;
+		if (skinColor == null)
+		{
+			if (other.skinColor != null) return false;
+		}
+		else if (!skinColor.equals(other.skinColor)) return false;
+		if (weight == null)
+		{
+			if (other.weight != null) return false;
+		}
+		else if (!weight.equals(other.weight)) return false;
+		return true;
+	}
+
+	@Override
 	public String toString()
 	{
 		AmountFormat af = AmountFormat.getInstance();

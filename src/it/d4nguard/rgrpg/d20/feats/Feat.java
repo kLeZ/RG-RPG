@@ -18,7 +18,7 @@
 // 
 package it.d4nguard.rgrpg.d20.feats;
 
-import it.d4nguard.rgrpg.d20.D20Character;
+import it.d4nguard.rgrpg.d20.Character;
 import it.d4nguard.rgrpg.d20.types.FeatCategoryType;
 import it.d4nguard.rgrpg.util.BooleanUtils;
 
@@ -48,7 +48,7 @@ public abstract class Feat implements Serializable
 		this.prerequisites = prerequisites;
 	}
 
-	public boolean meets(D20Character character) throws IllegalAccessException,
+	public boolean meets(Character character) throws IllegalAccessException,
 					IllegalArgumentException, InvocationTargetException
 	{
 		return BooleanUtils.all(prerequisites, Prerequisite.MEETS, character);

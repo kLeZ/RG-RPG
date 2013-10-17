@@ -23,7 +23,7 @@ import static org.junit.Assert.assertTrue;
 import it.d4nguard.rgrpg.Context;
 import it.d4nguard.rgrpg.managers.CharacterManager;
 import it.d4nguard.rgrpg.managers.PlayerManager;
-import it.d4nguard.rgrpg.profile.RPGCharacter;
+import it.d4nguard.rgrpg.profile.Character;
 
 import java.io.File;
 import java.util.HashSet;
@@ -64,10 +64,10 @@ public class LoadCommandTest
 	{
 		new LoadCommand().execute("~/test-session.dat");
 		assertEquals("kLeZ", Context.getCurrentPlayer().getName());
-		Iterator<RPGCharacter> it = Context.getCurrentPlayer().getCharacters().keySet().iterator();
+		Iterator<Character> it = Context.getCurrentPlayer().getCharacters().keySet().iterator();
 		while (it.hasNext())
 		{
-			RPGCharacter c = it.next();
+			Character c = it.next();
 			assertTrue(names.contains(c.getInfo().getName()));
 		}
 	}

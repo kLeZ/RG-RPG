@@ -18,7 +18,7 @@
 // 
 package it.d4nguard.rgrpg.engine;
 
-import it.d4nguard.rgrpg.profile.RPGCharacter;
+import it.d4nguard.rgrpg.profile.Character;
 import it.d4nguard.rgrpg.profile.Skill;
 
 /**
@@ -28,7 +28,7 @@ import it.d4nguard.rgrpg.profile.Skill;
  */
 public interface Engine
 {
-	public boolean skillCheck(RPGCharacter character, Skill skill, int DC,
+	public boolean skillCheck(Character character, Skill skill, int DC,
 					int DCMul);
 
 	public boolean defenseCheck();

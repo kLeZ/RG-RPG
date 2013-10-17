@@ -29,14 +29,14 @@ public class Player implements Serializable
 	private static final long serialVersionUID = 2005023218428164699L;
 
 	private final String name;
-	private final Map<RPGCharacter, CharacterInfo> characters;
+	private final Map<Character, CharacterInfo> characters;
 
 	public Player(String name)
 	{
-		this(name, new HashMap<RPGCharacter, CharacterInfo>());
+		this(name, new HashMap<Character, CharacterInfo>());
 	}
 
-	private Player(String name, Map<RPGCharacter, CharacterInfo> characters)
+	private Player(String name, Map<Character, CharacterInfo> characters)
 	{
 		this.name = name;
 		this.characters = characters;
@@ -47,7 +47,7 @@ public class Player implements Serializable
 		return name;
 	}
 
-	public Map<RPGCharacter, CharacterInfo> getCharacters()
+	public Map<Character, CharacterInfo> getCharacters()
 	{
 		return characters;
 	}
@@ -84,7 +84,7 @@ public class Player implements Serializable
 		sc.append("Name: ").appendln(this.name).appendNewLine();
 		sc.appendln("= CHARACTERS");
 		sc.appendln("------------");
-		for (RPGCharacter c : this.characters.keySet())
+		for (Character c : this.characters.keySet())
 		{
 			sc.appendln(c);
 		}

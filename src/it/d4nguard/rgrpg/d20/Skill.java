@@ -21,24 +21,23 @@ package it.d4nguard.rgrpg.d20;
 import it.d4nguard.rgrpg.d20.types.ArmorCheckPenaltyType;
 import it.d4nguard.rgrpg.d20.types.TryAgainType;
 import it.d4nguard.rgrpg.profile.AbilityScore;
-import it.d4nguard.rgrpg.profile.Skill;
 import it.d4nguard.rgrpg.util.NumericUtils;
 
 import java.util.List;
 
-public class D20Skill extends Skill
+public class Skill extends it.d4nguard.rgrpg.profile.Skill
 {
 	private static final long serialVersionUID = 6997008011152393042L;
 
 	private final ArmorCheckPenaltyType armorCheckPenalty;
 
-	public D20Skill(String name, AbilityScore ability)
+	public Skill(String name, AbilityScore ability)
 	{
 		this(name, ability, false, TryAgainType.Limited,
 						ArmorCheckPenaltyType.None);
 	}
 
-	public D20Skill(String name, AbilityScore ability, boolean trained,
+	public Skill(String name, AbilityScore ability, boolean trained,
 					TryAgainType tryAgain,
 					ArmorCheckPenaltyType armorCheckPenalty)
 	{

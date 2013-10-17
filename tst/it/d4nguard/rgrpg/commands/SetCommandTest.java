@@ -20,10 +20,9 @@ package it.d4nguard.rgrpg.commands;
 
 import static org.junit.Assert.assertEquals;
 import it.d4nguard.rgrpg.Context;
-import it.d4nguard.rgrpg.d20.D20Character;
 import it.d4nguard.rgrpg.managers.CharacterManager;
 import it.d4nguard.rgrpg.managers.PlayerManager;
-import it.d4nguard.rgrpg.profile.RPGCharacter;
+import it.d4nguard.rgrpg.profile.Character;
 import it.d4nguard.rgrpg.profile.types.GenderType;
 
 import javax.measure.unit.SI;
@@ -38,7 +37,7 @@ public class SetCommandTest
 {
 	private SetCommand set;
 	private String cmd;
-	private RPGCharacter c;
+	private Character c;
 
 	@Before
 	public void setUp()
@@ -88,9 +87,11 @@ public class SetCommandTest
 		// 16 14 12 10 10 8
 		cmd = "character Julius \"abilityScores.strength=8\"";
 		set.execute(cmd.split("\\s"));
+		System.out.println(((it.d4nguard.rgrpg.d20.Character) c).getAbilityScores());
+		System.out.println(((it.d4nguard.rgrpg.d20.AbilityScores) ((it.d4nguard.rgrpg.d20.Character) c).getAbilityScores()).getStrength());
 		assertEquals(8,
-						((D20Character) c).getAbilityScores().getStrength().getValue());
+						((it.d4nguard.rgrpg.d20.Character) c).getAbilityScores().getStrength().getValue());
 		assertEquals(-1,
-						((D20Character) c).getAbilityScores().getStrength().getModifier());
+						((it.d4nguard.rgrpg.d20.Character) c).getAbilityScores().getStrength().getModifier());
 	}
 }

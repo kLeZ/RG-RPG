@@ -18,8 +18,8 @@
 // 
 package it.d4nguard.rgrpg.engine;
 
-import it.d4nguard.rgrpg.d20.D20Character;
-import it.d4nguard.rgrpg.d20.D20Skill;
+import it.d4nguard.rgrpg.d20.Character;
+import it.d4nguard.rgrpg.d20.Skill;
 import it.d4nguard.rgrpg.d20.types.ArmorClassType;
 import it.d4nguard.rgrpg.profile.types.AttackType;
 import it.d4nguard.rgrpg.util.Dice;
@@ -32,7 +32,7 @@ public class D20Engine
 {
 	public static final int LIMITED_RETRIES = 3;
 
-	public static boolean skillCheck(D20Character c, D20Skill skill, int DC,
+	public static boolean skillCheck(Character c, Skill skill, int DC,
 					int DCMul)
 	{
 		boolean ret = false;
@@ -95,13 +95,13 @@ public class D20Engine
 		return ret;
 	}
 
-	public static boolean armorClassCheck(D20Character c, ArmorClassType type,
+	public static boolean armorClassCheck(Character c, ArmorClassType type,
 					int ar)
 	{
 		return ar >= c.getArmorClass(type);
 	}
 
-	public static Dice attack(D20Character c, AttackType type,
+	public static Dice attack(Character c, AttackType type,
 					int babAttackIndex)
 	{
 		Dice ret = new Dice(1, 20, OperatorType.Addition, c.getBab(type,

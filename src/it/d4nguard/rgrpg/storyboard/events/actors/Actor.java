@@ -18,11 +18,11 @@
 // 
 package it.d4nguard.rgrpg.storyboard.events.actors;
 
-import it.d4nguard.rgrpg.profile.RPGCharacter;
+import it.d4nguard.rgrpg.profile.Character;
 
 public interface Actor
 {
-	public RPGCharacter getCharacter();
+	public Character getCharacter();
 
-	public void setCharacter(RPGCharacter character);
+	public void setCharacter(Character character);
 }

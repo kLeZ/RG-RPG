@@ -18,7 +18,7 @@
 // 
 package it.d4nguard.rgrpg.profile.types;
 
-import it.d4nguard.rgrpg.profile.RPGCharacter;
+import it.d4nguard.rgrpg.profile.Character;
 
 /**
  * This enumeration describes the ActionType representing an action
@@ -28,11 +28,11 @@ import it.d4nguard.rgrpg.profile.RPGCharacter;
 public enum ActionType
 {
 	/**
-	 * Talk action, an {@link RPGCharacter} can talk to another one.
+	 * Talk action, an {@link Character} can talk to another one.
 	 */
 	Talk,
 	/**
-	 * Attack action, an {@link RPGCharacter} can attack another one.
+	 * Attack action, an {@link Character} can attack another one.
 	 */
 	Attack,
 }

@@ -25,7 +25,6 @@ import it.d4nguard.rgrpg.d20.types.ArmorClassType;
 import it.d4nguard.rgrpg.d20.types.SavingThrowType;
 import it.d4nguard.rgrpg.profile.GeneralInfo;
 import it.d4nguard.rgrpg.profile.Player;
-import it.d4nguard.rgrpg.profile.RPGCharacter;
 import it.d4nguard.rgrpg.profile.types.AttackType;
 import it.d4nguard.rgrpg.util.NumericUtils;
 import it.d4nguard.rgrpg.util.StringUtils;
@@ -35,9 +34,11 @@ import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
 
-public class D20Character extends RPGCharacter
+public class Character extends it.d4nguard.rgrpg.profile.Character
 {
 	private static final long serialVersionUID = -8727304403745570110L;
+
+	public static final String TYPE = "d20";
 
 	private Race race;
 	private AlignmentType alignment;
@@ -49,7 +50,6 @@ public class D20Character extends RPGCharacter
 	private final Set<Class> classes;
 	private final Set<ResistanceToEnergy> resistanceToEnergies;
 	private final Set<Language> spokenLanguages;
-	private final Set<D20Skill> skills;
 	private final Set<Feat> feats;
 	private final List<Integer> hpModifiers;
 	private final List<Integer> babModifiers;
@@ -61,7 +61,7 @@ public class D20Character extends RPGCharacter
 	private int damage = 0;
 	private int deflection = 0;
 
-	public D20Character(Player owner, GeneralInfo info)
+	public Character(Player owner, GeneralInfo info)
 	{
 		super(owner, info);
 		this.abilityScores = new AbilityScores();
@@ -69,7 +69,6 @@ public class D20Character extends RPGCharacter
 		this.damageReduction = new DamageReduction();
 
 		this.classes = new HashSet<Class>();
-		this.skills = new HashSet<D20Skill>();
 		this.feats = new HashSet<Feat>();
 		this.spokenLanguages = new HashSet<Language>();
 		this.resistanceToEnergies = new HashSet<ResistanceToEnergy>();
@@ -156,11 +155,6 @@ public class D20Character extends RPGCharacter
 	public Set<ResistanceToEnergy> getResistanceToEnergies()
 	{
 		return resistanceToEnergies;
-	}
-
-	public Set<D20Skill> getSkills()
-	{
-		return skills;
 	}
 
 	public Set<Feat> getFeats()

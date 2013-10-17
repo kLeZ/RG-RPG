@@ -21,7 +21,7 @@ package it.d4nguard.rgrpg.commands;
 import it.d4nguard.rgrpg.Context;
 import it.d4nguard.rgrpg.managers.PlayerManager;
 import it.d4nguard.rgrpg.profile.Player;
-import it.d4nguard.rgrpg.profile.RPGCharacter;
+import it.d4nguard.rgrpg.profile.Character;
 import it.d4nguard.rgrpg.util.CommandLine;
 import it.d4nguard.rgrpg.util.StringUtils;
 
@@ -44,7 +44,7 @@ public class ListCommand implements Command
 			{
 				Player p = new PlayerManager().get(StringUtils.join(" ",
 								cmd.getArgs()));
-				for (RPGCharacter c : p.getCharacters().keySet())
+				for (Character c : p.getCharacters().keySet())
 					System.out.println(c);
 				break;
 			}
