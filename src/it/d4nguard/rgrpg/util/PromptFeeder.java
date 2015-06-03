@@ -105,7 +105,7 @@ public class PromptFeeder
 						ret.append('\n');
 						break;
 					case 'p':
-						String player = "No-player-selected";
+						String player = Context.getString("no.player.selected");
 						if (Context.hasCurrentPlayer())
 						{
 							player = Context.getCurrentPlayer().getName();
@@ -113,7 +113,7 @@ public class PromptFeeder
 						ret.append('[').append(player).append(']');
 						break;
 					case 's':
-						String character = "No-character-selected";
+						String character = Context.getString("no.character.selected");
 						if (Context.hasCurrentCharacter())
 						{
 							character = Context.getCurrentCharacter().getInfo().getName();

@@ -126,4 +126,6 @@ save {path}</entry>
 	<entry key="load.help">Loads previously saved state.
 {path} is the path and file name where to load the file, e.g. ~/.rgrpg/session.dat
 load {path}</entry>
+	<entry key="no.player.selected">No-player-selected</entry>
+	<entry key="no.character.selected">No-character-selected</entry>
 </properties>

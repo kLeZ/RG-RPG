@@ -45,7 +45,7 @@ import org.reflections.scanners.SubTypesScanner;
 public class Context
 {
 	private static final String PACKAGE = Context.class.getPackage().getName();
-	private static final String I18N_PACKAGE = "it.d4nguard.rgrpg.i18n";
+	private static final String I18N_PACKAGE = PACKAGE.concat(".i18n");
 	private static final String STRINGS = I18N_PACKAGE.concat(".strings.Strings");
 	private static final String FEATS = I18N_PACKAGE.concat(".d20.feats.Feats");
 	private static final String LANGUAGES = I18N_PACKAGE.concat(".d20.languages.Languages");

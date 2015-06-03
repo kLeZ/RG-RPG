@@ -1,3 +1,5 @@
+package it.d4nguard.rgrpg.commands;
+
 // RG-RPG is a Java-based text, roleplaying-gal game, in which you
 // have to carry many girls. The RG-RPG acronym is a recursive one and
 // it means "RG-RPG is a Gal Role playing game Pointing on Girls."
@@ -16,7 +18,6 @@
 // You should have received a copy of the GNU General Public License
 // along with this program.  If not, see <http://www.gnu.org/licenses/>.
 // 
-package it.d4nguard.rgrpg.commands;
 
 import it.d4nguard.rgrpg.Context;
 import it.d4nguard.rgrpg.managers.CharacterManager;
@@ -40,6 +41,11 @@ public class CurCommand implements Command
 			case "character":
 			{
 				System.out.println(new CharacterManager().current());
+				break;
+			}
+			default:
+			{
+				System.out.println(getHelp());
 				break;
 			}
 		}

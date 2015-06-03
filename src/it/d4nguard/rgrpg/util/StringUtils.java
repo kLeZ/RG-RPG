@@ -373,13 +373,13 @@ public class StringUtils
 			String gen = join(", ", values.subList(1, values.size()));
 			sc.append("%s<%s>", values.get(0), gen);
 		}
-		// int length = sc.length();
 		sc.append(" %s", field.getName());
 		// FIX: We're not ready to do a full print of an Object structure
-		// for (Class<?> c : toPrint.keySet())
-		// {
-		// 	sc.appendln(prettyPrint(c, length, ' '));
-		// }
+		// We're getting StackOverflow!!!
+		//		for (Class<?> c : toPrint.keySet())
+		//		{
+		//			sc.appendln(prettyPrint(c, sc.length(), ' '));
+		//		}
 		return sc.toString();
 	}
 
