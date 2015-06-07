@@ -724,7 +724,7 @@ public class StringCompiler implements CharSequence, Appendable, Serializable
 		Field field = GenericsUtils.safeGetDeclaredField(clazz, fieldName);
 		if (field != null)
 		{
-			append(field.getName()).append("=");
+			append(field.getName()).append(" = ");
 			if (field.getType().isArray() || Iterable.class.isAssignableFrom(clazz))
 			{
 				fill(field.getName().length() + 1, ' ');
@@ -738,7 +738,7 @@ public class StringCompiler implements CharSequence, Appendable, Serializable
 				append("null");
 			}
 		}
-		else append(fieldName).append("=null");
+		else append(fieldName).append(" = null");
 		return this;
 	}
 

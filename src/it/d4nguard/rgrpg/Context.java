@@ -29,8 +29,10 @@ import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileOutputStream;
 import java.io.IOException;
+import java.io.InputStream;
 import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
+import java.io.PrintStream;
 import java.io.Serializable;
 import java.util.Enumeration;
 import java.util.HashSet;
@@ -59,7 +61,11 @@ public class Context
 		private static final SubTypesScanner STS = new SubTypesScanner(false);
 
 		private static Singleton Current = new Singleton();
-		private static transient BundleSet bundles;
+
+		private transient BundleSet bundles;
+		private transient InputStream in;
+		private transient PrintStream out;
+		private transient PrintStream err;
 
 		private boolean debug = false;
 		private Player current;
@@ -135,17 +141,24 @@ public class Context
 		{
 			try
 			{
-				FileInputStream fis = new FileInputStream(getDBPath(path));
-				ObjectInputStream ois = new ObjectInputStream(fis);
-				Singleton.Current = (Singleton) ois.readObject();
-				ois.close();
-				fis.close();
+				if (new File(getDBPath(path)).exists())
+				{
+					FileInputStream fis = new FileInputStream(getDBPath(path));
+					ObjectInputStream ois = new ObjectInputStream(fis);
+					Singleton.Current = (Singleton) ois.readObject();
+					ois.close();
+					fis.close();
+					init();
+				}
+				else
+				{
+					System.out.println("Could not load the save. File doesn't exists.");
+				}
 			}
 			catch (ClassNotFoundException | IOException e)
 			{
 				e.printStackTrace();
 			}
-			init();
 		}
 
 		private void save(String path)
@@ -167,6 +180,30 @@ public class Context
 		private Reflections getReflections()
 		{
 			return new Reflections(forPackage(PACKAGE), STS);
+		}
+
+		public void
+						mapStreams(InputStream in, PrintStream out,
+										PrintStream err)
+		{
+			this.in = in;
+			this.out = out;
+			this.err = err;
+		}
+
+		public PrintStream getOut()
+		{
+			return this.out;
+		}
+
+		public PrintStream getErr()
+		{
+			return this.err;
+		}
+
+		public InputStream getIn()
+		{
+			return this.in;
 		}
 	};
 
@@ -282,4 +319,69 @@ public class Context
 		return Singleton.Current.getReflections();
 	}
 
+	public static void mapStreams(InputStream in, PrintStream out,
+					PrintStream err)
+	{
+		Singleton.Current.mapStreams(in, out, err);
+	}
+
+	public static void print(Object o)
+	{
+		print(o, true);
+	}
+
+	public static void print(Object o, boolean out)
+	{
+		(out ? Singleton.Current.getOut() : Singleton.Current.getErr()).print(o);
+	}
+
+	public static void print(String s)
+	{
+		print(s, true);
+	}
+
+	public static void print(String s, boolean out)
+	{
+		(out ? Singleton.Current.getOut() : Singleton.Current.getErr()).print(s);
+	}
+
+	public static void println()
+	{
+		Singleton.Current.getOut().println();
+	}
+
+	public static void println(Object o)
+	{
+		println(o, true);
+	}
+
+	public static void println(Object o, boolean out)
+	{
+		(out ? Singleton.Current.getOut() : Singleton.Current.getErr()).println(o);
+	}
+
+	public static void println(boolean b)
+	{
+		println(b, true);
+	}
+
+	public static void println(boolean b, boolean out)
+	{
+		(out ? Singleton.Current.getOut() : Singleton.Current.getErr()).println(b);
+	}
+
+	public static void println(String s)
+	{
+		println(s, true);
+	}
+
+	public static void println(String s, boolean out)
+	{
+		(out ? Singleton.Current.getOut() : Singleton.Current.getErr()).println(s);
+	}
+
+	public static InputStream getIn()
+	{
+		return Singleton.Current.getIn();
+	}
 }

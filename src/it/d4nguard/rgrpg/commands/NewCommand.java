@@ -38,8 +38,8 @@ public class NewCommand implements Command
 			{
 				name = StringUtils.join(" ", cmd.getArgs());
 				Player p = new PlayerManager().create(name);
-				if (p != null) System.out.println(p);
-				else System.out.println(String.format(
+				if (p != null) Context.println(p);
+				else Context.println(String.format(
 								Context.getString("new.err.player.exists"),
 								name));
 
@@ -49,7 +49,7 @@ public class NewCommand implements Command
 			{
 				CommandLine cmd_c = StringUtils.getArgs(cmd.getArgs());
 				name = StringUtils.join(" ", cmd_c.getArgs());
-				System.out.println(new CharacterManager().create(name,
+				Context.println(new CharacterManager().create(name,
 								cmd_c.getProc()));
 				break;
 			}

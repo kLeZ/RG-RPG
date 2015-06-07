@@ -223,33 +223,33 @@ public class GeneralInfo implements Serializable
 	{
 		AmountFormat af = AmountFormat.getInstance();
 		StringBuilder builder = new StringBuilder();
-		builder.append("GeneralInfo [name=");
+		builder.append("GeneralInfo [ name = ");
 		builder.append(name);
-		builder.append(", description=");
+		builder.append(", description = ");
 		builder.append(description);
-		builder.append(", skinColor=");
+		builder.append(", skinColor = ");
 		builder.append(skinColor);
-		builder.append(", hairColor=");
+		builder.append(", hairColor = ");
 		builder.append(hairColor);
-		builder.append(", eyesColor=");
+		builder.append(", eyesColor = ");
 		builder.append(eyesColor);
 		if (height != null)
 		{
-			builder.append(", height=");
+			builder.append(", height = ");
 			builder.append(af.format(height));
 		}
 		if (weight != null)
 		{
-			builder.append(", weight=");
+			builder.append(", weight = ");
 			builder.append(af.format(weight));
 		}
-		builder.append(", dateOfBirth=");
+		builder.append(", dateOfBirth = ");
 		builder.append(dateOfBirth);
-		builder.append(", gender=");
+		builder.append(", gender = ");
 		builder.append(gender);
-		builder.append(", philosophyDeityReligion=");
+		builder.append(", philosophyDeityReligion = ");
 		builder.append(philosophyDeityReligion);
-		builder.append("]");
+		builder.append(" ]");
 		return builder.toString();
 	}
 }

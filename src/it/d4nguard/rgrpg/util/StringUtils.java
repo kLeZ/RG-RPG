@@ -461,7 +461,7 @@ public class StringUtils
 	public static String genericToString(Class<?> c, Object o,
 					String... excluded)
 	{
-		return genericToString(c, o, 0, StringCompiler.NUL, true, excluded);
+		return genericToString(c, o, 1, '\t', false, excluded);
 	}
 
 	public static String genericToString(Class<?> c, Object o, int length,
@@ -469,7 +469,7 @@ public class StringUtils
 	{
 		if (c.equals(Object.class)) return "";
 		StringCompiler sc = new StringCompiler(length, filler);
-		sc.append(c.getSimpleName()).appendln("[");
+		sc.append(c.getSimpleName()).appendln(" [");
 		if (recurseSuper)
 		{
 			String s = genericToString(c.getSuperclass(), o, length, filler,

@@ -33,30 +33,30 @@ public class HelpCommand implements Command
 	{
 		if (args.length == 0)
 		{
-			System.out.println();
-			System.out.println(Context.getString("help.listavailable"));
+			Context.println();
+			Context.println(Context.getString("help.listavailable"));
 			Reflections reflections = Context.getReflections();
 			Set<Class<? extends Command>> commands = reflections.getSubTypesOf(Command.class);
 			for (Class<? extends Command> cmd : commands)
 			{
-				System.out.println(String.format(
+				Context.println(String.format(
 								"%s: %s",
 								StringUtils.decapitalize(cmd.getSimpleName().replace(
 												"Command", "")),
 								CommandsInterpreter.newCommand(cmd).getDescription()));
 			}
-			System.out.println();
+			Context.println();
 		}
 		else
 		{
 			try
 			{
-				System.out.println(CommandsInterpreter.resolveCommand(args[0]).getHelp());
-				System.out.println();
+				Context.println(CommandsInterpreter.resolveCommand(args[0]).getHelp());
+				Context.println();
 			}
 			catch (ClassNotFoundException e)
 			{
-				System.out.println(String.format(
+				Context.println(String.format(
 								Context.getString("help.err.nohelp"), args[0]));
 			}
 		}

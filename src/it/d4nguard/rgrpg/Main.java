@@ -24,8 +24,10 @@ public class Main
 {
 	public static void main(String[] args)
 	{
+		//TODO: Includere jansi o jline per gestire l'input da console!!!
 		Welcome.print();
-		Thread t = new Thread(new CommandsInterpreter(System.in));
+		Thread t = new Thread(new CommandsInterpreter(System.in, System.out,
+						System.err));
 		try
 		{
 			t.start();

@@ -29,8 +29,8 @@ public class VersionCommand implements Command
 	@Override
 	public void execute(String... args)
 	{
-		System.out.println(String.format(Context.getString("version.msg"),
-						MAJOR, MINOR, REVISION));
+		Context.println(String.format(Context.getString("version.msg"), MAJOR,
+						MINOR, REVISION));
 	}
 
 	@Override

@@ -26,7 +26,7 @@ public class DebugCommand implements Command
 	public void execute(String... args)
 	{
 		if (args.length > 0) Context.setDebug(Boolean.parseBoolean(args[0]));
-		else System.out.println(Context.isDebug());
+		else Context.println(Context.isDebug());
 	}
 
 	@Override

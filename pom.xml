@@ -142,10 +142,9 @@
 							<outputDirectory>gen</outputDirectory>
 							<timestampDirectory>gen/tmstmp</timestampDirectory>
 							<package>org.apache.commons.ognl</package>
-							<!-- Uncomment if AST files needs to be generated 
-							<nodePackage>*.jtree</nodePackage> -->
+							<!-- Uncomment if AST files needs to be generated <nodePackage>*.jtree</nodePackage> -->
 							<!-- Uncomment if visitor default implementation needs to be generated 
-							<visitor>true</visitor> -->
+								<visitor>true</visitor> -->
 						</configuration>
 						<goals>
 							<!-- change goal to jtree-javacc to generate AST too -->
@@ -155,7 +154,8 @@
 				</executions>
 			</plugin>
 			<plugin>
-				<!-- Requires GraphViz to be installed and the GRAPHVIZ_HOME env var set -->
+				<!-- Requires GraphViz to be installed and the GRAPHVIZ_HOME env var 
+					set -->
 				<groupId>org.apache.maven.plugins</groupId>
 				<artifactId>maven-javadoc-plugin</artifactId>
 				<version>2.9.1</version>
@@ -177,7 +177,8 @@
 		</plugins>
 		<pluginManagement>
 			<plugins>
-				<!--This plugin's configuration is used to store Eclipse m2e settings only. It has no influence on the Maven build itself.-->
+				<!--This plugin's configuration is used to store Eclipse m2e settings 
+					only. It has no influence on the Maven build itself. -->
 				<plugin>
 					<groupId>org.eclipse.m2e</groupId>
 					<artifactId>lifecycle-mapping</artifactId>
@@ -258,6 +259,16 @@
 			<artifactId>junit</artifactId>
 			<version>4.11</version>
 			<scope>test</scope>
+		</dependency>
+		<dependency>
+			<groupId>org.fusesource.jansi</groupId>
+			<artifactId>jansi</artifactId>
+			<version>1.11</version>
+		</dependency>
+		<dependency>
+			<groupId>jline</groupId>
+			<artifactId>jline</artifactId>
+			<version>2.12.1</version>
 		</dependency>
 	</dependencies>
 </project>

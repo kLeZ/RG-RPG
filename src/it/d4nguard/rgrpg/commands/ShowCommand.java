@@ -35,12 +35,12 @@ public class ShowCommand implements Command
 		{
 			case "player":
 			{
-				System.out.println(new PlayerManager().get(name));
+				Context.println(new PlayerManager().get(name));
 				break;
 			}
 			case "character":
 			{
-				System.out.println(new CharacterManager().get(name));
+				Context.println(new CharacterManager().get(name));
 				break;
 			}
 		}

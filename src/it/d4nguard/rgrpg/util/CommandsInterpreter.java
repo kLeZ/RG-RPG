@@ -26,20 +26,26 @@ import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.InputStreamReader;
+import java.io.PrintStream;
 import java.util.Arrays;
 
 public class CommandsInterpreter implements Runnable
 {
 	private InputStream in;
+	private PrintStream out;
+	private PrintStream err;
 
-	public CommandsInterpreter(InputStream in)
+	public CommandsInterpreter(InputStream in, PrintStream out, PrintStream err)
 	{
 		this.in = in;
+		this.out = out;
+		this.err = err;
 	}
 
 	@Override
 	public void run()
 	{
+		Context.mapStreams(in, out, err);
 		try
 		{
 			boolean exit = false;
@@ -47,7 +53,7 @@ public class CommandsInterpreter implements Runnable
 							new InputStreamReader(in));
 			while (!exit)
 			{
-				System.out.print(new PromptFeeder().get());
+				out.print(new PromptFeeder().get());
 				String cmdLn = reader.readLine();
 				if (cmdLn != null && !cmdLn.isEmpty())
 				{
@@ -56,23 +62,23 @@ public class CommandsInterpreter implements Runnable
 					String[] args = cmd.getArgs();
 					try
 					{
-						if (Context.isDebug()) System.out.println(String.format(
+						if (Context.isDebug()) out.println(String.format(
 										"Command: %s%nArgs: %s", cmdLn,
 										Arrays.toString(args)));
 						CommandsInterpreter.resolveCommand(cmdLn).execute(args);
 					}
 					catch (ClassNotFoundException e)
 					{
-						System.err.println(Context.getString("commandsinterpreter.warn.commandnotfound"));
+						err.println(Context.getString("commandsinterpreter.warn.commandnotfound"));
 					}
 					catch (ExitRuntimeException e)
 					{
-						System.out.println(Context.getString("exit.msg"));
+						out.println(Context.getString("exit.msg"));
 						exit = true;
 					}
 					catch (Throwable e)
 					{
-						System.err.println(e.getLocalizedMessage());
+						err.println(e.getLocalizedMessage());
 					}
 				}
 			}

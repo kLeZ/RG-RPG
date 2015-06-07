@@ -26,16 +26,16 @@ public class Welcome
 {
 	public static void print()
 	{
-		System.out.println(Context.getString("welcome"));
+		Context.println(Context.getString("welcome"));
 		new VersionCommand().execute();
 		Scanner scn = new Scanner(
 						ClassLoader.getSystemClassLoader().getResourceAsStream(
 										"it/d4nguard/rgrpg/Welcome.txt"));
 		while (scn.hasNext())
 		{
-			System.out.println(scn.nextLine());
+			Context.println(scn.nextLine());
 		}
 		scn.close();
-		System.out.println();
+		Context.println();
 	}
 }

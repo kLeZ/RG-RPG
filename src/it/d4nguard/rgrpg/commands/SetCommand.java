@@ -37,7 +37,7 @@ public class SetCommand implements Command
 {
 	public static void qotprn(Object arg)
 	{
-		System.out.println(String.format("'%s'", arg));
+		Context.println(String.format("'%s'", arg));
 	}
 
 	@Override
@@ -57,7 +57,7 @@ public class SetCommand implements Command
 			qotprn(tokenizerFeed);
 		}
 		StringTokenizer st = new StringTokenizer(tokenizerFeed, "=", false);
-		if (Context.isDebug()) System.out.println(st.countTokens());
+		if (Context.isDebug()) Context.println(st.countTokens());
 		String exp = st.hasMoreTokens() ? st.nextToken() : "";
 		String val = st.hasMoreTokens() ? st.nextToken() : null;
 		if (Context.isDebug())
@@ -73,7 +73,7 @@ public class SetCommand implements Command
 				CommandLine descCmd = StringUtils.getArgs(cmd.getArgs());
 				if (descCmd.getProc().equals("availables"))
 				{
-					System.out.println(new PlayerManager().availables());
+					Context.println(new PlayerManager().availables());
 				}
 				else root = new PlayerManager().get(name);
 				break;
@@ -83,7 +83,7 @@ public class SetCommand implements Command
 				CommandLine descCmd = StringUtils.getArgs(cmd.getArgs());
 				if (descCmd.getProc().equals("availables"))
 				{
-					System.out.println(new CharacterManager().availables());
+					Context.println(new CharacterManager().availables());
 				}
 				else root = new CharacterManager().get(name);
 				break;
@@ -100,7 +100,7 @@ public class SetCommand implements Command
 					while (it.hasNext() && requested == null)
 						if (!(requested = it.next()).getSimpleName().equals(arg)) requested = null;
 					for (Class<?> c : r.getSubTypesOf(requested))
-						System.out.println(StringUtils.prettyPrint(c));
+						Context.println(StringUtils.prettyPrint(c));
 				}
 				break;
 			}

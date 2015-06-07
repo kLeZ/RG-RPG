@@ -35,17 +35,17 @@ public class CurCommand implements Command
 		{
 			case "player":
 			{
-				System.out.println(new PlayerManager().current());
+				Context.println(new PlayerManager().current());
 				break;
 			}
 			case "character":
 			{
-				System.out.println(new CharacterManager().current());
+				Context.println(new CharacterManager().current());
 				break;
 			}
 			default:
 			{
-				System.out.println(getHelp());
+				Context.println(getHelp());
 				break;
 			}
 		}
