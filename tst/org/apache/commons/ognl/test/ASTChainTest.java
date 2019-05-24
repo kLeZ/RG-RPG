@@ -40,10 +40,10 @@ public class ASTChainTest
 
         String expr = "thing[\"x\"].val";
 
-        assertEquals( 1, Ognl.getValue( expr, context, root ) );
+        assertEquals( 1, (int) Ognl.getValue( expr, context, root ) );
 
         Ognl.setValue( expr, context, root, new Integer( 2 ) );
 
-        assertEquals( 2, Ognl.getValue( expr, context, root ) );
+        assertEquals( 2, (int) Ognl.getValue( expr, context, root ) );
     }
 }

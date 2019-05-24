@@ -37,7 +37,7 @@
 		</license>
 	</licenses>
 	<properties>
-		<jdk.version>1.7</jdk.version>
+		<jdk.version>1.8</jdk.version>
 	</properties>
 	<repositories>
 		<repository>
@@ -140,8 +140,8 @@
 						<configuration>
 							<sourceDirectory>res</sourceDirectory>
 							<outputDirectory>gen</outputDirectory>
-							<timestampDirectory>gen/tmstmp</timestampDirectory>
-							<package>org.apache.commons.ognl</package>
+<!--							<timestampDirectory>gen/tmstmp</timestampDirectory>-->
+<!--							<package>org.apache.commons.ognl</package>-->
 							<!-- Uncomment if AST files needs to be generated <nodePackage>*.jtree</nodePackage> -->
 							<!-- Uncomment if visitor default implementation needs to be generated 
 								<visitor>true</visitor> -->

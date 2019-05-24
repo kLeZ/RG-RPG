@@ -29,17 +29,21 @@ import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileOutputStream;
 import java.io.IOException;
-import java.io.InputStream;
 import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
-import java.io.PrintStream;
+import java.io.PrintWriter;
 import java.io.Serializable;
+import java.io.StringWriter;
 import java.util.Enumeration;
 import java.util.HashSet;
 import java.util.Iterator;
 import java.util.Map.Entry;
 import java.util.ResourceBundle;
 import java.util.Set;
+
+import jline.Terminal;
+import jline.TerminalFactory;
+import jline.console.ConsoleReader;
 
 import org.reflections.Reflections;
 import org.reflections.scanners.SubTypesScanner;
@@ -63,9 +67,7 @@ public class Context
 		private static Singleton Current = new Singleton();
 
 		private transient BundleSet bundles;
-		private transient InputStream in;
-		private transient PrintStream out;
-		private transient PrintStream err;
+		private transient ConsoleReader reader;
 
 		private boolean debug = false;
 		private Player current;
@@ -79,11 +81,25 @@ public class Context
 
 		private void init()
 		{
-			if (bundles == null) bundles = new BundleSet();
-			bundles.add(STRINGS);
-			bundles.add(FEATS);
-			bundles.add(LANGUAGES);
-			bundles.add(ABILITY_SCORES);
+			TerminalFactory.configure("unix");
+			Terminal term = TerminalFactory.create();
+
+			try
+			{
+				setReader(new ConsoleReader("RG-RPG", System.in, System.out,
+								term, "utf-8"));
+
+				if (bundles == null) bundles = new BundleSet();
+				bundles.add(STRINGS);
+				bundles.add(FEATS);
+				bundles.add(LANGUAGES);
+				bundles.add(ABILITY_SCORES);
+			}
+			catch (IOException e)
+			{
+				e.printStackTrace();
+				System.exit(1);
+			}
 		}
 
 		private boolean isDebug()
@@ -98,6 +114,7 @@ public class Context
 
 		private ResourceBundle getBundle(String name)
 		{
+			init();
 			return bundles.get(name);
 		}
 
@@ -137,6 +154,19 @@ public class Context
 			return db;
 		}
 
+		public void delete(String path)
+		{
+			try
+			{
+				File f = new File(getDBPath(path));
+				f.delete();
+			}
+			catch (IOException e)
+			{
+				Context.printThrowable(e);
+			}
+		}
+
 		private void load(String path)
 		{
 			try
@@ -152,12 +182,13 @@ public class Context
 				}
 				else
 				{
-					System.out.println("Could not load the save. File doesn't exists.");
+					getReader().println(
+									"Could not load the save. File doesn't exists.");
 				}
 			}
 			catch (ClassNotFoundException | IOException e)
 			{
-				e.printStackTrace();
+				Context.printThrowable(e);
 			}
 		}
 
@@ -173,7 +204,7 @@ public class Context
 			}
 			catch (IOException e)
 			{
-				e.printStackTrace();
+				Context.printThrowable(e);
 			}
 		}
 
@@ -182,28 +213,14 @@ public class Context
 			return new Reflections(forPackage(PACKAGE), STS);
 		}
 
-		public void
-						mapStreams(InputStream in, PrintStream out,
-										PrintStream err)
+		public ConsoleReader getReader()
 		{
-			this.in = in;
-			this.out = out;
-			this.err = err;
+			return reader;
 		}
 
-		public PrintStream getOut()
+		public void setReader(ConsoleReader reader)
 		{
-			return this.out;
-		}
-
-		public PrintStream getErr()
-		{
-			return this.err;
-		}
-
-		public InputStream getIn()
-		{
-			return this.in;
+			this.reader = reader;
 		}
 	};
 
@@ -294,6 +311,16 @@ public class Context
 			if (player == null || p.getName().equals(player)) p.getCharacters().clear();
 	}
 
+	public static void deleteDefault()
+	{
+		delete("");
+	}
+
+	public static void delete(String path)
+	{
+		Singleton.Current.delete(path);
+	}
+
 	public static void loadDefault()
 	{
 		load("");
@@ -319,69 +346,106 @@ public class Context
 		return Singleton.Current.getReflections();
 	}
 
-	public static void mapStreams(InputStream in, PrintStream out,
-					PrintStream err)
+	public static void setReader(ConsoleReader reader)
 	{
-		Singleton.Current.mapStreams(in, out, err);
+		Singleton.Current.setReader(reader);
 	}
 
 	public static void print(Object o)
 	{
-		print(o, true);
-	}
-
-	public static void print(Object o, boolean out)
-	{
-		(out ? Singleton.Current.getOut() : Singleton.Current.getErr()).print(o);
-	}
-
-	public static void print(String s)
-	{
-		print(s, true);
-	}
-
-	public static void print(String s, boolean out)
-	{
-		(out ? Singleton.Current.getOut() : Singleton.Current.getErr()).print(s);
-	}
-
-	public static void println()
-	{
-		Singleton.Current.getOut().println();
+		print(o.toString());
 	}
 
 	public static void println(Object o)
 	{
-		println(o, true);
-	}
-
-	public static void println(Object o, boolean out)
-	{
-		(out ? Singleton.Current.getOut() : Singleton.Current.getErr()).println(o);
+		println(o.toString());
 	}
 
 	public static void println(boolean b)
 	{
-		println(b, true);
+		println(String.valueOf(b));
 	}
 
-	public static void println(boolean b, boolean out)
+	public static void print(CharSequence s)
 	{
-		(out ? Singleton.Current.getOut() : Singleton.Current.getErr()).println(b);
+		try
+		{
+			Singleton.Current.getReader().print(s);
+			Singleton.Current.getReader().flush();
+		}
+		catch (IOException e)
+		{
+			printThrowable(e);
+		}
 	}
 
-	public static void println(String s)
+	public static void println(CharSequence s)
 	{
-		println(s, true);
+		try
+		{
+			Singleton.Current.getReader().println(s);
+			Singleton.Current.getReader().flush();
+		}
+		catch (IOException e)
+		{
+			printThrowable(e);
+		}
 	}
 
-	public static void println(String s, boolean out)
+	public static void println()
 	{
-		(out ? Singleton.Current.getOut() : Singleton.Current.getErr()).println(s);
+		try
+		{
+			Singleton.Current.getReader().println();
+			Singleton.Current.getReader().flush();
+		}
+		catch (IOException e)
+		{
+			printThrowable(e);
+		}
 	}
 
-	public static InputStream getIn()
+	public static String readLine() throws IOException
 	{
-		return Singleton.Current.getIn();
+		return Singleton.Current.getReader().readLine();
+	}
+
+	public static void printThrowable(Throwable t)
+	{
+		if (isDebug()) println(t);
+		else println(t.getMessage() == null ? t.getClass().getSimpleName() : t.getMessage());
+	}
+
+	public static void print(Throwable t)
+	{
+		StringWriter sw = new StringWriter();
+		PrintWriter pw = new PrintWriter(sw);
+		t.printStackTrace(pw);
+		try
+		{
+			Singleton.Current.getReader().print(sw.toString());
+			Singleton.Current.getReader().flush();
+
+		}
+		catch (IOException e)
+		{
+			e.printStackTrace();
+		}
+	}
+
+	public static void println(Throwable t)
+	{
+		StringWriter sw = new StringWriter();
+		PrintWriter pw = new PrintWriter(sw);
+		t.printStackTrace(pw);
+		try
+		{
+			Singleton.Current.getReader().println(sw.toString());
+			Singleton.Current.getReader().flush();
+		}
+		catch (IOException e)
+		{
+			e.printStackTrace();
+		}
 	}
 }

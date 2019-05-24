@@ -18,6 +18,7 @@
 // 
 package it.d4nguard.rgrpg.d20.feats;
 
+import it.d4nguard.rgrpg.Context;
 import it.d4nguard.rgrpg.d20.Character;
 import it.d4nguard.rgrpg.util.dynacast.DynaManipulator;
 import it.d4nguard.rgrpg.util.dynacast.DynaManipulatorException;
@@ -48,8 +49,7 @@ public class Prerequisite implements Serializable
 		return expression;
 	}
 
-	public boolean meets(Character character)
-					throws DynaManipulatorException
+	public boolean meets(Character character) throws DynaManipulatorException
 	{
 		return ((Boolean) DynaManipulator.getValue(expression, character)).booleanValue();
 	}
@@ -63,7 +63,7 @@ public class Prerequisite implements Serializable
 		}
 		catch (NoSuchMethodException | SecurityException e)
 		{
-			e.printStackTrace();
+			Context.printThrowable(e);
 		}
 	}
 }

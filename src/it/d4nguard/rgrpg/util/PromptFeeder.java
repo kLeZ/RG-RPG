@@ -85,11 +85,11 @@ public class PromptFeeder
 						}
 						catch (InterruptedException e)
 						{
-							e.printStackTrace();
+							Context.printThrowable(e);
 						}
 						catch (IOException e)
 						{
-							e.printStackTrace();
+							Context.printThrowable(e);
 						}
 						break;
 					case 'w':

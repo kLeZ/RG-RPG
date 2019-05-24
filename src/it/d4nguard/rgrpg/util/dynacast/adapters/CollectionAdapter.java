@@ -18,6 +18,7 @@
 // 
 package it.d4nguard.rgrpg.util.dynacast.adapters;
 
+import it.d4nguard.rgrpg.Context;
 import it.d4nguard.rgrpg.util.GenericsUtils;
 import it.d4nguard.rgrpg.util.StringUtils;
 import it.d4nguard.rgrpg.util.dynacast.Adapter;
@@ -81,7 +82,7 @@ public class CollectionAdapter<T> extends AbstractAdapter<Collection<T>>
 			}
 			catch (InstantiationException | IllegalAccessException e)
 			{
-				e.printStackTrace();
+				Context.printThrowable(e);
 			}
 		}
 		Collections.addAll(ret, (T[]) arr);

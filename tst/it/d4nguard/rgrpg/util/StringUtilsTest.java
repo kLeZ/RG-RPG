@@ -1,7 +1,6 @@
 package it.d4nguard.rgrpg.util;
 
 import static org.junit.Assert.assertEquals;
-import it.d4nguard.rgrpg.Context;
 import it.d4nguard.rgrpg.d20.items.Item;
 import it.d4nguard.rgrpg.profile.Character;
 
@@ -135,25 +134,5 @@ public class StringUtilsTest
 		assertEquals("", t.getLeft().trim());
 		assertEquals("", t.getCenter().trim());
 		assertEquals("", t.getRight().trim());
-	}
-
-	@Test
-	public final void testGenericToString()
-	{
-		try
-		{
-			Context.loadDefault();
-			if (Context.hasCurrentCharacter())
-			{
-				Character c = Context.getCurrentCharacter();
-				System.out.println(StringUtils.genericToString(c.getClass(), c,
-								"serialVersionUID", "owner",
-								"\\$SWITCH_TABLE\\$.*"));
-			}
-		}
-		catch (Throwable t)
-		{
-			Assert.fail(t.getMessage());
-		}
 	}
 }

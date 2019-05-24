@@ -20,14 +20,14 @@ package it.d4nguard.rgrpg;
 
 import it.d4nguard.rgrpg.util.CommandsInterpreter;
 
+import java.io.IOException;
+
 public class Main
 {
-	public static void main(String[] args)
+	public static void main(String[] args) throws IOException
 	{
-		//TODO: Includere jansi o jline per gestire l'input da console!!!
 		Welcome.print();
-		Thread t = new Thread(new CommandsInterpreter(System.in, System.out,
-						System.err));
+		Thread t = new Thread(new CommandsInterpreter());
 		try
 		{
 			t.start();
@@ -35,7 +35,7 @@ public class Main
 		}
 		catch (InterruptedException e)
 		{
-			e.printStackTrace();
+			Context.printThrowable(e);
 		}
 	}
 }

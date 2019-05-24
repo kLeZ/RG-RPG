@@ -18,6 +18,7 @@
 // 
 package it.d4nguard.rgrpg.util.dynacast.factories;
 
+import it.d4nguard.rgrpg.Context;
 import it.d4nguard.rgrpg.util.Utils;
 import it.d4nguard.rgrpg.util.dynacast.Strategy;
 
@@ -72,7 +73,7 @@ public class StrategyFactory
 				}
 				catch (InstantiationException | IllegalAccessException ex)
 				{
-					ex.printStackTrace();
+					Context.printThrowable(ex);
 				}
 			}
 		}

@@ -18,7 +18,13 @@
 // 
 package it.d4nguard.rgrpg.util;
 
-import java.util.*;
+import it.d4nguard.rgrpg.Context;
+
+import java.util.ArrayList;
+import java.util.Iterator;
+import java.util.LinkedHashMap;
+import java.util.LinkedHashSet;
+import java.util.Map;
 
 public class Dice
 {
@@ -190,7 +196,7 @@ public class Dice
 		}
 		catch (NumberFormatException e)
 		{
-			e.printStackTrace();
+			Context.printThrowable(e);
 			ret = null;
 		}
 		return ret;

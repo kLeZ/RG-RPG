@@ -47,7 +47,7 @@ public class ForCommand implements Command
 		}
 		catch (ClassNotFoundException e)
 		{
-			e.printStackTrace();
+			Context.printThrowable(e);
 		}
 	}
 

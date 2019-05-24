@@ -111,7 +111,7 @@ public class SetCommand implements Command
 		}
 		catch (DynaManipulatorException e)
 		{
-			e.printStackTrace();
+			Context.printThrowable(e);
 		}
 	}
 

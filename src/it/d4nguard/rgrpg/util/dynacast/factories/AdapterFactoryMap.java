@@ -18,6 +18,7 @@
 // 
 package it.d4nguard.rgrpg.util.dynacast.factories;
 
+import it.d4nguard.rgrpg.Context;
 import it.d4nguard.rgrpg.util.Delegate;
 import it.d4nguard.rgrpg.util.Utils;
 import it.d4nguard.rgrpg.util.dynacast.Provider;
@@ -84,7 +85,7 @@ public class AdapterFactoryMap extends AbstractMap<Class<?>, AdapterFactory<?>>
 				}
 				catch (InstantiationException | IllegalAccessException e)
 				{
-					e.printStackTrace();
+					Context.printThrowable(e);
 				}
 				return null;
 			}

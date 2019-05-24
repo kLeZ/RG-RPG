@@ -22,39 +22,21 @@ import it.d4nguard.rgrpg.Context;
 import it.d4nguard.rgrpg.ExitRuntimeException;
 import it.d4nguard.rgrpg.commands.Command;
 
-import java.io.BufferedReader;
 import java.io.IOException;
-import java.io.InputStream;
-import java.io.InputStreamReader;
-import java.io.PrintStream;
 import java.util.Arrays;
 
 public class CommandsInterpreter implements Runnable
 {
-	private InputStream in;
-	private PrintStream out;
-	private PrintStream err;
-
-	public CommandsInterpreter(InputStream in, PrintStream out, PrintStream err)
-	{
-		this.in = in;
-		this.out = out;
-		this.err = err;
-	}
-
 	@Override
 	public void run()
 	{
-		Context.mapStreams(in, out, err);
 		try
 		{
 			boolean exit = false;
-			BufferedReader reader = new BufferedReader(
-							new InputStreamReader(in));
 			while (!exit)
 			{
-				out.print(new PromptFeeder().get());
-				String cmdLn = reader.readLine();
+				Context.print(new PromptFeeder().get());
+				String cmdLn = Context.readLine();
 				if (cmdLn != null && !cmdLn.isEmpty())
 				{
 					CommandLine cmd = StringUtils.getArgs(cmdLn);
@@ -62,30 +44,30 @@ public class CommandsInterpreter implements Runnable
 					String[] args = cmd.getArgs();
 					try
 					{
-						if (Context.isDebug()) out.println(String.format(
+						if (Context.isDebug()) Context.println(String.format(
 										"Command: %s%nArgs: %s", cmdLn,
 										Arrays.toString(args)));
 						CommandsInterpreter.resolveCommand(cmdLn).execute(args);
 					}
 					catch (ClassNotFoundException e)
 					{
-						err.println(Context.getString("commandsinterpreter.warn.commandnotfound"));
+						Context.println(Context.getString("commandsinterpreter.warn.commandnotfound"));
 					}
 					catch (ExitRuntimeException e)
 					{
-						out.println(Context.getString("exit.msg"));
+						Context.println(Context.getString("exit.msg"));
 						exit = true;
 					}
 					catch (Throwable e)
 					{
-						err.println(e.getLocalizedMessage());
+						Context.printThrowable(e);
 					}
 				}
 			}
 		}
 		catch (IOException e)
 		{
-			e.printStackTrace();
+			Context.printThrowable(e);
 		}
 	}
 
@@ -98,11 +80,11 @@ public class CommandsInterpreter implements Runnable
 		}
 		catch (InstantiationException e)
 		{
-			e.printStackTrace();
+			Context.printThrowable(e);
 		}
 		catch (IllegalAccessException e)
 		{
-			e.printStackTrace();
+			Context.printThrowable(e);
 		}
 		return cmd;
 	}
@@ -121,7 +103,7 @@ public class CommandsInterpreter implements Runnable
 		}
 		catch (SecurityException e)
 		{
-			e.printStackTrace();
+			Context.printThrowable(e);
 		}
 		return cmd;
 	}
