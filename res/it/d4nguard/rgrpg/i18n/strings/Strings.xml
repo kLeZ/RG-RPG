@@ -1,4 +1,24 @@
 <?xml version="1.0" encoding="UTF-8"?>
+<!--
+  ~ Copyright (C) 2019 Alessandro 'kLeZ' Accardo
+  ~
+  ~ This file is part of RG-RPG.
+  ~
+  ~ RG-RPG is free software: you can redistribute it and/or modify
+  ~ it under the terms of the GNU General Public License as published by
+  ~ the Free Software Foundation, either version 3 of the License, or
+  ~ (at your option) any later version.
+  ~
+  ~ RG-RPG is distributed in the hope that it will be useful,
+  ~ but WITHOUT ANY WARRANTY; without even the implied warranty of
+  ~ MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+  ~ GNU General Public License for more details.
+  ~
+  ~ You should have received a copy of the GNU General Public License
+  ~ along with RG-RPG.  If not, see <http://www.gnu.org/licenses/>.
+  ~
+  -->
+
 <!DOCTYPE properties SYSTEM "http://java.sun.com/dtd/properties.dtd">
 <properties>
 	<comment>Default strings xml properties file for localization purposes</comment>
@@ -14,11 +34,12 @@
 
 	<entry key="new.description">Creates a new entity, with the specified name</entry>
 	<entry key="new.help">Creates a new entity, with the specified name.
-An entity can be a player, or a character, you should specify it.
-new (player|character [d20]) {name}
-e.g. new player player1
-e.g. new character Celawyn Desh
-e.g. new character d20 mialee</entry>
+		An entity can be a player, or a character, you should specify it.
+		new (player|character [d20]) {name}
+		e.g. new player player1
+		e.g. new character Celawyn Desh
+		e.g. new character d20 mialee
+	</entry>
 	<entry key="new.err.player.exists">Player '%s' already exists!</entry>
 
 	<entry key="exit.description">Exits from the Commands Interpreter</entry>
@@ -26,16 +47,18 @@ e.g. new character d20 mialee</entry>
 
 	<entry key="for.description">Executes the specified command iteratively n times</entry>
 	<entry key="for.help">Executes the specified command iteratively n times.
-	Syntax: for [min] [max] command {args}
-	You can specify a '%s' as a parameter to use the index of the cycle.</entry>
+		Syntax: for [min] [max] command {args}
+		You can specify a '%s' as a parameter to use the index of the cycle.
+	</entry>
 
 	<entry key="del.description">Deletes an entity, with the specified name</entry>
 	<entry key="del.help">Deletes an entity, with the specified name.
-An entity can be a player, or a character, you should specify it.
-del (player|character) {name}
-e.g. del player player1
-e.g. del character mialee
-e.g. del character Celawyn Desh</entry>
+		An entity can be a player, or a character, you should specify it.
+		del (player|character) {name}
+		e.g. del player player1
+		e.g. del character mialee
+		e.g. del character Celawyn Desh
+	</entry>
 
 	<entry key="login.description">Performs the login to the game</entry>
 	<entry key="login.help">Performs the login to the game.</entry>
@@ -53,79 +76,90 @@ RG-RPG version %d.%02d.%03d]]>
 	</entry>
 
 	<entry key="commandsinterpreter.warn.commandnotfound">Warning: Command not found. You may need some help?
-Type 'help' to see the full list of commands currently available.</entry>
+		Type 'help' to see the full list of commands currently available.
+	</entry>
 
 	<entry key="promptfeeder.help">PROMPT STRING
-=================
-The base shell that completes RG-RPG, making it an interactive game, has even a prompt that helps in using the game.
-This is customizable by your needs, exporting the "%s" environment variable.
-Functions that you can currently use are:
-	\u:	Prints current user.
-	\h:	Prints host name, up to the first point.
-	\H:	Prints host name, full.
-	\w:	Prints current directory, replacing user's home with a tilde (~).
-	\r:	Prints a literal carriage return.
-	\n:	Prints a literal line feed.
-	\\:	Prints a literal backslash.</entry>
+		=================
+		The base shell that completes RG-RPG, making it an interactive game, has even a prompt that helps in using the game.
+		This is customizable by your needs, exporting the "%s" environment variable.
+		Functions that you can currently use are:
+		\u: Prints current user.
+		\h: Prints host name, up to the first point.
+		\H: Prints host name, full.
+		\w: Prints current directory, replacing user's home with a tilde (~).
+		\r: Prints a literal carriage return.
+		\n: Prints a literal line feed.
+		\\: Prints a literal backslash.
+	</entry>
 
 	<entry key="ren.description">Renames the entity with the specified name to the new specified one</entry>
 	<entry key="ren.help">Renames the entity with the specified name to the new specified one.
-An entity can be a player, or a character, you should specify it.
-ren (player|character) {name} :: {newName}
-e.g. ren player player1 :: player2
-e.g. ren character mialee :: Mialee
-e.g. ren character Celawyn Desh :: Celawyn</entry>
+		An entity can be a player, or a character, you should specify it.
+		ren (player|character) {name} :: {newName}
+		e.g. ren player player1 :: player2
+		e.g. ren character mialee :: Mialee
+		e.g. ren character Celawyn Desh :: Celawyn
+	</entry>
 
 	<entry key="cur.description">Prints the current entity</entry>
 	<entry key="cur.help">Prints the current entity.
-An entity can be a player, or a character, you should specify it.
-cur (player|character)
-e.g. cur player
-e.g. cur character</entry>
+		An entity can be a player, or a character, you should specify it.
+		cur (player|character)
+		e.g. cur player
+		e.g. cur character
+	</entry>
 
 	<entry key="use.description">Sets the specified entity as current</entry>
 	<entry key="use.help">Sets the specified entity as current.
-An entity can be a player, or a character, you should specify it.
-use (player|character) {name}
-e.g. use player player1
-e.g. use character mialee</entry>
+		An entity can be a player, or a character, you should specify it.
+		use (player|character) {name}
+		e.g. use player player1
+		e.g. use character mialee
+	</entry>
 
 	<entry key="list.description">Shows all the created entities</entry>
 	<entry key="list.help">Shows all the created entities.
-An entity can be a player, or a character, you should specify it.
-list (players|characters)
-e.g. list players
-e.g. list characters</entry>
+		An entity can be a player, or a character, you should specify it.
+		list (players|characters)
+		e.g. list players
+		e.g. list characters
+	</entry>
 
 	<entry key="show.description">Shows the specified entity</entry>
 	<entry key="show.help">Shows the specified entity.
-An entity can be a player, or a character, you should specify it.
-show (player|character) {name}
-e.g. show player player1
-e.g. show character mialee</entry>
+		An entity can be a player, or a character, you should specify it.
+		show (player|character) {name}
+		e.g. show player player1
+		e.g. show character mialee
+	</entry>
 
 	<entry key="set.description">Sets an expression for the specified entity with the given name</entry>
 	<entry key="set.help">Sets an expression for the specified entity with the given name.
-An entity can be a player, or a character, you should specify it.
-set (player|character) {name} "{exp}"
-e.g. set player player1 "name=player2"
-e.g. set character mialee "info.description=A good and beautiful mage"</entry>
+		An entity can be a player, or a character, you should specify it.
+		set (player|character) {name} "{exp}"
+		e.g. set player player1 "name=player2"
+		e.g. set character mialee "info.description=A good and beautiful mage"
+	</entry>
 
 	<entry key="debug.description">Sets debug bit</entry>
 	<entry key="debug.help">Sets debug bit.
-debug (true|false)</entry>
+		debug (true|false)
+	</entry>
 
 	<entry key="path.err.cannotcreate">Cannot create directory '%s' for saving or loading data.</entry>
 
 	<entry key="save.description">Saves current state</entry>
 	<entry key="save.help">Saves current state.
-{path} is the path and file name where to save the file, e.g. ~/.rgrpg/session.dat
-save {path}</entry>
+		{path} is the path and file name where to save the file, e.g. ~/.rgrpg/session.dat
+		save {path}
+	</entry>
 
 	<entry key="load.description">Loads previously saved state</entry>
 	<entry key="load.help">Loads previously saved state.
-{path} is the path and file name where to load the file, e.g. ~/.rgrpg/session.dat
-load {path}</entry>
+		{path} is the path and file name where to load the file, e.g. ~/.rgrpg/session.dat
+		load {path}
+	</entry>
 	<entry key="no.player.selected">No-player-selected</entry>
 	<entry key="no.character.selected">No-character-selected</entry>
 </properties>

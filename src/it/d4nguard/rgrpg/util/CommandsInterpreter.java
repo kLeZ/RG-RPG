@@ -1,21 +1,22 @@
-// RG-RPG is a Java-based text, roleplaying-gal game, in which you
-// have to carry many girls. The RG-RPG acronym is a recursive one and
-// it means "RG-RPG is a Gal Role playing game Pointing on Girls."
-// Copyright (C) 2013 by Alessandro Accardo <julius8774@gmail.com>
-// 
-// This program is free software: you can redistribute it and/or modify
-// it under the terms of the GNU General Public License as published by
-// the Free Software Foundation, either version 2 of the License, or (at
-// your option) any later version.
-// 
-// This program is distributed in the hope that it will be useful, but
-// WITHOUT ANY WARRANTY; without even the implied warranty of
-// MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU
-// General Public License for more details.
-// 
-// You should have received a copy of the GNU General Public License
-// along with this program.  If not, see <http://www.gnu.org/licenses/>.
-// 
+/*
+ * Copyright (C) 2019 Alessandro 'kLeZ' Accardo
+ *
+ * This file is part of RG-RPG.
+ *
+ * RG-RPG is free software: you can redistribute it and/or modify
+ * it under the terms of the GNU General Public License as published by
+ * the Free Software Foundation, either version 3 of the License, or
+ * (at your option) any later version.
+ *
+ * RG-RPG is distributed in the hope that it will be useful,
+ * but WITHOUT ANY WARRANTY; without even the implied warranty of
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+ * GNU General Public License for more details.
+ *
+ * You should have received a copy of the GNU General Public License
+ * along with RG-RPG.  If not, see <http://www.gnu.org/licenses/>.
+ *
+ */
 package it.d4nguard.rgrpg.util;
 
 import it.d4nguard.rgrpg.Context;
@@ -25,86 +26,58 @@ import it.d4nguard.rgrpg.commands.Command;
 import java.io.IOException;
 import java.util.Arrays;
 
-public class CommandsInterpreter implements Runnable
-{
+public class CommandsInterpreter implements Runnable {
+	public static Command newCommand(Class<?> clazz) {
+		Command cmd = null;
+		try {
+			cmd = (Command) clazz.newInstance();
+		} catch (InstantiationException e) {
+			Context.printThrowable(e);
+		} catch (IllegalAccessException e) {
+			Context.printThrowable(e);
+		}
+		return cmd;
+	}
+
+	public static Command resolveCommand(String cmdLn) throws ClassNotFoundException {
+		Command cmd = null;
+		String className = String.format("%s.%sCommand", Command.class.getPackage().getName(), StringUtils.capitalize(cmdLn));
+		try {
+			Class<?> clazz = Class.forName(className);
+			cmd = newCommand(clazz);
+		} catch (SecurityException e) {
+			Context.printThrowable(e);
+		}
+		return cmd;
+	}
+
 	@Override
-	public void run()
-	{
-		try
-		{
+	public void run() {
+		try {
 			boolean exit = false;
-			while (!exit)
-			{
+			while (!exit) {
 				Context.print(new PromptFeeder().get());
 				String cmdLn = Context.readLine();
-				if (cmdLn != null && !cmdLn.isEmpty())
-				{
+				if (cmdLn != null && !cmdLn.isEmpty()) {
 					CommandLine cmd = StringUtils.getArgs(cmdLn);
 					cmdLn = cmd.getProc();
 					String[] args = cmd.getArgs();
-					try
-					{
-						if (Context.isDebug()) Context.println(String.format(
-										"Command: %s%nArgs: %s", cmdLn,
-										Arrays.toString(args)));
+					try {
+						if (Context.isDebug())
+							Context.println(String.format("Command: %s%nArgs: %s", cmdLn, Arrays.toString(args)));
 						CommandsInterpreter.resolveCommand(cmdLn).execute(args);
-					}
-					catch (ClassNotFoundException e)
-					{
+					} catch (ClassNotFoundException e) {
 						Context.println(Context.getString("commandsinterpreter.warn.commandnotfound"));
-					}
-					catch (ExitRuntimeException e)
-					{
+					} catch (ExitRuntimeException e) {
 						Context.println(Context.getString("exit.msg"));
 						exit = true;
-					}
-					catch (Throwable e)
-					{
+					} catch (Throwable e) {
 						Context.printThrowable(e);
 					}
 				}
 			}
-		}
-		catch (IOException e)
-		{
+		} catch (IOException e) {
 			Context.printThrowable(e);
 		}
-	}
-
-	public static Command newCommand(Class<?> clazz)
-	{
-		Command cmd = null;
-		try
-		{
-			cmd = (Command) clazz.newInstance();
-		}
-		catch (InstantiationException e)
-		{
-			Context.printThrowable(e);
-		}
-		catch (IllegalAccessException e)
-		{
-			Context.printThrowable(e);
-		}
-		return cmd;
-	}
-
-	public static Command resolveCommand(String cmdLn)
-					throws ClassNotFoundException
-	{
-		Command cmd = null;
-		String className = String.format("%s.%sCommand",
-						Command.class.getPackage().getName(),
-						StringUtils.capitalize(cmdLn));
-		try
-		{
-			Class<?> clazz = Class.forName(className);
-			cmd = newCommand(clazz);
-		}
-		catch (SecurityException e)
-		{
-			Context.printThrowable(e);
-		}
-		return cmd;
 	}
 }

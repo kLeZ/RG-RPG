@@ -1,33 +1,29 @@
-// RG-RPG is a Java-based text, roleplaying-gal game, in which you
-// have to carry many girls. The RG-RPG acronym is a recursive one and
-// it means "RG-RPG is a Gal Role playing game Pointing on Girls."
-// Copyright (C) 2013 by Alessandro Accardo <julius8774@gmail.com>
-// 
-// This program is free software: you can redistribute it and/or modify
-// it under the terms of the GNU General Public License as published by
-// the Free Software Foundation, either version 2 of the License, or (at
-// your option) any later version.
-// 
-// This program is distributed in the hope that it will be useful, but
-// WITHOUT ANY WARRANTY; without even the implied warranty of
-// MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU
-// General Public License for more details.
-// 
-// You should have received a copy of the GNU General Public License
-// along with this program.  If not, see <http://www.gnu.org/licenses/>.
-// 
+/*
+ * Copyright (C) 2019 Alessandro 'kLeZ' Accardo
+ *
+ * This file is part of RG-RPG.
+ *
+ * RG-RPG is free software: you can redistribute it and/or modify
+ * it under the terms of the GNU General Public License as published by
+ * the Free Software Foundation, either version 3 of the License, or
+ * (at your option) any later version.
+ *
+ * RG-RPG is distributed in the hope that it will be useful,
+ * but WITHOUT ANY WARRANTY; without even the implied warranty of
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+ * GNU General Public License for more details.
+ *
+ * You should have received a copy of the GNU General Public License
+ * along with RG-RPG.  If not, see <http://www.gnu.org/licenses/>.
+ *
+ */
 package it.d4nguard.rgrpg.util;
 
 import it.d4nguard.rgrpg.Context;
 
-import java.util.ArrayList;
-import java.util.Iterator;
-import java.util.LinkedHashMap;
-import java.util.LinkedHashSet;
-import java.util.Map;
+import java.util.*;
 
-public class Dice
-{
+public class Dice {
 	public static final char OPENED_DICE = '(';
 	public static final char CLOSED_DICE = ')';
 	public static final char DICE_TOKEN = 'D';
@@ -40,104 +36,49 @@ public class Dice
 	private final OperatorType modifierOperator;
 	private final int modifier;
 
-	public Dice(int nThrows, int nFaces)
-	{
+	public Dice(int nThrows, int nFaces) {
 		this.nThrows = nThrows;
 		this.nFaces = nFaces;
 		modifierOperator = null;
 		modifier = Integer.MIN_VALUE;
 	}
 
-	public Dice(int nThrows, int nFaces, OperatorType modifierOperator,
-					int modifier)
-	{
+	public Dice(int nThrows, int nFaces, OperatorType modifierOperator, int modifier) {
 		this.nThrows = nThrows;
 		this.nFaces = nFaces;
 		this.modifierOperator = modifierOperator;
 		this.modifier = modifier;
 	}
 
-	/**
-	 * @return the nThrows
-	 */
-	public int getnThrows()
-	{
-		return nThrows;
-	}
-
-	/**
-	 * @return the nFaces
-	 */
-	public int getnFaces()
-	{
-		return nFaces;
-	}
-
-	/**
-	 * @return the modifierOperator
-	 */
-	public OperatorType getModifierOperator()
-	{
-		return modifierOperator;
-	}
-
-	/**
-	 * @return the modifier
-	 */
-	public int getModifier()
-	{
-		return modifier;
-	}
-
-	/**
-	 * @return
-	 */
-	private boolean hasModifier()
-	{
-		return (modifierOperator != null) && (modifier != Integer.MIN_VALUE);
-	}
-
-	public static boolean isDice(String dt)
-	{
+	public static boolean isDice(String dt) {
 		return parse(dt) != null;
 	}
 
-	public static LinkedHashMap<Dice, OperatorType> parseMany(String dts)
-	{
-		LinkedHashMap<Dice, OperatorType> ret = new LinkedHashMap<Dice, OperatorType>();
-		ArrayList<String> parts = Utils.splitEncolosed(dts, OPENED_DICE,
-						CLOSED_DICE);
+	public static LinkedHashMap<Dice, OperatorType> parseMany(String dts) {
+		LinkedHashMap<Dice, OperatorType> ret = new LinkedHashMap<>();
+		ArrayList<String> parts = Utils.splitEncolosed(dts, OPENED_DICE, CLOSED_DICE);
 		Dice dt = null;
 		OperatorType ot = null;
 
-		for (int i = 0; (i + 1) <= parts.size(); i += 2)
-		{
+		for (int i = 0; (i + 1) <= parts.size(); i += 2) {
 			String part1 = parts.get(i);
 			String part2 = (i + 1) < parts.size() ? parts.get(i + 1) : "";
 
-			if (isDice(part1))
-			{
-				if (dt == null)
-				{
+			if (isDice(part1)) {
+				if (dt == null) {
 					dt = Dice.parse(part1);
-				}
-				else
-				{
+				} else {
 					ret.put(dt, OperatorType.Addition);
 					dt = Dice.parse(part1);
 					ot = null;
 				}
 			}
 
-			if (isDice(part2))
-			{
+			if (isDice(part2)) {
 				ret.put(dt, OperatorType.Addition);
 				dt = Dice.parse(part2);
-			}
-			else
-			{
-				if (OperatorType.isOperator(part2))
-				{
+			} else {
+				if (OperatorType.isOperator(part2)) {
 					ot = OperatorType.getOperator(part2);
 				}
 				ret.put(dt, ot);
@@ -148,90 +89,68 @@ public class Dice
 		return ret;
 	}
 
-	public static Dice parse(String dt)
-	{
+	public static Dice parse(String dt) {
 		Dice ret = null;
-		try
-		{
+		try {
 			dt = dt.toUpperCase();
 			String[] diceparts = dt.split(DICE_TOKEN_S);
-			if (diceparts.length == 2)
-			{
+			if (diceparts.length == 2) {
 				int nThrows = Integer.valueOf(diceparts[0]), nFaces = 0, modifier = 0;
 				String nFacesBld = "";
 				OperatorType opType = null;
 				char[] faceParts = diceparts[1].toCharArray();
-				for (char c : faceParts)
-				{
+				for (char c : faceParts) {
 					String current = String.valueOf(c);
-					if (Utils.isInteger(current))
-					{
+					if (Utils.isInteger(current)) {
 						nFacesBld = nFacesBld.concat(current);
-					}
-					else if ((opType = OperatorType.parseOperator(c)) != null)
-					{
+					} else if ((opType = OperatorType.parseOperator(c)) != null) {
 						break;
-					}
-					else
-					{
+					} else {
 						break;
 					}
 				}
 				nFaces = Integer.valueOf(nFacesBld);
 
-				if (opType != null)
-				{
+				if (opType != null) {
 					String[] bonusParts = diceparts[1].split(opType.toEscapedString());
-					if ((bonusParts.length == 2) && Utils.isInteger(bonusParts[1]))
-					{
+					if ((bonusParts.length == 2) && Utils.isInteger(bonusParts[1])) {
 						modifier = Integer.valueOf(bonusParts[1]);
 					}
 					ret = new Dice(nThrows, nFaces, opType, modifier);
-				}
-				else
-				{
+				} else {
 					ret = new Dice(nThrows, nFaces);
 				}
 			}
-		}
-		catch (NumberFormatException e)
-		{
+		} catch (NumberFormatException e) {
 			Context.printThrowable(e);
 			ret = null;
 		}
 		return ret;
 	}
 
-	public static Integer rollSum(String diceExpression)
-	{
+	public static Integer rollSum(String diceExpression) {
 		return rollSum(parseMany(diceExpression));
 	}
 
-	public static String rollShowResults(String diceExpression)
-	{
+	public static String rollShowResults(String diceExpression) {
 		LinkedHashMap<Dice, OperatorType> dice = parseMany(diceExpression);
 		StringCompiler sb = new StringCompiler();
 		Iterator<Map.Entry<Dice, OperatorType>> it = dice.entrySet().iterator();
 		OperatorType op = null;
 		Integer res = 0, roll = 0;
 		sb.append("{");
-		while (it.hasNext())
-		{
+		while (it.hasNext()) {
 			Map.Entry<Dice, OperatorType> current = it.next();
-			if (op != null)
-			{
+			if (op != null) {
 				roll = current.getKey().roll();
 				res = op.doOperation(res, roll);
-			}
-			else
-			{
+			} else {
 				// First roll
 				res = current.getKey().roll();
 			}
 			op = current.getValue();
 			sb.append("[").append(roll).append(":").append(res).append("]");
-			if (op != null)
-			{
+			if (op != null) {
 				sb.append(op.toString());
 			}
 		}
@@ -239,20 +158,15 @@ public class Dice
 		return sb.toString();
 	}
 
-	public static Integer rollSum(LinkedHashMap<Dice, OperatorType> dice)
-	{
+	public static Integer rollSum(LinkedHashMap<Dice, OperatorType> dice) {
 		Integer ret = 0;
 		Iterator<Map.Entry<Dice, OperatorType>> it = dice.entrySet().iterator();
 		OperatorType op = null;
-		while (it.hasNext())
-		{
+		while (it.hasNext()) {
 			Map.Entry<Dice, OperatorType> current = it.next();
-			if (op != null)
-			{
+			if (op != null) {
 				ret = op.doOperation(ret, current.getKey().roll());
-			}
-			else
-			{
+			} else {
 				// First roll
 				ret = current.getKey().roll();
 			}
@@ -261,41 +175,68 @@ public class Dice
 		return ret;
 	}
 
-	public static ArrayList<Integer> roll(String diceExpression)
-	{
-		return roll(new LinkedHashSet<Dice>(parseMany(diceExpression).keySet()));
+	public static ArrayList<Integer> roll(String diceExpression) {
+		return roll(new LinkedHashSet<>(parseMany(diceExpression).keySet()));
 	}
 
-	public static ArrayList<Integer> roll(LinkedHashSet<Dice> dice)
-	{
-		ArrayList<Integer> ret = new ArrayList<Integer>();
+	public static ArrayList<Integer> roll(LinkedHashSet<Dice> dice) {
+		ArrayList<Integer> ret = new ArrayList<>();
 		Iterator<Dice> it = dice.iterator();
-		while (it.hasNext())
-		{
+		while (it.hasNext()) {
 			ret.add(it.next().roll());
 		}
 		return ret;
 	}
 
-	public static ArrayList<Integer> roll(Dice... dice)
-	{
-		ArrayList<Integer> ret = new ArrayList<Integer>();
-		for (Dice die : dice)
-		{
+	public static ArrayList<Integer> roll(Dice... dice) {
+		ArrayList<Integer> ret = new ArrayList<>();
+		for (Dice die : dice) {
 			ret.add(die.roll());
 		}
 		return ret;
 	}
 
-	public Integer roll()
-	{
+	/**
+	 * @return the nThrows
+	 */
+	public int getnThrows() {
+		return nThrows;
+	}
+
+	/**
+	 * @return the nFaces
+	 */
+	public int getnFaces() {
+		return nFaces;
+	}
+
+	/**
+	 * @return the modifierOperator
+	 */
+	public OperatorType getModifierOperator() {
+		return modifierOperator;
+	}
+
+	/**
+	 * @return the modifier
+	 */
+	public int getModifier() {
+		return modifier;
+	}
+
+	/**
+	 * @return
+	 */
+	private boolean hasModifier() {
+		return (modifierOperator != null) && (modifier != Integer.MIN_VALUE);
+	}
+
+	public Integer roll() {
 		int ret = 0;
-		for (int i = 0; i < getnThrows(); i++)
-		{
+		for (int i = 0; i < getnThrows(); i++) {
 			ret += random.next(1, getnFaces());
 		}
-		if (hasModifier())
-		{
+		if (hasModifier()) {
 			ret = getModifierOperator().doOperation(ret, getModifier());
 		}
 		return ret;
@@ -305,11 +246,9 @@ public class Dice
 	 * @see java.lang.Object#equals(java.lang.Object)
 	 */
 	@Override
-	public boolean equals(Object o)
-	{
+	public boolean equals(Object o) {
 		boolean ret = false;
-		if (o instanceof Dice)
-		{
+		if (o instanceof Dice) {
 			ret = getnThrows() == ((Dice) o).getnThrows();
 			ret &= getnFaces() == ((Dice) o).getnFaces();
 			ret &= getModifierOperator() == ((Dice) o).getModifierOperator();
@@ -322,19 +261,16 @@ public class Dice
 	 * @see java.lang.Object#toString()
 	 */
 	@Override
-	public String toString()
-	{
+	public String toString() {
 		StringCompiler sb = new StringCompiler();
 		sb.append(nThrows).append(DICE_TOKEN).append(nFaces);
-		if (modifierOperator != null)
-		{
+		if (modifierOperator != null) {
 			sb.append(modifierOperator).append(modifier);
 		}
 		return sb.toString();
 	}
 
-	public String toEnclosedString()
-	{
+	public String toEnclosedString() {
 		return String.format("%s%s%s", OPENED_DICE, toString(), CLOSED_DICE);
 	}
 }

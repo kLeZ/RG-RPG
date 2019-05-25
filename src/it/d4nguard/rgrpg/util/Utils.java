@@ -1,117 +1,107 @@
-// RG-RPG is a Java-based text, roleplaying-gal game, in which you
-// have to carry many girls. The RG-RPG acronym is a recursive one and
-// it means "RG-RPG is a Gal Role playing game Pointing on Girls."
-// Copyright (C) 2013 by Alessandro Accardo <julius8774@gmail.com>
-// 
-// This program is free software: you can redistribute it and/or modify
-// it under the terms of the GNU General Public License as published by
-// the Free Software Foundation, either version 2 of the License, or (at
-// your option) any later version.
-// 
-// This program is distributed in the hope that it will be useful, but
-// WITHOUT ANY WARRANTY; without even the implied warranty of
-// MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU
-// General Public License for more details.
-// 
-// You should have received a copy of the GNU General Public License
-// along with this program.  If not, see <http://www.gnu.org/licenses/>.
-// 
+/*
+ * Copyright (C) 2019 Alessandro 'kLeZ' Accardo
+ *
+ * This file is part of RG-RPG.
+ *
+ * RG-RPG is free software: you can redistribute it and/or modify
+ * it under the terms of the GNU General Public License as published by
+ * the Free Software Foundation, either version 3 of the License, or
+ * (at your option) any later version.
+ *
+ * RG-RPG is distributed in the hope that it will be useful,
+ * but WITHOUT ANY WARRANTY; without even the implied warranty of
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+ * GNU General Public License for more details.
+ *
+ * You should have received a copy of the GNU General Public License
+ * along with RG-RPG.  If not, see <http://www.gnu.org/licenses/>.
+ *
+ */
 package it.d4nguard.rgrpg.util;
 
-import java.util.ArrayList;
-import java.util.Collection;
-import java.util.Set;
-
+import it.d4nguard.rgrpg.util.dynacast.Adapter;
 import org.reflections.Reflections;
 import org.reflections.scanners.SubTypesScanner;
 
-public class Utils
-{
-	public static void swap(int op1, int op2)
-	{
+import java.lang.reflect.Array;
+import java.util.ArrayList;
+import java.util.Collection;
+import java.util.Set;
+import java.util.StringTokenizer;
+
+public class Utils {
+	static String ARRAY_JOINER = "|";
+
+	public static void swap(int op1, int op2) {
 		int tmp = op2;
 		op2 = op1;
 		op1 = tmp;
 	}
 
-	public static boolean isInteger(String s)
-	{
+	public static boolean isInteger(String s) {
 		boolean ret = true;
-		try
-		{
+		try {
 			Integer.valueOf(s);
-		}
-		catch (NumberFormatException e)
-		{
+		} catch (NumberFormatException e) {
 			ret = false;
 		}
 		return ret;
 	}
 
-	public static ArrayList<String> splitEncolosed(String s, char open_tag,
-					char close_tag)
-	{
-		ArrayList<String> ret = new ArrayList<String>();
+	public static ArrayList<String> splitEncolosed(String s, char open_tag, char close_tag) {
+		ArrayList<String> ret = new ArrayList<>();
 		char[] chars = s.toCharArray();
 		String contents = "";
-		for (char c : chars)
-		{
-			if (c == open_tag)
-			{
-				if (!contents.isEmpty())
-				{
+		for (char c : chars) {
+			if (c == open_tag) {
+				if (!contents.isEmpty()) {
 					ret.add(contents);
 				}
 				contents = "";
-			}
-			else if (c == close_tag)
-			{
+			} else if (c == close_tag) {
 				ret.add(contents);
 				contents = "";
-			}
-			else
-			{
+			} else {
 				contents += c;
 			}
 		}
-		if (!contents.isEmpty())
-		{
+		if (!contents.isEmpty()) {
 			ret.add(contents);
 			contents = "";
 		}
 		return ret;
 	}
 
-	public static String[] replace(String target, String replacement,
-					String... args)
-	{
-		ArrayList<String> ret = new ArrayList<String>();
+	public static String[] replace(String target, String replacement, String... args) {
+		ArrayList<String> ret = new ArrayList<>();
 		for (String s : args)
 			ret.add(s.replace(target, replacement));
-		return ret.toArray(new String[] {});
+		return ret.toArray(new String[] { });
 	}
 
-	public static <E, R> Collection<R> doAll(Collection<? extends E> c,
-					Delegate<E, R> d)
-	{
+	public static <E, R> Collection<R> doAll(Collection<? extends E> c, Delegate<E, R> d) {
 		Collection<R> ret = new ArrayList<>();
 		for (E e : c)
 			ret.add(d.execute(e));
 		return ret;
 	}
 
-	public static <T> Set<Class<? extends T>> getSubTypesOf(Class<T> type)
-	{
+	public static <T> Set<Class<? extends T>> getSubTypesOf(Class<T> type) {
 		return getSubTypesOf(type, false);
 	}
 
-	public static <T> Set<Class<? extends T>> getSubTypesOf(Class<T> type,
-					boolean excludeObjectClass)
-	{
+	public static <T> Set<Class<? extends T>> getSubTypesOf(Class<T> type, boolean excludeObjectClass) {
 		String pkg = type.getPackage().getName().split("\\.")[0];
-		Reflections r = new Reflections(pkg, new SubTypesScanner(
-						excludeObjectClass));
-		Set<Class<? extends T>> subTypes = r.getSubTypesOf(type);
-		return subTypes;
+		Reflections r = new Reflections(pkg, new SubTypesScanner(excludeObjectClass));
+		return r.getSubTypesOf(type);
+	}
+
+	public static <T> Object convertToArray(String value, Adapter<T> adp, Class<?> type) {
+		String str = StringUtils.getBetween(value, '[', ']').getCenter().trim();
+		StringTokenizer st = new StringTokenizer(str, ARRAY_JOINER);
+		Object ret = Array.newInstance(type, st.countTokens());
+		for (int i = 0; st.hasMoreTokens(); i++)
+			Array.set(ret, i, adp.adapt(st.nextToken().trim()));
+		return ret;
 	}
 }

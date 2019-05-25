@@ -1,4 +1,24 @@
 <?xml version="1.0" encoding="UTF-8"?>
+<!--
+  ~ Copyright (C) 2019 Alessandro 'kLeZ' Accardo
+  ~
+  ~ This file is part of RG-RPG.
+  ~
+  ~ RG-RPG is free software: you can redistribute it and/or modify
+  ~ it under the terms of the GNU General Public License as published by
+  ~ the Free Software Foundation, either version 3 of the License, or
+  ~ (at your option) any later version.
+  ~
+  ~ RG-RPG is distributed in the hope that it will be useful,
+  ~ but WITHOUT ANY WARRANTY; without even the implied warranty of
+  ~ MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+  ~ GNU General Public License for more details.
+  ~
+  ~ You should have received a copy of the GNU General Public License
+  ~ along with RG-RPG.  If not, see <http://www.gnu.org/licenses/>.
+  ~
+  -->
+
 <!DOCTYPE properties SYSTEM "http://java.sun.com/dtd/properties.dtd">
 <properties>
 	<comment>Default xml properties file for localization purposes</comment>
@@ -14,10 +34,11 @@
 
 	<entry key="new.description">Creates a new entity, with the specified name</entry>
 	<entry key="new.help">Creates a new entity, with the specified name.
-An entity can be a player, or a character, you should specify it.
-new (player|character) {name}
-e.g. new player player1
-e.g. new character mialee</entry>
+		An entity can be a player, or a character, you should specify it.
+		new (player|character) {name}
+		e.g. new player player1
+		e.g. new character mialee
+	</entry>
 	<entry key="new.err.player.exists">Player '%s' already exists!</entry>
 
 	<entry key="exit.description">Exits from the Commands Interpreter</entry>
@@ -25,15 +46,17 @@ e.g. new character mialee</entry>
 
 	<entry key="for.description">Executes the specified command iteratively n times</entry>
 	<entry key="for.help">Executes the specified command iteratively n times.
-	Syntax: for [min] [max] command {args}
-	You can specify a '%s' as a parameter to use the index of the cycle.</entry>
+		Syntax: for [min] [max] command {args}
+		You can specify a '%s' as a parameter to use the index of the cycle.
+	</entry>
 
 	<entry key="del.description">Deletes an entity, with the specified name</entry>
 	<entry key="del.help">Deletes an entity, with the specified name.
-An entity can be a player, or a character, you should specify it.
-del (player|character) {name}
-e.g. del player player1
-e.g. del character mialee</entry>
+		An entity can be a player, or a character, you should specify it.
+		del (player|character) {name}
+		e.g. del player player1
+		e.g. del character mialee
+	</entry>
 
 	<entry key="login.description">Performs the login to the game</entry>
 	<entry key="login.help">Performs the login to the game.</entry>
@@ -51,18 +74,20 @@ RG-RPG version %d.%02d.%03d]]>
 	</entry>
 
 	<entry key="commandsinterpreter.warn.commandnotfound">Warning: Command not found. You may need some help?
-Type 'help' to see the full list of commands currently available.</entry>
+		Type 'help' to see the full list of commands currently available.
+	</entry>
 
 	<entry key="promptfeeder.help">STRINGA DI PROMPT
-=================
-La shell di base che completa RG-RPG, rendendolo un gioco interattivo, comprende anche un prompt che aiuta nell'utilizzo.
-Questo è personalizzabile in base alle esigenze, esportando la variabile "%s".
-Le funzioni utilizzabili sono le seguenti:
-	\u:	Stampa il nome dell'utente corrente.
-	\h:	Stampa il nome dell'host, fino al primo punto.
-	\H:	Stampa il nome dell'host, completo.
-	\w:	Stampa la directory corrente, sostituendo la home dell'utente corrente con una tilde (~).
-	\r:	Stampa un Ritorno di Carrello (Carriage Return) letterale.
-	\n:	Stampa un Aumento di Linea (Line Feed) letterale.
-	\\:	Stampa una barra inversa (\) letterale.</entry>
+		=================
+		La shell di base che completa RG-RPG, rendendolo un gioco interattivo, comprende anche un prompt che aiuta nell'utilizzo.
+		Questo è personalizzabile in base alle esigenze, esportando la variabile "%s".
+		Le funzioni utilizzabili sono le seguenti:
+		\u: Stampa il nome dell'utente corrente.
+		\h: Stampa il nome dell'host, fino al primo punto.
+		\H: Stampa il nome dell'host, completo.
+		\w: Stampa la directory corrente, sostituendo la home dell'utente corrente con una tilde (~).
+		\r: Stampa un Ritorno di Carrello (Carriage Return) letterale.
+		\n: Stampa un Aumento di Linea (Line Feed) letterale.
+		\\: Stampa una barra inversa (\) letterale.
+	</entry>
 </properties>
