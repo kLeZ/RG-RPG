@@ -1,5 +1,25 @@
-<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+<!--
+  ~ Copyright (C) 2019 Alessandro 'kLeZ' Accardo
+  ~
+  ~ This file is part of RG-RPG.
+  ~
+  ~ RG-RPG is free software: you can redistribute it and/or modify
+  ~ it under the terms of the GNU General Public License as published by
+  ~ the Free Software Foundation, either version 3 of the License, or
+  ~ (at your option) any later version.
+  ~
+  ~ RG-RPG is distributed in the hope that it will be useful,
+  ~ but WITHOUT ANY WARRANTY; without even the implied warranty of
+  ~ MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+  ~ GNU General Public License for more details.
+  ~
+  ~ You should have received a copy of the GNU General Public License
+  ~ along with RG-RPG.  If not, see <http://www.gnu.org/licenses/>.
+  ~
+  -->
+
+<project xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://maven.apache.org/POM/4.0.0"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
 	<modelVersion>4.0.0</modelVersion>
 	<groupId>it.d4nguard</groupId>
 	<artifactId>rgrpg</artifactId>
@@ -131,29 +151,6 @@
 				</executions>
 			</plugin>
 			<plugin>
-				<groupId>org.codehaus.mojo</groupId>
-				<artifactId>javacc-maven-plugin</artifactId>
-				<version>2.6</version>
-				<executions>
-					<execution>
-						<id>ognl-jjtree</id>
-						<configuration>
-							<sourceDirectory>res</sourceDirectory>
-							<outputDirectory>gen</outputDirectory>
-<!--							<timestampDirectory>gen/tmstmp</timestampDirectory>-->
-<!--							<package>org.apache.commons.ognl</package>-->
-							<!-- Uncomment if AST files needs to be generated <nodePackage>*.jtree</nodePackage> -->
-							<!-- Uncomment if visitor default implementation needs to be generated 
-								<visitor>true</visitor> -->
-						</configuration>
-						<goals>
-							<!-- change goal to jtree-javacc to generate AST too -->
-							<goal>javacc</goal>
-						</goals>
-					</execution>
-				</executions>
-			</plugin>
-			<plugin>
 				<!-- Requires GraphViz to be installed and the GRAPHVIZ_HOME env var 
 					set -->
 				<groupId>org.apache.maven.plugins</groupId>
@@ -168,7 +165,8 @@
 					</docletArtifact>
 					<additionalparam>-horizontal -attributes -enumconstants
 						-enumerations -operations -types -visibility -inferrel -inferdep
-						-hide java.* -inferrel -collpackages java.util.*</additionalparam>
+						-hide java.* -inferrel -collpackages java.util.*
+					</additionalparam>
 					<!-- <additionalparam>-views -all</additionalparam> -->
 					<useStandardDocletOptions>true</useStandardDocletOptions>
 					<show>public</show>
@@ -204,26 +202,7 @@
 										</goals>
 									</pluginExecutionFilter>
 									<action>
-										<ignore></ignore>
-									</action>
-								</pluginExecution>
-								<pluginExecution>
-									<pluginExecutionFilter>
-										<groupId>
-											org.codehaus.mojo
-										</groupId>
-										<artifactId>
-											javacc-maven-plugin
-										</artifactId>
-										<versionRange>
-											[2.6,)
-										</versionRange>
-										<goals>
-											<goal>javacc</goal>
-										</goals>
-									</pluginExecutionFilter>
-									<action>
-										<ignore></ignore>
+										<ignore/>
 									</action>
 								</pluginExecution>
 							</pluginExecutions>
@@ -269,6 +248,11 @@
 			<groupId>jline</groupId>
 			<artifactId>jline</artifactId>
 			<version>2.12.1</version>
+		</dependency>
+		<dependency>
+			<groupId>ognl</groupId>
+			<artifactId>ognl</artifactId>
+			<version>3.2.10</version>
 		</dependency>
 	</dependencies>
 </project>

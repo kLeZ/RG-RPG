@@ -1,21 +1,22 @@
-// RG-RPG is a Java-based text, roleplaying-gal game, in which you
-// have to carry many girls. The RG-RPG acronym is a recursive one and
-// it means "RG-RPG is a Gal Role playing game Pointing on Girls."
-// Copyright (C) 2013 by Alessandro Accardo <julius8774@gmail.com>
-// 
-// This program is free software: you can redistribute it and/or modify
-// it under the terms of the GNU General Public License as published by
-// the Free Software Foundation, either version 2 of the License, or (at
-// your option) any later version.
-// 
-// This program is distributed in the hope that it will be useful, but
-// WITHOUT ANY WARRANTY; without even the implied warranty of
-// MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU
-// General Public License for more details.
-// 
-// You should have received a copy of the GNU General Public License
-// along with this program.  If not, see <http://www.gnu.org/licenses/>.
-// 
+/*
+ * Copyright (C) 2019 Alessandro 'kLeZ' Accardo
+ *
+ * This file is part of RG-RPG.
+ *
+ * RG-RPG is free software: you can redistribute it and/or modify
+ * it under the terms of the GNU General Public License as published by
+ * the Free Software Foundation, either version 3 of the License, or
+ * (at your option) any later version.
+ *
+ * RG-RPG is distributed in the hope that it will be useful,
+ * but WITHOUT ANY WARRANTY; without even the implied warranty of
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+ * GNU General Public License for more details.
+ *
+ * You should have received a copy of the GNU General Public License
+ * along with RG-RPG.  If not, see <http://www.gnu.org/licenses/>.
+ *
+ */
 package it.d4nguard.rgrpg.util.dynacast;
 
 import java.util.Map;
@@ -23,18 +24,18 @@ import java.util.Map;
 /**
  * A provider interface that lets the ability to provide a map of keys and
  * values.
- * 
- * @author kLeZ-hAcK
+ *
  * @param <T>
+ *
+ * @author kLeZ-hAcK
  */
-public interface Provider<T>
-{
+public interface Provider<T> {
 	/**
 	 * Gets a key-value map, providing a maping between a key and the given
 	 * type.
-	 * 
+	 *
 	 * @return A key-value map, providing a maping between a key and the given
-	 *         type.
+	 * type.
 	 */
 	<K> Map<K, T> get();
 }

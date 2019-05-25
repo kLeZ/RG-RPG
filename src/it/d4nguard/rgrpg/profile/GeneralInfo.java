@@ -1,36 +1,34 @@
-// RG-RPG is a Java-based text, roleplaying-gal game, in which you
-// have to carry many girls. The RG-RPG acronym is a recursive one and
-// it means "RG-RPG is a Gal Role playing game Pointing on Girls."
-// Copyright (C) 2013 by Alessandro Accardo <julius8774@gmail.com>
-// 
-// This program is free software: you can redistribute it and/or modify
-// it under the terms of the GNU General Public License as published by
-// the Free Software Foundation, either version 2 of the License, or (at
-// your option) any later version.
-// 
-// This program is distributed in the hope that it will be useful, but
-// WITHOUT ANY WARRANTY; without even the implied warranty of
-// MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU
-// General Public License for more details.
-// 
-// You should have received a copy of the GNU General Public License
-// along with this program.  If not, see <http://www.gnu.org/licenses/>.
-// 
+/*
+ * Copyright (C) 2019 Alessandro 'kLeZ' Accardo
+ *
+ * This file is part of RG-RPG.
+ *
+ * RG-RPG is free software: you can redistribute it and/or modify
+ * it under the terms of the GNU General Public License as published by
+ * the Free Software Foundation, either version 3 of the License, or
+ * (at your option) any later version.
+ *
+ * RG-RPG is distributed in the hope that it will be useful,
+ * but WITHOUT ANY WARRANTY; without even the implied warranty of
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+ * GNU General Public License for more details.
+ *
+ * You should have received a copy of the GNU General Public License
+ * along with RG-RPG.  If not, see <http://www.gnu.org/licenses/>.
+ *
+ */
 package it.d4nguard.rgrpg.profile;
 
 import it.d4nguard.rgrpg.profile.types.GenderType;
-
-import java.io.Serializable;
-
-import javax.measure.quantity.Length;
-import javax.measure.quantity.Mass;
-
 import org.joda.time.DateMidnight;
 import org.jscience.physics.amount.Amount;
 import org.jscience.physics.amount.AmountFormat;
 
-public class GeneralInfo implements Serializable
-{
+import javax.measure.quantity.Length;
+import javax.measure.quantity.Mass;
+import java.io.Serializable;
+
+public class GeneralInfo implements Serializable {
 	private static final long serialVersionUID = -6846828906540838870L;
 
 	private String name;
@@ -44,109 +42,88 @@ public class GeneralInfo implements Serializable
 	private GenderType gender;
 	private String philosophyDeityReligion;
 
-	public String getName()
-	{
+	public String getName() {
 		return name;
 	}
 
-	public void setName(String name)
-	{
+	public void setName(String name) {
 		this.name = name;
 	}
 
-	public String getDescription()
-	{
+	public String getDescription() {
 		return description;
 	}
 
-	public void setDescription(String description)
-	{
+	public void setDescription(String description) {
 		this.description = description;
 	}
 
-	public String getSkinColor()
-	{
+	public String getSkinColor() {
 		return skinColor;
 	}
 
-	public void setSkinColor(String skinColor)
-	{
+	public void setSkinColor(String skinColor) {
 		this.skinColor = skinColor;
 	}
 
-	public String getHairColor()
-	{
+	public String getHairColor() {
 		return hairColor;
 	}
 
-	public void setHairColor(String hairColor)
-	{
+	public void setHairColor(String hairColor) {
 		this.hairColor = hairColor;
 	}
 
-	public String getEyesColor()
-	{
+	public String getEyesColor() {
 		return eyesColor;
 	}
 
-	public void setEyesColor(String eyesColor)
-	{
+	public void setEyesColor(String eyesColor) {
 		this.eyesColor = eyesColor;
 	}
 
-	public Amount<Length> getHeight()
-	{
+	public Amount<Length> getHeight() {
 		return height;
 	}
 
-	public void setHeight(Amount<Length> height)
-	{
+	public void setHeight(Amount<Length> height) {
 		this.height = height;
 	}
 
-	public Amount<Mass> getWeight()
-	{
+	public Amount<Mass> getWeight() {
 		return weight;
 	}
 
-	public void setWeight(Amount<Mass> weight)
-	{
+	public void setWeight(Amount<Mass> weight) {
 		this.weight = weight;
 	}
 
-	public DateMidnight getDateOfBirth()
-	{
+	public DateMidnight getDateOfBirth() {
 		return dateOfBirth;
 	}
 
-	public void setDateOfBirth(DateMidnight dateOfBirth)
-	{
+	public void setDateOfBirth(DateMidnight dateOfBirth) {
 		this.dateOfBirth = dateOfBirth;
 	}
 
-	public GenderType getGender()
-	{
+	public GenderType getGender() {
 		return gender;
 	}
 
-	public void setGender(GenderType gender)
-	{
+	public void setGender(GenderType gender) {
 		this.gender = gender;
 	}
 
-	public String getPhilosophyDeityReligion()
-	{
+	public String getPhilosophyDeityReligion() {
 		return philosophyDeityReligion;
 	}
 
-	public void setPhilosophyDeityReligion(String philosophyDeityReligion)
-	{
+	public void setPhilosophyDeityReligion(String philosophyDeityReligion) {
 		this.philosophyDeityReligion = philosophyDeityReligion;
 	}
 
 	@Override
-	public int hashCode()
-	{
+	public int hashCode() {
 		final int prime = 31;
 		int result = 1;
 		result = prime * result + ((dateOfBirth == null) ? 0 : dateOfBirth.hashCode());
@@ -163,64 +140,64 @@ public class GeneralInfo implements Serializable
 	}
 
 	@Override
-	public boolean equals(Object obj)
-	{
-		if (this == obj) return true;
-		if (obj == null) return false;
-		if (!(obj instanceof GeneralInfo)) return false;
+	public boolean equals(Object obj) {
+		if (this == obj)
+			return true;
+		if (obj == null)
+			return false;
+		if (!(obj instanceof GeneralInfo))
+			return false;
 		GeneralInfo other = (GeneralInfo) obj;
-		if (dateOfBirth == null)
-		{
-			if (other.dateOfBirth != null) return false;
-		}
-		else if (!dateOfBirth.equals(other.dateOfBirth)) return false;
-		if (description == null)
-		{
-			if (other.description != null) return false;
-		}
-		else if (!description.equals(other.description)) return false;
-		if (eyesColor == null)
-		{
-			if (other.eyesColor != null) return false;
-		}
-		else if (!eyesColor.equals(other.eyesColor)) return false;
-		if (gender != other.gender) return false;
-		if (hairColor == null)
-		{
-			if (other.hairColor != null) return false;
-		}
-		else if (!hairColor.equals(other.hairColor)) return false;
-		if (height == null)
-		{
-			if (other.height != null) return false;
-		}
-		else if (!height.equals(other.height)) return false;
-		if (name == null)
-		{
-			if (other.name != null) return false;
-		}
-		else if (!name.equals(other.name)) return false;
-		if (philosophyDeityReligion == null)
-		{
-			if (other.philosophyDeityReligion != null) return false;
-		}
-		else if (!philosophyDeityReligion.equals(other.philosophyDeityReligion)) return false;
-		if (skinColor == null)
-		{
-			if (other.skinColor != null) return false;
-		}
-		else if (!skinColor.equals(other.skinColor)) return false;
-		if (weight == null)
-		{
-			if (other.weight != null) return false;
-		}
-		else if (!weight.equals(other.weight)) return false;
-		return true;
+		if (dateOfBirth == null) {
+			if (other.dateOfBirth != null)
+				return false;
+		} else if (!dateOfBirth.equals(other.dateOfBirth))
+			return false;
+		if (description == null) {
+			if (other.description != null)
+				return false;
+		} else if (!description.equals(other.description))
+			return false;
+		if (eyesColor == null) {
+			if (other.eyesColor != null)
+				return false;
+		} else if (!eyesColor.equals(other.eyesColor))
+			return false;
+		if (gender != other.gender)
+			return false;
+		if (hairColor == null) {
+			if (other.hairColor != null)
+				return false;
+		} else if (!hairColor.equals(other.hairColor))
+			return false;
+		if (height == null) {
+			if (other.height != null)
+				return false;
+		} else if (!height.equals(other.height))
+			return false;
+		if (name == null) {
+			if (other.name != null)
+				return false;
+		} else if (!name.equals(other.name))
+			return false;
+		if (philosophyDeityReligion == null) {
+			if (other.philosophyDeityReligion != null)
+				return false;
+		} else if (!philosophyDeityReligion.equals(other.philosophyDeityReligion))
+			return false;
+		if (skinColor == null) {
+			if (other.skinColor != null)
+				return false;
+		} else if (!skinColor.equals(other.skinColor))
+			return false;
+		if (weight == null) {
+			return other.weight == null;
+		} else
+			return weight.equals(other.weight);
 	}
 
 	@Override
-	public String toString()
-	{
+	public String toString() {
 		AmountFormat af = AmountFormat.getInstance();
 		StringBuilder builder = new StringBuilder();
 		builder.append("GeneralInfo [ name = ");
@@ -233,13 +210,11 @@ public class GeneralInfo implements Serializable
 		builder.append(hairColor);
 		builder.append(", eyesColor = ");
 		builder.append(eyesColor);
-		if (height != null)
-		{
+		if (height != null) {
 			builder.append(", height = ");
 			builder.append(af.format(height));
 		}
-		if (weight != null)
-		{
+		if (weight != null) {
 			builder.append(", weight = ");
 			builder.append(af.format(weight));
 		}

@@ -1,21 +1,22 @@
-// RG-RPG is a Java-based text, roleplaying-gal game, in which you
-// have to carry many girls. The RG-RPG acronym is a recursive one and
-// it means "RG-RPG is a Gal Role playing game Pointing on Girls."
-// Copyright (C) 2013 by Alessandro Accardo <julius8774@gmail.com>
-// 
-// This program is free software: you can redistribute it and/or modify
-// it under the terms of the GNU General Public License as published by
-// the Free Software Foundation, either version 2 of the License, or (at
-// your option) any later version.
-// 
-// This program is distributed in the hope that it will be useful, but
-// WITHOUT ANY WARRANTY; without even the implied warranty of
-// MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU
-// General Public License for more details.
-// 
-// You should have received a copy of the GNU General Public License
-// along with this program.  If not, see <http://www.gnu.org/licenses/>.
-// 
+/*
+ * Copyright (C) 2019 Alessandro 'kLeZ' Accardo
+ *
+ * This file is part of RG-RPG.
+ *
+ * RG-RPG is free software: you can redistribute it and/or modify
+ * it under the terms of the GNU General Public License as published by
+ * the Free Software Foundation, either version 3 of the License, or
+ * (at your option) any later version.
+ *
+ * RG-RPG is distributed in the hope that it will be useful,
+ * but WITHOUT ANY WARRANTY; without even the implied warranty of
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+ * GNU General Public License for more details.
+ *
+ * You should have received a copy of the GNU General Public License
+ * along with RG-RPG.  If not, see <http://www.gnu.org/licenses/>.
+ *
+ */
 package it.d4nguard.rgrpg.d20;
 
 import it.d4nguard.rgrpg.d20.feats.Feat;
@@ -34,19 +35,12 @@ import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
 
-public class Character extends it.d4nguard.rgrpg.profile.Character
-{
-	private static final long serialVersionUID = -8727304403745570110L;
-
+public class Character extends it.d4nguard.rgrpg.profile.Character {
 	public static final String TYPE = "d20";
-
-	private Race race;
-	private AlignmentType alignment;
-
+	private static final long serialVersionUID = -8727304403745570110L;
 	private final AbilityScores abilityScores;
 	private final Equipment equipment;
 	private final DamageReduction damageReduction;
-
 	private final Set<Class> classes;
 	private final Set<ResistanceToEnergy> resistanceToEnergies;
 	private final Set<Language> spokenLanguages;
@@ -56,160 +50,135 @@ public class Character extends it.d4nguard.rgrpg.profile.Character
 	private final List<Integer> acModifiers;
 	private final List<Integer> stModifiers;
 	private final List<Integer> dodgeBonuses;
-
+	private Race race;
+	private AlignmentType alignment;
 	private float experience = 0;
 	private int damage = 0;
 	private int deflection = 0;
 
-	public Character(Player owner, GeneralInfo info)
-	{
+	public Character(Player owner, GeneralInfo info) {
 		super(owner, info);
 		this.abilityScores = new AbilityScores();
 		this.equipment = new Equipment();
 		this.damageReduction = new DamageReduction();
 
-		this.classes = new HashSet<Class>();
-		this.feats = new HashSet<Feat>();
-		this.spokenLanguages = new HashSet<Language>();
-		this.resistanceToEnergies = new HashSet<ResistanceToEnergy>();
+		this.classes = new HashSet<>();
+		this.feats = new HashSet<>();
+		this.spokenLanguages = new HashSet<>();
+		this.resistanceToEnergies = new HashSet<>();
 
-		this.dodgeBonuses = new ArrayList<Integer>();
-		this.hpModifiers = new ArrayList<Integer>();
-		this.babModifiers = new ArrayList<Integer>();
-		this.acModifiers = new ArrayList<Integer>();
-		this.stModifiers = new ArrayList<Integer>();
+		this.dodgeBonuses = new ArrayList<>();
+		this.hpModifiers = new ArrayList<>();
+		this.babModifiers = new ArrayList<>();
+		this.acModifiers = new ArrayList<>();
+		this.stModifiers = new ArrayList<>();
 
 		this.spokenLanguages.add(Language.COMMON);
 	}
 
-	public float getExperience()
-	{
+	public float getExperience() {
 		return experience;
 	}
 
-	public void setExperience(float experience)
-	{
+	public void setExperience(float experience) {
 		this.experience = experience;
 	}
 
-	public int getDamage()
-	{
+	public int getDamage() {
 		return damage;
 	}
 
-	public void setDamage(int damage)
-	{
+	public void setDamage(int damage) {
 		this.damage = damage;
 	}
 
-	public int getDeflection()
-	{
+	public int getDeflection() {
 		return deflection;
 	}
 
-	public void setDeflection(int deflection)
-	{
+	public void setDeflection(int deflection) {
 		this.deflection = deflection;
 	}
 
-	public Race getRace()
-	{
+	public Race getRace() {
 		return race;
 	}
 
-	public void setRace(Race race)
-	{
+	public void setRace(Race race) {
 		this.race = race;
 	}
 
-	public AlignmentType getAlignment()
-	{
+	public AlignmentType getAlignment() {
 		return alignment;
 	}
 
-	public void setAlignment(AlignmentType alignment)
-	{
+	public void setAlignment(AlignmentType alignment) {
 		this.alignment = alignment;
 	}
 
-	public AbilityScores getAbilityScores()
-	{
+	public AbilityScores getAbilityScores() {
 		return abilityScores;
 	}
 
-	public Equipment getEquipment()
-	{
+	public Equipment getEquipment() {
 		return equipment;
 	}
 
-	public DamageReduction getDamageReduction()
-	{
+	public DamageReduction getDamageReduction() {
 		return damageReduction;
 	}
 
-	public Set<Class> getClasses()
-	{
+	public Set<Class> getClasses() {
 		return classes;
 	}
 
-	public Set<ResistanceToEnergy> getResistanceToEnergies()
-	{
+	public Set<ResistanceToEnergy> getResistanceToEnergies() {
 		return resistanceToEnergies;
 	}
 
-	public Set<Feat> getFeats()
-	{
+	public Set<Feat> getFeats() {
 		return feats;
 	}
 
-	public List<Integer> getHpModifiers()
-	{
+	public List<Integer> getHpModifiers() {
 		return hpModifiers;
 	}
 
-	public List<Integer> getBabModifiers()
-	{
+	public List<Integer> getBabModifiers() {
 		return babModifiers;
 	}
 
-	public List<Integer> getAcModifiers()
-	{
+	public List<Integer> getAcModifiers() {
 		return acModifiers;
 	}
 
-	public List<Integer> getStModifiers()
-	{
+	public List<Integer> getStModifiers() {
 		return stModifiers;
 	}
 
-	public List<Integer> getDodgeBonuses()
-	{
+	public List<Integer> getDodgeBonuses() {
 		return dodgeBonuses;
 	}
 
-	public int getHealthPoints(boolean current)
-	{
+	public int getHealthPoints(boolean current) {
 		int hp = 0;
 		for (Class c : classes)
-			hp += NumericUtils.sum(
-							abilityScores.getConstitution().getModifier(),
-							c.getHitDiceResultPool());
+			hp += NumericUtils.sum(abilityScores.getConstitution().getModifier(), c.getHitDiceResultPool());
 		hp = NumericUtils.sum(hp, hpModifiers);
 		return (current ? NumericUtils.sum(hp, -damage) : hp);
 	}
 
-	public Set<Language> getSpokenLanguages()
-	{
-		Set<Language> langs = new HashSet<Language>();
+	public Set<Language> getSpokenLanguages() {
+		Set<Language> langs = new HashSet<>();
 		langs.addAll(spokenLanguages);
-		if (race != null) langs.addAll(race.getSpokenLanguages());
+		if (race != null)
+			langs.addAll(race.getSpokenLanguages());
 		for (Class c : classes)
 			langs.addAll(c.getSpokenLanguages());
 		return langs;
 	}
 
-	public int getLevel()
-	{
+	public int getLevel() {
 		int level = 0;
 		level += race.getEffectiveCharacterLevel();
 		for (Class c : classes)
@@ -217,13 +186,11 @@ public class Character extends it.d4nguard.rgrpg.profile.Character
 		return level;
 	}
 
-	public int getBab(AttackType type, int attack)
-	{
+	public int getBab(AttackType type, int attack) {
 		int bab = 0;
 		for (Class c : classes)
 			bab += c.getBab(attack);
-		switch (type)
-		{
+		switch (type) {
 			case Melee:
 				bab += race.getSize().getModifier();
 				bab += abilityScores.getStrength().getModifier();
@@ -240,17 +207,13 @@ public class Character extends it.d4nguard.rgrpg.profile.Character
 		return NumericUtils.sum(bab, babModifiers);
 	}
 
-	public int getMaxDexterity()
-	{
-		return NumericUtils.min(abilityScores.getDexterity().getModifier(),
-						equipment.getArmor().getMaxDexterity());
+	public int getMaxDexterity() {
+		return NumericUtils.min(abilityScores.getDexterity().getModifier(), equipment.getArmor().getMaxDexterity());
 	}
 
-	public int getArmorClass(ArmorClassType type)
-	{
+	public int getArmorClass(ArmorClassType type) {
 		int ac = 10;
-		switch (type)
-		{
+		switch (type) {
 			case Normal:
 				ac += equipment.getArmor().getArmorClass();
 				ac += equipment.getShield().getArmorClass();
@@ -273,13 +236,11 @@ public class Character extends it.d4nguard.rgrpg.profile.Character
 		return NumericUtils.sum(ac, acModifiers);
 	}
 
-	public int getSavingThrow(SavingThrowType type)
-	{
+	public int getSavingThrow(SavingThrowType type) {
 		int save = 0;
 		for (Class c : classes)
 			save += c.getSavingThrow(type);
-		switch (type)
-		{
+		switch (type) {
 			case Fortitude:
 				save += abilityScores.getConstitution().getModifier();
 				break;
@@ -294,9 +255,7 @@ public class Character extends it.d4nguard.rgrpg.profile.Character
 	}
 
 	@Override
-	public String toString()
-	{
-		return StringUtils.genericToString(getClass(), this,
-						"serialVersionUID", "owner", "\\$SWITCH_TABLE\\$.*");
+	public String toString() {
+		return StringUtils.genericToString(getClass(), this, "serialVersionUID", "owner", "\\$SWITCH_TABLE\\$.*");
 	}
 }

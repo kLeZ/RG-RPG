@@ -1,49 +1,60 @@
-// RG-RPG is a Java-based text, roleplaying-gal game, in which you
-// have to carry many girls. The RG-RPG acronym is a recursive one and
-// it means "RG-RPG is a Gal Role playing game Pointing on Girls."
-// Copyright (C) 2013 by Alessandro Accardo <julius8774@gmail.com>
-// 
-// This program is free software: you can redistribute it and/or modify
-// it under the terms of the GNU General Public License as published by
-// the Free Software Foundation, either version 2 of the License, or (at
-// your option) any later version.
-// 
-// This program is distributed in the hope that it will be useful, but
-// WITHOUT ANY WARRANTY; without even the implied warranty of
-// MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU
-// General Public License for more details.
-// 
-// You should have received a copy of the GNU General Public License
-// along with this program.  If not, see <http://www.gnu.org/licenses/>.
-// 
+/*
+ * Copyright (C) 2019 Alessandro 'kLeZ' Accardo
+ *
+ * This file is part of RG-RPG.
+ *
+ * RG-RPG is free software: you can redistribute it and/or modify
+ * it under the terms of the GNU General Public License as published by
+ * the Free Software Foundation, either version 3 of the License, or
+ * (at your option) any later version.
+ *
+ * RG-RPG is distributed in the hope that it will be useful,
+ * but WITHOUT ANY WARRANTY; without even the implied warranty of
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+ * GNU General Public License for more details.
+ *
+ * You should have received a copy of the GNU General Public License
+ * along with RG-RPG.  If not, see <http://www.gnu.org/licenses/>.
+ *
+ */
 package it.d4nguard.rgrpg.util.dynacast;
 
-import java.lang.reflect.Field;
+import ognl.TypeConverter;
+
 import java.lang.reflect.Member;
 import java.util.Map;
-
-import org.apache.commons.ognl.TypeConverter;
 
 /**
  * An implementation of the {@link TypeConverter} class that implements dynacast
  * logic.
- * 
+ *
  * @author kLeZ-hAcK
  */
-public class AdapterTypeConverter implements TypeConverter
-{
+public class AdapterTypeConverter implements TypeConverter {
 	/**
-	 * {@inheritDoc}
+	 * Converts the given value to a given type.  The OGNL context, target, member and
+	 * name of property being set are given.  This method should be able to handle
+	 * conversion in general without any context, target, member or property name specified.
+	 *
+	 * @param context
+	 * 		OGNL context under which the conversion is being done
+	 * @param target
+	 * 		target object in which the property is being set
+	 * @param member
+	 * 		member (Constructor, Method or Field) being set
+	 * @param propertyName
+	 * 		property name being set
+	 * @param value
+	 * 		value to be converted
+	 * @param toType
+	 * 		type to which value is converted
+	 *
+	 * @return Converted value of type toType or TypeConverter.NoConversionPossible to indicate that the
+	 * conversion was not possible.
 	 */
-	public <T> T convertValue(Map<String, Object> context, Object target,
-					Member member, String propertyName, Object value,
-					Class<T> toType)
-	{
-		if (member instanceof Field)
-		{
-			Adapter<T> a = TypeAdapter.getAdapter(toType);
-			return a.adapt(String.valueOf(value));
-		}
-		return null;
+	@Override
+	public Object convertValue(Map context, Object target, Member member, String propertyName, Object value, Class toType) {
+		Adapter<?> a = TypeAdapter.getAdapter(toType);
+		return a.adapt(String.valueOf(value));
 	}
 }
