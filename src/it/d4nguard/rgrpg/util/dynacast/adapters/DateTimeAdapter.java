@@ -21,7 +21,10 @@ package it.d4nguard.rgrpg.util.dynacast.adapters;
 
 import it.d4nguard.rgrpg.util.StringUtils;
 import it.d4nguard.rgrpg.util.Triplet;
-import org.joda.time.*;
+import org.joda.time.DateTime;
+import org.joda.time.Instant;
+import org.joda.time.MutableDateTime;
+import org.joda.time.ReadableInstant;
 import org.joda.time.format.DateTimeFormat;
 import org.joda.time.format.DateTimeFormatter;
 import org.joda.time.format.ISODateTimeFormat;
@@ -34,7 +37,6 @@ import java.util.Locale;
  * Currently it converts:<br>
  * <ul>
  * <li>{@link DateTime}</li>
- * <li>{@link DateMidnight}</li>
  * <li>{@link Instant}</li>
  * <li>{@link MutableDateTime}</li>
  * </ul>
@@ -58,10 +60,9 @@ public class DateTimeAdapter extends SimpleAdapter<ReadableInstant> {
 	@Override
 	public ReadableInstant adapt(String value) {
 		// value is a string formatted as: "07/04/1987[dd/MM/yyyy]"
-		String date = "";
 		DateTimeFormatter fmt;
 		Triplet<String, String, String> tri = StringUtils.getBetween(value, '[', ']');
-		date = tri.getLeft();
+		String date = tri.getLeft();
 		if (tri.hasCenter())
 			fmt = DateTimeFormat.forPattern(tri.getCenter());
 		else
@@ -69,8 +70,6 @@ public class DateTimeAdapter extends SimpleAdapter<ReadableInstant> {
 		fmt = fmt.withLocale(Locale.getDefault());
 		if (getType().equals(DateTime.class))
 			return DateTime.parse(date, fmt);
-		else if (getType().equals(DateMidnight.class))
-			return DateMidnight.parse(date, fmt);
 		else if (getType().equals(Instant.class))
 			return Instant.parse(date, fmt);
 		else if (getType().equals(MutableDateTime.class))

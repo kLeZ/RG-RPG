@@ -30,7 +30,7 @@ import java.util.Set;
 import java.util.StringTokenizer;
 
 public class Utils {
-	static String ARRAY_JOINER = "|";
+	public static String ARRAY_JOINER = "|";
 
 	public static void swap(int op1, int op2) {
 		int tmp = op2;
@@ -51,23 +51,23 @@ public class Utils {
 	public static ArrayList<String> splitEncolosed(String s, char open_tag, char close_tag) {
 		ArrayList<String> ret = new ArrayList<>();
 		char[] chars = s.toCharArray();
-		String contents = "";
+		StringBuilder contentsBuilder = new StringBuilder();
 		for (char c : chars) {
 			if (c == open_tag) {
-				if (!contents.isEmpty()) {
-					ret.add(contents);
+				if (!contentsBuilder.toString().isEmpty()) {
+					ret.add(contentsBuilder.toString());
 				}
-				contents = "";
+				contentsBuilder = new StringBuilder();
 			} else if (c == close_tag) {
-				ret.add(contents);
-				contents = "";
+				ret.add(contentsBuilder.toString());
+				contentsBuilder = new StringBuilder();
 			} else {
-				contents += c;
+				contentsBuilder.append(c);
 			}
 		}
+		String contents = contentsBuilder.toString();
 		if (!contents.isEmpty()) {
 			ret.add(contents);
-			contents = "";
 		}
 		return ret;
 	}

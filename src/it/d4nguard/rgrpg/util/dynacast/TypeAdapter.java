@@ -21,6 +21,7 @@ package it.d4nguard.rgrpg.util.dynacast;
 
 import it.d4nguard.rgrpg.util.CollectionsUtils;
 import it.d4nguard.rgrpg.util.StringUtils;
+import it.d4nguard.rgrpg.util.Utils;
 import it.d4nguard.rgrpg.util.dynacast.factories.AdapterFactory;
 import it.d4nguard.rgrpg.util.dynacast.factories.AdapterFactoryMap;
 import it.d4nguard.rgrpg.util.dynacast.factories.StrategyFactory;
@@ -64,14 +65,14 @@ public class TypeAdapter {
 	 * @return A string representation of the value passed.
 	 */
 	public static String toString(Object value) {
-		String ret = "";
+		String ret;
 		if (value.getClass().isArray()) {
 			Object[] arr = CollectionsUtils.getArray(value);
-			ret = StringUtils.join(Adapter.ARRAY_JOINER, arr);
+			ret = StringUtils.join(Utils.ARRAY_JOINER, arr);
 			ret = String.format("[%s]", ret);
 		} else if (Collection.class.isAssignableFrom(value.getClass())) {
 			Collection<?> coll = (Collection<?>) value;
-			ret = StringUtils.join(Adapter.ARRAY_JOINER, coll);
+			ret = StringUtils.join(Utils.ARRAY_JOINER, coll);
 			ret = String.format("[%s]", ret);
 		} else
 			ret = String.valueOf(value);

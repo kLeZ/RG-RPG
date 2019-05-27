@@ -20,7 +20,7 @@
 package it.d4nguard.rgrpg.profile;
 
 import it.d4nguard.rgrpg.profile.types.GenderType;
-import org.joda.time.DateMidnight;
+import org.joda.time.DateTime;
 import org.jscience.physics.amount.Amount;
 import org.jscience.physics.amount.AmountFormat;
 
@@ -38,7 +38,7 @@ public class GeneralInfo implements Serializable {
 	private String eyesColor;
 	private Amount<Length> height;
 	private Amount<Mass> weight;
-	private DateMidnight dateOfBirth;
+	private DateTime dateOfBirth;
 	private GenderType gender;
 	private String philosophyDeityReligion;
 
@@ -98,11 +98,11 @@ public class GeneralInfo implements Serializable {
 		this.weight = weight;
 	}
 
-	public DateMidnight getDateOfBirth() {
+	public DateTime getDateOfBirth() {
 		return dateOfBirth;
 	}
 
-	public void setDateOfBirth(DateMidnight dateOfBirth) {
+	public void setDateOfBirth(DateTime dateOfBirth) {
 		this.dateOfBirth = dateOfBirth;
 	}
 

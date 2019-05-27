@@ -7,468 +7,16 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="e9f176fd-f081-4600-8239-172f2faa1fb0" name="Default Changelist" comment="- removed old OGNL patched source in favor of the standard OGNL library">
-      <change afterPath="$PROJECT_DIR$/.idea/codeStyles/codeStyleConfig.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/copyright/GPLv3.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/copyright/profiles_settings.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/inspectionProfiles/Project_Default.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/libraries/Maven__ognl_ognl_3_2_10.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/it/d4nguard/rgrpg/util/DefaultMemberAccess.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__joda_time_joda_time_2_2.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/libraries/Maven__joda_time_joda_time_2_10_2.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/RG-RPG.iml" beforeDir="false" afterPath="$PROJECT_DIR$/RG-RPG.iml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/gen/org/apache/commons/ognl/JavaCharStream.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/gen/org/apache/commons/ognl/OgnlParser.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/gen/org/apache/commons/ognl/OgnlParserConstants.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/gen/org/apache/commons/ognl/OgnlParserTokenManager.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/gen/org/apache/commons/ognl/ParseException.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/gen/org/apache/commons/ognl/Token.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/gen/org/apache/commons/ognl/TokenMgrError.java" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/res/it/d4nguard/rgrpg/Welcome.txt" beforeDir="false" afterPath="$PROJECT_DIR$/res/it/d4nguard/rgrpg/Welcome.md" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/res/it/d4nguard/rgrpg/i18n/d20/abilityscores/AbilityScores.xml" beforeDir="false" afterPath="$PROJECT_DIR$/res/it/d4nguard/rgrpg/i18n/d20/abilityscores/AbilityScores.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/res/it/d4nguard/rgrpg/i18n/d20/feats/Feats.xml" beforeDir="false" afterPath="$PROJECT_DIR$/res/it/d4nguard/rgrpg/i18n/d20/feats/Feats.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/res/it/d4nguard/rgrpg/i18n/d20/languages/Languages.xml" beforeDir="false" afterPath="$PROJECT_DIR$/res/it/d4nguard/rgrpg/i18n/d20/languages/Languages.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/res/it/d4nguard/rgrpg/i18n/strings/Strings.xml" beforeDir="false" afterPath="$PROJECT_DIR$/res/it/d4nguard/rgrpg/i18n/strings/Strings.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/res/it/d4nguard/rgrpg/i18n/strings/Strings_it.xml" beforeDir="false" afterPath="$PROJECT_DIR$/res/it/d4nguard/rgrpg/i18n/strings/Strings_it.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/res/ognl.jj" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/res/ognl.jjt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/it/d4nguard/rgrpg/Context.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/it/d4nguard/rgrpg/Context.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/it/d4nguard/rgrpg/ExitRuntimeException.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/it/d4nguard/rgrpg/ExitRuntimeException.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/it/d4nguard/rgrpg/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/it/d4nguard/rgrpg/Main.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/it/d4nguard/rgrpg/Welcome.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/it/d4nguard/rgrpg/Welcome.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/it/d4nguard/rgrpg/commands/Command.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/it/d4nguard/rgrpg/commands/Command.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/it/d4nguard/rgrpg/commands/CurCommand.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/it/d4nguard/rgrpg/commands/CurCommand.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/it/d4nguard/rgrpg/commands/DebugCommand.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/it/d4nguard/rgrpg/commands/DebugCommand.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/it/d4nguard/rgrpg/commands/DelCommand.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/it/d4nguard/rgrpg/commands/DelCommand.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/it/d4nguard/rgrpg/commands/ExitCommand.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/it/d4nguard/rgrpg/commands/ExitCommand.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/it/d4nguard/rgrpg/commands/ForCommand.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/it/d4nguard/rgrpg/commands/ForCommand.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/it/d4nguard/rgrpg/commands/HelpCommand.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/it/d4nguard/rgrpg/commands/HelpCommand.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/it/d4nguard/rgrpg/commands/ListCommand.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/it/d4nguard/rgrpg/commands/ListCommand.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/it/d4nguard/rgrpg/commands/LoadCommand.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/it/d4nguard/rgrpg/commands/LoadCommand.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/it/d4nguard/rgrpg/commands/LoginCommand.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/it/d4nguard/rgrpg/commands/LoginCommand.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/it/d4nguard/rgrpg/commands/NewCommand.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/it/d4nguard/rgrpg/commands/NewCommand.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/it/d4nguard/rgrpg/commands/PlayCommand.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/it/d4nguard/rgrpg/commands/PlayCommand.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/it/d4nguard/rgrpg/commands/RenCommand.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/it/d4nguard/rgrpg/commands/RenCommand.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/it/d4nguard/rgrpg/commands/SaveCommand.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/it/d4nguard/rgrpg/commands/SaveCommand.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/it/d4nguard/rgrpg/commands/SetCommand.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/it/d4nguard/rgrpg/commands/SetCommand.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/it/d4nguard/rgrpg/commands/ShowCommand.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/it/d4nguard/rgrpg/commands/ShowCommand.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/it/d4nguard/rgrpg/commands/UseCommand.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/it/d4nguard/rgrpg/commands/UseCommand.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/it/d4nguard/rgrpg/commands/VersionCommand.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/it/d4nguard/rgrpg/commands/VersionCommand.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/it/d4nguard/rgrpg/d20/AbilityScores.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/it/d4nguard/rgrpg/d20/AbilityScores.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/it/d4nguard/rgrpg/d20/Character.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/it/d4nguard/rgrpg/d20/Character.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/it/d4nguard/rgrpg/d20/Class.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/it/d4nguard/rgrpg/d20/Class.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/it/d4nguard/rgrpg/d20/CriticalHit.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/it/d4nguard/rgrpg/d20/CriticalHit.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/it/d4nguard/rgrpg/d20/DamageReduction.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/it/d4nguard/rgrpg/d20/DamageReduction.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/it/d4nguard/rgrpg/d20/Equipment.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/it/d4nguard/rgrpg/d20/Equipment.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/it/d4nguard/rgrpg/d20/Language.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/it/d4nguard/rgrpg/d20/Language.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/it/d4nguard/rgrpg/d20/Range.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/it/d4nguard/rgrpg/d20/Range.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/it/d4nguard/rgrpg/d20/ResistanceToEnergy.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/it/d4nguard/rgrpg/d20/ResistanceToEnergy.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/it/d4nguard/rgrpg/d20/Skill.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/it/d4nguard/rgrpg/d20/Skill.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/it/d4nguard/rgrpg/d20/Wallet.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/it/d4nguard/rgrpg/d20/Wallet.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/it/d4nguard/rgrpg/d20/feats/ArmorProficiency.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/it/d4nguard/rgrpg/d20/feats/ArmorProficiency.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/it/d4nguard/rgrpg/d20/feats/Feat.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/it/d4nguard/rgrpg/d20/feats/Feat.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/it/d4nguard/rgrpg/d20/feats/Prerequisite.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/it/d4nguard/rgrpg/d20/feats/Prerequisite.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/it/d4nguard/rgrpg/d20/feats/ShieldProficiency.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/it/d4nguard/rgrpg/d20/feats/ShieldProficiency.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/it/d4nguard/rgrpg/d20/feats/WeaponProficiency.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/it/d4nguard/rgrpg/d20/feats/WeaponProficiency.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/it/d4nguard/rgrpg/d20/items/Armor.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/it/d4nguard/rgrpg/d20/items/Armor.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/it/d4nguard/rgrpg/d20/items/Item.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/it/d4nguard/rgrpg/d20/items/Item.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/it/d4nguard/rgrpg/d20/items/Shield.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/it/d4nguard/rgrpg/d20/items/Shield.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/it/d4nguard/rgrpg/d20/items/weapons/Ammunition.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/it/d4nguard/rgrpg/d20/items/weapons/Ammunition.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/it/d4nguard/rgrpg/d20/items/weapons/DoubleWeapon.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/it/d4nguard/rgrpg/d20/items/weapons/DoubleWeapon.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/it/d4nguard/rgrpg/d20/items/weapons/MeleeWeapon.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/it/d4nguard/rgrpg/d20/items/weapons/MeleeWeapon.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/it/d4nguard/rgrpg/d20/items/weapons/ProjectileWeapon.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/it/d4nguard/rgrpg/d20/items/weapons/ProjectileWeapon.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/it/d4nguard/rgrpg/d20/items/weapons/RangedWeapon.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/it/d4nguard/rgrpg/d20/items/weapons/RangedWeapon.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/it/d4nguard/rgrpg/d20/items/weapons/ReachWeapon.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/it/d4nguard/rgrpg/d20/items/weapons/ReachWeapon.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/it/d4nguard/rgrpg/d20/items/weapons/ThrownWeapon.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/it/d4nguard/rgrpg/d20/items/weapons/ThrownWeapon.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/it/d4nguard/rgrpg/d20/items/weapons/Weapon.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/it/d4nguard/rgrpg/d20/items/weapons/Weapon.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/it/d4nguard/rgrpg/d20/races/Race.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/it/d4nguard/rgrpg/d20/races/Race.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/it/d4nguard/rgrpg/d20/races/Trait.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/it/d4nguard/rgrpg/d20/races/Trait.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/it/d4nguard/rgrpg/d20/types/AlignmentType.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/it/d4nguard/rgrpg/d20/types/AlignmentType.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/it/d4nguard/rgrpg/d20/types/ArmorCategoryType.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/it/d4nguard/rgrpg/d20/types/ArmorCategoryType.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/it/d4nguard/rgrpg/d20/types/ArmorCheckPenaltyType.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/it/d4nguard/rgrpg/d20/types/ArmorCheckPenaltyType.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/it/d4nguard/rgrpg/d20/types/ArmorClassType.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/it/d4nguard/rgrpg/d20/types/ArmorClassType.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/it/d4nguard/rgrpg/d20/types/DamageReductionType.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/it/d4nguard/rgrpg/d20/types/DamageReductionType.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/it/d4nguard/rgrpg/d20/types/EnergyType.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/it/d4nguard/rgrpg/d20/types/EnergyType.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/it/d4nguard/rgrpg/d20/types/FeatCategoryType.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/it/d4nguard/rgrpg/d20/types/FeatCategoryType.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/it/d4nguard/rgrpg/d20/types/HumanoidRaceSubType.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/it/d4nguard/rgrpg/d20/types/HumanoidRaceSubType.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/it/d4nguard/rgrpg/d20/types/RaceSubType.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/it/d4nguard/rgrpg/d20/types/RaceSubType.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/it/d4nguard/rgrpg/d20/types/RaceType.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/it/d4nguard/rgrpg/d20/types/RaceType.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/it/d4nguard/rgrpg/d20/types/SavingThrowType.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/it/d4nguard/rgrpg/d20/types/SavingThrowType.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/it/d4nguard/rgrpg/d20/types/SizeType.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/it/d4nguard/rgrpg/d20/types/SizeType.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/it/d4nguard/rgrpg/d20/types/TryAgainType.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/it/d4nguard/rgrpg/d20/types/TryAgainType.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/it/d4nguard/rgrpg/d20/types/WeaponCategoryType.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/it/d4nguard/rgrpg/d20/types/WeaponCategoryType.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/it/d4nguard/rgrpg/d20/types/WeaponEncumbranceType.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/it/d4nguard/rgrpg/d20/types/WeaponEncumbranceType.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/it/d4nguard/rgrpg/d20/types/WeaponType.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/it/d4nguard/rgrpg/d20/types/WeaponType.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/it/d4nguard/rgrpg/engine/D20Engine.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/it/d4nguard/rgrpg/engine/D20Engine.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/it/d4nguard/rgrpg/engine/Engine.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/it/d4nguard/rgrpg/engine/Engine.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/it/d4nguard/rgrpg/managers/CharacterManager.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/it/d4nguard/rgrpg/managers/CharacterManager.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/it/d4nguard/rgrpg/managers/Manager.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/it/d4nguard/rgrpg/managers/Manager.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/it/d4nguard/rgrpg/managers/PlayerManager.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/it/d4nguard/rgrpg/managers/PlayerManager.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/it/d4nguard/rgrpg/profile/AbilityScore.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/it/d4nguard/rgrpg/profile/AbilityScore.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/it/d4nguard/rgrpg/profile/AbilityScores.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/it/d4nguard/rgrpg/profile/AbilityScores.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/it/d4nguard/rgrpg/profile/Action.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/it/d4nguard/rgrpg/profile/Action.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/it/d4nguard/rgrpg/profile/Character.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/it/d4nguard/rgrpg/profile/Character.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/it/d4nguard/rgrpg/profile/CharacterInfo.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/it/d4nguard/rgrpg/profile/CharacterInfo.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/it/d4nguard/rgrpg/profile/Coin.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/it/d4nguard/rgrpg/profile/Coin.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/it/d4nguard/rgrpg/profile/GeneralInfo.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/it/d4nguard/rgrpg/profile/GeneralInfo.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/it/d4nguard/rgrpg/profile/Player.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/it/d4nguard/rgrpg/profile/Player.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/it/d4nguard/rgrpg/profile/Skill.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/it/d4nguard/rgrpg/profile/Skill.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/it/d4nguard/rgrpg/profile/types/ActionType.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/it/d4nguard/rgrpg/profile/types/ActionType.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/it/d4nguard/rgrpg/profile/types/AttackType.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/it/d4nguard/rgrpg/profile/types/AttackType.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/it/d4nguard/rgrpg/profile/types/CoinType.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/it/d4nguard/rgrpg/profile/types/CoinType.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/it/d4nguard/rgrpg/profile/types/GenderType.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/it/d4nguard/rgrpg/profile/types/GenderType.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/it/d4nguard/rgrpg/storyboard/Chapter.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/it/d4nguard/rgrpg/storyboard/Chapter.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/it/d4nguard/rgrpg/storyboard/Story.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/it/d4nguard/rgrpg/storyboard/Story.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/it/d4nguard/rgrpg/storyboard/Zone.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/it/d4nguard/rgrpg/storyboard/Zone.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/it/d4nguard/rgrpg/storyboard/events/AbstractEvent.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/it/d4nguard/rgrpg/storyboard/events/AbstractEvent.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/it/d4nguard/rgrpg/storyboard/events/BattleEvent.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/it/d4nguard/rgrpg/storyboard/events/BattleEvent.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/it/d4nguard/rgrpg/storyboard/events/Event.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/it/d4nguard/rgrpg/storyboard/events/Event.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/it/d4nguard/rgrpg/storyboard/events/TalkEvent.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/it/d4nguard/rgrpg/storyboard/events/TalkEvent.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/it/d4nguard/rgrpg/storyboard/events/actors/Actor.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/it/d4nguard/rgrpg/storyboard/events/actors/Actor.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/it/d4nguard/rgrpg/storyboard/events/actors/BattleActor.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/it/d4nguard/rgrpg/storyboard/events/actors/BattleActor.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/it/d4nguard/rgrpg/storyboard/events/actors/TalkActor.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/it/d4nguard/rgrpg/storyboard/events/actors/TalkActor.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/it/d4nguard/rgrpg/storyboard/events/impl/Battle.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/it/d4nguard/rgrpg/storyboard/events/impl/Battle.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/it/d4nguard/rgrpg/storyboard/events/impl/Chat.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/it/d4nguard/rgrpg/storyboard/events/impl/Chat.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/it/d4nguard/rgrpg/util/BlankRemover.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/it/d4nguard/rgrpg/util/BlankRemover.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/it/d4nguard/rgrpg/util/BooleanUtils.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/it/d4nguard/rgrpg/util/BooleanUtils.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/it/d4nguard/rgrpg/util/BundleSet.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/it/d4nguard/rgrpg/util/BundleSet.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/it/d4nguard/rgrpg/util/CollectionsUtils.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/it/d4nguard/rgrpg/util/CollectionsUtils.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/it/d4nguard/rgrpg/util/CommandLine.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/it/d4nguard/rgrpg/util/CommandLine.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/it/d4nguard/rgrpg/util/CommandsInterpreter.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/it/d4nguard/rgrpg/util/CommandsInterpreter.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/it/d4nguard/rgrpg/util/Delegate.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/it/d4nguard/rgrpg/util/Delegate.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/it/d4nguard/rgrpg/util/Dice.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/it/d4nguard/rgrpg/util/Dice.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/it/d4nguard/rgrpg/util/GenericsUtils.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/it/d4nguard/rgrpg/util/GenericsUtils.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/it/d4nguard/rgrpg/util/MersenneTwister.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/it/d4nguard/rgrpg/util/MersenneTwister.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/it/d4nguard/rgrpg/util/NumericUtils.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/it/d4nguard/rgrpg/util/NumericUtils.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/it/d4nguard/rgrpg/util/OperatorType.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/it/d4nguard/rgrpg/util/OperatorType.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/it/d4nguard/rgrpg/util/PromptFeeder.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/it/d4nguard/rgrpg/util/PromptFeeder.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/it/d4nguard/rgrpg/util/StringCompiler.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/it/d4nguard/rgrpg/util/StringCompiler.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/it/d4nguard/rgrpg/util/StringUtils.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/it/d4nguard/rgrpg/util/StringUtils.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/it/d4nguard/rgrpg/util/Triplet.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/it/d4nguard/rgrpg/util/Triplet.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/it/d4nguard/rgrpg/util/Utils.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/it/d4nguard/rgrpg/util/Utils.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/it/d4nguard/rgrpg/util/XMLResourceBundle.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/it/d4nguard/rgrpg/util/XMLResourceBundle.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/it/d4nguard/rgrpg/util/XMLResourceBundleControl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/it/d4nguard/rgrpg/util/XMLResourceBundleControl.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/it/d4nguard/rgrpg/util/dynacast/Adapter.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/it/d4nguard/rgrpg/util/dynacast/Adapter.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/it/d4nguard/rgrpg/util/dynacast/AdapterTypeConverter.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/it/d4nguard/rgrpg/util/dynacast/AdapterTypeConverter.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/it/d4nguard/rgrpg/util/dynacast/DynaManipulator.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/it/d4nguard/rgrpg/util/dynacast/DynaManipulator.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/it/d4nguard/rgrpg/util/dynacast/DynaManipulatorException.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/it/d4nguard/rgrpg/util/dynacast/DynaManipulatorException.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/it/d4nguard/rgrpg/util/dynacast/Provider.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/it/d4nguard/rgrpg/util/dynacast/Provider.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/it/d4nguard/rgrpg/util/dynacast/Strategy.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/it/d4nguard/rgrpg/util/dynacast/Strategy.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/it/d4nguard/rgrpg/util/dynacast/TypeAdapter.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/it/d4nguard/rgrpg/util/dynacast/TypeAdapter.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/it/d4nguard/rgrpg/util/dynacast/adapters/AbstractAdapter.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/it/d4nguard/rgrpg/util/dynacast/adapters/AbstractAdapter.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/it/d4nguard/rgrpg/util/dynacast/adapters/AmountAdapter.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/it/d4nguard/rgrpg/util/dynacast/adapters/AmountAdapter.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/it/d4nguard/rgrpg/util/dynacast/adapters/ArrayAdapter.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/it/d4nguard/rgrpg/util/dynacast/adapters/ArrayAdapter.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/it/d4nguard/rgrpg/util/dynacast/adapters/CollectionAdapter.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/it/d4nguard/rgrpg/util/dynacast/adapters/CollectionAdapter.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/it/d4nguard/rgrpg/util/dynacast/adapters/DateTimeAdapter.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/it/d4nguard/rgrpg/util/dynacast/adapters/DateTimeAdapter.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/it/d4nguard/rgrpg/util/dynacast/adapters/DurationAdapter.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/it/d4nguard/rgrpg/util/dynacast/adapters/DurationAdapter.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/it/d4nguard/rgrpg/util/dynacast/adapters/EnumAdapter.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/it/d4nguard/rgrpg/util/dynacast/adapters/EnumAdapter.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/it/d4nguard/rgrpg/util/dynacast/adapters/PrimitivesAdapterProvider.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/it/d4nguard/rgrpg/util/dynacast/adapters/PrimitivesAdapterProvider.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/it/d4nguard/rgrpg/util/dynacast/adapters/SimpleAdapter.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/it/d4nguard/rgrpg/util/dynacast/adapters/SimpleAdapter.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/it/d4nguard/rgrpg/util/dynacast/factories/AdapterFactory.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/it/d4nguard/rgrpg/util/dynacast/factories/AdapterFactory.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/it/d4nguard/rgrpg/util/dynacast/factories/AdapterFactoryMap.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/it/d4nguard/rgrpg/util/dynacast/factories/AdapterFactoryMap.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/it/d4nguard/rgrpg/util/dynacast/factories/StrategyFactory.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/it/d4nguard/rgrpg/util/dynacast/factories/StrategyFactory.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/it/d4nguard/rgrpg/util/dynacast/strategies/AbilityScoreStrategy.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/it/d4nguard/rgrpg/util/dynacast/strategies/AbilityScoreStrategy.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/it/d4nguard/rgrpg/util/dynacast/strategies/AbstractStrategy.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/it/d4nguard/rgrpg/util/dynacast/strategies/AbstractStrategy.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/it/d4nguard/rgrpg/util/dynacast/strategies/AmountStrategy.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/it/d4nguard/rgrpg/util/dynacast/strategies/AmountStrategy.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/it/d4nguard/rgrpg/util/dynacast/strategies/ArrayStrategy.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/it/d4nguard/rgrpg/util/dynacast/strategies/ArrayStrategy.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/it/d4nguard/rgrpg/util/dynacast/strategies/CollectionStrategy.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/it/d4nguard/rgrpg/util/dynacast/strategies/CollectionStrategy.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/it/d4nguard/rgrpg/util/dynacast/strategies/DateTimeStrategy.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/it/d4nguard/rgrpg/util/dynacast/strategies/DateTimeStrategy.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/it/d4nguard/rgrpg/util/dynacast/strategies/EnumStrategy.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/it/d4nguard/rgrpg/util/dynacast/strategies/EnumStrategy.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/it/d4nguard/rgrpg/util/dynacast/strategies/PrimitiveStrategy.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/it/d4nguard/rgrpg/util/dynacast/strategies/PrimitiveStrategy.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/it/d4nguard/rgrpg/util/dynacast/strategies/SimpleStrategy.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/it/d4nguard/rgrpg/util/dynacast/strategies/SimpleStrategy.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/org/apache/commons/ognl/ASTAdd.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/org/apache/commons/ognl/ASTAnd.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/org/apache/commons/ognl/ASTAssign.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/org/apache/commons/ognl/ASTBitAnd.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/org/apache/commons/ognl/ASTBitNegate.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/org/apache/commons/ognl/ASTBitOr.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/org/apache/commons/ognl/ASTChain.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/org/apache/commons/ognl/ASTConst.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/org/apache/commons/ognl/ASTCtor.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/org/apache/commons/ognl/ASTDivide.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/org/apache/commons/ognl/ASTEq.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/org/apache/commons/ognl/ASTEval.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/org/apache/commons/ognl/ASTGreater.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/org/apache/commons/ognl/ASTGreaterEq.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/org/apache/commons/ognl/ASTIn.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/org/apache/commons/ognl/ASTInstanceof.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/org/apache/commons/ognl/ASTKeyValue.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/org/apache/commons/ognl/ASTLess.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/org/apache/commons/ognl/ASTLessEq.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/org/apache/commons/ognl/ASTList.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/org/apache/commons/ognl/ASTMap.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/org/apache/commons/ognl/ASTMethod.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/org/apache/commons/ognl/ASTMethodUtil.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/org/apache/commons/ognl/ASTMultiply.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/org/apache/commons/ognl/ASTNegate.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/org/apache/commons/ognl/ASTNot.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/org/apache/commons/ognl/ASTNotEq.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/org/apache/commons/ognl/ASTNotIn.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/org/apache/commons/ognl/ASTOr.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/org/apache/commons/ognl/ASTProject.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/org/apache/commons/ognl/ASTProperty.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/org/apache/commons/ognl/ASTRemainder.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/org/apache/commons/ognl/ASTRootVarRef.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/org/apache/commons/ognl/ASTSelect.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/org/apache/commons/ognl/ASTSelectFirst.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/org/apache/commons/ognl/ASTSelectLast.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/org/apache/commons/ognl/ASTSequence.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/org/apache/commons/ognl/ASTShiftLeft.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/org/apache/commons/ognl/ASTShiftRight.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/org/apache/commons/ognl/ASTStaticField.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/org/apache/commons/ognl/ASTStaticMethod.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/org/apache/commons/ognl/ASTSubtract.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/org/apache/commons/ognl/ASTTest.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/org/apache/commons/ognl/ASTThisVarRef.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/org/apache/commons/ognl/ASTUnsignedShiftRight.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/org/apache/commons/ognl/ASTVarRef.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/org/apache/commons/ognl/ASTXor.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/org/apache/commons/ognl/ArrayElementsAccessor.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/org/apache/commons/ognl/ArrayPropertyAccessor.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/org/apache/commons/ognl/BooleanExpression.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/org/apache/commons/ognl/ClassCacheInspector.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/org/apache/commons/ognl/ClassResolver.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/org/apache/commons/ognl/CollectionElementsAccessor.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/org/apache/commons/ognl/ComparisonExpression.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/org/apache/commons/ognl/DefaultClassResolver.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/org/apache/commons/ognl/DefaultMemberAccess.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/org/apache/commons/ognl/DefaultTypeConverter.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/org/apache/commons/ognl/DynamicSubscript.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/org/apache/commons/ognl/ElementsAccessor.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/org/apache/commons/ognl/EnumerationElementsAccessor.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/org/apache/commons/ognl/EnumerationIterator.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/org/apache/commons/ognl/EnumerationPropertyAccessor.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/org/apache/commons/ognl/Evaluation.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/org/apache/commons/ognl/ExpressionNode.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/org/apache/commons/ognl/ExpressionSyntaxException.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/org/apache/commons/ognl/InappropriateExpressionException.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/org/apache/commons/ognl/IteratorElementsAccessor.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/org/apache/commons/ognl/IteratorEnumeration.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/org/apache/commons/ognl/IteratorPropertyAccessor.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/org/apache/commons/ognl/JJTOgnlParserState.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/org/apache/commons/ognl/JavaSource.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/org/apache/commons/ognl/ListPropertyAccessor.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/org/apache/commons/ognl/MapElementsAccessor.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/org/apache/commons/ognl/MapPropertyAccessor.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/org/apache/commons/ognl/MemberAccess.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/org/apache/commons/ognl/MethodAccessor.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/org/apache/commons/ognl/MethodFailedException.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/org/apache/commons/ognl/NoSuchPropertyException.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/org/apache/commons/ognl/Node.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/org/apache/commons/ognl/NodeType.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/org/apache/commons/ognl/NodeVisitor.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/org/apache/commons/ognl/NullHandler.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/org/apache/commons/ognl/NumberElementsAccessor.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/org/apache/commons/ognl/NumericCasts.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/org/apache/commons/ognl/NumericDefaults.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/org/apache/commons/ognl/NumericExpression.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/org/apache/commons/ognl/NumericLiterals.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/org/apache/commons/ognl/NumericTypes.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/org/apache/commons/ognl/NumericValues.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/org/apache/commons/ognl/ObjectElementsAccessor.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/org/apache/commons/ognl/ObjectIndexedPropertyDescriptor.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/org/apache/commons/ognl/ObjectMethodAccessor.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/org/apache/commons/ognl/ObjectNullHandler.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/org/apache/commons/ognl/ObjectPropertyAccessor.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/org/apache/commons/ognl/Ognl.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/org/apache/commons/ognl/OgnlCache.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/org/apache/commons/ognl/OgnlContext.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/org/apache/commons/ognl/OgnlException.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/org/apache/commons/ognl/OgnlInvokePermission.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/org/apache/commons/ognl/OgnlOps.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/org/apache/commons/ognl/OgnlParserTreeConstants.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/org/apache/commons/ognl/OgnlRuntime.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/org/apache/commons/ognl/PrimitiveDefaults.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/org/apache/commons/ognl/PrimitiveTypes.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/org/apache/commons/ognl/PrimitiveWrapperClasses.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/org/apache/commons/ognl/PropertyAccessor.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/org/apache/commons/ognl/SetPropertyAccessor.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/org/apache/commons/ognl/SimpleNode.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/org/apache/commons/ognl/ToStringVisitor.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/org/apache/commons/ognl/TypeConverter.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/org/apache/commons/ognl/enhance/ContextClassLoader.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/org/apache/commons/ognl/enhance/EnhancedClassLoader.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/org/apache/commons/ognl/enhance/ExpressionAccessor.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/org/apache/commons/ognl/enhance/ExpressionCompiler.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/org/apache/commons/ognl/enhance/LocalReference.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/org/apache/commons/ognl/enhance/LocalReferenceImpl.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/org/apache/commons/ognl/enhance/OgnlExpressionCompiler.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/org/apache/commons/ognl/enhance/OrderedReturn.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/org/apache/commons/ognl/enhance/UnsupportedCompilationException.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/org/apache/commons/ognl/enhance/package-info.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/org/apache/commons/ognl/internal/Cache.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/org/apache/commons/ognl/internal/CacheException.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/org/apache/commons/ognl/internal/CacheFactory.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/org/apache/commons/ognl/internal/ClassCache.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/org/apache/commons/ognl/internal/ClassCacheHandler.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/org/apache/commons/ognl/internal/ClassCacheImpl.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/org/apache/commons/ognl/internal/ConcurrentHashMapCache.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/org/apache/commons/ognl/internal/ConcurrentHashMapCacheFactory.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/org/apache/commons/ognl/internal/ConcurrentHashMapClassCache.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/org/apache/commons/ognl/internal/Entry.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/org/apache/commons/ognl/internal/HashMapCache.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/org/apache/commons/ognl/internal/HashMapCacheFactory.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/org/apache/commons/ognl/internal/HashMapClassCache.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/org/apache/commons/ognl/internal/ReentrantReadWriteLockCache.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/org/apache/commons/ognl/internal/ReentrantReadWriteLockCacheFactory.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/org/apache/commons/ognl/internal/ReentrantReadWriteLockClassCache.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/org/apache/commons/ognl/internal/entry/CacheEntry.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/org/apache/commons/ognl/internal/entry/CacheEntryFactory.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/org/apache/commons/ognl/internal/entry/ClassCacheEntryFactory.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/org/apache/commons/ognl/internal/entry/DeclaredMethodCacheEntry.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/org/apache/commons/ognl/internal/entry/DeclaredMethodCacheEntryFactory.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/org/apache/commons/ognl/internal/entry/FieldCacheEntryFactory.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/org/apache/commons/ognl/internal/entry/GenericMethodParameterTypeCacheEntry.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/org/apache/commons/ognl/internal/entry/GenericMethodParameterTypeFactory.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/org/apache/commons/ognl/internal/entry/MethodAccessCacheEntryFactory.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/org/apache/commons/ognl/internal/entry/MethodAccessEntryValue.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/org/apache/commons/ognl/internal/entry/MethodCacheEntry.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/org/apache/commons/ognl/internal/entry/MethodCacheEntryFactory.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/org/apache/commons/ognl/internal/entry/MethodPermCacheEntryFactory.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/org/apache/commons/ognl/internal/entry/ParametrizedCacheEntryFactory.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/org/apache/commons/ognl/internal/entry/PermissionCacheEntry.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/org/apache/commons/ognl/internal/entry/PermissionCacheEntryFactory.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/org/apache/commons/ognl/internal/entry/PropertyDescriptorCacheEntryFactory.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/org/apache/commons/ognl/internal/package-info.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/org/apache/commons/ognl/package-info.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/tst/it/d4nguard/rgrpg/commands/ListCommandTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/tst/it/d4nguard/rgrpg/commands/ListCommandTest.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/tst/it/d4nguard/rgrpg/commands/LoadCommandTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/tst/it/d4nguard/rgrpg/commands/LoadCommandTest.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/tst/it/d4nguard/rgrpg/commands/SaveCommandTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/tst/it/d4nguard/rgrpg/commands/SaveCommandTest.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/tst/it/d4nguard/rgrpg/commands/SetCommandTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/tst/it/d4nguard/rgrpg/commands/SetCommandTest.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/tst/it/d4nguard/rgrpg/managers/CharacterManagerTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/tst/it/d4nguard/rgrpg/managers/CharacterManagerTest.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/tst/it/d4nguard/rgrpg/util/StringUtilsTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/tst/it/d4nguard/rgrpg/util/StringUtilsTest.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/tst/it/d4nguard/rgrpg/util/dynacast/DynaManipulatorTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/tst/it/d4nguard/rgrpg/util/dynacast/DynaManipulatorTest.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/tst/org/apache/commons/ognl/InExpressionTest.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/tst/org/apache/commons/ognl/TestOgnlException.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/tst/org/apache/commons/ognl/TestOgnlRuntime.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/tst/org/apache/commons/ognl/internal/ConcurrentHashMapCacheTest.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/tst/org/apache/commons/ognl/internal/ConstructorCacheTest.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/tst/org/apache/commons/ognl/internal/DeclaredMethodCacheTest.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/tst/org/apache/commons/ognl/internal/FieldCacheTest.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/tst/org/apache/commons/ognl/internal/GenericMethodParameterTypeCacheTest.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/tst/org/apache/commons/ognl/internal/MethodAccessCacheTest.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/tst/org/apache/commons/ognl/internal/MethodPermCacheTest.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/tst/org/apache/commons/ognl/internal/PermissionCacheTest.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/tst/org/apache/commons/ognl/internal/PropertyDescriptorCacheTest.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/tst/org/apache/commons/ognl/test/ASTChainTest.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/tst/org/apache/commons/ognl/test/ASTMethodTest.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/tst/org/apache/commons/ognl/test/ASTPropertyTest.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/tst/org/apache/commons/ognl/test/ArithmeticAndLogicalOperatorsTest.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/tst/org/apache/commons/ognl/test/ArrayCreationTest.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/tst/org/apache/commons/ognl/test/ArrayElementsTest.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/tst/org/apache/commons/ognl/test/ClassMethodTest.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/tst/org/apache/commons/ognl/test/CollectionDirectPropertyTest.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/tst/org/apache/commons/ognl/test/CompilingPropertyAccessor.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/tst/org/apache/commons/ognl/test/ConstantTest.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/tst/org/apache/commons/ognl/test/ConstantTreeTest.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/tst/org/apache/commons/ognl/test/ContextVariableTest.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/tst/org/apache/commons/ognl/test/CorrectedObjectNullHandler.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/tst/org/apache/commons/ognl/test/GenericsTest.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/tst/org/apache/commons/ognl/test/IndexAccessTest.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/tst/org/apache/commons/ognl/test/IndexedPropertyTest.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/tst/org/apache/commons/ognl/test/InheritedMethodsTest.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/tst/org/apache/commons/ognl/test/InterfaceInheritanceTest.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/tst/org/apache/commons/ognl/test/LambdaExpressionTest.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/tst/org/apache/commons/ognl/test/MapCreationTest.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/tst/org/apache/commons/ognl/test/MemberAccessTest.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/tst/org/apache/commons/ognl/test/MethodTest.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/tst/org/apache/commons/ognl/test/MethodWithConversionTest.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/tst/org/apache/commons/ognl/test/NestedMethodTest.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/tst/org/apache/commons/ognl/test/NullHandlerTest.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/tst/org/apache/commons/ognl/test/NullStringCatenationTest.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/tst/org/apache/commons/ognl/test/NumberFormatExceptionTest.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/tst/org/apache/commons/ognl/test/NumericConversionTest.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/tst/org/apache/commons/ognl/test/ObjectIndexedPropertyTest.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/tst/org/apache/commons/ognl/test/ObjectIndexedTest.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/tst/org/apache/commons/ognl/test/OgnlTestCase.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/tst/org/apache/commons/ognl/test/OperatorTest.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/tst/org/apache/commons/ognl/test/Performance.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/tst/org/apache/commons/ognl/test/PrimitiveArrayTest.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/tst/org/apache/commons/ognl/test/PrimitiveNullHandlingTest.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/tst/org/apache/commons/ognl/test/PrivateAccessorTest.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/tst/org/apache/commons/ognl/test/PrivateMemberTest.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/tst/org/apache/commons/ognl/test/ProjectionSelectionTest.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/tst/org/apache/commons/ognl/test/PropertyArithmeticAndLogicalOperatorsTest.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/tst/org/apache/commons/ognl/test/PropertyNotFoundTest.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/tst/org/apache/commons/ognl/test/PropertySetterTest.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/tst/org/apache/commons/ognl/test/PropertyTest.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/tst/org/apache/commons/ognl/test/ProtectedInnerClassTest.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/tst/org/apache/commons/ognl/test/QuotingTest.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/tst/org/apache/commons/ognl/test/SetterTest.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/tst/org/apache/commons/ognl/test/SetterWithConversionTest.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/tst/org/apache/commons/ognl/test/ShortCircuitingExpressionTest.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/tst/org/apache/commons/ognl/test/SimpleNavigationChainTreeTest.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/tst/org/apache/commons/ognl/test/SimplePropertyTreeTest.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/tst/org/apache/commons/ognl/test/StaticsAndConstructorsTest.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/tst/org/apache/commons/ognl/test/accessors/ListPropertyAccessorTest.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/tst/org/apache/commons/ognl/test/enhance/TestExpressionCompiler.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/tst/org/apache/commons/ognl/test/objects/BaseBean.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/tst/org/apache/commons/ognl/test/objects/BaseGeneric.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/tst/org/apache/commons/ognl/test/objects/BaseIndexed.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/tst/org/apache/commons/ognl/test/objects/BaseObjectIndexed.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/tst/org/apache/commons/ognl/test/objects/BaseSyntheticObject.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/tst/org/apache/commons/ognl/test/objects/Bean1.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/tst/org/apache/commons/ognl/test/objects/Bean2.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/tst/org/apache/commons/ognl/test/objects/Bean3.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/tst/org/apache/commons/ognl/test/objects/BeanProvider.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/tst/org/apache/commons/ognl/test/objects/BeanProviderAccessor.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/tst/org/apache/commons/ognl/test/objects/BeanProviderImpl.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/tst/org/apache/commons/ognl/test/objects/Component.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/tst/org/apache/commons/ognl/test/objects/ComponentImpl.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/tst/org/apache/commons/ognl/test/objects/ComponentSubclass.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/tst/org/apache/commons/ognl/test/objects/Copy.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/tst/org/apache/commons/ognl/test/objects/CorrectedObject.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/tst/org/apache/commons/ognl/test/objects/Cracker.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/tst/org/apache/commons/ognl/test/objects/Entry.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/tst/org/apache/commons/ognl/test/objects/EvenOdd.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/tst/org/apache/commons/ognl/test/objects/FirstBean.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/tst/org/apache/commons/ognl/test/objects/FormComponentImpl.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/tst/org/apache/commons/ognl/test/objects/FormImpl.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/tst/org/apache/commons/ognl/test/objects/GameGeneric.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/tst/org/apache/commons/ognl/test/objects/GameGenericObject.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/tst/org/apache/commons/ognl/test/objects/GenericCracker.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/tst/org/apache/commons/ognl/test/objects/GenericObject.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/tst/org/apache/commons/ognl/test/objects/GenericRoot.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/tst/org/apache/commons/ognl/test/objects/GenericService.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/tst/org/apache/commons/ognl/test/objects/GenericServiceImpl.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/tst/org/apache/commons/ognl/test/objects/GetterMethods.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/tst/org/apache/commons/ognl/test/objects/IComponent.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/tst/org/apache/commons/ognl/test/objects/IContentProvider.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/tst/org/apache/commons/ognl/test/objects/IForm.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/tst/org/apache/commons/ognl/test/objects/IFormComponent.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/tst/org/apache/commons/ognl/test/objects/ITreeContentProvider.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/tst/org/apache/commons/ognl/test/objects/Indexed.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/tst/org/apache/commons/ognl/test/objects/IndexedMapObject.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/tst/org/apache/commons/ognl/test/objects/IndexedSetObject.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/tst/org/apache/commons/ognl/test/objects/Inherited.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/tst/org/apache/commons/ognl/test/objects/ListSource.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/tst/org/apache/commons/ognl/test/objects/ListSourceImpl.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/tst/org/apache/commons/ognl/test/objects/MenuItem.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/tst/org/apache/commons/ognl/test/objects/Messages.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/tst/org/apache/commons/ognl/test/objects/Model.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/tst/org/apache/commons/ognl/test/objects/MyMap.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/tst/org/apache/commons/ognl/test/objects/MyMapImpl.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/tst/org/apache/commons/ognl/test/objects/ObjectIndexed.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/tst/org/apache/commons/ognl/test/objects/OtherObjectIndexed.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/tst/org/apache/commons/ognl/test/objects/PersonGenericObject.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/tst/org/apache/commons/ognl/test/objects/PropertyHolder.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/tst/org/apache/commons/ognl/test/objects/Root.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/tst/org/apache/commons/ognl/test/objects/SearchCriteria.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/tst/org/apache/commons/ognl/test/objects/SearchTab.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/tst/org/apache/commons/ognl/test/objects/SecondBean.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/tst/org/apache/commons/ognl/test/objects/SetterReturns.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/tst/org/apache/commons/ognl/test/objects/Simple.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/tst/org/apache/commons/ognl/test/objects/SimpleEnum.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/tst/org/apache/commons/ognl/test/objects/SimpleNumeric.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/tst/org/apache/commons/ognl/test/objects/SubclassSyntheticObject.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/tst/org/apache/commons/ognl/test/objects/TestClass.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/tst/org/apache/commons/ognl/test/objects/TestImpl.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/tst/org/apache/commons/ognl/test/objects/TestInherited1.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/tst/org/apache/commons/ognl/test/objects/TestInherited2.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/tst/org/apache/commons/ognl/test/objects/TestModel.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/tst/org/apache/commons/ognl/test/objects/TreeContentProvider.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/tst/org/apache/commons/ognl/test/objects/Two.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/tst/org/apache/commons/ognl/test/util/ContextClassLoader.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/tst/org/apache/commons/ognl/test/util/EnhancedClassLoader.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/tst/org/apache/commons/ognl/test/util/NameFactory.java" beforeDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/out/" />
     <ignored path="$PROJECT_DIR$/bin/" />
@@ -496,20 +44,7 @@
     <option name="isMigrated" value="true" />
   </component>
   <component name="FileEditorManager">
-    <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/src/it/d4nguard/rgrpg/util/StringCompiler.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="187">
-              <caret line="513" column="29" selection-start-line="513" selection-start-column="29" selection-end-line="513" selection-end-column="29" />
-              <folding>
-                <element signature="imports" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-    </leaf>
+    <leaf SIDE_TABS_SIZE_LIMIT_KEY="300" />
   </component>
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
@@ -527,7 +62,6 @@
         <option value="$PROJECT_DIR$/src/org/apache/commons/ognl/Ognl.java" />
         <option value="$PROJECT_DIR$/src/it/d4nguard/rgrpg/util/CommandsInterpreter.java" />
         <option value="$PROJECT_DIR$/tst/org/apache/commons/ognl/test/ASTChainTest.java" />
-        <option value="$PROJECT_DIR$/tst/it/d4nguard/rgrpg/commands/SetCommandTest.java" />
         <option value="$PROJECT_DIR$/src/it/d4nguard/rgrpg/util/SecurityMemberAccess.java" />
         <option value="$PROJECT_DIR$/src/it/d4nguard/rgrpg/util/DefaultMemberAccess.java" />
         <option value="$PROJECT_DIR$/src/it/d4nguard/rgrpg/util/dynacast/AdapterTypeConverter.java" />
@@ -535,7 +69,6 @@
         <option value="$PROJECT_DIR$/res/it/d4nguard/rgrpg/Welcome.md" />
         <option value="$PROJECT_DIR$/tst/it/d4nguard/rgrpg/util/dynacast/DynaManipulatorTest.java" />
         <option value="$PROJECT_DIR$/src/it/d4nguard/rgrpg/util/dynacast/Adapter.java" />
-        <option value="$PROJECT_DIR$/src/it/d4nguard/rgrpg/util/Utils.java" />
         <option value="$PROJECT_DIR$/src/it/d4nguard/rgrpg/util/dynacast/adapters/ArrayAdapter.java" />
         <option value="$PROJECT_DIR$/src/it/d4nguard/rgrpg/d20/races/Race.java" />
         <option value="$PROJECT_DIR$/src/it/d4nguard/rgrpg/d20/feats/ArmorProficiency.java" />
@@ -545,13 +78,18 @@
         <option value="$PROJECT_DIR$/src/it/d4nguard/rgrpg/util/dynacast/DynaManipulator.java" />
         <option value="$PROJECT_DIR$/src/it/d4nguard/rgrpg/util/GenericsUtils.java" />
         <option value="$PROJECT_DIR$/src/it/d4nguard/rgrpg/profile/Character.java" />
-        <option value="$PROJECT_DIR$/pom.xml" />
         <option value="$PROJECT_DIR$/src/it/d4nguard/rgrpg/util/dynacast/adapters/CollectionAdapter.java" />
         <option value="$PROJECT_DIR$/src/it/d4nguard/rgrpg/util/dynacast/factories/AdapterFactoryMap.java" />
         <option value="$PROJECT_DIR$/src/it/d4nguard/rgrpg/util/StringUtils.java" />
         <option value="$PROJECT_DIR$/src/it/d4nguard/rgrpg/util/OperatorType.java" />
         <option value="$PROJECT_DIR$/src/it/d4nguard/rgrpg/util/PromptFeeder.java" />
         <option value="$PROJECT_DIR$/src/it/d4nguard/rgrpg/util/StringCompiler.java" />
+        <option value="$PROJECT_DIR$/pom.xml" />
+        <option value="$PROJECT_DIR$/src/it/d4nguard/rgrpg/util/dynacast/adapters/DateTimeAdapter.java" />
+        <option value="$PROJECT_DIR$/src/it/d4nguard/rgrpg/profile/GeneralInfo.java" />
+        <option value="$PROJECT_DIR$/tst/it/d4nguard/rgrpg/commands/SetCommandTest.java" />
+        <option value="$PROJECT_DIR$/src/it/d4nguard/rgrpg/util/dynacast/TypeAdapter.java" />
+        <option value="$PROJECT_DIR$/src/it/d4nguard/rgrpg/util/Utils.java" />
       </list>
     </option>
   </component>
@@ -589,8 +127,8 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
-      <pane id="Scope" />
       <pane id="ProjectPane" />
+      <pane id="Scope" />
       <pane id="PackagesPane" />
     </panes>
   </component>
@@ -647,6 +185,11 @@
       </list>
     </recent_temporary>
   </component>
+  <component name="StructuralSearchPlugin">
+    <searchConfiguration name="user defined" created="1558940187749" text="DateMidnight" recursive="true" caseInsensitive="true" type="JAVA" scope_type="PROJECT" scope_descriptor="" history="1">
+      <constraint name="__context__" within="" contains="" />
+    </searchConfiguration>
+  </component>
   <component name="SvnConfiguration">
     <configuration />
   </component>
@@ -690,7 +233,7 @@
     </history-entry>
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="20105000" />
+    <option name="totallyTimeSpent" value="21702000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -704,7 +247,7 @@
   <component name="ToolWindowManager">
     <frame x="-4" y="3" width="1928" height="1081" extended-state="6" />
     <layout>
-      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.26648936" />
+      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.2718085" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info id="Designer" order="2" />
       <window_info id="Image Layers" order="3" />
@@ -720,7 +263,7 @@
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
       <window_info anchor="bottom" id="TODO" order="6" weight="0.32924336" />
       <window_info anchor="bottom" id="Docker" order="7" />
-      <window_info anchor="bottom" id="Version Control" order="8" weight="0.32924336" />
+      <window_info active="true" anchor="bottom" id="Version Control" order="8" visible="true" weight="0.32924336" />
       <window_info anchor="bottom" id="Database Changes" order="9" />
       <window_info anchor="bottom" id="Terminal" order="10" sideWeight="0.49964002" weight="0.9693251" />
       <window_info anchor="bottom" id="Event Log" order="11" sideWeight="0.50035995" side_tool="true" weight="0.33231083" />
@@ -757,44 +300,7 @@
     <option name="REFORMAT_BEFORE_PROJECT_COMMIT" value="true" />
     <option name="REARRANGE_BEFORE_PROJECT_COMMIT" value="true" />
   </component>
-  <component name="XDebuggerManager">
-    <breakpoint-manager>
-      <breakpoints>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/tst/it/d4nguard/rgrpg/commands/SetCommandTest.java</url>
-          <line>56</line>
-          <properties />
-          <option name="timeStamp" value="1" />
-        </line-breakpoint>
-      </breakpoints>
-    </breakpoint-manager>
-  </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/src/it/d4nguard/rgrpg/profile/Player.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="75">
-          <caret line="26" column="13" selection-start-line="26" selection-start-column="13" selection-end-line="26" selection-end-column="13" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/tst/it/d4nguard/rgrpg/commands/SaveCommandTest.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="75">
-          <caret line="31" column="13" selection-start-line="31" selection-start-column="13" selection-end-line="31" selection-end-column="13" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/it/d4nguard/rgrpg/util/CommandsInterpreter.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="368">
-          <caret line="100" column="34" selection-start-line="100" selection-start-column="34" selection-end-line="100" selection-end-column="34" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/tst/org/apache/commons/ognl/internal/DeclaredMethodCacheTest.java" />
     <entry file="file://$PROJECT_DIR$/tst/org/apache/commons/ognl/test/ASTChainTest.java" />
     <entry file="file://$PROJECT_DIR$/tst/org/apache/commons/ognl/test/OgnlTestCase.java" />
     <entry file="file://$PROJECT_DIR$/src/org/apache/commons/ognl/TypeConverter.java" />
@@ -816,13 +322,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/it/d4nguard/rgrpg/profile/GeneralInfo.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="187">
-          <caret line="40" column="17" selection-start-line="40" selection-start-column="17" selection-end-line="40" selection-end-column="17" />
-        </state>
-      </provider>
-    </entry>
     <entry file="jar://$MAVEN_REPOSITORY$/ognl/ognl/3.2.10/ognl-3.2.10-sources.jar!/ognl/OgnlRuntime.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="179">
@@ -837,13 +336,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="315">
           <caret line="21" column="31" selection-start-line="21" selection-start-column="31" selection-end-line="21" selection-end-column="31" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/tst/it/d4nguard/rgrpg/commands/SetCommandTest.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="230">
-          <caret line="86" selection-start-line="86" selection-end-line="86" />
         </state>
       </provider>
     </entry>
@@ -931,13 +423,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/it/d4nguard/rgrpg/util/Utils.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="480">
-          <caret line="102" column="43" selection-start-line="102" selection-start-column="43" selection-end-line="102" selection-end-column="43" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/it/d4nguard/rgrpg/util/dynacast/adapters/ArrayAdapter.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="165">
@@ -994,13 +479,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/it/d4nguard/rgrpg/util/dynacast/factories/AdapterFactoryMap.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="383">
-          <caret line="88" column="34" selection-start-line="88" selection-start-column="34" selection-end-line="88" selection-end-column="34" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/it/d4nguard/rgrpg/util/dynacast/adapters/CollectionAdapter.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="165">
@@ -1039,14 +517,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="398">
           <caret line="139" column="8" selection-start-line="139" selection-start-column="8" selection-end-line="139" selection-end-column="8" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/pom.xml">
-      <provider editor-type-id="MavenHelperPluginDependencyAnalyzer" />
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="329">
-          <caret line="204" column="47" selection-start-line="204" selection-start-column="47" selection-end-line="204" selection-end-column="47" />
         </state>
       </provider>
     </entry>
@@ -1092,6 +562,82 @@
           <folding>
             <element signature="imports" expanded="true" />
           </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/it/d4nguard/rgrpg/util/dynacast/factories/AdapterFactoryMap.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="60">
+          <caret line="43" column="25" selection-start-line="43" selection-start-column="25" selection-end-line="43" selection-end-column="25" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar://$MAVEN_REPOSITORY$/joda-time/joda-time/2.10.2/joda-time-2.10.2.jar!/org/joda/time/DateMidnight.class">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-60">
+          <caret line="11" column="19" selection-start-line="11" selection-start-column="19" selection-end-line="11" selection-end-column="19" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/it/d4nguard/rgrpg/util/dynacast/adapters/DateTimeAdapter.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="188">
+          <caret line="55" column="7" lean-forward="true" selection-start-line="55" selection-start-column="7" selection-end-line="55" selection-end-column="7" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/it/d4nguard/rgrpg/profile/CharacterInfo.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="120">
+          <caret line="30" column="12" selection-start-line="30" selection-start-column="12" selection-end-line="30" selection-end-column="12" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/pom.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="365">
+          <caret line="223" column="27" selection-start-line="223" selection-start-column="27" selection-end-line="223" selection-end-column="27" />
+        </state>
+      </provider>
+      <provider editor-type-id="MavenHelperPluginDependencyAnalyzer" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/it/d4nguard/rgrpg/profile/GeneralInfo.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="262">
+          <caret line="44" column="29" lean-forward="true" selection-start-line="44" selection-start-column="29" selection-end-line="44" selection-end-column="29" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/tst/it/d4nguard/rgrpg/commands/SetCommandTest.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="120">
+          <caret line="26" column="21" selection-start-line="26" selection-start-column="21" selection-end-line="26" selection-end-column="21" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/it/d4nguard/rgrpg/util/Utils.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="375">
+          <caret line="81" column="41" selection-start-line="81" selection-start-column="41" selection-end-line="81" selection-end-column="41" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/it/d4nguard/rgrpg/util/dynacast/TypeAdapter.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="445">
+          <caret line="74" column="41" selection-start-line="74" selection-start-column="41" selection-end-line="74" selection-end-column="41" />
         </state>
       </provider>
     </entry>

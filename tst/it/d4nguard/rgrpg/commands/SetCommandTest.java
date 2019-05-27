@@ -24,7 +24,7 @@ import it.d4nguard.rgrpg.managers.CharacterManager;
 import it.d4nguard.rgrpg.managers.PlayerManager;
 import it.d4nguard.rgrpg.profile.Character;
 import it.d4nguard.rgrpg.profile.types.GenderType;
-import org.joda.time.DateMidnight;
+import org.joda.time.DateTime;
 import org.joda.time.format.DateTimeFormat;
 import org.jscience.physics.amount.Amount;
 import org.junit.Before;
@@ -76,7 +76,7 @@ public class SetCommandTest {
 
 		cmd = "character Julius \"info.dateOfBirth=07/04/1987[dd/MM/yyyy]\"";
 		set.execute(cmd.split("\\s"));
-		assertEquals(DateMidnight.parse("07/04/1987", DateTimeFormat.forPattern("dd/MM/yyyy")), c.getInfo().getDateOfBirth());
+		assertEquals(DateTime.parse("07/04/1987", DateTimeFormat.forPattern("dd/MM/yyyy")), c.getInfo().getDateOfBirth());
 
 		// 16 14 12 10 10 8
 		cmd = "character Julius \"abilityScores.strength=8\"";

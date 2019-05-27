@@ -19,7 +19,6 @@
  */
 package it.d4nguard.rgrpg.util.dynacast.factories;
 
-import com.sun.istack.NotNull;
 import it.d4nguard.rgrpg.Context;
 import it.d4nguard.rgrpg.util.Delegate;
 import it.d4nguard.rgrpg.util.Utils;
@@ -71,7 +70,6 @@ public class AdapterFactoryMap extends AbstractMap<Class<?>, AdapterFactory<?>> 
 	 * {@inheritDoc}
 	 */
 	@Override
-	@NotNull
 	public Set<Entry<Class<?>, AdapterFactory<?>>> entrySet() {
 		return __map.entrySet();
 	}
@@ -85,7 +83,7 @@ public class AdapterFactoryMap extends AbstractMap<Class<?>, AdapterFactory<?>> 
 		Utils.doAll(subTypes, (Delegate<Class<? extends Provider>, Void>) t -> {
 			try {
 				if (!Modifier.isAbstract(t.getModifiers())) {
-					Provider p = t.getConstructor(null).newInstance();
+					Provider p = t.getConstructor((Class<?>) null).newInstance();
 					__map.putAll(p.get());
 				}
 			} catch (InstantiationException | IllegalAccessException | NoSuchMethodException | InvocationTargetException e) {
