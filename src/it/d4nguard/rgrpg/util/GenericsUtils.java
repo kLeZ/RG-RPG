@@ -1,5 +1,5 @@
 /*
- * Copyright (C) 2019 Alessandro 'kLeZ' Accardo
+ * Copyright (C) 2020 Alessandro 'kLeZ' Accardo
  *
  * This file is part of RG-RPG.
  *
@@ -58,21 +58,14 @@ public class GenericsUtils {
 			try {
 				// Character has only valueOf(char)
 				// All primitives have valueOf(String) except Character
-				ret = (T) valueType.getMethod("valueOf", String.class).invoke(null, value);
-			} catch (final IllegalAccessException e) {
-				Context.printThrowable(e);
-			} catch (final IllegalArgumentException e) {
-				Context.printThrowable(e);
-			} catch (final InvocationTargetException e) {
-				Context.printThrowable(e);
-			} catch (final NoSuchMethodException e) {
-				Context.printThrowable(e);
-			} catch (final SecurityException e) {
+				ret = (T) valueType.getMethod("valueOf", String.class)
+						.invoke(null, value);
+			} catch (final IllegalAccessException | SecurityException | NoSuchMethodException | InvocationTargetException | IllegalArgumentException e) {
 				Context.printThrowable(e);
 			}
 		else if (valueType.equals(Character.class)) {
 			final String v = String.valueOf(value);
-			ret = (T) new Character(v.isEmpty() ? 0 : v.charAt(0));
+			ret = (T) Character.valueOf(v.isEmpty() ? 0 : v.charAt(0));
 		} else if (valueType.equals(String.class))
 			ret = (T) String.valueOf(value);
 
@@ -83,8 +76,9 @@ public class GenericsUtils {
 
 	/**
 	 * @param type
+	 * 		a class that may be a masked primitive type
 	 *
-	 * @return
+	 * @return true if this class is a primitive wrapper type, false otherwise
 	 */
 	public static boolean isPrimitiveOrPrimitiveWrapper(final Class<?> type) {
 		return type.isPrimitive() || primitives.containsValue(type);
@@ -94,9 +88,12 @@ public class GenericsUtils {
 		Class<?> t = null;
 		final Field[] fields = fieldContainer.getDeclaredFields();
 		for (final Field field : fields)
-			if (field.getName().equalsIgnoreCase(fieldName)) {
-				if (field.getType().isPrimitive())
-					t = primitives.get(field.getType().getName());
+			if (field.getName()
+					.equalsIgnoreCase(fieldName)) {
+				if (field.getType()
+						.isPrimitive())
+					t = primitives.get(field.getType()
+							.getName());
 				else
 					t = field.getType();
 				break;
@@ -105,13 +102,11 @@ public class GenericsUtils {
 	}
 
 	public static <T> T safeGetter(final T value, final Class<T> type) {
-		T ret = null;
+		T ret;
 		try {
-			ret = value == null ? type.newInstance() : value;
-		} catch (final InstantiationException e) {
-			final String fmt = "Type %s cannot be instantiated. Please ensure this call is well-formed.";
-			throw new RuntimeException(String.format(fmt, type.getName()));
-		} catch (final IllegalAccessException e) {
+			ret = value == null ? type.getDeclaredConstructor()
+					.newInstance() : value;
+		} catch (final InstantiationException | IllegalAccessException | NoSuchMethodException | InvocationTargetException e) {
 			final String fmt = "Type %s cannot be instantiated. Please ensure this call is well-formed.";
 			throw new RuntimeException(String.format(fmt, type.getName()));
 		}
@@ -130,17 +125,19 @@ public class GenericsUtils {
 	public static Class<?> getClass(final Type type) {
 		if (type instanceof Class)
 			return (Class<?>) type;
-		else if (type instanceof ParameterizedType)
-			return getClass(((ParameterizedType) type).getRawType());
-		else if (type instanceof GenericArrayType) {
-			final Type componentType = ((GenericArrayType) type).getGenericComponentType();
+		else if (type instanceof ParameterizedType pt)
+			return getClass(pt.getRawType());
+		else if (type instanceof GenericArrayType gat) {
+			final Type componentType = gat.getGenericComponentType();
 			final Class<?> componentClass = getClass(componentType);
 			if (componentClass != null)
-				return Array.newInstance(componentClass, 0).getClass();
+				return Array.newInstance(componentClass, 0)
+						.getClass();
 			else
 				return null;
-		} else if (type instanceof TypeVariable)
-			return ((TypeVariable<?>) type).getGenericDeclaration().getClass();
+		} else if (type instanceof TypeVariable<?> tv)
+			return tv.getGenericDeclaration()
+					.getClass();
 		else
 			return null;
 	}
@@ -160,9 +157,9 @@ public class GenericsUtils {
 		final Map<Type, Type> resolvedTypes = new HashMap<>();
 		Type type = childClass;
 		// start walking up the inheritance hierarchy until we hit baseClass
-		while (!getClass(type).equals(baseClass))
-			if (type instanceof Class)
-				type = ((Class<?>) type).getGenericSuperclass();
+		while (!getClass(type).equals(baseClass)) {
+			if (type instanceof Class<?> cls)
+				type = cls.getGenericSuperclass();
 			else {
 				final ParameterizedType parameterizedType = (ParameterizedType) type;
 				final Class<?> rawType = (Class<?>) parameterizedType.getRawType();
@@ -175,19 +172,21 @@ public class GenericsUtils {
 				if (!rawType.equals(baseClass))
 					type = rawType.getGenericSuperclass();
 			}
+		}
 
 		// finally, for each actual type argument provided to baseClass, determine (if possible)
 		// the raw class for that type argument.
 		Type[] actualTypeArguments;
-		if (type instanceof Class)
-			actualTypeArguments = ((Class<?>) type).getTypeParameters();
+		if (type instanceof Class<?> cls)
+			actualTypeArguments = cls.getTypeParameters();
 		else
 			actualTypeArguments = ((ParameterizedType) type).getActualTypeArguments();
 		final List<Class<?>> typeArgumentsAsClasses = new ArrayList<>();
 		// resolve types by chasing down type variables.
 		for (Type baseType : actualTypeArguments) {
-			while (resolvedTypes.containsKey(baseType))
+			while (resolvedTypes.containsKey(baseType)) {
 				baseType = resolvedTypes.get(baseType);
+			}
 			typeArgumentsAsClasses.add(getClass(baseType));
 		}
 		return typeArgumentsAsClasses;
@@ -216,22 +215,21 @@ public class GenericsUtils {
 			return t.getActualTypeArguments();
 	}
 
-	@SuppressWarnings("rawtypes")
 	public static Class<?> getClassFromType(Type t) {
-		if (t instanceof GenericArrayType) {
-			return getClass(((GenericArrayType) t).getGenericComponentType());
-		} else if (t instanceof ParameterizedType) {
-			return getClass(((ParameterizedType) t).getRawType());
-		} else if (t instanceof TypeVariable) {
-			return getClass(((TypeVariable) t).getBounds()[0]);
-		} else if (t instanceof WildcardType) {
-			return ((WildcardType) t).getClass();
+		if (t instanceof GenericArrayType gat) {
+			return getClass(gat.getGenericComponentType());
+		} else if (t instanceof ParameterizedType pt) {
+			return getClass(pt.getRawType());
+		} else if (t instanceof TypeVariable<?> tv) {
+			return getClass(tv.getBounds()[0]);
+		} else if (t instanceof WildcardType wt) {
+			return wt.getClass();
 		} else
 			return (Class<?>) t;
 	}
 
 	public static Field safeGetDeclaredField(Class<?> clazz, String fieldName) {
-		Field f = null;
+		Field f;
 		try {
 			f = clazz.getDeclaredField(fieldName);
 		} catch (NoSuchFieldException | SecurityException e) {

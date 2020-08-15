@@ -1,5 +1,5 @@
 /*
- * Copyright (C) 2019 Alessandro 'kLeZ' Accardo
+ * Copyright (C) 2020 Alessandro 'kLeZ' Accardo
  *
  * This file is part of RG-RPG.
  *
@@ -17,9 +17,28 @@
  * along with RG-RPG.  If not, see <http://www.gnu.org/licenses/>.
  *
  */
-
 package it.d4nguard.rgrpg.d20.types;
 
 public enum RaceSubType {
-	Air, Angel, Aquatic, Archon, Augmented, Chaotic, Cold, Demon, Devil, Earth, Evil, Extraplanar, Fire, Good, Incorporeal, Lawful, Native, Psionic, Shapechanger, Swarm, Water
+	Air,
+	Angel,
+	Aquatic,
+	Archon,
+	Augmented,
+	Chaotic,
+	Cold,
+	Demon,
+	Devil,
+	Earth,
+	Evil,
+	Extraplanar,
+	Fire,
+	Good,
+	Incorporeal,
+	Lawful,
+	Native,
+	Psionic,
+	Shapechanger,
+	Swarm,
+	Water
 }

@@ -1,5 +1,5 @@
 /*
- * Copyright (C) 2019 Alessandro 'kLeZ' Accardo
+ * Copyright (C) 2020 Alessandro 'kLeZ' Accardo
  *
  * This file is part of RG-RPG.
  *
@@ -31,6 +31,9 @@ import java.util.Map;
  * @author kLeZ-hAcK
  */
 public class DynaManipulator {
+	private static final AdapterTypeConverter converter = new AdapterTypeConverter();
+	private static final DefaultMemberAccess ACCESS = new DefaultMemberAccess(true);
+
 	/**
 	 * Evaluates the given OGNL expression to insert a value into the object
 	 * graph rooted at the given root object.
@@ -49,7 +52,7 @@ public class DynaManipulator {
 		assert root != null;
 		assert value != null;
 		try {
-			Map context = Ognl.createDefaultContext(root, new DefaultMemberAccess(true), null, new AdapterTypeConverter());
+			Map<?, ?> context = Ognl.createDefaultContext(root, ACCESS, null, converter);
 			Ognl.setValue(exp, context, root, value);
 		} catch (Exception e) {
 			throw new DynaManipulatorException(e);
@@ -65,17 +68,18 @@ public class DynaManipulator {
 	 * @param root
 	 * 		the root object for the OGNL expression
 	 *
-	 * @return
+	 * @return the value produced by the expression
 	 *
 	 * @throws DynaManipulatorException
+	 * 		wrapping the real exception if something goes wrong
 	 * @see Ognl#parseExpression(String)
 	 */
 	public static Object getValue(String exp, Object root) throws DynaManipulatorException {
 		assert root != null;
-		Object ret = root;
+		Object ret;
 		try {
 			Object expression = Ognl.parseExpression(exp);
-			Map context = Ognl.createDefaultContext(root, new DefaultMemberAccess(true), null, new AdapterTypeConverter());
+			Map<?, ?> context = Ognl.createDefaultContext(root, ACCESS, null, converter);
 			ret = Ognl.getValue(expression, context, root);
 		} catch (Exception e) {
 			throw new DynaManipulatorException(e);

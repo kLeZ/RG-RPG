@@ -1,5 +1,5 @@
 /*
- * Copyright (C) 2019 Alessandro 'kLeZ' Accardo
+ * Copyright (C) 2020 Alessandro 'kLeZ' Accardo
  *
  * This file is part of RG-RPG.
  *
@@ -25,7 +25,9 @@ import java.util.Collections;
 
 public class NumericUtils {
 	public static int sum(int a, int b) {
-		return sum(new int[] { a, b });
+		return sum(new int[] {
+				a, b
+		});
 	}
 
 	public static int sum(final Collection<Integer> ints) {
@@ -50,7 +52,7 @@ public class NumericUtils {
 	public static Collection<Integer> toIntegerCollection(int[] ints) {
 		ArrayList<Integer> ret = new ArrayList<>();
 		for (int i : ints)
-			ret.add(new Integer(i));
+			ret.add(i);
 		return ret;
 	}
 

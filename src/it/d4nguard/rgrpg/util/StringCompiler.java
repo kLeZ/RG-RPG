@@ -1,5 +1,5 @@
 /*
- * Copyright (C) 2019 Alessandro 'kLeZ' Accardo
+ * Copyright (C) 2020 Alessandro 'kLeZ' Accardo
  *
  * This file is part of RG-RPG.
  *
@@ -51,7 +51,8 @@ public class StringCompiler implements CharSequence, Appendable, Serializable {
 	 * The extra capacity for new builders.
 	 */
 	static final int CAPACITY = 32;
-	private static final char[] LINE_SEPARATOR = System.getProperty("line.separator").toCharArray();
+	private static final char[] LINE_SEPARATOR = System.getProperty("line.separator")
+			.toCharArray();
 	/**
 	 * Required for serialization support.
 	 *
@@ -486,8 +487,10 @@ public class StringCompiler implements CharSequence, Appendable, Serializable {
 		Field field = GenericsUtils.safeGetDeclaredField(clazz, fieldName);
 		if (field != null) {
 			append(field.getName()).append(" = ");
-			if (field.getType().isArray() || Iterable.class.isAssignableFrom(clazz)) {
-				fill(field.getName().length() + 1, ' ');
+			if (field.getType()
+					.isArray() || Iterable.class.isAssignableFrom(clazz)) {
+				fill(field.getName()
+						.length() + 1, ' ');
 			}
 			try {
 				append(DynaManipulator.getValue(fieldName, value));
@@ -1952,7 +1955,7 @@ public class StringCompiler implements CharSequence, Appendable, Serializable {
 		}
 		char[] thisBuf = buffer;
 		int len = size - strLen + 1;
-outer:
+		outer:
 		for (int i = startIndex; i < len; i++) {
 			for (int j = 0; j < strLen; j++) {
 				if (str.charAt(j) != thisBuf[i + j]) {
@@ -2348,7 +2351,7 @@ outer:
 				return lastIndexOf(str.charAt(0), startIndex);
 			}
 
-outer:
+			outer:
 			for (int i = startIndex - strLen + 1; i >= 0; i--) {
 				for (int j = 0; j < strLen; j++) {
 					if (str.charAt(j) != buffer[i + j]) {
@@ -2357,7 +2360,6 @@ outer:
 				}
 				return i;
 			}
-
 		} else if (strLen == 0) {
 			return startIndex;
 		}

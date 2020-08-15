@@ -1,5 +1,5 @@
 /*
- * Copyright (C) 2019 Alessandro 'kLeZ' Accardo
+ * Copyright (C) 2020 Alessandro 'kLeZ' Accardo
  *
  * This file is part of RG-RPG.
  *
@@ -19,7 +19,7 @@
  */
 package it.d4nguard.rgrpg.util.dynacast.adapters;
 
-import org.joda.time.Duration;
+import java.time.Duration;
 
 /**
  * Implements a {@link SimpleAdapter} of {@link Duration}, an interface

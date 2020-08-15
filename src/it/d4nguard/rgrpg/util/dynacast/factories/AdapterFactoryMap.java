@@ -1,5 +1,5 @@
 /*
- * Copyright (C) 2019 Alessandro 'kLeZ' Accardo
+ * Copyright (C) 2020 Alessandro 'kLeZ' Accardo
  *
  * This file is part of RG-RPG.
  *
@@ -83,7 +83,8 @@ public class AdapterFactoryMap extends AbstractMap<Class<?>, AdapterFactory<?>> 
 		Utils.doAll(subTypes, (Delegate<Class<? extends Provider>, Void>) t -> {
 			try {
 				if (!Modifier.isAbstract(t.getModifiers())) {
-					Provider p = t.getConstructor((Class<?>) null).newInstance();
+					Provider p = t.getDeclaredConstructor()
+							.newInstance();
 					__map.putAll(p.get());
 				}
 			} catch (InstantiationException | IllegalAccessException | NoSuchMethodException | InvocationTargetException e) {

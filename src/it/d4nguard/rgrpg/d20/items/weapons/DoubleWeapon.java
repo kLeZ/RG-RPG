@@ -1,5 +1,5 @@
 /*
- * Copyright (C) 2019 Alessandro 'kLeZ' Accardo
+ * Copyright (C) 2020 Alessandro 'kLeZ' Accardo
  *
  * This file is part of RG-RPG.
  *
@@ -37,5 +37,4 @@ public class DoubleWeapon extends MeleeWeapon {
 	public DoubleWeapon(String name, String description, Coin cost, Amount<Mass> weight, WeaponCategoryType weaponCategory, SizeType size, Dice damage, CriticalHit criticalHit, EnumSet<WeaponType> weaponType) {
 		super(name, description, cost, weight, weaponCategory, WeaponEncumbranceType.TwoHanded, size, damage, criticalHit, weaponType);
 	}
-
 }

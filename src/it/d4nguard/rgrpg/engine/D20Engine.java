@@ -1,5 +1,5 @@
 /*
- * Copyright (C) 2019 Alessandro 'kLeZ' Accardo
+ * Copyright (C) 2020 Alessandro 'kLeZ' Accardo
  *
  * This file is part of RG-RPG.
  *
@@ -36,18 +36,27 @@ public class D20Engine {
 		boolean ret = false;
 		ArrayList<Integer> rolls = new ArrayList<>();
 		int total = skill.getRanks();
-		total += skill.getAbility().getModifier();
+		total += skill.getAbility()
+				.getModifier();
 		total += NumericUtils.sum(skill.getMisc());
 		switch (skill.getArmorCheckPenalty()) {
 			case None:
 				break;
 			case NormalPenalty:
-				total += c.getEquipment().getArmor().getArmorCheckPenalty();
-				total += c.getEquipment().getShield().getArmorCheckPenalty();
+				total += c.getEquipment()
+						.getArmor()
+						.getArmorCheckPenalty();
+				total += c.getEquipment()
+						.getShield()
+						.getArmorCheckPenalty();
 				break;
 			case DoublePenalty:
-				total += (c.getEquipment().getArmor().getArmorCheckPenalty() * 2);
-				total += (c.getEquipment().getShield().getArmorCheckPenalty() * 2);
+				total += (c.getEquipment()
+						.getArmor()
+						.getArmorCheckPenalty() * 2);
+				total += (c.getEquipment()
+						.getShield()
+						.getArmorCheckPenalty() * 2);
 				break;
 		}
 		int roll = new Dice(1, 20).roll();

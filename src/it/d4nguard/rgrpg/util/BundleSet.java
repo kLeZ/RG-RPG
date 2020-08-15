@@ -1,5 +1,5 @@
 /*
- * Copyright (C) 2019 Alessandro 'kLeZ' Accardo
+ * Copyright (C) 2020 Alessandro 'kLeZ' Accardo
  *
  * This file is part of RG-RPG.
  *
@@ -30,7 +30,7 @@ public class BundleSet extends AbstractSet<ResourceBundle> implements Cloneable,
 	private static final long serialVersionUID = -777579563686715493L;
 
 	private transient HashMap<String, ResourceBundle> map;
-	private XMLResourceBundleControl control = new XMLResourceBundleControl();
+	private final XMLResourceBundleControl control = new XMLResourceBundleControl();
 
 	public BundleSet() {
 		map = new HashMap<>();
@@ -38,7 +38,8 @@ public class BundleSet extends AbstractSet<ResourceBundle> implements Cloneable,
 
 	@Override
 	public Iterator<ResourceBundle> iterator() {
-		return map.values().iterator();
+		return map.values()
+				.iterator();
 	}
 
 	@Override

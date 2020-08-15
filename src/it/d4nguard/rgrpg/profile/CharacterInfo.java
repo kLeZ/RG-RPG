@@ -1,5 +1,5 @@
 /*
- * Copyright (C) 2019 Alessandro 'kLeZ' Accardo
+ * Copyright (C) 2020 Alessandro 'kLeZ' Accardo
  *
  * This file is part of RG-RPG.
  *
@@ -20,35 +20,36 @@
 package it.d4nguard.rgrpg.profile;
 
 import it.d4nguard.rgrpg.util.StringUtils;
-import org.joda.time.DateTime;
-import org.joda.time.Duration;
 
 import java.io.Serializable;
+import java.time.Duration;
+import java.time.ZonedDateTime;
+import java.time.temporal.ChronoUnit;
 
 public class CharacterInfo implements Serializable {
 	private static final long serialVersionUID = 5583221130662794997L;
 
-	private DateTime creation;
+	private ZonedDateTime creation;
 	private Duration played;
-	private DateTime last;
+	private ZonedDateTime last;
 	private Duration lastDuration;
 	private float lastExp;
 	private boolean current;
 
 	public CharacterInfo() {
-		this.creation = DateTime.now();
-		this.played = new Duration(0);
-		this.last = new DateTime(this.creation.getMillis());
-		this.lastDuration = new Duration(0);
+		this.creation = ZonedDateTime.now();
+		this.played = Duration.of(0L, ChronoUnit.SECONDS);
+		this.last = ZonedDateTime.from(this.creation);
+		this.lastDuration = Duration.of(0L, ChronoUnit.SECONDS);
 		this.lastExp = 0;
 		this.current = false;
 	}
 
-	public DateTime getCreation() {
+	public ZonedDateTime getCreation() {
 		return creation;
 	}
 
-	public void setCreation(DateTime creation) {
+	public void setCreation(ZonedDateTime creation) {
 		this.creation = creation;
 	}
 
@@ -60,11 +61,11 @@ public class CharacterInfo implements Serializable {
 		this.played = played;
 	}
 
-	public DateTime getLast() {
+	public ZonedDateTime getLast() {
 		return last;
 	}
 
-	public void setLast(DateTime last) {
+	public void setLast(ZonedDateTime last) {
 		this.last = last;
 	}
 

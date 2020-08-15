@@ -1,5 +1,5 @@
 /*
- * Copyright (C) 2019 Alessandro 'kLeZ' Accardo
+ * Copyright (C) 2020 Alessandro 'kLeZ' Accardo
  *
  * This file is part of RG-RPG.
  *
@@ -17,7 +17,6 @@
  * along with RG-RPG.  If not, see <http://www.gnu.org/licenses/>.
  *
  */
-
 package it.d4nguard.rgrpg.util.dynacast;
 
 import org.junit.Test;
@@ -59,21 +58,27 @@ public class DynaManipulatorTest {
 			DynaManipulator.setValue("temp", b, "25.572");
 			assertEquals((float) 25.572, b.getTemp(), Float.NaN);
 
-			DynaManipulator.setValue("year", b, String.valueOf(Calendar.getInstance().get(Calendar.YEAR)));
-			assertEquals((short) Calendar.getInstance().get(Calendar.YEAR), b.getYear());
+			DynaManipulator.setValue("year", b, String.valueOf(Calendar.getInstance()
+					.get(Calendar.YEAR)));
+			assertEquals((short) Calendar.getInstance()
+					.get(Calendar.YEAR), b.getYear());
 
 			DynaManipulator.setValue("gender", b, "Male");
 			assertEquals(Gender.Male, b.getGender());
 
-			byte[] data = new byte[] { 0x1C, 0x75, 0x08, 0x4B, (byte) 0xd6, 0x6A };
+			byte[] data = new byte[] {
+					0x1C, 0x75, 0x08, 0x4B, (byte) 0xd6, 0x6A
+			};
 			DynaManipulator.setValue("data", b, TypeAdapter.toString(data));
 			assertArrayEquals(data, b.getData());
 
 			List<Integer> modifiers = Arrays.asList(1, 5, 4, 8, 6, 4, 23, 5, 87, 5, 2, 4);
 			DynaManipulator.setValue("modifiers", b, TypeAdapter.toString(modifiers));
-			assertArrayEquals(modifiers.toArray(new Integer[] { }), b.getModifiers().toArray(new Integer[] { }));
+			assertArrayEquals(modifiers.toArray(new Integer[] { }), b.getModifiers()
+					.toArray(new Integer[] { }));
 		} catch (DynaManipulatorException e) {
 			e.printStackTrace();
+			fail(e.getMessage());
 		}
 	}
 
@@ -105,13 +110,17 @@ public class DynaManipulatorTest {
 			b.setTemp((float) 25.572);
 			assertEquals((float) 25.572, DynaManipulator.getValue("temp", b));
 
-			b.setYear((short) Calendar.getInstance().get(Calendar.YEAR));
-			assertEquals((short) Calendar.getInstance().get(Calendar.YEAR), DynaManipulator.getValue("year", b));
+			b.setYear((short) Calendar.getInstance()
+					.get(Calendar.YEAR));
+			assertEquals((short) Calendar.getInstance()
+					.get(Calendar.YEAR), DynaManipulator.getValue("year", b));
 
 			b.setGender(Gender.Male);
 			assertEquals(Gender.Male, DynaManipulator.getValue("gender", b));
 
-			byte[] data = new byte[] { 0x1C, 0x75, 0x08, 0x4B, (byte) 0xd6, 0x6A };
+			byte[] data = new byte[] {
+					0x1C, 0x75, 0x08, 0x4B, (byte) 0xd6, 0x6A
+			};
 			b.setData(data);
 			assertArrayEquals(data, (byte[]) DynaManipulator.getValue("data", b));
 
@@ -124,7 +133,8 @@ public class DynaManipulatorTest {
 	}
 
 	enum Gender {
-		Male, Female
+		Male,
+		Female
 	}
 
 	class Bean {

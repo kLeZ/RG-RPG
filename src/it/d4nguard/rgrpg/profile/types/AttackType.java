@@ -1,5 +1,5 @@
 /*
- * Copyright (C) 2019 Alessandro 'kLeZ' Accardo
+ * Copyright (C) 2020 Alessandro 'kLeZ' Accardo
  *
  * This file is part of RG-RPG.
  *
@@ -20,5 +20,7 @@
 package it.d4nguard.rgrpg.profile.types;
 
 public enum AttackType {
-	Melee, Ranged, Grapple
+	Melee,
+	Ranged,
+	Grapple
 }

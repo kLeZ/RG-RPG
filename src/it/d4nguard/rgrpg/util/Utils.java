@@ -1,5 +1,5 @@
 /*
- * Copyright (C) 2019 Alessandro 'kLeZ' Accardo
+ * Copyright (C) 2020 Alessandro 'kLeZ' Accardo
  *
  * This file is part of RG-RPG.
  *
@@ -30,7 +30,7 @@ import java.util.Set;
 import java.util.StringTokenizer;
 
 public class Utils {
-	public static String ARRAY_JOINER = "|";
+	public static String ARRAY_JOINER = " | ";
 
 	public static void swap(int op1, int op2) {
 		int tmp = op2;
@@ -54,7 +54,8 @@ public class Utils {
 		StringBuilder contentsBuilder = new StringBuilder();
 		for (char c : chars) {
 			if (c == open_tag) {
-				if (!contentsBuilder.toString().isEmpty()) {
+				if (!contentsBuilder.toString()
+						.isEmpty()) {
 					ret.add(contentsBuilder.toString());
 				}
 				contentsBuilder = new StringBuilder();
@@ -91,17 +92,22 @@ public class Utils {
 	}
 
 	public static <T> Set<Class<? extends T>> getSubTypesOf(Class<T> type, boolean excludeObjectClass) {
-		String pkg = type.getPackage().getName().split("\\.")[0];
+		String pkg = type.getPackage()
+				.getName()
+				.split("\\.")[0];
 		Reflections r = new Reflections(pkg, new SubTypesScanner(excludeObjectClass));
 		return r.getSubTypesOf(type);
 	}
 
 	public static <T> Object convertToArray(String value, Adapter<T> adp, Class<?> type) {
-		String str = StringUtils.getBetween(value, '[', ']').getCenter().trim();
+		String str = StringUtils.getBetween(value, '[', ']')
+				.getCenter()
+				.trim();
 		StringTokenizer st = new StringTokenizer(str, ARRAY_JOINER);
 		Object ret = Array.newInstance(type, st.countTokens());
 		for (int i = 0; st.hasMoreTokens(); i++)
-			Array.set(ret, i, adp.adapt(st.nextToken().trim()));
+			Array.set(ret, i, adp.adapt(st.nextToken()
+					.trim()));
 		return ret;
 	}
 }

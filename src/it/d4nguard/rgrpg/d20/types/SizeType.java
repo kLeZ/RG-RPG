@@ -1,5 +1,5 @@
 /*
- * Copyright (C) 2019 Alessandro 'kLeZ' Accardo
+ * Copyright (C) 2020 Alessandro 'kLeZ' Accardo
  *
  * This file is part of RG-RPG.
  *
@@ -20,11 +20,19 @@
 package it.d4nguard.rgrpg.d20.types;
 
 public enum SizeType {
-	Fine(8, -16, 16), Diminutive(4, -12, 12), Tiny(2, -8, 8), Small(1, -4, 4), Medium(0, 0, 0), Large(-1, 4, -4), Huge(-2, 8, -8), Gargantuan(-4, 12, -12), Colossal(-8, 16, -16);
+	Fine(8, -16, 16),
+	Diminutive(4, -12, 12),
+	Tiny(2, -8, 8),
+	Small(1, -4, 4),
+	Medium(0, 0, 0),
+	Large(-1, 4, -4),
+	Huge(-2, 8, -8),
+	Gargantuan(-4, 12, -12),
+	Colossal(-8, 16, -16);
 
-	private int modifier;
-	private int grapple;
-	private int hide;
+	private final int modifier;
+	private final int grapple;
+	private final int hide;
 
 	SizeType(int modifier, int grapple, int hide) {
 		this.modifier = modifier;

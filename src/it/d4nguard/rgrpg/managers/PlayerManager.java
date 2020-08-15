@@ -1,5 +1,5 @@
 /*
- * Copyright (C) 2019 Alessandro 'kLeZ' Accardo
+ * Copyright (C) 2020 Alessandro 'kLeZ' Accardo
  *
  * This file is part of RG-RPG.
  *
@@ -30,20 +30,24 @@ public class PlayerManager implements Manager<Player> {
 	@Override
 	public Player create(String name, Object... args) {
 		Player p = new Player(name);
-		return Context.getPlayers().add(p) ? p : null;
+		return Context.getPlayers()
+				.add(p) ? p : null;
 	}
 
 	@Override
 	public boolean delete(String name) {
-		return Context.getPlayers().remove(get(name));
+		return Context.getPlayers()
+				.remove(get(name));
 	}
 
 	@Override
 	public Player rename(String name, String newName) {
 		Player p = get(name);
-		Context.getPlayers().remove(p);
+		Context.getPlayers()
+				.remove(p);
 		p = p.copyRename(newName);
-		Context.getPlayers().add(p);
+		Context.getPlayers()
+				.add(p);
 		return p;
 	}
 
@@ -61,10 +65,12 @@ public class PlayerManager implements Manager<Player> {
 
 	@Override
 	public Player get(String name) {
-		Iterator<Player> it = Context.getPlayers().iterator();
+		Iterator<Player> it = Context.getPlayers()
+				.iterator();
 		while (it.hasNext()) {
 			Player curr = it.next();
-			if (curr.getName().equals(name))
+			if (curr.getName()
+					.equals(name))
 				return curr;
 		}
 		return null;
@@ -72,6 +78,7 @@ public class PlayerManager implements Manager<Player> {
 
 	@Override
 	public String availables() {
-		return StringUtils.prettyPrint(Main.class.getPackage().getName(), Player.class);
+		return StringUtils.prettyPrint(Main.class.getPackage()
+				.getName(), Player.class);
 	}
 }

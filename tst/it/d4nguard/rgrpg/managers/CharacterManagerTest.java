@@ -1,5 +1,5 @@
 /*
- * Copyright (C) 2019 Alessandro 'kLeZ' Accardo
+ * Copyright (C) 2020 Alessandro 'kLeZ' Accardo
  *
  * This file is part of RG-RPG.
  *
@@ -40,58 +40,86 @@ public class CharacterManagerTest {
 	public final void testCreate() {
 		Context.clearCharacters(null);
 		ArrayList<Character> list = new ArrayList<>();
-		String[] names = new String[] { "Julius", "Mialee", "Viktor", "Hansel", "Marril", "Pipino" };
+		String[] names = new String[] {
+				"Julius", "Mialee", "Viktor", "Hansel", "Marril", "Pipino"
+		};
 		for (String name : names)
 			list.add(new CharacterManager().create(name, it.d4nguard.rgrpg.d20.Character.TYPE));
 
-		Iterator<Character> it = Context.getCurrentPlayer().getCharacters().keySet().iterator();
+		Iterator<Character> it = Context.getCurrentPlayer()
+				.getCharacters()
+				.keySet()
+				.iterator();
 		while (it.hasNext()) {
 			Character c = it.next();
 			assertTrue(list.contains(c));
 		}
-		assertEquals(6, Context.getCurrentPlayer().getCharacters().size());
+		assertEquals(6, Context.getCurrentPlayer()
+				.getCharacters()
+				.size());
 	}
 
 	@Test
 	public final void testDelete() {
 		testCreate();
-		assertEquals(6, Context.getCurrentPlayer().getCharacters().size());
+		assertEquals(6, Context.getCurrentPlayer()
+				.getCharacters()
+				.size());
 		Character c = null;
-		Iterator<Character> it = Context.getCurrentPlayer().getCharacters().keySet().iterator();
+		Iterator<Character> it = Context.getCurrentPlayer()
+				.getCharacters()
+				.keySet()
+				.iterator();
 		while (it.hasNext() && c == null) {
 			Character cur = it.next();
-			if (cur.getInfo().getName().equals("Julius")) {
+			if (cur.getInfo()
+					.getName()
+					.equals("Julius")) {
 				c = cur;
 			}
 		}
 		assertNotNull(c);
 		assertTrue(new CharacterManager().delete("Julius"));
-		assertEquals(5, Context.getCurrentPlayer().getCharacters().size());
+		assertEquals(5, Context.getCurrentPlayer()
+				.getCharacters()
+				.size());
 	}
 
 	@Test
 	public final void testRename() {
 		testCreate();
 		Character c = null;
-		Iterator<Character> it = Context.getCurrentPlayer().getCharacters().keySet().iterator();
+		Iterator<Character> it = Context.getCurrentPlayer()
+				.getCharacters()
+				.keySet()
+				.iterator();
 		while (it.hasNext() && c == null) {
 			Character cur = it.next();
-			if (cur.getInfo().getName().equals("Viktor")) {
+			if (cur.getInfo()
+					.getName()
+					.equals("Viktor")) {
 				c = cur;
 			}
 		}
 		assertNotNull(c);
-		assertEquals("Victor", new CharacterManager().rename("Viktor", "Victor").getInfo().getName());
+		assertEquals("Victor", new CharacterManager().rename("Viktor", "Victor")
+				.getInfo()
+				.getName());
 	}
 
 	@Test
 	public final void testUse() {
 		testCreate();
 		Character c = null;
-		Iterator<Character> it = Context.getCurrentPlayer().getCharacters().keySet().iterator();
+		Iterator<Character> it = Context.getCurrentPlayer()
+				.getCharacters()
+				.keySet()
+				.iterator();
 		while (it.hasNext() && c == null) {
 			Character cur = it.next();
-			if (cur.getInfo().getName().equals("Marril")) {
+			if (cur.getInfo()
+					.getName()
+					.equals("Marril")) {
 				c = cur;
 			}
 		}
@@ -105,7 +133,9 @@ public class CharacterManagerTest {
 		testCreate();
 		new CharacterManager().use("Mialee");
 		assertNotNull(Context.getCurrentCharacter());
-		assertEquals("Mialee", Context.getCurrentCharacter().getInfo().getName());
+		assertEquals("Mialee", Context.getCurrentCharacter()
+				.getInfo()
+				.getName());
 	}
 
 	@Test
@@ -113,6 +143,7 @@ public class CharacterManagerTest {
 		testCreate();
 		Character c = new CharacterManager().get("Pipino");
 		assertNotNull(c);
-		assertEquals("Pipino", c.getInfo().getName());
+		assertEquals("Pipino", c.getInfo()
+				.getName());
 	}
 }

@@ -1,5 +1,5 @@
 /*
- * Copyright (C) 2019 Alessandro 'kLeZ' Accardo
+ * Copyright (C) 2020 Alessandro 'kLeZ' Accardo
  *
  * This file is part of RG-RPG.
  *
@@ -35,7 +35,7 @@ public interface Adapter<T> {
 	 * @param value
 	 * 		The string representation of the value to adapt as object.
 	 *
-	 * @return An object that can keep the value represented by the input
+	 * @return An object that can hold the value represented by the input
 	 * string.
 	 */
 	T adapt(String value);

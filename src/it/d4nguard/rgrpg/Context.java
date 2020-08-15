@@ -1,5 +1,5 @@
 /*
- * Copyright (C) 2019 Alessandro 'kLeZ' Accardo
+ * Copyright (C) 2020 Alessandro 'kLeZ' Accardo
  *
  * This file is part of RG-RPG.
  *
@@ -24,9 +24,9 @@ import it.d4nguard.rgrpg.profile.CharacterInfo;
 import it.d4nguard.rgrpg.profile.Player;
 import it.d4nguard.rgrpg.util.BundleSet;
 import it.d4nguard.rgrpg.util.StringUtils;
-import jline.Terminal;
-import jline.TerminalFactory;
-import jline.console.ConsoleReader;
+import org.beryx.textio.TextIO;
+import org.beryx.textio.TextIoFactory;
+import org.beryx.textio.TextTerminal;
 import org.reflections.Reflections;
 import org.reflections.scanners.SubTypesScanner;
 
@@ -37,7 +37,8 @@ import java.util.Map.Entry;
 import static org.reflections.util.ClasspathHelper.forPackage;
 
 public class Context {
-	private static final String PACKAGE = Context.class.getPackage().getName();
+	private static final String PACKAGE = Context.class.getPackage()
+			.getName();
 	private static final String I18N_PACKAGE = PACKAGE.concat(".i18n");
 	private static final String STRINGS = I18N_PACKAGE.concat(".strings.Strings");
 	private static final String FEATS = I18N_PACKAGE.concat(".d20.feats.Feats");
@@ -70,33 +71,42 @@ public class Context {
 	}
 
 	public static String getString(String name) {
-		return Singleton.Current.getBundle(STRINGS).getString(name);
+		return Singleton.Current.getBundle(STRINGS)
+				.getString(name);
 	}
 
 	public static String getFeat(String name) {
-		return Singleton.Current.getBundle(FEATS).getString(name);
+		return Singleton.Current.getBundle(FEATS)
+				.getString(name);
 	}
 
 	public static String getLanguage(String name) {
-		return Singleton.Current.getBundle(LANGUAGES).getString(name);
+		return Singleton.Current.getBundle(LANGUAGES)
+				.getString(name);
 	}
 
 	public static String getAbilityScore(String name) {
-		return Singleton.Current.getBundle(ABILITY_SCORES).getString(name);
+		return Singleton.Current.getBundle(ABILITY_SCORES)
+				.getString(name);
 	}
 
 	public static Enumeration<String> getAvailableAbilityScores() {
-		return Singleton.Current.getBundle(ABILITY_SCORES).getKeys();
+		return Singleton.Current.getBundle(ABILITY_SCORES)
+				.getKeys();
 	}
 
 	public static Character getCurrentCharacter() {
 		Character ret = null;
 		if (hasCurrentPlayer()) {
 			Iterator<Entry<Character, CharacterInfo>> it;
-			it = Context.getCurrentPlayer().getCharacters().entrySet().iterator();
+			it = Context.getCurrentPlayer()
+					.getCharacters()
+					.entrySet()
+					.iterator();
 			while (it.hasNext() && ret == null) {
 				Entry<Character, CharacterInfo> e = it.next();
-				if (e.getValue().isCurrent())
+				if (e.getValue()
+						.isCurrent())
 					ret = e.getKey();
 			}
 		}
@@ -113,8 +123,10 @@ public class Context {
 
 	public static void clearCharacters(String player) {
 		for (Player p : getPlayers())
-			if (player == null || p.getName().equals(player))
-				p.getCharacters().clear();
+			if (player == null || p.getName()
+					.equals(player))
+				p.getCharacters()
+						.clear();
 	}
 
 	public static void deleteDefault() {
@@ -145,7 +157,7 @@ public class Context {
 		return Singleton.Current.getReflections();
 	}
 
-	public static void setReader(ConsoleReader reader) {
+	public static void setReader(TextTerminal<?> reader) {
 		Singleton.Current.setReader(reader);
 	}
 
@@ -162,66 +174,47 @@ public class Context {
 	}
 
 	public static void print(CharSequence s) {
-		try {
-			Singleton.Current.getReader().print(s);
-			Singleton.Current.getReader().flush();
-		} catch (IOException e) {
-			printThrowable(e);
-		}
+		Singleton.Current.getReader()
+				.print(String.valueOf(s));
 	}
 
 	public static void println(CharSequence s) {
-		try {
-			Singleton.Current.getReader().println(s);
-			Singleton.Current.getReader().flush();
-		} catch (IOException e) {
-			printThrowable(e);
-		}
+		Singleton.Current.getReader()
+				.println(String.valueOf(s));
 	}
 
 	public static void println() {
-		try {
-			Singleton.Current.getReader().println();
-			Singleton.Current.getReader().flush();
-		} catch (IOException e) {
-			printThrowable(e);
-		}
+		Singleton.Current.getReader()
+				.println();
 	}
 
-	public static String readLine() throws IOException {
-		return Singleton.Current.getReader().readLine();
+	public static String readLine() {
+		return Singleton.Current.getReader()
+				.read(false);
 	}
 
 	public static void printThrowable(Throwable t) {
 		if (isDebug())
 			println(t);
 		else
-			println(t.getMessage() == null ? t.getClass().getSimpleName() : t.getMessage());
+			println(t.getMessage() == null ? t.getClass()
+					.getSimpleName() : t.getMessage());
 	}
 
 	public static void print(Throwable t) {
 		StringWriter sw = new StringWriter();
 		PrintWriter pw = new PrintWriter(sw);
 		t.printStackTrace(pw);
-		try {
-			Singleton.Current.getReader().print(sw.toString());
-			Singleton.Current.getReader().flush();
-
-		} catch (IOException e) {
-			e.printStackTrace();
-		}
+		Singleton.Current.getReader()
+				.print(sw.toString());
 	}
 
 	public static void println(Throwable t) {
 		StringWriter sw = new StringWriter();
 		PrintWriter pw = new PrintWriter(sw);
 		t.printStackTrace(pw);
-		try {
-			Singleton.Current.getReader().println(sw.toString());
-			Singleton.Current.getReader().flush();
-		} catch (IOException e) {
-			e.printStackTrace();
-		}
+		Singleton.Current.getReader()
+				.println(sw.toString());
 	}
 
 	private static class Singleton implements Serializable {
@@ -232,7 +225,7 @@ public class Context {
 		private static Singleton Current = new Singleton();
 		private final Set<Player> players = new HashSet<>();
 		private transient BundleSet bundles;
-		private transient ConsoleReader reader;
+		private transient TextTerminal<?> reader;
 		private boolean debug = false;
 		private Player current;
 
@@ -241,22 +234,17 @@ public class Context {
 		}
 
 		private void init() {
-			TerminalFactory.configure("unix");
-			Terminal term = TerminalFactory.create();
+			TextIO textIO = TextIoFactory.getTextIO();
+			TextTerminal<?> terminal = textIO.getTextTerminal();
 
-			try {
-				setReader(new ConsoleReader("RG-RPG", System.in, System.out, term, "utf-8"));
+			setReader(terminal);
 
-				if (bundles == null)
-					bundles = new BundleSet();
-				bundles.add(STRINGS);
-				bundles.add(FEATS);
-				bundles.add(LANGUAGES);
-				bundles.add(ABILITY_SCORES);
-			} catch (IOException e) {
-				e.printStackTrace();
-				System.exit(1);
-			}
+			if (bundles == null)
+				bundles = new BundleSet();
+			bundles.add(STRINGS);
+			bundles.add(FEATS);
+			bundles.add(LANGUAGES);
+			bundles.add(ABILITY_SCORES);
 		}
 
 		private boolean isDebug() {
@@ -297,8 +285,9 @@ public class Context {
 			db = db.replace("~", System.getProperty("user.home"));
 			File f = new File(db);
 			if (!f.exists()) {
-				f.getParentFile().mkdirs();
-				f.createNewFile();
+				boolean mkdirs = f.getParentFile()
+						.mkdirs();
+				boolean newFile = f.createNewFile();
 			}
 			return db;
 		}
@@ -306,7 +295,7 @@ public class Context {
 		public void delete(String path) {
 			try {
 				File f = new File(getDBPath(path));
-				f.delete();
+				boolean delete = f.delete();
 			} catch (IOException e) {
 				Context.printThrowable(e);
 			}
@@ -345,11 +334,11 @@ public class Context {
 			return new Reflections(forPackage(PACKAGE), STS);
 		}
 
-		public ConsoleReader getReader() {
+		TextTerminal<?> getReader() {
 			return reader;
 		}
 
-		public void setReader(ConsoleReader reader) {
+		void setReader(TextTerminal<?> reader) {
 			this.reader = reader;
 		}
 	}

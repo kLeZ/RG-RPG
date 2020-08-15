@@ -1,5 +1,5 @@
 /*
- * Copyright (C) 2019 Alessandro 'kLeZ' Accardo
+ * Copyright (C) 2020 Alessandro 'kLeZ' Accardo
  *
  * This file is part of RG-RPG.
  *
@@ -135,40 +135,51 @@ public class Dice {
 	public static String rollShowResults(String diceExpression) {
 		LinkedHashMap<Dice, OperatorType> dice = parseMany(diceExpression);
 		StringCompiler sb = new StringCompiler();
-		Iterator<Map.Entry<Dice, OperatorType>> it = dice.entrySet().iterator();
+		Iterator<Map.Entry<Dice, OperatorType>> it = dice.entrySet()
+				.iterator();
 		OperatorType op = null;
 		Integer res = 0, roll = 0;
 		sb.append("{");
 		while (it.hasNext()) {
 			Map.Entry<Dice, OperatorType> current = it.next();
 			if (op != null) {
-				roll = current.getKey().roll();
+				roll = current.getKey()
+						.roll();
 				res = op.doOperation(res, roll);
 			} else {
 				// First roll
-				res = current.getKey().roll();
+				res = current.getKey()
+						.roll();
 			}
 			op = current.getValue();
-			sb.append("[").append(roll).append(":").append(res).append("]");
+			sb.append("[")
+					.append(roll)
+					.append(":")
+					.append(res)
+					.append("]");
 			if (op != null) {
 				sb.append(op.toString());
 			}
 		}
-		sb.append("} = ").append(res);
+		sb.append("} = ")
+				.append(res);
 		return sb.toString();
 	}
 
 	public static Integer rollSum(LinkedHashMap<Dice, OperatorType> dice) {
 		Integer ret = 0;
-		Iterator<Map.Entry<Dice, OperatorType>> it = dice.entrySet().iterator();
+		Iterator<Map.Entry<Dice, OperatorType>> it = dice.entrySet()
+				.iterator();
 		OperatorType op = null;
 		while (it.hasNext()) {
 			Map.Entry<Dice, OperatorType> current = it.next();
 			if (op != null) {
-				ret = op.doOperation(ret, current.getKey().roll());
+				ret = op.doOperation(ret, current.getKey()
+						.roll());
 			} else {
 				// First roll
-				ret = current.getKey().roll();
+				ret = current.getKey()
+						.roll();
 			}
 			op = current.getValue();
 		}
@@ -183,7 +194,8 @@ public class Dice {
 		ArrayList<Integer> ret = new ArrayList<>();
 		Iterator<Dice> it = dice.iterator();
 		while (it.hasNext()) {
-			ret.add(it.next().roll());
+			ret.add(it.next()
+					.roll());
 		}
 		return ret;
 	}
@@ -263,9 +275,12 @@ public class Dice {
 	@Override
 	public String toString() {
 		StringCompiler sb = new StringCompiler();
-		sb.append(nThrows).append(DICE_TOKEN).append(nFaces);
+		sb.append(nThrows)
+				.append(DICE_TOKEN)
+				.append(nFaces);
 		if (modifierOperator != null) {
-			sb.append(modifierOperator).append(modifier);
+			sb.append(modifierOperator)
+					.append(modifier);
 		}
 		return sb.toString();
 	}

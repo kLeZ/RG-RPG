@@ -1,5 +1,5 @@
 /*
- * Copyright (C) 2019 Alessandro 'kLeZ' Accardo
+ * Copyright (C) 2020 Alessandro 'kLeZ' Accardo
  *
  * This file is part of RG-RPG.
  *
@@ -31,7 +31,9 @@ public class EnumAdapter<E extends Enum<?>> extends SimpleAdapter<E> {
 	 * {@inheritDoc}
 	 */
 	@Override
-	@SuppressWarnings({ "unchecked", "rawtypes" })
+	@SuppressWarnings({
+			"unchecked", "rawtypes"
+	})
 	public E adapt(String value) {
 		Class<? extends Enum> ce = (Class<? extends Enum>) getType();
 		return (E) Enum.valueOf(ce, value);

@@ -1,5 +1,5 @@
 /*
- * Copyright (C) 2019 Alessandro 'kLeZ' Accardo
+ * Copyright (C) 2020 Alessandro 'kLeZ' Accardo
  *
  * This file is part of RG-RPG.
  *
@@ -42,8 +42,10 @@ public class SetCommand implements Command {
 	public void execute(String... args) {
 		CommandLine cmd = StringUtils.getArgs(args);
 		Triplet<String, String, String> str = StringUtils.getBetween(StringUtils.join(" ", cmd.getArgs()), '"', '"');
-		String tokenizerFeed = str.getCenter().trim();
-		String name = str.getLeft().trim();
+		String tokenizerFeed = str.getCenter()
+				.trim();
+		String name = str.getLeft()
+				.trim();
 
 		if (Context.isDebug()) {
 			qotprn(cmd);
@@ -64,7 +66,8 @@ public class SetCommand implements Command {
 		switch (cmd.getProc()) {
 			case "player": {
 				CommandLine descCmd = StringUtils.getArgs(cmd.getArgs());
-				if (descCmd.getProc().equals("availables")) {
+				if (descCmd.getProc()
+						.equals("availables")) {
 					Context.println(new PlayerManager().availables());
 				} else
 					root = new PlayerManager().get(name);
@@ -72,7 +75,8 @@ public class SetCommand implements Command {
 			}
 			case "character": {
 				CommandLine descCmd = StringUtils.getArgs(cmd.getArgs());
-				if (descCmd.getProc().equals("availables")) {
+				if (descCmd.getProc()
+						.equals("availables")) {
 					Context.println(new CharacterManager().availables());
 				} else
 					root = new CharacterManager().get(name);
@@ -85,9 +89,11 @@ public class SetCommand implements Command {
 					Set<Class<?>> classes = r.getSubTypesOf(Object.class);
 					Iterator<Class<?>> it = classes.iterator();
 					Class<?> requested = null;
-					while (it.hasNext() && requested == null)
-						if (!(requested = it.next()).getSimpleName().equals(arg))
+					while (it.hasNext() && requested == null) {
+						if (!(requested = it.next()).getSimpleName()
+								.equals(arg))
 							requested = null;
+					}
 					for (Class<?> c : r.getSubTypesOf(requested))
 						Context.println(StringUtils.prettyPrint(c));
 				}

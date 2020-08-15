@@ -1,5 +1,5 @@
 /*
- * Copyright (C) 2019 Alessandro 'kLeZ' Accardo
+ * Copyright (C) 2020 Alessandro 'kLeZ' Accardo
  *
  * This file is part of RG-RPG.
  *
@@ -17,9 +17,17 @@
  * along with RG-RPG.  If not, see <http://www.gnu.org/licenses/>.
  *
  */
-
 package it.d4nguard.rgrpg.d20.types;
 
 public enum HumanoidRaceSubType {
-	Aquatic, Dwarf, Elf, Gnoll, Gnome, Goblinoid, Halfling, Human, Orc, Reptilian
+	Aquatic,
+	Dwarf,
+	Elf,
+	Gnoll,
+	Gnome,
+	Goblinoid,
+	Halfling,
+	Human,
+	Orc,
+	Reptilian
 }

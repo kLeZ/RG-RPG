@@ -1,5 +1,5 @@
 /*
- * Copyright (C) 2019 Alessandro 'kLeZ' Accardo
+ * Copyright (C) 2020 Alessandro 'kLeZ' Accardo
  *
  * This file is part of RG-RPG.
  *
@@ -39,7 +39,8 @@ public class ListCommand implements Command {
 			}
 			case "characters": {
 				Player p = new PlayerManager().get(StringUtils.join(" ", cmd.getArgs()));
-				for (Character c : p.getCharacters().keySet())
+				for (Character c : p.getCharacters()
+						.keySet())
 					Context.println(c);
 				break;
 			}

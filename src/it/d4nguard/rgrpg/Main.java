@@ -1,5 +1,5 @@
 /*
- * Copyright (C) 2019 Alessandro 'kLeZ' Accardo
+ * Copyright (C) 2020 Alessandro 'kLeZ' Accardo
  *
  * This file is part of RG-RPG.
  *
@@ -32,6 +32,8 @@ public class Main {
 			t.join();
 		} catch (InterruptedException e) {
 			Context.printThrowable(e);
+			System.exit(1);
 		}
+		System.exit(0);
 	}
 }

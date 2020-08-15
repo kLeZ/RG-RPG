@@ -1,5 +1,5 @@
 /*
- * Copyright (C) 2019 Alessandro 'kLeZ' Accardo
+ * Copyright (C) 2020 Alessandro 'kLeZ' Accardo
  *
  * This file is part of RG-RPG.
  *
@@ -27,7 +27,16 @@ import java.util.Map.Entry;
 import java.util.Set;
 
 public class CollectionsUtils {
-	public static final Class<?>[] ARRAY_PRIMITIVE_TYPES = { int[].class, float[].class, double[].class, boolean[].class, byte[].class, short[].class, long[].class, char[].class };
+	public static final Class<?>[] ARRAY_PRIMITIVE_TYPES = {
+			int[].class,
+			float[].class,
+			double[].class,
+			boolean[].class,
+			byte[].class,
+			short[].class,
+			long[].class,
+			char[].class
+	};
 
 	public static Object[] getArray(Object val) {
 		Class<?> valKlass = val.getClass();
@@ -66,7 +75,8 @@ public class CollectionsUtils {
 		Iterator<Entry<K, V>> it = entrySet.iterator();
 		while (it.hasNext()) {
 			Entry<K, V> cur = it.next();
-			if (cur.getValue().equals(value)) {
+			if (cur.getValue()
+					.equals(value)) {
 				el = cur.getKey();
 				break;
 			}
@@ -77,9 +87,10 @@ public class CollectionsUtils {
 	public static <T> void cleanNulls(Collection<T> c) {
 		Iterator<T> it = c.iterator();
 		try {
-			while (it.hasNext())
+			while (it.hasNext()) {
 				if (it.next() == null)
 					c.remove(null);
+			}
 		} catch (NullPointerException e) {
 			// Does not permit nulls, it should be ok
 		}

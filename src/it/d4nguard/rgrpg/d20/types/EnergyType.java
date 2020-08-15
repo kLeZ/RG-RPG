@@ -1,5 +1,5 @@
 /*
- * Copyright (C) 2019 Alessandro 'kLeZ' Accardo
+ * Copyright (C) 2020 Alessandro 'kLeZ' Accardo
  *
  * This file is part of RG-RPG.
  *
@@ -20,5 +20,8 @@
 package it.d4nguard.rgrpg.d20.types;
 
 public enum EnergyType {
-	Acid, Cold, Fire, Electricity
+	Acid,
+	Cold,
+	Fire,
+	Electricity
 }

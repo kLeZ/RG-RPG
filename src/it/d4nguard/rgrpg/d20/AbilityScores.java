@@ -1,5 +1,5 @@
 /*
- * Copyright (C) 2019 Alessandro 'kLeZ' Accardo
+ * Copyright (C) 2020 Alessandro 'kLeZ' Accardo
  *
  * This file is part of RG-RPG.
  *
@@ -47,7 +47,8 @@ public class AbilityScores extends it.d4nguard.rgrpg.profile.AbilityScores imple
 	}
 
 	public void setStrength(int strength) {
-		scores.get(STRENGTH).setValue(strength);
+		scores.get(STRENGTH)
+				.setValue(strength);
 	}
 
 	public AbilityScore getDexterity() {
@@ -55,7 +56,8 @@ public class AbilityScores extends it.d4nguard.rgrpg.profile.AbilityScores imple
 	}
 
 	public void setDexterity(int dexterity) {
-		scores.get(DEXTERITY).setValue(dexterity);
+		scores.get(DEXTERITY)
+				.setValue(dexterity);
 	}
 
 	public AbilityScore getConstitution() {
@@ -63,7 +65,8 @@ public class AbilityScores extends it.d4nguard.rgrpg.profile.AbilityScores imple
 	}
 
 	public void setConstitution(int constitution) {
-		scores.get(CONSTITUTION).setValue(constitution);
+		scores.get(CONSTITUTION)
+				.setValue(constitution);
 	}
 
 	public AbilityScore getIntelligence() {
@@ -71,7 +74,8 @@ public class AbilityScores extends it.d4nguard.rgrpg.profile.AbilityScores imple
 	}
 
 	public void setIntelligence(int intelligence) {
-		scores.get(INTELLIGENCE).setValue(intelligence);
+		scores.get(INTELLIGENCE)
+				.setValue(intelligence);
 	}
 
 	public AbilityScore getWisdom() {
@@ -79,7 +83,8 @@ public class AbilityScores extends it.d4nguard.rgrpg.profile.AbilityScores imple
 	}
 
 	public void setWisdom(int wisdom) {
-		scores.get(WISDOM).setValue(wisdom);
+		scores.get(WISDOM)
+				.setValue(wisdom);
 	}
 
 	public AbilityScore getCharisma() {
@@ -87,7 +92,8 @@ public class AbilityScores extends it.d4nguard.rgrpg.profile.AbilityScores imple
 	}
 
 	public void setCharisma(int charisma) {
-		scores.get(CHARISMA).setValue(charisma);
+		scores.get(CHARISMA)
+				.setValue(charisma);
 	}
 
 	public class D20AbilityScore extends AbilityScore {

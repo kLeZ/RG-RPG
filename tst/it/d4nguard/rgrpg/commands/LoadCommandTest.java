@@ -1,5 +1,5 @@
 /*
- * Copyright (C) 2019 Alessandro 'kLeZ' Accardo
+ * Copyright (C) 2020 Alessandro 'kLeZ' Accardo
  *
  * This file is part of RG-RPG.
  *
@@ -52,7 +52,8 @@ public class LoadCommandTest {
 		Context.wipe();
 		PlayerManager pm = new PlayerManager();
 		CharacterManager cm = new CharacterManager();
-		pm.use(pm.create("kLeZ").getName());
+		pm.use(pm.create("kLeZ")
+				.getName());
 		for (String name : names)
 			cm.create(name, "d20");
 		Context.save("~/test-session.dat");
@@ -62,11 +63,16 @@ public class LoadCommandTest {
 	@Test
 	public final void testExecute() {
 		new LoadCommand().execute("~/test-session.dat");
-		assertEquals("kLeZ", Context.getCurrentPlayer().getName());
-		Iterator<Character> it = Context.getCurrentPlayer().getCharacters().keySet().iterator();
+		assertEquals("kLeZ", Context.getCurrentPlayer()
+				.getName());
+		Iterator<Character> it = Context.getCurrentPlayer()
+				.getCharacters()
+				.keySet()
+				.iterator();
 		while (it.hasNext()) {
 			Character c = it.next();
-			assertTrue(names.contains(c.getInfo().getName()));
+			assertTrue(names.contains(c.getInfo()
+					.getName()));
 		}
 	}
 

@@ -1,5 +1,5 @@
 /*
- * Copyright (C) 2019 Alessandro 'kLeZ' Accardo
+ * Copyright (C) 2020 Alessandro 'kLeZ' Accardo
  *
  * This file is part of RG-RPG.
  *
@@ -19,22 +19,21 @@
  */
 package it.d4nguard.rgrpg.util.dynacast.strategies;
 
-import org.joda.time.ReadableInstant;
-
 import java.lang.reflect.Type;
+import java.time.temporal.Temporal;
 
 /**
- * This class implements a {@link SimpleStrategy} for {@link ReadableInstant}s.<br>
- * The {@link #getMine(Type)} method returns {@link ReadableInstant}.class
+ * This class implements a {@link SimpleStrategy} for {@link Temporal}s.<br>
+ * The {@link #getMine(Type)} method returns {@link Temporal}.class
  *
  * @author kLeZ-hAcK
  */
-public class DateTimeStrategy extends SimpleStrategy {
+public class TemporalStrategy extends SimpleStrategy {
 	/**
 	 * {@inheritDoc}
 	 */
 	@Override
 	public Class<?> getMine(Type type) {
-		return ReadableInstant.class;
+		return Temporal.class;
 	}
 }

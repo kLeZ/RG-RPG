@@ -1,5 +1,5 @@
 /*
- * Copyright (C) 2019 Alessandro 'kLeZ' Accardo
+ * Copyright (C) 2020 Alessandro 'kLeZ' Accardo
  *
  * This file is part of RG-RPG.
  *
@@ -24,19 +24,20 @@ import it.d4nguard.rgrpg.managers.CharacterManager;
 import it.d4nguard.rgrpg.managers.PlayerManager;
 import it.d4nguard.rgrpg.profile.Character;
 import it.d4nguard.rgrpg.profile.types.GenderType;
-import org.joda.time.DateTime;
-import org.joda.time.format.DateTimeFormat;
 import org.jscience.physics.amount.Amount;
 import org.junit.Before;
 import org.junit.Test;
 
 import javax.measure.unit.SI;
+import java.time.LocalDate;
+import java.time.ZoneId;
+import java.time.ZonedDateTime;
+import java.time.format.DateTimeFormatter;
 
 import static org.junit.Assert.assertEquals;
 
 public class SetCommandTest {
 	private SetCommand set;
-	private String cmd;
 	private Character c;
 
 	@Before
@@ -54,36 +55,46 @@ public class SetCommandTest {
 
 	@Test
 	public final void testExecute() {
-		cmd = "character Julius \"info.description=This is a simple description for this character\"";
+		String cmd = "character Julius \"info.description=This is a simple description for this character\"";
 		set.execute(cmd.split("\\s"));
-		assertEquals("This is a simple description for this character", c.getInfo().getDescription());
+		assertEquals("This is a simple description for this character", c.getInfo()
+				.getDescription());
 
 		cmd = "character Julius \"info.gender=Male\"";
 		set.execute(cmd.split("\\s"));
-		assertEquals(GenderType.Male, c.getInfo().getGender());
+		assertEquals(GenderType.Male, c.getInfo()
+				.getGender());
 
 		cmd = "character Julius \"info.height=185 cm\"";
 		set.execute(cmd.split("\\s"));
-		assertEquals(Amount.valueOf(185, SI.CENTIMETER), c.getInfo().getHeight());
+		assertEquals(Amount.valueOf(185, SI.CENTIMETER), c.getInfo()
+				.getHeight());
 
 		cmd = "character Julius \"info.weight=65 kg\"";
 		set.execute(cmd.split("\\s"));
-		assertEquals(Amount.valueOf(65, SI.KILOGRAM), c.getInfo().getWeight());
+		assertEquals(Amount.valueOf(65, SI.KILOGRAM), c.getInfo()
+				.getWeight());
 
 		cmd = "character Julius \"info.gender=Male\"";
 		set.execute(cmd.split("\\s"));
-		assertEquals(GenderType.Male, c.getInfo().getGender());
+		assertEquals(GenderType.Male, c.getInfo()
+				.getGender());
 
 		cmd = "character Julius \"info.dateOfBirth=07/04/1987[dd/MM/yyyy]\"";
 		set.execute(cmd.split("\\s"));
-		assertEquals(DateTime.parse("07/04/1987", DateTimeFormat.forPattern("dd/MM/yyyy")), c.getInfo().getDateOfBirth());
+		DateTimeFormatter fmt = DateTimeFormatter.ofPattern("dd/MM/yyyy");
+		LocalDate ld = fmt.parse("07/04/1987", LocalDate::from);
+		assertEquals(ZonedDateTime.of(ld.atStartOfDay(), ZoneId.systemDefault()), c.getInfo()
+				.getDateOfBirth());
 
 		// 16 14 12 10 10 8
 		cmd = "character Julius \"abilityScores.strength=8\"";
 		set.execute(cmd.split("\\s"));
-		System.out.println(((it.d4nguard.rgrpg.d20.Character) c).getAbilityScores());
-		System.out.println(((it.d4nguard.rgrpg.d20.Character) c).getAbilityScores().getStrength());
-		assertEquals(8, ((it.d4nguard.rgrpg.d20.Character) c).getAbilityScores().getStrength().getValue());
-		assertEquals(-1, ((it.d4nguard.rgrpg.d20.Character) c).getAbilityScores().getStrength().getModifier());
+		assertEquals(8, ((it.d4nguard.rgrpg.d20.Character) c).getAbilityScores()
+				.getStrength()
+				.getValue());
+		assertEquals(-1, ((it.d4nguard.rgrpg.d20.Character) c).getAbilityScores()
+				.getStrength()
+				.getModifier());
 	}
 }

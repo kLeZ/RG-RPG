@@ -1,5 +1,5 @@
 <!--
-  ~ Copyright (C) 2019 Alessandro 'kLeZ' Accardo
+  ~ Copyright (C) 2020 Alessandro 'kLeZ' Accardo
   ~
   ~ This file is part of RG-RPG.
   ~
@@ -17,13 +17,11 @@
   ~ along with RG-RPG.  If not, see <http://www.gnu.org/licenses/>.
   ~
   -->
-
-<project xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://maven.apache.org/POM/4.0.0"
-         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+<project xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://maven.apache.org/POM/4.0.0" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
 	<modelVersion>4.0.0</modelVersion>
 	<groupId>it.d4nguard</groupId>
 	<artifactId>rgrpg</artifactId>
-	<version>0.0.1</version>
+	<version>0.0.2</version>
 	<packaging>jar</packaging>
 	<name>RG-RPG</name>
 	<url>http://github.com/kLeZ/RG-RPG</url>
@@ -57,7 +55,20 @@
 		</license>
 	</licenses>
 	<properties>
-		<jdk.version>1.8</jdk.version>
+		<jdk.version>15</jdk.version>
+		<compiler-plugin.version>3.8.1</compiler-plugin.version>
+		<jar-plugin.version>3.2.0</jar-plugin.version>
+		<dependency-plugin.version>3.1.2</dependency-plugin.version>
+		<surefire-plugin.version>3.0.0-M5</surefire-plugin.version>
+		<shade-plugin.version>3.2.4</shade-plugin.version>
+		<javadoc-plugin.version>3.1.1</javadoc-plugin.version>
+		<umlgraph.version>5.6.6</umlgraph.version>
+		<reflections.version>0.9.12</reflections.version>
+		<jscience.version>4.3.1</jscience.version>
+		<commons-lang3.version>3.11</commons-lang3.version>
+		<junit.version>4.13</junit.version>
+		<ognl.version>3.2.14</ognl.version>
+		<text-io.version>3.4.1</text-io.version>
 	</properties>
 	<repositories>
 		<repository>
@@ -87,16 +98,19 @@
 			<plugin>
 				<groupId>org.apache.maven.plugins</groupId>
 				<artifactId>maven-compiler-plugin</artifactId>
-				<version>2.3.2</version>
+				<version>${compiler-plugin.version}</version>
 				<configuration>
 					<source>${jdk.version}</source>
 					<target>${jdk.version}</target>
+					<compilerArgs>
+						<arg>--enable-preview</arg>
+					</compilerArgs>
 				</configuration>
 			</plugin>
 			<plugin>
 				<groupId>org.apache.maven.plugins</groupId>
 				<artifactId>maven-jar-plugin</artifactId>
-				<version>2.6</version>
+				<version>${jar-plugin.version}</version>
 				<configuration>
 					<archive>
 						<manifest>
@@ -110,7 +124,7 @@
 			<plugin>
 				<groupId>org.apache.maven.plugins</groupId>
 				<artifactId>maven-dependency-plugin</artifactId>
-				<version>2.7</version>
+				<version>${dependency-plugin.version}</version>
 				<executions>
 					<execution>
 						<id>copy-dependencies</id>
@@ -130,12 +144,12 @@
 			<plugin>
 				<groupId>org.apache.maven.plugins</groupId>
 				<artifactId>maven-surefire-plugin</artifactId>
-				<version>2.14.1</version>
+				<version>${surefire-plugin.version}</version>
 			</plugin>
 			<plugin>
 				<groupId>org.apache.maven.plugins</groupId>
 				<artifactId>maven-shade-plugin</artifactId>
-				<version>1.4</version>
+				<version>${shade-plugin.version}</version>
 				<executions>
 					<execution>
 						<phase>package</phase>
@@ -155,104 +169,72 @@
 					set -->
 				<groupId>org.apache.maven.plugins</groupId>
 				<artifactId>maven-javadoc-plugin</artifactId>
-				<version>2.9.1</version>
+				<version>${javadoc-plugin.version}</version>
 				<configuration>
 					<doclet>org.umlgraph.doclet.UmlGraphDoc</doclet>
 					<docletArtifact>
 						<groupId>org.umlgraph</groupId>
 						<artifactId>umlgraph</artifactId>
-						<version>5.6.6</version>
+						<version>${umlgraph.version}</version>
 					</docletArtifact>
-					<additionalparam>-horizontal -attributes -enumconstants
-						-enumerations -operations -types -visibility -inferrel -inferdep
-						-hide java.* -inferrel -collpackages java.util.*
-					</additionalparam>
-					<!-- <additionalparam>-views -all</additionalparam> -->
+					<additionalOptions>
+						<additionalOption>-horizontal</additionalOption>
+						<additionalOption>-attributes</additionalOption>
+						<additionalOption>-enumconstants</additionalOption>
+						<additionalOption>-enumerations</additionalOption>
+						<additionalOption>-operations</additionalOption>
+						<additionalOption>-types</additionalOption>
+						<additionalOption>-visibility</additionalOption>
+						<additionalOption>-inferrel</additionalOption>
+						<additionalOption>-inferdep</additionalOption>
+						<additionalOption>-hide java.*</additionalOption>
+						<additionalOption>-collpackages java.util.*</additionalOption>
+						<additionalOption>-views</additionalOption>
+						<additionalOption>-all</additionalOption>
+					</additionalOptions>
 					<useStandardDocletOptions>true</useStandardDocletOptions>
 					<show>public</show>
 				</configuration>
 			</plugin>
 		</plugins>
-		<pluginManagement>
-			<plugins>
-				<!--This plugin's configuration is used to store Eclipse m2e settings 
-					only. It has no influence on the Maven build itself. -->
-				<plugin>
-					<groupId>org.eclipse.m2e</groupId>
-					<artifactId>lifecycle-mapping</artifactId>
-					<version>1.0.0</version>
-					<configuration>
-						<lifecycleMappingMetadata>
-							<pluginExecutions>
-								<pluginExecution>
-									<pluginExecutionFilter>
-										<groupId>
-											org.apache.maven.plugins
-										</groupId>
-										<artifactId>
-											maven-dependency-plugin
-										</artifactId>
-										<versionRange>
-											[2.7,)
-										</versionRange>
-										<goals>
-											<goal>
-												copy-dependencies
-											</goal>
-										</goals>
-									</pluginExecutionFilter>
-									<action>
-										<ignore/>
-									</action>
-								</pluginExecution>
-							</pluginExecutions>
-						</lifecycleMappingMetadata>
-					</configuration>
-				</plugin>
-			</plugins>
-		</pluginManagement>
 	</build>
 	<dependencies>
 		<dependency>
 			<groupId>org.reflections</groupId>
 			<artifactId>reflections</artifactId>
-			<version>0.9.9-RC1</version>
-		</dependency>
-		<dependency>
-			<groupId>joda-time</groupId>
-			<artifactId>joda-time</artifactId>
-			<version>2.10.2</version>
+			<version>${reflections.version}</version>
 		</dependency>
 		<dependency>
 			<groupId>org.jscience</groupId>
 			<artifactId>jscience</artifactId>
-			<version>4.3.1</version>
+			<version>${jscience.version}</version>
 		</dependency>
 		<dependency>
 			<groupId>org.apache.commons</groupId>
 			<artifactId>commons-lang3</artifactId>
-			<version>3.1</version>
+			<version>${commons-lang3.version}</version>
 		</dependency>
 		<dependency>
 			<groupId>junit</groupId>
 			<artifactId>junit</artifactId>
-			<version>4.11</version>
+			<version>${junit.version}</version>
 			<scope>test</scope>
-		</dependency>
-		<dependency>
-			<groupId>org.fusesource.jansi</groupId>
-			<artifactId>jansi</artifactId>
-			<version>1.11</version>
-		</dependency>
-		<dependency>
-			<groupId>jline</groupId>
-			<artifactId>jline</artifactId>
-			<version>2.12.1</version>
 		</dependency>
 		<dependency>
 			<groupId>ognl</groupId>
 			<artifactId>ognl</artifactId>
-			<version>3.2.10</version>
+			<version>${ognl.version}</version>
+			<exclusions>
+				<exclusion>
+					<groupId>org.javassist</groupId>
+					<artifactId>javassist</artifactId>
+				</exclusion>
+			</exclusions>
+		</dependency>
+		<dependency>
+			<groupId>org.beryx</groupId>
+			<artifactId>text-io</artifactId>
+			<version>${text-io.version}</version>
 		</dependency>
 	</dependencies>
 </project>

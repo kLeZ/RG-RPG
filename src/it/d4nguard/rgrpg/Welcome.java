@@ -1,5 +1,5 @@
 /*
- * Copyright (C) 2019 Alessandro 'kLeZ' Accardo
+ * Copyright (C) 2020 Alessandro 'kLeZ' Accardo
  *
  * This file is part of RG-RPG.
  *
@@ -27,7 +27,8 @@ public class Welcome {
 	public static void print() {
 		Context.println(Context.getString("welcome"));
 		new VersionCommand().execute();
-		Scanner scn = new Scanner(ClassLoader.getSystemClassLoader().getResourceAsStream("it/d4nguard/rgrpg/Welcome.md"));
+		Scanner scn = new Scanner(ClassLoader.getSystemClassLoader()
+				.getResourceAsStream("it/d4nguard/rgrpg/Welcome.md"));
 		while (scn.hasNext()) {
 			Context.println(scn.nextLine());
 		}

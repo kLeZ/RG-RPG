@@ -1,5 +1,5 @@
 /*
- * Copyright (C) 2019 Alessandro 'kLeZ' Accardo
+ * Copyright (C) 2020 Alessandro 'kLeZ' Accardo
  *
  * This file is part of RG-RPG.
  *
@@ -25,7 +25,8 @@ public class BlankRemover {
 
 	/* replace multiple whitespaces between words with single blank */
 	public static CharSequence itrim(final CharSequence source) {
-		return source.toString().replaceAll("\\b(\\s{2,}|\\u00a0{2,})\\b", " ");
+		return source.toString()
+				.replaceAll("\\b(\\s{2,}|\\u00a0{2,})\\b", " ");
 	}
 
 	public static CharSequence lrtrim(final CharSequence source) {
@@ -34,12 +35,14 @@ public class BlankRemover {
 
 	/* remove leading whitespace */
 	public static CharSequence ltrim(final CharSequence source) {
-		return source.toString().replaceAll("^(\\s|\\u00a0)+", "");
+		return source.toString()
+				.replaceAll("^(\\s|\\u00a0)+", "");
 	}
 
 	/* remove trailing whitespace */
 	public static CharSequence rtrim(final CharSequence source) {
-		return source.toString().replaceAll("(\\s|\\u00a0)+$", "");
+		return source.toString()
+				.replaceAll("(\\s|\\u00a0)+$", "");
 	}
 
 	/* remove all superfluous whitespaces in source string */

@@ -1,5 +1,5 @@
 /*
- * Copyright (C) 2019 Alessandro 'kLeZ' Accardo
+ * Copyright (C) 2020 Alessandro 'kLeZ' Accardo
  *
  * This file is part of RG-RPG.
  *
@@ -36,8 +36,11 @@ public class SaveCommandTest {
 		Context.wipe();
 		PlayerManager pm = new PlayerManager();
 		CharacterManager cm = new CharacterManager();
-		pm.use(pm.create("kLeZ").getName());
-		String[] names = new String[] { "Julius", "Mialee", "Viktor", "Hansel", "Marril", "Pipino" };
+		pm.use(pm.create("kLeZ")
+				.getName());
+		String[] names = new String[] {
+				"Julius", "Mialee", "Viktor", "Hansel", "Marril", "Pipino"
+		};
 		for (String name : names)
 			cm.create(name, "d20");
 	}

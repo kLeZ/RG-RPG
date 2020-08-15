@@ -1,5 +1,5 @@
 /*
- * Copyright (C) 2019 Alessandro 'kLeZ' Accardo
+ * Copyright (C) 2020 Alessandro 'kLeZ' Accardo
  *
  * This file is part of RG-RPG.
  *
@@ -20,7 +20,10 @@
 package it.d4nguard.rgrpg.profile.types;
 
 public enum CoinType {
-	PlatinumPiece(1000, 100, 10, 1), GoldPiece(100, 10, 1, .1), SilverPiece(10, 1, .1, .01), CopperPiece(1, .1, .01, .001);
+	PlatinumPiece(1000, 100, 10, 1),
+	GoldPiece(100, 10, 1, .1),
+	SilverPiece(10, 1, .1, .01),
+	CopperPiece(1, .1, .01, .001);
 
 	private final double cp;
 	private final double sp;

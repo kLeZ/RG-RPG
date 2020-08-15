@@ -1,5 +1,5 @@
 /*
- * Copyright (C) 2019 Alessandro 'kLeZ' Accardo
+ * Copyright (C) 2020 Alessandro 'kLeZ' Accardo
  *
  * This file is part of RG-RPG.
  *
@@ -28,9 +28,11 @@ public class MersenneTwister extends Random {
 
 	private static final int N = 624;
 	private static final int M = 397;
-	private static final int[] MAG01 = { 0x0, 0x9908b0df };
+	private static final int[] MAG01 = {
+			0x0, 0x9908b0df
+	};
 
-	private int[] mt;
+	private final int[] mt;
 	private int mti;
 
 	/**
@@ -42,8 +44,9 @@ public class MersenneTwister extends Random {
 	public MersenneTwister() {
 		mt = new int[N];
 		SecureRandom random = new SecureRandom();
-		byte[] seed = random.generateSeed(Calendar.getInstance().get(Calendar.SECOND));
-		setSeed((int) seed[random.nextInt(seed.length - 1)]);
+		byte[] seed = random.generateSeed(Calendar.getInstance()
+				.get(Calendar.SECOND));
+		setSeed(seed[random.nextInt(seed.length - 1)]);
 	}
 
 	/**
@@ -155,7 +158,6 @@ public class MersenneTwister extends Random {
 		}
 
 		mt[0] = (int) 0x80000000l; // MSB is 1; assuring non-zero initial array
-
 	}
 
 	/**
@@ -176,7 +178,9 @@ public class MersenneTwister extends Random {
 			// constructors after array allocation
 			return;
 		}
-		setSeed(new int[] { (int) (seed >>> 32), (int) (seed & 0xffffffffl) });
+		setSeed(new int[] {
+				(int) (seed >>> 32), (int) (seed & 0xffffffffl)
+		});
 	}
 
 	/**

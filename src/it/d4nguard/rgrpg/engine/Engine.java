@@ -1,5 +1,5 @@
 /*
- * Copyright (C) 2019 Alessandro 'kLeZ' Accardo
+ * Copyright (C) 2020 Alessandro 'kLeZ' Accardo
  *
  * This file is part of RG-RPG.
  *
@@ -31,5 +31,4 @@ public interface Engine {
 	boolean skillCheck(Character character, Skill skill, int DC, int DCMul);
 
 	boolean defenseCheck();
-
 }

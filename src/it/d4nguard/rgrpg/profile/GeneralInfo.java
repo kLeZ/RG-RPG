@@ -1,5 +1,5 @@
 /*
- * Copyright (C) 2019 Alessandro 'kLeZ' Accardo
+ * Copyright (C) 2020 Alessandro 'kLeZ' Accardo
  *
  * This file is part of RG-RPG.
  *
@@ -20,13 +20,13 @@
 package it.d4nguard.rgrpg.profile;
 
 import it.d4nguard.rgrpg.profile.types.GenderType;
-import org.joda.time.DateTime;
 import org.jscience.physics.amount.Amount;
 import org.jscience.physics.amount.AmountFormat;
 
 import javax.measure.quantity.Length;
 import javax.measure.quantity.Mass;
 import java.io.Serializable;
+import java.time.ZonedDateTime;
 
 public class GeneralInfo implements Serializable {
 	private static final long serialVersionUID = -6846828906540838870L;
@@ -38,7 +38,7 @@ public class GeneralInfo implements Serializable {
 	private String eyesColor;
 	private Amount<Length> height;
 	private Amount<Mass> weight;
-	private DateTime dateOfBirth;
+	private ZonedDateTime dateOfBirth;
 	private GenderType gender;
 	private String philosophyDeityReligion;
 
@@ -98,11 +98,11 @@ public class GeneralInfo implements Serializable {
 		this.weight = weight;
 	}
 
-	public DateTime getDateOfBirth() {
+	public ZonedDateTime getDateOfBirth() {
 		return dateOfBirth;
 	}
 
-	public void setDateOfBirth(DateTime dateOfBirth) {
+	public void setDateOfBirth(ZonedDateTime dateOfBirth) {
 		this.dateOfBirth = dateOfBirth;
 	}
 

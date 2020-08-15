@@ -1,5 +1,5 @@
 /*
- * Copyright (C) 2019 Alessandro 'kLeZ' Accardo
+ * Copyright (C) 2020 Alessandro 'kLeZ' Accardo
  *
  * This file is part of RG-RPG.
  *
@@ -61,7 +61,8 @@ public class PromptFeeder {
 					case 'H':
 					case 'h':
 						try {
-							Process p = Runtime.getRuntime().exec("hostname");
+							Process p = Runtime.getRuntime()
+									.exec("hostname");
 							p.waitFor();
 							BufferedReader br = new BufferedReader(new InputStreamReader(p.getInputStream()));
 							String hostname = br.readLine();
@@ -93,16 +94,23 @@ public class PromptFeeder {
 					case 'p':
 						String player = Context.getString("no.player.selected");
 						if (Context.hasCurrentPlayer()) {
-							player = Context.getCurrentPlayer().getName();
+							player = Context.getCurrentPlayer()
+									.getName();
 						}
-						ret.append('[').append(player).append(']');
+						ret.append('[')
+								.append(player)
+								.append(']');
 						break;
 					case 's':
 						String character = Context.getString("no.character.selected");
 						if (Context.hasCurrentCharacter()) {
-							character = Context.getCurrentCharacter().getInfo().getName();
+							character = Context.getCurrentCharacter()
+									.getInfo()
+									.getName();
 						}
-						ret.append('[').append(character).append(']');
+						ret.append('[')
+								.append(character)
+								.append(']');
 						break;
 					default:
 						ret.append(token);

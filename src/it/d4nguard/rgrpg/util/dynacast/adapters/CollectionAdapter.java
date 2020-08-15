@@ -1,5 +1,5 @@
 /*
- * Copyright (C) 2019 Alessandro 'kLeZ' Accardo
+ * Copyright (C) 2020 Alessandro 'kLeZ' Accardo
  *
  * This file is part of RG-RPG.
  *
@@ -69,6 +69,7 @@ public class CollectionAdapter<T> extends AbstractAdapter<Collection<T>> {
 				Context.printThrowable(e);
 			}
 		}
+		assert ret != null;
 		Collections.addAll(ret, (T[]) arr);
 		return ret;
 	}
@@ -80,6 +81,9 @@ public class CollectionAdapter<T> extends AbstractAdapter<Collection<T>> {
 	@SuppressWarnings("unchecked")
 	public void beforeCreateAdapter(Type type) {
 		this.collType = (Class<Collection<T>>) GenericsUtils.getClassFromType(type);
-		this.type = (Class<T>) GenericsUtils.getFirstGenericType((ParameterizedType) type);
+		if (type instanceof ParameterizedType pt)
+			this.type = (Class<T>) GenericsUtils.getFirstGenericType(pt);
+		else if (type instanceof Class<?> cls)
+			this.type = (Class<T>) cls;
 	}
 }

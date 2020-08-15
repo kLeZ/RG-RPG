@@ -1,5 +1,5 @@
 /*
- * Copyright (C) 2019 Alessandro 'kLeZ' Accardo
+ * Copyright (C) 2020 Alessandro 'kLeZ' Accardo
  *
  * This file is part of RG-RPG.
  *
@@ -59,11 +59,14 @@ public abstract class Race implements Serializable {
 		this.traits = new HashSet<>();
 		if (type == null)
 			throw new NullPointerException("type");
-		this.traits.addAll(RACE_TRAITS.get().get(this.type));
+		this.traits.addAll(RACE_TRAITS.get()
+				.get(this.type));
 		if (subType != null)
-			this.traits.addAll(SUB_RACE_TRAITS.get().get(this.subType));
+			this.traits.addAll(SUB_RACE_TRAITS.get()
+					.get(this.subType));
 		if (humanoidSubType != null)
-			this.traits.addAll(HUMANOID_RACE_TRAITS.get().get(this.humanoidSubType));
+			this.traits.addAll(HUMANOID_RACE_TRAITS.get()
+					.get(this.humanoidSubType));
 	}
 
 	public SizeType getSize() {

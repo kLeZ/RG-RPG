@@ -1,5 +1,5 @@
 /*
- * Copyright (C) 2019 Alessandro 'kLeZ' Accardo
+ * Copyright (C) 2020 Alessandro 'kLeZ' Accardo
  *
  * This file is part of RG-RPG.
  *
@@ -40,7 +40,8 @@ public class Coin implements Serializable {
 	}
 
 	public static double convert(Coin coin, CoinType type) {
-		return coin.getAmount() * coin.getType().getUnity(type);
+		return coin.getAmount() * coin.getType()
+				.getUnity(type);
 	}
 
 	public double getAmount() {

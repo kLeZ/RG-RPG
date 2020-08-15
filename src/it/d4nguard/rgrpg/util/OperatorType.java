@@ -1,5 +1,5 @@
 /*
- * Copyright (C) 2019 Alessandro 'kLeZ' Accardo
+ * Copyright (C) 2020 Alessandro 'kLeZ' Accardo
  *
  * This file is part of RG-RPG.
  *
@@ -20,10 +20,15 @@
 package it.d4nguard.rgrpg.util;
 
 public enum OperatorType {
-	Addition, Subtraction, Multiplication, Division;
+	Addition,
+	Subtraction,
+	Multiplication,
+	Division;
 
 	public static char[] getOperators() {
-		return new char[] { '+', '-', '*', '/' };
+		return new char[] {
+				'+', '-', '*', '/'
+		};
 	}
 
 	public static OperatorType parseOperator(char op) {

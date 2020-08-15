@@ -1,5 +1,5 @@
 /*
- * Copyright (C) 2019 Alessandro 'kLeZ' Accardo
+ * Copyright (C) 2020 Alessandro 'kLeZ' Accardo
  *
  * This file is part of RG-RPG.
  *
@@ -37,7 +37,8 @@ public class ForCommand implements Command {
 		try {
 			for (int i = min; i < max; i++) {
 				String[] a = Utils.replace(INDEX_TOKEN, String.valueOf(i), cmd.getArgs());
-				CommandsInterpreter.resolveCommand(cmd.getProc()).execute(a);
+				CommandsInterpreter.resolveCommand(cmd.getProc())
+						.execute(a);
 			}
 		} catch (ClassNotFoundException e) {
 			Context.printThrowable(e);

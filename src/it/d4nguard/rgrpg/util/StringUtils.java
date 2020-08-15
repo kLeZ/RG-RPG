@@ -1,5 +1,5 @@
 /*
- * Copyright (C) 2019 Alessandro 'kLeZ' Accardo
+ * Copyright (C) 2020 Alessandro 'kLeZ' Accardo
  *
  * This file is part of RG-RPG.
  *
@@ -26,7 +26,9 @@ import java.util.*;
 
 public class StringUtils {
 	public static final String STD_LIB_PKG_RGX = "(java|javax|com\\.sun|com\\.oracle|sun|sunw|org\\.w3c|org\\.xml|org\\.omg|org\\.dom4j)\\..*";
-	public static final char[] DIGIT_SYMBOLS = { '+', '-', '.', ',' };
+	public static final char[] DIGIT_SYMBOLS = {
+			'+', '-', '.', ','
+	};
 	private static final String[] SA = new String[] { };
 
 	static {
@@ -39,7 +41,9 @@ public class StringUtils {
 		scn.useDelimiter("\\s");
 		while (scn.hasNext()) {
 			String curr = scn.next();
-			sb.append(curr.substring(0, 1).toLowerCase().concat(curr.substring(1)));
+			sb.append(curr.substring(0, 1)
+					.toLowerCase()
+					.concat(curr.substring(1)));
 		}
 		scn.close();
 		return sb.toString();
@@ -51,7 +55,9 @@ public class StringUtils {
 		scn.useDelimiter("\\s");
 		while (scn.hasNext()) {
 			String curr = scn.next();
-			sb.append(curr.substring(0, 1).toUpperCase().concat(curr.substring(1)));
+			sb.append(curr.substring(0, 1)
+					.toUpperCase()
+					.concat(curr.substring(1)));
 		}
 		scn.close();
 		return sb.toString();
@@ -90,7 +96,8 @@ public class StringUtils {
 	}
 
 	public static String clean(final String s) {
-		return BlankRemover.itrim(BlankRemover.lrtrim(s)).toString();
+		return BlankRemover.itrim(BlankRemover.lrtrim(s))
+				.toString();
 	}
 
 	public static String cleanDateRange(String s, final int take) {
@@ -272,13 +279,17 @@ public class StringUtils {
 		if (clazz == null)
 			return "";
 		StringCompiler sc = new StringCompiler(length, fill);
-		boolean matches = BooleanUtils.xor(stdLib, clazz.isPrimitive()) || clazz.getPackage().getName().matches(STD_LIB_PKG_RGX);
+		boolean matches = BooleanUtils.xor(stdLib, clazz.isPrimitive()) || clazz.getPackage()
+				.getName()
+				.matches(STD_LIB_PKG_RGX);
 
 		if (BooleanUtils.xnor(stdLib, matches)) {
 			sc.appendln(clazz.getSimpleName());
 			if (sc.canFill())
 				sc.fill();
-			sc.fill(clazz.getSimpleName().length(), '=').appendNewLine();
+			sc.fill(clazz.getSimpleName()
+					.length(), '=')
+					.appendNewLine();
 			Field[] fields = clazz.getDeclaredFields();
 			for (Field field : fields) {
 				if (!Modifier.isStatic(field.getModifiers())) {
@@ -295,7 +306,8 @@ public class StringUtils {
 		LinkedHashMap<Class<?>, String> toPrint = new LinkedHashMap<>();
 		if (t instanceof Class) {
 			// It's a normal class, I will print it as usual
-			toPrint.put(field.getType(), field.getType().getSimpleName());
+			toPrint.put(field.getType(), field.getType()
+					.getSimpleName());
 		} else if (t instanceof ParameterizedType) {
 			ParameterizedType pt = (ParameterizedType) t;
 			Class<?> raw = (Class<?>) pt.getRawType();
@@ -307,7 +319,8 @@ public class StringUtils {
 				} else if (argt instanceof ParameterizedType) {
 					cls = (Class<?>) argt;
 				} else if (argt instanceof TypeVariable) {
-					cls = ((TypeVariable<?>) argt).getGenericDeclaration().getClass();
+					cls = ((TypeVariable<?>) argt).getGenericDeclaration()
+							.getClass();
 				} else if (argt instanceof WildcardType) {
 					cls = (Class<?>) argt;
 				} else
@@ -315,7 +328,8 @@ public class StringUtils {
 				toPrint.put(cls, cls.getSimpleName());
 			}
 		}
-		List<String> values = Arrays.asList(toPrint.values().toArray(SA));
+		List<String> values = Arrays.asList(toPrint.values()
+				.toArray(SA));
 		if (toPrint.size() == 1) {
 			sc.append(values.get(0));
 		} else if (toPrint.size() > 1) {
@@ -402,7 +416,8 @@ public class StringUtils {
 		if (c.equals(Object.class))
 			return "";
 		StringCompiler sc = new StringCompiler(length, filler);
-		sc.append(c.getSimpleName()).appendln(" [");
+		sc.append(c.getSimpleName())
+				.appendln(" [");
 		if (recurseSuper) {
 			String s = genericToString(c.getSuperclass(), o, length, filler, recurseSuper, excluded);
 			if (isNotEmpty(s))
@@ -410,7 +425,8 @@ public class StringUtils {
 		}
 		for (Field f : c.getDeclaredFields())
 			if (!multiMatchAny(f.getName(), excluded)) {
-				sc.fill().appendln(c, o, f.getName());
+				sc.fill()
+						.appendln(c, o, f.getName());
 			}
 		sc.append("]");
 		return sc.toString();

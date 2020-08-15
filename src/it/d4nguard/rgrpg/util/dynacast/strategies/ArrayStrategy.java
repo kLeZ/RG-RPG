@@ -1,5 +1,5 @@
 /*
- * Copyright (C) 2019 Alessandro 'kLeZ' Accardo
+ * Copyright (C) 2020 Alessandro 'kLeZ' Accardo
  *
  * This file is part of RG-RPG.
  *
@@ -37,7 +37,8 @@ public class ArrayStrategy extends AbstractStrategy {
 	 */
 	@Override
 	public boolean isMine(Type type) {
-		return GenericsUtils.getClassFromType(type).isArray();
+		return GenericsUtils.getClassFromType(type)
+				.isArray();
 	}
 
 	/**

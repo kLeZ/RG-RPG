@@ -1,5 +1,5 @@
 /*
- * Copyright (C) 2019 Alessandro 'kLeZ' Accardo
+ * Copyright (C) 2020 Alessandro 'kLeZ' Accardo
  *
  * This file is part of RG-RPG.
  *
@@ -59,6 +59,7 @@ public class PrimitiveStrategy extends AbstractStrategy {
 	 */
 	@Override
 	public Class<?> getMine(Type type) {
-		return primitives.get(GenericsUtils.getClassFromType(type).getName());
+		return primitives.get(GenericsUtils.getClassFromType(type)
+				.getName());
 	}
 }

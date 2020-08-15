@@ -1,5 +1,5 @@
 /*
- * Copyright (C) 2019 Alessandro 'kLeZ' Accardo
+ * Copyright (C) 2020 Alessandro 'kLeZ' Accardo
  *
  * This file is part of RG-RPG.
  *
@@ -23,17 +23,16 @@ import it.d4nguard.rgrpg.Context;
 import it.d4nguard.rgrpg.ExitRuntimeException;
 import it.d4nguard.rgrpg.commands.Command;
 
-import java.io.IOException;
+import java.lang.reflect.InvocationTargetException;
 import java.util.Arrays;
 
 public class CommandsInterpreter implements Runnable {
 	public static Command newCommand(Class<?> clazz) {
 		Command cmd = null;
 		try {
-			cmd = (Command) clazz.newInstance();
-		} catch (InstantiationException e) {
-			Context.printThrowable(e);
-		} catch (IllegalAccessException e) {
+			cmd = (Command) clazz.getDeclaredConstructor()
+					.newInstance();
+		} catch (InstantiationException | IllegalAccessException | NoSuchMethodException | InvocationTargetException e) {
 			Context.printThrowable(e);
 		}
 		return cmd;
@@ -41,7 +40,8 @@ public class CommandsInterpreter implements Runnable {
 
 	public static Command resolveCommand(String cmdLn) throws ClassNotFoundException {
 		Command cmd = null;
-		String className = String.format("%s.%sCommand", Command.class.getPackage().getName(), StringUtils.capitalize(cmdLn));
+		String className = String.format("%s.%sCommand", Command.class.getPackage()
+				.getName(), StringUtils.capitalize(cmdLn));
 		try {
 			Class<?> clazz = Class.forName(className);
 			cmd = newCommand(clazz);
@@ -53,31 +53,28 @@ public class CommandsInterpreter implements Runnable {
 
 	@Override
 	public void run() {
-		try {
-			boolean exit = false;
-			while (!exit) {
-				Context.print(new PromptFeeder().get());
-				String cmdLn = Context.readLine();
-				if (cmdLn != null && !cmdLn.isEmpty()) {
-					CommandLine cmd = StringUtils.getArgs(cmdLn);
-					cmdLn = cmd.getProc();
-					String[] args = cmd.getArgs();
-					try {
-						if (Context.isDebug())
-							Context.println(String.format("Command: %s%nArgs: %s", cmdLn, Arrays.toString(args)));
-						CommandsInterpreter.resolveCommand(cmdLn).execute(args);
-					} catch (ClassNotFoundException e) {
-						Context.println(Context.getString("commandsinterpreter.warn.commandnotfound"));
-					} catch (ExitRuntimeException e) {
-						Context.println(Context.getString("exit.msg"));
-						exit = true;
-					} catch (Throwable e) {
-						Context.printThrowable(e);
-					}
+		boolean exit = false;
+		while (!exit) {
+			Context.print(new PromptFeeder().get());
+			String cmdLn = Context.readLine();
+			if (cmdLn != null && !cmdLn.isEmpty()) {
+				CommandLine cmd = StringUtils.getArgs(cmdLn);
+				cmdLn = cmd.getProc();
+				String[] args = cmd.getArgs();
+				try {
+					if (Context.isDebug())
+						Context.println(String.format("Command: %s%nArgs: %s", cmdLn, Arrays.toString(args)));
+					CommandsInterpreter.resolveCommand(cmdLn)
+							.execute(args);
+				} catch (ClassNotFoundException e) {
+					Context.println(Context.getString("commandsinterpreter.warn.commandnotfound"));
+				} catch (ExitRuntimeException e) {
+					Context.println(Context.getString("exit.msg"));
+					exit = true;
+				} catch (Throwable e) {
+					Context.printThrowable(e);
 				}
 			}
-		} catch (IOException e) {
-			Context.printThrowable(e);
 		}
 	}
 }

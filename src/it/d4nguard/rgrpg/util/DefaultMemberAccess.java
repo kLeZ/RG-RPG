@@ -115,6 +115,7 @@ public class DefaultMemberAccess implements MemberAccess {
 	public void restore(Map context, Object target, Member member, String propertyName, Object state) {
 		if (state != null) {
 			final AccessibleObject accessible = (AccessibleObject) member;
+			@SuppressWarnings("UnnecessaryUnboxing")
 			final boolean stateboolean = ((Boolean) state).booleanValue();  // Using twice (avoid unboxing)
 			if (!stateboolean) {
 				accessible.setAccessible(stateboolean);

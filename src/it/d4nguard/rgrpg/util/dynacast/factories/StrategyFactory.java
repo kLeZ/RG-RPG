@@ -1,5 +1,5 @@
 /*
- * Copyright (C) 2019 Alessandro 'kLeZ' Accardo
+ * Copyright (C) 2020 Alessandro 'kLeZ' Accardo
  *
  * This file is part of RG-RPG.
  *
@@ -24,9 +24,11 @@ import it.d4nguard.rgrpg.util.Utils;
 import it.d4nguard.rgrpg.util.dynacast.Strategy;
 import org.reflections.Reflections;
 
+import java.lang.reflect.InvocationTargetException;
 import java.lang.reflect.Modifier;
 import java.lang.reflect.Type;
 import java.util.Iterator;
+import java.util.Optional;
 import java.util.Set;
 
 /**
@@ -36,6 +38,32 @@ import java.util.Set;
  * @author kLeZ-hAcK
  */
 public class StrategyFactory {
+	private static final Strategy DUMMY_STRATEGY = new Strategy() {
+		/**
+		 * {@inheritDoc}
+		 */
+		@Override
+		public boolean isMine(Type type) {
+			return false;
+		}
+
+		/**
+		 * {@inheritDoc}
+		 */
+		@Override
+		public Type apply(Type type) {
+			return type;
+		}
+
+		/**
+		 * {@inheritDoc}
+		 */
+		@Override
+		public Class<?> getMine(Type type) {
+			return Object.class;
+		}
+	};
+
 	/**
 	 * This method gets the correct {@link Strategy} by searching the given type
 	 * in a {@link Set} of {@link Strategy} sub types returned by
@@ -59,48 +87,21 @@ public class StrategyFactory {
 	public static Strategy getStrategy(final Type type) {
 		Strategy ret = null;
 		Set<Class<? extends Strategy>> subTypes = Utils.getSubTypesOf(Strategy.class);
-		Iterator<Class<? extends Strategy>> it = subTypes.iterator();
-		while (it.hasNext() && ret == null) {
-			Class<? extends Strategy> e = it.next();
+		Iterator<Class<? extends Strategy>> iterator = subTypes.iterator();
+		while (iterator.hasNext() && ret == null) {
+			final Class<? extends Strategy> e = iterator.next();
 			if (!Modifier.isAbstract(e.getModifiers())) {
 				try {
-					Strategy s = e.newInstance();
+					Strategy s = e.getDeclaredConstructor()
+							.newInstance();
 					if (s.isMine(type))
 						ret = s;
-				} catch (InstantiationException | IllegalAccessException ex) {
+				} catch (InstantiationException | IllegalAccessException | NoSuchMethodException | InvocationTargetException ex) {
 					Context.printThrowable(ex);
 				}
 			}
 		}
-
-		if (ret != null) {
-			return ret;
-		} else
-			return new Strategy() // The dummy one
-			{
-				/**
-				 * {@inheritDoc}
-				 */
-				@Override
-				public boolean isMine(Type type) {
-					return false;
-				}
-
-				/**
-				 * {@inheritDoc}
-				 */
-				@Override
-				public Type apply(Type type) {
-					return type;
-				}
-
-				/**
-				 * {@inheritDoc}
-				 */
-				@Override
-				public Class<?> getMine(Type type) {
-					return Object.class;
-				}
-			};
+		return Optional.ofNullable(ret)
+				.orElse(DUMMY_STRATEGY);
 	}
 }

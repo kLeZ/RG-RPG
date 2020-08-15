@@ -1,5 +1,5 @@
 /*
- * Copyright (C) 2019 Alessandro 'kLeZ' Accardo
+ * Copyright (C) 2020 Alessandro 'kLeZ' Accardo
  *
  * This file is part of RG-RPG.
  *
@@ -22,7 +22,10 @@ package it.d4nguard.rgrpg.util.dynacast;
 import ognl.TypeConverter;
 
 import java.lang.reflect.Member;
+import java.lang.reflect.Method;
+import java.lang.reflect.Type;
 import java.util.Map;
+import java.util.Objects;
 
 /**
  * An implementation of the {@link TypeConverter} class that implements dynacast
@@ -54,7 +57,16 @@ public class AdapterTypeConverter implements TypeConverter {
 	 */
 	@Override
 	public Object convertValue(Map context, Object target, Member member, String propertyName, Object value, Class toType) {
-		Adapter<?> a = TypeAdapter.getAdapter(toType);
-		return a.adapt(String.valueOf(value));
+		Type type = toType;
+		if (member instanceof Method m) {
+			Type[] types = m.getGenericParameterTypes();
+			if (types.length == 1) {
+				// I'm a setter, probably
+				type = types[0];
+			}
+		}
+		Adapter<?> a = TypeAdapter.getAdapter(type);
+		return Objects.requireNonNull(a)
+				.adapt(String.valueOf(value));
 	}
 }

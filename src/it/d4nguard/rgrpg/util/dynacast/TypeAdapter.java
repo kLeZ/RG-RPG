@@ -1,5 +1,5 @@
 /*
- * Copyright (C) 2019 Alessandro 'kLeZ' Accardo
+ * Copyright (C) 2020 Alessandro 'kLeZ' Accardo
  *
  * This file is part of RG-RPG.
  *
@@ -46,12 +46,15 @@ public class TypeAdapter {
 	 *
 	 * @return An adapter class that can adapt a string to the recalled object.
 	 */
-	@SuppressWarnings({ "rawtypes", "unchecked" })
+	@SuppressWarnings({
+			"rawtypes", "unchecked"
+	})
 	public static <T> Adapter<T> getAdapter(Type type) {
 		assert type != null;
 		Strategy strategy = StrategyFactory.getStrategy(type);
 		Type applied = strategy.apply(type);
-		AdapterFactory factory = AdapterFactoryMap.current().get(applied);
+		AdapterFactory factory = AdapterFactoryMap.current()
+				.get(applied);
 		return factory == null ? null : factory.create(type);
 	}
 
@@ -66,14 +69,15 @@ public class TypeAdapter {
 	 */
 	public static String toString(Object value) {
 		String ret;
-		if (value.getClass().isArray()) {
+		if (value.getClass()
+				.isArray()) {
 			Object[] arr = CollectionsUtils.getArray(value);
 			ret = StringUtils.join(Utils.ARRAY_JOINER, arr);
-			ret = String.format("[%s]", ret);
+			ret = String.format("[ %s ]", ret);
 		} else if (Collection.class.isAssignableFrom(value.getClass())) {
 			Collection<?> coll = (Collection<?>) value;
 			ret = StringUtils.join(Utils.ARRAY_JOINER, coll);
-			ret = String.format("[%s]", ret);
+			ret = String.format("[ %s ]", ret);
 		} else
 			ret = String.valueOf(value);
 		return ret;

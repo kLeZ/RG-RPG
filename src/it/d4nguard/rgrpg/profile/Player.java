@@ -1,5 +1,5 @@
 /*
- * Copyright (C) 2019 Alessandro 'kLeZ' Accardo
+ * Copyright (C) 2020 Alessandro 'kLeZ' Accardo
  *
  * This file is part of RG-RPG.
  *
@@ -67,7 +67,8 @@ public class Player implements Serializable {
 			return false;
 		if (!(o instanceof Player))
 			return false;
-		return ((Player) o).getName().equals(this.name);
+		return ((Player) o).getName()
+				.equals(this.name);
 	}
 
 	@Override
@@ -75,7 +76,9 @@ public class Player implements Serializable {
 		StringCompiler sc = new StringCompiler();
 		sc.appendln("PLAYER");
 		sc.appendln("======");
-		sc.append("Name: ").appendln(this.name).appendNewLine();
+		sc.append("Name: ")
+				.appendln(this.name)
+				.appendNewLine();
 		sc.appendln("= CHARACTERS");
 		sc.appendln("------------");
 		for (Character c : this.characters.keySet()) {

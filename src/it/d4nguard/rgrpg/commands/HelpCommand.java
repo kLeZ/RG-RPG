@@ -1,5 +1,5 @@
 /*
- * Copyright (C) 2019 Alessandro 'kLeZ' Accardo
+ * Copyright (C) 2020 Alessandro 'kLeZ' Accardo
  *
  * This file is part of RG-RPG.
  *
@@ -35,12 +35,15 @@ public class HelpCommand implements Command {
 			Reflections reflections = Context.getReflections();
 			Set<Class<? extends Command>> commands = reflections.getSubTypesOf(Command.class);
 			for (Class<? extends Command> cmd : commands) {
-				Context.println(String.format("%s: %s", StringUtils.decapitalize(cmd.getSimpleName().replace("Command", "")), CommandsInterpreter.newCommand(cmd).getDescription()));
+				Context.println(String.format("%s: %s", StringUtils.decapitalize(cmd.getSimpleName()
+						.replace("Command", "")), CommandsInterpreter.newCommand(cmd)
+						.getDescription()));
 			}
 			Context.println();
 		} else {
 			try {
-				Context.println(CommandsInterpreter.resolveCommand(args[0]).getHelp());
+				Context.println(CommandsInterpreter.resolveCommand(args[0])
+						.getHelp());
 				Context.println();
 			} catch (ClassNotFoundException e) {
 				Context.println(String.format(Context.getString("help.err.nohelp"), args[0]));

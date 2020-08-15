@@ -1,5 +1,5 @@
 /*
- * Copyright (C) 2019 Alessandro 'kLeZ' Accardo
+ * Copyright (C) 2020 Alessandro 'kLeZ' Accardo
  *
  * This file is part of RG-RPG.
  *
@@ -163,7 +163,8 @@ public class Character extends it.d4nguard.rgrpg.profile.Character {
 	public int getHealthPoints(boolean current) {
 		int hp = 0;
 		for (Class c : classes)
-			hp += NumericUtils.sum(abilityScores.getConstitution().getModifier(), c.getHitDiceResultPool());
+			hp += NumericUtils.sum(abilityScores.getConstitution()
+					.getModifier(), c.getHitDiceResultPool());
 		hp = NumericUtils.sum(hp, hpModifiers);
 		return (current ? NumericUtils.sum(hp, -damage) : hp);
 	}
@@ -192,38 +193,50 @@ public class Character extends it.d4nguard.rgrpg.profile.Character {
 			bab += c.getBab(attack);
 		switch (type) {
 			case Melee:
-				bab += race.getSize().getModifier();
-				bab += abilityScores.getStrength().getModifier();
+				bab += race.getSize()
+						.getModifier();
+				bab += abilityScores.getStrength()
+						.getModifier();
 				break;
 			case Ranged:
-				bab += race.getSize().getModifier();
-				bab += abilityScores.getDexterity().getModifier();
+				bab += race.getSize()
+						.getModifier();
+				bab += abilityScores.getDexterity()
+						.getModifier();
 				break;
 			case Grapple:
-				bab += race.getSize().getGrapple();
-				bab += abilityScores.getStrength().getModifier();
+				bab += race.getSize()
+						.getGrapple();
+				bab += abilityScores.getStrength()
+						.getModifier();
 				break;
 		}
 		return NumericUtils.sum(bab, babModifiers);
 	}
 
 	public int getMaxDexterity() {
-		return NumericUtils.min(abilityScores.getDexterity().getModifier(), equipment.getArmor().getMaxDexterity());
+		return NumericUtils.min(abilityScores.getDexterity()
+				.getModifier(), equipment.getArmor()
+				.getMaxDexterity());
 	}
 
 	public int getArmorClass(ArmorClassType type) {
 		int ac = 10;
 		switch (type) {
 			case Normal:
-				ac += equipment.getArmor().getArmorClass();
-				ac += equipment.getShield().getArmorClass();
+				ac += equipment.getArmor()
+						.getArmorClass();
+				ac += equipment.getShield()
+						.getArmorClass();
 				ac += getMaxDexterity();
 				ac += race.getArmorClass();
 				ac = NumericUtils.sum(ac, dodgeBonuses);
 				break;
 			case FlatFooted: // Denies DEX
-				ac += equipment.getArmor().getArmorClass();
-				ac += equipment.getShield().getArmorClass();
+				ac += equipment.getArmor()
+						.getArmorClass();
+				ac += equipment.getShield()
+						.getArmorClass();
 				ac += race.getArmorClass();
 				break;
 			case Touch: // Denies ARM, SHI, NAT
@@ -231,7 +244,8 @@ public class Character extends it.d4nguard.rgrpg.profile.Character {
 				ac = NumericUtils.sum(ac, dodgeBonuses);
 				break;
 		}
-		ac += race.getSize().getModifier();
+		ac += race.getSize()
+				.getModifier();
 		ac += deflection;
 		return NumericUtils.sum(ac, acModifiers);
 	}
@@ -242,13 +256,16 @@ public class Character extends it.d4nguard.rgrpg.profile.Character {
 			save += c.getSavingThrow(type);
 		switch (type) {
 			case Fortitude:
-				save += abilityScores.getConstitution().getModifier();
+				save += abilityScores.getConstitution()
+						.getModifier();
 				break;
 			case Reflexes:
-				save += abilityScores.getDexterity().getModifier();
+				save += abilityScores.getDexterity()
+						.getModifier();
 				break;
 			case WillPower:
-				save += abilityScores.getWisdom().getModifier();
+				save += abilityScores.getWisdom()
+						.getModifier();
 				break;
 		}
 		return NumericUtils.sum(save, stModifiers);
