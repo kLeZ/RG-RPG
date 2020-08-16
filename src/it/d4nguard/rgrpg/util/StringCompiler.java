@@ -21,8 +21,7 @@ package it.d4nguard.rgrpg.util;
 
 import it.d4nguard.rgrpg.util.dynacast.DynaManipulator;
 import it.d4nguard.rgrpg.util.dynacast.DynaManipulatorException;
-import org.apache.commons.lang3.text.StrMatcher;
-import org.apache.commons.lang3.text.StrTokenizer;
+import org.apache.commons.text.StringTokenizer;
 
 import java.io.Reader;
 import java.io.Serializable;
@@ -32,6 +31,7 @@ import java.util.Arrays;
 import java.util.Iterator;
 import java.util.List;
 
+@SuppressWarnings("UnusedReturnValue")
 public class StringCompiler implements CharSequence, Appendable, Serializable {
 	//-----------------------------------------------------------------------
 
@@ -516,9 +516,8 @@ public class StringCompiler implements CharSequence, Appendable, Serializable {
 	 */
 	public StringCompiler appendAll(Iterable<?> iterable) {
 		if (iterable != null) {
-			Iterator<?> it = iterable.iterator();
-			while (it.hasNext()) {
-				append(it.next());
+			for (final Object o : iterable) {
+				append(o);
 			}
 		}
 		return this;
@@ -1298,13 +1297,13 @@ public class StringCompiler implements CharSequence, Appendable, Serializable {
 	 * The returned tokenizer is linked to this builder. You may intermix calls
 	 * to the buider and tokenizer within certain limits, however there is no
 	 * synchronization. Once the tokenizer has been used once, it must be
-	 * {@link StrTokenizer#reset() reset} to pickup the latest changes in the
+	 * {@link StringTokenizer#reset() reset} to pickup the latest changes in the
 	 * builder. For example:
 	 *
 	 * <pre>
 	 * StringCompiler b = new StringCompiler();
 	 * b.append(&quot;a b &quot;);
-	 * StrTokenizer t = b.asTokenizer();
+	 * StringTokenizer t = b.asTokenizer();
 	 * String[] tokens1 = t.getTokenArray(); // returns a,b
 	 * b.append(&quot;c d &quot;);
 	 * String[] tokens2 = t.getTokenArray(); // returns a,b (c and d ignored)
@@ -1316,13 +1315,13 @@ public class StringCompiler implements CharSequence, Appendable, Serializable {
 	 * call the set methods on the tokenizer to alter how it tokenizes. Just
 	 * remember to call reset when you want to pickup builder changes.
 	 * <p>
-	 * Calling {@link StrTokenizer#reset(String)} or
-	 * {@link StrTokenizer#reset(char[])} with a non-null value will break the
+	 * Calling {@link StringTokenizer#reset(String)} or
+	 * {@link StringTokenizer#reset(char[])} with a non-null value will break the
 	 * link with the builder.
 	 *
 	 * @return a tokenizer that is linked to this builder
 	 */
-	public StrTokenizer asTokenizer() {
+	public StringTokenizer asTokenizer() {
 		return new StringCompilerTokenizer();
 	}
 
@@ -1438,23 +1437,6 @@ public class StringCompiler implements CharSequence, Appendable, Serializable {
 		return indexOf(str, 0) >= 0;
 	}
 
-	/**
-	 * Checks if the string builder contains a string matched using the
-	 * specified matcher.
-	 * <p>
-	 * Matchers can be used to perform advanced searching behaviour. For example
-	 * you could write a matcher to search for the character 'a' followed by a
-	 * number.
-	 *
-	 * @param matcher
-	 * 		the matcher to use, null returns -1
-	 *
-	 * @return true if the matcher finds a match in the builder
-	 */
-	public boolean contains(StrMatcher matcher) {
-		return indexOf(matcher, 0) >= 0;
-	}
-
 	//-----------------------------------------------------------------------
 
 	/**
@@ -1525,22 +1507,6 @@ public class StringCompiler implements CharSequence, Appendable, Serializable {
 		return this;
 	}
 
-	/**
-	 * Deletes all parts of the builder that the matcher matches.
-	 * <p>
-	 * Matchers can be used to perform advanced deletion behaviour. For example
-	 * you could write a matcher to delete all occurances where the character
-	 * 'a' is followed by a number.
-	 *
-	 * @param matcher
-	 * 		the matcher to use to find the deletion, null causes no action
-	 *
-	 * @return this, to enable chaining
-	 */
-	public StringCompiler deleteAll(StrMatcher matcher) {
-		return replace(matcher, null, 0, size, -1);
-	}
-
 	//-----------------------------------------------------------------------
 
 	/**
@@ -1603,22 +1569,6 @@ public class StringCompiler implements CharSequence, Appendable, Serializable {
 			}
 		}
 		return this;
-	}
-
-	/**
-	 * Deletes the first match within the builder using the specified matcher.
-	 * <p>
-	 * Matchers can be used to perform advanced deletion behaviour. For example
-	 * you could write a matcher to delete where the character 'a' is followed
-	 * by a number.
-	 *
-	 * @param matcher
-	 * 		the matcher to use to find the deletion, null causes no action
-	 *
-	 * @return this, to enable chaining
-	 */
-	public StringCompiler deleteFirst(StrMatcher matcher) {
-		return replace(matcher, null, 0, size, 1);
 	}
 
 	/**
@@ -1895,7 +1845,7 @@ public class StringCompiler implements CharSequence, Appendable, Serializable {
 	 * @return the first index of the character, or -1 if not found
 	 */
 	public int indexOf(char ch, int startIndex) {
-		startIndex = (startIndex < 0 ? 0 : startIndex);
+		startIndex = (Math.max(startIndex, 0));
 		if (startIndex >= size) {
 			return -1;
 		}
@@ -1939,7 +1889,7 @@ public class StringCompiler implements CharSequence, Appendable, Serializable {
 	 * @return the first index of the string, or -1 if not found
 	 */
 	public int indexOf(String str, int startIndex) {
-		startIndex = (startIndex < 0 ? 0 : startIndex);
+		startIndex = (Math.max(startIndex, 0));
 		if (str == null || startIndex >= size) {
 			return -1;
 		}
@@ -1963,50 +1913,6 @@ public class StringCompiler implements CharSequence, Appendable, Serializable {
 				}
 			}
 			return i;
-		}
-		return -1;
-	}
-
-	/**
-	 * Searches the string builder using the matcher to find the first match.
-	 * <p>
-	 * Matchers can be used to perform advanced searching behaviour. For example
-	 * you could write a matcher to find the character 'a' followed by a number.
-	 *
-	 * @param matcher
-	 * 		the matcher to use, null returns -1
-	 *
-	 * @return the first index matched, or -1 if not found
-	 */
-	public int indexOf(StrMatcher matcher) {
-		return indexOf(matcher, 0);
-	}
-
-	/**
-	 * Searches the string builder using the matcher to find the first
-	 * match searching from the given index.
-	 * <p>
-	 * Matchers can be used to perform advanced searching behaviour. For example
-	 * you could write a matcher to find the character 'a' followed by a number.
-	 *
-	 * @param matcher
-	 * 		the matcher to use, null returns -1
-	 * @param startIndex
-	 * 		the index to start at, invalid index rounded to edge
-	 *
-	 * @return the first index matched, or -1 if not found
-	 */
-	public int indexOf(StrMatcher matcher, int startIndex) {
-		startIndex = (startIndex < 0 ? 0 : startIndex);
-		if (matcher == null || startIndex >= size) {
-			return -1;
-		}
-		int len = size;
-		char[] buf = buffer;
-		for (int i = startIndex; i < len; i++) {
-			if (matcher.isMatch(buf, i, startIndex, len) > 0) {
-				return i;
-			}
 		}
 		return -1;
 	}
@@ -2367,50 +2273,6 @@ public class StringCompiler implements CharSequence, Appendable, Serializable {
 	}
 
 	/**
-	 * Searches the string builder using the matcher to find the last match.
-	 * <p>
-	 * Matchers can be used to perform advanced searching behaviour. For example
-	 * you could write a matcher to find the character 'a' followed by a number.
-	 *
-	 * @param matcher
-	 * 		the matcher to use, null returns -1
-	 *
-	 * @return the last index matched, or -1 if not found
-	 */
-	public int lastIndexOf(StrMatcher matcher) {
-		return lastIndexOf(matcher, size);
-	}
-
-	/**
-	 * Searches the string builder using the matcher to find the last
-	 * match searching from the given index.
-	 * <p>
-	 * Matchers can be used to perform advanced searching behaviour. For example
-	 * you could write a matcher to find the character 'a' followed by a number.
-	 *
-	 * @param matcher
-	 * 		the matcher to use, null returns -1
-	 * @param startIndex
-	 * 		the index to start at, invalid index rounded to edge
-	 *
-	 * @return the last index matched, or -1 if not found
-	 */
-	public int lastIndexOf(StrMatcher matcher, int startIndex) {
-		startIndex = (startIndex >= size ? size - 1 : startIndex);
-		if (matcher == null || startIndex < 0) {
-			return -1;
-		}
-		char[] buf = buffer;
-		int endIndex = startIndex + 1;
-		for (int i = startIndex; i >= 0; i--) {
-			if (matcher.isMatch(buf, i, 0, endIndex) > 0) {
-				return i;
-			}
-		}
-		return -1;
-	}
-
-	/**
 	 * Extracts the leftmost characters from the string builder without
 	 * throwing an exception.
 	 * <p>
@@ -2519,35 +2381,6 @@ public class StringCompiler implements CharSequence, Appendable, Serializable {
 		return this;
 	}
 
-	/**
-	 * Advanced search and replaces within the builder using a matcher.
-	 * <p>
-	 * Matchers can be used to perform advanced behaviour. For example you could
-	 * write a matcher to delete all occurances where the character 'a' is
-	 * followed by a number.
-	 *
-	 * @param matcher
-	 * 		the matcher to use to find the deletion, null causes no action
-	 * @param replaceStr
-	 * 		the string to replace the match with, null is a delete
-	 * @param startIndex
-	 * 		the start index, inclusive, must be valid
-	 * @param endIndex
-	 * 		the end index, exclusive, must be valid except
-	 * 		that if too large it is treated as end of string
-	 * @param replaceCount
-	 * 		the number of times to replace, -1 for replace all
-	 *
-	 * @return this, to enable chaining
-	 *
-	 * @throws IndexOutOfBoundsException
-	 * 		if start index is invalid
-	 */
-	public StringCompiler replace(StrMatcher matcher, String replaceStr, int startIndex, int endIndex, int replaceCount) {
-		endIndex = validateRange(startIndex, endIndex);
-		return replaceImpl(matcher, replaceStr, startIndex, endIndex, replaceCount);
-	}
-
 	// -----------------------------------------------------------------------
 
 	/**
@@ -2601,26 +2434,6 @@ public class StringCompiler implements CharSequence, Appendable, Serializable {
 	//-----------------------------------------------------------------------
 
 	/**
-	 * Replaces all matches within the builder with the replace string.
-	 * <p>
-	 * Matchers can be used to perform advanced replace behaviour. For example
-	 * you could write a matcher to replace all occurances where the character
-	 * 'a' is followed by a number.
-	 *
-	 * @param matcher
-	 * 		the matcher to use to find the deletion, null causes no action
-	 * @param replaceStr
-	 * 		the replace string, null is equivalent to an empty string
-	 *
-	 * @return this, to enable chaining
-	 */
-	public StringCompiler replaceAll(StrMatcher matcher, String replaceStr) {
-		return replace(matcher, replaceStr, 0, size, -1);
-	}
-
-	//-----------------------------------------------------------------------
-
-	/**
 	 * Replaces the first instance of the search character with the
 	 * replace character in the builder.
 	 *
@@ -2663,24 +2476,6 @@ public class StringCompiler implements CharSequence, Appendable, Serializable {
 			}
 		}
 		return this;
-	}
-
-	/**
-	 * Replaces the first match within the builder with the replace string.
-	 * <p>
-	 * Matchers can be used to perform advanced replace behaviour. For example
-	 * you could write a matcher to replace where the character 'a' is followed
-	 * by a number.
-	 *
-	 * @param matcher
-	 * 		the matcher to use to find the deletion, null causes no action
-	 * @param replaceStr
-	 * 		the replace string, null is equivalent to an empty string
-	 *
-	 * @return this, to enable chaining
-	 */
-	public StringCompiler replaceFirst(StrMatcher matcher, String replaceStr) {
-		return replace(matcher, replaceStr, 0, size, 1);
 	}
 
 	/**
@@ -3035,49 +2830,6 @@ public class StringCompiler implements CharSequence, Appendable, Serializable {
 		}
 	}
 
-	/**
-	 * Replaces within the builder using a matcher.
-	 * <p>
-	 * Matchers can be used to perform advanced behaviour. For example you could
-	 * write a matcher to delete all occurances where the character 'a' is
-	 * followed by a number.
-	 *
-	 * @param matcher
-	 * 		the matcher to use to find the deletion, null causes no action
-	 * @param replaceStr
-	 * 		the string to replace the match with, null is a delete
-	 * @param from
-	 * 		the start index, must be valid
-	 * @param to
-	 * 		the end index (exclusive), must be valid
-	 * @param replaceCount
-	 * 		the number of times to replace, -1 for replace all
-	 *
-	 * @return this, to enable chaining
-	 *
-	 * @throws IndexOutOfBoundsException
-	 * 		if any index is invalid
-	 */
-	private StringCompiler replaceImpl(StrMatcher matcher, String replaceStr, int from, int to, int replaceCount) {
-		if (matcher == null || size == 0) {
-			return this;
-		}
-		int replaceLen = (replaceStr == null ? 0 : replaceStr.length());
-		char[] buf = buffer;
-		for (int i = from; i < to && replaceCount != 0; i++) {
-			int removeLen = matcher.isMatch(buf, i, from, to);
-			if (removeLen > 0) {
-				replaceImpl(i, i + removeLen, removeLen, replaceStr, replaceLen);
-				to = to - removeLen + replaceLen;
-				i = i + replaceLen - 1;
-				if (replaceCount > 0) {
-					replaceCount--;
-				}
-			}
-		}
-		return this;
-	}
-
 	//-----------------------------------------------------------------------
 
 	/**
@@ -3216,7 +2968,7 @@ public class StringCompiler implements CharSequence, Appendable, Serializable {
 	/**
 	 * Inner class to allow StringCompiler to operate as a tokenizer.
 	 */
-	class StringCompilerTokenizer extends StrTokenizer {
+	class StringCompilerTokenizer extends StringTokenizer {
 		/**
 		 * Default constructor.
 		 */

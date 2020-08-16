@@ -1,5 +1,5 @@
 /*
- * Copyright (C) 2019 Alessandro 'kLeZ' Accardo
+ * Copyright (C) 2020 Alessandro 'kLeZ' Accardo
  *
  * This file is part of RG-RPG.
  *
@@ -30,7 +30,7 @@ import java.util.Locale;
 import java.util.ResourceBundle;
 
 public class XMLResourceBundleControl extends ResourceBundle.Control {
-	private static String XML = "xml";
+	private static final String XML = "xml";
 
 	public static void main(String[] args) {
 		ResourceBundle bundle = ResourceBundle.getBundle("Strings", new XMLResourceBundleControl());
@@ -42,12 +42,12 @@ public class XMLResourceBundleControl extends ResourceBundle.Control {
 		return Collections.singletonList(XML);
 	}
 
-	public ResourceBundle newBundle(String baseName, Locale locale, String format, ClassLoader loader, boolean reload) throws IllegalAccessException, InstantiationException, IOException {
+	public ResourceBundle newBundle(String baseName, Locale locale, String format, ClassLoader loader, boolean reload) throws IOException {
 
-		if ((baseName == null) || (locale == null) || (format == null) || (loader == null)) {
+		if (baseName == null || locale == null || format == null || loader == null) {
 			throw new NullPointerException();
 		}
-		ResourceBundle bundle = null;
+		ResourceBundle bundle;
 		if (!format.equals(XML)) {
 			return null;
 		}

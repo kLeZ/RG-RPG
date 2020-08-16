@@ -50,9 +50,9 @@ import java.util.Map;
  * @version 15 October 1999
  */
 public class DefaultMemberAccess implements MemberAccess {
-	public boolean allowPrivateAccess = false;
-	public boolean allowProtectedAccess = false;
-	public boolean allowPackageProtectedAccess = false;
+	public boolean allowPrivateAccess;
+	public boolean allowProtectedAccess;
+	public boolean allowPackageProtectedAccess;
 
 	/*===================================================================
 		Constructors
@@ -104,7 +104,7 @@ public class DefaultMemberAccess implements MemberAccess {
 		if (isAccessible(context, target, member, propertyName)) {
 			AccessibleObject accessible = (AccessibleObject) member;
 
-			if (!accessible.isAccessible()) {
+			if (!accessible.canAccess(target)) {
 				result = Boolean.FALSE;
 				accessible.setAccessible(true);
 			}
@@ -116,11 +116,11 @@ public class DefaultMemberAccess implements MemberAccess {
 		if (state != null) {
 			final AccessibleObject accessible = (AccessibleObject) member;
 			@SuppressWarnings("UnnecessaryUnboxing")
-			final boolean stateboolean = ((Boolean) state).booleanValue();  // Using twice (avoid unboxing)
-			if (!stateboolean) {
-				accessible.setAccessible(stateboolean);
+			final boolean stateBoolean = ((Boolean) state).booleanValue();  // Using twice (avoid unboxing)
+			if (!stateBoolean) {
+				accessible.setAccessible(false);
 			} else {
-				throw new IllegalArgumentException("Improper restore state [" + stateboolean + "] for target [" + target + "], member [" + member + "], propertyName [" + propertyName + "]");
+				throw new IllegalArgumentException("Improper restore state [%s] for target [%s], member [%s], propertyName [%s]".formatted(state, target, member, propertyName));
 			}
 		}
 	}

@@ -25,6 +25,7 @@ import it.d4nguard.rgrpg.util.Utils;
 import it.d4nguard.rgrpg.util.dynacast.Adapter;
 import it.d4nguard.rgrpg.util.dynacast.TypeAdapter;
 
+import java.lang.reflect.InvocationTargetException;
 import java.lang.reflect.Modifier;
 import java.lang.reflect.ParameterizedType;
 import java.lang.reflect.Type;
@@ -64,8 +65,9 @@ public class CollectionAdapter<T> extends AbstractAdapter<Collection<T>> {
 				ret = new HashSet<>();
 		} else if (!Modifier.isAbstract(mod)) {
 			try {
-				ret = collType.newInstance();
-			} catch (InstantiationException | IllegalAccessException e) {
+				ret = collType.getDeclaredConstructor()
+						.newInstance();
+			} catch (InstantiationException | IllegalAccessException | NoSuchMethodException | InvocationTargetException e) {
 				Context.printThrowable(e);
 			}
 		}

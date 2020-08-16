@@ -1,5 +1,5 @@
 /*
- * Copyright (C) 2019 Alessandro 'kLeZ' Accardo
+ * Copyright (C) 2020 Alessandro 'kLeZ' Accardo
  *
  * This file is part of RG-RPG.
  *
@@ -24,7 +24,7 @@ import java.io.InputStream;
 import java.util.*;
 
 public class XMLResourceBundle extends ResourceBundle {
-	private Properties props;
+	private final Properties props;
 
 	XMLResourceBundle(InputStream stream) throws IOException {
 		props = new Properties();
