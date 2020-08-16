@@ -1,5 +1,5 @@
 /*
- * Copyright (C) 2019 Alessandro 'kLeZ' Accardo
+ * Copyright (C) 2020 Alessandro 'kLeZ' Accardo
  *
  * This file is part of RG-RPG.
  *
@@ -30,11 +30,10 @@ public abstract class Class implements Serializable {
 	private static final long serialVersionUID = -8001346462155284274L;
 
 	private final String name;
-	private final Set<Integer> hitDiceResultPool;
+	private final Set<Integer> hitDiceResultPool = new HashSet<>();
 
 	public Class(String name) {
 		this.name = name;
-		this.hitDiceResultPool = new HashSet<>();
 	}
 
 	public String getName() {
@@ -46,19 +45,11 @@ public abstract class Class implements Serializable {
 	}
 
 	public int getSavingThrow(SavingThrowType type) {
-		int sThrow = 0;
-		switch (type) {
-			case Fortitude:
-				sThrow += getFortitude();
-				break;
-			case Reflexes:
-				sThrow += getReflexes();
-				break;
-			case WillPower:
-				sThrow += getWillPower();
-				break;
-		}
-		return sThrow;
+		return switch (type) {
+			case Fortitude -> getFortitude();
+			case Reflexes -> getReflexes();
+			case WillPower -> getWillPower();
+		};
 	}
 
 	/**
@@ -69,7 +60,7 @@ public abstract class Class implements Serializable {
 	 * 		is the index, counting from 1, of the attack in the list of
 	 * 		attacks the class provides to the character.
 	 *
-	 * @return
+	 * @return the Base Attack Bonus (BAB) of the attack you want.
 	 */
 	public abstract int getBab(int attack);
 
