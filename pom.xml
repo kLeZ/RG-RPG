@@ -66,7 +66,7 @@
 		<reflections.version>0.9.12</reflections.version>
 		<jscience.version>4.3.1</jscience.version>
 		<commons-lang3.version>3.11</commons-lang3.version>
-		<junit.version>4.13</junit.version>
+		<junit.version>4.13.1</junit.version>
 		<ognl.version>3.2.14</ognl.version>
 		<text-io.version>3.4.1</text-io.version>
 	</properties>
