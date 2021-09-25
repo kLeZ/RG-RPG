@@ -1,5 +1,5 @@
 /*
- * Copyright (C) 2020 Alessandro 'kLeZ' Accardo
+ * Copyright (C) 2021 Alessandro 'kLeZ' Accardo
  *
  * This file is part of RG-RPG.
  *
@@ -21,18 +21,24 @@ package it.d4nguard.rgrpg;
 
 import it.d4nguard.rgrpg.commands.VersionCommand;
 
+import java.io.File;
+import java.util.Objects;
 import java.util.Scanner;
 
 public class Welcome {
+	private static final String NAME = Welcome.class.getName();
+
 	public static void print() {
 		Context.println(Context.getString("welcome"));
 		new VersionCommand().execute();
-		Scanner scn = new Scanner(ClassLoader.getSystemClassLoader()
-				.getResourceAsStream("it/d4nguard/rgrpg/Welcome.md"));
-		while (scn.hasNext()) {
-			Context.println(scn.nextLine());
+		ClassLoader loader = ClassLoader.getSystemClassLoader();
+		String welcomePath = NAME.replaceAll("\\.", File.separator);
+		final String welcomeFile = "%s.org".formatted(welcomePath);
+		try (Scanner scn = new Scanner(Objects.requireNonNull(loader.getResourceAsStream(welcomeFile)))) {
+			while (scn.hasNext()) {
+				Context.println(scn.nextLine());
+			}
 		}
-		scn.close();
 		Context.println();
 	}
 }

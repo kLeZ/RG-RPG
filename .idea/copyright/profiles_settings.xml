@@ -3,5 +3,10 @@
     <module2copyright>
       <element module="All" copyright="GPLv3" />
     </module2copyright>
+    <LanguageOptions name="__TEMPLATE__">
+      <option name="lenBefore" value="110" />
+      <option name="lenAfter" value="110" />
+      <option name="box" value="true" />
+    </LanguageOptions>
   </settings>
 </component>

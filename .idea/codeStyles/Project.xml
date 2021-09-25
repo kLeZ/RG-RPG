@@ -1,0 +1,134 @@
+<component name="ProjectCodeStyleConfiguration">
+  <code_scheme name="Project" version="173">
+    <option name="OTHER_INDENT_OPTIONS">
+      <value>
+        <option name="USE_TAB_CHARACTER" value="true" />
+      </value>
+    </option>
+    <option name="RIGHT_MARGIN" value="80" />
+    <option name="FORMATTER_TAGS_ENABLED" value="true" />
+    <option name="FORMATTER_TAGS_ACCEPT_REGEXP" value="true" />
+    <option name="SOFT_MARGINS" value="80,120,150,220,256" />
+    <AndroidXmlCodeStyleSettings>
+      <option name="USE_CUSTOM_SETTINGS" value="true" />
+    </AndroidXmlCodeStyleSettings>
+    <JavaCodeStyleSettings>
+      <option name="GENERATE_FINAL_LOCALS" value="true" />
+      <option name="GENERATE_FINAL_PARAMETERS" value="true" />
+      <option name="REPLACE_INSTANCEOF_AND_CAST" value="true" />
+      <option name="PACKAGES_TO_USE_IMPORT_ON_DEMAND">
+        <value>
+          <package name="java.awt" withSubpackages="false" static="false" />
+          <package name="javax.swing" withSubpackages="false" static="false" />
+          <package name="org.hamcrest.CoreMatchers" withSubpackages="true" static="true" />
+          <package name="org.junit.Assert" withSubpackages="true" static="true" />
+        </value>
+      </option>
+      <option name="JD_ADD_BLANK_AFTER_PARM_COMMENTS" value="true" />
+      <option name="JD_ADD_BLANK_AFTER_RETURN" value="true" />
+      <option name="JD_DO_NOT_WRAP_ONE_LINE_COMMENTS" value="true" />
+      <option name="JD_PRESERVE_LINE_FEEDS" value="true" />
+      <option name="JD_PARAM_DESCRIPTION_ON_NEW_LINE" value="true" />
+    </JavaCodeStyleSettings>
+    <MarkdownNavigatorCodeStyleSettings>
+      <option name="RIGHT_MARGIN" value="72" />
+    </MarkdownNavigatorCodeStyleSettings>
+    <ScalaCodeStyleSettings>
+      <option name="MULTILINE_STRING_CLOSING_QUOTES_ON_NEW_LINE" value="true" />
+    </ScalaCodeStyleSettings>
+    <SqlCodeStyleSettings version="6">
+      <option name="KEYWORD_CASE" value="2" />
+      <option name="TYPE_CASE" value="3" />
+      <option name="ALIAS_CASE" value="4" />
+      <option name="ORIGINAL_CASE" value="true" />
+      <option name="QUERY_IN_ONE_STRING" value="3" />
+      <option name="INSERT_INTO_NL" value="2" />
+      <option name="INSERT_EL_WRAP" value="2" />
+      <option name="SELECT_NEW_LINE_AFTER_ALL_DISTINCT" value="true" />
+      <option name="SELECT_USE_AS_WORD" value="1" />
+      <option name="FROM_WRAP_ON" value="true" />
+      <option name="FROM_ALIGN_JOIN_TABLES" value="true" />
+      <option name="FROM_ALIGN_ALIASES" value="true" />
+      <option name="FROM_ONLY_JOIN_INDENT" value="1" />
+      <option name="TABLE_CONTENT" value="2" />
+      <option name="TABLE_ALTER_INSTRUCTION_WRAP" value="2" />
+      <option name="POST_OPT_WRAP_2" value="false" />
+      <option name="POST_OPT_INDENT" value="false" />
+      <option name="POST_OPT_ALIGN" value="false" />
+      <option name="ROUTINE_ARG_OPENING" value="3" />
+      <option name="ROUTINE_ARG_CONTENT" value="2" />
+      <option name="ROUTINE_ARG_CLOSING" value="4" />
+      <option name="ROUTINE_ARG_WRAP" value="2" />
+      <option name="IMP_DECLARE_EL_WRAP" value="2" />
+      <option name="EXPR_CASE_WHEN_WRAP" value="false" />
+      <option name="EXPR_CASE_THEN_ALIGN" value="true" />
+      <option name="EXPR_CASE_ELSE_ALIGN_THEN" value="true" />
+      <option name="EXPR_CASE_END" value="1" />
+    </SqlCodeStyleSettings>
+    <XML>
+      <option name="XML_ATTRIBUTE_WRAP" value="0" />
+      <option name="XML_TEXT_WRAP" value="0" />
+      <option name="XML_KEEP_LINE_BREAKS" value="false" />
+      <option name="XML_KEEP_BLANK_LINES" value="0" />
+      <option name="XML_SPACE_INSIDE_EMPTY_TAG" value="true" />
+      <option name="XML_WHITE_SPACE_AROUND_CDATA" value="1" />
+    </XML>
+    <codeStyleSettings language="Groovy">
+      <indentOptions>
+        <option name="USE_TAB_CHARACTER" value="true" />
+        <option name="SMART_TABS" value="true" />
+      </indentOptions>
+    </codeStyleSettings>
+    <codeStyleSettings language="JAVA">
+      <option name="KEEP_LINE_BREAKS" value="false" />
+      <option name="KEEP_FIRST_COLUMN_COMMENT" value="false" />
+      <option name="KEEP_CONTROL_STATEMENT_IN_ONE_LINE" value="false" />
+      <option name="KEEP_BLANK_LINES_IN_DECLARATIONS" value="1" />
+      <option name="KEEP_BLANK_LINES_IN_CODE" value="1" />
+      <option name="KEEP_BLANK_LINES_BETWEEN_PACKAGE_DECLARATION_AND_HEADER" value="0" />
+      <option name="KEEP_BLANK_LINES_BEFORE_RBRACE" value="0" />
+      <option name="ALIGN_MULTILINE_PARAMETERS" value="false" />
+      <option name="ALIGN_MULTILINE_RESOURCES" value="false" />
+      <option name="ALIGN_MULTILINE_FOR" value="false" />
+      <option name="ALIGN_MULTILINE_ARRAY_INITIALIZER_EXPRESSION" value="true" />
+      <option name="SPACE_WITHIN_ARRAY_INITIALIZER_BRACES" value="true" />
+      <option name="SPACE_WITHIN_EMPTY_ARRAY_INITIALIZER_BRACES" value="true" />
+      <option name="SPACE_BEFORE_ARRAY_INITIALIZER_LBRACE" value="true" />
+      <option name="METHOD_CALL_CHAIN_WRAP" value="2" />
+      <option name="KEEP_SIMPLE_BLOCKS_IN_ONE_LINE" value="true" />
+      <option name="KEEP_SIMPLE_METHODS_IN_ONE_LINE" value="true" />
+      <option name="KEEP_SIMPLE_LAMBDAS_IN_ONE_LINE" value="true" />
+      <option name="KEEP_SIMPLE_CLASSES_IN_ONE_LINE" value="true" />
+      <option name="ARRAY_INITIALIZER_WRAP" value="5" />
+      <option name="ARRAY_INITIALIZER_LBRACE_ON_NEXT_LINE" value="true" />
+      <option name="ARRAY_INITIALIZER_RBRACE_ON_NEXT_LINE" value="true" />
+      <option name="DOWHILE_BRACE_FORCE" value="3" />
+      <option name="WHILE_BRACE_FORCE" value="3" />
+      <option name="VARIABLE_ANNOTATION_WRAP" value="2" />
+      <option name="ENUM_CONSTANTS_WRAP" value="2" />
+      <indentOptions>
+        <option name="USE_TAB_CHARACTER" value="true" />
+        <option name="SMART_TABS" value="true" />
+      </indentOptions>
+    </codeStyleSettings>
+    <codeStyleSettings language="SQL">
+      <option name="KEEP_LINE_BREAKS" value="false" />
+      <indentOptions>
+        <option name="SMART_TABS" value="true" />
+      </indentOptions>
+    </codeStyleSettings>
+    <codeStyleSettings language="Shell Script">
+      <indentOptions>
+        <option name="INDENT_SIZE" value="4" />
+        <option name="TAB_SIZE" value="4" />
+        <option name="USE_TAB_CHARACTER" value="true" />
+      </indentOptions>
+    </codeStyleSettings>
+    <codeStyleSettings language="XML">
+      <indentOptions>
+        <option name="USE_TAB_CHARACTER" value="true" />
+        <option name="SMART_TABS" value="true" />
+      </indentOptions>
+    </codeStyleSettings>
+  </code_scheme>
+</component>

@@ -1,5 +1,5 @@
 /*
- * Copyright (C) 2020 Alessandro 'kLeZ' Accardo
+ * Copyright (C) 2021 Alessandro 'kLeZ' Accardo
  *
  * This file is part of RG-RPG.
  *
@@ -286,6 +286,6 @@ public class Dice {
 	}
 
 	public String toEnclosedString() {
-		return String.format("%s%s%s", OPENED_DICE, toString(), CLOSED_DICE);
+		return String.format("%s%s%s", OPENED_DICE, this, CLOSED_DICE);
 	}
 }

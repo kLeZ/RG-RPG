@@ -1,5 +1,5 @@
 <!--
-  ~ Copyright (C) 2020 Alessandro 'kLeZ' Accardo
+  ~ Copyright (C) 2021 Alessandro 'kLeZ' Accardo
   ~
   ~ This file is part of RG-RPG.
   ~
@@ -21,10 +21,10 @@
 	<modelVersion>4.0.0</modelVersion>
 	<groupId>it.d4nguard</groupId>
 	<artifactId>rgrpg</artifactId>
-	<version>0.0.2</version>
+	<version>0.0.3</version>
 	<packaging>jar</packaging>
 	<name>RG-RPG</name>
-	<url>http://github.com/kLeZ/RG-RPG</url>
+	<url>https://github.com/kLeZ/RG-RPG</url>
 	<description>RG-RPG is a Java-based text, roleplaying-gal game, in which you have to carry many girls. The RG-RPG acronym is a recursive one and it means &quot;RG-RPG is a Gal Role playing game Pointing on Girls.&quot;</description>
 	<organization>
 		<name>D4nGuARd</name>
@@ -32,8 +32,9 @@
 	<developers>
 		<developer>
 			<name>Alessandro Accardo</name>
-			<email>julius8774@gmail.com</email>
+			<email>klez@pm.me</email>
 			<organization>D4nGuARd</organization>
+			<url>https://klez.me</url>
 			<roles>
 				<role>Founder</role>
 			</roles>
@@ -51,11 +52,11 @@
 	<licenses>
 		<license>
 			<name>General Public License 3.0</name>
-			<url>http://www.gnu.org/licenses/gpl-3.0-standalone.html</url>
+			<url>https://www.gnu.org/licenses/gpl-3.0-standalone.html</url>
 		</license>
 	</licenses>
 	<properties>
-		<jdk.version>15</jdk.version>
+		<jdk.version>17</jdk.version>
 		<compiler-plugin.version>3.8.1</compiler-plugin.version>
 		<jar-plugin.version>3.2.0</jar-plugin.version>
 		<dependency-plugin.version>3.1.2</dependency-plugin.version>
@@ -65,16 +66,16 @@
 		<umlgraph.version>5.6.6</umlgraph.version>
 		<reflections.version>0.9.12</reflections.version>
 		<jscience.version>4.3.1</jscience.version>
-		<commons-lang3.version>3.11</commons-lang3.version>
-		<junit.version>4.13</junit.version>
-		<ognl.version>3.2.14</ognl.version>
+		<commons-lang3.version>3.12.0</commons-lang3.version>
+		<junit.version>4.13.2</junit.version>
+		<ognl.version>3.2.21</ognl.version>
 		<text-io.version>3.4.1</text-io.version>
 		<commons-text.version>1.9</commons-text.version>
 	</properties>
 	<repositories>
 		<repository>
 			<id>apache-snapshots</id>
-			<url>http://repository.apache.org/snapshots/</url>
+			<url>https://repository.apache.org/snapshots/</url>
 			<releases>
 				<enabled>false</enabled>
 			</releases>

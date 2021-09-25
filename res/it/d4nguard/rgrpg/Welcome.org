@@ -1,5 +1,4 @@
-RG-RPG
-======
+* RG-RPG
 
 RG-RPG is a Java-based text, roleplaying-gal game, in which you have to carry
 many girls. The RG-RPG acronym is a recursive one and it means "RG-RPG is a Gal
@@ -16,8 +15,7 @@ it is completed, and I hope you will file me any issue or improvement you find
 out during this game.
 
 
-COPYING
-=======
+* COPYING
 
 Copyright (C) 2020 Alessandro 'kLeZ' Accardo
 
@@ -34,4 +32,4 @@ MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
 GNU General Public License for more details.
 
 You should have received a copy of the GNU General Public License
-along with RG-RPG.  If not, see <http://www.gnu.org/licenses/>.
+along with RG-RPG.  If not, see [[http://www.gnu.org/licenses/]].

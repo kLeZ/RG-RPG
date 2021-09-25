@@ -1,5 +1,5 @@
 /*
- * Copyright (C) 2019 Alessandro 'kLeZ' Accardo
+ * Copyright (C) 2021 Alessandro 'kLeZ' Accardo
  *
  * This file is part of RG-RPG.
  *
