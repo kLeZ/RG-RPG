@@ -49,7 +49,7 @@ Please note that $ means own user's shell, besides # means root shell.
 COPYING
 =======
 
-Copyright (C) 2013 by Alessandro Accardo <julius8774@gmail.com>
+Copyright (C) 2019 Alessandro 'kLeZ' Accardo
 
 This program is free software: you can redistribute it and/or modify
 it under the terms of the GNU General Public License as published by
