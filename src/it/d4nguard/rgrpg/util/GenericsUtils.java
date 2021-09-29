@@ -38,6 +38,10 @@ public class GenericsUtils {
 		primitives.put("short", Short.class);
 	}
 
+	private GenericsUtils() {
+		throw new UtilityClassConstructorException("Cannot instantiate this class!");
+	}
+
 	public static <T> T valueOf(final Class<T> valueType, final String value) {
 		return unsafeValueOf(valueType, value, null);
 	}
@@ -105,7 +109,7 @@ public class GenericsUtils {
 					.newInstance() : value;
 		} catch (final InstantiationException | IllegalAccessException | NoSuchMethodException | InvocationTargetException e) {
 			final String fmt = "Type %s cannot be instantiated. Please ensure this call is well-formed.";
-			throw new RuntimeException(String.format(fmt, type.getName()));
+			throw new NotSoSafeGetterException(String.format(fmt, type.getName()));
 		}
 		return ret;
 	}
@@ -120,26 +124,23 @@ public class GenericsUtils {
 	 * @return the underlying class
 	 */
 	public static Class<?> getClass(final Type type) {
-		switch (type) {
-			case Class c:
-				return (Class<?>) type;
-			case ParameterizedType pt:
-				return getClass(pt.getRawType());
-			case GenericArrayType gat:
-				final Type componentType = gat.getGenericComponentType();
-				final Class<?> componentClass = getClass(componentType);
-				if (componentClass != null)
-					return Array.newInstance(componentClass, 0)
-							.getClass();
-				else
-					return null;
-			case TypeVariable<?> tv:
-				return tv.getGenericDeclaration()
+		if (type instanceof Class)
+			return (Class<?>) type;
+		else if (type instanceof ParameterizedType pt)
+			return getClass(pt.getRawType());
+		else if (type instanceof GenericArrayType gat) {
+			final Type componentType = gat.getGenericComponentType();
+			final Class<?> componentClass = getClass(componentType);
+			if (componentClass != null)
+				return Array.newInstance(componentClass, 0)
 						.getClass();
-			case null:
-			default:
+			else
 				return null;
-		}
+		} else if (type instanceof TypeVariable<?> tv)
+			return tv.getGenericDeclaration()
+					.getClass();
+		else
+			return null;
 	}
 
 	/**
@@ -203,7 +204,7 @@ public class GenericsUtils {
 			if (ret != null)
 				break;
 		}
-		if (ret == null)
+		if (ret == null && pt != null)
 			ret = (Class<?>) pt.getRawType();
 		return ret;
 	}
@@ -216,13 +217,16 @@ public class GenericsUtils {
 	}
 
 	public static Class<?> getClassFromType(Type t) {
-		return switch (t) {
-			case GenericArrayType gat -> getClass(gat.getGenericComponentType());
-			case ParameterizedType pt -> getClass(pt.getRawType());
-			case TypeVariable<?> tv -> getClass(tv.getBounds()[0]);
-			case WildcardType wt -> wt.getClass();
-			case null, default -> (Class<?>) t;
-		};
+		if (t instanceof GenericArrayType gat) {
+			return getClass(gat.getGenericComponentType());
+		} else if (t instanceof ParameterizedType pt) {
+			return getClass(pt.getRawType());
+		} else if (t instanceof TypeVariable<?> tv) {
+			return getClass(tv.getBounds()[0]);
+		} else if (t instanceof WildcardType wt) {
+			return wt.getClass();
+		} else
+			return (Class<?>) t;
 	}
 
 	public static Field safeGetDeclaredField(Class<?> clazz, String fieldName) {
