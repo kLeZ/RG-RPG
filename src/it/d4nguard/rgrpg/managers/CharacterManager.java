@@ -53,12 +53,9 @@ public class CharacterManager implements Manager<Character> {
 
 	@Override
 	public Character use(String name) {
-		Iterator<Entry<Character, CharacterInfo>> it = Context.getCurrentPlayer()
+		for (final Entry<Character, CharacterInfo> e : Context.getCurrentPlayer()
 				.getCharacters()
-				.entrySet()
-				.iterator();
-		while (it.hasNext()) {
-			Entry<Character, CharacterInfo> e = it.next();
+				.entrySet()) {
 			e.getValue()
 					.setCurrent(e.getKey()
 							.getInfo()

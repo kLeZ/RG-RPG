@@ -85,9 +85,8 @@ public class Triplet<L, C, R> {
 			return true;
 		if (obj == null)
 			return false;
-		if (!(obj instanceof Triplet))
+		if (!(obj instanceof Triplet<?, ?, ?> other))
 			return false;
-		Triplet<?, ?, ?> other = (Triplet<?, ?, ?>) obj;
 		if (center == null) {
 			if (other.center != null)
 				return false;
@@ -106,14 +105,6 @@ public class Triplet<L, C, R> {
 
 	@Override
 	public String toString() {
-		StringBuilder builder = new StringBuilder();
-		builder.append("Triplet [left=");
-		builder.append(left);
-		builder.append(", center=");
-		builder.append(center);
-		builder.append(", right=");
-		builder.append(right);
-		builder.append("]");
-		return builder.toString();
+		return "Triplet [left=" + left + ", center=" + center + ", right=" + right + "]";
 	}
 }

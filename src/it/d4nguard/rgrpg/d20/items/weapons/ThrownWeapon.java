@@ -30,9 +30,11 @@ import org.jscience.physics.amount.Amount;
 
 import javax.measure.quantity.Mass;
 import javax.measure.unit.NonSI;
+import java.io.Serial;
 import java.util.EnumSet;
 
 public class ThrownWeapon extends RangedWeapon {
+	@Serial
 	private static final long serialVersionUID = 7115948668956860344L;
 
 	public ThrownWeapon(String name, String description, Coin cost, Amount<Mass> weight, WeaponCategoryType weaponCategory, WeaponEncumbranceType weaponEncumbrance, SizeType size, Dice damage, CriticalHit criticalHit, EnumSet<WeaponType> weaponType) {

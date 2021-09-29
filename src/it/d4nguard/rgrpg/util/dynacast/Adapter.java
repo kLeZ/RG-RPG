@@ -26,7 +26,7 @@ import java.lang.reflect.Type;
  *
  * @param <T>
  *
- * @author kLeZ-hAcK
+ * @author kLeZ
  */
 public interface Adapter<T> {
 	/**
@@ -43,7 +43,7 @@ public interface Adapter<T> {
 	/**
 	 * The type that will be adapted from the value passed to the component.
 	 *
-	 * @return
+	 * @return The type that will be adapted from the value passed to the component.
 	 */
 	Type getType();
 }

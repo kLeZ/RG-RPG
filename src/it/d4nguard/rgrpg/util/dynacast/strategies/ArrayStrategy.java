@@ -29,7 +29,7 @@ import java.lang.reflect.Type;
  * {@link Array}s.<br>
  * The {@link #getMine(Type)} method returns {@link Array}.class.
  *
- * @author kLeZ-hAcK
+ * @author kLeZ
  */
 public class ArrayStrategy extends AbstractStrategy {
 	/**

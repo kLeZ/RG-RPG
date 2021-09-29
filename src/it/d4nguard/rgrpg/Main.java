@@ -21,10 +21,8 @@ package it.d4nguard.rgrpg;
 
 import it.d4nguard.rgrpg.util.CommandsInterpreter;
 
-import java.io.IOException;
-
 public class Main {
-	public static void main(String[] args) throws IOException {
+	public static void main(String[] args) {
 		Welcome.print();
 		Thread t = new Thread(new CommandsInterpreter());
 		try {

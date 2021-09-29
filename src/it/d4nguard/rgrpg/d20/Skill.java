@@ -24,9 +24,11 @@ import it.d4nguard.rgrpg.d20.types.TryAgainType;
 import it.d4nguard.rgrpg.profile.AbilityScore;
 import it.d4nguard.rgrpg.util.NumericUtils;
 
+import java.io.Serial;
 import java.util.List;
 
 public class Skill extends it.d4nguard.rgrpg.profile.Skill {
+	@Serial
 	private static final long serialVersionUID = 6997008011152393042L;
 
 	private final ArmorCheckPenaltyType armorCheckPenalty;

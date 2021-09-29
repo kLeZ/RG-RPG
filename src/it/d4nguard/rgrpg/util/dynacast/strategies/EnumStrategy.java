@@ -26,7 +26,7 @@ import java.lang.reflect.Type;
  * {@link Enum}s.<br>
  * The {@link #getMine(Type)} method returns {@link Enum}.class.
  *
- * @author kLeZ-hAcK
+ * @author kLeZ
  */
 public class EnumStrategy extends AbstractStrategy {
 	@Override

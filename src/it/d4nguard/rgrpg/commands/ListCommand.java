@@ -32,20 +32,17 @@ public class ListCommand implements Command {
 	public void execute(String... args) {
 		CommandLine cmd = StringUtils.getArgs(args);
 		switch (cmd.getProc()) {
-			case "players": {
+			case "players" -> {
 				for (Player p : Context.getPlayers())
 					Context.println(p);
-				break;
 			}
-			case "characters": {
+			case "characters" -> {
 				Player p = new PlayerManager().get(StringUtils.join(" ", cmd.getArgs()));
 				for (Character c : p.getCharacters()
 						.keySet())
 					Context.println(c);
-				break;
 			}
-			default:
-				Context.println(getHelp());
+			default -> Context.println(getHelp());
 		}
 	}
 

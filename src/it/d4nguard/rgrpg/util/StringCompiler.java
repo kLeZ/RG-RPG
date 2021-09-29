@@ -24,6 +24,7 @@ import it.d4nguard.rgrpg.util.dynacast.DynaManipulatorException;
 import org.apache.commons.text.StringTokenizer;
 
 import java.io.Reader;
+import java.io.Serial;
 import java.io.Serializable;
 import java.io.Writer;
 import java.lang.reflect.Field;
@@ -58,6 +59,7 @@ public class StringCompiler implements CharSequence, Appendable, Serializable {
 	 *
 	 * @see java.io.Serializable
 	 */
+	@Serial
 	private static final long serialVersionUID = 7628716375283629643L;
 	private final char fill;
 	private final int length;
@@ -503,7 +505,7 @@ public class StringCompiler implements CharSequence, Appendable, Serializable {
 	}
 
 	/**
-	 * Appends each item in a iterable to the builder without any separators.
+	 * Appends each item in an iterable to the builder without any separators.
 	 * Appending a null iterable will have no effect.
 	 * Each object is appended using {@link #append(Object)}.
 	 *
@@ -568,7 +570,7 @@ public class StringCompiler implements CharSequence, Appendable, Serializable {
 	/**
 	 * Appends an object to the builder padding on the left to a fixed width.
 	 * The <code>String.valueOf</code> of the <code>int</code> value is used.
-	 * If the formatted value is larger than the length, the left hand side is
+	 * If the formatted value is larger than the length, the left-hand side is
 	 * lost.
 	 *
 	 * @param value
@@ -587,7 +589,7 @@ public class StringCompiler implements CharSequence, Appendable, Serializable {
 	/**
 	 * Appends an object to the builder padding on the left to a fixed width.
 	 * The <code>toString</code> of the object is used.
-	 * If the object is larger than the length, the left hand side is lost.
+	 * If the object is larger than the length, the left-hand side is lost.
 	 * If the object is null, the null text value is used.
 	 *
 	 * @param obj
@@ -626,7 +628,7 @@ public class StringCompiler implements CharSequence, Appendable, Serializable {
 	/**
 	 * Appends an object to the builder padding on the right to a fixed length.
 	 * The <code>String.valueOf</code> of the <code>int</code> value is used.
-	 * If the object is larger than the length, the right hand side is lost.
+	 * If the object is larger than the length, the right-hand side is lost.
 	 *
 	 * @param value
 	 * 		the value to append
@@ -644,7 +646,7 @@ public class StringCompiler implements CharSequence, Appendable, Serializable {
 	/**
 	 * Appends an object to the builder padding on the right to a fixed length.
 	 * The <code>toString</code> of the object is used.
-	 * If the object is larger than the length, the right hand side is lost.
+	 * If the object is larger than the length, the right-hand side is lost.
 	 * If the object is null, null text value is used.
 	 *
 	 * @param obj
@@ -965,7 +967,7 @@ public class StringCompiler implements CharSequence, Appendable, Serializable {
 	 * Appends the pad character to the builder the specified number of times.
 	 *
 	 * @param length
-	 * 		the length to append, negative means no append
+	 * 		the length to append, a negative value means no append
 	 * @param padChar
 	 * 		the character to append
 	 *
@@ -1186,7 +1188,7 @@ public class StringCompiler implements CharSequence, Appendable, Serializable {
 	//-----------------------------------------------------------------------
 
 	/**
-	 * Appends a iterable placing separators between each value, but
+	 * Appends an iterable placing separators between each value, but
 	 * not before the first or after the last.
 	 * Appending a null iterable will have no effect.
 	 * Each object is appended using {@link #append(Object)}.
@@ -1295,7 +1297,7 @@ public class StringCompiler implements CharSequence, Appendable, Serializable {
 	 * tokenizer class, before retrieving the tokens.
 	 * <p>
 	 * The returned tokenizer is linked to this builder. You may intermix calls
-	 * to the buider and tokenizer within certain limits, however there is no
+	 * to the builder and tokenizer within certain limits, however there is no
 	 * synchronization. Once the tokenizer has been used once, it must be
 	 * {@link StringTokenizer#reset() reset} to pickup the latest changes in the
 	 * builder. For example:
@@ -1339,7 +1341,7 @@ public class StringCompiler implements CharSequence, Appendable, Serializable {
 	 * <p>
 	 * The internal character array is shared between the builder and the
 	 * writer. This allows you to intermix calls that append to the builder and
-	 * write using the writer and the changes will be occur correctly. Note
+	 * write using the writer and the changes will occur correctly. Note
 	 * however, that no synchronization occurs, so you must perform all
 	 * operations with the builder and the writer in one thread.
 	 * <p>
@@ -1777,7 +1779,7 @@ public class StringCompiler implements CharSequence, Appendable, Serializable {
 	/**
 	 * Gets the text to be appended when null is added.
 	 *
-	 * @return the null text, null means no append
+	 * @return the null text, a null value means no append
 	 */
 	public String getNullText() {
 		return nullText;
@@ -1789,7 +1791,7 @@ public class StringCompiler implements CharSequence, Appendable, Serializable {
 	 * Sets the text to be appended when null is added.
 	 *
 	 * @param nullText
-	 * 		the null text, null means no append
+	 * 		the null text, a null value means no append
 	 *
 	 * @return this, to enable chaining
 	 */
@@ -2278,7 +2280,7 @@ public class StringCompiler implements CharSequence, Appendable, Serializable {
 	 * <p>
 	 * This method extracts the left <code>length</code> characters from the
 	 * builder. If this many characters are not available, the whole builder is
-	 * returned. Thus the returned string may be shorter than the length
+	 * returned. Thus, the returned string may be shorter than the length
 	 * requested.
 	 *
 	 * @param length
@@ -2317,7 +2319,7 @@ public class StringCompiler implements CharSequence, Appendable, Serializable {
 	 * the index is greater than the builder size, it is treated as the builder
 	 * size. If the length is negative, the empty string is returned. If
 	 * insufficient characters are available in the builder, as much as possible
-	 * is returned. Thus the returned string may be shorter than the length
+	 * is returned. Thus, the returned string may be shorter than the length
 	 * requested.
 	 *
 	 * @param index
@@ -2384,13 +2386,13 @@ public class StringCompiler implements CharSequence, Appendable, Serializable {
 	// -----------------------------------------------------------------------
 
 	/**
-	 * Replaces the search character with the replace character
+	 * Replaces the search character with the replacement character
 	 * throughout the builder.
 	 *
 	 * @param search
 	 * 		the search character
 	 * @param replace
-	 * 		the replace character
+	 * 		the replacement character
 	 *
 	 * @return this, to enable chaining
 	 */
@@ -2435,12 +2437,12 @@ public class StringCompiler implements CharSequence, Appendable, Serializable {
 
 	/**
 	 * Replaces the first instance of the search character with the
-	 * replace character in the builder.
+	 * replacement character in the builder.
 	 *
 	 * @param search
 	 * 		the search character
 	 * @param replace
-	 * 		the replace character
+	 * 		the replacement character
 	 *
 	 * @return this, to enable chaining
 	 */
@@ -2506,7 +2508,7 @@ public class StringCompiler implements CharSequence, Appendable, Serializable {
 	 * <p>
 	 * This method extracts the right <code>length</code> characters from the
 	 * builder. If this many characters are not available, the whole builder is
-	 * returned. Thus the returned string may be shorter than the length
+	 * returned. Thus, the returned string may be shorter than the length
 	 * requested.
 	 *
 	 * @param length

@@ -24,8 +24,10 @@ import it.d4nguard.rgrpg.profile.Coin;
 import org.jscience.physics.amount.Amount;
 
 import javax.measure.quantity.Mass;
+import java.io.Serial;
 
 public class Shield extends Item {
+	@Serial
 	private static final long serialVersionUID = 2532064778068639831L;
 
 	private final int armorClass;

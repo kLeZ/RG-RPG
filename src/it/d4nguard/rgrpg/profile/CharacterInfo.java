@@ -21,12 +21,14 @@ package it.d4nguard.rgrpg.profile;
 
 import it.d4nguard.rgrpg.util.StringUtils;
 
+import java.io.Serial;
 import java.io.Serializable;
 import java.time.Duration;
 import java.time.ZonedDateTime;
 import java.time.temporal.ChronoUnit;
 
 public class CharacterInfo implements Serializable {
+	@Serial
 	private static final long serialVersionUID = 5583221130662794997L;
 
 	private ZonedDateTime creation;

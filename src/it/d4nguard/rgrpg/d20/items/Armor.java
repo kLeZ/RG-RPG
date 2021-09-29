@@ -25,8 +25,10 @@ import org.jscience.physics.amount.Amount;
 
 import javax.measure.quantity.Mass;
 import javax.measure.quantity.Velocity;
+import java.io.Serial;
 
 public class Armor extends Item {
+	@Serial
 	private static final long serialVersionUID = -549132777479378436L;
 
 	private final int armorClass;

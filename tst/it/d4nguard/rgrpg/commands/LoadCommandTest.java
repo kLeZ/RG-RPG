@@ -29,14 +29,12 @@ import org.junit.Test;
 
 import java.io.File;
 import java.util.HashSet;
-import java.util.Iterator;
 import java.util.Set;
 
-import static org.junit.Assert.assertEquals;
-import static org.junit.Assert.assertTrue;
+import static org.junit.Assert.*;
 
 public class LoadCommandTest {
-	Set<String> names = new HashSet<>();
+	private final Set<String> names = new HashSet<>();
 
 	{
 		names.add("Julius");
@@ -48,7 +46,7 @@ public class LoadCommandTest {
 	}
 
 	@Before
-	public void setUp() throws Exception {
+	public void setUp() {
 		Context.wipe();
 		PlayerManager pm = new PlayerManager();
 		CharacterManager cm = new CharacterManager();
@@ -65,12 +63,9 @@ public class LoadCommandTest {
 		new LoadCommand().execute("~/test-session.dat");
 		assertEquals("kLeZ", Context.getCurrentPlayer()
 				.getName());
-		Iterator<Character> it = Context.getCurrentPlayer()
+		for (final Character c : Context.getCurrentPlayer()
 				.getCharacters()
-				.keySet()
-				.iterator();
-		while (it.hasNext()) {
-			Character c = it.next();
+				.keySet()) {
 			assertTrue(names.contains(c.getInfo()
 					.getName()));
 		}
@@ -80,6 +75,7 @@ public class LoadCommandTest {
 	public final void tearDown() {
 		String path = "~/test-session.dat";
 		File f = new File(path.replace("~", System.getProperty("user.home")));
+		//noinspection ResultOfMethodCallIgnored
 		f.delete();
 	}
 }

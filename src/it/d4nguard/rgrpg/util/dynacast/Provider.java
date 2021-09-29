@@ -22,19 +22,19 @@ package it.d4nguard.rgrpg.util.dynacast;
 import java.util.Map;
 
 /**
- * A provider interface that lets the ability to provide a map of keys and
+ * A provider interface that lets the ability provide a map of keys and
  * values.
  *
  * @param <T>
  *
- * @author kLeZ-hAcK
+ * @author kLeZ
  */
 public interface Provider<T> {
 	/**
-	 * Gets a key-value map, providing a maping between a key and the given
+	 * Gets a key-value map, providing a mapping between a key and the given
 	 * type.
 	 *
-	 * @return A key-value map, providing a maping between a key and the given
+	 * @return A key-value map, providing a mapping between a key and the given
 	 * type.
 	 */
 	<K> Map<K, T> get();

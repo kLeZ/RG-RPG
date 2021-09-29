@@ -38,21 +38,11 @@ public enum CoinType {
 	}
 
 	public double getUnity(CoinType type) {
-		double ret = 0;
-		switch (type) {
-			case PlatinumPiece:
-				ret = pp;
-				break;
-			case GoldPiece:
-				ret = gp;
-				break;
-			case SilverPiece:
-				ret = sp;
-				break;
-			case CopperPiece:
-				ret = cp;
-				break;
-		}
-		return ret;
+		return switch (type) {
+			case PlatinumPiece -> pp;
+			case GoldPiece -> gp;
+			case SilverPiece -> sp;
+			case CopperPiece -> cp;
+		};
 	}
 }

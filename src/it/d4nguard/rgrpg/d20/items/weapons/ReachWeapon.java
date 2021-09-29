@@ -30,9 +30,11 @@ import org.jscience.physics.amount.Amount;
 
 import javax.measure.quantity.Length;
 import javax.measure.quantity.Mass;
+import java.io.Serial;
 import java.util.EnumSet;
 
 public class ReachWeapon extends MeleeWeapon {
+	@Serial
 	private static final long serialVersionUID = 4791193210807081294L;
 
 	private final Amount<Length> rangeIncrement;

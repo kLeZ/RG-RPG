@@ -29,9 +29,11 @@ import it.d4nguard.rgrpg.util.Dice;
 import org.jscience.physics.amount.Amount;
 
 import javax.measure.quantity.Mass;
+import java.io.Serial;
 import java.util.EnumSet;
 
 public class MeleeWeapon extends Weapon {
+	@Serial
 	private static final long serialVersionUID = 6956098371334540381L;
 
 	public MeleeWeapon(String name, String description, Coin cost, Amount<Mass> weight, WeaponCategoryType weaponCategory, WeaponEncumbranceType weaponEncumbrance, SizeType size, Dice damage, CriticalHit criticalHit, EnumSet<WeaponType> weaponType) {

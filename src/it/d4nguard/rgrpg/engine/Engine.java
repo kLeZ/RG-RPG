@@ -23,9 +23,9 @@ import it.d4nguard.rgrpg.profile.Character;
 import it.d4nguard.rgrpg.profile.Skill;
 
 /**
- * An Engine interface that lets the game to interact with all the objects.
+ * An Engine interface that lets the game interact with all the objects.
  *
- * @author kLeZ-hAcK
+ * @author kLeZ
  */
 public interface Engine {
 	boolean skillCheck(Character character, Skill skill, int DC, int DCMul);

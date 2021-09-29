@@ -30,7 +30,7 @@ import java.util.Set;
 import java.util.StringTokenizer;
 
 public class Utils {
-	public static String ARRAY_JOINER = " | ";
+	public static final String ARRAY_JOINER = " | ";
 
 	public static void swap(int op1, int op2) {
 		int tmp = op2;

@@ -33,7 +33,7 @@ public interface Manager<E> {
 	E create(String name, Object... args);
 
 	/**
-	 * Deletes an object in an hypotetical list, named as passed
+	 * Deletes an object in a hypothetical list, named as passed
 	 *
 	 * @param name
 	 * 		Logical Name of the entity

@@ -32,7 +32,7 @@ import java.lang.reflect.Type;
  * else return type;
  * </code>
  *
- * @author kLeZ-hAcK
+ * @author kLeZ
  */
 public abstract class AbstractStrategy implements Strategy {
 	/**

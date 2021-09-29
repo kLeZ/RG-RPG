@@ -65,13 +65,10 @@ public class Dice {
 			String part2 = (i + 1) < parts.size() ? parts.get(i + 1) : "";
 
 			if (isDice(part1)) {
-				if (dt == null) {
-					dt = Dice.parse(part1);
-				} else {
+				if (dt != null) {
 					ret.put(dt, OperatorType.Addition);
-					dt = Dice.parse(part1);
-					ot = null;
 				}
+				dt = Dice.parse(part1);
 			}
 
 			if (isDice(part2)) {
@@ -95,7 +92,7 @@ public class Dice {
 			dt = dt.toUpperCase();
 			String[] diceparts = dt.split(DICE_TOKEN_S);
 			if (diceparts.length == 2) {
-				int nThrows = Integer.valueOf(diceparts[0]), nFaces = 0, modifier = 0;
+				int nThrows = Integer.parseInt(diceparts[0]), nFaces, modifier = 0;
 				String nFacesBld = "";
 				OperatorType opType = null;
 				char[] faceParts = diceparts[1].toCharArray();
@@ -109,12 +106,12 @@ public class Dice {
 						break;
 					}
 				}
-				nFaces = Integer.valueOf(nFacesBld);
+				nFaces = Integer.parseInt(nFacesBld);
 
 				if (opType != null) {
 					String[] bonusParts = diceparts[1].split(opType.toEscapedString());
 					if ((bonusParts.length == 2) && Utils.isInteger(bonusParts[1])) {
-						modifier = Integer.valueOf(bonusParts[1]);
+						modifier = Integer.parseInt(bonusParts[1]);
 					}
 					ret = new Dice(nThrows, nFaces, opType, modifier);
 				} else {
@@ -123,7 +120,6 @@ public class Dice {
 			}
 		} catch (NumberFormatException e) {
 			Context.printThrowable(e);
-			ret = null;
 		}
 		return ret;
 	}
@@ -192,10 +188,8 @@ public class Dice {
 
 	public static ArrayList<Integer> roll(LinkedHashSet<Dice> dice) {
 		ArrayList<Integer> ret = new ArrayList<>();
-		Iterator<Dice> it = dice.iterator();
-		while (it.hasNext()) {
-			ret.add(it.next()
-					.roll());
+		for (final Dice die : dice) {
+			ret.add(die.roll());
 		}
 		return ret;
 	}
@@ -237,7 +231,7 @@ public class Dice {
 	}
 
 	/**
-	 * @return
+	 * @return true if the modifier operator exists and the modifier is not {@link Integer#MIN_VALUE}, false otherwise
 	 */
 	private boolean hasModifier() {
 		return (modifierOperator != null) && (modifier != Integer.MIN_VALUE);

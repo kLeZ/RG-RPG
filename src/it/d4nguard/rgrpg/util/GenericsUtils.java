@@ -22,10 +22,7 @@ package it.d4nguard.rgrpg.util;
 import it.d4nguard.rgrpg.Context;
 
 import java.lang.reflect.*;
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
+import java.util.*;
 
 public class GenericsUtils {
 	private static final HashMap<String, Class<?>> primitives = new HashMap<>();
@@ -123,23 +120,26 @@ public class GenericsUtils {
 	 * @return the underlying class
 	 */
 	public static Class<?> getClass(final Type type) {
-		if (type instanceof Class)
-			return (Class<?>) type;
-		else if (type instanceof ParameterizedType pt)
-			return getClass(pt.getRawType());
-		else if (type instanceof GenericArrayType gat) {
-			final Type componentType = gat.getGenericComponentType();
-			final Class<?> componentClass = getClass(componentType);
-			if (componentClass != null)
-				return Array.newInstance(componentClass, 0)
+		switch (type) {
+			case Class c:
+				return (Class<?>) type;
+			case ParameterizedType pt:
+				return getClass(pt.getRawType());
+			case GenericArrayType gat:
+				final Type componentType = gat.getGenericComponentType();
+				final Class<?> componentClass = getClass(componentType);
+				if (componentClass != null)
+					return Array.newInstance(componentClass, 0)
+							.getClass();
+				else
+					return null;
+			case TypeVariable<?> tv:
+				return tv.getGenericDeclaration()
 						.getClass();
-			else
+			case null:
+			default:
 				return null;
-		} else if (type instanceof TypeVariable<?> tv)
-			return tv.getGenericDeclaration()
-					.getClass();
-		else
-			return null;
+		}
 	}
 
 	/**
@@ -157,7 +157,7 @@ public class GenericsUtils {
 		final Map<Type, Type> resolvedTypes = new HashMap<>();
 		Type type = childClass;
 		// start walking up the inheritance hierarchy until we hit baseClass
-		while (!getClass(type).equals(baseClass)) {
+		while (!Objects.equals(getClass(type), baseClass)) {
 			if (type instanceof Class<?> cls)
 				type = cls.getGenericSuperclass();
 			else {
@@ -216,16 +216,13 @@ public class GenericsUtils {
 	}
 
 	public static Class<?> getClassFromType(Type t) {
-		if (t instanceof GenericArrayType gat) {
-			return getClass(gat.getGenericComponentType());
-		} else if (t instanceof ParameterizedType pt) {
-			return getClass(pt.getRawType());
-		} else if (t instanceof TypeVariable<?> tv) {
-			return getClass(tv.getBounds()[0]);
-		} else if (t instanceof WildcardType wt) {
-			return wt.getClass();
-		} else
-			return (Class<?>) t;
+		return switch (t) {
+			case GenericArrayType gat -> getClass(gat.getGenericComponentType());
+			case ParameterizedType pt -> getClass(pt.getRawType());
+			case TypeVariable<?> tv -> getClass(tv.getBounds()[0]);
+			case WildcardType wt -> wt.getClass();
+			case null, default -> (Class<?>) t;
+		};
 	}
 
 	public static Field safeGetDeclaredField(Class<?> clazz, String fieldName) {

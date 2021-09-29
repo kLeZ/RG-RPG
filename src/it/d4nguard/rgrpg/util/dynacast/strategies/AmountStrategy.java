@@ -27,7 +27,7 @@ import java.lang.reflect.Type;
  * This class implements a {@link SimpleStrategy} in which the returned type
  * from {@link #getMine(Type)} is simply {@link Amount}.class.
  *
- * @author kLeZ-hAcK
+ * @author kLeZ
  */
 public class AmountStrategy extends SimpleStrategy {
 	/**

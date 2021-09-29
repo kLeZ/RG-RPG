@@ -30,18 +30,9 @@ public class CurCommand implements Command {
 	public void execute(String... args) {
 		CommandLine cmd = StringUtils.getArgs(args);
 		switch (cmd.getProc()) {
-			case "player": {
-				Context.println(new PlayerManager().current());
-				break;
-			}
-			case "character": {
-				Context.println(new CharacterManager().current());
-				break;
-			}
-			default: {
-				Context.println(getHelp());
-				break;
-			}
+			case "player" -> Context.println(new PlayerManager().current());
+			case "character" -> Context.println(new CharacterManager().current());
+			default -> Context.println(getHelp());
 		}
 	}
 

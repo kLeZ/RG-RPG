@@ -21,9 +21,11 @@ package it.d4nguard.rgrpg.storyboard;
 
 import it.d4nguard.rgrpg.util.StringUtils;
 
+import java.io.Serial;
 import java.io.Serializable;
 
 public class Story implements Serializable {
+	@Serial
 	private static final long serialVersionUID = 7740473809178561351L;
 
 	private final Chapter first;

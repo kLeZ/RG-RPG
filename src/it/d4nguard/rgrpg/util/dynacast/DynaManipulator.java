@@ -28,7 +28,7 @@ import java.util.Map;
  * Main class to access the {get/set}Value methods. The entry point of the
  * component.
  *
- * @author kLeZ-hAcK
+ * @author kLeZ
  */
 public class DynaManipulator {
 	private static final AdapterTypeConverter converter = new AdapterTypeConverter();

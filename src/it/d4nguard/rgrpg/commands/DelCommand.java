@@ -31,14 +31,8 @@ public class DelCommand implements Command {
 		CommandLine cmd = StringUtils.getArgs(args);
 		String name = StringUtils.join(" ", cmd.getArgs());
 		switch (cmd.getProc()) {
-			case "player": {
-				new PlayerManager().delete(name);
-				break;
-			}
-			case "character": {
-				new CharacterManager().delete(name);
-				break;
-			}
+			case "player" -> new PlayerManager().delete(name);
+			case "character" -> new CharacterManager().delete(name);
 		}
 	}
 

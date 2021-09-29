@@ -19,18 +19,15 @@
  */
 package it.d4nguard.rgrpg.util;
 
-import java.io.IOException;
-import java.io.ObjectInputStream;
-import java.io.ObjectOutputStream;
-import java.io.Serializable;
+import java.io.*;
 import java.util.*;
 import java.util.Map.Entry;
 
 public class BundleSet extends AbstractSet<ResourceBundle> implements Cloneable, Serializable, Set<ResourceBundle> {
+	@Serial
 	private static final long serialVersionUID = -777579563686715493L;
-
-	private transient HashMap<String, ResourceBundle> map;
 	private final XMLResourceBundleControl control = new XMLResourceBundleControl();
+	private transient HashMap<String, ResourceBundle> map;
 
 	public BundleSet() {
 		map = new HashMap<>();
@@ -83,6 +80,7 @@ public class BundleSet extends AbstractSet<ResourceBundle> implements Cloneable,
 		}
 	}
 
+	@Serial
 	private void writeObject(ObjectOutputStream s) throws IOException {
 		// Write out any hidden serialization magic
 		s.defaultWriteObject();
@@ -95,6 +93,7 @@ public class BundleSet extends AbstractSet<ResourceBundle> implements Cloneable,
 			s.writeObject(e);
 	}
 
+	@Serial
 	@SuppressWarnings("unchecked")
 	private void readObject(ObjectInputStream s) throws IOException, ClassNotFoundException {
 		// Read in any hidden serialization magic

@@ -30,10 +30,12 @@ import org.jscience.physics.amount.Amount;
 
 import javax.measure.quantity.Length;
 import javax.measure.quantity.Mass;
+import java.io.Serial;
 import java.util.ArrayList;
 import java.util.EnumSet;
 
 public class ProjectileWeapon extends RangedWeapon {
+	@Serial
 	private static final long serialVersionUID = 8988259862853538502L;
 
 	private final ArrayList<Ammunition> ammunitions;

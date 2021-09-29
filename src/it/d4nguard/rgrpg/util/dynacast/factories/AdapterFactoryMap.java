@@ -35,17 +35,17 @@ import java.util.Set;
 /**
  * This class implements a wise {@link Map} in the form of {@link AbstractMap}<
  * {@link Class}<?>, {@link AdapterFactory}<?>>.<br>
- * Initializes this {@link AbstractMap} with all the sub types of
+ * Initializes this {@link AbstractMap} with all the subtypes of
  * {@link Provider}.class, found by {@link Reflections}.
  *
- * @author kLeZ-hAcK
+ * @author kLeZ
  */
 public class AdapterFactoryMap extends AbstractMap<Class<?>, AdapterFactory<?>> {
 	private static AdapterFactoryMap instance;
 	private final Map<Class<?>, AdapterFactory<?>> __map = new HashMap<>();
 
 	/**
-	 * Initializes this {@link AbstractMap} with all the sub types of
+	 * Initializes this {@link AbstractMap} with all the subtypes of
 	 * {@link Provider}.class, found by {@link Reflections}.
 	 */
 	public AdapterFactoryMap() {
@@ -55,7 +55,7 @@ public class AdapterFactoryMap extends AbstractMap<Class<?>, AdapterFactory<?>> 
 	/**
 	 * This static method acts as the entry point of a singleton pattern through
 	 * which the unique instance of this {@link Map} can be retrieved. <br>
-	 * Initializes this {@link AbstractMap} with all the sub types of
+	 * Initializes this {@link AbstractMap} with all the subtypes of
 	 * {@link Provider}.class, found by {@link Reflections}.
 	 *
 	 * @return The singleton of this {@link Map}.
@@ -75,9 +75,10 @@ public class AdapterFactoryMap extends AbstractMap<Class<?>, AdapterFactory<?>> 
 	}
 
 	/**
-	 * Initializes this {@link AbstractMap} with all the sub types of
+	 * Initializes this {@link AbstractMap} with all the subtypes of
 	 * {@link Provider}.class, found by {@link Reflections}.
 	 */
+	@SuppressWarnings({ "rawtypes", "unchecked" })
 	private void init() {
 		Set<Class<? extends Provider>> subTypes = Utils.getSubTypesOf(Provider.class);
 		Utils.doAll(subTypes, (Delegate<Class<? extends Provider>, Void>) t -> {

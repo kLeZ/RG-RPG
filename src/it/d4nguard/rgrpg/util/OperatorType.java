@@ -32,22 +32,13 @@ public enum OperatorType {
 	}
 
 	public static OperatorType parseOperator(char op) {
-		OperatorType type = null;
-		switch (op) {
-			case '+':
-				type = Addition;
-				break;
-			case '-':
-				type = Subtraction;
-				break;
-			case '*':
-				type = Multiplication;
-				break;
-			case '/':
-				type = Division;
-				break;
-		}
-		return type;
+		return switch (op) {
+			case '+' -> Addition;
+			case '-' -> Subtraction;
+			case '*' -> Multiplication;
+			case '/' -> Division;
+			default -> null;
+		};
 	}
 
 	public static int indexOfOperator(String s) {
@@ -79,22 +70,12 @@ public enum OperatorType {
 	}
 
 	public int doOperation(int op1, int op2) {
-		int ret = 0;
-		switch (this) {
-			case Addition:
-				ret = add(op1, op2);
-				break;
-			case Division:
-				ret = divide(op1, op2);
-				break;
-			case Multiplication:
-				ret = multiply(op1, op2);
-				break;
-			case Subtraction:
-				ret = subtract(op1, op2);
-				break;
-		}
-		return ret;
+		return switch (this) {
+			case Addition -> add(op1, op2);
+			case Division -> divide(op1, op2);
+			case Multiplication -> multiply(op1, op2);
+			case Subtraction -> subtract(op1, op2);
+		};
 	}
 
 	private int add(int op1, int op2) {
@@ -127,7 +108,9 @@ public enum OperatorType {
 	 * to reverse operands order
 	 *
 	 * @param op1
+	 * 		first operand
 	 * @param op2
+	 * 		second operand
 	 */
 	private void check(int op1, int op2) {
 		if (op1 < 0) {
@@ -154,12 +137,9 @@ public enum OperatorType {
 	public String toEscapedString() {
 		String ret = toString();
 		switch (this) {
-			case Addition:
-			case Multiplication:
-				ret = "\\".concat(ret);
-				break;
-			default:
-				break;
+			case Addition, Multiplication -> ret = "\\".concat(ret);
+			default -> {
+			}
 		}
 		return ret;
 	}
@@ -169,21 +149,11 @@ public enum OperatorType {
 	 */
 	@Override
 	public String toString() {
-		String ret = "";
-		switch (this) {
-			case Addition:
-				ret = "+";
-				break;
-			case Division:
-				ret = "/";
-				break;
-			case Multiplication:
-				ret = "*";
-				break;
-			case Subtraction:
-				ret = "-";
-				break;
-		}
-		return ret;
+		return switch (this) {
+			case Addition -> "+";
+			case Division -> "/";
+			case Multiplication -> "*";
+			case Subtraction -> "-";
+		};
 	}
 }

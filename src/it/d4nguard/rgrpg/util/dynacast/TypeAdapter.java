@@ -30,10 +30,10 @@ import java.lang.reflect.Type;
 import java.util.Collection;
 
 /**
- * This class contains an helper method (this is a Facade, in fact) that does
+ * This class contains a helper method (this is a Facade, in fact) that does
  * the dirty work of getting an adapter for the given type.
  *
- * @author kLeZ-hAcK
+ * @author kLeZ
  */
 public class TypeAdapter {
 	/**
@@ -53,13 +53,14 @@ public class TypeAdapter {
 		assert type != null;
 		Strategy strategy = StrategyFactory.getStrategy(type);
 		Type applied = strategy.apply(type);
+		//noinspection SuspiciousMethodCalls
 		AdapterFactory factory = AdapterFactoryMap.current()
 				.get(applied);
 		return factory == null ? null : factory.create(type);
 	}
 
 	/**
-	 * An helper method that generates a string representation of an object
+	 * A helper method that generates a string representation of an object
 	 * value.
 	 *
 	 * @param value

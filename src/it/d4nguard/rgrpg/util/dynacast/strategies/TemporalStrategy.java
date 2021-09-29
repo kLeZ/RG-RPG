@@ -26,7 +26,7 @@ import java.time.temporal.Temporal;
  * This class implements a {@link SimpleStrategy} for {@link Temporal}s.<br>
  * The {@link #getMine(Type)} method returns {@link Temporal}.class
  *
- * @author kLeZ-hAcK
+ * @author kLeZ
  */
 public class TemporalStrategy extends SimpleStrategy {
 	/**

@@ -1,5 +1,4 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<!--
+<?xml version="1.0" encoding="UTF-8"?><!--
   ~ Copyright (C) 2021 Alessandro 'kLeZ' Accardo
   ~
   ~ This file is part of RG-RPG.
@@ -18,11 +17,9 @@
   ~ along with RG-RPG.  If not, see <http://www.gnu.org/licenses/>.
   ~
   -->
-
 <!DOCTYPE properties SYSTEM "http://java.sun.com/dtd/properties.dtd">
 <properties>
 	<comment>Default feats xml properties file for localization purposes</comment>
-
 	<entry key="weapon.proficiency.title">Weapon Proficiency</entry>
 	<entry key="armor.proficiency.title">Armor Proficiency</entry>
 	<entry key="shield.proficiency.title">Shield Proficiency</entry>

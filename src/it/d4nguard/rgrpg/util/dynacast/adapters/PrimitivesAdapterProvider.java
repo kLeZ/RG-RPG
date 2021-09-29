@@ -31,7 +31,7 @@ import java.util.Map;
  * Implements a {@link Provider} of {@link AdapterFactory} that provides
  * {@link Adapter}s for all the primitive types, and their wrapper objects.
  *
- * @author kLeZ-hAcK
+ * @author kLeZ
  */
 public class PrimitivesAdapterProvider implements Provider<AdapterFactory<?>> {
 	/**
@@ -47,7 +47,7 @@ public class PrimitivesAdapterProvider implements Provider<AdapterFactory<?>> {
 			 */
 			@Override
 			public Adapter<Boolean> create(final Type type) {
-				return new Adapter<Boolean>() {
+				return new Adapter<>() {
 					/**
 					 * {@inheritDoc}
 					 */
@@ -72,7 +72,7 @@ public class PrimitivesAdapterProvider implements Provider<AdapterFactory<?>> {
 			 */
 			@Override
 			public Adapter<Byte> create(Type type) {
-				return new Adapter<Byte>() {
+				return new Adapter<>() {
 					/**
 					 * {@inheritDoc}
 					 */
@@ -102,7 +102,7 @@ public class PrimitivesAdapterProvider implements Provider<AdapterFactory<?>> {
 			 */
 			@Override
 			public Adapter<Character> create(Type type) {
-				return new Adapter<Character>() {
+				return new Adapter<>() {
 					/**
 					 * {@inheritDoc}
 					 */
@@ -127,7 +127,7 @@ public class PrimitivesAdapterProvider implements Provider<AdapterFactory<?>> {
 			 */
 			@Override
 			public Adapter<Double> create(Type type) {
-				return new Adapter<Double>() {
+				return new Adapter<>() {
 					/**
 					 * {@inheritDoc}
 					 */
@@ -152,7 +152,7 @@ public class PrimitivesAdapterProvider implements Provider<AdapterFactory<?>> {
 			 */
 			@Override
 			public Adapter<Float> create(Type type) {
-				return new Adapter<Float>() {
+				return new Adapter<>() {
 					/**
 					 * {@inheritDoc}
 					 */
@@ -177,7 +177,7 @@ public class PrimitivesAdapterProvider implements Provider<AdapterFactory<?>> {
 			 */
 			@Override
 			public Adapter<Integer> create(Type type) {
-				return new Adapter<Integer>() {
+				return new Adapter<>() {
 					/**
 					 * {@inheritDoc}
 					 */
@@ -202,7 +202,7 @@ public class PrimitivesAdapterProvider implements Provider<AdapterFactory<?>> {
 			 */
 			@Override
 			public Adapter<Long> create(Type type) {
-				return new Adapter<Long>() {
+				return new Adapter<>() {
 					/**
 					 * {@inheritDoc}
 					 */
@@ -227,7 +227,7 @@ public class PrimitivesAdapterProvider implements Provider<AdapterFactory<?>> {
 			 */
 			@Override
 			public Adapter<Short> create(Type type) {
-				return new Adapter<Short>() {
+				return new Adapter<>() {
 					/**
 					 * {@inheritDoc}
 					 */
@@ -252,7 +252,7 @@ public class PrimitivesAdapterProvider implements Provider<AdapterFactory<?>> {
 			 */
 			@Override
 			public Adapter<String> create(Type type) {
-				return new Adapter<String>() {
+				return new Adapter<>() {
 					/**
 					 * {@inheritDoc}
 					 */

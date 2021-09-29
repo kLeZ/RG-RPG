@@ -1,5 +1,4 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<!--
+<?xml version="1.0" encoding="UTF-8"?><!--
   ~ Copyright (C) 2021 Alessandro 'kLeZ' Accardo
   ~
   ~ This file is part of RG-RPG.
@@ -18,20 +17,15 @@
   ~ along with RG-RPG.  If not, see <http://www.gnu.org/licenses/>.
   ~
   -->
-
 <!DOCTYPE properties SYSTEM "http://java.sun.com/dtd/properties.dtd">
 <properties>
 	<comment>Default strings xml properties file for localization purposes</comment>
-
 	<entry key="exit.msg">Exiting...</entry>
-
 	<entry key="welcome">Welcome to RG-RPG! A Gal Game full featured fantasy RPG.</entry>
-
 	<entry key="help.description">Prints the help of the passed command or lists all available commands</entry>
 	<entry key="help.help">Prints the help of the passed command or lists all available commands</entry>
 	<entry key="help.listavailable">Listing available commands:</entry>
 	<entry key="help.err.nohelp">There is no help for specified command '%s'</entry>
-
 	<entry key="new.description">Creates a new entity, with the specified name</entry>
 	<entry key="new.help">Creates a new entity, with the specified name.
 		An entity can be a player, or a character, you should specify it.
@@ -41,16 +35,13 @@
 		e.g. new character d20 mialee
 	</entry>
 	<entry key="new.err.player.exists">Player '%s' already exists!</entry>
-
 	<entry key="exit.description">Exits from the Commands Interpreter</entry>
 	<entry key="exit.help">Exits from the Commands Interpreter</entry>
-
 	<entry key="for.description">Executes the specified command iteratively n times</entry>
 	<entry key="for.help">Executes the specified command iteratively n times.
 		Syntax: for [min] [max] command {args}
 		You can specify a '%s' as a parameter to use the index of the cycle.
 	</entry>
-
 	<entry key="del.description">Deletes an entity, with the specified name</entry>
 	<entry key="del.help">Deletes an entity, with the specified name.
 		An entity can be a player, or a character, you should specify it.
@@ -59,26 +50,21 @@
 		e.g. del character mialee
 		e.g. del character Celawyn Desh
 	</entry>
-
 	<entry key="login.description">Performs the login to the game</entry>
 	<entry key="login.help">Performs the login to the game.</entry>
-
 	<entry key="play.description">Starts a new game, or continue a new undone one</entry>
 	<entry key="play.help">Starts a new game, or continue a new undone one.</entry>
-
 	<entry key="version.description">Prints some info about the program and its version numbers</entry>
 	<entry key="version.help">Prints some info about the program and its version numbers.</entry>
-	<entry key="version.msg"><![CDATA[RG-RPG is a Java-based text, roleplaying-gal game, in which you have to carry many girls.
+	<entry key="version.msg"><![CDATA[RG-RPG is a Java-based text, role-playing-gal-game, in which you have to carry many girls.
 The RG-RPG acronym is a recursive one and it means "RG-RPG is a Gal Role playing game Pointing on Girls."
-Copyright (C) 2013 by Alessandro Accardo <julius8774@gmail.com>
+Copyright (C) 2021 by Alessandro 'kLeZ' Accardo
 
 RG-RPG version %d.%02d.%03d]]>
 	</entry>
-
 	<entry key="commandsinterpreter.warn.commandnotfound">Warning: Command not found. You may need some help?
 		Type 'help' to see the full list of commands currently available.
 	</entry>
-
 	<entry key="promptfeeder.help">PROMPT STRING
 		=================
 		The base shell that completes RG-RPG, making it an interactive game, has even a prompt that helps in using the game.
@@ -92,7 +78,6 @@ RG-RPG version %d.%02d.%03d]]>
 		\n: Prints a literal line feed.
 		\\: Prints a literal backslash.
 	</entry>
-
 	<entry key="ren.description">Renames the entity with the specified name to the new specified one</entry>
 	<entry key="ren.help">Renames the entity with the specified name to the new specified one.
 		An entity can be a player, or a character, you should specify it.
@@ -101,7 +86,6 @@ RG-RPG version %d.%02d.%03d]]>
 		e.g. ren character mialee :: Mialee
 		e.g. ren character Celawyn Desh :: Celawyn
 	</entry>
-
 	<entry key="cur.description">Prints the current entity</entry>
 	<entry key="cur.help">Prints the current entity.
 		An entity can be a player, or a character, you should specify it.
@@ -109,7 +93,6 @@ RG-RPG version %d.%02d.%03d]]>
 		e.g. cur player
 		e.g. cur character
 	</entry>
-
 	<entry key="use.description">Sets the specified entity as current</entry>
 	<entry key="use.help">Sets the specified entity as current.
 		An entity can be a player, or a character, you should specify it.
@@ -117,7 +100,6 @@ RG-RPG version %d.%02d.%03d]]>
 		e.g. use player player1
 		e.g. use character mialee
 	</entry>
-
 	<entry key="list.description">Shows all the created entities</entry>
 	<entry key="list.help">Shows all the created entities.
 		An entity can be a player, or a character, you should specify it.
@@ -125,7 +107,6 @@ RG-RPG version %d.%02d.%03d]]>
 		e.g. list players
 		e.g. list characters
 	</entry>
-
 	<entry key="show.description">Shows the specified entity</entry>
 	<entry key="show.help">Shows the specified entity.
 		An entity can be a player, or a character, you should specify it.
@@ -133,7 +114,6 @@ RG-RPG version %d.%02d.%03d]]>
 		e.g. show player player1
 		e.g. show character mialee
 	</entry>
-
 	<entry key="set.description">Sets an expression for the specified entity with the given name</entry>
 	<entry key="set.help">Sets an expression for the specified entity with the given name.
 		An entity can be a player, or a character, you should specify it.
@@ -141,20 +121,16 @@ RG-RPG version %d.%02d.%03d]]>
 		e.g. set player player1 "name=player2"
 		e.g. set character mialee "info.description=A good and beautiful mage"
 	</entry>
-
 	<entry key="debug.description">Sets debug bit</entry>
 	<entry key="debug.help">Sets debug bit.
 		debug (true|false)
 	</entry>
-
 	<entry key="path.err.cannotcreate">Cannot create directory '%s' for saving or loading data.</entry>
-
 	<entry key="save.description">Saves current state</entry>
 	<entry key="save.help">Saves current state.
 		{path} is the path and file name where to save the file, e.g. ~/.rgrpg/session.dat
 		save {path}
 	</entry>
-
 	<entry key="load.description">Loads previously saved state</entry>
 	<entry key="load.help">Loads previously saved state.
 		{path} is the path and file name where to load the file, e.g. ~/.rgrpg/session.dat

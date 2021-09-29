@@ -33,18 +33,13 @@ public class RenCommand implements Command {
 		// ren player kLeZ :: kLeZ-hAcK
 		CommandLine cmd = StringUtils.getArgs(args);
 		String names = StringUtils.join(" ", cmd.getArgs());
+		//noinspection StringTokenizerDelimiter
 		StringTokenizer st = new StringTokenizer(names, "::", false);
 		String name = st.nextToken();
 		String newName = st.nextToken();
 		switch (cmd.getProc()) {
-			case "player": {
-				new PlayerManager().rename(name, newName);
-				break;
-			}
-			case "character": {
-				new CharacterManager().rename(name, newName);
-				break;
-			}
+			case "player" -> new PlayerManager().rename(name, newName);
+			case "character" -> new CharacterManager().rename(name, newName);
 		}
 	}
 

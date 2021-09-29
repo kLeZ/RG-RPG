@@ -1,5 +1,4 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<!--
+<?xml version="1.0" encoding="UTF-8"?><!--
   ~ Copyright (C) 2021 Alessandro 'kLeZ' Accardo
   ~
   ~ This file is part of RG-RPG.
@@ -18,11 +17,9 @@
   ~ along with RG-RPG.  If not, see <http://www.gnu.org/licenses/>.
   ~
   -->
-
 <!DOCTYPE properties SYSTEM "http://java.sun.com/dtd/properties.dtd">
 <properties>
 	<comment>Default ability scores xml properties file for localization purposes</comment>
-
 	<entry key="d20-strength">strength</entry>
 	<entry key="d20-dexterity">dexterity</entry>
 	<entry key="d20-constitution">constitution</entry>

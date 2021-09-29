@@ -25,11 +25,13 @@ import it.d4nguard.rgrpg.d20.items.Shield;
 import it.d4nguard.rgrpg.d20.items.weapons.Weapon;
 import it.d4nguard.rgrpg.util.StringUtils;
 
+import java.io.Serial;
 import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
 
 public class Equipment implements Serializable {
+	@Serial
 	private static final long serialVersionUID = 8592149089544477908L;
 	private final List<Item> inventory;
 	private final Wallet wallet;

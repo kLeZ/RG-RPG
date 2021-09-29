@@ -25,7 +25,7 @@ import org.jscience.physics.amount.Amount;
  * Implements a {@link SimpleAdapter} of {@link Amount}, a type of the jscience
  * project.
  *
- * @author kLeZ-hAcK
+ * @author kLeZ
  */
 public class AmountAdapter extends SimpleAdapter<Amount<?>> {
 	/**

@@ -24,8 +24,6 @@ import it.d4nguard.rgrpg.Main;
 import it.d4nguard.rgrpg.profile.Player;
 import it.d4nguard.rgrpg.util.StringUtils;
 
-import java.util.Iterator;
-
 public class PlayerManager implements Manager<Player> {
 	@Override
 	public Player create(String name, Object... args) {
@@ -65,10 +63,7 @@ public class PlayerManager implements Manager<Player> {
 
 	@Override
 	public Player get(String name) {
-		Iterator<Player> it = Context.getPlayers()
-				.iterator();
-		while (it.hasNext()) {
-			Player curr = it.next();
+		for (final Player curr : Context.getPlayers()) {
 			if (curr.getName()
 					.equals(name))
 				return curr;

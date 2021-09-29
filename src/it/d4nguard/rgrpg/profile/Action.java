@@ -29,7 +29,7 @@ import it.d4nguard.rgrpg.profile.types.AttackType;
  * because of the mandatory actions that an RPG Character can necessarily
  * perform.
  *
- * @author kLeZ-hAcK
+ * @author kLeZ
  */
 public interface Action {
 	/**

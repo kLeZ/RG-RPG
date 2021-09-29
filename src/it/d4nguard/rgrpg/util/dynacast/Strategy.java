@@ -24,7 +24,7 @@ import it.d4nguard.rgrpg.util.dynacast.strategies.EnumStrategy;
 import java.lang.reflect.Type;
 
 /**
- * This interface provides a starting poit to implement a Strategy of conversion
+ * This interface provides a starting point to implement a Strategy of conversion
  * between complex types.<br>
  * It is needed because of subtypes conversions.<br>
  * <br>
@@ -32,21 +32,21 @@ import java.lang.reflect.Type;
  * mapped type in the {@link Provider} is {@link Enum} and the adapting types
  * are all the enums available.
  *
- * @author kLeZ-hAcK
+ * @author kLeZ
  */
 public interface Strategy {
 	/**
 	 * Gets the {@link Class} represented by this {@link Strategy} instance.
 	 *
 	 * @param type
-	 * 		A type that could be useful for certain type euristics.
+	 * 		A type that could be useful for certain type heuristics.
 	 *
 	 * @return The {@link Class} represented by this {@link Strategy} instance.
 	 */
 	Class<?> getMine(Type type);
 
 	/**
-	 * Checks if the given type could be converted to, or it is esplicitly, the
+	 * Checks if the given type could be converted to, or it is explicitly, the
 	 * type managed by this {@link Strategy} object.<br>
 	 * In most cases, when working with an {@link Object}, it can be simply
 	 * implemented as:<br>

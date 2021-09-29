@@ -33,7 +33,7 @@ import java.util.*;
 
 /**
  * Implements an {@link AbstractAdapter} of {@link Collection} for Collections
- * conversion. Currently it adapts {@link List}s and {@link Set}s.<br>
+ * conversion. Currently, it adapts {@link List}s and {@link Set}s.<br>
  * A string representation of a collection, to be understood by this adapter
  * class, must be in the form of:<br>
  * <code>[element1|element2|...|elementN]</code><br>
@@ -41,7 +41,7 @@ import java.util.*;
  * @param <T>
  * 		The type of the objects handled by the {@link Collection}
  *
- * @author kLeZ-hAcK
+ * @author kLeZ
  */
 public class CollectionAdapter<T> extends AbstractAdapter<Collection<T>> {
 	private Class<T> type;

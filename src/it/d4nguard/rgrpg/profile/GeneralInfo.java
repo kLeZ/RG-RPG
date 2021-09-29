@@ -25,10 +25,12 @@ import org.jscience.physics.amount.AmountFormat;
 
 import javax.measure.quantity.Length;
 import javax.measure.quantity.Mass;
+import java.io.Serial;
 import java.io.Serializable;
 import java.time.ZonedDateTime;
 
 public class GeneralInfo implements Serializable {
+	@Serial
 	private static final long serialVersionUID = -6846828906540838870L;
 
 	private String name;
@@ -145,9 +147,8 @@ public class GeneralInfo implements Serializable {
 			return true;
 		if (obj == null)
 			return false;
-		if (!(obj instanceof GeneralInfo))
+		if (!(obj instanceof GeneralInfo other))
 			return false;
-		GeneralInfo other = (GeneralInfo) obj;
 		if (dateOfBirth == null) {
 			if (other.dateOfBirth != null)
 				return false;

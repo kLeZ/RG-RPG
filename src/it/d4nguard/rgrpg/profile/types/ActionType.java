@@ -24,7 +24,7 @@ import it.d4nguard.rgrpg.profile.Character;
 /**
  * This enumeration describes the ActionType representing an action
  *
- * @author kLeZ-hAcK
+ * @author kLeZ
  */
 public enum ActionType {
 	/**

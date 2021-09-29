@@ -24,8 +24,10 @@ import it.d4nguard.rgrpg.profile.Coin;
 import org.jscience.physics.amount.Amount;
 
 import javax.measure.quantity.Mass;
+import java.io.Serial;
 
 public class Ammunition extends Item {
+	@Serial
 	private static final long serialVersionUID = -7244714329584333095L;
 
 	public Ammunition(String name, String description, Coin cost, Amount<Mass> weight) {

@@ -48,8 +48,7 @@ public class PromptFeeder {
 		char[] tokens = this.prompt.toCharArray();
 		boolean isCmd = false;
 
-		for (int i = 0; i < tokens.length; i++) {
-			char token = tokens[i];
+		for (char token : tokens) {
 			if (isCmd) {
 				isCmd = false;
 				switch (token)
@@ -71,12 +70,8 @@ public class PromptFeeder {
 								hostname = hostname.substring(0, dot);
 							ret.append(hostname);
 							br.close();
-							br = null;
-							p = null;
 							System.gc();
-						} catch (InterruptedException e) {
-							Context.printThrowable(e);
-						} catch (IOException e) {
+						} catch (InterruptedException | IOException e) {
 							Context.printThrowable(e);
 						}
 						break;

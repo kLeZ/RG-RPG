@@ -22,10 +22,12 @@ package it.d4nguard.rgrpg.d20;
 import it.d4nguard.rgrpg.Context;
 import it.d4nguard.rgrpg.util.StringUtils;
 
+import java.io.Serial;
 import java.io.Serializable;
 
 public class Language implements Serializable {
 	public static final Language COMMON = new Language(Context.getLanguage("common.lang"), Context.getLanguage("common.dialect"));
+	@Serial
 	private static final long serialVersionUID = -3912431789132870338L;
 	private String name;
 	private String alphabet;

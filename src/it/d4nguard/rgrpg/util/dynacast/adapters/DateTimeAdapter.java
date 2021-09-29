@@ -32,7 +32,7 @@ import java.util.Locale;
 /**
  * Implements a {@link SimpleAdapter} of {@link Temporal}, an interface
  * of the java.time framework.<br>
- * Currently it converts:<br>
+ * Currently, it converts:<br>
  * <ul>
  * <li>{@link ZonedDateTime}</li>
  * <li>{@link Instant}</li>
@@ -49,7 +49,7 @@ import java.util.Locale;
  * {@link DateTimeFormatter#ofPattern(String)}<b>]</b><br>
  * That is: the value, opened square, the pattern, closed square, no spaces.
  *
- * @author kLeZ-hAcK
+ * @author kLeZ
  */
 public class DateTimeAdapter extends SimpleAdapter<Temporal> {
 	/**

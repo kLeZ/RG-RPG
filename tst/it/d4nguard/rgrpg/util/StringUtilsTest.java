@@ -21,17 +21,19 @@ package it.d4nguard.rgrpg.util;
 
 import org.junit.Test;
 
-import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.*;
 
 public class StringUtilsTest {
 	@Test
 	public final void testPrettyPrintStringClassOfT() {
+		// FIXME: Test!
 		//		System.out.print(StringUtils.prettyPrint("it.d4nguard.rgrpg", Item.class));
 		//		Assert.assertTrue(true);
 	}
 
 	@Test
 	public final void testPrettyPrintClassOfT() {
+		// FIXME: Test!
 		//		System.out.print(StringUtils.prettyPrint(Character.class));
 		//		Assert.assertTrue(true);
 	}
@@ -50,6 +52,7 @@ public class StringUtilsTest {
 		s = String.format(fmt, "", before, "", after, "");
 		t = StringUtils.getBetween(s, before, after);
 
+		// FIXME: Test!
 		//		System.out.println(s);
 		//		System.out.println(t);
 
@@ -64,6 +67,7 @@ public class StringUtilsTest {
 		s = String.format(fmt, "", before, "", after, right);
 		t = StringUtils.getBetween(s, before, after);
 
+		// FIXME: Test!
 		//		System.out.println(s);
 		//		System.out.println(t);
 
@@ -78,6 +82,7 @@ public class StringUtilsTest {
 		s = String.format(fmt, "", before, center, after, right);
 		t = StringUtils.getBetween(s, before, after);
 
+		// FIXME: Test!
 		//		System.out.println(s);
 		//		System.out.println(t);
 
@@ -92,6 +97,7 @@ public class StringUtilsTest {
 		s = String.format(fmt, "", before, center, after, "");
 		t = StringUtils.getBetween(s, before, after);
 
+		// FIXME: Test!
 		//		System.out.println(s);
 		//		System.out.println(t);
 
@@ -106,6 +112,7 @@ public class StringUtilsTest {
 		s = String.format(fmt, left, before, center, after, "");
 		t = StringUtils.getBetween(s, before, after);
 
+		// FIXME: Test!
 		//		System.out.println(s);
 		//		System.out.println(t);
 
@@ -120,6 +127,7 @@ public class StringUtilsTest {
 		s = String.format(fmt, left, before, "", after, "");
 		t = StringUtils.getBetween(s, before, after);
 
+		// FIXME: Test!
 		//		System.out.println(s);
 		//		System.out.println(t);
 
@@ -134,6 +142,7 @@ public class StringUtilsTest {
 		s = String.format(fmt, left, before, "", after, right);
 		t = StringUtils.getBetween(s, before, after);
 
+		// FIXME: Test!
 		//		System.out.println(s);
 		//		System.out.println(t);
 
@@ -148,6 +157,7 @@ public class StringUtilsTest {
 		s = String.format(fmt, left, before, center, after, right);
 		t = StringUtils.getBetween(s, before, after);
 
+		// FIXME: Test!
 		//		System.out.println(s);
 		//		System.out.println(t);
 
@@ -163,6 +173,7 @@ public class StringUtilsTest {
 		s = "";
 		t = StringUtils.getBetween(s, before, after);
 
+		// FIXME: Test!
 		//		System.out.println(s);
 		//		System.out.println(t);
 

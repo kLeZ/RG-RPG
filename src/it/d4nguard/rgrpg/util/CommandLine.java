@@ -43,12 +43,6 @@ public class CommandLine {
 
 	@Override
 	public String toString() {
-		StringBuilder builder = new StringBuilder();
-		builder.append("CommandLine [proc=");
-		builder.append(proc);
-		builder.append(", args=");
-		builder.append(Arrays.toString(args));
-		builder.append("]");
-		return builder.toString();
+		return "CommandLine [proc=" + proc + ", args=" + Arrays.toString(args) + "]";
 	}
 }

@@ -20,14 +20,15 @@
 package it.d4nguard.rgrpg.d20.feats;
 
 import it.d4nguard.rgrpg.Context;
-import it.d4nguard.rgrpg.d20.Character;
 import it.d4nguard.rgrpg.util.dynacast.DynaManipulator;
 import it.d4nguard.rgrpg.util.dynacast.DynaManipulatorException;
 
+import java.io.Serial;
 import java.io.Serializable;
 import java.lang.reflect.Method;
 
-public class Prerequisite implements Serializable {
+public record Prerequisite(String description, String expression) implements Serializable {
+	@Serial
 	private static final long serialVersionUID = 4585271111842174784L;
 	public static Method MEETS;
 
@@ -39,23 +40,7 @@ public class Prerequisite implements Serializable {
 		}
 	}
 
-	private final String description;
-	private final String expression;
-
-	public Prerequisite(String description, String expression) {
-		this.description = description;
-		this.expression = expression;
-	}
-
-	public String getDescription() {
-		return description;
-	}
-
-	public String getExpression() {
-		return expression;
-	}
-
 	public boolean meets(Character character) throws DynaManipulatorException {
-		return ((Boolean) DynaManipulator.getValue(expression, character)).booleanValue();
+		return (Boolean) DynaManipulator.getValue(expression, character);
 	}
 }

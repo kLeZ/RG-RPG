@@ -23,9 +23,11 @@ import it.d4nguard.rgrpg.profile.Coin;
 import org.jscience.physics.amount.Amount;
 
 import javax.measure.quantity.Mass;
+import java.io.Serial;
 import java.io.Serializable;
 
 public abstract class Item implements Serializable {
+	@Serial
 	private static final long serialVersionUID = -1105954765958477231L;
 
 	private final String name;

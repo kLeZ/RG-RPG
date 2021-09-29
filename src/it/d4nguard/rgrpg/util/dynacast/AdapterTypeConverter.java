@@ -31,7 +31,7 @@ import java.util.Objects;
  * An implementation of the {@link TypeConverter} class that implements dynacast
  * logic.
  *
- * @author kLeZ-hAcK
+ * @author kLeZ
  */
 public class AdapterTypeConverter implements TypeConverter {
 	/**

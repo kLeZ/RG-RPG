@@ -62,33 +62,28 @@ public class D20Engine {
 		int roll = new Dice(1, 20).roll();
 		rolls.add(roll);
 		switch (skill.getTryAgain()) {
-			case Once:
-				ret = (roll + total) >= DC;
-				break;
-			case Limited: {
+			case Once -> ret = (roll + total) >= DC;
+			case Limited -> {
 				for (int i = 0; i < LIMITED_RETRIES || ret; i++) {
 					roll = new Dice(1, 20).roll();
 					rolls.add(roll);
 					ret |= (roll + total) >= DC;
 				}
-				break;
 			}
-			case Always: {
+			case Always -> {
 				int tries = LIMITED_RETRIES + (LIMITED_RETRIES / 2 + LIMITED_RETRIES * 3);
 				for (int i = 0; i < tries || ret; i++) {
 					roll = new Dice(1, 20).roll();
 					rolls.add(roll);
 					ret |= (roll + total) >= DC;
 				}
-				break;
 			}
-			case WithPenalty: {
+			case WithPenalty -> {
 				for (int i = 0; i < LIMITED_RETRIES || ret; i++) {
 					roll = new Dice(1, 20).roll();
 					rolls.add(roll);
 					ret |= (roll + total) >= (DC + (DCMul * i));
 				}
-				break;
 			}
 		}
 		return ret;

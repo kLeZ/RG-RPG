@@ -23,10 +23,12 @@ import it.d4nguard.rgrpg.Context;
 import it.d4nguard.rgrpg.d20.items.weapons.Weapon;
 import it.d4nguard.rgrpg.d20.types.FeatCategoryType;
 
+import java.io.Serial;
 import java.util.HashSet;
 import java.util.Set;
 
 public class WeaponProficiency extends Feat {
+	@Serial
 	private static final long serialVersionUID = 5281622416467554030L;
 
 	private final Set<Weapon> items;

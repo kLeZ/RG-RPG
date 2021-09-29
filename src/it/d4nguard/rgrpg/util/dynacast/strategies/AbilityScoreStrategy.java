@@ -28,7 +28,7 @@ import java.lang.reflect.Type;
  * This class implements an {@link AbstractStrategy} that applies to
  * {@link AbilityScore} type.
  *
- * @author kLeZ-hAcK
+ * @author kLeZ
  */
 public class AbilityScoreStrategy extends AbstractStrategy {
 	/**

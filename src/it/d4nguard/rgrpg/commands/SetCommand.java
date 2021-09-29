@@ -64,25 +64,23 @@ public class SetCommand implements Command {
 		}
 		Object root = null;
 		switch (cmd.getProc()) {
-			case "player": {
+			case "player" -> {
 				CommandLine descCmd = StringUtils.getArgs(cmd.getArgs());
 				if (descCmd.getProc()
 						.equals("availables")) {
 					Context.println(new PlayerManager().availables());
 				} else
 					root = new PlayerManager().get(name);
-				break;
 			}
-			case "character": {
+			case "character" -> {
 				CommandLine descCmd = StringUtils.getArgs(cmd.getArgs());
 				if (descCmd.getProc()
 						.equals("availables")) {
 					Context.println(new CharacterManager().availables());
 				} else
 					root = new CharacterManager().get(name);
-				break;
 			}
-			case "availables": {
+			case "availables" -> {
 				String arg = StringUtils.join(" ", cmd.getArgs());
 				if (StringUtils.isNotEmpty(arg)) {
 					Reflections r = Context.getReflections();
@@ -97,7 +95,6 @@ public class SetCommand implements Command {
 					for (Class<?> c : r.getSubTypesOf(requested))
 						Context.println(StringUtils.prettyPrint(c));
 				}
-				break;
 			}
 		}
 		if (root != null)

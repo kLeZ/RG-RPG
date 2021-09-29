@@ -22,9 +22,11 @@ package it.d4nguard.rgrpg.profile;
 import it.d4nguard.rgrpg.profile.types.CoinType;
 import it.d4nguard.rgrpg.util.StringUtils;
 
+import java.io.Serial;
 import java.io.Serializable;
 
 public class Coin implements Serializable {
+	@Serial
 	private static final long serialVersionUID = -8403667979960797301L;
 
 	private final CoinType type;

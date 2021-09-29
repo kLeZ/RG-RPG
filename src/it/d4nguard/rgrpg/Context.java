@@ -218,6 +218,7 @@ public class Context {
 	}
 
 	private static class Singleton implements Serializable {
+		@Serial
 		private static final long serialVersionUID = -5518515093530450430L;
 
 		private static final SubTypesScanner STS = new SubTypesScanner(false);
@@ -311,7 +312,7 @@ public class Context {
 					fis.close();
 					init();
 				} else {
-					getReader().println("Could not load the save. File doesn't exists.");
+					getReader().println("Could not load the save. File doesn't exist.");
 				}
 			} catch (ClassNotFoundException | IOException e) {
 				Context.printThrowable(e);

@@ -22,9 +22,11 @@ package it.d4nguard.rgrpg.d20;
 import it.d4nguard.rgrpg.d20.types.DamageReductionType;
 import it.d4nguard.rgrpg.util.StringUtils;
 
+import java.io.Serial;
 import java.io.Serializable;
 
 public class DamageReduction implements Serializable {
+	@Serial
 	private static final long serialVersionUID = -2013207030411719125L;
 
 	private DamageReductionType type = DamageReductionType.None;

@@ -32,21 +32,18 @@ public class NewCommand implements Command {
 		CommandLine cmd = StringUtils.getArgs(args);
 		String name;
 		switch (cmd.getProc()) {
-			case "player": {
+			case "player" -> {
 				name = StringUtils.join(" ", cmd.getArgs());
 				Player p = new PlayerManager().create(name);
 				if (p != null)
 					Context.println(p);
 				else
 					Context.println(String.format(Context.getString("new.err.player.exists"), name));
-
-				break;
 			}
-			case "character": {
+			case "character" -> {
 				CommandLine cmd_c = StringUtils.getArgs(cmd.getArgs());
 				name = StringUtils.join(" ", cmd_c.getArgs());
 				Context.println(new CharacterManager().create(name, cmd_c.getProc()));
-				break;
 			}
 		}
 	}

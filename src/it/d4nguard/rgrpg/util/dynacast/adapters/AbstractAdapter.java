@@ -39,7 +39,7 @@ import java.util.Map;
  * @param <T>
  * 		The type to adapt, passed to {@link Adapter}
  *
- * @author kLeZ-hAcK
+ * @author kLeZ
  */
 @SuppressWarnings("rawtypes")
 public abstract class AbstractAdapter<T> implements Adapter<T>, Provider<AdapterFactory> {
@@ -81,7 +81,7 @@ public abstract class AbstractAdapter<T> implements Adapter<T>, Provider<Adapter
 	 * instruction.
 	 *
 	 * @param type
-	 * 		The exact type, without modifictions, passed to
+	 * 		The exact type, without modifications, passed to
 	 *        {@link AdapterFactory#create(Type)}
 	 */
 	public abstract void beforeCreateAdapter(Type type);

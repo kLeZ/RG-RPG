@@ -25,6 +25,7 @@ import it.d4nguard.rgrpg.d20.types.RaceSubType;
 import it.d4nguard.rgrpg.d20.types.RaceType;
 import it.d4nguard.rgrpg.d20.types.SizeType;
 
+import java.io.Serial;
 import java.io.Serializable;
 import java.util.HashMap;
 import java.util.HashSet;
@@ -32,6 +33,7 @@ import java.util.Set;
 import java.util.concurrent.atomic.AtomicReference;
 
 public abstract class Race implements Serializable {
+	@Serial
 	private static final long serialVersionUID = 7221883394924344504L;
 
 	private static final AtomicReference<HashMap<RaceType, HashSet<Trait>>> RACE_TRAITS = new AtomicReference<>(new HashMap<>());

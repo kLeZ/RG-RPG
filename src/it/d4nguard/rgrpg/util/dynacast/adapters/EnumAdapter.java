@@ -24,7 +24,7 @@ package it.d4nguard.rgrpg.util.dynacast.adapters;
  *
  * @param <E>
  *
- * @author kLeZ-hAcK
+ * @author kLeZ
  */
 public class EnumAdapter<E extends Enum<?>> extends SimpleAdapter<E> {
 	/**

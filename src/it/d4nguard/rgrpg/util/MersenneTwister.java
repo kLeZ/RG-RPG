@@ -19,11 +19,13 @@
  */
 package it.d4nguard.rgrpg.util;
 
+import java.io.Serial;
 import java.security.SecureRandom;
 import java.util.Calendar;
 import java.util.Random;
 
 public class MersenneTwister extends Random {
+	@Serial
 	private static final long serialVersionUID = -8879292960486620328L;
 
 	private static final int N = 624;
@@ -100,7 +102,7 @@ public class MersenneTwister extends Random {
 		for (mti = 1; mti < N; ++mti) {
 			// See Knuth TAOCP Vol2. 3rd Ed. P.106 for multiplier.
 			// initializer from the 2002-01-09 C version by Makoto Matsumoto
-			longMT = ((1812433253l * (longMT ^ (longMT >> 30))) + mti) & 0xffffffffL;
+			longMT = ((1812433253L * (longMT ^ (longMT >> 30))) + mti) & 0xffffffffL;
 			mt[mti] = (int) longMT;
 		}
 	}
@@ -129,11 +131,11 @@ public class MersenneTwister extends Random {
 		int j = 0;
 
 		for (int k = Math.max(N, seed.length); k != 0; k--) {
-			long l0 = (mt[i] & 0x7fffffffl) | ((mt[i] < 0) ? 0x80000000l : 0x0l);
-			long l1 = (mt[i - 1] & 0x7fffffffl) | ((mt[i - 1] < 0) ? 0x80000000l : 0x0l);
-			long l = (l0 ^ ((l1 ^ (l1 >> 30)) * 1664525l)) + seed[j] + j; // non
+			long l0 = (mt[i] & 0x7fffffffL) | ((mt[i] < 0) ? 0x80000000L : 0x0L);
+			long l1 = (mt[i - 1] & 0x7fffffffL) | ((mt[i - 1] < 0) ? 0x80000000L : 0x0L);
+			long l = (l0 ^ ((l1 ^ (l1 >> 30)) * 1664525L)) + seed[j] + j; // non
 			// linear
-			mt[i] = (int) (l & 0xffffffffl);
+			mt[i] = (int) (l & 0xffffffffL);
 			i++;
 			j++;
 			if (i >= N) {
@@ -146,9 +148,9 @@ public class MersenneTwister extends Random {
 		}
 
 		for (int k = N - 1; k != 0; k--) {
-			long l0 = (mt[i] & 0x7fffffffl) | ((mt[i] < 0) ? 0x80000000l : 0x0l);
-			long l1 = (mt[i - 1] & 0x7fffffffl) | ((mt[i - 1] < 0) ? 0x80000000l : 0x0l);
-			long l = (l0 ^ ((l1 ^ (l1 >> 30)) * 1566083941l)) - i; // non linear
+			long l0 = (mt[i] & 0x7fffffffL) | ((mt[i] < 0) ? 0x80000000L : 0x0L);
+			long l1 = (mt[i - 1] & 0x7fffffffL) | ((mt[i - 1] < 0) ? 0x80000000L : 0x0L);
+			long l = (l0 ^ ((l1 ^ (l1 >> 30)) * 1566083941L)) - i; // non linear
 			mt[i] = (int) (l & 0xffffffffL);
 			i++;
 			if (i >= N) {
@@ -157,7 +159,7 @@ public class MersenneTwister extends Random {
 			}
 		}
 
-		mt[0] = (int) 0x80000000l; // MSB is 1; assuring non-zero initial array
+		mt[0] = (int) 0x80000000L; // MSB is 1; assuring non-zero initial array
 	}
 
 	/**
@@ -179,7 +181,7 @@ public class MersenneTwister extends Random {
 			return;
 		}
 		setSeed(new int[] {
-				(int) (seed >>> 32), (int) (seed & 0xffffffffl)
+				(int) (seed >>> 32), (int) (seed & 0xffffffffL)
 		});
 	}
 
@@ -211,16 +213,16 @@ public class MersenneTwister extends Random {
 			for (int k = 0; k < (N - M); ++k) {
 				int mtCurr = mtNext;
 				mtNext = mt[k + 1];
-				y = (int) ((mtCurr & 0x80000000l) | (mtNext & 0x7fffffff));
+				y = (int) ((mtCurr & 0x80000000L) | (mtNext & 0x7fffffff));
 				mt[k] = mt[k + M] ^ (y >>> 1) ^ MAG01[y & 0x1];
 			}
 			for (int k = N - M; k < (N - 1); ++k) {
 				int mtCurr = mtNext;
 				mtNext = mt[k + 1];
-				y = (int) ((mtCurr & 0x80000000l) | (mtNext & 0x7fffffff));
+				y = (int) ((mtCurr & 0x80000000L) | (mtNext & 0x7fffffff));
 				mt[k] = mt[k + (M - N)] ^ (y >>> 1) ^ MAG01[y & 0x1];
 			}
-			y = (int) ((mtNext & 0x80000000l) | (mt[0] & 0x7fffffff));
+			y = (int) ((mtNext & 0x80000000L) | (mt[0] & 0x7fffffff));
 			mt[N - 1] = mt[M - 1] ^ (y >>> 1) ^ MAG01[y & 0x1];
 
 			mti = 0;

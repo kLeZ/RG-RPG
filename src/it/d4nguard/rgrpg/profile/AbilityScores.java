@@ -23,11 +23,13 @@ import it.d4nguard.rgrpg.Context;
 import it.d4nguard.rgrpg.profile.AbilityScore.UnmodifiableAbilityScore;
 import it.d4nguard.rgrpg.util.StringCompiler;
 
+import java.io.Serial;
 import java.io.Serializable;
 import java.util.Enumeration;
 import java.util.HashMap;
 
 public abstract class AbilityScores implements Serializable {
+	@Serial
 	private static final long serialVersionUID = 1363222839096421722L;
 
 	protected final HashMap<String, AbilityScore> scores;
@@ -69,9 +71,8 @@ public abstract class AbilityScores implements Serializable {
 			return true;
 		if (obj == null)
 			return false;
-		if (!(obj instanceof AbilityScores))
+		if (!(obj instanceof AbilityScores other))
 			return false;
-		AbilityScores other = (AbilityScores) obj;
 		if (scores == null) {
 			return other.scores == null;
 		} else

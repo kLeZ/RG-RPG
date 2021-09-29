@@ -30,7 +30,7 @@ import java.lang.reflect.Type;
  * @param <T>
  * 		The type that the {@link Adapter} implements.
  *
- * @author kLeZ-hAcK
+ * @author kLeZ
  */
 public interface AdapterFactory<T> {
 	/**

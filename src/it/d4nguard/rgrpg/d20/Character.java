@@ -30,6 +30,7 @@ import it.d4nguard.rgrpg.profile.types.AttackType;
 import it.d4nguard.rgrpg.util.NumericUtils;
 import it.d4nguard.rgrpg.util.StringUtils;
 
+import java.io.Serial;
 import java.util.ArrayList;
 import java.util.HashSet;
 import java.util.List;
@@ -37,6 +38,7 @@ import java.util.Set;
 
 public class Character extends it.d4nguard.rgrpg.profile.Character {
 	public static final String TYPE = "d20";
+	@Serial
 	private static final long serialVersionUID = -8727304403745570110L;
 	private final AbilityScores abilityScores;
 	private final Equipment equipment;
@@ -170,8 +172,7 @@ public class Character extends it.d4nguard.rgrpg.profile.Character {
 	}
 
 	public Set<Language> getSpokenLanguages() {
-		Set<Language> langs = new HashSet<>();
-		langs.addAll(spokenLanguages);
+		Set<Language> langs = new HashSet<>(spokenLanguages);
 		if (race != null)
 			langs.addAll(race.getSpokenLanguages());
 		for (Class c : classes)
@@ -192,24 +193,24 @@ public class Character extends it.d4nguard.rgrpg.profile.Character {
 		for (Class c : classes)
 			bab += c.getBab(attack);
 		switch (type) {
-			case Melee:
+			case Melee -> {
 				bab += race.getSize()
 						.getModifier();
 				bab += abilityScores.getStrength()
 						.getModifier();
-				break;
-			case Ranged:
+			}
+			case Ranged -> {
 				bab += race.getSize()
 						.getModifier();
 				bab += abilityScores.getDexterity()
 						.getModifier();
-				break;
-			case Grapple:
+			}
+			case Grapple -> {
 				bab += race.getSize()
 						.getGrapple();
 				bab += abilityScores.getStrength()
 						.getModifier();
-				break;
+			}
 		}
 		return NumericUtils.sum(bab, babModifiers);
 	}
@@ -223,7 +224,7 @@ public class Character extends it.d4nguard.rgrpg.profile.Character {
 	public int getArmorClass(ArmorClassType type) {
 		int ac = 10;
 		switch (type) {
-			case Normal:
+			case Normal -> {
 				ac += equipment.getArmor()
 						.getArmorClass();
 				ac += equipment.getShield()
@@ -231,18 +232,18 @@ public class Character extends it.d4nguard.rgrpg.profile.Character {
 				ac += getMaxDexterity();
 				ac += race.getArmorClass();
 				ac = NumericUtils.sum(ac, dodgeBonuses);
-				break;
-			case FlatFooted: // Denies DEX
+			}
+			case FlatFooted -> { // Denies DEX
 				ac += equipment.getArmor()
 						.getArmorClass();
 				ac += equipment.getShield()
 						.getArmorClass();
 				ac += race.getArmorClass();
-				break;
-			case Touch: // Denies ARM, SHI, NAT
+			}
+			case Touch -> { // Denies ARM, SHI, NAT
 				ac += getMaxDexterity();
 				ac = NumericUtils.sum(ac, dodgeBonuses);
-				break;
+			}
 		}
 		ac += race.getSize()
 				.getModifier();
@@ -255,18 +256,12 @@ public class Character extends it.d4nguard.rgrpg.profile.Character {
 		for (Class c : classes)
 			save += c.getSavingThrow(type);
 		switch (type) {
-			case Fortitude:
-				save += abilityScores.getConstitution()
-						.getModifier();
-				break;
-			case Reflexes:
-				save += abilityScores.getDexterity()
-						.getModifier();
-				break;
-			case WillPower:
-				save += abilityScores.getWisdom()
-						.getModifier();
-				break;
+			case Fortitude -> save += abilityScores.getConstitution()
+					.getModifier();
+			case Reflexes -> save += abilityScores.getDexterity()
+					.getModifier();
+			case WillPower -> save += abilityScores.getWisdom()
+					.getModifier();
 		}
 		return NumericUtils.sum(save, stModifiers);
 	}

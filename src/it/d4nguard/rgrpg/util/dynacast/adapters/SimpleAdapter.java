@@ -32,7 +32,7 @@ import java.lang.reflect.Type;
  * @param <T>
  * 		The type of the implementing {@link Adapter}
  *
- * @author kLeZ-hAcK
+ * @author kLeZ
  */
 public abstract class SimpleAdapter<T> extends AbstractAdapter<T> {
 	/**

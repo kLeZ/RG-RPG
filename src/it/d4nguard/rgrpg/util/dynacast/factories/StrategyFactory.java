@@ -35,7 +35,7 @@ import java.util.Set;
  * This is the factory class for {@link Strategy} objects. It retrieves the
  * right {@link Strategy} for the given type.
  *
- * @author kLeZ-hAcK
+ * @author kLeZ
  */
 public class StrategyFactory {
 	private static final Strategy DUMMY_STRATEGY = new Strategy() {
@@ -66,7 +66,7 @@ public class StrategyFactory {
 
 	/**
 	 * This method gets the correct {@link Strategy} by searching the given type
-	 * in a {@link Set} of {@link Strategy} sub types returned by
+	 * in a {@link Set} of {@link Strategy} subtypes returned by
 	 * {@link Reflections}.
 	 *
 	 * @param type

@@ -176,7 +176,7 @@ public class StringUtils {
 	 * </pre>
 	 *
 	 * @param str
-	 * 		the CharSequence to check (may be <code>null</code>)
+	 * 		the CharSequence to check (maybe <code>null</code>)
 	 *
 	 * @return <code>true</code> if the CharSequence is not null and has length
 	 *
@@ -192,7 +192,7 @@ public class StringUtils {
 	 * whitespace.
 	 *
 	 * @param str
-	 * 		the String to check (may be <code>null</code>)
+	 * 		the String to check (maybe <code>null</code>)
 	 *
 	 * @return <code>true</code> if the String is not null and has length
 	 *
@@ -219,7 +219,7 @@ public class StringUtils {
 	 * </pre>
 	 *
 	 * @param str
-	 * 		the CharSequence to check (may be <code>null</code>)
+	 * 		the CharSequence to check (maybe <code>null</code>)
 	 *
 	 * @return <code>true</code> if the CharSequence is not <code>null</code>,
 	 * its length is greater than 0, and it does not contain whitespace
@@ -245,7 +245,7 @@ public class StringUtils {
 	 * character.
 	 *
 	 * @param str
-	 * 		the String to check (may be <code>null</code>)
+	 * 		the String to check (maybe <code>null</code>)
 	 *
 	 * @return <code>true</code> if the String is not <code>null</code>, its
 	 * length is
@@ -288,7 +288,7 @@ public class StringUtils {
 			if (sc.canFill())
 				sc.fill();
 			sc.fill(clazz.getSimpleName()
-					.length(), '=')
+							.length(), '=')
 					.appendNewLine();
 			Field[] fields = clazz.getDeclaredFields();
 			for (Field field : fields) {
@@ -308,23 +308,16 @@ public class StringUtils {
 			// It's a normal class, I will print it as usual
 			toPrint.put(field.getType(), field.getType()
 					.getSimpleName());
-		} else if (t instanceof ParameterizedType) {
-			ParameterizedType pt = (ParameterizedType) t;
+		} else if (t instanceof ParameterizedType pt) {
 			Class<?> raw = (Class<?>) pt.getRawType();
 			toPrint.put(raw, raw.getSimpleName());
 			for (Type argt : pt.getActualTypeArguments()) {
-				Class<?> cls = null;
-				if (argt instanceof GenericArrayType) {
+				Class<?> cls;
+				if (argt instanceof TypeVariable tv) {
+					cls = tv.getGenericDeclaration().getClass();
+				} else {
 					cls = (Class<?>) argt;
-				} else if (argt instanceof ParameterizedType) {
-					cls = (Class<?>) argt;
-				} else if (argt instanceof TypeVariable) {
-					cls = ((TypeVariable<?>) argt).getGenericDeclaration()
-							.getClass();
-				} else if (argt instanceof WildcardType) {
-					cls = (Class<?>) argt;
-				} else
-					cls = (Class<?>) argt;
+				}
 				toPrint.put(cls, cls.getSimpleName());
 			}
 		}
@@ -337,10 +330,9 @@ public class StringUtils {
 			sc.append("%s<%s>", values.get(0), gen);
 		}
 		sc.append(" %s", field.getName());
-		// FIX: We're not ready to do a full print of an Object structure
-		// We're getting StackOverflow!!!
-		//		for (Class<?> c : toPrint.keySet())
-		//		{
+		// FIXME: We're not ready to do a full print of an Object structure
+		//        We're getting StackOverflow!!!
+		//		for (Class<?> c : toPrint.keySet()) {
 		//			sc.appendln(prettyPrint(c, sc.length(), ' '));
 		//		}
 		return sc.toString();
@@ -378,13 +370,13 @@ public class StringUtils {
 
 	public static Triplet<String, String, String> getBetween(String s, int start, int end) throws IndexOutOfBoundsException {
 		Triplet<String, String, String> ret = new Triplet<>();
-		start = start < 0 ? 0 : start;
-		end = end < 0 ? 0 : end;
+		start = Math.max(start, 0);
+		end = Math.max(end, 0);
 		if (end > s.length() || start > end)
 			throw new IndexOutOfBoundsException();
 
-		ret.setLeft(s.substring(0, start <= 0 ? 0 : start));
-		ret.setCenter(s.substring(start == end ? start : start + 1, end <= 0 ? 0 : end));
+		ret.setLeft(s.substring(0, start));
+		ret.setCenter(s.substring(start == end ? start : start + 1, end));
 		ret.setRight(s.substring(end == s.length() ? end : end + 1));
 
 		return ret;
@@ -419,7 +411,7 @@ public class StringUtils {
 		sc.append(c.getSimpleName())
 				.appendln(" [");
 		if (recurseSuper) {
-			String s = genericToString(c.getSuperclass(), o, length, filler, recurseSuper, excluded);
+			String s = genericToString(c.getSuperclass(), o, length, filler, true, excluded);
 			if (isNotEmpty(s))
 				sc.appendln(s);
 		}

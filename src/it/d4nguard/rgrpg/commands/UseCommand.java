@@ -31,14 +31,8 @@ public class UseCommand implements Command {
 		CommandLine cmd = StringUtils.getArgs(args);
 		String name = StringUtils.join(" ", cmd.getArgs());
 		switch (cmd.getProc()) {
-			case "player": {
-				Context.println(new PlayerManager().use(name));
-				break;
-			}
-			case "character": {
-				Context.println(new CharacterManager().use(name));
-				break;
-			}
+			case "player" -> Context.println(new PlayerManager().use(name));
+			case "character" -> Context.println(new CharacterManager().use(name));
 		}
 	}
 

@@ -31,14 +31,8 @@ public class ShowCommand implements Command {
 		CommandLine cmd = StringUtils.getArgs(args);
 		String name = StringUtils.join(" ", cmd.getArgs());
 		switch (cmd.getProc()) {
-			case "player": {
-				Context.println(new PlayerManager().get(name));
-				break;
-			}
-			case "character": {
-				Context.println(new CharacterManager().get(name));
-				break;
-			}
+			case "player" -> Context.println(new PlayerManager().get(name));
+			case "character" -> Context.println(new CharacterManager().get(name));
 		}
 	}
 

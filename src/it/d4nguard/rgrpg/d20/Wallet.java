@@ -23,11 +23,13 @@ import it.d4nguard.rgrpg.d20.items.Item;
 import it.d4nguard.rgrpg.profile.Coin;
 import it.d4nguard.rgrpg.profile.types.CoinType;
 
+import java.io.Serial;
 import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
 
 public class Wallet implements Serializable {
+	@Serial
 	private static final long serialVersionUID = 612105702965224166L;
 
 	private final List<Item> gems;

@@ -26,7 +26,7 @@ import java.util.Collection;
  * This class implements a {@link SimpleStrategy} for {@link Collection}s.<br>
  * The {@link #getMine(Type)} method returns {@link Collection}.class
  *
- * @author kLeZ-hAcK
+ * @author kLeZ
  */
 public class CollectionStrategy extends SimpleStrategy {
 	/**

@@ -19,9 +19,11 @@
  */
 package it.d4nguard.rgrpg.profile;
 
+import java.io.Serial;
 import java.io.Serializable;
 
 public abstract class AbilityScore implements Serializable {
+	@Serial
 	private static final long serialVersionUID = -7369119723062034841L;
 
 	private final String name;
@@ -68,6 +70,7 @@ public abstract class AbilityScore implements Serializable {
 	}
 
 	public static class UnmodifiableAbilityScore extends AbilityScore {
+		@Serial
 		private static final long serialVersionUID = 8740668067478743803L;
 
 		public UnmodifiableAbilityScore(AbilityScore as) {

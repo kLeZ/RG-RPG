@@ -22,11 +22,13 @@ package it.d4nguard.rgrpg.profile;
 import it.d4nguard.rgrpg.d20.types.TryAgainType;
 import it.d4nguard.rgrpg.util.NumericUtils;
 
+import java.io.Serial;
 import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
 
 public abstract class Skill implements Serializable {
+	@Serial
 	private static final long serialVersionUID = -7135040561923824661L;
 
 	protected final String name;

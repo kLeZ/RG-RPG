@@ -19,9 +19,11 @@
  */
 package it.d4nguard.rgrpg.d20;
 
+import java.io.Serial;
 import java.io.Serializable;
 
 public class CriticalHit implements Serializable {
+	@Serial
 	private static final long serialVersionUID = -1814987396032256922L;
 
 	private final Range menaceRange;

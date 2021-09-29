@@ -28,14 +28,7 @@ import java.util.Set;
 
 public class CollectionsUtils {
 	public static final Class<?>[] ARRAY_PRIMITIVE_TYPES = {
-			int[].class,
-			float[].class,
-			double[].class,
-			boolean[].class,
-			byte[].class,
-			short[].class,
-			long[].class,
-			char[].class
+			int[].class, float[].class, double[].class, boolean[].class, byte[].class, short[].class, long[].class, char[].class
 	};
 
 	public static Object[] getArray(Object val) {
@@ -72,9 +65,7 @@ public class CollectionsUtils {
 	public static <K, V> K getByValue(Map<K, V> map, V value) {
 		Set<Entry<K, V>> entrySet = map.entrySet();
 		K el = null;
-		Iterator<Entry<K, V>> it = entrySet.iterator();
-		while (it.hasNext()) {
-			Entry<K, V> cur = it.next();
+		for (final Entry<K, V> cur : entrySet) {
 			if (cur.getValue()
 					.equals(value)) {
 				el = cur.getKey();

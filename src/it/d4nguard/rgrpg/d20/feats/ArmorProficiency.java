@@ -23,10 +23,12 @@ import it.d4nguard.rgrpg.Context;
 import it.d4nguard.rgrpg.d20.items.Armor;
 import it.d4nguard.rgrpg.d20.types.FeatCategoryType;
 
+import java.io.Serial;
 import java.util.HashSet;
 import java.util.Set;
 
 public class ArmorProficiency extends Feat {
+	@Serial
 	private static final long serialVersionUID = 1908088878347106595L;
 
 	private final Set<Armor> items;

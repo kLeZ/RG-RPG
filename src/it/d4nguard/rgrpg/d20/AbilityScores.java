@@ -21,6 +21,7 @@ package it.d4nguard.rgrpg.d20;
 
 import it.d4nguard.rgrpg.profile.AbilityScore;
 
+import java.io.Serial;
 import java.io.Serializable;
 
 public class AbilityScores extends it.d4nguard.rgrpg.profile.AbilityScores implements Serializable {
@@ -30,6 +31,7 @@ public class AbilityScores extends it.d4nguard.rgrpg.profile.AbilityScores imple
 	public static final String INTELLIGENCE = "d20-intelligence";
 	public static final String WISDOM = "d20-wisdom";
 	public static final String CHARISMA = "d20-charisma";
+	@Serial
 	private static final long serialVersionUID = 1363222839096421722L;
 
 	@Override
@@ -96,8 +98,9 @@ public class AbilityScores extends it.d4nguard.rgrpg.profile.AbilityScores imple
 				.setValue(charisma);
 	}
 
-	public class D20AbilityScore extends AbilityScore {
+	public static class D20AbilityScore extends AbilityScore {
 		public static final int MID_RANGE = 10;
+		@Serial
 		private static final long serialVersionUID = 113611044329823552L;
 
 		public D20AbilityScore(String name) {

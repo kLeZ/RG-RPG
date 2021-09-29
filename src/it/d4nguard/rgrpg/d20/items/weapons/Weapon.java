@@ -30,9 +30,11 @@ import it.d4nguard.rgrpg.util.Dice;
 import org.jscience.physics.amount.Amount;
 
 import javax.measure.quantity.Mass;
+import java.io.Serial;
 import java.util.EnumSet;
 
 public abstract class Weapon extends Item {
+	@Serial
 	private static final long serialVersionUID = -2204037533603352232L;
 
 	private final WeaponCategoryType weaponCategory;

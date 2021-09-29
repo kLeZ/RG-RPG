@@ -30,7 +30,7 @@ import java.util.HashMap;
  * The {@link #getMine(Type)} method returns a wrapper object of the given
  * primitive type.
  *
- * @author kLeZ-hAcK
+ * @author kLeZ
  */
 public class PrimitiveStrategy extends AbstractStrategy {
 	private static final HashMap<String, Class<?>> primitives = new HashMap<>();

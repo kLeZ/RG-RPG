@@ -34,7 +34,7 @@ import java.lang.reflect.Type;
  * someTypecastingToClass(getMine(type)).isAssignableFrom(someTypecastingToClass(type));
  * </code>
  *
- * @author kLeZ-hAcK
+ * @author kLeZ
  */
 public abstract class SimpleStrategy extends AbstractStrategy {
 	/**

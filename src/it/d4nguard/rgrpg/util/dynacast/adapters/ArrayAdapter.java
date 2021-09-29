@@ -41,7 +41,7 @@ import java.util.Map;
  * @param <T>
  * 		The component type of the array to adapt.
  *
- * @author kLeZ-hAcK
+ * @author kLeZ
  */
 public class ArrayAdapter<T> implements Adapter<T>, Provider<AdapterFactory<?>> {
 	private final ArrayAdapter<T> myself = this;
@@ -65,15 +65,12 @@ public class ArrayAdapter<T> implements Adapter<T>, Provider<AdapterFactory<?>> 
 	@SuppressWarnings("unchecked")
 	public Map<Class<?>, AdapterFactory<?>> get() {
 		HashMap<Class<?>, AdapterFactory<?>> ret = new HashMap<>();
-		ret.put(Array.class, new AdapterFactory<T>() {
-			@Override
-			public Adapter<T> create(Type type) {
-				if (type instanceof Class)
-					adaptedType = ((Class<?>) type).getComponentType();
-				else
-					adaptedType = ((GenericArrayType) type).getGenericComponentType();
-				return myself;
-			}
+		ret.put(Array.class, (AdapterFactory<T>) type -> {
+			if (type instanceof Class)
+				adaptedType = ((Class<?>) type).getComponentType();
+			else
+				adaptedType = ((GenericArrayType) type).getGenericComponentType();
+			return myself;
 		});
 		return ret;
 	}

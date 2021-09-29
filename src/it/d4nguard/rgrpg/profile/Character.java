@@ -22,11 +22,13 @@ package it.d4nguard.rgrpg.profile;
 import it.d4nguard.rgrpg.Context;
 import it.d4nguard.rgrpg.util.StringUtils;
 
+import java.io.Serial;
 import java.io.Serializable;
 import java.util.HashSet;
 import java.util.Set;
 
 public abstract class Character implements Serializable {
+	@Serial
 	private static final long serialVersionUID = 5045353718327076827L;
 
 	protected final Player owner;
@@ -54,14 +56,17 @@ public abstract class Character implements Serializable {
 			ret.scores = new it.d4nguard.rgrpg.d20.AbilityScores();
 		} else {
 			ret = new Character(current, gi) {
+				@Serial
 				private static final long serialVersionUID = 3268711504482838654L;
 			};
 			ret.scores = new AbilityScores() {
+				@Serial
 				private static final long serialVersionUID = 2694913871398901741L;
 
 				@Override
 				protected AbilityScore newAbilityScore(String abilityScore) {
 					return new AbilityScore(abilityScore, 1) {
+						@Serial
 						private static final long serialVersionUID = 2327752836269369873L;
 
 						@Override
@@ -117,9 +122,8 @@ public abstract class Character implements Serializable {
 			return true;
 		if (obj == null)
 			return false;
-		if (!(obj instanceof Character))
+		if (!(obj instanceof Character other))
 			return false;
-		Character other = (Character) obj;
 		if (info == null) {
 			if (other.info != null)
 				return false;
