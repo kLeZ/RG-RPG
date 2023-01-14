@@ -33,6 +33,10 @@ public class Triplet<L, C, R> {
 		this.right = right;
 	}
 
+	public boolean hasLeft() {
+		return getLeft() != null;
+	}
+
 	public L getLeft() {
 		return left;
 	}
@@ -41,8 +45,8 @@ public class Triplet<L, C, R> {
 		this.left = left;
 	}
 
-	public boolean hasLeft() {
-		return getLeft() != null;
+	public boolean hasCenter() {
+		return getCenter() != null;
 	}
 
 	public C getCenter() {
@@ -53,8 +57,8 @@ public class Triplet<L, C, R> {
 		this.center = center;
 	}
 
-	public boolean hasCenter() {
-		return getCenter() != null;
+	public boolean hasRight() {
+		return getRight() != null;
 	}
 
 	public R getRight() {
@@ -63,10 +67,6 @@ public class Triplet<L, C, R> {
 
 	public void setRight(R right) {
 		this.right = right;
-	}
-
-	public boolean hasRight() {
-		return getRight() != null;
 	}
 
 	@Override
@@ -85,8 +85,9 @@ public class Triplet<L, C, R> {
 			return true;
 		if (obj == null)
 			return false;
-		if (!(obj instanceof Triplet<?, ?, ?> other))
+		if (!(obj instanceof Triplet<?, ?, ?>))
 			return false;
+		Triplet<?, ?, ?> other = (Triplet<?, ?, ?>) obj;
 		if (center == null) {
 			if (other.center != null)
 				return false;

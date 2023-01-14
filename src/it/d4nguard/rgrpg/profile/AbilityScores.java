@@ -71,8 +71,9 @@ public abstract class AbilityScores implements Serializable {
 			return true;
 		if (obj == null)
 			return false;
-		if (!(obj instanceof AbilityScores other))
+		if (!(obj instanceof AbilityScores))
 			return false;
+		AbilityScores other = (AbilityScores) obj;
 		if (scores == null) {
 			return other.scores == null;
 		} else

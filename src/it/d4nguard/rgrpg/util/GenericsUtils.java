@@ -126,9 +126,11 @@ public class GenericsUtils {
 	public static Class<?> getClass(final Type type) {
 		if (type instanceof Class)
 			return (Class<?>) type;
-		else if (type instanceof ParameterizedType pt)
+		else if (type instanceof ParameterizedType) {
+			ParameterizedType pt = (ParameterizedType) type;
 			return getClass(pt.getRawType());
-		else if (type instanceof GenericArrayType gat) {
+		} else if (type instanceof GenericArrayType) {
+			GenericArrayType gat = (GenericArrayType) type;
 			final Type componentType = gat.getGenericComponentType();
 			final Class<?> componentClass = getClass(componentType);
 			if (componentClass != null)
@@ -136,10 +138,11 @@ public class GenericsUtils {
 						.getClass();
 			else
 				return null;
-		} else if (type instanceof TypeVariable<?> tv)
+		} else if (type instanceof TypeVariable<?>) {
+			TypeVariable<?> tv = (TypeVariable<?>) type;
 			return tv.getGenericDeclaration()
 					.getClass();
-		else
+		} else
 			return null;
 	}
 
@@ -159,9 +162,10 @@ public class GenericsUtils {
 		Type type = childClass;
 		// start walking up the inheritance hierarchy until we hit baseClass
 		while (!Objects.equals(getClass(type), baseClass)) {
-			if (type instanceof Class<?> cls)
+			if (type instanceof Class<?>) {
+				Class<?> cls = (Class<?>) type;
 				type = cls.getGenericSuperclass();
-			else {
+			} else {
 				final ParameterizedType parameterizedType = (ParameterizedType) type;
 				final Class<?> rawType = (Class<?>) parameterizedType.getRawType();
 
@@ -178,9 +182,10 @@ public class GenericsUtils {
 		// finally, for each actual type argument provided to baseClass, determine (if possible)
 		// the raw class for that type argument.
 		Type[] actualTypeArguments;
-		if (type instanceof Class<?> cls)
+		if (type instanceof Class<?>) {
+			Class<?> cls = (Class<?>) type;
 			actualTypeArguments = cls.getTypeParameters();
-		else
+		} else
 			actualTypeArguments = ((ParameterizedType) type).getActualTypeArguments();
 		final List<Class<?>> typeArgumentsAsClasses = new ArrayList<>();
 		// resolve types by chasing down type variables.
@@ -217,13 +222,17 @@ public class GenericsUtils {
 	}
 
 	public static Class<?> getClassFromType(Type t) {
-		if (t instanceof GenericArrayType gat) {
+		if (t instanceof GenericArrayType) {
+			GenericArrayType gat = (GenericArrayType) t;
 			return getClass(gat.getGenericComponentType());
-		} else if (t instanceof ParameterizedType pt) {
+		} else if (t instanceof ParameterizedType) {
+			ParameterizedType pt = (ParameterizedType) t;
 			return getClass(pt.getRawType());
-		} else if (t instanceof TypeVariable<?> tv) {
+		} else if (t instanceof TypeVariable<?>) {
+			TypeVariable<?> tv = (TypeVariable<?>) t;
 			return getClass(tv.getBounds()[0]);
-		} else if (t instanceof WildcardType wt) {
+		} else if (t instanceof WildcardType) {
+			WildcardType wt = (WildcardType) t;
 			return wt.getClass();
 		} else
 			return (Class<?>) t;

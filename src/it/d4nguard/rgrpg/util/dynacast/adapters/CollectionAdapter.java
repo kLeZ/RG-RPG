@@ -83,9 +83,12 @@ public class CollectionAdapter<T> extends AbstractAdapter<Collection<T>> {
 	@SuppressWarnings("unchecked")
 	public void beforeCreateAdapter(Type type) {
 		this.collType = (Class<Collection<T>>) GenericsUtils.getClassFromType(type);
-		if (type instanceof ParameterizedType pt)
+		if (type instanceof ParameterizedType) {
+			ParameterizedType pt = (ParameterizedType) type;
 			this.type = (Class<T>) GenericsUtils.getFirstGenericType(pt);
-		else if (type instanceof Class<?> cls)
+		} else if (type instanceof Class<?>) {
+			Class<?> cls = (Class<?>) type;
 			this.type = (Class<T>) cls;
+		}
 	}
 }

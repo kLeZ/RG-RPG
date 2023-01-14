@@ -58,7 +58,8 @@ public class AdapterTypeConverter implements TypeConverter {
 	@Override
 	public Object convertValue(Map context, Object target, Member member, String propertyName, Object value, Class toType) {
 		Type type = toType;
-		if (member instanceof Method m) {
+		if (member instanceof Method) {
+			Method m = (Method) member;
 			Type[] types = m.getGenericParameterTypes();
 			if (types.length == 1) {
 				// I'm a setter, probably

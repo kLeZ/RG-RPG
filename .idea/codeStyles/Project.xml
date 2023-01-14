@@ -8,10 +8,23 @@
     <option name="RIGHT_MARGIN" value="80" />
     <option name="FORMATTER_TAGS_ENABLED" value="true" />
     <option name="FORMATTER_TAGS_ACCEPT_REGEXP" value="true" />
-    <option name="SOFT_MARGINS" value="80,120,150,220,256" />
+    <option name="SOFT_MARGINS" value="80,120,150,180,220,256" />
     <AndroidXmlCodeStyleSettings>
       <option name="USE_CUSTOM_SETTINGS" value="true" />
     </AndroidXmlCodeStyleSettings>
+    <HTMLCodeStyleSettings>
+      <option name="HTML_ATTRIBUTE_WRAP" value="0" />
+      <option name="HTML_TEXT_WRAP" value="0" />
+      <option name="HTML_KEEP_LINE_BREAKS" value="false" />
+      <option name="HTML_KEEP_BLANK_LINES" value="0" />
+      <option name="HTML_ALIGN_ATTRIBUTES" value="false" />
+      <option name="HTML_SPACE_INSIDE_EMPTY_TAG" value="true" />
+      <option name="HTML_ENFORCE_QUOTES" value="true" />
+    </HTMLCodeStyleSettings>
+    <JSON>
+      <option name="OBJECT_WRAPPING" value="5" />
+      <option name="ARRAY_WRAPPING" value="5" />
+    </JSON>
     <JavaCodeStyleSettings>
       <option name="GENERATE_FINAL_LOCALS" value="true" />
       <option name="GENERATE_FINAL_PARAMETERS" value="true" />
@@ -30,6 +43,9 @@
       <option name="JD_PRESERVE_LINE_FEEDS" value="true" />
       <option name="JD_PARAM_DESCRIPTION_ON_NEW_LINE" value="true" />
     </JavaCodeStyleSettings>
+    <JetCodeStyleSettings>
+      <option name="CODE_STYLE_DEFAULTS" value="KOTLIN_OFFICIAL" />
+    </JetCodeStyleSettings>
     <MarkdownNavigatorCodeStyleSettings>
       <option name="RIGHT_MARGIN" value="72" />
     </MarkdownNavigatorCodeStyleSettings>
@@ -51,7 +67,7 @@
       <option name="FROM_ALIGN_ALIASES" value="true" />
       <option name="FROM_ONLY_JOIN_INDENT" value="1" />
       <option name="TABLE_CONTENT" value="2" />
-      <option name="TABLE_ALTER_INSTRUCTION_WRAP" value="2" />
+      <option name="TABLE_ALTER_ITEM_WRAP" value="2" />
       <option name="POST_OPT_WRAP_2" value="false" />
       <option name="POST_OPT_INDENT" value="false" />
       <option name="POST_OPT_ALIGN" value="false" />
@@ -74,6 +90,12 @@
       <option name="XML_WHITE_SPACE_AROUND_CDATA" value="1" />
     </XML>
     <codeStyleSettings language="Groovy">
+      <indentOptions>
+        <option name="USE_TAB_CHARACTER" value="true" />
+        <option name="SMART_TABS" value="true" />
+      </indentOptions>
+    </codeStyleSettings>
+    <codeStyleSettings language="HTML">
       <indentOptions>
         <option name="USE_TAB_CHARACTER" value="true" />
         <option name="SMART_TABS" value="true" />
@@ -110,6 +132,28 @@
         <option name="USE_TAB_CHARACTER" value="true" />
         <option name="SMART_TABS" value="true" />
       </indentOptions>
+      <arrangement>
+        <groups>
+          <group>
+            <type>GETTERS_AND_SETTERS</type>
+            <order>KEEP</order>
+          </group>
+          <group>
+            <type>OVERRIDDEN_METHODS</type>
+            <order>KEEP</order>
+          </group>
+        </groups>
+      </arrangement>
+    </codeStyleSettings>
+    <codeStyleSettings language="JSON">
+      <option name="RIGHT_MARGIN" value="180" />
+      <option name="KEEP_LINE_BREAKS" value="false" />
+      <option name="SPACE_WITHIN_BRACKETS" value="true" />
+      <option name="SPACE_WITHIN_BRACES" value="true" />
+      <indentOptions>
+        <option name="INDENT_SIZE" value="4" />
+        <option name="USE_TAB_CHARACTER" value="true" />
+      </indentOptions>
     </codeStyleSettings>
     <codeStyleSettings language="SQL">
       <option name="KEEP_LINE_BREAKS" value="false" />
@@ -125,6 +169,14 @@
       </indentOptions>
     </codeStyleSettings>
     <codeStyleSettings language="XML">
+      <indentOptions>
+        <option name="USE_TAB_CHARACTER" value="true" />
+        <option name="SMART_TABS" value="true" />
+      </indentOptions>
+    </codeStyleSettings>
+    <codeStyleSettings language="kotlin">
+      <option name="CODE_STYLE_DEFAULTS" value="KOTLIN_OFFICIAL" />
+      <option name="KEEP_LINE_BREAKS" value="false" />
       <indentOptions>
         <option name="USE_TAB_CHARACTER" value="true" />
         <option name="SMART_TABS" value="true" />

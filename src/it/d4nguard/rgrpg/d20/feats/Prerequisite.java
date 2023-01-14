@@ -26,8 +26,9 @@ import it.d4nguard.rgrpg.util.dynacast.DynaManipulatorException;
 import java.io.Serial;
 import java.io.Serializable;
 import java.lang.reflect.Method;
+import java.util.Objects;
 
-public record Prerequisite(String description, String expression) implements Serializable {
+public final class Prerequisite implements Serializable {
 	@Serial
 	private static final long serialVersionUID = 4585271111842174784L;
 	public static Method MEETS;
@@ -38,6 +39,42 @@ public record Prerequisite(String description, String expression) implements Ser
 		} catch (NoSuchMethodException | SecurityException e) {
 			Context.printThrowable(e);
 		}
+	}
+
+	private final String description;
+	private final String expression;
+
+	Prerequisite(String description, String expression) {
+		this.description = description;
+		this.expression = expression;
+	}
+
+	public String description() {
+		return description;
+	}
+
+	public String expression() {
+		return expression;
+	}
+
+	@Override
+	public int hashCode() {
+		return Objects.hash(description, expression);
+	}
+
+	@Override
+	public boolean equals(Object obj) {
+		if (obj == this)
+			return true;
+		if (obj == null || obj.getClass() != this.getClass())
+			return false;
+		var that = (Prerequisite) obj;
+		return Objects.equals(this.description, that.description) && Objects.equals(this.expression, that.expression);
+	}
+
+	@Override
+	public String toString() {
+		return "Prerequisite[" + "description=" + description + ", " + "expression=" + expression + ']';
 	}
 
 	public boolean meets(Character character) throws DynaManipulatorException {

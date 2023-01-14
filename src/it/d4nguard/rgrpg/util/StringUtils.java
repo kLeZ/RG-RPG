@@ -308,12 +308,14 @@ public class StringUtils {
 			// It's a normal class, I will print it as usual
 			toPrint.put(field.getType(), field.getType()
 					.getSimpleName());
-		} else if (t instanceof ParameterizedType pt) {
+		} else if (t instanceof ParameterizedType) {
+			ParameterizedType pt = (ParameterizedType) t;
 			Class<?> raw = (Class<?>) pt.getRawType();
 			toPrint.put(raw, raw.getSimpleName());
 			for (Type argt : pt.getActualTypeArguments()) {
 				Class<?> cls;
-				if (argt instanceof TypeVariable tv) {
+				if (argt instanceof TypeVariable) {
+					TypeVariable<?> tv = (TypeVariable<?>) argt;
 					cls = tv.getGenericDeclaration().getClass();
 				} else {
 					cls = (Class<?>) argt;

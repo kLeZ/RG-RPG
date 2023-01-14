@@ -147,8 +147,9 @@ public class GeneralInfo implements Serializable {
 			return true;
 		if (obj == null)
 			return false;
-		if (!(obj instanceof GeneralInfo other))
+		if (!(obj instanceof GeneralInfo))
 			return false;
+		GeneralInfo other = (GeneralInfo) obj;
 		if (dateOfBirth == null) {
 			if (other.dateOfBirth != null)
 				return false;

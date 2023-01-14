@@ -56,7 +56,7 @@
 		</license>
 	</licenses>
 	<properties>
-		<jdk.version>17</jdk.version>
+		<jdk.version>15</jdk.version>
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
 		<project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
 		<compiler-plugin.version>3.8.1</compiler-plugin.version>

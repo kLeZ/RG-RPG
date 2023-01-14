@@ -75,9 +75,10 @@ public class DateTimeAdapter extends SimpleAdapter<Temporal> {
 		fmt = fmt.withLocale(Locale.getDefault());
 		if (getType().equals(ZonedDateTime.class)) {
 			TemporalAccessor temporalAccessor = fmt.parseBest(date, ZonedDateTime::from, LocalDate::from);
-			if (temporalAccessor instanceof ZonedDateTime zonedDateTime) {
-				return zonedDateTime;
-			} else if (temporalAccessor instanceof LocalDate localDate) {
+			if (temporalAccessor instanceof ZonedDateTime) {
+				return (ZonedDateTime) temporalAccessor;
+			} else if (temporalAccessor instanceof LocalDate) {
+				LocalDate localDate = (LocalDate) temporalAccessor;
 				return localDate.atStartOfDay(ZoneId.systemDefault());
 			} else
 				throw new UnsupportedOperationException("type");

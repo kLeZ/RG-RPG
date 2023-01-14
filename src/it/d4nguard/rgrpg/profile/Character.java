@@ -122,8 +122,9 @@ public abstract class Character implements Serializable {
 			return true;
 		if (obj == null)
 			return false;
-		if (!(obj instanceof Character other))
+		if (!(obj instanceof Character))
 			return false;
+		Character other = (Character) obj;
 		if (info == null) {
 			if (other.info != null)
 				return false;
